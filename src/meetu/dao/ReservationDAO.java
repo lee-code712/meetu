@@ -1,9 +1,11 @@
 package meetu.dao;
 
 import java.util.ArrayList;
+
+import meetu.common.dbutil.DBConnection;
+import meetu.common.dbutil.Disconnection;
+
 import java.sql.*;
-import common.dbutil.DBConnection;
-import common.dbutil.Disconnection;
 
 public class ReservationDAO {
 	Connection con;
