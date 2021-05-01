@@ -1,1 +1,89 @@
 @charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+
+#wrap {
+	margin: 0 auto;
+	margin-top: 10%;
+	width: 378px;
+	text-align: center;
+}
+
+#title a {
+	font-size: 48px;
+	color: #FFC42E;
+	font-weight: bold;
+}
+
+#title:hover {
+	cursor: pointer;
+}
+
+#position {
+	margin: 40px 0 20px 0;
+	float: left;
+	width: 100px;
+	height: 30px;
+	border: 1px solid #C4C4C4;
+}
+
+#id {
+	margin-bottom: 10px;
+	padding-left: 10px;
+	width: 368px;
+	height: 50px;
+	border: 1px solid #C4C4C4;
+	border-radius: 10px;
+}
+
+#id:hover {
+	cursor: pointer;
+}
+
+#pwd {
+	padding-left: 10px;
+	width :368px;
+	height: 50px;
+	border: 1px solid #C4C4C4;
+	border-radius: 10px;
+}
+
+#pwd:hover {
+	cursor: pointer;
+}
+
+#link {
+	color: #FFC42E;
+}
+
+#link:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+#loginBtn {
+	display: table-cell;
+	margin: 40px 0 20px 0;
+	width: 378px;
+	height: 50px;
+	color: white;
+	background: #FFC42E;
+	font-size: 14px;
+	border: 1px solid #FFC200;
+	border-radius: 10px;
+}
+
+#loginBtn:hover {
+	cursor: pointer;
+}
+
+#account {
+	margin: 10px 0 40px 0;
+}
+
+
+
