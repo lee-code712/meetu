@@ -4,6 +4,7 @@ public class StudentMemberDTO {
 	private String s_user_id;
 	private String password;
 	private String stu_id;
+	private String phone;
 	
 	public String getSUserId() {
 		return s_user_id;
@@ -27,5 +28,13 @@ public class StudentMemberDTO {
 	
 	public void setStuId(String stu_id) {
 		this.stu_id = stu_id;
+	}
+	
+	public String getPhone() {
+		return phone;
+	}
+	
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 }

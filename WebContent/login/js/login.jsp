@@ -9,6 +9,13 @@
 </head>
 
 <body>
+<%
+	String ck = request.getParameter("ck");
+	if(ck != null) {
+		out.println("<script>alert('로그인에 실패했습니다.');</script>");
+	}
+%>
+<form name="login_form" method="post" action="login_ck.jsp">
 	<table id="wrap">
 		<tr>
 			<td id="title"><a>MEETU</a></td>
@@ -16,7 +23,7 @@
 		
 		<tr>
 			<td>
-				<select id="position">
+				<select name="position" id="position">
 					<option value="0" selected>학부생</option>
 					<option value="1">교직원</option>
 				</select>
@@ -25,13 +32,13 @@
 		
 		<tr>
 			<td colspan="2">
-				<input type="text" id="id" placeholder="아이디" />
+				<input type="text" name="id" id="id" placeholder="아이디" required/>
 			</td>
 		</tr>
 		
 		<tr>
 			<td colspan="2">
-				<input type="password" id="pwd" placeholder="패스워드" />
+				<input type="password" name="pwd" id="pwd" placeholder="패스워드" required/>
 			</td>
 		</tr>
 		
@@ -53,5 +60,6 @@
 			</td>
 		</tr>
 	</table>
+</form>
 </body>
 </html>

@@ -4,6 +4,7 @@ public class ProfessorMemberDTO {
 	private String p_user_id;
 	private String password;
 	private String prof_id;
+	private String phone;
 	
 	public String getPUserId() {
 		return p_user_id;
@@ -27,5 +28,13 @@ public class ProfessorMemberDTO {
 	
 	public void setProfId(String prof_id) {
 		this.prof_id = prof_id;
+	}
+	
+	public String getPhone() {
+		return phone;
+	}
+	
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 }

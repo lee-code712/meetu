@@ -14,10 +14,8 @@ public class DBConnection {
             String password = "univ_m";
             conn = DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException e) {
-            System.out.println("driver load ?떎?뙣!");
             e.printStackTrace();
         } catch (SQLException e) {
-            System.out.println("DB ?뿰寃? ?떎?뙣!");
             e.printStackTrace();
         }
          
@@ -34,10 +32,8 @@ public class DBConnection {
             String password = users_id + "_pass";
             conn = DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException e) {
-            System.out.println("driver load 실패");
             e.printStackTrace();
         } catch (SQLException e) {
-            System.out.println("DB 연결 실패");
             e.printStackTrace();
         }
          
@@ -54,10 +50,8 @@ public class DBConnection {
             String password = "admin_pass";
             conn = DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException e) {
-            System.out.println("driver load 실패");
             e.printStackTrace();
         } catch (SQLException e) {
-            System.out.println("DB 연결 실패");
             e.printStackTrace();
         }
          
