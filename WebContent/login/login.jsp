@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>login page</title>
-	<link rel="stylesheet" href="../css/login.css" />
+	<link rel="stylesheet" href="./css/login.css" />
 </head>
 
 <body>
@@ -15,7 +15,7 @@
 		out.println("<script>alert('로그인에 실패했습니다.');</script>");
 	}
 %>
-<form name="login_form" method="post" action="login_ck.jsp">
+<form name="login_form" method="post" action="login.do">
 	<table id="wrap">
 		<tr>
 			<td id="title"><a>MEETU</a></td>
@@ -23,7 +23,7 @@
 		
 		<tr>
 			<td>
-				<select name="position" id="position">
+				<select name="roll" id="roll">
 					<option value="0" selected>학부생</option>
 					<option value="1">교직원</option>
 				</select>
@@ -32,13 +32,13 @@
 		
 		<tr>
 			<td colspan="2">
-				<input type="text" name="id" id="id" placeholder="아이디" required/>
+				<input type="text" name="user_id" id="user_id" placeholder="아이디" required/>
 			</td>
 		</tr>
 		
 		<tr>
 			<td colspan="2">
-				<input type="password" name="pwd" id="pwd" placeholder="패스워드" required/>
+				<input type="password" name="password" id="password" placeholder="패스워드" required/>
 			</td>
 		</tr>
 		

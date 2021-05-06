@@ -1,60 +1,35 @@
 package meetu.common.dbutil;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 public class DBConnection {
 	
-	public Connection getConnectionUniv() {
-        Connection conn = null;
-         
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            String url ="jdbc:oracle:thin:@localhost:1521:xe";
-            String user = "univ_m";
-            String password = "univ_m";
-            conn = DriverManager.getConnection(url, user, password);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-         
-        return conn;
-    }
+	private static DBConnection instance = new DBConnection();
 	
-	public Connection getConnectionUsers(String users_id) {
-        Connection conn = null;
-         
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            String url ="jdbc:oracle:thin:@localhost:1521:xe";
-            String user = users_id;
-            String password = users_id + "_pass";
-            conn = DriverManager.getConnection(url, user, password);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-         
-        return conn;
-    }
+	private DBConnection() {}
 	
-	public Connection getConnectionAdmin() {
-        Connection conn = null;
-         
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            String url ="jdbc:oracle:thin:@localhost:1521:xe";
-            String user = "admin";
-            String password = "admin_pass";
-            conn = DriverManager.getConnection(url, user, password);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-         
-        return conn;
-    }
+	//naming service를 사용  JNDI
+	public static Connection getConnection() throws NamingException, SQLException {
+	/**	Context inCtx =new InitialContext();
+		Context enCtx 
+		   = (Context) inCtx.lookup("java:comp/env");
+		DataSource ds
+		  = (DataSource) enCtx.lookup("jdbc/soldesk");
+		Connection conn = ds.getConnection(); **/
+	  Context context = new InitialContext();
+      DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/orcl");
+      Connection conn = dataSource.getConnection(); 
+      
+      return conn;
+	}
+	
+	public static DBConnection getIinstance() {
+		return instance;	
+	}
 }
