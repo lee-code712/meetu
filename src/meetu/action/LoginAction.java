@@ -19,12 +19,12 @@ public class LoginAction implements CommandAction {
 		dto.setRoll(req.getParameter("roll"));
 		
 		LoginDAO dao = LoginDAO.getInstance();
-		dto = dao.loginOk(dto);
+		boolean ck = dao.loginOk(dto);
 		
-		if (dto != null) { // 로그인 성공
+		if (ck) { // 로그인 성공
 			req.setAttribute("dto", dto);
 			
-			if(dto.getRoll().equals("s"))
+			if(dto.getRoll().equals("0"))
 				return "/index/index.jsp";
 			else
 				return "/index/index.jsp"; // 아직 교수용 웹 X

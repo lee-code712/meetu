@@ -23,7 +23,7 @@
 		
 		<tr>
 			<td>
-				<select name="roll" id="roll">
+				<select name="roll" id="position">
 					<option value="0" selected>학부생</option>
 					<option value="1">교직원</option>
 				</select>
@@ -32,13 +32,13 @@
 		
 		<tr>
 			<td colspan="2">
-				<input type="text" name="user_id" id="user_id" placeholder="아이디" required/>
+				<input type="text" name="user_id" id="id" placeholder="아이디" required/>
 			</td>
 		</tr>
 		
 		<tr>
 			<td colspan="2">
-				<input type="password" name="password" id="password" placeholder="패스워드" required/>
+				<input type="password" name="password" id="pwd" placeholder="패스워드" required/>
 			</td>
 		</tr>
 		

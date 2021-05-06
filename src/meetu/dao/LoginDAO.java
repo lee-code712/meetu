@@ -26,9 +26,10 @@ public class LoginDAO {
 	  return instance;
   }
   
-  public MemberDTO loginOk(MemberDTO dto) throws NamingException/* , SQLException */ {
+  public boolean loginOk(MemberDTO dto) throws NamingException/* , SQLException */ {
      PreparedStatement pstmt =null;
      ResultSet rs = null;
+     boolean ck = false;
      
      try {       
 	     Connection conn = DBConnection.getConnection(); 
@@ -40,8 +41,8 @@ public class LoginDAO {
 	     
 	     rs = pstmt.executeQuery();
 	     
-	     if(!rs.next()) { // 로그인 실패
-	    	 dto = null;
+	     if(rs.next()) { 
+	    	 ck = true;
 	     }
 	     
 	     //if close
@@ -55,6 +56,6 @@ public class LoginDAO {
     	e.printStackTrace();
     }
       //connection .닫기	
-	return dto;
-   }
+	return ck;
+  }
 }

@@ -114,5 +114,6 @@ public class ControllerAction extends HttpServlet {
 	  //forwod view로 
 	  RequestDispatcher dispatcher = request.getRequestDispatcher(view);	
 	  dispatcher.forward(request, response);
+
 	}
 }
