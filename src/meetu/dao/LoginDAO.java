@@ -52,7 +52,6 @@ public class LoginDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		// connection .닫기
 		return ck;
 	}
