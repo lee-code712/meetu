@@ -15,18 +15,17 @@ public class DBConnection {
 	private DBConnection() {}
 	
 	//naming service를 사용  JNDI
-	public static Connection getConnection() throws NamingException, SQLException {
-	/**	Context inCtx =new InitialContext();
-		Context enCtx 
-		   = (Context) inCtx.lookup("java:comp/env");
-		DataSource ds
-		  = (DataSource) enCtx.lookup("jdbc/soldesk");
+	public static Connection getConnection(String dsName) throws NamingException, SQLException {
+	/**	Context inCtx = new InitialContext();
+		Context enCtx = (Context) inCtx.lookup("java:comp/env");
+		DataSource ds = (DataSource) enCtx.lookup("jdbc/soldesk");
 		Connection conn = ds.getConnection(); **/
-	  Context context = new InitialContext();
-      DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/orcl");
-      Connection conn = dataSource.getConnection(); 
+		
+		Context context = new InitialContext();
+     	DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/" + dsName);
+     	Connection conn = dataSource.getConnection(); 
       
-      return conn;
+     	return conn;
 	}
 	
 	public static DBConnection getIinstance() {
