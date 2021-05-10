@@ -1,1 +1,102 @@
-@charset "UTF-8";
+* {
+	padding: 0px;
+	margin: 0px;
+	text-decoration: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	
+#joinWrap {
+	margin: 0px auto;
+	width: 378px;
+	height: 530px;
+	margin-top: 10%;
+	text-align: center;
+}
+	
+#joinTitle {
+	margin-bottom: 60px;
+	font-weight: bold;
+	font-size: 48px;
+	color: #FFC200;
+}
+	
+#joinTitle a {
+	text-decoration: none; 
+	color: #FFC200;
+}
+	
+#sameCheckBtn {
+	padding: 5px 15px;
+	border: 1px solid #C4C4C4;
+	border-radius: 30px;
+	color: black;
+	background-color: #EFEFEF;
+	cursor: pointer;
+}
+	
+#sameCheckBtn:hover {
+	border: 1px solid #FFC200;
+	color: #FFC200;
+	background-color: white;
+}
+	
+.univName,
+.userId,
+.belong,
+.memberId,
+.memberPwd,
+.memberPwdCheck {
+	width: 102px;
+	height: 40px;
+	border: 1.5px solid #c4c4c4;
+	font-size: 14px;
+	background-color: white;
+}
+
+.univNameText,
+.userIdText,
+.belongText,
+.memberIdText,
+.memberPwdText,
+.memberPwdCheckText {
+	border: 1.5px solid #c4c4c4;
+	text-align: left;
+}
+
+.joinFormText {
+	width: 276px;
+	height: 40px;
+	border: none;
+}
+	
+#joinFormId {
+	width: 180px;
+	height: 40px;
+	border: none;
+	background-color: white;
+}
+	
+#joinBtn {
+	display: table-cell;
+	margin: 40px 0 20px 0;
+	width: 378px;
+	height: 50px;
+	color: white;
+	background: #FFC200;
+	font-size: 14px;
+	border: 1px solid #FFC200;
+	border-radius: 10px;
+}
+	
+#joinBtn:hover {
+	cursor: pointer;
+}
+	
+#join_form_select {
+	width: 275px;
+	border-style: none;
+}
