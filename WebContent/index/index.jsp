@@ -5,8 +5,8 @@
 <html>
 <head>
 	<title>index</title>
-    <link rel="stylesheet" href="../../components/css/header.css" />
-   	<link rel="stylesheet" href="../css/qkqh.css" />
+    <link rel="stylesheet" href="../components/css/header.css" />
+   	<link rel="stylesheet" href="css/index.css" />
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
@@ -157,9 +157,9 @@
 	<div id="topHeader">
 		<div id="topHeaderInner">
 			<div>
-				<div><a href="../../login/js/login.jsp">로그인</a></div>
+				<div><a href="../login/login.jsp">로그인</a></div>
 				<div>|</div>
-				<div><a href="../../join/js/join.jsp">회원가입</a></div>
+				<div><a href="../join/join.jsp">회원가입</a></div>
 			</div>
 		</div>
 	</div>
@@ -169,14 +169,14 @@
 			<div id="title"><a href="">MEETU</a></div>
 		
 			<div id="gnb">
-				<div><a href="../../notice/js/notice.jsp">공지사항</a></div>
-				<div><a href="../../reservation/js/reservation.jsp">상담예약</a></div>
-				<div><a href="../../message/js/message.jsp">쪽지함</a></div>
+				<div><a href="../notice/notice.jsp">공지사항</a></div>
+				<div><a href="../reservation/reservation.jsp">상담예약</a></div>
+				<div><a href="../message/message.jsp">쪽지함</a></div>
 			</div>
 		
 			<div id="icon">
-				<img src="../../components/images/alert.svg" />
-				<img src="../../components/images/myPage.svg" />
+				<img src="../components/images/alert.svg" />
+				<img src="../components/images/myPage.svg" />
 			</div>
 		</div>
 	</div>

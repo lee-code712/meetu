@@ -3,16 +3,15 @@ package meetu.dto;
 public class NoticeDTO {
 	private String notice_id;
 	private String title;
-	private String writer;
-	private String date;
+	private String write_date;
 	private int views;
-	private String contents;
+	private String content;
 	
-	public String getNoticeId() {
+	public String getNotice_id() {
 		return notice_id;
 	}
 	
-	public void setNoticeId(String notice_id) {
+	public void setNotice_id(String notice_id) {
 		this.notice_id = notice_id;
 	}
 	
@@ -24,20 +23,12 @@ public class NoticeDTO {
 		this.title = title;
 	}
 	
-	public String getWriter() {
-		return writer;
+	public String getWrite_date() {
+		return write_date;
 	}
 	
-	public void setWriter(String writer) {
-		this.writer = writer;
-	}
-	
-	public String getDate() {
-		return date;
-	}
-	
-	public void setDate(String date) {
-		this.date = date;
+	public void setWrite_date(String write_date) {
+		this.write_date = write_date;
 	}
 	
 	public int getViews() {
@@ -48,12 +39,12 @@ public class NoticeDTO {
 		this.views = views;
 	}
 	
-	public String getContents() {
-		return contents;
+	public String getContent() {
+		return content;
 	}
 	
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void setContent(String content) {
+		this.content = content;
 	}
-
+	
 }

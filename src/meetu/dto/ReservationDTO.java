@@ -6,9 +6,9 @@ public class ReservationDTO {
 	private String reason;
 	private int type;
 	private int approval;
+	private String reject_msg;
 	private String p_user_id;
 	private String s_user_id;
-	private String reject_msg;
 	
 	public String getResId() {
 		return res_id;
@@ -50,6 +50,14 @@ public class ReservationDTO {
 		this.approval = approval;
 	}
 	
+	public String getRejectMsg() {
+		return reject_msg;
+	}
+	
+	public void setRejectMsg(String reject_msg) {
+		this.reject_msg = reject_msg;
+	}
+	
 	public String getPUserId() {
 		return p_user_id;
 	}
@@ -66,12 +74,4 @@ public class ReservationDTO {
 		this.s_user_id = s_user_id;
 	}
 
-	public String getRejectMsg() {
-		return reject_msg;
-	}
-	
-	public void setRejectMsg(String reject_msg) {
-		this.reject_msg = reject_msg;
-	}
-	
 }

@@ -23,7 +23,7 @@
 		
 		<tr>
 			<td>
-				<select name="roll" id="position">
+				<select name="role" id="position">
 					<option value="0" selected>학부생</option>
 					<option value="1">교직원</option>
 				</select>

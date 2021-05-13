@@ -2,7 +2,7 @@ package meetu.dto;
 
 public class MessageInformationDTO {
 	private String msg_id;
-	private String date;
+	private String sent_time;
 	private int is_read;
 	private String send_id;
 	private String recv_id;
@@ -15,12 +15,12 @@ public class MessageInformationDTO {
 		this.msg_id = msg_id;
 	}
 	
-	public String getDate() {
-		return date;
+	public String getSentDate() {
+		return sent_time;
 	}
 	
-	public void setDate(String date) {
-		this.date = date;
+	public void setSentDate(String sent_time) {
+		this.sent_time = sent_time;
 	}
 	
 	public int getIsRead() {

@@ -3,6 +3,7 @@ package meetu.dto;
 public class ConsultDTO {
 	private String res_id;
 	private String content;
+	private String status;
 	
 	public String getResId() {
 		return res_id;
@@ -18,6 +19,14 @@ public class ConsultDTO {
 	
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 }

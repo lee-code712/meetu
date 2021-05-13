@@ -2,7 +2,6 @@ package meetu.dto;
 
 public class ProfessorDTO {
 	private String prof_id;
-	private String name;
 	private String major;
 	private String email;
 	private String office;
@@ -14,14 +13,6 @@ public class ProfessorDTO {
 	
 	public void setProfId(String prof_id) {
 		this.prof_id = prof_id;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
 	}
 	
 	public String getMajor() {

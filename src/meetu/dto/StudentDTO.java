@@ -2,7 +2,6 @@ package meetu.dto;
 
 public class StudentDTO {
 	private String stu_id;
-	private String name;
 	private int year;
 	private String email;
 	private String dept_id;
@@ -13,14 +12,6 @@ public class StudentDTO {
 	
 	public void setStuId(String stu_id) {
 		this.stu_id = stu_id;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
 	}
 	
 	public int getYear() {

@@ -1,40 +1,32 @@
 package meetu.dto;
 
 public class MemberDTO {
-	private String user_id;
-	private String password;
-	private String no;
-	private String roll;
-	private String phone;
+	private String member_id;
+	private String name;
+	private String role;
 	
-	public String getUser_id() {
-		return user_id;
+	public String getMember_id() {
+		return member_id;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
 	}
-	public String getPassword() {
-		return password;
+	
+	public String getName() {
+		return name;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getNo() {
-		return no;
+	
+	public String getRole() {
+		return role;
 	}
-	public void setNo(String no) {
-		this.no = no;
+	
+	public void setRole(String role) {
+		this.role = role;
 	}
-	public String getRoll() {
-		return roll;
-	}
-	public void setRoll(String roll) {
-		this.roll = roll;
-	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+
 }
