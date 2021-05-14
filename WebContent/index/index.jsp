@@ -5,10 +5,10 @@
 <html>
 <head>
 	<title>index</title>
-    <link rel="stylesheet" href="../../components/css/header.css" />
-   	<link rel="stylesheet" href="../css/qkqh.css" />
+    	<link rel="stylesheet" href="../../components/css/header.css" />
+   	<link rel="stylesheet" href="../css/index.css" />
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 	<script type="text/javascript">
 		var week = new Array('일', '월', '화', '수', '목', '금', '토');
