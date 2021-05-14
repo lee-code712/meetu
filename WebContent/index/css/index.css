@@ -25,38 +25,57 @@ a:hover {
 	background-image: url('../images/banner.svg');
 }
 
-#loginWrap {
-	width: 276px;
-	height: 124px;
-	background: #FAFAFA;
+#userInfo {
+	width: 278px;
+	height: 426px;
+	border-radius: 5px;
 	box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
-	vertical-align: center;
-	text-align: center;
 }
 
-#loginBtn {
-	margin-left: 18px;
-	padding-top: 14px;
-	width: 240px;
-	height: 36px;
-	color: white;
-	background: #FCC42E;
-	font-size: 18px;
+#userImg {
+	margin-top: 40px;
+	width: 278px;
+	height: 156px;
+	background-image: url('../images/userImg.svg');	
 }
 
-#loginBtn:hover {
-	cursor: pointer;
-}
-
-#advertisement {
+#userName {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 7px;
-	padding: 138px 0px;
-	width: 276px;
-	background: #F3F2F2;
-	color: #C4C4C4;
+	width: 278px;
+	height: 50px;
+}
+
+#univName {
+	display: flex;
+	align-items: center;
+	padding-left: 10px;
+	width: 268px;
+	height: 40px;
+}
+
+#userDept {
+	display: flex;
+	align-items: center;
+	padding-left: 10px;
+	width: 268px;
+	height: 40px;
+}
+
+#logoutBtn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px 0 0 100px;
+	width: 80px;
+	height: 34px;
+	border-radius: 50px;
+	background: #FFC42E;
+	color: white;
+	border: none;
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+	cursor: pointer;
 }
 
 section {
@@ -75,7 +94,7 @@ section {
 #calendarHeader {
 	display: table-cell;
 	padding-left: 10px;
-	width: 602px;
+	width: 632px;
 	height: 40px;
 	border: 1px solid #FFC200;
 	border-radius: 5px 5px 0 0;
@@ -86,7 +105,7 @@ section {
 
 #calendarBody {
     display: table;
-  	width: 612px;
+  	width: 642px;
   	height: 354px;
   	border-radius: 0 0 5px 5px;
   	background-color: white;
