@@ -45,11 +45,10 @@ table {
 }
 	
 .univName,
-.userId,
 .belong,
 .memberId,
-.memberPwd,
-.memberPwdCheck {
+.password,
+.passwordCheck {
 	width: 102px;
 	height: 40px;
 	border: 1.5px solid #c4c4c4;
@@ -58,11 +57,10 @@ table {
 }
 
 .univNameText,
-.userIdText,
-.belongText,
+.belongRadio,
 .memberIdText,
-.memberPwdText,
-.memberPwdCheckText {
+.passwordText,
+.passwordCheckText {
 	border: 1.5px solid #c4c4c4;
 	text-align: left;
 }
