@@ -9,11 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% 
-   //게시글 리스트 갖고와서 저장 DAO
-   //MemberDAO dao = MemberDAO.getInstance();
-   //MemberUserDTO = dao.getJoinInfo(sRow, pageSize);
-   //request.setAttribute("list", list);
+<%
+	String user_id = request.getParameter("user_id");
 %>
+회원가입에 성공했습니다. 회원님의 아이디는 <%= user_id %> 입니다.
+<p/>
+<a href="/meetu/login/login.jsp">로그인 페이지</a>
 </body>
 </html>

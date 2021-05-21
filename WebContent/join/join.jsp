@@ -11,10 +11,23 @@
 </head>
 
 <body>
+<%
+	String ck = request.getParameter("ck");
+	if(ck != null) {
+		if (ck.equals("-1"))
+			out.println("<script>alert('존재하지 않는 대학입니다.');</script>");
+		if (ck.equals("-2"))
+			out.println("<script>alert('존재하지 않는 학번입니다.');</script>");
+		if (ck.equals("-3"))
+			out.println("<script>alert('이미 가입된 학번입니다.');</script>");
+		if (ck.equals("-4"))
+			out.println("<script>alert('회원가입에 실패했습니다.');</script>");
+	}
+%>
 <div id="joinWrap">
 	<div id="joinTitle"><a>MEETU</a></div>
 
-	<form method="post" action="join.do" name="add_member_form" onsubmit="return ck_join_form()">
+	<form method="post" action="join.do" name="join_form" onsubmit="return ck_join_form()">
 		<table>	
 			<tr>
 				<td class="univName">대학명</td>
@@ -31,7 +44,7 @@
 			</tr>
 				
 			<tr>
-				<td class="belong">소속</td>
+				<td class="belong">소속</td> <%-- 회원가입 시 소속 입력이 필요 없음 (학번으로 member 테이블에 접근하면 role 존재함) --%>
 				<td class="belongRadio">
 					<label><input type="radio" name="role" value="student" checked>학생</label>
      				<label><input type="radio" name="role" value="professor">교수</label>

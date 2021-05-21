@@ -1,7 +1,5 @@
 package meetu.action;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,30 +13,41 @@ public class joinAction implements CommandAction {
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
 		UniversityDTO univDTO = new UniversityDTO(); // 대학명, 대학 id 저장
-		univDTO.setUnivName(req.getParameter("univ_name"));
-		
 		MemberDAO dao = MemberDAO.getInstance();
-
-		univDTO = dao.univSearch(univDTO); 
+			
+		univDTO.setUnivName(req.getParameter("univ_name")); // 대학명 저장
+		String univ_id = dao.univIdSearch(univDTO); // 대학 id 검색
 		
-		if (univDTO.getUnivId() == null) { // 존재하지 않는 대학명인 경우
+		if (univ_id.equals("-1")) { // 존재하지 않는 대학명인 경우
 			return "/join/join.jsp?ck=-1";
+		}
+		else {
+			univDTO.setUnivId(univ_id);
 		}
 		
 		MemberUserDTO memUsrDTO = new MemberUserDTO(); // 학번, id, pw 저장
-		memUsrDTO.setMember_id(req.getParameter("member_id")); // 학번
+		memUsrDTO.setMember_id(req.getParameter("member_id")); // 학번 저장
+		String user_id = dao.userIdCreate(memUsrDTO, univDTO);	 
 		
-		memUsrDTO = dao.memberIdCheck(memUsrDTO, univDTO);
-		
-		if (memUsrDTO == null) { // 존재하지 않는 학번인 경우
+		if (user_id.equals("-2")) { // 존재하지 않는 학번인 경우
 			return "/join/join.jsp?ck=-2";
 		}
-		if (memUsrDTO.getUser_id() == null) { // 중복된 학번인 경우
+		else if (user_id.equals("-3")) { // 이미 가입된 학번인 경우
 			return "/join/join.jsp?ck=-3";
 		}
+		else {
+			memUsrDTO.setUser_id(user_id);
+			memUsrDTO.setPassword(req.getParameter("password")); // 아이디가 생성된 경우 dto에 pw 추가	
+		}
 
-		memUsrDTO.setPassword(req.getParameter("password")); // 아이디가 생성된 경우 dto에 pw 추가	
+		String is_added = dao.addUser(memUsrDTO, univDTO);
 		
-		return null;
+		if (is_added.equals("-4")) { // db에 추가 실패한 경우
+			return "/join/join.jsp?ck=-4";
+			
+		}
+		else { // 회원가입 정보 db에 추가 성공 
+			return "/join/joinPro.jsp?user_id=" + user_id;
+		}
 	}
 }

@@ -90,8 +90,8 @@ public class MemberDAO {
 		return ck;
 	}
 
-	// join - 대학정보 확인
-	public UniversityDTO univSearch(UniversityDTO dto) throws NamingException/* , SQLException */ {
+	// join - 대학정보 확인, 대학 id 리턴
+	public String univIdSearch(UniversityDTO dto) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
@@ -104,7 +104,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				dto.setUnivId(rs.getString("univ_id"));
+				return rs.getString("univ_id");
 			}
 			// if close
 			if (rs != null)
@@ -117,11 +117,11 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 
-		return dto;
+		return "-1";
 	}
 
-	// join - 학번 체크
-	public MemberUserDTO memberIdCheck(MemberUserDTO memUsrDTO, UniversityDTO univDTO) {
+	// join - 학번 체크, 유효한 학번인 경우 id 생성해 리턴
+	public String userIdCreate(MemberUserDTO memUsrDTO, UniversityDTO univDTO) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
@@ -144,8 +144,8 @@ public class MemberDAO {
 				}
 			}
 
-			if (id_check == false) { // 존재하지 않는 학번인 경우 null return
-				return null;
+			if (id_check == false) { // 존재하지 않는 학번인 경우 -2 리턴
+				return "-2";
 			} else { // 존재하는 학번인 경우 이미 가입한 학번인지 확인
 				query = "select * from member_user";
 
@@ -159,7 +159,6 @@ public class MemberDAO {
 					}
 				}
 			}
-
 			// if close
 			if (rs != null)
 				rs.close();
@@ -173,11 +172,46 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 
-		if (id_check) { // 유효한 학번인 경우 memUsrDTO에 아이디 정보 추가
+		if (id_check) { // 유효한 학번인 경우 아이디 생성해 리턴
 			String user_id = univDTO.getUnivId() + member_id;
-			memUsrDTO.setUser_id(user_id);
+			return user_id;
 		}
+		else { // 이미 가입된 학번인 경우 -3 리턴
+			return "-3";
+		}
+	}
+	
+	// join - 회원가입 정보 db에 추가
+	public String addUser(MemberUserDTO memUsrDTO, UniversityDTO univDTO) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
-		return memUsrDTO;
+		String is_added = "-4"; // db에 추가 실패시 -4 리턴
+
+		try {
+			Connection conn = DBConnection.getConnection(univDTO.getUnivId());
+			String query = "insert into member_user (user_id, password, member_id) values ";
+
+			query += "('" + memUsrDTO.getUser_id() + "', '" + memUsrDTO.getPassword() + "', '" + memUsrDTO.getMember_id() + "')";
+
+			pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+
+			is_added = "1";
+			
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+		
+		return is_added;
 	}
 }
