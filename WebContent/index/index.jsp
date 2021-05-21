@@ -1,11 +1,11 @@
-<%-- 로그인 전 메인 페이지 --%>
+<%-- 메인 페이지 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="meetu.dto.MemberDTO, meetu.dto.UniversityDTO" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>index</title>
-    	<link rel="stylesheet" href="../components/css/header.css" />
+    <link rel="stylesheet" href="../components/css/header.css" />
    	<link rel="stylesheet" href="./css/index.css" />
 
     	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -157,9 +157,9 @@
 	<div id="topHeader">
 		<div id="topHeaderInner">
 			<div>
-				<div><a>000님 환영합니다</a></div>
+				<div><a><%=session.getAttribute("user_id")%>님 환영합니다</a></div>
 				<div>|</div>
-				<div><a href="../join/js/login.jsp">로그아웃</a></div>
+				<div><button id="logoutBtn" onclick="location.href='logout.do'">로그아웃</button></div>
 			</div>
 		</div>
 	</div>
@@ -169,9 +169,9 @@
 			<div id="title"><a href="">MEETU</a></div>
 		
 			<div id="gnb">
-				<div><a href="../notice/js/notice.jsp">공지사항</a></div>
-				<div><a href="../reservation/js/reservation.jsp">상담예약</a></div>
-				<div><a href="../message/js/message.jsp">쪽지함</a></div>
+				<div><a href="../notice/notice.jsp">공지사항</a></div>
+				<div><a href="../reservation/reservation.jsp">상담예약</a></div>
+				<div><a href="../message/message.jsp">쪽지함</a></div>
 			</div>
 		
 			<div id="icon">
@@ -189,10 +189,21 @@
           
           	<td id="userInfo">
 				<div id="userImg"></div>
-				<div id="userName">(이름)</div>
-				<div id="univName"><img src="./images/univImg.svg" /> &nbsp; 동덕여자대학교</div>
+				<div id="userName">
+					<%
+						MemberDTO m_dto = (MemberDTO) request.getAttribute("mem_dto");
+						out.println(m_dto.getName());
+					%>
+				</div>
+				<div id="univName">
+					<img src="./images/univImg.svg" /> 
+					<%
+						UniversityDTO u_dto = (UniversityDTO) request.getAttribute("univ_dto");
+						out.println(u_dto.getUnivName());
+					%>
+				</div>
 				<div id="userDept"> <img src="./images/dept.svg" /> &nbsp; 컴퓨터학과</div>
-				<button id="logoutBtn">로그아웃</button>
+				<button id="logoutBtn" onclick="location.href='logout.do'">로그아웃</button>
 			</td>
         </tr>
 	</table>

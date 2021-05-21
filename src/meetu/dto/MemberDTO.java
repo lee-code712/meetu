@@ -5,11 +5,11 @@ public class MemberDTO {
 	private String name;
 	private String role;
 	
-	public String getMember_id() {
+	public String getMemberId() {
 		return member_id;
 	}
 	
-	public void setMember_id(String member_id) {
+	public void setMemberId(String member_id) {
 		this.member_id = member_id;
 	}
 	

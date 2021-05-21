@@ -8,8 +8,7 @@ import java.sql.SQLException;
 import javax.naming.NamingException;
 
 import meetu.common.dbutil.DBConnection;
-import meetu.dto.MemberUserDTO;
-import meetu.dto.UniversityDTO;
+import meetu.dto.*;
 
 public class MemberDAO {
 	// DAO : Data Access Object
@@ -59,22 +58,24 @@ public class MemberDAO {
 		return ck;
 	}
 
-	// 대학정보 확인
-	public boolean univCheck(String univ) throws NamingException/* , SQLException */ {
+	// 대학 정보 dto 반환
+	public UniversityDTO getUnivInfo(String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		boolean ck = false;
+		UniversityDTO dto = null;
 
 		try {
 			Connection conn = DBConnection.getConnection("admin");
 
 			pstmt = conn.prepareStatement("select * from university where univ_id=?");
 			pstmt.setString(1, univ);
-
+				
 			rs = pstmt.executeQuery();
 
-			if (rs.next()) {
-				ck = true;
+			if (rs.next()) {					
+				dto = new UniversityDTO();
+				dto.setUnivId(rs.getString("univ_id"));
+				dto.setUnivName(rs.getString("univ_name"));
 			}
 			// if close
 			if (rs != null)
@@ -87,7 +88,42 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 
-		return ck;
+		return dto;
+	}
+		
+	// 학생 회원 정보 dto 반환
+	public MemberDTO getStudentInfo(String univ, String id) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberDTO m_dto = null;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from member_user JOIN member USING (member_id) where user_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				m_dto = new MemberDTO();
+				m_dto.setMemberId(rs.getString("member_id"));
+				m_dto.setName(rs.getString("name"));
+				m_dto.setRole(rs.getString("role"));
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return m_dto;
 	}
 
 	// join - 대학정보 확인, 대학 id 리턴
