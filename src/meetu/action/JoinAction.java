@@ -8,7 +8,7 @@ import meetu.dto.UniversityDTO;
 import meetu.dto.MemberUserDTO;
 import meetu.dao.MemberDAO;
 
-public class joinAction implements CommandAction {
+public class JoinAction implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {

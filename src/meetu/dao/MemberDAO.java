@@ -214,4 +214,49 @@ public class MemberDAO {
 		
 		return is_added;
 	}
+	
+	// join - 추천 대학명 검색
+	public String univNameSearch(String q) throws NamingException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String univs = null;
+		
+		if (q != null) { // 입력된 q가 빈 문자열이 아닌 경우
+			try {
+				Connection conn = DBConnection.getConnection("admin");
+
+				pstmt = conn.prepareStatement("select * from university");
+				rs = pstmt.executeQuery();
+
+				while (rs.next()) {
+					String univ_name = rs.getString("univ_name");
+					if(univ_name.startsWith(q)) { // 대학명이 q로 시작하면 univs 문자열에 추가
+						if (univs == null) {
+							univs = univ_name;
+						}
+						else {
+							univs += ", " + univ_name;
+						}
+					}
+				}
+				// if close
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		if (univs == null) {
+			return "해당 글자로 시작하는 대학이 존재하지 않습니다.";
+		}
+		else {
+			return univs;
+		}
+	}
 }

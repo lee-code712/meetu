@@ -8,6 +8,9 @@
 	<title>회원가입</title>
 	<link rel="stylesheet" href="./css/join.css" />
 	<script src="./js/join.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -27,12 +30,13 @@
 <div id="joinWrap">
 	<div id="joinTitle"><a>MEETU</a></div>
 
+	<p id="suggest">대학명: <span id="txtUniversity"></span></p>
 	<form method="post" action="join.do" name="join_form" onsubmit="return ck_join_form()">
 		<table>	
 			<tr>
 				<td class="univName">대학명</td>
 				<td class="univNameText">
-					<input type="text" class="joinFormText" name="univ_name" maxlength="40" placeholder="대학명을 입력하세요" onfocus="this.value=''"/>
+					<input type="text" class="joinFormText" id="univ_name" name="univ_name" maxlength="40" placeholder="대학명을 정확히 입력하세요" onkeydown="showUniversity(this.value)"/>
 				</td>
 			</tr>
 						
