@@ -31,9 +31,13 @@ function sendKeyword(){
 			xhr.open("post", "getHint.jsp", true);
             xhr.onreadystatechange = function(){
 				if(xhr.readyState == 4) {
-					if(xhr.status == 200)
+					if(xhr.status == 200) {
 						process();
-                }  
+					}
+					else{
+                        alert("요청 실패: " + xhr.status);
+                    }   
+                }
 			}  
 			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			xhr.send("univ_name=" + para);
