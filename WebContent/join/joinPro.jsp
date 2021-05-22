@@ -13,6 +13,6 @@
 %>
 회원가입에 성공했습니다. 회원님의 아이디는 <%= user_id %> 입니다.
 <p/>
-<a href="/meetu/login/login.jsp">로그인 페이지</a>
+<a href="loginForm.do">로그인 페이지</a>
 </body>
 </html>
