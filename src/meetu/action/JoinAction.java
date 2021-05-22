@@ -2,11 +2,10 @@ package meetu.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import meetu.dto.UniversityDTO;
-import meetu.dto.MemberUserDTO;
 import meetu.dao.MemberDAO;
+import meetu.dto.MemberUserDTO;
+import meetu.dto.UniversityDTO;
 
 public class JoinAction implements CommandAction {
 

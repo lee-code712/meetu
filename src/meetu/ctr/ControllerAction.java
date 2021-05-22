@@ -3,9 +3,11 @@ package meetu.ctr;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -59,7 +61,7 @@ public class ControllerAction extends HttpServlet {
 			String command = (String) key.next();
 			String className= pr.getProperty(command);
 			try {
-				Class commansClass =Class.forName(className);
+				Class<?> commansClass = Class.forName(className);
 				Object commandInstance = commansClass.newInstance();
 				//해당 키와 인스턴스를 저장 해서 Web상에서 불러서 사용할 것임
 				commandMap.put(command,commandInstance);
@@ -105,7 +107,8 @@ public class ControllerAction extends HttpServlet {
 	    if(command.indexOf(request.getContextPath())==0) {
 	    	command = command.substring(request.getContextPath().length());  
 	    }
-	    com = (CommandAction)commandMap.get(command);
+	    	    com = (CommandAction)commandMap.get(command);
+	    
 	    //com requestPro실행
 		view = com.requestPro(request, response);
 	  } catch (Throwable e) {
