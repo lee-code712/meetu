@@ -19,14 +19,14 @@ function sendKeyword(){
 		if (univ_name !== "") {
 			var para = univ_name;
             xhr = new XMLHttpRequest();
-			xhr.open("post", "getHint.jsp", true);
+			xhr.open("post", "/join/getHint.jsp", true);
             xhr.onreadystatechange = function(){
 				if(xhr.readyState == 4) {
 					if(xhr.status == 200) {
 						process();
 					}
 					else{
-                        alert("요청 실패: " + xhr.status);
+                        // alert("요청 실패: " + xhr.status);
                     }   
                 }
 			}  
