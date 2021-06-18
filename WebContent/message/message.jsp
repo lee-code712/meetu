@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<link rel="stylesheet" href="../components/css/header.css" />
-	<link rel="stylesheet" href="css/message.css" />
+	<link rel="stylesheet" href="/message/css/message.css" />
 </head>
 <body>
 	<div id="topHeader">

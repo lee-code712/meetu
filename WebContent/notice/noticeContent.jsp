@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 	<title>noticeContent</title>
 	<link rel="stylesheet" href="../../components/css/header.css" />
-	<link rel="stylesheet" href="../css/noticeContent.css" />
+	<link rel="stylesheet" href="/notice/css/noticeContent.css" />
 </head>
 <body>
 	<div id="topHeader">

@@ -1,14 +1,5 @@
 var xhr;
 var checkFirst = loopSend = false;
-//$.ajax({
-//    type: 'POST',
-//    url: 'Jqueryoperation.aspx?Operation=DeleteRow',
-//    contentType: 'application/json; charset=utf-8',
-//    data: json,
-//    cache: false,
-//    success: AjaxSucceeded,
-//    error: AjaxFailed
-//});
 
 function showUniversity(str) {
 	if (checkFirst == false) {
