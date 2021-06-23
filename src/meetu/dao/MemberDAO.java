@@ -24,11 +24,11 @@ public class MemberDAO {
 		return instance;
 	}
 
-	// login정보 확인
-	public boolean loginOk(MemberUserDTO dto, String univ, String role) throws NamingException/* , SQLException */ {
+	// login정보 확인-성공 시 회원정보 반환 
+	public MemberDTO loginOk(MemberUserDTO dto, String univ, String role) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		boolean ck = false;
+		MemberDTO m_dto = null;
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
@@ -42,7 +42,10 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				ck = true;
+				m_dto = new MemberDTO();
+				m_dto.setMemberId(rs.getString("member_id"));
+				m_dto.setName(rs.getString("name"));
+				m_dto.setRole(rs.getString("role"));
 			}
 			// if close
 			if (rs != null)
@@ -55,7 +58,7 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 
-		return ck;
+		return m_dto;
 	}
 
 	// 대학 정보 dto 반환
@@ -90,16 +93,16 @@ public class MemberDAO {
 
 		return dto;
 	}
-		
+			
 	// 학생 회원 정보 dto 반환
-	public MemberDTO getStudentInfo(String univ, String id) throws NamingException/* , SQLException */ {
+	public StudentDTO getStudentInfo(String univ, String id) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		MemberDTO m_dto = null;
+		StudentDTO s_dto = null;
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "select * from member_user JOIN member USING (member_id) where user_id=?";
+			String sql = "select * from student s, member_user m where s.stu_id = m.member_id and user_id=?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -107,10 +110,11 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				m_dto = new MemberDTO();
-				m_dto.setMemberId(rs.getString("member_id"));
-				m_dto.setName(rs.getString("name"));
-				m_dto.setRole(rs.getString("role"));
+				s_dto = new StudentDTO();
+				s_dto.setStuId(rs.getString("stu_id"));
+				s_dto.setYear(Integer.parseInt(rs.getString("year")));
+				s_dto.setEmail(rs.getString("email"));
+				s_dto.setDeptId(rs.getString("dept_id"));
 			}
 			// if close
 			if (rs != null)
@@ -123,7 +127,44 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 
-		return m_dto;
+		return s_dto;
+	}
+		
+	// 교수 회원 정보 dto 반환
+	public ProfessorDTO getProfessorInfo(String univ, String id) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ProfessorDTO p_dto = null;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from professor p, member_user m where p.prof_id = m.member_id and user_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				p_dto = new ProfessorDTO();
+				p_dto.setProfId(rs.getString("prof_id"));
+				p_dto.setMajor(rs.getString("major"));
+				p_dto.setEmail(rs.getString("email"));
+				p_dto.setOffice(rs.getString("office"));
+				p_dto.setDeptId(rs.getString("dept_id"));
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return p_dto;
 	}
 
 	// join - 대학정보 확인, 대학 id 리턴

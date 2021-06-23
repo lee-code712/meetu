@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import meetu.dto.MemberUserDTO;
+import meetu.dto.MemberDTO;
 import meetu.dto.UniversityDTO;
 import meetu.dao.MemberDAO;
 
@@ -17,8 +18,8 @@ public class LoginAction implements CommandAction {
 		m_u_dto.setPassword(req.getParameter("password"));
 		
 		String user_id = m_u_dto.getUser_id();
-		String role = req.getParameter("role"); // memberDTO에 저장해서 써야 하나??
-		String univ_id = ""; // universityDTO에 저장해서 써야 하나??
+		String role = req.getParameter("role");
+		String univ_id = "";
 		int i = 0;
         char c = user_id.charAt(i);
         while(c >= 'a' && c <= 'z') {
@@ -28,27 +29,25 @@ public class LoginAction implements CommandAction {
         		break;
         	c = user_id.charAt(i);
         }
-		
+        
 		MemberDAO dao = MemberDAO.getInstance();
-		boolean ck = false;
 		
 		UniversityDTO u_dto = dao.getUnivInfo(univ_id);
+		MemberDTO m_dto = null;
 		if(u_dto != null) {
-			ck = dao.loginOk(m_u_dto, univ_id, role);
+			m_dto = dao.loginOk(m_u_dto, univ_id, role);
 		}
 		
-		if (ck) { // 로그인 성공
+		if (m_dto != null) { // 로그인 성공
 			HttpSession session = req.getSession();
-			session.setAttribute("user_id", user_id);
-			session.setAttribute("univ_id", univ_id);
+			session.setAttribute("user_id", user_id); // 회원 id 저장
+			session.setAttribute("mem_dto", m_dto); // 회원정보(학번,이름,역할) 저장
+			session.setAttribute("univ_dto", u_dto); // 대학정보(id,이름) 저장
 			
-			if(role.equals("0"))
-				return "indexPro.do";
-			else
-				return "indexPro.do"; // 아직 교수용 웹 X
+			return "indexPro.do";
 		}
 		else { // 로그인 실패
-			return "/login/login.jsp?ck=" + ck;
+			return "/login/login.jsp?ck=0";
 		}
 	}
 	

@@ -1,6 +1,6 @@
 <%-- 메인 페이지 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="meetu.dto.MemberDTO, meetu.dto.UniversityDTO" %>
+    pageEncoding="UTF-8" import="meetu.dto.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -191,18 +191,23 @@
 				<div id="userImg"></div>
 				<div id="userName">
 					<%
-						MemberDTO m_dto = (MemberDTO) request.getAttribute("mem_dto");
+						MemberDTO m_dto = (MemberDTO) session.getAttribute("mem_dto");
 						out.println(m_dto.getName());
 					%>
 				</div>
 				<div id="univName">
 					<img src="./images/univImg.svg" /> 
 					<%
-						UniversityDTO u_dto = (UniversityDTO) request.getAttribute("univ_dto");
+						UniversityDTO u_dto = (UniversityDTO) session.getAttribute("univ_dto");
 						out.println(u_dto.getUnivName());
 					%>
 				</div>
-				<div id="userDept"> <img src="./images/dept.svg" /> &nbsp; 컴퓨터학과</div>
+				<div id="userDept"> <img src="./images/dept.svg" /> &nbsp; 
+					<%
+						StudentDTO s_dto = (StudentDTO) session.getAttribute("stu_dto");
+						out.println(s_dto.getDeptId());
+					%>
+				</div>
 				<button id="logoutBtn" onclick="location.href='logout.do'">로그아웃</button>
 			</td>
         </tr>
