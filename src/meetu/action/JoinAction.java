@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import meetu.dao.MemberDAO;
-import meetu.dao.UnivDAO;
+import meetu.dao.UniversityDAO;
 import meetu.dto.MemberUserDTO;
 import meetu.dto.UniversityDTO;
 
@@ -13,7 +13,7 @@ public class JoinAction implements CommandAction {
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
 		MemberDAO memDAO = MemberDAO.getInstance();
-		UnivDAO univDAO = UnivDAO.getInstance();
+		UniversityDAO univDAO = UniversityDAO.getInstance();
 		
 		UniversityDTO univDTO = univDAO.getUnivInfo(req.getParameter("univ_name"));
 		String univ_id = univDTO.getUnivId(); // 대학 id 검색

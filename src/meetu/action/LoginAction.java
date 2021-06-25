@@ -8,7 +8,7 @@ import meetu.dto.MemberUserDTO;
 import meetu.dto.MemberDTO;
 import meetu.dto.UniversityDTO;
 import meetu.dao.MemberDAO;
-import meetu.dao.UnivDAO;
+import meetu.dao.UniversityDAO;
 
 public class LoginAction implements CommandAction {
 
@@ -32,7 +32,7 @@ public class LoginAction implements CommandAction {
         }
         
 		MemberDAO m_dao = MemberDAO.getInstance();
-		UnivDAO u_dao = UnivDAO.getInstance();
+		UniversityDAO u_dao = UniversityDAO.getInstance();
 		
 		UniversityDTO u_dto = u_dao.getUnivInfo(univ_id);
 		MemberDTO m_dto = null;

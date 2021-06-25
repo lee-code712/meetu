@@ -11,10 +11,10 @@ import javax.naming.NamingException;
 import meetu.common.dbutil.DBConnection;
 import meetu.dto.UniversityDTO;
 
-public class UnivDAO {
-	private static UnivDAO instance = new UnivDAO();
+public class UniversityDAO {
+	private static UniversityDAO instance = new UniversityDAO();
 
-	public static UnivDAO getInstance() {
+	public static UniversityDAO getInstance() {
 		return instance;
 	}
 
