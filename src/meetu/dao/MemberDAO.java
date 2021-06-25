@@ -60,39 +60,6 @@ public class MemberDAO {
 
 		return m_dto;
 	}
-
-	// 대학 정보 dto 반환
-	public UniversityDTO getUnivInfo(String univ) throws NamingException/* , SQLException */ {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		UniversityDTO dto = null;
-
-		try {
-			Connection conn = DBConnection.getConnection("admin");
-
-			pstmt = conn.prepareStatement("select * from university where univ_id=?");
-			pstmt.setString(1, univ);
-				
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {					
-				dto = new UniversityDTO();
-				dto.setUnivId(rs.getString("univ_id"));
-				dto.setUnivName(rs.getString("univ_name"));
-			}
-			// if close
-			if (rs != null)
-				rs.close();
-			if (pstmt != null)
-				pstmt.close();
-			if (conn != null)
-				conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return dto;
-	}
 			
 	// 학생 회원 정보 dto 반환
 	public StudentDTO getStudentInfo(String univ, String id) throws NamingException/* , SQLException */ {
@@ -165,36 +132,6 @@ public class MemberDAO {
 		}
 
 		return p_dto;
-	}
-
-	// join - 대학정보 확인, 대학 id 리턴
-	public String univIdSearch(UniversityDTO dto) throws NamingException/* , SQLException */ {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		try {
-			Connection conn = DBConnection.getConnection("admin");
-
-			pstmt = conn.prepareStatement("select * from university where univ_name=?");
-			pstmt.setString(1, dto.getUnivName());
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				return rs.getString("univ_id");
-			}
-			// if close
-			if (rs != null)
-				rs.close();
-			if (pstmt != null)
-				pstmt.close();
-			if (conn != null)
-				conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return "-1";
 	}
 
 	// join - 학번 체크, 유효한 학번인 경우 id 생성해 리턴
