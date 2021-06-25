@@ -8,6 +8,7 @@ import meetu.dto.MemberUserDTO;
 import meetu.dto.MemberDTO;
 import meetu.dto.UniversityDTO;
 import meetu.dao.MemberDAO;
+import meetu.dao.UnivDAO;
 
 public class LoginAction implements CommandAction {
 
@@ -30,12 +31,13 @@ public class LoginAction implements CommandAction {
         	c = user_id.charAt(i);
         }
         
-		MemberDAO dao = MemberDAO.getInstance();
+		MemberDAO m_dao = MemberDAO.getInstance();
+		UnivDAO u_dao = UnivDAO.getInstance();
 		
-		UniversityDTO u_dto = dao.getUnivInfo(univ_id);
+		UniversityDTO u_dto = u_dao.getUnivInfo(univ_id);
 		MemberDTO m_dto = null;
 		if(u_dto != null) {
-			m_dto = dao.loginOk(m_u_dto, univ_id, role);
+			m_dto = m_dao.loginOk(m_u_dto, univ_id, role);
 		}
 		
 		if (m_dto != null) { // 로그인 성공
