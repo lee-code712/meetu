@@ -12,22 +12,22 @@ public class JoinAction implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
-		MemberDAO memDAO = MemberDAO.getInstance();
-		UniversityDAO univDAO = UniversityDAO.getInstance();
+		MemberDAO mem_dao = MemberDAO.getInstance();
+		UniversityDAO univ_dao = UniversityDAO.getInstance();
 		
-		UniversityDTO univDTO = univDAO.getUnivInfo(req.getParameter("univ_name"));
-		String univ_id = univDTO.getUnivId(); // 대학 id 검색
+		UniversityDTO univ_dto = univ_dao.getUnivInfo(req.getParameter("univ_name"));
+		String univ_id = univ_dto.getUnivId(); // 대학 id 검색
 		
 		if (univ_id.equals("-1")) { // 존재하지 않는 대학명인 경우
 			return "/join/join.jsp?ck=-1";
 		}
 		else {
-			univDTO.setUnivId(univ_id);
+			univ_dto.setUnivId(univ_id);
 		}
 		
-		MemberUserDTO memUsrDTO = new MemberUserDTO(); // 학번, id, pw 저장
-		memUsrDTO.setMember_id(req.getParameter("member_id")); // 학번 저장
-		String user_id = memDAO.userIdCreate(memUsrDTO, univDTO);	 
+		MemberUserDTO mem_usr_dto = new MemberUserDTO(); // 학번, id, pw 저장
+		mem_usr_dto.setMember_id(req.getParameter("member_id")); // 학번 저장
+		String user_id = mem_dao.userIdCreate(mem_usr_dto, univ_dto);	 
 		
 		if (user_id.equals("-2")) { // 존재하지 않는 학번인 경우
 			return "/join/join.jsp?ck=-2";
@@ -36,11 +36,11 @@ public class JoinAction implements CommandAction {
 			return "/join/join.jsp?ck=-3";
 		}
 		else {
-			memUsrDTO.setUser_id(user_id);
-			memUsrDTO.setPassword(req.getParameter("password")); // 아이디가 생성된 경우 dto에 pw 추가	
+			mem_usr_dto.setUser_id(user_id);
+			mem_usr_dto.setPassword(req.getParameter("password")); // 아이디가 생성된 경우 dto에 pw 추가	
 		}
 
-		String is_added = memDAO.addUser(memUsrDTO, univDTO);
+		String is_added = mem_dao.addUser(mem_usr_dto, univ_dto);
 		
 		if (is_added.equals("-4")) { // db에 추가 실패한 경우
 			return "/join/join.jsp?ck=-4";

@@ -23,13 +23,13 @@ public class IndexProAction implements CommandAction {
 		MemberDAO dao = MemberDAO.getInstance();
 		
 		if(m_dto.getRole().equals("0")) {
-			StudentDTO s_dto = dao.getStudentInfo(u_dto.getUnivId(), user_id);
-			session.setAttribute("stu_dto", s_dto);
+			StudentDTO stu_dto = dao.getStudentInfo(u_dto.getUnivId(), user_id);
+			session.setAttribute("stu_dto", stu_dto);
 			return "/index/indexStu.jsp";
 		}
 		else if(m_dto.getRole().equals("1")) {
-			ProfessorDTO p_dto = dao.getProfessorInfo(u_dto.getUnivId(), user_id);
-			session.setAttribute("prof_dto", p_dto);
+			ProfessorDTO prof_dto = dao.getProfessorInfo(u_dto.getUnivId(), user_id);
+			session.setAttribute("prof_dto", prof_dto);
 			return "/index/indexProf.jsp"; // 아직 교수용 index페이지 구현 X
 		}
 		else {

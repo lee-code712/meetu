@@ -14,11 +14,11 @@ public class LoginAction implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
-		MemberUserDTO m_u_dto = new MemberUserDTO();
-		m_u_dto.setUser_id(req.getParameter("user_id"));
-		m_u_dto.setPassword(req.getParameter("password"));
+		MemberUserDTO mem_usr_dto = new MemberUserDTO();
+		mem_usr_dto.setUser_id(req.getParameter("user_id"));
+		mem_usr_dto.setPassword(req.getParameter("password"));
 		
-		String user_id = m_u_dto.getUser_id();
+		String user_id = mem_usr_dto.getUser_id();
 		String role = req.getParameter("role");
 		String univ_id = "";
 		int i = 0;
@@ -31,20 +31,20 @@ public class LoginAction implements CommandAction {
         	c = user_id.charAt(i);
         }
         
-		MemberDAO m_dao = MemberDAO.getInstance();
-		UniversityDAO u_dao = UniversityDAO.getInstance();
+		MemberDAO mem_dao = MemberDAO.getInstance();
+		UniversityDAO univ_dao = UniversityDAO.getInstance();
 		
-		UniversityDTO u_dto = u_dao.getUnivInfo(univ_id);
-		MemberDTO m_dto = null;
-		if(u_dto != null) {
-			m_dto = m_dao.loginOk(m_u_dto, univ_id, role);
+		UniversityDTO univ_dto = univ_dao.getUnivInfo(univ_id);
+		MemberDTO mem_dto = null;
+		if(univ_dto != null) {
+			mem_dto = mem_dao.loginOk(mem_usr_dto, univ_id, role);
 		}
 		
-		if (m_dto != null) { // 로그인 성공
+		if (mem_dto != null) { // 로그인 성공
 			HttpSession session = req.getSession();
 			session.setAttribute("user_id", user_id); // 회원 id 저장
-			session.setAttribute("mem_dto", m_dto); // 회원정보(학번,이름,역할) 저장
-			session.setAttribute("univ_dto", u_dto); // 대학정보(id,이름) 저장
+			session.setAttribute("mem_dto", mem_dto); // 회원정보(학번,이름,역할) 저장
+			session.setAttribute("univ_dto", univ_dto); // 대학정보(id,이름) 저장
 			
 			return "indexPro.do";
 		}

@@ -171,7 +171,7 @@
 			<div id="gnb">
 				<div><a href="../notice/notice.jsp">공지사항</a></div>
 				<div><a href="../reservation/reservation.jsp">상담예약</a></div>
-				<div><a href="../message/message.jsp">쪽지함</a></div>
+				<div><a href="message.do">쪽지함</a></div>
 			</div>
 		
 			<div id="icon">
@@ -191,21 +191,21 @@
 				<div id="userImg"></div>
 				<div id="userName">
 					<%
-						MemberDTO m_dto = (MemberDTO) session.getAttribute("mem_dto");
-						out.println(m_dto.getName());
+						MemberDTO mem_dto = (MemberDTO) session.getAttribute("mem_dto");
+						out.println(mem_dto.getName());
 					%>
 				</div>
 				<div id="univName">
 					<img src="./images/univImg.svg" /> 
 					<%
-						UniversityDTO u_dto = (UniversityDTO) session.getAttribute("univ_dto");
-						out.println(u_dto.getUnivName());
+						UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
+						out.println(univ_dto.getUnivName());
 					%>
 				</div>
 				<div id="userDept"> <img src="./images/dept.svg" /> &nbsp; 
 					<%
-						ProfessorDTO p_dto = (ProfessorDTO) session.getAttribute("prof_dto");
-						out.println(p_dto.getDeptId());
+						ProfessorDTO prof_dto = (ProfessorDTO) session.getAttribute("prof_dto");
+						out.println(prof_dto.getDeptId());
 					%>
 				</div>
 				<button id="logoutBtn" onclick="location.href='logout.do'">로그아웃</button>

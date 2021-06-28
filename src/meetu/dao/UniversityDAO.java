@@ -22,7 +22,7 @@ public class UniversityDAO {
 	public UniversityDTO getUnivInfo(String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		UniversityDTO dto = null;
+		UniversityDTO univ_dto = null;
 
 		try {
 			Connection conn = DBConnection.getConnection("admin");
@@ -33,9 +33,9 @@ public class UniversityDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				dto = new UniversityDTO();
-				dto.setUnivId(rs.getString("univ_id"));
-				dto.setUnivName(rs.getString("univ_name"));
+				univ_dto = new UniversityDTO();
+				univ_dto.setUnivId(rs.getString("univ_id"));
+				univ_dto.setUnivName(rs.getString("univ_name"));
 			}
 			// if close
 			if (rs != null)
@@ -48,7 +48,7 @@ public class UniversityDAO {
 			e.printStackTrace();
 		}
 
-		return dto;
+		return univ_dto;
 	}
 
 	// 입력된 문자열을 포함하는 대학명 검색. ex) "동" 입력 시 동국대학교, 동덕여자대학교 DTO ArrayList 반환
@@ -72,19 +72,19 @@ public class UniversityDAO {
 				String univ_name = rs.getString("univ_name");
 				String univ_id = rs.getString("univ_id");
 
-				UniversityDTO u = new UniversityDTO();
-				u.setUnivName(univ_name);
-				u.setUnivId(univ_id);
-				univs.add(u);
+				UniversityDTO univ_dto = new UniversityDTO();
+				univ_dto.setUnivName(univ_name);
+				univ_dto.setUnivId(univ_id);
+				univs.add(univ_dto);
 
 				while (rs.next()) {
 					univ_name = rs.getString("univ_name");
 					univ_id = rs.getString("univ_id");
 
-					u = new UniversityDTO();
-					u.setUnivName(univ_name);
-					u.setUnivId(univ_id);
-					univs.add(u);
+					univ_dto = new UniversityDTO();
+					univ_dto.setUnivName(univ_name);
+					univ_dto.setUnivId(univ_id);
+					univs.add(univ_dto);
 				}
 			} else
 				return null;
@@ -101,5 +101,50 @@ public class UniversityDAO {
 		}
 
 		return univs;
+	}
+	
+	// join - 추천 대학명 검색 
+	public String univNameSearch(String q) throws NamingException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String univs = null;
+		
+		if (q != null) { // 입력된 q가 빈 문자열이 아닌 경우
+			try {
+				Connection conn = DBConnection.getConnection("admin");
+
+				pstmt = conn.prepareStatement("select * from university");
+				rs = pstmt.executeQuery();
+
+				while (rs.next()) {
+					String univ_name = rs.getString("univ_name");
+					if(univ_name.startsWith(q)) { // 대학명이 q로 시작하면 univs 문자열에 추가
+						if (univs == null) {
+							univs = univ_name;
+						}
+						else {
+							univs += ", " + univ_name;
+						}
+					}
+				}
+				// if close
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		if (univs == null) {
+			return "해당 글자로 시작하는 대학이 존재하지 않습니다.";
+		}
+		else {
+			return univs;
+		}
 	}
 }
