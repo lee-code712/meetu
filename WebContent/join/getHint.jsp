@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="meetu.dao.MemberDAO" %>
+<%@ page import="meetu.dao.UniversityDAO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,7 @@
 </head>
 <body>
 <%
-	MemberDAO dao = MemberDAO.getInstance();
+	UniversityDAO dao = UniversityDAO.getInstance();
 	String univ_name = request.getParameter("univ_name");
 	String univs = dao.univNameSearch(univ_name); // univ_name로 시작하는 대학명 검색
 	
