@@ -157,7 +157,12 @@
 	<div id="topHeader">
 		<div id="topHeaderInner">
 			<div>
-				<div><a><%=session.getAttribute("user_id")%>님 환영합니다</a></div>
+				<div><a>
+				<%
+					MemberDTO mem_dto = (MemberDTO) session.getAttribute("mem_dto");
+					out.println(mem_dto.getName() + "님 환영합니다");
+				%>
+				</a></div>
 				<div>|</div>
 				<div><button id="logoutBtn" onclick="location.href='logout.do'">로그아웃</button></div>
 			</div>
@@ -190,10 +195,7 @@
           	<td id="userInfo">
 				<div id="userImg"></div>
 				<div id="userName">
-					<%
-						MemberDTO mem_dto = (MemberDTO) session.getAttribute("mem_dto");
-						out.println(mem_dto.getName());
-					%>
+					<%= mem_dto.getName() %>
 				</div>
 				<div id="univName">
 					<img src="./images/univImg.svg" /> 

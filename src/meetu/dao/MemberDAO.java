@@ -62,7 +62,7 @@ public class MemberDAO {
 		return mem_dto;
 	}
 			
-	// 학생 회원 정보 dto 반환
+	// 특정 학생 회원 정보 dto 반환
 	public StudentDTO getStudentInfo(String univ, String id) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -98,7 +98,7 @@ public class MemberDAO {
 		return stu_dto;
 	}
 		
-	// 교수 회원 정보 dto 반환
+	// 특정 교수 회원 정보 dto 반환
 	public ProfessorDTO getProfessorInfo(String univ, String id) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -133,6 +133,96 @@ public class MemberDAO {
 		}
 
 		return prof_dto;
+	}
+	
+	// 모든 회원 정보 dto 반환
+	public ArrayList<MemberDTO> getAllMembers(String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<MemberDTO> members = new ArrayList<MemberDTO>();
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from member JOIN member_user USING (member_id)";
+
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				MemberDTO mem_dto = new MemberDTO();
+				mem_dto.setMemberId(rs.getString("member_id"));
+				mem_dto.setName(rs.getString("name"));
+				mem_dto.setRole(rs.getString("role"));
+				members.add(mem_dto);
+					
+				while(rs.next()) {
+					mem_dto = new MemberDTO();
+					mem_dto.setMemberId(rs.getString("member_id"));
+					mem_dto.setName(rs.getString("name"));
+					mem_dto.setRole(rs.getString("role"));
+					members.add(mem_dto);
+				}
+			}
+			else {
+				return null;
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return members;
+	}
+		
+	// 특정 회원의 학과 정보 dto 반환
+	public DepartmentDTO getDepartmentInfo(MemberDTO mem_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DepartmentDTO dept_dto = null;
+		String role = mem_dto.getRole();
+			
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "";
+			if(role.equals("0")) {
+				sql += "select * from student s, member m, department d ";
+				sql += "where s.stu_id = m.member_id and s.dept_id = d.dept_id and member_id=?";
+			}
+			else {
+				sql += "select * from professor p, member m, department d ";
+				sql += "where p.prof_id = m.member_id and p.dept_id = d.dept_id and member_id=?";
+					
+			}
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mem_dto.getMemberId());
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				dept_dto = new DepartmentDTO();
+				dept_dto.setDeptId(rs.getString("dept_id"));
+				dept_dto.setDeptName(rs.getString("dept_name"));
+				dept_dto.setCollegeId(rs.getString("college_id"));
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return dept_dto;
 	}
 
 	// join - 학번 체크, 유효한 학번인 경우 id 생성해 리턴
