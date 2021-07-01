@@ -7,15 +7,16 @@
 	<link rel="stylesheet" href="../components/css/header.css" />
    	<link rel="stylesheet" href="/reservation/css/reservation.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/reservation/js/reservation.js"></script>
 </head>
 
 <body>
 	<div id="topHeader">
 		<div id="topHeaderInner">
 			<div>
-				<div><a href="../login/login.jsp">로그인</a></div>
+				<div><a href="/loginForm.do">로그인</a></div>
 				<div>|</div>
-				<div><a href="../join/join.jsp">회원가입</a></div>
+				<div><a href="/joinForm.do">회원가입</a></div>
 			</div>
 		</div>
 	</div>
@@ -153,6 +154,7 @@
       				<a>선택하기</a>
       			</td>
    			</tr>
+   			</tbody>
  		 </table> 
  		</div>
  	</section>

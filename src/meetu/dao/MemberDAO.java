@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.naming.NamingException;
 
@@ -229,4 +230,97 @@ public class MemberDAO {
 		return is_added;
 	}
 	
+	// memberID에 해당하는 이름 반환
+	public String getName(String member_id) throws NamingException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String name = null;
+
+		try {
+			Connection conn = DBConnection.getConnection("dwu");
+			String sql = "select name from member where member_id = " + member_id;
+
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				name = rs.getString("name");
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return name;
+	}
+	
+	// professorDTO 반환
+	public ArrayList<ProfessorDTO> ProfessorSearch(String name) throws NamingException {
+		ArrayList<ProfessorDTO> profs = new ArrayList<ProfessorDTO>();
+
+		PreparedStatement pstmtMember_id = null;
+		ResultSet rsMember_id = null;
+
+		try {
+			Connection conn = DBConnection.getConnection("dwu");
+
+			name = "'%" + name + "%'";
+
+			pstmtMember_id = conn.prepareStatement("select member_id from member where name like " + name + "and role like 2");
+			rsMember_id = pstmtMember_id.executeQuery();
+
+			if (rsMember_id.next()) {
+				String member_id = rsMember_id.getString("member_id");
+				
+				PreparedStatement pstmtResult = conn.prepareStatement("select * from professor where prof_id like " + member_id);
+				ResultSet rsResult = pstmtResult.executeQuery();
+								
+				while (rsResult.next()) {
+					String major = rsResult.getString("major");
+					String email = rsResult.getString("email");
+					String office = rsResult.getString("office");
+					String dept_id = rsResult.getString("dept_id");
+						
+					ProfessorDTO prof_dto = new ProfessorDTO();
+					prof_dto.setProfId(member_id);
+					if (major != null)
+						prof_dto.setMajor(major);
+					if (email != null)
+						prof_dto.setEmail(email);
+					if (office != null)
+						prof_dto.setOffice(office);
+					if (dept_id != null)
+						prof_dto.setDeptId(dept_id);
+					
+					profs.add(prof_dto);
+				}
+				
+				if (rsResult != null)
+					rsResult.close();
+				if (pstmtResult != null)
+					pstmtResult.close();
+			}
+			else
+				return null;
+
+			// if close
+			if (rsMember_id != null)
+				rsMember_id.close();
+			if (pstmtMember_id != null)
+				pstmtMember_id.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return profs;
+	}
 }
