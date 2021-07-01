@@ -41,7 +41,8 @@
 				profJsonArray.add(p);
 		}
 		
-		profJson.put("prof", profJsonArray); //배열을 넣음
+		profJson.put("prof", profJsonArray); // json 배열을 저장
+		out.println(profJsonArray);
 	}
 	else {				// unregistered customer
 		response.setStatus(400);		// bad request

@@ -4,6 +4,7 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 
 function searchProfessor() {
 	var searchText = $("#searchText").val();
+	$("tbody").children().remove();
 	
 	$.ajax({
 	 	type: "GET",
@@ -22,31 +23,31 @@ function searchProfessor() {
 }
 
 function updatePage(responseText) {
-	alert("profs: " + JSON.stringify(responseText));
-	var profs = JSON.parse(JSON.stringify(responseText));
+	// alert("profs: " + responseText);
+	var profs = JSON.parse(responseText);
 	
 	Array.from(profs).forEach(function(prof, idx){
 		var name = prof.name;
 		var major = prof.major;
 		
-		var newTrElement = "<tr></tr>";
+		var newTrElement = document.createElement("tr");
+	
+		var newNameTdElement = document.createElement("td");
+		newNameTdElement.innerHTML = name;
 		
-		var newNameTdElement = "<td></td>";
-		$(newNameTdElement).text(name);
+		var newMajorTdElement = document.createElement("td");
+		newMajorTdElement.innerHTML = major;
 		
-		var newMajorTdElement = "<td></td>";
-		$(newMajorTdElement).text(major);
-		
-		var newInfoTdElement = "<td></td>";
+		var newInfoTdElement = document.createElement("td");
 		$(newInfoTdElement).addClass("profInfo");
-		var newInfoAElement = "<a></a>";
-		$(newInfoAElement).text("정보보기");
+		var newInfoAElement = document.createElement("a");
+		newInfoAElement.innerHTML = "정보보기";
 		$(newInfoTdElement).append(newInfoAElement);
 		
-		var newSelectTdElement = "<td></td>";
+		var newSelectTdElement = document.createElement("td");
 		$(newSelectTdElement).addClass("selectProf");
-		var newSelectAElement = "<a></a>";
-		$(newSelectAElement).text("선택하기");
+		var newSelectAElement = document.createElement("a");
+		newSelectAElement.innerHTML = "선택하기";
 		$(newSelectTdElement).append(newSelectAElement);
 	
 		$(newTrElement).append(newNameTdElement);

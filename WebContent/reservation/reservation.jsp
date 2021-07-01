@@ -144,16 +144,7 @@
 			</thead>
 
 			<tbody>
-   			<tr>
-      			<td>000교수님</td>
-      			<td>컴퓨터학과</td>
-      			<td class="profInfo">
-         			<a>정보보기</a>
-      			</td>
-      			<td class="selectProf">
-      				<a>선택하기</a>
-      			</td>
-   			</tr>
+			
    			</tbody>
  		 </table> 
  		</div>

@@ -363,13 +363,13 @@ public class MemberDAO {
 
 			name = "'%" + name + "%'";
 
-			pstmtMember_id = conn.prepareStatement("select member_id from member where name like " + name + "and role like 2");
+			pstmtMember_id = conn.prepareStatement("select * from member where name like " + name + " and role=1");
 			rsMember_id = pstmtMember_id.executeQuery();
 
 			if (rsMember_id.next()) {
 				String member_id = rsMember_id.getString("member_id");
 				
-				PreparedStatement pstmtResult = conn.prepareStatement("select * from professor where prof_id like " + member_id);
+				PreparedStatement pstmtResult = conn.prepareStatement("select * from professor where prof_id=" + member_id);
 				ResultSet rsResult = pstmtResult.executeQuery();
 								
 				while (rsResult.next()) {
@@ -397,8 +397,6 @@ public class MemberDAO {
 				if (pstmtResult != null)
 					pstmtResult.close();
 			}
-			else
-				return null;
 
 			// if close
 			if (rsMember_id != null)
