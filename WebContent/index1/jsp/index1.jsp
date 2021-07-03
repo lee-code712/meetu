@@ -10,7 +10,6 @@
     <title>Untitled Document</title>
     
     <link rel="stylesheet" href="../css/index1.css" />
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
