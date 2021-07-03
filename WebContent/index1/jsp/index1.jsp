@@ -10,7 +10,6 @@
     <title>Untitled Document</title>
     
     <link rel="stylesheet" href="../css/index1.css" />
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
@@ -544,78 +543,123 @@
             margin: 40px auto;
             width: 1194px;
         }
+        
+        .dropbtn {
+            width: 160px;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            background: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border: 1px solid white;
+            border-radius: 500px;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 500px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
     </style>
 </head>
 
 <body>
 <header>
-    <nav id="header_inner">
-        <div id="title"><a>MEETU</a></div>
-        <div id="gnb">
-            <a id="noticeIcon">공지사항</a>
-            <a id="reserveIcon">상담예약</a>
-            <a id="messageIcon">쪽지함</a>
-            <a id="myPageIcon">마이페이지</a>
-        </div>
-
-        <img src="../images/notifications_black_24dp.svg" id="alertIcon"/>
-    </nav>
-</header>
-
-
-<div id="banner_wrap">
-    <ul class="banner_slide">
-        <li class="banner_01"></li>
-        <li class="banner_02"></li>
-        <li class="banner_03"></li>
-    </ul>
-</div>
-
-
-<table id="section">
-    <tr>
-        <td>
-            <div id="l_title"><span id="logo">MEETU</span> &nbsp;&nbsp; <span id="l_text">상담일정 관리</span></div>
-        </td>
-    </tr>
-    <tr>
-        <td id="calendar_wrap">
-            <div class="cal_top">
-                <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit">◀</span></a>
-                <span id="cal_top_year"></span>.
-                <span id="cal_top_month"></span>
-                <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit">▶</span></a>
-                <div id="cal_top_date"></div>
-                <span id="cal_top_dayName"></span>요일
+        <nav id="header_inner">
+            <div id="title"><a>MEETU</a></div>
+            <div id="gnb">
+                <a id="noticeIcon">공지사항</a>
+                <a id="reserveIcon">상담예약</a>
+                <a id="messageIcon">쪽지함</a>
+                <a id="myPageIcon">마이페이지</a>
             </div>
-
-            <button type="button" class="btn btn-dark" id="logout_btn">+ 등록된 일정 더보기</button>
-            <div id="cal_msg"><p>등록된 일정이 없습니다.</p>
-                <p>등록된 일정이 없습니다.</p>
-                <p>등록된 일정이 없습니다.</p>
-                <p>등록된 일정이 없습니다.</p>
-                <p>등록된 일정이 없습니다.</p></div>
-        </td>
-
-        <td id="calendar">
-            <div id="calendarHeader">
-                상담일정
+            <div class="dropdown">
+                <button class="dropbtn">(이름)님 ▽</button>
+                <div class="dropdown-content">
+                    <a href="#">로그아웃</a>
+                </div>
             </div>
-            <div id="calendarBody">
-                <div id="cal_tab" class="cal"></div>
-            </div>
-        </td>
-    </tr>
-</table>
-
-<div id="intro">
-    <div id="intro_title"><span id="logo">MEETU</span> &nbsp;&nbsp; <span id="l_text">소개</span></div>
-    <div id="intro_text">소개 부분 만드는 중 + 배너 이미지 준비 중 (일단 샘플로 넣어둠)</div>
-</div>
-
-
-<div id="footer">
-    Copyrights © 2021 by 시나브로. All Rights Reserved.
-</div>
+            <img src="./notifications_black_24dp.svg" id="alertIcon"/>
+        </nav>
+    </header>
+    
+    
+    <div id="banner_wrap">
+        <ul class="banner_slide">
+            <li class="banner_01"></li>
+            <li class="banner_02"></li>
+            <li class="banner_03"></li>
+        </ul>
+    </div>
+    
+    
+    <table id="section">
+        <tr>
+            <td>
+                <div id="l_title"><span id="logo">MEETU</span> &nbsp;&nbsp; <span id="l_text">상담일정 관리</span></div>
+            </td>
+        </tr>
+        <tr>
+            <td id="calendar_wrap">
+                <div class="cal_top">
+                    <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit">◀</span></a>
+                    <span id="cal_top_year"></span>.
+                    <span id="cal_top_month"></span>
+                    <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit">▶</span></a>
+                    <div id="cal_top_date"></div>
+                    <span id="cal_top_dayName"></span>요일
+                </div>
+    
+                <button type="button" class="btn btn-dark" id="logout_btn">+ 등록된 일정 더보기</button>
+                <div id="cal_msg"><p>등록된 일정이 없습니다.</p>
+                    <p>등록된 일정이 없습니다.</p>
+                    <p>등록된 일정이 없습니다.</p>
+                    <p>등록된 일정이 없습니다.</p>
+                    <p>등록된 일정이 없습니다.</p></div>
+            </td>
+    
+            <td id="calendar">
+                <div id="calendarHeader">
+                    상담일정
+                </div>
+                <div id="calendarBody">
+                    <div id="cal_tab" class="cal"></div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+    <div id="intro">
+        <div id="intro_title"><span id="logo">MEETU</span> &nbsp;&nbsp; <span id="l_text">소개</span></div>
+        <div id="intro_text">소개 부분 만드는 중 + 배너 이미지 준비 중 (일단 샘플로 넣어둠)</div>
+    </div>
+    
+    
+    <div id="footer">
+        Copyrights © 2021 by 시나브로. All Rights Reserved.
+    </div>
 </body>
 </html>
