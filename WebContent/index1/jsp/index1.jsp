@@ -602,7 +602,7 @@
                     <a href="#">로그아웃</a>
                 </div>
             </div>
-            <img src="./notifications_black_24dp.svg" id="alertIcon"/>
+            <img src="../images/notifications_black_24dp.svg" id="alertIcon"/>
         </nav>
     </header>
     
