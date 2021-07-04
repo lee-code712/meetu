@@ -34,6 +34,7 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="jquery.bxslider.min.js"></script>
     <link href="jquery.bxslider.css" rel="stylesheet"/>
+    
     <script>
         var week = new Array('일', '월', '화', '수', '목', '금', '토');
         var today = null;
