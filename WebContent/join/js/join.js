@@ -1,46 +1,64 @@
-var xhr;
-var checkFirst = loopSend = false;
+$(document).ready(function() { // html이 로드되면 실행됨  
+	$("button").first().click(searchUniversity); // 첫 번째 <button> 클릭 시 실행되는 함수 지정
+});
 
-function showUniversity(str) {
-	if (checkFirst == false) {
-		setTimeout("sendKeyword()", 1000);
-		loopSend = true;
-    }
+function hideResult() { // 대학 검색 - body 클릭 시 드롭다운 사라지도록
+	// 드롭다운 삭제
+	$("#search_result").children().remove();
+	// body 클릭 이벤트 제거
+	$("body").off("click");
 }
 
-function sendKeyword(){
-     if (loopSend == false) return;
-     
-     var univ_name = document.join_form.univ_name.value;
-     if (univ_name === "") {
-		lastKeyword = "";
-     }
-	 else {
-		if (univ_name !== "") {
-			var para = univ_name;
-            xhr = new XMLHttpRequest();
-			xhr.open("post", "/join/getHint.jsp", true);
-            xhr.onreadystatechange = function(){
-				if(xhr.readyState == 4) {
-					if(xhr.status == 200) {
-						process();
-					}
-					else{
-                        // alert("요청 실패: " + xhr.status);
-                    }   
-                }
-			}  
-			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-			xhr.send("univ_name=" + para);
+function selectResult() { // 대학 검색 - 드롭다운 대학 중 하나 선택하면 자동입력
+	var selectedAElement = this;
+	var result = $(selectedAElement).text();
+	
+	$("#univ_name").val(result);
+}
+
+function searchUniversity() {
+	var univ_name = $("#univ_name").val();
+	
+	$("#search_result").children().remove();
+	
+	$.ajax({
+	 	type: "GET",
+		url: "/join/getHint.jsp?univ_name=" + univ_name,
+		dataType: "text",
+		success: process,
+		error: function(jqXHR, textStatus, errorThrown) {
+			var message = jqXHR.getResponseHeader("Status");
+			if ((message == null) || (message.length <= 0)) {
+				alert("Error! Request status is " + jqXHR.status);
+			} else {
+				alert(message);	
+			}
 		}
-	}
-    setTimeout("sendKeyword()", 1000);
+	});
 }
 
-function process(){
-	var resultText = xhr.responseText;
-	var listView = document.getElementById("txtUniversity");
-	listView.innerHTML = resultText;
+function process(responseText) {
+	var univs = JSON.parse(responseText);
+	
+	if (jQuery.isEmptyObject(univs)) {
+		alert("검색 결과가 없습니다.");
+	} else {
+		Array.from(univs).forEach(function(univ, idx){
+			var univ_name = univ.univName;
+		
+			var newAElement = document.createElement("a");
+			// $(newAElement).attr("href", "#");
+			newAElement.innerHTML = univ_name;
+		
+			var newBrElement = document.createElement("br");
+	
+			$("#search_result").append(newAElement);
+			$("#search_result").append(newBrElement);
+		});
+		
+		$("body").click(hideResult); // <body> 선택 시 실행되는 함수 지정
+		$("#search_result a").click(selectResult); // 검색 결과 링크 선택 시 실행되는 함수 지정
+	}
 }
 
 function ck_join_form() {

@@ -11,6 +11,8 @@ import javax.naming.NamingException;
 import meetu.common.dbutil.DBConnection;
 import meetu.dto.UniversityDTO;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
 public class UniversityDAO {
 	private static UniversityDAO instance = new UniversityDAO();
 
@@ -18,8 +20,8 @@ public class UniversityDAO {
 		return instance;
 	}
 
-	// 대학 정보 dto 반환
-	public UniversityDTO getUnivInfo(String univ) throws NamingException/* , SQLException */ {
+	// univ id에 해당하는 대학 정보 dto 반환
+	public UniversityDTO getUnivInfo(String univ_id) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		UniversityDTO univ_dto = null;
@@ -28,7 +30,40 @@ public class UniversityDAO {
 			Connection conn = DBConnection.getConnection("admin");
 
 			pstmt = conn.prepareStatement("select * from university where univ_id=?");
-			pstmt.setString(1, univ);
+			pstmt.setString(1, univ_id);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				univ_dto = new UniversityDTO();
+				univ_dto.setUnivId(rs.getString("univ_id"));
+				univ_dto.setUnivName(rs.getString("univ_name"));
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return univ_dto;
+	}
+	
+	// univ name에 해당하는 대학 정보 dto 반환
+	public UniversityDTO getUnivInfoByName(String univ_name) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		UniversityDTO univ_dto = null;
+
+		try {
+			Connection conn = DBConnection.getConnection("admin");
+
+			pstmt = conn.prepareStatement("select * from university where univ_name=?");
+			pstmt.setString(1, univ_name);
 
 			rs = pstmt.executeQuery();
 
@@ -51,8 +86,8 @@ public class UniversityDAO {
 		return univ_dto;
 	}
 
-	// 입력된 문자열을 포함하는 대학명 검색. ex) "동" 입력 시 동국대학교, 동덕여자대학교 DTO ArrayList 반환
-	public ArrayList<UniversityDTO> univSearch(UniversityDTO dto) throws NamingException/* , SQLException */ {
+	// 입력된 문자열을 포함하는 대학들 검색. ex) "동" 입력 시 동국대학교, 동덕여자대학교 DTO ArrayList 반환
+	public ArrayList<UniversityDTO> univSearch(String input) throws NamingException/* , SQLException */ {
 		ArrayList<UniversityDTO> univs = new ArrayList<UniversityDTO>();
 
 		PreparedStatement pstmt = null;
@@ -61,7 +96,6 @@ public class UniversityDAO {
 		try {
 			Connection conn = DBConnection.getConnection("admin");
 
-			String input = dto.getUnivName();
 			input = "'%" + input + "%'";
 
 			pstmt = conn.prepareStatement("select * from university where univ_name like " + input);
@@ -103,8 +137,8 @@ public class UniversityDAO {
 		return univs;
 	}
 	
-	// join - 추천 대학명 검색 
-	public String univNameSearch(String q) throws NamingException {
+	// join - 추천 대학명 검색 - 사용 X
+	public String univNameSearch(String q) throws NamingException, JsonProcessingException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		

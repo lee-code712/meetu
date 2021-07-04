@@ -65,7 +65,7 @@
 		profJson.put("prof", profJsonArray); // json 배열을 저장
 		out.println(profJsonArray);
 	}
-	else {				// unregistered customer
+	else {				// unregistered professor
 		response.setStatus(400);		// bad request
 		response.addHeader("Status", "Unregistered professor");
 		return;

@@ -14,8 +14,8 @@ public class JoinAction implements CommandAction {
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
 		MemberDAO mem_dao = MemberDAO.getInstance();
 		UniversityDAO univ_dao = UniversityDAO.getInstance();
-		
-		UniversityDTO univ_dto = univ_dao.getUnivInfo(req.getParameter("univ_name"));
+
+		UniversityDTO univ_dto = univ_dao.getUnivInfoByName(req.getParameter("univ_name"));
 		String univ_id = univ_dto.getUnivId(); // 대학 id 검색
 		
 		if (univ_id.equals("-1")) { // 존재하지 않는 대학명인 경우

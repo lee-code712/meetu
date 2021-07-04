@@ -4,13 +4,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>회원가입</title>
-	<link rel="stylesheet" href="/join/css/join.css" />
-	<script src="/join/js/join.js"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <title>회원가입</title>
+
+    <script src="/join/js/join.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+
+    <style>
+        #joinWrap {
+            width: 500px;
+            margin: 180px auto;
+        }
+
+        #joinTitle {
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 48px;
+            font-family: 'Yellowtail', cursive;
+            font-weight: bold;
+        }
+
+        #title:hover {
+            cursor: pointer;
+        }
+
+        body {
+            background: #F4F4F4;
+        }
+
+        #join_btn {
+            display: block;
+            margin: 0 auto;
+            width: 500px;
+            height: 40px;
+        }
+        /* 대학 검색 버튼 클릭 시 드롭다운 리스트 */
+        .dropdown-content {
+        	background-color: #f9f9f9;
+        	min-width: 443px;
+        	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        	z-index: 1;
+        }
+        .dropdown-content a {
+        	float: none;
+        	color: black;
+        	padding: 12px 12px;
+        	display: block;
+        }
+        .dropdown-content a:hover {
+        	background-color: #ddd;
+        }
+        .show-dropdown {
+        	display: block
+        }
+    </style>
 </head>
 
 <body>
@@ -27,51 +99,60 @@
 			out.println("<script>alert('회원가입에 실패했습니다.');</script>");
 	}
 %>
-<div id="joinWrap">
-	<div id="joinTitle"><a>MEETU</a></div>
 
-	<p id="suggest">대학명: <span id="txtUniversity"></span></p>
-	<form method="post" action="join.do" name="join_form" onsubmit="return ck_join_form()">
-		<table>	
-			<tr>
-				<td class="univName">대학명</td>
-				<td class="univNameText">
-					<input type="text" class="joinFormText" id="univ_name" name="univ_name" maxlength="40" placeholder="대학명을 정확히 입력하세요" onkeydown="showUniversity(this.value)"/>
-				</td>
-			</tr>
-						
-			<tr>
-				<td class="memberId">학번</td>
-				<td class="memberIdText">
-					<input type="text" id="joinFormId" name="member_id" maxlength="10" placeholder="학번을 입력하세요" />
-				</td>
-			</tr>
-				
-			<tr>
-				<td class="belong">소속</td> <%-- 회원가입 시 소속 입력이 필요 없음 (학번으로 member 테이블에 접근하면 role 존재함) --%>
-				<td class="belongRadio">
-					<label><input type="radio" name="role" value="student" checked>학생</label>
-     				<label><input type="radio" name="role" value="professor">교수</label>
-				</td>
-			</tr>
-							
-			<tr>
-				<td class="password">비밀번호</td>
-				<td class="passwordText">
-					<input type="password" class="joinFormText" name="password" maxlength="20" placeholder="비밀번호를 입력하세요" />
-				</td>
-			</tr>
-				
-			<tr>
-				<td class="passwordCheck">비밀번호 확인</td>
-				<td class="passwordCheckText">
-					<input type="password" class="joinFormText" name="password_ck" maxlength="20" placeholder="비밀번호를 한 번 더 입력하세요" />
-				</td>
-			</tr>
-		</table>
-		
-		<input type="submit" id="joinBtn" alt="join button" value="가입하기">
-	</form>
+<div id="joinWrap">
+    <div id="joinTitle"><a>MEETU</a></div>
+
+    <form method="post" action="join.do" name="join_form" onsubmit="return ck_join_form()">
+    <div class="form-group" id="search_univ">
+        <label>대학명</label>
+        <div class="input-group mb-3">
+            <input type="text" id="univ_name" name="univ_name" class="form-control" placeholder="대학명" aria-label="Recipient's username"
+                   aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button id="search-button" class="btn btn-outline-secondary" type="button">검색</button>
+            </div>
+        </div>
+        <div class="dropdown-content" id="search_result">
+        </div>
+    </div>
+    <div class="form-group">
+        <label>학번</label>
+        <input type="text" class="form-control" id="inputAddress2" name="member_id" placeholder="학번">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>비밀번호</label>
+            <input type="email" class="form-control" id="inputEmail4" name="password" placeholder="비밀번호">
+        </div>
+        <div class="form-group col-md-6">
+            <label>비밀번호 확인</label>
+            <input type="password" class="form-control" id="inputPassword4" name="password_ck" placeholder="비밀번호 확인">
+        </div>
+    </div>
+    <fieldset class="form-group">
+        <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">소속</legend>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="role" value="student" id="gridRadios1"
+                           checked>
+                    <label class="form-check-label" for="gridRadios1">
+                        	학생
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="role" value="professor" id="gridRadios2" value="option2">
+                    <label class="form-check-label" for="gridRadios2">
+                       	 교수
+                    </label>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <button type="submit" class="btn btn-primary" id="join_btn">가입하기</button>
+    </form>
 </div>
 </body>
+
 </html>
