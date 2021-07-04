@@ -26,7 +26,7 @@
 
 	<div id="underHeader">
 		<div id="underHeaderInner">
-			<div id="title"><a href="">MEETU</a></div>
+			<div id="title"><a href="index.do">MEETU</a></div>
 		
 			<div id="gnb">
 				<div><a href="../notice/notice.jsp">공지사항</a></div>

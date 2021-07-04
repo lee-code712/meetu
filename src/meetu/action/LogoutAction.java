@@ -12,7 +12,7 @@ public class LogoutAction implements CommandAction {
 		HttpSession session = req.getSession();
 		session.invalidate();
 		
-		return "/login/login.jsp";
+		return "loginForm.do";
 	}
 
 }

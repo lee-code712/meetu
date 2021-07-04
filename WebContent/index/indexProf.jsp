@@ -171,11 +171,11 @@
 
 	<div id="underHeader">
 		<div id="underHeaderInner">
-			<div id="title"><a href="">MEETU</a></div>
+			<div id="title"><a href="index.do">MEETU</a></div>
 		
 			<div id="gnb">
 				<div><a href="../notice/notice.jsp">공지사항</a></div>
-				<div><a href="../reservation/reservation.jsp">상담예약</a></div>
+				<div><a href="reservationPro.do">상담예약</a></div>
 				<div><a href="message.do">쪽지함</a></div>
 			</div>
 		

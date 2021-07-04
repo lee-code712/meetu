@@ -17,23 +17,34 @@ public class MessageAction implements CommandAction {
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
 		HttpSession session = req.getSession();
 		UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
+		MemberDTO mem_dto = (MemberDTO) session.getAttribute("mem_dto");
 		String univ = univ_dto.getUnivId();
+		String id = (String) session.getAttribute("user_id");
 		
-		MemberDAO mem_dao = MemberDAO.getInstance();
-		ArrayList<MemberDTO> members = new ArrayList<>((ArrayList<MemberDTO>) mem_dao.getAllMembers(univ));
+		ReservationDAO reservation_dao = ReservationDAO.getInstance();
+		ArrayList<ReservationDTO> reservations = (ArrayList<ReservationDTO>) reservation_dao.getReservationInfo(univ, id);
 		
-		if(members != null) {
-			HashMap<String, String> map = new HashMap<String, String>();
-			Iterator<MemberDTO> iterator = members.iterator();
+		if(reservations != null) {
+			HashMap<String, String> mem_map = new HashMap<String, String>(); 
+			Iterator<ReservationDTO> iterator = reservations.iterator();
+			MemberDAO mem_dao = MemberDAO.getInstance();
+			
 			while(iterator.hasNext()) {
-				MemberDTO mem_dto = iterator.next();
-				if(!mem_dto.getRole().equals("2")) {
-					DepartmentDTO dept_dto = mem_dao.getDepartmentInfo(mem_dto, univ);
-					map.put(mem_dto.getName(), dept_dto.getDeptName());
+				ReservationDTO reservation_dto = iterator.next();
+				if(reservation_dto.getApproval() == 1) {
+					MemberDTO member = null;
+					if(mem_dto.getRole().equals("0")) {
+						member = mem_dao.getMemberInfo(univ, reservation_dto.getPUserId());
+					}
+					else {
+						member = mem_dao.getMemberInfo(univ, reservation_dto.getSUserId());
+					}
+					DepartmentDTO dept_dto = mem_dao.getDepartmentInfo(member, univ);
+					mem_map.put(member.getName(), dept_dto.getDeptName());
 				}
-			}			
-			req.setAttribute("msg_mem", map);
-			System.out.print(map);
+			}
+			
+			req.setAttribute("msg_mem", mem_map);
 		}
 		
 		return "/message/message.jsp";

@@ -25,16 +25,13 @@ public class IndexProAction implements CommandAction {
 		if(m_dto.getRole().equals("0")) {
 			StudentDTO stu_dto = dao.getStudentInfo(u_dto.getUnivId(), user_id);
 			session.setAttribute("stu_dto", stu_dto);
-			return "/index/indexStu.jsp";
 		}
 		else if(m_dto.getRole().equals("1")) {
 			ProfessorDTO prof_dto = dao.getProfessorInfo(u_dto.getUnivId(), user_id);
 			session.setAttribute("prof_dto", prof_dto);
-			return "/index/indexProf.jsp"; // 아직 교수용 index페이지 구현 X
-		}
-		else {
-			return "/index/indexStu.jsp"; // 관리자용 페이지가 없으므로 일단 학생 페이지로 이동
 		}	
+		
+		return "index.do";
 	}
 
 }
