@@ -35,13 +35,6 @@
             margin: 0px;
         }
 
-        #header_inner {
-            margin: 0 auto;
-            width: 1920px;
-            height: 100px;
-            background: #4F4F4F;
-        }
-
         #messageWrap {
             margin: 0 auto;
             width: 1920px;
@@ -195,19 +188,24 @@
             cursor: pointer;
         }
 
-        header {
-            margin: 0 auto;
-            width: 1920px;
+         header {
+            width: 100%;
             height: 100px;
-            background: #4F4F4F;
+            top: 0px;
+         	background: rgba(0, 0, 0, .800);
+            box-sizing: border-box;
+            transition: All 0.2s ease;
+            -webkit-transition: All 0.2s ease;
+            -moz-transition: All 0.2s ease;
+            -o-transition: All 0.2s ease;
         }
-
-        #header_inner {
-            display: flex;
+     
+    	#header_inner {
+        	display: flex;
+         	align-items: center;
             margin: 0 auto;
             width: 1194px;
             height: 100px;
-            align-items: center;
         }
 
         #title {
@@ -218,6 +216,11 @@
             color: white;
             font-size: 24px;
             font-family: 'Yellowtail', cursive;
+            font-weight: bold;
+        }
+        
+        #title:hover {
+        	cursor: pointer;
         }
 
         #gnb {
@@ -229,23 +232,8 @@
             align-items: center;
         }
 
-        #gnb div {
-            font-size: 14px;
-            color: white;
-        }
-
         #gnb a {
             padding: 0 40px;
-        }
-
-        #gnb div:first-child {
-            padding-left: 0px;
-        }
-
-        #gnb div a:hover,
-        #gnb div a:focus {
-            color: #4D4D4D;
-            cursor: pointer;
         }
 
         #alertIcon:hover,
@@ -256,12 +244,12 @@
             cursor: pointer;
         }
 
-        .dropdown {
+        #dropdown {
             position: relative;
             display: inline-block;
         }
 
-        .dropbtn {
+        #dropBtn {
             width: 160px;
             color: white;
             padding: 16px;
@@ -270,7 +258,7 @@
             background: none;
         }
 
-        .dropdown-content {
+        #dropdown-content {
             display: none;
             position: absolute;
             min-width: 160px;
@@ -280,26 +268,20 @@
             border-radius: 500px;
         }
 
-        .dropdown-content a {
+        #dropdown-content a {
             color: white;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
         }
 
-        .dropdown-content a:hover {
+        #dropdown-content a:hover {
             background: rgba(0, 0, 0, 0.1);
             border-radius: 500px;
         }
 
-        .dropdown:hover .dropdown-content {
+        #dropdown:hover #dropdown-content {
             display: block;
-        }
-
-        #headerBg {
-            width: 1920px;
-            height: 100px;
-            background: #4F4F4F;
         }
     </style>
 </head>
@@ -314,9 +296,9 @@
             <a id="messageIcon">쪽지함</a>
             <a id="myPageIcon">마이페이지</a>
         </div>
-        <div class="dropdown">
-            <button class="dropbtn">(이름)님 ▽</button>
-            <div class="dropdown-content">
+        <div id="dropdown">
+            <button id="dropBtn">(이름)님 ▽</button>
+            <div id="dropdown-content">
                 <a href="#">로그아웃</a>
             </div>
         </div>
