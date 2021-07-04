@@ -8,7 +8,7 @@ function searchProfessor() {
 	
 	$.ajax({
 	 	type: "GET",
-		url: "searchProfessor.jsp?searchText=" + searchText,
+		url: "/reservation/searchProfessor.jsp?searchText=" + searchText,
 		dataType: "text",
 		success: updatePage,
 		error: function(jqXHR, textStatus, errorThrown) {
@@ -25,6 +25,10 @@ function searchProfessor() {
 function updatePage(responseText) {
 	// alert("profs: " + responseText);
 	var profs = JSON.parse(responseText);
+	
+	if (jQuery.isEmptyObject(profs)) {
+		alert("검색 결과가 없습니다.");
+	}
 	
 	Array.from(profs).forEach(function(prof, idx){
 		var name = prof.name;

@@ -319,47 +319,16 @@ public class MemberDAO {
 		
 		return is_added;
 	}
-	
-	// memberID에 해당하는 이름 반환
-	public String getName(String member_id) throws NamingException {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		String name = null;
 
-		try {
-			Connection conn = DBConnection.getConnection("dwu");
-			String sql = "select name from member where member_id = " + member_id;
-
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				name = rs.getString("name");
-			}
-			// if close
-			if (rs != null)
-				rs.close();
-			if (pstmt != null)
-				pstmt.close();
-			if (conn != null)
-				conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return name;
-	}
-	
-	// professorDTO 반환
-	public ArrayList<ProfessorDTO> ProfessorSearch(String name) throws NamingException {
+	// 교수 이름에 해당하는 professorDTO 반환
+	public ArrayList<ProfessorDTO> ProfessorSearch(UniversityDTO univ_dto, String name) throws NamingException {
 		ArrayList<ProfessorDTO> profs = new ArrayList<ProfessorDTO>();
 
 		PreparedStatement pstmtMember_id = null;
 		ResultSet rsMember_id = null;
 
 		try {
-			Connection conn = DBConnection.getConnection("dwu");
+			Connection conn = DBConnection.getConnection(univ_dto.getUnivId());
 
 			name = "'%" + name + "%'";
 
