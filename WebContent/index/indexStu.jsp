@@ -32,8 +32,8 @@
             crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="/index1/js/jquery.bxslider.min.js"></script>
-    <link href="/index1/css/jquery.bxslider.css" rel="stylesheet"/>
+    <script src="/index/js/jquery.bxslider.min.js"></script>
+    <link href="/index/css/jquery.bxslider.css" rel="stylesheet"/>
     <script>
         var week = new Array('일', '월', '화', '수', '목', '금', '토');
         var today = null;
@@ -230,7 +230,7 @@
         .banner_01 {
             width: 1920px;
             height: 720px;
-            background-image: url('/index1/images/cat-6309964_1920.jpg');
+            background-image: url('/index/images/cat-6309964_1920.jpg');
             background-position: center;
             background-size: cover;
         }
@@ -238,7 +238,7 @@
         .banner_02 {
             width: 1920px;
             height: 720px;
-            background-image: url('/index1/images/cat-2536662_1920.jpg');
+            background-image: url('/index/images/cat-2536662_1920.jpg');
             background-position: center;
             background-size: cover;
         }
@@ -246,7 +246,7 @@
         .banner_03 {
             width: 1920px;
             height: 720px;
-            background-image: url('/index1/images/fox-1758183_1920.jpg');
+            background-image: url('/index/images/fox-1758183_1920.jpg');
             background-position: center;
             background-size: cover;
         }
@@ -552,7 +552,7 @@
                 	<a href="logout.do">로그아웃</a>
             	</div>
         	</div>
-        	<img src="/index1/images/notifications_black_24dp.svg" id="alertIcon"/>
+        	<img src="/index/images/notifications_black_24dp.svg" id="alertIcon"/>
     	</nav>
 	</header>
     
