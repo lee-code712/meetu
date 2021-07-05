@@ -269,6 +269,10 @@
             margin: 0;
             text-decoration: none;
         }
+	    
+		a:link { color: white; text-decoration: none;}
+ 		a:visited { color: white; text-decoration: none;}
+ 		a:hover { color: white; text-decoration: underline;}
        
         #footer {
             display: flex;
@@ -565,7 +569,7 @@
     <table id="section">
         <tr>
             <td>
-                <div id="l_title"><span id="logo"><a href="index.do">MEETU</a></span> &nbsp;&nbsp; <span id="l_text">상담일정 관리</span></div>
+                <div id="l_title"><span id="logo">MEETU</span> &nbsp;&nbsp; <span id="l_text">상담일정 관리</span></div>
             </td>
         </tr>
         <tr>
