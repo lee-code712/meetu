@@ -135,6 +135,52 @@ public class MemberDAO {
 		return prof_dto;
 	}
 	
+	// 모든 회원 정보 dto 반환
+	public ArrayList<MemberDTO> getAllMembers(String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<MemberDTO> members = new ArrayList<MemberDTO>();
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from member JOIN member_user USING (member_id)";
+
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				MemberDTO mem_dto = new MemberDTO();
+				mem_dto.setMemberId(rs.getString("member_id"));
+				mem_dto.setName(rs.getString("name"));
+				mem_dto.setRole(rs.getString("role"));
+				members.add(mem_dto);
+					
+				while(rs.next()) {
+					mem_dto = new MemberDTO();
+					mem_dto.setMemberId(rs.getString("member_id"));
+					mem_dto.setName(rs.getString("name"));
+					mem_dto.setRole(rs.getString("role"));
+					members.add(mem_dto);
+				}
+			}
+			else {
+				return null;
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return members;
+	}
+	
 	// 특정 회원 정보 dto 반환
 	public MemberDTO getMemberInfo(String univ, String id) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
