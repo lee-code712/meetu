@@ -14,7 +14,9 @@
 	UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
 	String searchText = request.getParameter("searchText");
 	
-	ArrayList<ProfessorDTO> profs = dao.ProfessorSearch(univ_dto, searchText); 
+	// 검색 결과 교수 DTO
+	ArrayList<ProfessorDTO> profs = dao.ProfessorSearch(univ_dto, searchText);
+	System.out.println(profs.size());
 	
 	if (profs != null) {	
 		JSONObject profJson = new JSONObject();
@@ -34,7 +36,6 @@
 				String member_id = members.get(j).getMemberId();
 				
 				if (member_id.equals(prof_id)) {
-					System.out.println(members.get(j).getName());
 					name = members.get(j).getName();
 					
 					// 이하 정보는 professor 테이블에 존재
@@ -64,6 +65,7 @@
 		
 		profJson.put("prof", profJsonArray); // json 배열을 저장
 		out.println(profJsonArray);
+		System.out.println(profJsonArray);
 	}
 	else {				// unregistered professor
 		response.setStatus(400);		// bad request

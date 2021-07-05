@@ -373,7 +373,7 @@ public class MemberDAO {
 			pstmtMember_id = conn.prepareStatement("select * from member where name like " + name + " and role=1");
 			rsMember_id = pstmtMember_id.executeQuery();
 
-			if (rsMember_id.next()) {
+			while (rsMember_id.next()) {
 				String member_id = rsMember_id.getString("member_id");
 				
 				PreparedStatement pstmtResult = conn.prepareStatement("select * from professor where prof_id=" + member_id);
