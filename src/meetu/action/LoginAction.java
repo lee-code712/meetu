@@ -18,6 +18,7 @@ public class LoginAction implements CommandAction {
 		mem_usr_dto.setUser_id(req.getParameter("user_id"));
 		mem_usr_dto.setPassword(req.getParameter("password"));
 		
+		
 		String user_id = mem_usr_dto.getUser_id();
 		String role = req.getParameter("role");
 		String univ_id = "";
