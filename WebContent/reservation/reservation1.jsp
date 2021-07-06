@@ -374,7 +374,7 @@ pageEncoding="UTF-8"%>
 					<a href="#">로그아웃</a>
 				</div>
 			</div>
-			<img src="../images/notifications_black_24dp.svg" id="alertIcon"/>
+			<img src="/reservation1/images/notifications_black_24dp.svg" id="alertIcon"/>
 		</nav>
 	</header>
 	
@@ -457,7 +457,7 @@ pageEncoding="UTF-8"%>
 				<div id="sender">
 					<div id="search">
 						<input type="text" id="searchText" placeholder="교수명을 입력하세요."/>
-						<img src="../images/search.svg" id="searchBtn"/>
+						<img src="/reservation1/images/search.svg" id="searchBtn"/>
 					</div>
 				</div>
 				<div id="messageInnerWrap">
@@ -478,7 +478,7 @@ pageEncoding="UTF-8"%>
 								<td>000교수님</td>
 								<td>컴퓨터학과</td>
 								<td>
-									<div id="infoBox"><img src="../images/info.svg" id="infoBtn"/>
+									<div id="infoBox"><img src="/reservation1/images/info.svg" id="infoBtn"/>
 										<div id="infoBox-content">
 											<p><span id="infoTitle">교수명</span></p>
 											<p>000교수님</p>
@@ -492,7 +492,7 @@ pageEncoding="UTF-8"%>
 											<p>인문관 303호</p>
 										</div>
 									</div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<img src="../images/check.svg" id="checkBtn"/>
+									<img src="/reservation1/images/check.svg" id="checkBtn"/>
 								</td>
 	
 							</tr>

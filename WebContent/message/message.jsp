@@ -34,6 +34,10 @@
             padding: 0px;
             margin: 0px;
         }
+        
+        a:link { color: white; text-decoration: none;}
+ 		a:visited { color: white; text-decoration: none;}
+ 		a:hover { color: white; text-decoration: underline;}
 
         #messageWrap {
             margin: 0 auto;
