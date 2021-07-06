@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.HashMap, java.util.Iterator, java.util.Set, meetu.dto.*" %>
+    pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="en">
 
@@ -26,6 +27,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/message/js/message.js"></script>
     <script>
 
     </script>
@@ -297,12 +299,7 @@
             <a id="myPageIcon">마이페이지</a>
         </div>
         <div id="dropdown">
-            <button id="dropBtn">
-            	<%
-					MemberDTO mem_dto = (MemberDTO) session.getAttribute("mem_dto");
-					out.println(mem_dto.getName() + "님 ▽");
-				%>
-			</button>
+            <button id="dropBtn">${mem_dto.getName()}님 ▽</button>
             <div id="dropdown-content">
                 <a href="logout.do">로그아웃</a>
             </div>
@@ -316,62 +313,34 @@
         <td>
             <ul class="mylist">
                 <li id="messageTitle"><span id="messageBanner">MEETU</span> &nbsp; 쪽지함</li>
-                <%
-					String role = mem_dto.getRole();
-					HashMap<String, String> map = (HashMap<String, String>) request.getAttribute("msg_mem");
-					Set<String> set = map.keySet();
-					Iterator<String> iterator = set.iterator();
-					while(iterator.hasNext()) {
-						String key = iterator.next();
-						String value = map.get(key);
-						if(role.equals("0")) {
-							out.println("<li id=\"list\">" + value + " " + key + "교수</li>");
-						}
-						else {
-							out.println("<li id=\"list\">" + value + " " + key + "학생</li>");
-						}
-					}	
-				%>
+                <%-- 쪽지 가능한 member list 출력 --%>
+                <c:choose>
+                	<c:when test="${mem_dto.getRole() =='0'}">
+		                <c:forEach items="${requestScope.msg_mem}" var="member">
+							<li id="list" class="list">${member.value.get(0)} ${member.value.get(1)} 교수</li>
+							<input type='hidden' class='mem_usr_id' value='${member.key}'/>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${requestScope.msg_mem}" var="member">
+							<li id="list" class="list">${member.value.get(0)} ${member.value.get(1)} 학생</li>
+							<input type='hidden' class='mem_usr_id' value='${member.key}'/>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
             </ul>
         </td>
 
         <td id="messageInner">
-            <div id="sender">컴퓨터학과 000학생</div>
+            <div id="sender"> </div>
             <div id="messageInnerWrap">
-                <div id="receiveMessage">
-                    <div id="messageType"><span id="receivetype">받는 쪽지</span> <span id="receivedate">2021-05-10</span>
-                    </div>
-                    <div id="messageContent">(메시지 내용)</div>
-                </div>
-                <div id="sendMessage">
-                    <div id="messageType"><span id="sendtype">보내는 쪽지</span> <span id="senddate">2021-05-10</span></div>
-                    <div id="messageContent">(메시지 내용)</div>
-                </div>
-
-                <div id="receiveMessage">
-                    <div id="messageType"><span id="receivetype">받는 쪽지</span> <span id="receivedate">2021-05-10</span>
-                    </div>
-                    <div id="messageContent">(메시지 내용)</div>
-                </div>
-                <div id="sendMessage">
-                    <div id="messageType"><span id="sendtype">보내는 쪽지</span> <span id="senddate">2021-05-10</span></div>
-                    <div id="messageContent">(메시지 내용)</div>
-                </div>
-
-                <div id="receiveMessage">
-                    <div id="messageType"><span id="receivetype">받는 쪽지</span> <span id="receivedate">2021-05-10</span>
-                    </div>
-                    <div id="messageContent">(메시지 내용)</div>
-                </div>
-                <div id="sendMessage">
-                    <div id="messageType"><span id="sendtype">보내는 쪽지</span> <span id="senddate">2021-05-10</span></div>
-                    <div id="messageContent">(메시지 내용)</div>
-                </div>
+                
             </div>
             <div id="messageTextWrap">
                 <input type="text" id="messageText"/>
                 <button id="textBtn">보내기</button>
             </div>
+        </td>
     </tr>
 </table>
 

@@ -25,22 +25,28 @@ public class MessageAction implements CommandAction {
 		ArrayList<ReservationDTO> reservations = (ArrayList<ReservationDTO>) reservation_dao.getReservationInfo(univ, id);
 		
 		if(reservations != null) {
-			HashMap<String, String> mem_map = new HashMap<String, String>(); 
+			HashMap<String, ArrayList<String>> mem_map = new HashMap<String, ArrayList<String>>(); 
 			Iterator<ReservationDTO> iterator = reservations.iterator();
 			MemberDAO mem_dao = MemberDAO.getInstance();
 			
 			while(iterator.hasNext()) {
 				ReservationDTO reservation_dto = iterator.next();
-				if(reservation_dto.getApproval() == 1) {
-					MemberDTO member = null;
+				if(reservation_dto.getApproval() == 1) { // 예약이 승인된 경우에만
+					String user_id;
 					if(mem_dto.getRole().equals("0")) {
-						member = mem_dao.getMemberInfo(univ, reservation_dto.getPUserId());
+						user_id = reservation_dto.getPUserId();
 					}
 					else {
-						member = mem_dao.getMemberInfo(univ, reservation_dto.getSUserId());
+						user_id = reservation_dto.getSUserId();
 					}
+					
+					MemberDTO member = mem_dao.getMemberInfo(univ, user_id);
 					DepartmentDTO dept_dto = mem_dao.getDepartmentInfo(member, univ);
-					mem_map.put(member.getName(), dept_dto.getDeptName());
+					ArrayList<String> mem_list = new ArrayList<>();
+					mem_list.add(dept_dto.getDeptName());
+					mem_list.add(member.getName());
+					
+					mem_map.put(user_id, mem_list); // key-상대방의 id, value-상대방의 학과 및 이름 
 				}
 			}
 			
