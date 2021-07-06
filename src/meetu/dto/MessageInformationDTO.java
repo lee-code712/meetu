@@ -6,6 +6,7 @@ public class MessageInformationDTO {
 	private int is_read;
 	private String send_id;
 	private String recv_id;
+	private MessageContentDTO msg_content_dto;
 	
 	public String getMsgId() {
 		return msg_id;
@@ -15,11 +16,11 @@ public class MessageInformationDTO {
 		this.msg_id = msg_id;
 	}
 	
-	public String getSentDate() {
+	public String getSentTime() {
 		return sent_time;
 	}
 	
-	public void setSentDate(String sent_time) {
+	public void setSentTime(String sent_time) {
 		this.sent_time = sent_time;
 	}
 	
@@ -45,6 +46,14 @@ public class MessageInformationDTO {
 	
 	public void setRecvId(String recv_id) {
 		this.recv_id = recv_id;
+	}
+	
+	public MessageContentDTO getMsgContentDto() {
+		return msg_content_dto;
+	}
+
+	public void setMsgContentDto(MessageContentDTO msg_content_dto) {
+		this.msg_content_dto = msg_content_dto;
 	}
 	
 }
