@@ -104,6 +104,15 @@
 
         #receiveMessage {
             display: inline-block;
+            margin: 20px 40px 0 40px;
+            width: 1000px;
+            height: 108px;
+            background: #F8F8F8;
+            border-radius: 10px;
+        }
+
+        #receiveMessage:first-child {
+            display: inline-block;
             margin: 0 40px 0 40px;
             width: 1000px;
             height: 108px;
@@ -113,7 +122,7 @@
 
         #sendMessage {
             float: right;
-            margin: 20px 40px 20px 0;
+            margin: 20px 40px 0 0;
             width: 1000px;
             height: 108px;
             background: #DFE7F4;
