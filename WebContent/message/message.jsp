@@ -342,7 +342,7 @@
             </div>
             <div id="messageTextWrap">
                 <input type="text" id="messageText"/>
-                <button id="textBtn">보내기</button>
+                <button id="textBtn" onclick="sendMessage()">보내기</button>
             </div>
         </td>
     </tr>

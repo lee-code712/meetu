@@ -105,5 +105,103 @@ public class MessageDAO {
 
 		return msg_content_dto;
 	}
+	
+	// 메시지 정보 dto db에 추가
+	public String addMessageInfo(MessageInformationDTO msg_info_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String msg_id = null;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "insert into message_info (msg_id, sent_time, send_id, recv_id) ";
+			sql += "values (?, sysdate, ?, ?)";
+				
+			msg_id = "0000" + String.valueOf(getCountMessageInfoRows(univ) + 1); // id 자동생성을 구현 안해서 일단 아무렇게 id 만듦..
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, msg_id);
+			pstmt.setString(2, msg_info_dto.getSendId());
+			pstmt.setString(3, msg_info_dto.getRecvId());
+
+			rs = pstmt.executeQuery();
+				
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return msg_id;
+	}
+		
+	// 메시지 정보 dto db에 추가
+	public boolean addMessage(MessageContentDTO msg_content_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_added = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "insert into message_content (msg_id, msg) ";
+			sql += "values (?, ?)";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, msg_content_dto.getMsgId());
+			pstmt.setString(2, msg_content_dto.getMsg());
+
+			rs = pstmt.executeQuery();
+					
+			is_added = true;
+					
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_added;
+	}
+
+	// 메시지 정보 테이블 row 개수 반환 --> id 생성을 위해 필요
+	public int getCountMessageInfoRows(String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int row_cnt = 0;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from message_info";
+
+			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+			rs = pstmt.executeQuery();
+				
+			rs.last();
+			row_cnt = rs.getRow();
+					
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return row_cnt;
+	}
 
 }
