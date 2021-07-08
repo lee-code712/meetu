@@ -16,7 +16,6 @@
 	
 	// 검색 결과 교수 DTO
 	ArrayList<ProfessorDTO> profs = dao.ProfessorSearch(univ_dto, searchText);
-	System.out.println(profs.size());
 	
 	if (profs != null) {	
 		JSONObject profJson = new JSONObject();
@@ -65,7 +64,6 @@
 		
 		profJson.put("prof", profJsonArray); // json 배열을 저장
 		out.println(profJsonArray);
-		System.out.println(profJsonArray);
 	}
 	else {				// unregistered professor
 		response.setStatus(400);		// bad request
