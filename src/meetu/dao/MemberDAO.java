@@ -25,8 +25,9 @@ public class MemberDAO {
 		return instance;
 	}
 
-	// login정보 확인-성공 시 회원정보 반환 
-	public MemberDTO loginOk(MemberUserDTO mem_usr_dto, String univ, String role) throws NamingException/* , SQLException */ {
+	// login정보 확인-성공 시 회원정보 반환
+	public MemberDTO loginOk(MemberUserDTO mem_usr_dto, String univ, String role)
+			throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		MemberDTO mem_dto = null;
@@ -61,7 +62,7 @@ public class MemberDAO {
 
 		return mem_dto;
 	}
-			
+
 	// 특정 학생 회원 정보 dto 반환
 	public StudentDTO getStudentInfo(String univ, String id) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
@@ -97,7 +98,7 @@ public class MemberDAO {
 
 		return stu_dto;
 	}
-		
+
 	// 특정 교수 회원 정보 dto 반환
 	public ProfessorDTO getProfessorInfo(String univ, String id) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
@@ -134,7 +135,7 @@ public class MemberDAO {
 
 		return prof_dto;
 	}
-	
+
 	// 모든 회원 정보 dto 반환
 	public ArrayList<MemberDTO> getAllMembers(String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
@@ -155,16 +156,15 @@ public class MemberDAO {
 				mem_dto.setName(rs.getString("name"));
 				mem_dto.setRole(rs.getString("role"));
 				members.add(mem_dto);
-					
-				while(rs.next()) {
+
+				while (rs.next()) {
 					mem_dto = new MemberDTO();
 					mem_dto.setMemberId(rs.getString("member_id"));
 					mem_dto.setName(rs.getString("name"));
 					mem_dto.setRole(rs.getString("role"));
 					members.add(mem_dto);
 				}
-			}
-			else {
+			} else {
 				return null;
 			}
 			// if close
@@ -180,7 +180,7 @@ public class MemberDAO {
 
 		return members;
 	}
-	
+
 	// 특정 회원 정보 dto 반환
 	public MemberDTO getMemberInfo(String univ, String id) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
@@ -201,8 +201,7 @@ public class MemberDAO {
 				mem_dto.setMemberId(rs.getString("member_id"));
 				mem_dto.setName(rs.getString("name"));
 				mem_dto.setRole(rs.getString("role"));
-			}
-			else {
+			} else {
 				return null;
 			}
 			// if close
@@ -218,25 +217,24 @@ public class MemberDAO {
 
 		return mem_dto;
 	}
-		
+
 	// 특정 회원의 학과 정보 dto 반환
 	public DepartmentDTO getDepartmentInfo(MemberDTO mem_dto, String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		DepartmentDTO dept_dto = null;
 		String role = mem_dto.getRole();
-			
+
 		try {
 			Connection conn = DBConnection.getConnection(univ);
 			String sql = "";
-			if(role.equals("0")) {
+			if (role.equals("0")) {
 				sql += "select * from student s, member m, department d ";
 				sql += "where s.stu_id = m.member_id and s.dept_id = d.dept_id and member_id=?";
-			}
-			else {
+			} else {
 				sql += "select * from professor p, member m, department d ";
 				sql += "where p.prof_id = m.member_id and p.dept_id = d.dept_id and member_id=?";
-					
+
 			}
 
 			pstmt = conn.prepareStatement(sql);
@@ -318,12 +316,11 @@ public class MemberDAO {
 		if (id_check) { // 유효한 학번인 경우 아이디 생성해 리턴
 			String user_id = univ_dto.getUnivId() + member_id;
 			return user_id;
-		}
-		else { // 이미 가입된 학번인 경우 -3 리턴
+		} else { // 이미 가입된 학번인 경우 -3 리턴
 			return "-3";
 		}
 	}
-	
+
 	// join - 회원가입 정보 db에 추가
 	public String addUser(MemberUserDTO mem_usr_dto, UniversityDTO univ_dto) {
 		PreparedStatement pstmt = null;
@@ -335,13 +332,14 @@ public class MemberDAO {
 			Connection conn = DBConnection.getConnection(univ_dto.getUnivId());
 			String query = "insert into member_user (user_id, password, member_id) values ";
 
-			query += "('" + mem_usr_dto.getUser_id() + "', '" + mem_usr_dto.getPassword() + "', '" + mem_usr_dto.getMember_id() + "')";
+			query += "('" + mem_usr_dto.getUser_id() + "', '" + mem_usr_dto.getPassword() + "', '"
+					+ mem_usr_dto.getMember_id() + "')";
 
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();
 
 			is_added = "1";
-			
+
 			// if close
 			if (rs != null)
 				rs.close();
@@ -354,7 +352,7 @@ public class MemberDAO {
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
-		
+
 		return is_added;
 	}
 
@@ -375,16 +373,17 @@ public class MemberDAO {
 
 			while (rsMember_id.next()) {
 				String member_id = rsMember_id.getString("member_id");
-				
-				PreparedStatement pstmtResult = conn.prepareStatement("select * from professor where prof_id=" + member_id);
+
+				PreparedStatement pstmtResult = conn
+						.prepareStatement("select * from professor where prof_id=" + member_id);
 				ResultSet rsResult = pstmtResult.executeQuery();
-								
+
 				while (rsResult.next()) {
 					String major = rsResult.getString("major");
 					String email = rsResult.getString("email");
 					String office = rsResult.getString("office");
 					String dept_id = rsResult.getString("dept_id");
-						
+
 					ProfessorDTO prof_dto = new ProfessorDTO();
 					prof_dto.setProfId(member_id);
 					if (major != null)
@@ -395,10 +394,10 @@ public class MemberDAO {
 						prof_dto.setOffice(office);
 					if (dept_id != null)
 						prof_dto.setDeptId(dept_id);
-					
+
 					profs.add(prof_dto);
 				}
-				
+
 				if (rsResult != null)
 					rsResult.close();
 				if (pstmtResult != null)
@@ -417,5 +416,55 @@ public class MemberDAO {
 		}
 
 		return profs;
+	}
+
+	// 특정 교수가 가르치는 course dto 반환
+	public ArrayList<CourseDTO> getCourseInfo(ProfessorDTO prof_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		ArrayList<CourseDTO> courses = new ArrayList<CourseDTO>();
+		
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from class where prof_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, prof_dto.getProfId());
+
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				String course_id = rs.getNString("course_id");
+				
+				sql = "select * from course where course_id=?";
+				
+				PreparedStatement pstmt_new = conn.prepareStatement(sql);
+				pstmt_new.setString(1, course_id);
+
+				ResultSet rs_new = pstmt_new.executeQuery();
+				
+				if (rs_new.next()) {
+					String title = rs_new.getNString("title");
+					
+					CourseDTO course_dto = new CourseDTO();
+					course_dto.setCourseId(course_id);
+					course_dto.setTitle(title);
+					
+					courses.add(course_dto);
+				}
+			} 
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return courses;
 	}
 }

@@ -4,7 +4,7 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 
 function searchProfessor() {
 	var searchText = $("#searchText").val();
-	$("tbody").children().remove();
+	// $("tbody").children().remove();
 	
 	$.ajax({
 	 	type: "GET",
@@ -34,8 +34,8 @@ function updatePage(responseText) {
 		var name = prof.name;
 		var major = prof.major;
 		var email = prof.email;
-		var office = "임시 연구실";
-		var course = "임시 과목";
+		var office = prof.office;
+		var course = prof.course;
 		
 		var newTrElement = document.createElement("tr");
 		
@@ -167,8 +167,8 @@ function updatePage(responseText) {
 		$(newTrElement).append(newNameTdElement);
 		$(newTrElement).append(newMajorTdElement);
 		$(newTrElement).append(newInfoTdElement);
-		
-		// $("#reservationWrap > tr > #messageInner > #messageInnerWrap > #profListWrap > table > tbody").append(newTrElement);
-		$("tbody").append(newTrElement);
+
+		// tbody에 tr 추가
+	    $("tbody:last-child").append(newTrElement);
 	});
 }
