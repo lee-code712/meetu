@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="application/json; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,23 +24,23 @@ pageEncoding="UTF-8"%>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-    <script src="/reservation/js/reservation.js"></script>        
+    <script src="/reservation/js/reservation.js"></script>
     <style>
         header {
             width: 100%;
             height: 100px;
             top: 0px;
-         	background: rgba(0, 0, 0, .800);
+            background: rgba(0, 0, 0, .800);
             box-sizing: border-box;
             transition: All 0.2s ease;
             -webkit-transition: All 0.2s ease;
             -moz-transition: All 0.2s ease;
             -o-transition: All 0.2s ease;
         }
-     
-    	#header_inner {
-        	display: flex;
-         	align-items: center;
+
+        #header_inner {
+            display: flex;
+            align-items: center;
             margin: 0 auto;
             width: 1194px;
             height: 100px;
@@ -56,9 +56,9 @@ pageEncoding="UTF-8"%>
             font-family: 'Yellowtail', cursive;
             font-weight: bold;
         }
-        
+
         #title:hover {
-        	cursor: pointer;
+            cursor: pointer;
         }
 
         #gnb {
@@ -243,7 +243,7 @@ pageEncoding="UTF-8"%>
             padding-top: 28px;
             padding-left: 20px;
             margin-left: 120px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             height: 40px;
             font-size: 18px;
             font-weight: bold;
@@ -264,28 +264,35 @@ pageEncoding="UTF-8"%>
         #messageInnerWrap {
             widht: 1610px;
             height: 648px;
-
         }
 
         #search {
-            width: 300px;
-            height: 30px;
-            font-size: 12px;
-            background: white;
+            width: 330px;
+            height: 34px;
+            border: none;
             border-radius: 30px;
-            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+            background: #ffffff;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 2px;
         }
 
         #searchText {
-            width: 256px;
-            height: 30px;
+            font-size: 14px;
+            width: 200px;
+            margin: 6px 0 4px 12px;
+            padding-left: 4px;
+            border: 0px;
+            outline: none;
+            float: left;
             border-radius: 30px;
-            border: none;
-            padding-left: 10px;
         }
 
         #searchBtn {
-            padding-bottom: 3px;
+            width: 54px;
+            height: 28px;
+            margin: 4px 0;
+            border: none;
+            outline: none;
+            float: right;
         }
 
         #searchBtn:hover {
@@ -349,170 +356,170 @@ pageEncoding="UTF-8"%>
         #infoTitle {
             color: #3296B6;
         }
-        
+
         #infoBtn:hover,
         #checkBtn:hover {
-        	cursor: pointer;
+            cursor: pointer;
         }
 
     </style>
 </head>
 
 <body>
-	<header>
-		<nav id="header_inner">
-			<div id="title"><a>MEETU</a></div>
-			<div id="gnb">
-				<a id="noticeIcon">공지사항</a>
-				<a id="reserveIcon">상담예약</a>
-				<a id="messageIcon">쪽지함</a>
-				<a id="myPageIcon">마이페이지</a>
-			</div>
-			<div id="dropdown">
-				<button id="dropBtn">${mem_dto.getName()}님 ▽</button>
-				<div id="dropdown-content">
-					<a href="logout.do">로그아웃</a>
-				</div>
-			</div>
-			<img src="/reservation/images/notifications_black_24dp.svg" id="alertIcon"/>
-		</nav>
-	</header>
-	
-	<table id="reservationWrap">
-		<tr>
-			<td>
-	
-				<ul id="deptWrap">
-					<li id="selectDept"><span id="reserveBanner">MEETU</span> &nbsp; 상담예약</li>
-	
-					<li class="college">&nbsp;&nbsp;&nbsp;&nbsp;인문대학
-						<ul class="deptList">
-							<li class="dept">국어국문학과</li>
-							<li class="dept">국사학과</li>
-							<li class="dept">문예창작과</li>
-							<li class="dept">영어과</li>
-							<li class="dept">일본어과</li>
-							<li class="dept">프랑스어과</li>
-							<li class="dept">독일어과</li>
-							<li class="dept">중어중국학과</li>
-						</ul>
-					</li>
-					<li class="college">&nbsp;&nbsp;&nbsp;&nbsp;사회과학대학
-						<ul class="deptList">
-							<li class="dept">경영학과</li>
-							<li class="dept">세무회계학과</li>
-							<li class="dept">경제학과</li>
-							<li class="dept">국제경영학과</li>
-							<li class="dept">문헌정보학과</li>
-							<li class="dept">사회복지학과</li>
-							<li class="dept">아동학과</li>
-						</ul>
-					</li>
-					<li class="college">&nbsp;&nbsp;&nbsp;&nbsp;자연과학대학
-						<ul class="deptList">
-							<li class="dept">식품영양학과</li>
-							<li class="dept">보건관리학과</li>
-							<li class="dept">응용화학전공</li>
-							<li class="dept">화장품학전공</li>
-							<li class="dept">체육학과</li>
-							<li class="dept">토탈뷰티케어학과</li>
-						</ul>
-					</li>
-					<li class="college">&nbsp;&nbsp;&nbsp;&nbsp;정보과학대학
-						<ul class="deptList">
-							<li class="dept">컴퓨터학과</li>
-							<li class="dept">정보통계학과</li>
-						</ul>
-					</li>
-					<li class="college">&nbsp;&nbsp;&nbsp;&nbsp;약학대학</li>
-					<li class="college">&nbsp;&nbsp;&nbsp;&nbsp;예술대학
-						<ul class="deptList">
-							<li class="dept">회화과</li>
-							<li class="dept">디지털공예과</li>
-							<li class="dept">큐레이터학과</li>
-							<li class="dept">피아노과</li>
-							<li class="dept">관현악과</li>
-							<li class="dept">성악과</li>
-						</ul>
-					</li>
-					<li class="college">&nbsp;&nbsp;&nbsp;&nbsp;디자인대학
-						<ul class="deptList">
-							<li class="dept">패션디자인학과</li>
-							<li class="dept">시각&실내디자인학과</li>
-							<li class="dept">미디어디자인학과</li>
-						</ul>
-					</li>
-					<li class="college">&nbsp;&nbsp;&nbsp;&nbsp;공연예술대학
-						<ul class="deptList">
-							<li class="dept">무용과</li>
-							<li class="dept">방송연예과</li>
-							<li class="dept">실용음악과</li>
-							<li class="dept">모델과</li>
-						</ul>
-					</li>
-				</ul>
-			</td>
-	
-			<td id="messageInner">
-				<div id="sender">
-					<div id="search">
-						<input type="text" id="searchText" placeholder="교수명을 입력하세요."/>
-						<img src="/reservation/images/search.svg" id="searchBtn"/>
-					</div>
-				</div>
-				<div id="messageInnerWrap">
-					<div id="profListWrap">
-						<table class="profList">
-							<thead>
-							<tr>
-								<th>번호</th>
-								<th>교수명</th>
-								<th>학과</th>
-								<th>정보보기 / 선택하기</th>
-							</tr>
-							</thead>
-	
-							<tbody id="profsTbody">
-							<!-- <tr>
-								<td>1</td>
-								<td>000교수님</td>
-								<td>컴퓨터학과</td>
-								<td>
-									<div id="infoBox"><img src="/reservation/images/info.svg" id="infoBtn"/>
-										<div id="infoBox-content">
-											<p><span id="infoTitle">교수명</span></p>
-											<p>000교수님</p>
-											<p><span id="infoTitle">전공</span></p>
-											<p>컴퓨터학과</p>
-											<p><span id="infoTitle">담당과목</span></p>
-											<p>모바일 소프트웨어</p>
-											<p><span id="infoTitle">이메일</span></p>
-											<p>이메일@dongduk.ac.kr</p>
-											<p><span id="infoTitle">연구실 위치</span></p>
-											<p>인문관 303호</p>
-										</div>
-									</div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<img src="/reservation/images/check.svg" id="checkBtn"/>
-								</td>
-							</tr>  -->
-	
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</td>
-		</tr>
-	</table>
-	
-	<script>
-		$('.college').click(function () {
-			$('.deptList').slideUp();
-			if ($(this).children('.deptList').is(':visible')) {
-				$(this).children('.deptList').slideUp();
-			} else {
-				$(this).children('.deptList').slideDown();
-			}
-		});
-	</script>
+<header>
+    <nav id="header_inner">
+        <div id="title"><a>MEETU</a></div>
+        <div id="gnb">
+            <a id="noticeIcon">공지사항</a>
+            <a id="reserveIcon">상담예약</a>
+            <a id="messageIcon">쪽지함</a>
+            <a id="myPageIcon">마이페이지</a>
+        </div>
+        <div id="dropdown">
+            <button id="dropBtn">${mem_dto.getName()}님 ▽</button>
+            <div id="dropdown-content">
+                <a href="logout.do">로그아웃</a>
+            </div>
+        </div>
+        <img src="/reservation/images/notifications_black_24dp.svg" id="alertIcon"/>
+    </nav>
+</header>
+
+<table id="reservationWrap">
+    <tr>
+        <td>
+
+            <ul id="deptWrap">
+                <li id="selectDept"><span id="reserveBanner">MEETU</span> &nbsp; 상담예약</li>
+
+                <li class="college">&nbsp;&nbsp;&nbsp;&nbsp;인문대학
+                    <ul class="deptList">
+                        <li class="dept">국어국문학과</li>
+                        <li class="dept">국사학과</li>
+                        <li class="dept">문예창작과</li>
+                        <li class="dept">영어과</li>
+                        <li class="dept">일본어과</li>
+                        <li class="dept">프랑스어과</li>
+                        <li class="dept">독일어과</li>
+                        <li class="dept">중어중국학과</li>
+                    </ul>
+                </li>
+                <li class="college">&nbsp;&nbsp;&nbsp;&nbsp;사회과학대학
+                    <ul class="deptList">
+                        <li class="dept">경영학과</li>
+                        <li class="dept">세무회계학과</li>
+                        <li class="dept">경제학과</li>
+                        <li class="dept">국제경영학과</li>
+                        <li class="dept">문헌정보학과</li>
+                        <li class="dept">사회복지학과</li>
+                        <li class="dept">아동학과</li>
+                    </ul>
+                </li>
+                <li class="college">&nbsp;&nbsp;&nbsp;&nbsp;자연과학대학
+                    <ul class="deptList">
+                        <li class="dept">식품영양학과</li>
+                        <li class="dept">보건관리학과</li>
+                        <li class="dept">응용화학전공</li>
+                        <li class="dept">화장품학전공</li>
+                        <li class="dept">체육학과</li>
+                        <li class="dept">토탈뷰티케어학과</li>
+                    </ul>
+                </li>
+                <li class="college">&nbsp;&nbsp;&nbsp;&nbsp;정보과학대학
+                    <ul class="deptList">
+                        <li class="dept">컴퓨터학과</li>
+                        <li class="dept">정보통계학과</li>
+                    </ul>
+                </li>
+                <li class="college">&nbsp;&nbsp;&nbsp;&nbsp;약학대학</li>
+                <li class="college">&nbsp;&nbsp;&nbsp;&nbsp;예술대학
+                    <ul class="deptList">
+                        <li class="dept">회화과</li>
+                        <li class="dept">디지털공예과</li>
+                        <li class="dept">큐레이터학과</li>
+                        <li class="dept">피아노과</li>
+                        <li class="dept">관현악과</li>
+                        <li class="dept">성악과</li>
+                    </ul>
+                </li>
+                <li class="college">&nbsp;&nbsp;&nbsp;&nbsp;디자인대학
+                    <ul class="deptList">
+                        <li class="dept">패션디자인학과</li>
+                        <li class="dept">시각&실내디자인학과</li>
+                        <li class="dept">미디어디자인학과</li>
+                    </ul>
+                </li>
+                <li class="college">&nbsp;&nbsp;&nbsp;&nbsp;공연예술대학
+                    <ul class="deptList">
+                        <li class="dept">무용과</li>
+                        <li class="dept">방송연예과</li>
+                        <li class="dept">실용음악과</li>
+                        <li class="dept">모델과</li>
+                    </ul>
+                </li>
+            </ul>
+        </td>
+
+        <td id="messageInner">
+            <div id="sender">
+                <div id="search">
+                    <input type="text" placeholder="검색어를 입력하세요." id="searchText">
+                    <img src="/reservation/images/search.svg" id="searchBtn"/>
+                </div>
+            </div>
+            <div id="messageInnerWrap">
+                <div id="profListWrap">
+                    <table class="profList">
+                        <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>교수명</th>
+                            <th>학과</th>
+                            <th>정보보기 / 선택하기</th>
+                        </tr>
+                        </thead>
+
+                        <tbody id="profsTbody">
+                        <!-- <tr>
+                            <td>1</td>
+                            <td>000교수님</td>
+                            <td>컴퓨터학과</td>
+                            <td>
+                                <div id="infoBox"><img src="/reservation/images/info.svg" id="infoBtn"/>
+                                    <div id="infoBox-content">
+                                        <p><span id="infoTitle">교수명</span></p>
+                                        <p>000교수님</p>
+                                        <p><span id="infoTitle">전공</span></p>
+                                        <p>컴퓨터학과</p>
+                                        <p><span id="infoTitle">담당과목</span></p>
+                                        <p>모바일 소프트웨어</p>
+                                        <p><span id="infoTitle">이메일</span></p>
+                                        <p>이메일@dongduk.ac.kr</p>
+                                        <p><span id="infoTitle">연구실 위치</span></p>
+                                        <p>인문관 303호</p>
+                                    </div>
+                                </div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="/reservation/images/check.svg" id="checkBtn"/>
+                            </td>
+                        </tr>  -->
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<script>
+    $('.college').click(function () {
+        $('.deptList').slideUp();
+        if ($(this).children('.deptList').is(':visible')) {
+            $(this).children('.deptList').slideUp();
+        } else {
+            $(this).children('.deptList').slideDown();
+        }
+    });
+</script>
 </body>
 </html>
