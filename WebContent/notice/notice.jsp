@@ -281,8 +281,7 @@
         }
 
     </style>
-    <link rel="stylesheet" href="../components/css/header.css"/>
-    <link rel="stylesheet" href="/notice/css/notice.css"/>
+   
 </head>
 
 <body>
