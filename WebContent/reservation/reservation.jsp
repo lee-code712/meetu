@@ -369,7 +369,7 @@ pageEncoding="UTF-8"%>
 				<a id="myPageIcon">마이페이지</a>
 			</div>
 			<div id="dropdown">
-				<button id="dropBtn">(이름)님 ▽</button>
+				<button id="dropBtn">${mem_dto.getName()}님 ▽</button>
 				<div id="dropdown-content">
 					<a href="logout.do">로그아웃</a>
 				</div>
