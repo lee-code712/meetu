@@ -472,7 +472,7 @@ pageEncoding="UTF-8"%>
 							</tr>
 							</thead>
 	
-							<tbody>
+							<tbody id="profsTbody">
 							<!-- <tr>
 								<td>1</td>
 								<td>000교수님</td>

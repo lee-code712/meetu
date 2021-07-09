@@ -4,7 +4,7 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 
 function searchProfessor() {
 	var searchText = $("#searchText").val();
-	// $("tbody").children().remove();
+	$("#profsTbody").children().remove();
 	
 	$.ajax({
 	 	type: "GET",
@@ -169,6 +169,6 @@ function updatePage(responseText) {
 		$(newTrElement).append(newInfoTdElement);
 
 		// tbody에 tr 추가
-	    $("tbody:last-child").append(newTrElement);
+	    $("#profsTbody").append(newTrElement);
 	});
 }
