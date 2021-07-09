@@ -197,7 +197,7 @@
                 <a href="#">로그아웃</a>
             </div>
         </div>
-        <img src="../images/notifications_black_24dp.svg" id="alertIcon"/>
+        <img src="/notice/images/notifications_black_24dp.svg" id="alertIcon"/>
     </nav>
 </header>
 

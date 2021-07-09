@@ -300,7 +300,7 @@
                 <a href="#">로그아웃</a>
             </div>
         </div>
-        <img src="../images/notifications_black_24dp.svg" id="alertIcon"/>
+        <img src="/notice/images/notifications_black_24dp.svg" id="alertIcon"/>
     </nav>
 </header>
 
@@ -318,7 +318,7 @@
 
     <div id="search">
         <input type="text" placeholder="검색어를 입력하세요." id="searchText">
-        <img src="./search.svg" id="searchBtn"/>
+        <img src="/notice/images/search.svg" id="searchBtn"/>
     </div>
 </div>
 
