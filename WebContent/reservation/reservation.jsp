@@ -5,6 +5,7 @@
 <head>
     <title>reservationPage</title>
 
+
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Required meta tags -->
@@ -24,7 +25,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-    <script src="/reservation/js/reservation.js"></script>
     <style>
         header {
             width: 100%;
@@ -131,38 +131,32 @@
 
         #reservationWrap {
             margin: 0 auto;
-            width: 1920px;
+            width: 1194px;
             height: 840px;
         }
 
         #deptWrap {
-            display: table-cell;
-            float: left;
-            width: 310px;
+            margin-top: 80px;
+            width: 18rem;
             height: 840px;
-            background-color: #3E454D;
-            vertical-align: middle;
+            border: none;
+            border-radius: 10px;
         }
 
         #selectDept {
             display: flex;
-            align-items: center;
-            padding-left: 20px;
+            align-items: flex-start;
             width: 100%;
-            height: 80px;
+            height: 40px;
             font-size: 18px;
             font-weight: bold;
-            color: white;
             border-bottom: 1px dotted white;
-            margin-bottom: 10px;
         }
 
         .college {
-            background-color: #3E454D;
             line-height: 40px;
             font-size: 14px;
             cursor: pointer;
-            color: white;
         }
 
         .college:hover {
@@ -171,9 +165,9 @@
         }
 
         .deptList {
-            width: 310px;
+            width: 290px;
             padding-left: 20px;
-            background: #F6F6F6;
+            background: #ECECEC;
         }
 
         .dept {
@@ -187,13 +181,9 @@
         }
 
         .profList {
-            width: 888px;
+            width: 854px;
             margin: 0 auto;
-            border-top: 3px solid #FFC42E;
-        }
-
-        .profList th {
-            background-color: #FFFEFC;
+            border-top: 2px solid #3E454D;
         }
 
         .profList th,
@@ -228,33 +218,30 @@
             color: #8B8B8B;
         }
 
-        #reserveBanner {
-            font-family: 'Yellowtail', cursive;
-        }
-
         #messageInner {
             display: block;
-            width: 1610px;
+            width: 894px;
             height: 840px;
-            background: #EBEBEB;
+
+        }
+
+        body {
+            background: #F4F4F4;
         }
 
         #sender {
-            padding-top: 28px;
-            padding-left: 20px;
-            margin-left: 120px;
-            margin-bottom: 50px;
-            height: 40px;
+            margin-top: 80px;
+            margin-bottom: 30px;
+            height: 34px;
+            width: 900px;
             font-size: 18px;
             font-weight: bold;
             color: #3E454D;
-
         }
 
         #profListWrap {
-            padding-left: 20px;
-            margin-left: 120px;
-            width: 900px;
+            margin-left: 48px;
+            width: 500px;
             height: 700px;
             font-size: 18px;
             font-weight: bold;
@@ -262,11 +249,11 @@
         }
 
         #messageInnerWrap {
-            widht: 1610px;
             height: 648px;
         }
 
         #search {
+            float: right;
             width: 330px;
             height: 34px;
             border: none;
@@ -278,7 +265,7 @@
         #searchText {
             font-size: 14px;
             width: 200px;
-            margin: 6px 0 4px 12px;
+            margin: 8px 0 4px 12px;
             padding-left: 4px;
             border: 0px;
             outline: none;
@@ -299,22 +286,15 @@
             cursor: pointer;
         }
 
-        .profList {
-            width: 1300px;
-            border-top: 3px solid #eee;
-        }
-
         .profList th {
             font-size: 14px;
             border-bottom: 1px solid #C4C4C4;
             text-align: center;
-            background: white;
         }
 
         .profList td {
             font-size: 14px;
             text-align: center;
-            background: white;
         }
 
         #infoBox {
@@ -330,6 +310,7 @@
         }
 
         #infoBox-content {
+            padding-top: 14px;
             width: 310px;
             display: none;
             position: absolute;
@@ -357,10 +338,45 @@
             color: #3296B6;
         }
 
-        #infoBtn:hover,
+        #banner {
+            display: table;
+            margin: 0 auto;
+            width: 1920px;
+            height: 100px;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        #banner div {
+            display: table-cell;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #3E454D;
+            vertical-align: middle;
+        }
+
         #checkBtn:hover {
+            display: block;
+            padding: 4px 8px;
+            margin: 0 auto;
+            border: 1px solid #3E454D;
+            color: #3E454D;
+            background: white;
+            border-radius: 30px;
             cursor: pointer;
         }
+
+        #checkBtn {
+            display: block;
+            padding: 4px 8px;
+            margin: 0 auto;
+            background: #3E454D;
+            border: 1px solid #3E454D;
+            color: white;
+            border-radius: 30px;
+        }
+
 
     </style>
 </head>
@@ -378,21 +394,24 @@
         <div id="dropdown">
             <button id="dropBtn">${mem_dto.getName()}님 ▽</button>
             <div id="dropdown-content">
-                <a href="logout.do">로그아웃</a>
+                <a href="#">로그아웃</a>
             </div>
         </div>
         <img src="/reservation/images/notifications_black_24dp.svg" id="alertIcon"/>
     </nav>
 </header>
 
+<div id="banner">
+    <div>상담예약</div>
+</div>
+
 <table id="reservationWrap">
     <tr>
         <td>
-
             <ul id="deptWrap">
-                <li id="selectDept"><span id="reserveBanner">MEETU</span> &nbsp; 상담예약</li>
+                <li id="selectDept"><img src="/reservation/images/school_black_24dp.svg"/>&nbsp;&nbsp;학과 선택</li>
 
-                <li class="college">&nbsp;&nbsp;&nbsp;&nbsp;인문대학
+                <li class="college"><img src="/reservation/images/label_important_black_24dp.svg"/>&nbsp;인문대학
                     <ul class="deptList">
                         <li class="dept">국어국문학과</li>
                         <li class="dept">국사학과</li>
@@ -404,7 +423,7 @@
                         <li class="dept">중어중국학과</li>
                     </ul>
                 </li>
-                <li class="college">&nbsp;&nbsp;&nbsp;&nbsp;사회과학대학
+                <li class="college"><img src="/reservation/images/label_important_black_24dp.svg"/>&nbsp;사회과학대학
                     <ul class="deptList">
                         <li class="dept">경영학과</li>
                         <li class="dept">세무회계학과</li>
@@ -415,7 +434,7 @@
                         <li class="dept">아동학과</li>
                     </ul>
                 </li>
-                <li class="college">&nbsp;&nbsp;&nbsp;&nbsp;자연과학대학
+                <li class="college"><img src="/reservation/images/label_important_black_24dp.svg"/>&nbsp;자연과학대학
                     <ul class="deptList">
                         <li class="dept">식품영양학과</li>
                         <li class="dept">보건관리학과</li>
@@ -425,14 +444,14 @@
                         <li class="dept">토탈뷰티케어학과</li>
                     </ul>
                 </li>
-                <li class="college">&nbsp;&nbsp;&nbsp;&nbsp;정보과학대학
+                <li class="college"><img src="/reservation/images/label_important_black_24dp.svg"/>&nbsp;정보과학대학
                     <ul class="deptList">
                         <li class="dept">컴퓨터학과</li>
                         <li class="dept">정보통계학과</li>
                     </ul>
                 </li>
-                <li class="college">&nbsp;&nbsp;&nbsp;&nbsp;약학대학</li>
-                <li class="college">&nbsp;&nbsp;&nbsp;&nbsp;예술대학
+                <li class="college"><img src="/reservation/images/label_important_black_24dp.svg"/>&nbsp;약학대학</li>
+                <li class="college"><img src="/reservation/images/label_important_black_24dp.svg"/>&nbsp;예술대학
                     <ul class="deptList">
                         <li class="dept">회화과</li>
                         <li class="dept">디지털공예과</li>
@@ -442,14 +461,14 @@
                         <li class="dept">성악과</li>
                     </ul>
                 </li>
-                <li class="college">&nbsp;&nbsp;&nbsp;&nbsp;디자인대학
+                <li class="college"><img src="/reservation/images/label_important_black_24dp.svg"/>&nbsp;디자인대학
                     <ul class="deptList">
                         <li class="dept">패션디자인학과</li>
                         <li class="dept">시각&실내디자인학과</li>
                         <li class="dept">미디어디자인학과</li>
                     </ul>
                 </li>
-                <li class="college">&nbsp;&nbsp;&nbsp;&nbsp;공연예술대학
+                <li class="college"><img src="/reservation/images/label_important_black_24dp.svg"/>&nbsp;공연예술대학
                     <ul class="deptList">
                         <li class="dept">무용과</li>
                         <li class="dept">방송연예과</li>
@@ -475,17 +494,18 @@
                             <th>번호</th>
                             <th>교수명</th>
                             <th>학과</th>
-                            <th>정보보기 / 선택하기</th>
+                            <th>정보보기</th>
+                            <th></th>
                         </tr>
                         </thead>
 
-                        <tbody id="profsTbody">
-                        <!-- <tr>
+                        <tbody>
+                        <tr> <!--선택하기 버튼 있음-->
                             <td>1</td>
                             <td>000교수님</td>
                             <td>컴퓨터학과</td>
                             <td>
-                                <div id="infoBox"><img src="/reservation/images/info.svg" id="infoBtn"/>
+                                <div id="infoBox"><img src="./info.svg" id="infoBtn"/>
                                     <div id="infoBox-content">
                                         <p><span id="infoTitle">교수명</span></p>
                                         <p>000교수님</p>
@@ -498,10 +518,39 @@
                                         <p><span id="infoTitle">연구실 위치</span></p>
                                         <p>인문관 303호</p>
                                     </div>
-                                </div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <img src="/reservation/images/check.svg" id="checkBtn"/>
+                                </div>
                             </td>
-                        </tr>  -->
+                            <td>
+                                <button id="checkBtn">선택하기</button>
+                            </td>
+
+                        </tr>
+
+                        <tr> <!--선택하기 버튼 없음-->
+                            <td>2</td>
+                            <td>000교수님</td>
+                            <td>컴퓨터학과</td>
+                            <td>
+                                <div id="infoBox"><img src="./info.svg" id="infoBtn"/>
+                                    <div id="infoBox-content">
+                                        <p><span id="infoTitle">교수명</span></p>
+                                        <p>000교수님</p>
+                                        <p><span id="infoTitle">전공</span></p>
+                                        <p>컴퓨터학과</p>
+                                        <p><span id="infoTitle">담당과목</span></p>
+                                        <p>모바일 소프트웨어</p>
+                                        <p><span id="infoTitle">이메일</span></p>
+                                        <p>이메일@dongduk.ac.kr</p>
+                                        <p><span id="infoTitle">연구실 위치</span></p>
+                                        <p>인문관 303호</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+
+                            </td>
+
+                        </tr>
 
                         </tbody>
                     </table>
@@ -523,3 +572,4 @@
 </script>
 </body>
 </html>
+
