@@ -160,8 +160,8 @@
         }
 
         .board .paging a.num {
-            border: 1px solid #0D6EFD;
-            background: #0D6EFD;
+            border: 1px solid #3E454D;
+            background: #3E454D;
             font-weight: 600;
             color: white;
         }
