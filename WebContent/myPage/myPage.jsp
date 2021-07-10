@@ -27,7 +27,7 @@
 
     <script type="text/javascript">
         function button_event() {
-            if (confirm("정말 삭제하시겠습니까??") == true) {    //확인
+            if (confirm("정말 삭제하시겠습니까?") == true) {    //확인
                 document.form.submit();
             } else {   //취소
                 return;
@@ -331,13 +331,13 @@
                                     <td>000교수님</td>
                                     <td>컴퓨터학과</td>
                                     <td>2021-07-10 오전 9:00</td>
-                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"/></td>
+                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn" onclick="button_event();"/></td>
                                 </tr>
                                 <tr id="boardList">
                                     <td>000교수님</td>
                                     <td>컴퓨터학과</td>
                                     <td>2021-07-10 오전 9:00</td>
-                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"/></td>
+                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn" onclick="button_event();"/></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -359,13 +359,13 @@
                                     <td>000교수님</td>
                                     <td>컴퓨터학과</td>
                                     <td>2021-07-10 오전 9:00</td>
-                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"/></td>
+                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn" onclick="button_event();"/></td>
                                 </tr>
                                 <tr id="boardList">
                                     <td>000교수님</td>
                                     <td>컴퓨터학과</td>
                                     <td>2021-07-10 오전 9:00</td>
-                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"/></td>
+                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn" onclick="button_event();"/></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -387,13 +387,13 @@
                                     <td>000교수님</td>
                                     <td>컴퓨터학과</td>
                                     <td>2021-07-10 오전 9:00</td>
-                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"/></td>
+                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn" onclick="button_event();"/></td>
                                 </tr>
                                 <tr id="boardList">
                                     <td>000교수님</td>
                                     <td>컴퓨터학과</td>
                                     <td>2021-07-10 오전 9:00</td>
-                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"/></td>
+                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn" onclick="button_event();"/></td>
                                 </tr>
                                 </tbody>
                             </table>
