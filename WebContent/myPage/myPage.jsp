@@ -23,11 +23,11 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
-    <title>마이페이지</title>
-    
+    <title>쪽지함</title>
+
     <script type="text/javascript">
         function button_event() {
-            if (confirm("정말 삭제하시겠습니까?") == true) {    //확인
+            if (confirm("정말 삭제하시겠습니까??") == true) {    //확인
                 document.form.submit();
             } else {   //취소
                 return;
@@ -180,14 +180,9 @@
             border-radius: 10px;
         }
 
-
         .boardListWrap {
             width: 870px;
             margin: 0 auto;
-        }
-
-        .boardListWrap tr:first-child {
-            border-top: 1px solid #ccc;
         }
 
         .boardListWrap th,
@@ -258,6 +253,10 @@
         #userUniv {
             margin: 10px 0 40px 0;
         }
+
+        #thBorder {
+            border-bottom: 1px solid #eee;
+        }
     </style>
 </head>
 <body>
@@ -276,7 +275,7 @@
                 <a href="#">로그아웃</a>
             </div>
         </div>
-        <img src="/myPage/images/notifications_black_24dp.svg" id="alertIcon"/>
+        <img src="/myPage/images/images/notifications_black_24dp.svg" id="alertIcon"/>
     </nav>
 </header>
 
@@ -320,7 +319,7 @@
                         <div id="board">
                             <table class="boardListWrap">
                                 <thead>
-                                <tr>
+                                <tr id="thBorder">
                                     <th>교수명</th>
                                     <th>학과</th>
                                     <th>날짜</th>
@@ -332,13 +331,13 @@
                                     <td>000교수님</td>
                                     <td>컴퓨터학과</td>
                                     <td>2021-07-10 오전 9:00</td>
-                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn" onclick="button_event();"/></td>
+                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"/></td>
                                 </tr>
                                 <tr id="boardList">
                                     <td>000교수님</td>
                                     <td>컴퓨터학과</td>
                                     <td>2021-07-10 오전 9:00</td>
-                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn" onclick="button_event();"/></td>
+                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"/></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -348,7 +347,7 @@
                         <div id="board">
                             <table class="boardListWrap">
                                 <thead>
-                                <tr>
+                                <tr id="thBorder">
                                     <th>교수명</th>
                                     <th>학과</th>
                                     <th>날짜</th>
@@ -360,13 +359,13 @@
                                     <td>000교수님</td>
                                     <td>컴퓨터학과</td>
                                     <td>2021-07-10 오전 9:00</td>
-                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn" onclick="button_event();"/></td>
+                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"/></td>
                                 </tr>
                                 <tr id="boardList">
                                     <td>000교수님</td>
                                     <td>컴퓨터학과</td>
                                     <td>2021-07-10 오전 9:00</td>
-                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn" onclick="button_event();"/></td>
+                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"/></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -376,7 +375,7 @@
                         <div id="board">
                             <table class="boardListWrap">
                                 <thead>
-                                <tr>
+                                <tr id="thBorder">
                                     <th>교수명</th>
                                     <th>학과</th>
                                     <th>날짜</th>
@@ -388,13 +387,13 @@
                                     <td>000교수님</td>
                                     <td>컴퓨터학과</td>
                                     <td>2021-07-10 오전 9:00</td>
-                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn" onclick="button_event();"/></td>
+                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"/></td>
                                 </tr>
                                 <tr id="boardList">
                                     <td>000교수님</td>
                                     <td>컴퓨터학과</td>
                                     <td>2021-07-10 오전 9:00</td>
-                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn" onclick="button_event();"/></td>
+                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"/></td>
                                 </tr>
                                 </tbody>
                             </table>
