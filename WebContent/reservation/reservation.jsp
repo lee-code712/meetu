@@ -508,7 +508,7 @@
                             <td>000교수님</td>
                             <td>컴퓨터학과</td>
                             <td>
-                                <div id="infoBox"><img src="./info.svg" id="infoBtn"/>
+                                <div id="infoBox"><img src="/reservation/images/info.svg" id="infoBtn"/>
                                     <div id="infoBox-content">
                                         <p><span id="infoTitle">교수명</span></p>
                                         <p>000교수님</p>
@@ -534,7 +534,7 @@
                             <td>000교수님</td>
                             <td>컴퓨터학과</td>
                             <td>
-                                <div id="infoBox"><img src="./info.svg" id="infoBtn"/>
+                                <div id="infoBox"><img src="/reservation/images/info.svg" id="infoBtn"/>
                                     <div id="infoBox-content">
                                         <p><span id="infoTitle">교수명</span></p>
                                         <p>000교수님</p>
