@@ -29,7 +29,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/message/js/message.js"></script>
     <script>
-
     </script>
     <style>
         * {
@@ -40,27 +39,22 @@
         a:link { color: white; text-decoration: none;}
  		a:visited { color: white; text-decoration: none;}
  		a:hover { color: white; text-decoration: underline;}
-
         #messageWrap {
             margin: 0 auto;
             width: 1920px;
             height: 630px;
         }
-
         .mylist {
             width: 310px;
             height: 840px;
             background: #3E454D;
         }
-
         #messageInner {
             display: block;
             width: 1610px;
             height: 840px;
             background: #EBEBEB;
         }
-
-
         #list {
             display: flex;
             padding-left: 20px;
@@ -70,14 +64,12 @@
             font-size: 14px;
             color: white;
         }
-
         #list:hover {
             background: #363B40;
             color: white;
             width: 310px;
             cursor: pointer;
         }
-
         #messageTitle {
             display: flex;
             align-items: center;
@@ -90,7 +82,6 @@
             border-bottom: 1px dotted white;
             margin-bottom: 10px;
         }
-
         #sender {
             padding-top: 28px;
             padding-left: 20px;
@@ -101,7 +92,6 @@
             font-weight: bold;
             color: #3E454D;
         }
-
         #receiveMessage {
             display: inline-block;
             margin: 20px 40px 0 40px;
@@ -110,7 +100,6 @@
             background: #F8F8F8;
             border-radius: 10px;
         }
-
         #receiveMessage:first-child {
             display: inline-block;
             margin: 0 40px 0 40px;
@@ -119,7 +108,6 @@
             background: #F8F8F8;
             border-radius: 10px;
         }
-
         #sendMessage {
             float: right;
             margin: 20px 40px 0 0;
@@ -128,12 +116,10 @@
             background: #DFE7F4;
             border-radius: 10px;
         }
-
         #messageType {
             text-align: center;
             padding-top: 20px;
         }
-
         #receivetype {
             float: left;
             padding-left: 20px;
@@ -141,12 +127,10 @@
             font-size: 14px;
             font-weight: bold;
         }
-
         #receivedate {
             float: right;
             padding-right: 20px;
         }
-
         #sendtype {
             float: left;
             padding-left: 20px;
@@ -154,23 +138,18 @@
             font-size: 14px;
             font-weight: bold;
         }
-
         #senddate {
             float: right;
             padding-right: 20px;
         }
-
         #messageContent {
             margin-top: 30px;
             padding-left: 20px;
             font-size: 14px;
         }
-
         #messageBanner {
             font-family: 'Yellowtail', cursive;
         }
-
-
         #messageTextWrap {
             display: flex;
             align-items: flex-end;
@@ -178,31 +157,26 @@
             height: 110px;
             background: green;
         }
-
         #messageInnerWrap {
             widht: 1610px;
             height: 648px;
             overflow-y: scroll;
         }
-
         #messageText {
             width: 1500px;
             height: 110px;
         }
-
         #textBtn {
             width: 110px;
             height: 110px;
             background: #3E454D;
             color: white;
         }
-
         #textBtn:hover {
             color: white;
             background: #363B40;
             cursor: pointer;
         }
-
          header {
             width: 100%;
             height: 100px;
@@ -222,7 +196,6 @@
             width: 1194px;
             height: 100px;
         }
-
         #title {
             display: flex;
             align-items: center;
@@ -237,7 +210,6 @@
         #title:hover {
         	cursor: pointer;
         }
-
         #gnb {
             display: flex;
             width: 100%;
@@ -246,11 +218,9 @@
             color: white;
             align-items: center;
         }
-
         #gnb a {
             padding: 0 40px;
         }
-
         #alertIcon:hover,
         #noticeIcon:hover,
         #reserveIcon:hover,
@@ -258,12 +228,10 @@
         #myPageIcon:hover {
             cursor: pointer;
         }
-
         #dropdown {
             position: relative;
             display: inline-block;
         }
-
         #dropBtn {
             width: 160px;
             color: white;
@@ -272,7 +240,6 @@
             border: none;
             background: none;
         }
-
         #dropdown-content {
             display: none;
             position: absolute;
@@ -282,19 +249,16 @@
             border: 1px solid white;
             border-radius: 500px;
         }
-
         #dropdown-content a {
             color: white;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
         }
-
         #dropdown-content a:hover {
             background: rgba(0, 0, 0, 0.1);
             border-radius: 500px;
         }
-
         #dropdown:hover #dropdown-content {
             display: block;
         }
