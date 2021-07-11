@@ -6,6 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <title>notice</title>
+    
+    <link rel="stylesheet" href="/notice/css/notice.css" />
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <style>
         * {

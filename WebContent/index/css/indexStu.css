@@ -1,0 +1,311 @@
+@charset "UTF-8";
+
+/* 배너사이즈와 위치 */
+        #banner_wrap {
+            margin: 0 auto;
+            width: 1920px;
+            height: 720px;
+            position: relative;
+        }
+        
+        .banner_01 {
+            width: 1920px;
+            height: 720px;
+            background-image: url('/index/images/cat-6309964_1920.jpg');
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .banner_02 {
+            width: 1920px;
+            height: 720px;
+            background-image: url('/index/images/cat-2536662_1920.jpg');
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .banner_03 {
+            width: 1920px;
+            height: 720px;
+            background-image: url('/index/images/fox-1758183_1920.jpg');
+            background-position: center;
+            background-size: cover;
+        }
+        
+        #bx-pager1 a {
+            float: left;
+            margin: 0 5px;
+            display: block;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            line-height: 18px;
+            text-align: center;
+            background: pink;
+            color: #333
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+        }
+	    
+		a:link { color: white; text-decoration: none;}
+ 		a:visited { color: white; text-decoration: none;}
+ 		a:hover { color: white; text-decoration: underline;}
+       
+        #footer {
+            display: flex;
+            margin: 0 auto;
+            width: 1920px;
+            height: 200px;
+            background: #333333;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+       
+        #calendar_wrap {
+            width: 348px;
+            height: 700px;
+            border-radius: 5px 0 0 5px;
+            background: #3E454D;
+        }
+        
+        #section {
+            display: table;
+            margin: 40px auto;
+            margin-bottom: 100px;
+            width: 1194px;
+            height: 390px;
+        }
+        
+        #calendar {
+            float: right;
+            background: white;
+        }
+        
+        #calendarHeader {
+            display: table-cell;
+            padding-left: 30px;
+            width: 853px;
+            height: 60px;
+            border-bottom: 1px solid #eee;
+            border-radius: 0 5px 0 0;
+            vertical-align: middle;
+            background: white;
+            font-weight: bold;
+        }
+        
+        #calendarBody {
+            display: table;
+            width: 853px;
+            height: 640px;
+            border-radius: 0 0 5px 0;
+            background-color: white;
+        }
+        
+        .cal_top {
+            display: table-cell;
+            float: left;
+            margin: 0 0 0 44px;
+            width: 260px;
+            height: 240px;
+            text-align: center;
+            font-size: 18px;
+            font-family: 'Yellowtail', cursive;
+            color: white;
+        }
+        
+        #cal_tab {
+            display: table-cell;
+            text-align: center;
+            width: 400px;
+            height: 320px;
+        }
+        
+        #cal_msg {
+            margin-left: 24px;
+            padding: 20px 10px;
+            width: 300px;
+            height: 214px;
+            border: 1px solid #C4C4C4;
+            border-radius: 5px;
+            background-color: #F9F9F9;
+            color: #C4C4C4;
+            font-size: 14px;
+        }
+        
+        table.calendar {
+            display: inline-table;
+            margin-top: 80px;
+            text-align: left;
+        }
+        
+        table.calendar th {
+            width: 50px;
+            text-align: center;
+            font-size: 18px;
+            padding-bottom: 20px;
+            font-family: 'Yellowtail', cursive;
+        }
+        
+        table.calendar td {
+            width: 100px;
+            height: 86px;
+            text-align: center;
+        }
+        
+        #cal_top_date {
+            margin-top: 20px;
+            font-size: 36px;
+        }
+        
+        .cal_tit {
+            padding: 10px;
+            color: white;
+        }
+        
+        body {
+            background: #edf0f2;
+        }
+        
+        #logout_btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 0 0 24px;
+            width: 300px;
+            cursor: pointer;
+        }
+        
+        #logo {
+            color: black;
+            font-size: 36px;
+            font-family: 'Yellowtail', cursive;
+        }
+        
+        #l_text {
+            font-size: 24px;
+        }
+        
+        #l_title {
+            margin-bottom: 40px;
+        }
+      
+        #intro {
+            margin: 0 auto;
+            margin-top: 80px;
+            width: 1920px;
+            height: 800px;
+            background: white;
+        }
+        
+        #intro_title {
+            padding-top: 80px;
+            width: 1194px;
+            margin: 0 auto;
+        }
+        
+        #intro_text {
+            margin: 40px auto;
+            width: 1194px;
+        }
+        
+        header {
+            width: 100%;
+            height: 100px;
+            z-index: 10;
+            top: 0px;
+            position: fixed;
+            box-sizing: border-box;
+            transition: All 0.2s ease;
+            -webkit-transition: All 0.2s ease;
+            -moz-transition: All 0.2s ease;
+            -o-transition: All 0.2s ease;
+        }
+     
+    	#header_inner {
+        	display: flex;
+         	align-items: center;
+            margin: 0 auto;
+            width: 1194px;
+            height: 100px;
+        }
+
+        #title {
+            display: flex;
+            align-items: center;
+            width: 200px;
+            height: 100%;
+            color: white;
+            font-size: 24px;
+            font-family: 'Yellowtail', cursive;
+            font-weight: bold;
+        }
+        
+        #title:hover {
+        	cursor: pointer;
+        }
+
+        #gnb {
+            display: flex;
+            width: 100%;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            align-items: center;
+        }
+
+        #gnb a {
+            padding: 0 40px;
+        }
+
+        #alertIcon:hover,
+        #noticeIcon:hover,
+        #reserveIcon:hover,
+        #messageIcon:hover,
+        #myPageIcon:hover {
+            cursor: pointer;
+        }
+
+        #dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        #dropBtn {
+            width: 160px;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            background: none;
+        }
+
+        #dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border: 1px solid white;
+            border-radius: 500px;
+        }
+
+        #dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        #dropdown-content a:hover {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 500px;
+        }
+
+        #dropdown:hover #dropdown-content {
+            display: block;
+        }

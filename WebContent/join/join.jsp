@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="/join/css/join.css" />
+	
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -35,54 +37,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
 
-    <style>
-        #joinWrap {
-            width: 500px;
-            margin: 180px auto;
-        }
-
-        #joinTitle {
-            margin-bottom: 40px;
-            text-align: center;
-            font-size: 48px;
-            font-family: 'Yellowtail', cursive;
-            font-weight: bold;
-        }
-
-        #title:hover {
-            cursor: pointer;
-        }
-
-        body {
-            background: #F4F4F4;
-        }
-
-        #join_btn {
-            display: block;
-            margin: 0 auto;
-            width: 500px;
-            height: 40px;
-        }
-        /* 대학 검색 버튼 클릭 시 드롭다운 리스트 */
-        .dropdown-content {
-        	background-color: #f9f9f9;
-        	min-width: 443px;
-        	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        	z-index: 1;
-        }
-        .dropdown-content a {
-        	float: none;
-        	color: black;
-        	padding: 12px 12px;
-        	display: block;
-        }
-        .dropdown-content a:hover {
-        	background-color: #ddd;
-        }
-        .show-dropdown {
-        	display: block
-        }
-    </style>
 </head>
 
 <body>

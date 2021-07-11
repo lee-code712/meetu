@@ -6,7 +6,7 @@ pageEncoding="UTF-8" %>
 <head>
     <title>reservationPage</title>
 
-
+	<link rel="stylesheet" href="/message/css/message1.css" />
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Required meta tags -->

@@ -4,6 +4,7 @@
 <html>
 
 <head>
+	<link rel="stylesheet" href="/login/css/login.css" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,54 +28,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-
-    <style>
-        #joinWrap {
-            width: 500px;
-            margin: 180px auto;
-        }
-
-        #loginTitle {
-            margin-bottom: 40px;
-            text-align: center;
-            font-size: 48px;
-            font-family: 'Yellowtail', cursive;
-            font-weight: bold;
-        }
-
-        #loginTitle:hover {
-            cursor: pointer;
-        }
-
-        body {
-            background: #F4F4F4;
-        }
-
-        #login_btn {
-            display: block;
-            margin: 30px auto;
-            width: 500px;
-            height: 40px;
-        }
-
-        #account {
-            margin: 30px 0 20px 0;
-        }
-
-        #link {
-            color: #007BFF;
-        }
-
-        #link:hover {
-            cursor: pointer;
-            text-decoration: underline;
-        }
-
-        #position {
-            margin-bottom: 30px;
-        }
-
-    </style>
 </head>
 
 <body>

@@ -5,6 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>noticeContent</title>
+    
+    <link rel="stylesheet" href="/notice/css/noticeContent.css" />
 	<link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
 
     <style>

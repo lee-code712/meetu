@@ -1,100 +1,46 @@
-* {
-	padding: 0px;
-	margin: 0px;
-	text-decoration: none;
-}
+		#joinWrap {
+            width: 500px;
+            margin: 180px auto;
+        }
 
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-	
-#joinWrap {
-	margin: 0px auto;
-	width: 378px;
-	height: 530px;
-	margin-top: 10%;
-	text-align: center;
-}
-	
-#joinTitle {
-	margin-bottom: 60px;
-	font-weight: bold;
-	font-size: 48px;
-	color: #FFC200;
-}
-	
-#joinTitle a {
-	text-decoration: none; 
-	color: #FFC200;
-}
-	
-#sameCheckBtn {
-	padding: 5px 15px;
-	border: 1px solid #C4C4C4;
-	border-radius: 30px;
-	color: black;
-	background-color: #EFEFEF;
-	cursor: pointer;
-}
-	
-#sameCheckBtn:hover {
-	border: 1px solid #FFC200;
-	color: #FFC200;
-	background-color: white;
-}
-	
-.univName,
-.belong,
-.memberId,
-.password,
-.passwordCheck {
-	width: 102px;
-	height: 40px;
-	border: 1.5px solid #c4c4c4;
-	font-size: 14px;
-	background-color: white;
-}
+        #joinTitle {
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 48px;
+            font-family: 'Yellowtail', cursive;
+            font-weight: bold;
+        }
 
-.univNameText,
-.belongRadio,
-.memberIdText,
-.passwordText,
-.passwordCheckText {
-	border: 1.5px solid #c4c4c4;
-	text-align: left;
-}
+        #title:hover {
+            cursor: pointer;
+        }
 
-.joinFormText {
-	width: 276px;
-	height: 40px;
-	border: none;
-}
-	
-#joinFormId {
-	width: 180px;
-	height: 40px;
-	border: none;
-	background-color: white;
-}
-	
-#joinBtn {
-	display: table-cell;
-	margin: 40px 0 20px 0;
-	width: 378px;
-	height: 50px;
-	color: white;
-	background: #FFC200;
-	font-size: 14px;
-	border: 1px solid #FFC200;
-	border-radius: 10px;
-}
-	
-#joinBtn:hover {
-	cursor: pointer;
-}
-	
-#join_form_select {
-	width: 275px;
-	border-style: none;
-}
+        body {
+            background: #F4F4F4;
+        }
+
+        #join_btn {
+            display: block;
+            margin: 0 auto;
+            width: 500px;
+            height: 40px;
+        }
+        /* 대학 검색 버튼 클릭 시 드롭다운 리스트 */
+        .dropdown-content {
+        	background-color: #f9f9f9;
+        	min-width: 443px;
+        	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        	z-index: 1;
+        }
+        .dropdown-content a {
+        	float: none;
+        	color: black;
+        	padding: 12px 12px;
+        	display: block;
+        }
+        .dropdown-content a:hover {
+        	background-color: #ddd;
+        }
+        .show-dropdown {
+        	display: block
+        }
