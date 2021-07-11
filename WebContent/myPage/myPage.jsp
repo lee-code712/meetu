@@ -4,8 +4,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>myPage</title>
+    <title>마이페이지</title>
     
+    <link rel="stylesheet" href="../components/css/header.css" />
     <link rel="stylesheet" href="/myPage/css/myPage.css" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -41,102 +42,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <style>
-        header {
-            width: 100%;
-            height: 100px;
-            top: 0px;
-            background: rgba(0, 0, 0, .800);
-            box-sizing: border-box;
-            transition: All 0.2s ease;
-            -webkit-transition: All 0.2s ease;
-            -moz-transition: All 0.2s ease;
-            -o-transition: All 0.2s ease;
-        }
-
-        #header_inner {
-            display: flex;
-            align-items: center;
-            margin: 0 auto;
-            width: 1194px;
-            height: 100px;
-        }
-
-        #title {
-            display: flex;
-            align-items: center;
-            width: 200px;
-            height: 100%;
-            color: white;
-            font-size: 24px;
-            font-family: 'Yellowtail', cursive;
-            font-weight: bold;
-        }
-
-        #title:hover {
-            cursor: pointer;
-        }
-
-        #gnb {
-            display: flex;
-            width: 100%;
-            font-size: 14px;
-            font-weight: bold;
-            color: white;
-            align-items: center;
-        }
-
-        #gnb a {
-            padding: 0 40px;
-        }
-
-        #alertIcon:hover,
-        #noticeIcon:hover,
-        #reserveIcon:hover,
-        #messageIcon:hover,
-        #myPageIcon:hover {
-            cursor: pointer;
-        }
-
-        #dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        #dropBtn {
-            width: 160px;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            background: none;
-        }
-
-        #dropdown-content {
-            display: none;
-            position: absolute;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            border: 1px solid white;
-            border-radius: 500px;
-        }
-
-        #dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        #dropdown-content a:hover {
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 500px;
-        }
-
-        #dropdown:hover #dropdown-content {
-            display: block;
-        }
-
         #navWrap {
             width: 1194px;
             margin: 0 auto;
@@ -269,15 +174,15 @@
             <a id="noticeIcon">공지사항</a>
             <a id="reserveIcon">상담예약</a>
             <a id="messageIcon">쪽지함</a>
-            <a id="myPageIcon">마이페이지</a>
         </div>
         <div id="dropdown">
             <button id="dropBtn">(이름)님 ▽</button>
             <div id="dropdown-content">
+                <a href="#">마이페이지</a>
                 <a href="#">로그아웃</a>
             </div>
         </div>
-        <img src="/myPage/images/images/notifications_black_24dp.svg" id="alertIcon"/>
+        <img src="/components/images/notifications_black_24dp.svg" id="alertIcon"/>
     </nav>
 </header>
 
