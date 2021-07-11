@@ -6,34 +6,27 @@
 <meta charset="UTF-8">
 <title>header</title>
 	<link rel="stylesheet" href="css/header.css" />
+	<link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
 </head>
 
 <body>
-<div id="topHeader">
-	<div id="topHeaderInner">
-		<div>
-			<div><a href="../login/login.jsp">로그인</a></div>
-			<div>|</div>
-			<div><a href="../join/join.jsp">회원가입</a></div>
-		</div>
-	</div>
-</div>
-
-<div id="underHeader">
-	<div id="underHeaderInner">
-		<div id="title"><a href="">MEETU</a></div>
-		
-		<div id="gnb">
-			<div><a href="../notice/notice.jsp">공지사항</a></div>
-			<div><a href="../reservation/reservation.jsp">상담예약</a></div>
-			<div><a href="../message/message.jsp">쪽지함</a></div>
-		</div>
-		
-		<div id="icon">
-			<img src="images/alert.svg" />
-			<img src="images/myPage.svg" />
-		</div>
-	</div>
-</div>
+<header>
+    <nav id="header_inner">
+        <div id="title"><a>MEETU</a></div>
+        <div id="gnb">
+            <a id="noticeIcon">공지사항</a>
+            <a id="reserveIcon">상담예약</a>
+            <a id="messageIcon">쪽지함</a>
+        </div>
+        <div id="dropdown">
+            <button id="dropBtn">(이름)님 ▽</button>
+            <div id="dropdown-content">
+                <a href="#">마이페이지</a>
+                <a href="#">로그아웃</a>
+            </div>
+        </div>
+        <img src="/components/images/notifications_black_24dp.svg" id="alertIcon"/>
+    </nav>
+</header>
 </body>
 </html>
