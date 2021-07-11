@@ -144,19 +144,22 @@
         }
 
         #selectDept {
-            display: flex;
-            align-items: flex-start;
+        	display: flex;
+        	align-items: flex-start;
+        	padding-top: 10px;
+            padding-bottom: 55px;
             width: 100%;
             height: 40px;
             font-size: 18px;
             font-weight: bold;
-            border-bottom: 1px dotted white;
+            border-bottom: 1px dotted #363B40;
         }
 
         .college {
             line-height: 40px;
             font-size: 14px;
             cursor: pointer;
+            border-bottom: 1px dotted #C4C4C4;
         }
 
         .college:hover {
