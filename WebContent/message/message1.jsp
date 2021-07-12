@@ -7,7 +7,7 @@ pageEncoding="UTF-8" %>
     <title>쪽지함</title>
     
     <link rel="stylesheet" href="../components/css/header.css" />
-	<link rel="stylesheet" href="/message/css/message1.css" />
+	<!-- <link rel="stylesheet" href="/message/css/message1.css" />  -->
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -86,11 +86,6 @@ pageEncoding="UTF-8" %>
 
         #selectProf a:hover {
             cursor: pointer;
-        }
-        
-        #noticeIcon,
-        #reserveIcon {
-            color: #8B8B8B;
         }
 
         body {
@@ -238,6 +233,15 @@ pageEncoding="UTF-8" %>
 
         #textBtn:hover {
             cursor: pointer;
+        }
+        
+        #reserveIcon,
+        #noticeIcon {
+            color: #8B8B8B;
+        }
+        
+        #messageIcon {
+        	color: white;
         }
     
       	a:link { color: white; text-decoration: none;}

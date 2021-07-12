@@ -119,11 +119,6 @@
             cursor: pointer;
         }
 
-        #messageIcon,
-        #noticeIcon {
-            color: #8B8B8B;
-        }
-
         #messageInner {
             display: block;
             width: 894px;
@@ -281,6 +276,15 @@
             border: 1px solid #3E454D;
             color: white;
             border-radius: 30px;
+        }
+        
+     	#messageIcon,
+        #noticeIcon {
+            color: #8B8B8B;
+        }
+        
+        #reserveIcon {
+        	color: white;
         }
 
 		a:link { color: white; text-decoration: none;}

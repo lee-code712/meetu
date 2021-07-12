@@ -87,6 +87,11 @@
 			width: 1194px;
 		}
 		
+		#messageIcon,
+        #reserveIcon {
+            color: #8B8B8B;
+        }
+		
 		a:link { color: white; text-decoration: none;}
  		a:visited { color: white; text-decoration: none;}
  		a:hover { color: white; text-decoration: underline;}
