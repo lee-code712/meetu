@@ -69,12 +69,6 @@
             cursor: pointer;
         }
 
-        #noticeIcon,
-        #messageIcon,
-        #myPageIcon {
-            color: #8B8B8B;
-        }
-
         body {
             background: #F4F4F4;
         }

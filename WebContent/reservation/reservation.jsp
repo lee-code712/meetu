@@ -119,9 +119,8 @@
             cursor: pointer;
         }
 
-        #noticeIcon,
         #messageIcon,
-        #myPageIcon {
+        #noticeIcon {
             color: #8B8B8B;
         }
 

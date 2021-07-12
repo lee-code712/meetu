@@ -87,6 +87,11 @@ pageEncoding="UTF-8" %>
         #selectProf a:hover {
             cursor: pointer;
         }
+        
+        #noticeIcon,
+        #reserveIcon {
+            color: #8B8B8B;
+        }
 
         body {
             background: #F4F4F4;
