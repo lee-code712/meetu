@@ -38,9 +38,7 @@
             display: table-cell;
             width: 1920px;
             height: 100%;
-            background-image: url('/message/images/bannerThing.svg');
-            background-position: center;
-            background-size: cover;
+           	background: white;
             text-align: center;
             font-size: 24px;
             color: #333330;
