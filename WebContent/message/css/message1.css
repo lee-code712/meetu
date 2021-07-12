@@ -1,6 +1,4 @@
-@charset "UTF-8";
-
-        * {
+		* {
             margin: 0;
             padding: 0;
             text-decoration: none;
@@ -40,6 +38,11 @@
 
         .list:hover {
             background: #363B40;
+            color: white;
+        }
+        
+        .list.selected {
+        	background: #363B40;
             color: white;
         }
 
@@ -215,3 +218,16 @@
         #textBtn:hover {
             cursor: pointer;
         }
+        
+        #reserveIcon,
+        #noticeIcon {
+            color: #8B8B8B;
+        }
+        
+        #messageIcon {
+        	color: white;
+        }
+    
+      	a:link { color: white; text-decoration: none;}
+ 		a:visited { color: white; text-decoration: none;}
+ 		a:hover { color: white; text-decoration: underline;}
