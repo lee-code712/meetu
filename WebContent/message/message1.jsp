@@ -52,13 +52,8 @@ pageEncoding="UTF-8" %>
             border-bottom: 1px dotted #C4C4C4;
         }
 
-        .list:hover {
+        .clicked {
             background: #363B40;
-            color: white;
-        }
-        
-        .list.selected {
-        	background: #363B40;
             color: white;
         }
 
@@ -247,6 +242,7 @@ pageEncoding="UTF-8" %>
       	a:link { color: white; text-decoration: none;}
  		a:visited { color: white; text-decoration: none;}
  		a:hover { color: white; text-decoration: underline;}
+ 		
     </style>
 </head>
 
@@ -279,8 +275,8 @@ pageEncoding="UTF-8" %>
         <td>
             <ul id="mylist">
                 <li id="selectProf"><img src="/message/images/school_black_24dp.svg"/>&nbsp;&nbsp;교수 선택</li>
-				<li id="list" class="list"><img src="/message/images/label_important_black_24dp.svg"/>컴퓨터학과 000교수님
-				<li id="list" class="list"><img src="/message/images/label_important_black_24dp.svg"/>컴퓨터학과 000교수님
+				<li id="list" class="list"><img src="/message/images/label_important_black_24dp.svg" id="labelIcon"/> 컴퓨터학과 000교수님
+				<li id="list" class="list"><img src="/message/images/label_important_black_24dp.svg" id="labelIcon"/> 컴퓨터학과 000교수님
                 <%-- 쪽지 가능한 member list 출력 --%>
                 <c:choose>
                     <c:when test="${mem_dto.getRole() =='0'}">
@@ -333,5 +329,46 @@ pageEncoding="UTF-8" %>
         </td>
     </tr>
 </table>
+
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-8216c69d01441f36c0ea791ae2d4469f0f8ff5326f00ae2d00e4bb7d20e24edb.js"></script>
+
+
+<script id="rendered-js">
+    var div2 = document.getElementsByClassName("list");
+
+    function handleClick(event) {
+        console.log(event.target);
+        // console.log(this);
+        // 콘솔창을 보면 둘다 동일한 값이 나온다
+
+        console.log(event.target.classList);
+
+        if (event.target.classList[1] === "clicked") {
+            event.target.classList.remove("clicked");
+        } else {
+            for (var i = 0; i < div2.length; i++) {
+                if (window.CP.shouldStopExecution(0)) break;
+                div2[i].classList.remove("clicked");
+            }
+            window.CP.exitedLoop(0);
+
+            event.target.classList.add("clicked");
+        }
+    }
+
+    function init() {
+        for (var i = 0; i < div2.length; i++) {
+            if (window.CP.shouldStopExecution(1)) break;
+            div2[i].addEventListener("click", handleClick);
+        }
+        window.CP.exitedLoop(1);
+    }
+
+    init();
+    //# sourceURL=pen.js
+</script>
+
+
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-4793b73c6332f7f14a9b6bba5d5e62748e9d1bd0b5c52d7af6376f3d1c625d7e.js"></script>
 </body>
 </html>
