@@ -183,6 +183,12 @@
  		#okBtn {
  			color: #3E454D;
  		}
+ 		
+ 		#reserveIcon,
+        #noticeIcon,
+        #messageIcon {
+            color: #8B8B8B;
+        }
     </style>
 </head>
 <body>
