@@ -1,4 +1,4 @@
-		* {
+* {
             margin: 0;
             padding: 0;
             text-decoration: none;
@@ -36,13 +36,8 @@
             border-bottom: 1px dotted #C4C4C4;
         }
 
-        .list:hover {
+        .clicked {
             background: #363B40;
-            color: white;
-        }
-        
-        .list.selected {
-        	background: #363B40;
             color: white;
         }
 
@@ -139,6 +134,7 @@
             overflow-y: scroll;
             border-left: 5px solid white;
             border-right: 5px solid white;
+            background: white;
         }
 
         #messageTextWrap {
@@ -147,11 +143,12 @@
             height: 50px;
             background: white;
             border-radius: 0 0 10px 10px;
+            border-top: 1px solid #C2C2C2;
         }
 
         #messageText {
             padding-left: 20px;
-            width: 780px;
+            width: 600px;
             height: 50px;
             background: white;
             border: none;
@@ -210,9 +207,13 @@
             font-size: 14px;
             margin-bottom: 4px;
         }
-
+        
         #textBtn {
-            margin-bottom: 6px;
+        	width: 80px;
+        	text-align: center;
+        	padding: 10px 0;
+        	background: black;
+        	color: white;
         }
 
         #textBtn:hover {

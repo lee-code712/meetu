@@ -93,7 +93,7 @@ pageEncoding="UTF-8" %>
             padding-bottom: 10px;
             padding-top: 14px;
             padding-left: 20px;
-            width: 830px;
+            width: 820px;
             font-size: 16px;
             font-weight: bold;
             color: #3E454D;
@@ -116,7 +116,7 @@ pageEncoding="UTF-8" %>
         #banner {
             display: table;
             margin: 0 auto;
-            width: 1920px;
+            width: 100%;
             height: 100px;
             background-color: white;
             border-radius: 5px;
@@ -150,19 +150,21 @@ pageEncoding="UTF-8" %>
             overflow-y: scroll;
             border-left: 5px solid white;
             border-right: 5px solid white;
+            background: white;
         }
 
         #messageTextWrap {
             margin-left: 80px;
-            width: 830px;
+            width: 840px;
             height: 50px;
             background: white;
             border-radius: 0 0 10px 10px;
+            border-top: 1px solid #C2C2C2;
         }
 
         #messageText {
             padding-left: 20px;
-            width: 780px;
+            width: 700px;
             height: 50px;
             background: white;
             border: none;
@@ -221,9 +223,13 @@ pageEncoding="UTF-8" %>
             font-size: 14px;
             margin-bottom: 4px;
         }
-
+        
         #textBtn {
-            margin-bottom: 6px;
+        	text-align: center;
+        	padding: 14px 33px;
+        	background: black;
+        	color: white;
+        	border-bottom: 4px solid black;
         }
 
         #textBtn:hover {
@@ -242,6 +248,10 @@ pageEncoding="UTF-8" %>
       	a:link { color: white; text-decoration: none;}
  		a:visited { color: white; text-decoration: none;}
  		a:hover { color: white; text-decoration: underline;}
+ 		
+ 		#sendMessageText {
+ 			margin-right: 20px;
+ 		}
  		
     </style>
 </head>
@@ -323,7 +333,7 @@ pageEncoding="UTF-8" %>
                 </div>
                 <div id="messageTextWrap">
                     <input type="text" placeholder="메시지를 입력하세요." id="messageText"/>
-                    <img src="/message/images/send_black_24dp.svg" id="textBtn" onclick="sendMessage()"/>
+                    <span id="textBtn" onclick="sendMessage()">보내기</span>
                 </div>
             </div>
         </td>
