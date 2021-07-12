@@ -186,6 +186,10 @@
         body {
             background: #F4F4F4;
         }
+        
+        a:link { color: white; text-decoration: none;}
+ 		a:visited { color: white; text-decoration: none;}
+ 		a:hover { color: white; text-decoration: underline;}
 
     </style>
    
@@ -194,14 +198,14 @@
 <body>
 <header>
     <nav id="header_inner">
-        <div id="title"><a>MEETU</a></div>
+        <div id="title"><a href="index.do">MEETU</a></div>
         <div id="gnb">
-            <a id="noticeIcon">공지사항</a>
-            <a id="reserveIcon">상담예약</a>
-            <a id="messageIcon">쪽지함</a>
+            <a id="noticeIcon" href="notice.do">공지사항</a>
+            <a id="reserveIcon" href="reservationPro.do">상담예약</a>
+            <a id="messageIcon" href="message.do">쪽지함</a>
         </div>
         <div id="dropdown">
-            <button id="dropBtn">(이름)님 ▽</button>
+            <button id="dropBtn">${mem_dto.getName()}님 ▽</button>
             <div id="dropdown-content">
                 <a href="#">마이페이지</a>
                 <a href="#">로그아웃</a>

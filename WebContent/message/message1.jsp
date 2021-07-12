@@ -10,23 +10,9 @@ pageEncoding="UTF-8" %>
 	<link rel="stylesheet" href="/message/css/message1.css" />
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+
     <style>
         * {
             margin: 0;
@@ -70,6 +56,11 @@ pageEncoding="UTF-8" %>
             background: #363B40;
             color: white;
         }
+        
+        .list.selected {
+        	background: #363B40;
+            color: white;
+        }
 
         .profList th,
         .profList td {
@@ -95,12 +86,6 @@ pageEncoding="UTF-8" %>
 
         #selectProf a:hover {
             cursor: pointer;
-        }
-
-        #noticeIcon,
-        #messageIcon,
-        #myPageIcon {
-            color: #8B8B8B;
         }
 
         body {
@@ -249,20 +234,24 @@ pageEncoding="UTF-8" %>
         #textBtn:hover {
             cursor: pointer;
         }
+    
+      	a:link { color: white; text-decoration: none;}
+ 		a:visited { color: white; text-decoration: none;}
+ 		a:hover { color: white; text-decoration: underline;}
     </style>
 </head>
 
 <body>
 <header>
     <nav id="header_inner">
-        <div id="title"><a>MEETU</a></div>
+        <div id="title"><a href="index.do">MEETU</a></div>
         <div id="gnb">
-            <a id="noticeIcon">공지사항</a>
-            <a id="reserveIcon">상담예약</a>
-            <a id="messageIcon">쪽지함</a>
+            <a id="noticeIcon" href="notice.do">공지사항</a>
+            <a id="reserveIcon" href="reservationPro.do">상담예약</a>
+            <a id="messageIcon" href="message.do">쪽지함</a>
         </div>
         <div id="dropdown">
-            <button id="dropBtn">(이름)님 ▽</button>
+            <button id="dropBtn">${mem_dto.getName()}님 ▽</button>
             <div id="dropdown-content">
                 <a href="#">마이페이지</a>
                 <a href="#">로그아웃</a>
@@ -281,7 +270,8 @@ pageEncoding="UTF-8" %>
         <td>
             <ul id="mylist">
                 <li id="selectProf"><img src="/message/images/school_black_24dp.svg"/>&nbsp;&nbsp;교수 선택</li>
-
+				<li id="list" class="list"><img src="/message/images/label_important_black_24dp.svg"/>컴퓨터학과 000교수님
+				<li id="list" class="list"><img src="/message/images/label_important_black_24dp.svg"/>컴퓨터학과 000교수님
                 <%-- 쪽지 가능한 member list 출력 --%>
                 <c:choose>
                     <c:when test="${mem_dto.getRole() =='0'}">
