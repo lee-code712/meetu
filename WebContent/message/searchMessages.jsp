@@ -21,7 +21,7 @@
 		
 		while(iterator.hasNext()) {
 			MessageInformationDTO msg_info_dto = iterator.next();
-			String msg_id = msg_info_dto.getMsgId();
+			int msg_id = msg_info_dto.getMsgId();
 			String sent_time = msg_info_dto.getSentTime();
 			
 			MessageContentDTO msg_content_dto = (MessageContentDTO) msg_dao.getMessage(msg_id, univ);		

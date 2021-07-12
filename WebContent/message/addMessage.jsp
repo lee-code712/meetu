@@ -15,14 +15,13 @@
 	msg_info_dto.setSendId(user_id);
 	msg_info_dto.setRecvId(mem_usr_id);
 	
-	String msg_id = msg_dao.addMessageInfo(msg_info_dto, univ);
-	if(msg_id != null) {
+	boolean msg_info_success = msg_dao.addMessageInfo(msg_info_dto, univ);
+	if(msg_info_success) {
 		MessageContentDTO msg_content_dto = new MessageContentDTO();
-		msg_content_dto.setMsgId(msg_id);
 		msg_content_dto.setMsg(msg);
-		boolean success = msg_dao.addMessage(msg_content_dto, univ);
+		boolean msg_content_success = msg_dao.addMessage(msg_content_dto, univ);
 		
-		if(!success) {
+		if(!msg_content_success) {
 			response.setStatus(400);		// bad request
 			response.addHeader("Status", "message content failed");
 		}

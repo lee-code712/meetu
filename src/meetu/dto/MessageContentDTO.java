@@ -1,14 +1,14 @@
 package meetu.dto;
 
 public class MessageContentDTO {
-	private String msg_id;
+	private int msg_id;
 	private String msg;
 	
-	public String getMsgId() {
+	public int getMsgId() {
 		return msg_id;
 	}
 	
-	public void setMsgId(String msg_id) {
+	public void setMsgId(int msg_id) {
 		this.msg_id = msg_id;
 	}
 	

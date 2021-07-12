@@ -38,7 +38,7 @@ public class MessageDAO {
 
 			if (rs.next()) {
 				MessageInformationDTO msg_info_dto = new MessageInformationDTO();
-				msg_info_dto.setMsgId(rs.getString("msg_id"));
+				msg_info_dto.setMsgId(rs.getInt("msg_id"));
 				msg_info_dto.setSentTime(rs.getString("sent_time"));
 				msg_info_dto.setIsRead(rs.getInt("is_read"));
 				msg_info_dto.setSendId(rs.getString("send_id"));
@@ -47,7 +47,7 @@ public class MessageDAO {
 					
 				while(rs.next()) {
 					msg_info_dto = new MessageInformationDTO();
-					msg_info_dto.setMsgId(rs.getString("msg_id"));
+					msg_info_dto.setMsgId(rs.getInt("msg_id"));
 					msg_info_dto.setSentTime(rs.getString("sent_time"));
 					msg_info_dto.setIsRead(rs.getInt("is_read"));
 					msg_info_dto.setSendId(rs.getString("send_id"));
@@ -73,7 +73,7 @@ public class MessageDAO {
 	}
 	
 	// 특정 메시지 id에 대한 내용 dto를 반환
-	public MessageContentDTO getMessage(String msg_id, String univ) throws NamingException/* , SQLException */ {
+	public MessageContentDTO getMessage(int msg_id, String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		MessageContentDTO msg_content_dto = null;
@@ -83,13 +83,13 @@ public class MessageDAO {
 			String sql = "select * from message_content where msg_id=?";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, msg_id);
+			pstmt.setInt(1, msg_id);
 
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
 				msg_content_dto = new MessageContentDTO();
-				msg_content_dto.setMsgId(rs.getString("msg_id"));
+				msg_content_dto.setMsgId(rs.getInt("msg_id"));
 				msg_content_dto.setMsg(rs.getString("msg"));
 			}
 			// if close
@@ -107,24 +107,23 @@ public class MessageDAO {
 	}
 	
 	// 메시지 정보 dto db에 추가
-	public String addMessageInfo(MessageInformationDTO msg_info_dto, String univ) throws NamingException/* , SQLException */ {
+	public boolean addMessageInfo(MessageInformationDTO msg_info_dto, String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String msg_id = null;
+		boolean is_added = false;
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
 			String sql = "insert into message_info (msg_id, sent_time, send_id, recv_id) ";
-			sql += "values (?, sysdate, ?, ?)";
+			sql += "values (message_seq.NEXTVAL, sysdate, ?, ?)";
 				
-			msg_id = "0000" + String.valueOf(getCountMessageInfoRows(univ) + 1); // id 자동생성을 구현 안해서 일단 아무렇게 id 만듦..
-
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, msg_id);
-			pstmt.setString(2, msg_info_dto.getSendId());
-			pstmt.setString(3, msg_info_dto.getRecvId());
+			pstmt.setString(1, msg_info_dto.getSendId());
+			pstmt.setString(2, msg_info_dto.getRecvId());
 
 			rs = pstmt.executeQuery();
+			
+			is_added = true;
 				
 			// if close
 			if (rs != null)
@@ -137,7 +136,7 @@ public class MessageDAO {
 			e.printStackTrace();
 		}
 
-		return msg_id;
+		return is_added;
 	}
 		
 	// 메시지 정보 dto db에 추가
@@ -149,11 +148,10 @@ public class MessageDAO {
 		try {
 			Connection conn = DBConnection.getConnection(univ);
 			String sql = "insert into message_content (msg_id, msg) ";
-			sql += "values (?, ?)";
+			sql += "values ((select max(msg_id) from message_info), ?)";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, msg_content_dto.getMsgId());
-			pstmt.setString(2, msg_content_dto.getMsg());
+			pstmt.setString(1, msg_content_dto.getMsg());
 
 			rs = pstmt.executeQuery();
 					
@@ -171,37 +169,6 @@ public class MessageDAO {
 		}
 
 		return is_added;
-	}
-
-	// 메시지 정보 테이블 row 개수 반환 --> id 생성을 위해 필요
-	public int getCountMessageInfoRows(String univ) throws NamingException/* , SQLException */ {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		int row_cnt = 0;
-
-		try {
-			Connection conn = DBConnection.getConnection(univ);
-			String sql = "select * from message_info";
-
-			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-
-			rs = pstmt.executeQuery();
-				
-			rs.last();
-			row_cnt = rs.getRow();
-					
-			// if close
-			if (rs != null)
-				rs.close();
-			if (pstmt != null)
-				pstmt.close();
-			if (conn != null)
-				conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return row_cnt;
 	}
 
 }

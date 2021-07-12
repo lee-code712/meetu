@@ -1,18 +1,18 @@
 package meetu.dto;
 
 public class MessageInformationDTO {
-	private String msg_id;
+	private int msg_id;
 	private String sent_time;
 	private int is_read;
 	private String send_id;
 	private String recv_id;
 	private MessageContentDTO msg_content_dto;
 	
-	public String getMsgId() {
+	public int getMsgId() {
 		return msg_id;
 	}
 	
-	public void setMsgId(String msg_id) {
+	public void setMsgId(int msg_id) {
 		this.msg_id = msg_id;
 	}
 	
