@@ -14,7 +14,7 @@ pageEncoding="UTF-8" %>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -135,7 +135,8 @@ pageEncoding="UTF-8" %>
             text-align: center;
             font-size: 24px;
             color: #333330;
-            font-family: 'Gugi', cursive;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: bold;
             vertical-align: middle;
         }
 
