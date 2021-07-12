@@ -177,6 +177,12 @@
         a:link { color: white; text-decoration: none;}
  		a:visited { color: white; text-decoration: none;}
  		a:hover { color: white; text-decoration: underline;}
+ 		
+ 		#completeBtn,
+ 		#cancelBtn,
+ 		#okBtn {
+ 			color: #3E454D;
+ 		}
     </style>
 </head>
 <body>
@@ -225,13 +231,13 @@
             <td id="navSub">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#qwe">예약완료</a>
+                        <a class="nav-link active" data-toggle="tab" href="#qwe" id="completeBtn">예약완료</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#asd">예약취소</a>
+                        <a class="nav-link" data-toggle="tab" href="#asd"  id="cancelBtn">예약취소</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#zxc">신청확정</a>
+                        <a class="nav-link" data-toggle="tab" href="#zxc"  id="okBtn">신청확정</a>
                     </li>
                 </ul>
                 <div class="tab-content" style="background: white">
