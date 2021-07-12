@@ -12,6 +12,10 @@ pageEncoding="UTF-8" %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="/message/js/message.js"></script>
 
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -116,17 +120,22 @@ pageEncoding="UTF-8" %>
             display: table;
             margin: 0 auto;
             width: 100%;
-            height: 100px;
+            height: 120px;
             background-color: white;
             border-radius: 5px;
         }
 
         #banner div {
             display: table-cell;
+            width: 1920px;
+            height: 100%;
+            background-image: url('/message/images/bannerThing.svg');
+            background-position: center;
+            background-size: cover;
             text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: #3E454D;
+            font-size: 24px;
+            color: #333330;
+            font-family: 'Gugi', cursive;
             vertical-align: middle;
         }
 

@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="../components/css/header.css" />
     <link rel="stylesheet" href="/notice/css/noticeContent.css" />
 	<link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -24,18 +28,23 @@
         #banner {
             display: table;
             margin: 0 auto;
-            width: 1920px;
-            height: 100px;
+            width: 100%;
+            height: 120px;
             background-color: white;
             border-radius: 5px;
         }
 
         #banner div {
             display: table-cell;
+            width: 1920px;
+            height: 100%;
+            background-image: url('/message/images/bannerThing.svg');
+            background-position: center;
+            background-size: cover;
             text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: #3E454D;
+            font-size: 24px;
+            color: #333330;
+            font-family: 'Gugi', cursive;
             vertical-align: middle;
         }
 
@@ -75,7 +84,7 @@
             border: none;
             border-radius: 5px;
             color: white;
-            background: #0D6EFD;
+            background: #3E454D;
         }
 
         #listBtn:hover {

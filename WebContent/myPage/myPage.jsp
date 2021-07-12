@@ -25,6 +25,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+            
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
 
     <title>쪽지함</title>
 
@@ -45,6 +49,7 @@
         #navWrap {
             width: 1194px;
             margin: 0 auto;
+            margin-top: 80px;
         }
 
         #navInnerWrap {
@@ -56,24 +61,28 @@
         }
 
         #banner {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: table;
             margin: 0 auto;
-            width: 1920px;
-            height: 100px;
+            width: 100%;
+            height: 120px;
             background-color: white;
             border-radius: 5px;
-            margin-bottom: 80px;
         }
 
         #banner div {
-            width: 100px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #3E454D;
+            display: table-cell;
+            width: 1920px;
+            height: 100%;
+            background-image: url('/message/images/bannerThing.svg');
+            background-position: center;
+            background-size: cover;
+            text-align: center;
+            font-size: 24px;
+            color: #333330;
+            font-family: 'Gugi', cursive;
             vertical-align: middle;
         }
+
 
         body {
             background: #F4F4F4;
