@@ -1,324 +1,359 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" %>
+pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!doctype html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html>
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-
     <title>쪽지함</title>
-
+    
+    <link rel="stylesheet" href="../components/css/header.css" />
+	<!-- <link rel="stylesheet" href="/message/css/message.css" />  -->
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/message/js/message.js"></script>
-    <script>
-    </script>
+	<script src="/message/js/message.js"></script>
+
     <style>
         * {
-            padding: 0px;
-            margin: 0px;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
         }
-        
-        a:link { color: white; text-decoration: none;}
- 		a:visited { color: white; text-decoration: none;}
- 		a:hover { color: white; text-decoration: underline;}
-        #messageWrap {
+
+        #reservationWrap {
             margin: 0 auto;
-            width: 1920px;
-            height: 630px;
-        }
-        .mylist {
-            width: 310px;
+            width: 1194px;
             height: 840px;
-            background: #3E454D;
         }
-        #messageInner {
-            display: block;
-            width: 1610px;
+
+        #mylist {
+            margin-top: 80px;
+            width: 18rem;
             height: 840px;
-            background: #EBEBEB;
+            border: none;
+            border-radius: 10px;
         }
-        #list {
+
+        #selectProf {
             display: flex;
-            padding-left: 20px;
-            align-items: center;
+            align-items: flex-start;
             width: 100%;
             height: 40px;
-            font-size: 14px;
-            color: white;
-        }
-        #list:hover {
-            background: #363B40;
-            color: white;
-            width: 310px;
-            cursor: pointer;
-        }
-        #messageTitle {
-            display: flex;
-            align-items: center;
-            padding-left: 20px;
-            width: 100%;
-            height: 80px;
             font-size: 18px;
             font-weight: bold;
-            color: white;
-            border-bottom: 1px dotted white;
-            margin-bottom: 10px;
+            border-bottom: 1px dotted #363B40;
         }
+
+        .list {
+            line-height: 40px;
+            font-size: 14px;
+            cursor: pointer;
+            border-bottom: 1px dotted #C4C4C4;
+        }
+
+        .clicked {
+            background: #363B40;
+            color: white;
+        }
+
+        .profList th,
+        .profList td {
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .profList td {
+            text-align: center;
+        }
+
+        #profInfo a {
+            color: #2575AF;
+        }
+
+        #selectProf a {
+            color: #CE2E2E;
+        }
+
+        #profInfo a:hover {
+            cursor: pointer;
+        }
+
+        #selectProf a:hover {
+            cursor: pointer;
+        }
+
+        body {
+            background: #F4F4F4;
+        }
+
         #sender {
-            padding-top: 28px;
+            margin-left: 80px;
+            margin-top: 80px;
+            padding-bottom: 10px;
+            padding-top: 14px;
             padding-left: 20px;
-            margin-left: 20px;
-            margin-bottom: 40px;
-            height: 40px;
+            width: 820px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #3E454D;
+            background: white;
+            border-radius: 10px 10px 0 0;
+        }
+
+
+        .profList th {
+            font-size: 14px;
+            border-bottom: 1px solid #C4C4C4;
+            text-align: center;
+        }
+
+        .profList td {
+            font-size: 14px;
+            text-align: center;
+        }
+
+        #banner {
+            display: table;
+            margin: 0 auto;
+            width: 100%;
+            height: 100px;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        #banner div {
+            display: table-cell;
+            text-align: center;
             font-size: 18px;
             font-weight: bold;
             color: #3E454D;
+            vertical-align: middle;
         }
-        #receiveMessage {
-            display: inline-block;
-            margin: 20px 40px 0 40px;
-            width: 1000px;
-            height: 108px;
-            background: #F8F8F8;
+
+        #messageInner {
+            display: block;
+            width: 894px;
+            height: 840px;
+        }
+
+        #messageInnerWrap {
+            width: 900px;
+            height: 550px;
+        }
+
+        #messageResult {
+            display: block;
+            margin-left: 80px;
+            width: 830px;
+            height: 500px;
+            overflow-y: scroll;
+            border-left: 5px solid white;
+            border-right: 5px solid white;
+            background: white;
+        }
+
+        #messageTextWrap {
+            margin-left: 80px;
+            width: 840px;
+            height: 50px;
+            background: white;
+            border-radius: 0 0 10px 10px;
+            border-top: 1px solid #C2C2C2;
+        }
+
+        #messageText {
+            padding-left: 20px;
+            width: 700px;
+            height: 50px;
+            background: white;
+            border: none;
+            border-radius: 0 0 10px 10px;
+        }
+
+        #receiveMessageText {
+            width: 500px;
+            margin-left: 20px;
+            padding: 10px;
             border-radius: 10px;
+            background: #DFE7F4;
+            font-size: 14px;
         }
-        #receiveMessage:first-child {
-            display: inline-block;
-            margin: 0 40px 0 40px;
-            width: 1000px;
-            height: 108px;
-            background: #F8F8F8;
-            border-radius: 10px;
+
+        #receiveDate {
+            margin-top: 4px;
+            padding-left: 25px;
+            font-size: 12px;
+            color: #848484;
         }
+
         #sendMessage {
             float: right;
-            margin: 20px 40px 0 0;
-            width: 1000px;
-            height: 108px;
-            background: #DFE7F4;
+        }
+
+        #sendMessageText {
+            width: 500px;
+            margin-left: 10px;
+            padding: 10px;
             border-radius: 10px;
+            background: #FFF1DC;
+            font-size: 14px;
         }
-        #messageType {
-            text-align: center;
-            padding-top: 20px;
+
+        #sendDate {
+            margin-top: 4px;
+            padding-left: 15px;
+            font-size: 12px;
+            color: #848484;
         }
-        #receivetype {
-            float: left;
-            padding-left: 20px;
+
+        #receiveMessage {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        #receiveMsg {
+       	 	padding-left: 25px;
             color: #3296B6;
             font-size: 14px;
-            font-weight: bold;
-        }
-        #receivedate {
-            float: right;
-            padding-right: 20px;
-        }
-        #sendtype {
-            float: left;
-            padding-left: 20px;
-            color: #44B632;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        #senddate {
-            float: right;
-            padding-right: 20px;
-        }
-        #messageContent {
-            margin-top: 30px;
-            padding-left: 20px;
-            font-size: 14px;
-        }
-        #messageBanner {
-            font-family: 'Yellowtail', cursive;
-        }
-        #messageTextWrap {
-            display: flex;
-            align-items: flex-end;
-            width: 1610px;
-            height: 110px;
-            background: green;
-        }
-        #messageInnerWrap {
-            widht: 1610px;
-            height: 648px;
-            overflow-y: scroll;
-        }
-        #messageText {
-            width: 1500px;
-            height: 110px;
-        }
-        #textBtn {
-            width: 110px;
-            height: 110px;
-            background: #3E454D;
-            color: white;
-        }
-        #textBtn:hover {
-            color: white;
-            background: #363B40;
-            cursor: pointer;
-        }
-         header {
-            width: 100%;
-            height: 100px;
-            top: 0px;
-         	background: rgba(0, 0, 0, .800);
-            box-sizing: border-box;
-            transition: All 0.2s ease;
-            -webkit-transition: All 0.2s ease;
-            -moz-transition: All 0.2s ease;
-            -o-transition: All 0.2s ease;
-        }
-     
-    	#header_inner {
-        	display: flex;
-         	align-items: center;
-            margin: 0 auto;
-            width: 1194px;
-            height: 100px;
-        }
-        #title {
-            display: flex;
-            align-items: center;
-            width: 200px;
-            height: 100%;
-            color: white;
-            font-size: 24px;
-            font-family: 'Yellowtail', cursive;
-            font-weight: bold;
+            margin-bottom: 4px;
         }
         
-        #title:hover {
-        	cursor: pointer;
+        #textBtn {
+        	text-align: center;
+        	padding: 14px 33px;
+        	background: black;
+        	color: white;
+        	border-bottom: 4px solid black;
         }
-        #gnb {
-            display: flex;
-            width: 100%;
-            font-size: 14px;
-            font-weight: bold;
-            color: white;
-            align-items: center;
-        }
-        #gnb a {
-            padding: 0 40px;
-        }
-        #alertIcon:hover,
-        #noticeIcon:hover,
-        #reserveIcon:hover,
-        #messageIcon:hover,
-        #myPageIcon:hover {
+
+        #textBtn:hover {
             cursor: pointer;
         }
-        #dropdown {
-            position: relative;
-            display: inline-block;
+        
+        #reserveIcon,
+        #noticeIcon {
+            color: #8B8B8B;
         }
-        #dropBtn {
-            width: 160px;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            background: none;
+        
+        #messageIcon {
+        	color: white;
         }
-        #dropdown-content {
-            display: none;
-            position: absolute;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            border: 1px solid white;
-            border-radius: 500px;
-        }
-        #dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        #dropdown-content a:hover {
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 500px;
-        }
-        #dropdown:hover #dropdown-content {
-            display: block;
-        }
+    
+      	a:link { color: white; text-decoration: none;}
+ 		a:visited { color: white; text-decoration: none;}
+ 		a:hover { color: white; text-decoration: underline;}
+ 		
+ 		#sendMessageText {
+ 			margin-right: 20px;
+ 		}
+ 		
     </style>
 </head>
-<body>
 
+<body>
 <header>
     <nav id="header_inner">
         <div id="title"><a href="index.do">MEETU</a></div>
         <div id="gnb">
-            <a id="noticeIcon">공지사항</a>
+            <a id="noticeIcon" href="notice.do">공지사항</a>
             <a id="reserveIcon" href="reservationPro.do">상담예약</a>
             <a id="messageIcon" href="message.do">쪽지함</a>
-            <a id="myPageIcon">마이페이지</a>
         </div>
         <div id="dropdown">
             <button id="dropBtn">${mem_dto.getName()}님 ▽</button>
             <div id="dropdown-content">
+                <a href="#">마이페이지</a>
                 <a href="logout.do">로그아웃</a>
             </div>
         </div>
-        <img src="/message/images/notifications_black_24dp.svg" id="alertIcon"/>
+        <img src="/components/images/notifications_black_24dp.svg" id="alertIcon"/>
     </nav>
 </header>
 
-<table id="messageWrap">
+<div id="banner">
+    <div>쪽지함</div>
+</div>
+
+<table id="reservationWrap">
     <tr>
         <td>
-            <ul class="mylist">
-                <li id="messageTitle"><span id="messageBanner">MEETU</span> &nbsp; 쪽지함</li>
+            <ul id="mylist">
+                <li id="selectProf"><img src="/message/images/school_black_24dp.svg"/>&nbsp;&nbsp;교수 선택</li>
                 <%-- 쪽지 가능한 member list 출력 --%>
                 <c:choose>
-                	<c:when test="${mem_dto.getRole() =='0'}">
-		                <c:forEach items="${requestScope.msg_mem}" var="member">
-							<li id="list" class="list">${member.value.get(0)} ${member.value.get(1)} 교수</li>
-							<input type='hidden' class='mem_usr_id' value='${member.key}'/>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<c:forEach items="${requestScope.msg_mem}" var="member">
-							<li id="list" class="list">${member.value.get(0)} ${member.value.get(1)} 학생</li>
-							<input type='hidden' class='mem_usr_id' value='${member.key}'/>
-						</c:forEach>
-					</c:otherwise>
-				</c:choose>
+                    <c:when test="${mem_dto.getRole() =='0'}">
+                        <c:forEach items="${requestScope.msg_mem}" var="member">
+                            <li id="list" class="list"><img src="/message/images/label_important_black_24dp.svg"  id="labelIcon"/>
+                                ${member.value.get(0)} ${member.value.get(1)} 교수
+                            </li>
+                            <input type='hidden' class='mem_usr_name' value='${member.value.get(1)}'/>
+                            <input type='hidden' class='mem_usr_id' value='${member.key}'/>
+                        </c:forEach>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach items="${requestScope.msg_mem}" var="member">
+                            <li id="list" class="list"><img src="/message/images/label_important_black_24dp.svg" id="labelIcon"/>
+                            ${member.value.get(0)} ${member.value.get(1)} 학생
+                            </li>
+                            <input type='hidden' class='mem_usr_name' value='${member.value.get(1)}'/>
+                            <input type='hidden' class='mem_usr_id' value='${member.key}'/>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
             </ul>
         </td>
 
         <td id="messageInner">
             <div id="sender"> </div>
             <div id="messageInnerWrap">
-                
-            </div>
-            <div id="messageTextWrap">
-                <input type="text" id="messageText"/>
-                <button id="textBtn" onclick="sendMessage()">보내기</button>
+                <div id="messageResult">
+
+                </div>
+                <div id="messageTextWrap">
+                    <input type="text" placeholder="메시지를 입력하세요." id="messageText"/>
+                    <span id="textBtn" onclick="sendMessage()">보내기</span>
+                </div>
             </div>
         </td>
     </tr>
 </table>
 
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-8216c69d01441f36c0ea791ae2d4469f0f8ff5326f00ae2d00e4bb7d20e24edb.js"></script>
+
+<script id="rendered-js">
+    var div2 = document.getElementsByClassName("list");
+
+    function handleClick(event) {
+        console.log(event.target);
+
+        console.log(event.target.classList);
+
+        if (event.target.classList[1] === "clicked") {
+            event.target.classList.remove("clicked");
+        } else {
+            for (var i = 0; i < div2.length; i++) {
+                if (window.CP.shouldStopExecution(0)) break;
+                div2[i].classList.remove("clicked");
+            }
+            window.CP.exitedLoop(0);
+
+            event.target.classList.add("clicked");
+        }
+    }
+
+    function init() {
+        for (var i = 0; i < div2.length; i++) {
+            if (window.CP.shouldStopExecution(1)) break;
+            div2[i].addEventListener("click", handleClick);
+        }
+        window.CP.exitedLoop(1);
+    }
+
+    init(); 
+</script>
+
+
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-4793b73c6332f7f14a9b6bba5d5e62748e9d1bd0b5c52d7af6376f3d1c625d7e.js"></script>
+
+</body>
 </html>
