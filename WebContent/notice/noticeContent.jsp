@@ -117,7 +117,7 @@
             <button id="dropBtn">${mem_dto.getName()}님 ▽</button>
             <div id="dropdown-content">
                 <a href="#">마이페이지</a>
-                <a href="#">로그아웃</a>
+                <a href="logout.do">로그아웃</a>
             </div>
         </div>
         <img src="/components/images/notifications_black_24dp.svg" id="alertIcon"/>
@@ -129,9 +129,9 @@
 </div>
 
 <div id="noticeContent">
-    <div id="contentTitle">(글제목)</div>
-    <div id="content">(내용)</div>
-    <button id="listBtn">목록</button>
+    <div id="contentTitle">${notice_dto.getTitle()}</div>
+    <div id="content">${notice_dto.getContent()}</div>
+    <button id="listBtn" onclick="location.href='notice.do'">목록</button>
 </div>
 </body>
 </html>

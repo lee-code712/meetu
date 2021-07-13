@@ -539,7 +539,7 @@
     	<nav id="header_inner">
         	<div id="title"><a>MEETU</a></div>
        	 	<div id="gnb">
-            	<a id="noticeIcon">공지사항</a>
+            	<a id="noticeIcon" href="notice.do">공지사항</a>
             	<a id="reserveIcon" href="reservationPro.do">상담예약</a>
             	<a id="messageIcon" href="message.do">쪽지함</a>
             	<a id="myPageIcon">마이페이지</a>

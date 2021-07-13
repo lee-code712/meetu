@@ -1,17 +1,17 @@
 package meetu.dto;
 
 public class NoticeDTO {
-	private String notice_id;
+	private int notice_id;
 	private String title;
 	private String write_date;
 	private int views;
 	private String content;
 	
-	public String getNotice_id() {
+	public int getNoticeId() {
 		return notice_id;
 	}
 	
-	public void setNotice_id(String notice_id) {
+	public void setNoticeId(int notice_id) {
 		this.notice_id = notice_id;
 	}
 	
@@ -23,11 +23,11 @@ public class NoticeDTO {
 		this.title = title;
 	}
 	
-	public String getWrite_date() {
+	public String getWriteDate() {
 		return write_date;
 	}
 	
-	public void setWrite_date(String write_date) {
+	public void setWriteDate(String write_date) {
 		this.write_date = write_date;
 	}
 	

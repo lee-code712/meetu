@@ -1,6 +1,8 @@
 <%-- 공지사항 게시판 페이지 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -222,7 +224,7 @@
             <button id="dropBtn">${mem_dto.getName()}님 ▽</button>
             <div id="dropdown-content">
                 <a href="#">마이페이지</a>
-                <a href="#">로그아웃</a>
+                <a href="logout.do">로그아웃</a>
             </div>
         </div>
         <img src="/components/images/notifications_black_24dp.svg" id="alertIcon"/>
@@ -259,39 +261,17 @@
         </tr>
         </thead>
 
-        <tbody>
-        <tr id="boardList">
-            <td>1</td>
-            <td class="tit">글의 제목이 입력됩니다.</td>
-            <td>MEETU 관리자</td>
-            <td>2021-05-10</td>
-            <td>123</td>
-        </tr>
-
-        <tr id="boardList">
-            <td>2</td>
-            <td class="tit">글의 제목이 입력됩니다.</td>
-            <td>MEETU 관리자</td>
-            <td>2021-05-10</td>
-            <td>123</td>
-        </tr>
-
-        <tr id="boardList">
-            <td>3</td>
-            <td class="tit">글의 제목이 입력됩니다.</td>
-            <td>MEETU 관리자</td>
-            <td>2021-05-10</td>
-            <td>123</td>
-        </tr>
-
-        <tr id="boardList">
-            <td>4</td>
-            <td class="tit">글의 제목이 입력됩니다.</td>
-            <td>MEETU 관리자</td>
-            <td>2021-05-10</td>
-            <td>123</td>
-        </tr>
-        </tbody>
+        <tbody id="noticeList">
+        	<c:forEach items="${requestScope.notice_map}" var="notice">
+        		<tr id="boardList" onclick="location.href='noticeContent.do?no=${notice.value.getNoticeId()}'">
+            		<td>${notice.value.getNoticeId()}</td>
+            		<td class="tit">${notice.value.getTitle()}</td>
+            		<td>MEETU 관리자</td>
+            		<td><c:set var="date" value="${notice.value.getWriteDate()}"/>${fn:substring(date,0,10)}</td>
+            		<td>${notice.value.getViews()}</td>
+        		</tr>
+            </c:forEach>
+		</tbody>
     </table>
 
     <div class="paging">
