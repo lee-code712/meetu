@@ -1,14 +1,36 @@
 $(document).ready(function(){ // html이 로드되면 실행됨  
-  	$("#searchBtn").click(searchProfessor); // : - 모든 <button> 선택
+  	$("#searchBtn").click(searchProfessorByName); // : - 모든 <button> 선택
+	$(".dept").click(searchProfessorByDept);
 });
 
-function searchProfessor() {
+function searchProfessorByName() {
 	var searchText = $("#searchText").val();
 	$("#searchResult").children().remove();
 	
 	$.ajax({
 	 	type: "GET",
-		url: "/reservation/searchProfessor.jsp?searchText=" + searchText,
+		url: "/reservation/searchProfessorByName.jsp?searchText=" + searchText,
+		dataType: "text",
+		success: updatePage,
+		error: function(jqXHR, textStatus, errorThrown) {
+			var message = jqXHR.getResponseHeader("Status");
+			if ((message == null) || (message.length <= 0)) {
+				alert("Error! Request status is " + jqXHR.status);
+			} else {
+				alert(message);	
+			}
+		}
+	});
+}
+
+function searchProfessorByDept() {
+	var liElement = this;
+	var dept_name = liElement.innerHTML;
+	$("#searchResult").children().remove();
+	
+	$.ajax({
+	 	type: "GET",
+		url: "/reservation/searchProfessorByDept.jsp?dept_name=" + dept_name,
 		dataType: "text",
 		success: updatePage,
 		error: function(jqXHR, textStatus, errorThrown) {

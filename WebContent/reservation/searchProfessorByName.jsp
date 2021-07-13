@@ -17,7 +17,7 @@
 	String searchText = request.getParameter("searchText");
 	
 	// 검색 결과 교수 DTO
-	ArrayList<ProfessorDTO> profs = dao.ProfessorSearch(univ_dto, searchText);
+	ArrayList<ProfessorDTO> profs = dao.professorSearchByName(univ_dto, searchText);
 	
 	if (profs != null) {	
 		JSONObject profJson = new JSONObject();

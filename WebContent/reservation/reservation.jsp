@@ -422,57 +422,6 @@
                         </thead>
 
                         <tbody id="searchResult">
-                        <tr> <!--선택하기 버튼 있음-->
-                            <td>1</td>
-                            <td>000교수님</td>
-                            <td>컴퓨터학과</td>
-                            <td>
-                                <div id="infoBox"><img src="/reservation/images/info.svg" id="infoBtn"/>
-                                    <div id="infoBox-content">
-                                        <p><span id="infoTitle">교수명</span></p>
-                                        <p>000교수님</p>
-                                        <p><span id="infoTitle">전공</span></p>
-                                        <p>컴퓨터학과</p>
-                                        <p><span id="infoTitle">담당과목</span></p>
-                                        <p>모바일 소프트웨어</p>
-                                        <p><span id="infoTitle">이메일</span></p>
-                                        <p>이메일@dongduk.ac.kr</p>
-                                        <p><span id="infoTitle">연구실 위치</span></p>
-                                        <p>인문관 303호</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <button id="checkBtn">선택하기</button>
-                            </td>
-
-                        </tr>
-
-                        <tr> <!--선택하기 버튼 없음-->
-                            <td>2</td>
-                            <td>000교수님</td>
-                            <td>컴퓨터학과</td>
-                            <td>
-                                <div id="infoBox"><img src="/reservation/images/info.svg" id="infoBtn"/>
-                                    <div id="infoBox-content">
-                                        <p><span id="infoTitle">교수명</span></p>
-                                        <p>000교수님</p>
-                                        <p><span id="infoTitle">전공</span></p>
-                                        <p>컴퓨터학과</p>
-                                        <p><span id="infoTitle">담당과목</span></p>
-                                        <p>모바일 소프트웨어</p>
-                                        <p><span id="infoTitle">이메일</span></p>
-                                        <p>이메일@dongduk.ac.kr</p>
-                                        <p><span id="infoTitle">연구실 위치</span></p>
-                                        <p>인문관 303호</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-
-                            </td>
-
-                        </tr>
 
                         </tbody>
                     </table>
