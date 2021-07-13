@@ -332,75 +332,10 @@
         <td>
             <ul id="deptWrap">
                 <li id="selectDept"><img src="/reservation/images/school_black_24dp.svg"/>&nbsp;&nbsp;학과 선택</li>
-
-                <li class="college"><img src="/reservation/images/label_important_black_24dp.svg"/>&nbsp;인문대학
-                    <ul class="deptList">
-                        <li class="dept">국어국문학과</li>
-                        <li class="dept">국사학과</li>
-                        <li class="dept">문예창작과</li>
-                        <li class="dept">영어과</li>
-                        <li class="dept">일본어과</li>
-                        <li class="dept">프랑스어과</li>
-                        <li class="dept">독일어과</li>
-                        <li class="dept">중어중국학과</li>
-                    </ul>
-                </li>
-                <li class="college"><img src="/reservation/images/label_important_black_24dp.svg"/>&nbsp;사회과학대학
-                    <ul class="deptList">
-                        <li class="dept">경영학과</li>
-                        <li class="dept">세무회계학과</li>
-                        <li class="dept">경제학과</li>
-                        <li class="dept">국제경영학과</li>
-                        <li class="dept">문헌정보학과</li>
-                        <li class="dept">사회복지학과</li>
-                        <li class="dept">아동학과</li>
-                    </ul>
-                </li>
-                <li class="college"><img src="/reservation/images/label_important_black_24dp.svg"/>&nbsp;자연과학대학
-                    <ul class="deptList">
-                        <li class="dept">식품영양학과</li>
-                        <li class="dept">보건관리학과</li>
-                        <li class="dept">응용화학전공</li>
-                        <li class="dept">화장품학전공</li>
-                        <li class="dept">체육학과</li>
-                        <li class="dept">토탈뷰티케어학과</li>
-                    </ul>
-                </li>
-                <li class="college"><img src="/reservation/images/label_important_black_24dp.svg"/>&nbsp;정보과학대학
-                    <ul class="deptList">
-                        <li class="dept">컴퓨터학과</li>
-                        <li class="dept">정보통계학과</li>
-                    </ul>
-                </li>
-                <li class="college"><img src="/reservation/images/label_important_black_24dp.svg"/>&nbsp;약학대학</li>
-                <li class="college"><img src="/reservation/images/label_important_black_24dp.svg"/>&nbsp;예술대학
-                    <ul class="deptList">
-                        <li class="dept">회화과</li>
-                        <li class="dept">디지털공예과</li>
-                        <li class="dept">큐레이터학과</li>
-                        <li class="dept">피아노과</li>
-                        <li class="dept">관현악과</li>
-                        <li class="dept">성악과</li>
-                    </ul>
-                </li>
-                <li class="college"><img src="/reservation/images/label_important_black_24dp.svg"/>&nbsp;디자인대학
-                    <ul class="deptList">
-                        <li class="dept">패션디자인학과</li>
-                        <li class="dept">시각&실내디자인학과</li>
-                        <li class="dept">미디어디자인학과</li>
-                    </ul>
-                </li>
-                <li class="college"><img src="/reservation/images/label_important_black_24dp.svg"/>&nbsp;공연예술대학
-                    <ul class="deptList">
-                        <li class="dept">무용과</li>
-                        <li class="dept">방송연예과</li>
-                        <li class="dept">실용음악과</li>
-                        <li class="dept">모델과</li>
-                    </ul>
-                </li>
+				
             </ul>
         </td>
-
+		 
         <td id="messageInner">
             <div id="sender">
                 <div id="search">
@@ -430,16 +365,5 @@
         </td>
     </tr>
 </table>
-
-<script>
-    $('.college').click(function () {
-        $('.deptList').slideUp();
-        if ($(this).children('.deptList').is(':visible')) {
-            $(this).children('.deptList').slideUp();
-        } else {
-            $(this).children('.deptList').slideDown();
-        }
-    });
-</script>
 </body>
 </html>

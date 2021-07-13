@@ -599,8 +599,7 @@ public class MemberDAO {
 	}
 
 	// 특정 교수가 가르치는 course dto 반환
-	public ArrayList<CourseDTO> getCourseInfo(ProfessorDTO prof_dto, String univ)
-			throws NamingException/* , SQLException */ {
+	public ArrayList<CourseDTO> getCourseInfo(ProfessorDTO prof_dto, String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
@@ -616,7 +615,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				String course_id = rs.getNString("course_id");
+				String course_id = rs.getString("course_id");
 
 				sql = "select * from course where course_id=?";
 
@@ -626,7 +625,7 @@ public class MemberDAO {
 				ResultSet rs_new = pstmt_new.executeQuery();
 
 				if (rs_new.next()) {
-					String title = rs_new.getNString("title");
+					String title = rs_new.getString("title");
 
 					CourseDTO course_dto = new CourseDTO();
 					course_dto.setCourseId(course_id);
@@ -647,5 +646,80 @@ public class MemberDAO {
 		}
 
 		return courses;
+	}
+	
+	public ArrayList<CollegeDTO> getCollege(UniversityDTO univ) throws NamingException {
+		ArrayList<CollegeDTO> colleges = new ArrayList<CollegeDTO>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ.getUnivId());
+			String sql = "select * from college";
+
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				String college_id = rs.getString("college_id");
+				String college_name = rs.getString("college_name");
+
+				CollegeDTO college_dto = new CollegeDTO();
+				college_dto.setCollegeId(college_id);
+				college_dto.setCollegeName(college_name);
+
+				colleges.add(college_dto);
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return colleges;
+	}
+	
+	public ArrayList<DepartmentDTO> getDeptByCollege (UniversityDTO univ, String college_id) throws NamingException {
+		ArrayList<DepartmentDTO> depts = new ArrayList<DepartmentDTO>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ.getUnivId());
+			String sql = "select * from department where college_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, college_id);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				String dept_id = rs.getString("dept_id");
+				String dept_name = rs.getString("dept_name");
+
+				DepartmentDTO dept_dto = new DepartmentDTO();
+				dept_dto.setDeptId(dept_id);
+				dept_dto.setDeptName(dept_name);
+
+				depts.add(dept_dto);
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return depts;
 	}
 }

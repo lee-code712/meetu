@@ -1,6 +1,6 @@
 $(document).ready(function(){ // html이 로드되면 실행됨  
   	$("#searchBtn").click(searchProfessorByName); // : - 모든 <button> 선택
-	$(".dept").click(searchProfessorByDept);
+	getDept(); // 사이드바 학과들 출력
 });
 
 function searchProfessorByName() {
@@ -193,5 +193,110 @@ function updatePage(responseText) {
 
 		// tbody에 tr 추가
 	    $("#searchResult").append(newTrElement);
+
 	});
+}
+
+function getDept(responseText) {
+	var colleges = getCollege();
+	colleges = JSON.parse(colleges);
+	
+	var depts; // 한 단대의 학과들
+	
+	// 단대 하나와 해당 단대에 해당하는 학과들을 출력
+	Array.from(colleges).forEach(function(college, idx){
+		var college_id = college.college_id;
+		var college_name = college.college_name;
+		
+		// 단대에 해당하는 학과를 가져옴
+		$.ajax({
+	 		type: "GET",
+			url: "/reservation/getDept.jsp?college_id=" + college_id,
+			async: false,
+			dataType: "text",
+			success: function(data){
+				depts = data;
+				depts = JSON.parse(depts);
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				var message = jqXHR.getResponseHeader("Status");
+				if ((message == null) || (message.length <= 0)) {
+					alert("Error! Request status is " + jqXHR.status);
+				} else {
+					alert(message);	
+				}
+			}	
+		});
+		
+		// 웹 페이지에 출력
+		// college li
+		var newCollegeLiElement = document.createElement("li");
+		$(newCollegeLiElement).attr("class", "college");
+		
+		// college li 내부 이미지
+		var newCollegeImgElement = document.createElement("img");
+		$(newCollegeImgElement).attr("src", "/reservation/images/label_important_black_24dp.svg");
+		
+		// college 내부 ul deptList
+		var newDeptUlElement = document.createElement("ul");
+		$(newDeptUlElement).attr("class", "deptList");
+		
+		// deptList 내부 li dept
+		Array.from(depts).forEach(function(dept, idx){
+			// 학과 생성
+			var newDeptLiElement = document.createElement("li");
+			$(newDeptLiElement).attr("class", "dept");
+			newDeptLiElement.innerHTML = dept.dept_name;
+			// ul에 추가
+			$(newDeptUlElement).append(newDeptLiElement);
+		});
+		
+		// college li에 항목들 추가
+		$(newCollegeLiElement).append(newCollegeImgElement);
+		newCollegeLiElement.innerHTML = "&nbsp;" + college_name;
+		$(newCollegeLiElement).append(newDeptUlElement);
+		
+		// deptWrap에 college li 추가
+		$("#deptWrap").append(newCollegeLiElement);
+	});
+	
+	// dept 클릭 시 교수 출력 이벤트 추가
+	$(".dept").click(searchProfessorByDept);
+	
+	// college 클릭 시 slideUp/Down 이벤트 추가
+	$('.college').click(function () {
+        $('.deptList').slideUp();
+        if ($(this).children('.deptList').is(':visible')) {
+            $(this).children('.deptList').slideUp();
+        } else {
+            $(this).children('.deptList').slideDown();
+        }
+    });
+}
+
+function getCollege() {
+	$(".college").empty();
+	$(".college").remove();
+	
+	var colleges;
+	
+	$.ajax({
+	 	type: "GET",
+		url: "/reservation/getCollege.jsp",
+		async: false,
+		dataType: "text",
+		success: function(data){
+			colleges = data;
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			var message = jqXHR.getResponseHeader("Status");
+			if ((message == null) || (message.length <= 0)) {
+				alert("Error! Request status is " + jqXHR.status);
+			} else {
+				alert(message);	
+			}
+		}
+	});
+	
+	return colleges;
 }
