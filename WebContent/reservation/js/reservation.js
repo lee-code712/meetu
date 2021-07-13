@@ -4,7 +4,7 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 
 function searchProfessor() {
 	var searchText = $("#searchText").val();
-	$("#profsTbody").children().remove();
+	$("#searchResult").children().remove();
 	
 	$.ajax({
 	 	type: "GET",
@@ -36,15 +36,19 @@ function updatePage(responseText) {
 		var email = prof.email;
 		var office = prof.office;
 		var course = prof.course;
+		var is_member = prof.is_member;
 		
 		var newTrElement = document.createElement("tr");
 		
+		// 번호
 		var newCountTdElement = document.createElement("td");
 		newCountTdElement.innerHTML = idx + 1;
 	
+		// 교수 이름
 		var newNameTdElement = document.createElement("td");
 		newNameTdElement.innerHTML = name;
 		
+		// 교수 소속 학과
 		var newMajorTdElement = document.createElement("td");
 		newMajorTdElement.innerHTML = major;
 		
@@ -129,12 +133,6 @@ function updatePage(responseText) {
 		var newOfficePElement = document.createElement("p");
 		newOfficePElement.innerHTML = office;
 		
-		var newSelectTdElement = document.createElement("td");
-		$(newSelectTdElement).addClass("selectProf");
-		var newSelectAElement = document.createElement("a");
-		newSelectAElement.innerHTML = "선택하기";
-		$(newSelectTdElement).append(newSelectAElement);
-		
 		// infoBox-content div에 p들 추가
 		$(newInfoBoxDivElement).append(newNameTitlePElement);
 		$(newInfoBoxDivElement).append(newNamePElement);
@@ -151,24 +149,27 @@ function updatePage(responseText) {
 		$(newInfoDivElement).append(newInfoImgElement);
 		$(newInfoDivElement).append(newInfoBoxDivElement);
 		
-		// info td의 자식 img checkBtn
-		var newCheckImgElement = document.createElement("img");
-		$(newCheckImgElement).attr("id", "checkBtn");
-		$(newCheckImgElement).attr("src", "/reservation/images/check.svg");
-		
-		// infoBox td에 infoBox div, checkBtn 추가
+		// infoBox td에 infoBox div 추가
 		$(newInfoTdElement).append(newInfoDivElement);
-		// var newTextNode = document.createTextNode("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-		// $(newInfoTdElement).append(newTextNode);
-		$(newInfoTdElement).append(newCheckImgElement);
-	
+		
+		// checkBtn
+		var newCheckTdElement = document.createElement("td");
+		
+		if(is_member) { // 회원인 경우에만 선택하기 출력
+			var newCheckBtnElement = document.createElement("button");
+			$(newCheckBtnElement).attr("id", "checkBtn");
+			newCheckBtnElement.innerHTML = "선택하기";
+			$(newCheckTdElement).append(newCheckBtnElement);
+		}
+		
 		// tr에 td들 추가
 		$(newTrElement).append(newCountTdElement);
 		$(newTrElement).append(newNameTdElement);
 		$(newTrElement).append(newMajorTdElement);
 		$(newTrElement).append(newInfoTdElement);
+		$(newTrElement).append(newCheckTdElement);
 
 		// tbody에 tr 추가
-	    $("#profsTbody").append(newTrElement);
+	    $("#searchResult").append(newTrElement);
 	});
 }

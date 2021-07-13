@@ -137,7 +137,7 @@ public class MemberDAO {
 	}
 
 	// 모든 회원 정보 dto 반환
-	public ArrayList<MemberDTO> getAllMembers(String univ) throws NamingException/* , SQLException */ {
+	public ArrayList<MemberDTO> getAllMemberUsers(String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<MemberDTO> members = new ArrayList<MemberDTO>();
@@ -180,6 +180,51 @@ public class MemberDAO {
 
 		return members;
 	}
+	
+	// 모든 대학 구성원 정보 dto 반환
+		public ArrayList<MemberDTO> getAllMembers(String univ) throws NamingException/* , SQLException */ {
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			ArrayList<MemberDTO> members = new ArrayList<MemberDTO>();
+
+			try {
+				Connection conn = DBConnection.getConnection(univ);
+				String sql = "select * from member";
+
+				pstmt = conn.prepareStatement(sql);
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					MemberDTO mem_dto = new MemberDTO();
+					mem_dto.setMemberId(rs.getString("member_id"));
+					mem_dto.setName(rs.getString("name"));
+					mem_dto.setRole(rs.getString("role"));
+					members.add(mem_dto);
+
+					while (rs.next()) {
+						mem_dto = new MemberDTO();
+						mem_dto.setMemberId(rs.getString("member_id"));
+						mem_dto.setName(rs.getString("name"));
+						mem_dto.setRole(rs.getString("role"));
+						members.add(mem_dto);
+					}
+				} else {
+					return null;
+				}
+				// if close
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			return members;
+		}
 
 	// 특정 회원 정보 dto 반환
 	public MemberDTO getMemberInfo(String univ, String id) throws NamingException/* , SQLException */ {
@@ -217,7 +262,7 @@ public class MemberDAO {
 
 		return mem_dto;
 	}
-	
+
 	// 특정 회원 계정 정보 dto 반환 (password는 반환하지 않음)
 	public MemberUserDTO getMemberUserInfo(MemberDTO mem_dto, String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
@@ -392,6 +437,43 @@ public class MemberDAO {
 
 		return is_added;
 	}
+	
+	// 학과 id에 해당하는 학과 dto 반환
+	public DepartmentDTO getDepartmentDTO(UniversityDTO univ_dto, String dept_id) throws NamingException {
+		DepartmentDTO dept_dto = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			Connection conn = DBConnection.getConnection(univ_dto.getUnivId());
+			String sql = "select * from department where dept_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dept_id);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				dept_dto = new DepartmentDTO();
+				dept_dto.setDeptId(dept_id);
+				dept_dto.setDeptName(rs.getString("dept_name"));
+				dept_dto.setCollegeId(rs.getString("college_id"));
+			} else {
+				return null;
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return dept_dto;
+	}
 
 	// 교수 이름에 해당하는 professorDTO 반환
 	public ArrayList<ProfessorDTO> ProfessorSearch(UniversityDTO univ_dto, String name) throws NamingException {
@@ -456,12 +538,13 @@ public class MemberDAO {
 	}
 
 	// 특정 교수가 가르치는 course dto 반환
-	public ArrayList<CourseDTO> getCourseInfo(ProfessorDTO prof_dto, String univ) throws NamingException/* , SQLException */ {
+	public ArrayList<CourseDTO> getCourseInfo(ProfessorDTO prof_dto, String univ)
+			throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		ArrayList<CourseDTO> courses = new ArrayList<CourseDTO>();
-		
+
 		try {
 			Connection conn = DBConnection.getConnection(univ);
 			String sql = "select * from class where prof_id=?";
@@ -470,27 +553,27 @@ public class MemberDAO {
 			pstmt.setString(1, prof_dto.getProfId());
 
 			rs = pstmt.executeQuery();
-			
+
 			while (rs.next()) {
 				String course_id = rs.getNString("course_id");
-				
+
 				sql = "select * from course where course_id=?";
-				
+
 				PreparedStatement pstmt_new = conn.prepareStatement(sql);
 				pstmt_new.setString(1, course_id);
 
 				ResultSet rs_new = pstmt_new.executeQuery();
-				
+
 				if (rs_new.next()) {
 					String title = rs_new.getNString("title");
-					
+
 					CourseDTO course_dto = new CourseDTO();
 					course_dto.setCourseId(course_id);
 					course_dto.setTitle(title);
-					
+
 					courses.add(course_dto);
 				}
-			} 
+			}
 			// if close
 			if (rs != null)
 				rs.close();

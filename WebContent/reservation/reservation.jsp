@@ -29,6 +29,8 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 	
+	<script src="/reservation/js/reservation.js"></script>
+	
     <style>
         * {
             margin: 0;
@@ -419,7 +421,7 @@
                         </tr>
                         </thead>
 
-                        <tbody>
+                        <tbody id="searchResult">
                         <tr> <!--선택하기 버튼 있음-->
                             <td>1</td>
                             <td>000교수님</td>
