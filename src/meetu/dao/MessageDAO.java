@@ -170,5 +170,37 @@ public class MessageDAO {
 
 		return is_added;
 	}
+	
+	// is_read를 0에서 1로 변경
+	public boolean changeRead(String user_id, String mem_usr_id, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_changed = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "update message_info set is_read=1 where send_id=? and recv_id=? and is_read=0";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mem_usr_id);
+			pstmt.setString(2, user_id);
+
+			rs = pstmt.executeQuery();
+					
+			is_changed = true;
+					
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_changed;
+	}
 
 }

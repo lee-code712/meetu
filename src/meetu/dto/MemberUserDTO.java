@@ -6,11 +6,11 @@ public class MemberUserDTO {
 	private String phone;
 	private String member_id;
 	
-	public String getUser_id() {
+	public String getUserId() {
 		return user_id;
 	}
 	
-	public void setUser_id(String user_id) {
+	public void setUserId(String user_id) {
 		this.user_id = user_id;
 	}
 	
@@ -30,11 +30,11 @@ public class MemberUserDTO {
 		this.phone = phone;
 	}
 	
-	public String getMember_id() {
+	public String getMemberId() {
 		return member_id;
 	}
 	
-	public void setMember_id(String member_id) {
+	public void setMemberId(String member_id) {
 		this.member_id = member_id;
 	}
 	

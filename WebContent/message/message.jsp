@@ -11,6 +11,9 @@ pageEncoding="UTF-8" %>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="/message/js/message.js"></script>
+	<script>
+		var user_id = '${user_id}';
+	</script>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -295,7 +298,6 @@ pageEncoding="UTF-8" %>
                                 ${member.value.get(0)} ${member.value.get(1)} 교수
                             </li>
                             <input type='hidden' class='mem_usr_name' value='${member.value.get(1)}'/>
-                            <input type='hidden' class='mem_usr_id' value='${member.key}'/>
                         </c:forEach>
                     </c:when>
                     <c:otherwise>
@@ -304,7 +306,6 @@ pageEncoding="UTF-8" %>
                             ${member.value.get(0)} ${member.value.get(1)} 학생
                             </li>
                             <input type='hidden' class='mem_usr_name' value='${member.value.get(1)}'/>
-                            <input type='hidden' class='mem_usr_id' value='${member.key}'/>
                         </c:forEach>
                     </c:otherwise>
                 </c:choose>

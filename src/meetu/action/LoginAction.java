@@ -15,11 +15,11 @@ public class LoginAction implements CommandAction {
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
 		MemberUserDTO mem_usr_dto = new MemberUserDTO();
-		mem_usr_dto.setUser_id(req.getParameter("user_id"));
+		mem_usr_dto.setUserId(req.getParameter("user_id"));
 		mem_usr_dto.setPassword(req.getParameter("password"));
 		
 		
-		String user_id = mem_usr_dto.getUser_id();
+		String user_id = mem_usr_dto.getUserId();
 		String role = req.getParameter("role");
 		String univ_id = "";
 		int i = 0;

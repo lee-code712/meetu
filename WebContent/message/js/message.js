@@ -1,21 +1,18 @@
 $(document).ready(function() { // html이 로드되면 실행됨 
-	console.log("실행됨");
   	$(".list").click(getMessages);
   	var mem_usr;
   	var mem_usr_name;
-  	var mem_usr_id;
 });
 
 function getMessages() {
 	mem_usr = $(this).text();
 	mem_usr_name = $(this).next().val();
-	mem_usr_id = $(this).next().next().val();
 	$('#sender').text(mem_usr);
 	$('#messageResult').children().remove();
 		
 	$.ajax({
 		 type: "GET",
-		url: "/message/searchMessages.jsp?mem_usr_id=" + mem_usr_id,
+		url: "/message/searchMessages.jsp?mem_usr_name=" + mem_usr_name,
 		dataType: "text",
 		success: updatePage,
 		error: function(jqXHR, textStatus, errorThrown) {
@@ -37,7 +34,7 @@ function updatePage(responseText) {
 		var msg_content = messages[key].msgContentDto.msg;
 		var temp_html = '';
 	
-		if(messages[key].sendId == mem_usr_id) {
+		if(messages[key].recvId == user_id) {
 			temp_html += "<div id=\"receiveMessage\"> <div id=\"receiveMsg\">" + mem_usr_name + "</div>";
 			temp_html += "<div id=\"receiveMessageText\"> <div id=\"messageContent\">" + msg_content + "</div></div>";
 			temp_html += "<div id=\"receiveDate\">" + sent_time + "</div>";
@@ -46,7 +43,13 @@ function updatePage(responseText) {
 		else {
 			temp_html += "<div id=\"sendMessage\">";
 			temp_html += "<div id=\"sendMessageText\"> <div id=\"messageContent\">" + msg_content + "</div></div>";
-			temp_html += "<div id=\"sendDate\">" + sent_time + "</div>";
+			temp_html += "<div id=\"sendDate\">" + sent_time;
+			if(messages[key].isRead == 1) {	
+				temp_html += " 읽음</div>";
+			}
+			else {
+				temp_html += " 읽지않음</div>";
+			}
 			temp_html += "</div>";
 		}
 		console.log(temp_html);
@@ -62,7 +65,7 @@ function sendMessage() {
 		alert("전송할 메시지 내용이 없습니다.");
 	}
 	else {
-		var data = {"mem_usr_id":mem_usr_id, "msg":msg};
+		var data = {"mem_usr_name":mem_usr_name, "msg":msg};
 		
 		$.ajax({
 	 		type: "POST",
@@ -91,7 +94,7 @@ function UpdateMessages() {
 	
 	$.ajax({
 	 	type: "GET",
-		url: "/message/searchMessages.jsp?mem_usr_id=" + mem_usr_id,
+		url: "/message/searchMessages.jsp?mem_usr_name=" + mem_usr_name,
 		dataType: "text",
 		success: updatePage,
 		error: function(jqXHR, textStatus, errorThrown) {

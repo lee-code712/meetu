@@ -26,7 +26,7 @@ public class JoinAction implements CommandAction {
 		}
 		
 		MemberUserDTO mem_usr_dto = new MemberUserDTO(); // 학번, id, pw 저장
-		mem_usr_dto.setMember_id(req.getParameter("member_id")); // 학번 저장
+		mem_usr_dto.setMemberId(req.getParameter("member_id")); // 학번 저장
 		String user_id = mem_dao.userIdCreate(mem_usr_dto, univ_dto);	 
 		
 		if (user_id.equals("-2")) { // 존재하지 않는 학번인 경우
@@ -36,7 +36,7 @@ public class JoinAction implements CommandAction {
 			return "/join/join.jsp?ck=-3";
 		}
 		else {
-			mem_usr_dto.setUser_id(user_id);
+			mem_usr_dto.setUserId(user_id);
 			mem_usr_dto.setPassword(req.getParameter("password")); // 아이디가 생성된 경우 dto에 pw 추가	
 		}
 

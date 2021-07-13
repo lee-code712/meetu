@@ -37,7 +37,7 @@ public class MemberDAO {
 			String sql = "select * from member_user JOIN member USING (member_id) where user_id=? and password=? and role=?";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mem_usr_dto.getUser_id());
+			pstmt.setString(1, mem_usr_dto.getUserId());
 			pstmt.setString(2, mem_usr_dto.getPassword());
 			pstmt.setString(3, role);
 
@@ -217,6 +217,43 @@ public class MemberDAO {
 
 		return mem_dto;
 	}
+	
+	// 특정 회원 계정 정보 dto 반환 (password는 반환하지 않음)
+	public MemberUserDTO getMemberUserInfo(MemberDTO mem_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberUserDTO mem_usr_dto = null;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from member JOIN member_user USING (member_id) where name=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mem_dto.getName());
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				mem_usr_dto = new MemberUserDTO();
+				mem_usr_dto.setUserId(rs.getString("user_id"));
+				mem_usr_dto.setPhone(rs.getString("phone"));
+				mem_usr_dto.setPhone(rs.getString("member_id"));
+			} else {
+				return null;
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return mem_usr_dto;
+	}
 
 	// 특정 회원의 학과 정보 dto 반환
 	public DepartmentDTO getDepartmentInfo(MemberDTO mem_dto, String univ) throws NamingException/* , SQLException */ {
@@ -273,7 +310,7 @@ public class MemberDAO {
 			Connection conn = DBConnection.getConnection(univ_dto.getUnivId());
 			String query = "select * from member";
 
-			member_id = mem_usr_dto.getMember_id(); // 학번
+			member_id = mem_usr_dto.getMemberId(); // 학번
 
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();
@@ -332,8 +369,8 @@ public class MemberDAO {
 			Connection conn = DBConnection.getConnection(univ_dto.getUnivId());
 			String query = "insert into member_user (user_id, password, member_id) values ";
 
-			query += "('" + mem_usr_dto.getUser_id() + "', '" + mem_usr_dto.getPassword() + "', '"
-					+ mem_usr_dto.getMember_id() + "')";
+			query += "('" + mem_usr_dto.getUserId() + "', '" + mem_usr_dto.getPassword() + "', '"
+					+ mem_usr_dto.getMemberId() + "')";
 
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();
