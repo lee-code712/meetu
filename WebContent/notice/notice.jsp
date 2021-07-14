@@ -17,6 +17,12 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/notice/js/notice.js"></script>
+	<script>
+		var total_data = '${notice_size}';
+	</script>
+	
     <style>
         * {
             margin: 0;
@@ -262,28 +268,12 @@
         </thead>
 
         <tbody id="noticeList">
-        	<c:forEach items="${requestScope.notice_map}" var="notice">
-        		<tr id="boardList" onclick="location.href='noticeContent.do?no=${notice.value.getNoticeId()}'">
-            		<td>${notice.value.getNoticeId()}</td>
-            		<td class="tit">${notice.value.getTitle()}</td>
-            		<td>MEETU 관리자</td>
-            		<td><c:set var="date" value="${notice.value.getWriteDate()}"/>${fn:substring(date,0,10)}</td>
-            		<td>${notice.value.getViews()}</td>
-        		</tr>
-            </c:forEach>
+
 		</tbody>
     </table>
 
-    <div class="paging">
-        <a href="#" class="bt">이전</a>
+    <div class="paging" id="paging">
 
-        <a class="num">1</a>
-        <a class="c_num">2</a>
-        <a class="c_num">3</a>
-        <a class="c_num">4</a>
-        <a class="c_num">5</a>
-
-        <a href="#" class="bt">다음</a>
     </div>
 </div>
 </body>

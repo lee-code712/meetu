@@ -138,4 +138,35 @@ public class NoticeDAO {
 
 		return is_changed;
 	}
+	
+	// 총 공지사항 개수(row) 반환
+	public int getNoticeRowSize(String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int row_size = 0;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from notice";
+
+			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			
+			rs = pstmt.executeQuery();
+			
+			rs.last();
+			row_size = rs.getRow(); 
+			
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return row_size;
+	}
 }
