@@ -26,13 +26,11 @@ pageEncoding="UTF-8" %>
             text-decoration: none;
             list-style: none;
         }
-
         #reservationWrap {
             margin: 0 auto;
             width: 1194px;
             height: 840px;
         }
-
         #mylist {
             margin-top: 80px;
             width: 18rem;
@@ -40,7 +38,6 @@ pageEncoding="UTF-8" %>
             border: none;
             border-radius: 10px;
         }
-
         #selectProf {
             display: flex;
             align-items: flex-start;
@@ -50,49 +47,39 @@ pageEncoding="UTF-8" %>
             font-weight: bold;
             border-bottom: 1px dotted #363B40;
         }
-
         .list {
             line-height: 40px;
             font-size: 14px;
             cursor: pointer;
             border-bottom: 1px dotted #C4C4C4;
         }
-
         .clicked {
             background: #363B40;
             color: white;
         }
-
         .profList th,
         .profList td {
             padding: 10px;
             font-size: 14px;
         }
-
         .profList td {
             text-align: center;
         }
-
         #profInfo a {
             color: #2575AF;
         }
-
         #selectProf a {
             color: #CE2E2E;
         }
-
         #profInfo a:hover {
             cursor: pointer;
         }
-
         #selectProf a:hover {
             cursor: pointer;
         }
-
         body {
             background: #F4F4F4;
         }
-
         #sender {
             margin-left: 80px;
             margin-top: 80px;
@@ -106,19 +93,15 @@ pageEncoding="UTF-8" %>
             background: white;
             border-radius: 10px 10px 0 0;
         }
-
-
         .profList th {
             font-size: 14px;
             border-bottom: 1px solid #C4C4C4;
             text-align: center;
         }
-
         .profList td {
             font-size: 14px;
             text-align: center;
         }
-
         #banner {
             display: table;
             margin: 0 auto;
@@ -127,7 +110,6 @@ pageEncoding="UTF-8" %>
             background-color: white;
             border-radius: 5px;
         }
-
         #banner div {
             display: table-cell;
             width: 1920px;
@@ -140,18 +122,15 @@ pageEncoding="UTF-8" %>
             font-weight: bold;
             vertical-align: middle;
         }
-
         #messageInner {
             display: block;
             width: 894px;
             height: 840px;
         }
-
         #messageInnerWrap {
             width: 900px;
             height: 550px;
         }
-
         #messageResult {
             display: block;
             margin-left: 80px;
@@ -162,7 +141,6 @@ pageEncoding="UTF-8" %>
             border-right: 5px solid white;
             background: white;
         }
-
         #messageTextWrap {
             margin-left: 80px;
             width: 840px;
@@ -171,7 +149,6 @@ pageEncoding="UTF-8" %>
             border-radius: 0 0 10px 10px;
             border-top: 1px solid #C2C2C2;
         }
-
         #messageText {
             padding-left: 20px;
             width: 700px;
@@ -180,7 +157,6 @@ pageEncoding="UTF-8" %>
             border: none;
             border-radius: 0 0 10px 10px;
         }
-
         #receiveMessageText {
             width: 500px;
             margin-left: 20px;
@@ -189,18 +165,15 @@ pageEncoding="UTF-8" %>
             background: #DFE7F4;
             font-size: 14px;
         }
-
         #receiveDate {
             margin-top: 4px;
             padding-left: 25px;
             font-size: 12px;
             color: #848484;
         }
-
         #sendMessage {
             float: right;
         }
-
         #sendMessageText {
             width: 500px;
             margin-left: 10px;
@@ -209,19 +182,16 @@ pageEncoding="UTF-8" %>
             background: #FFF1DC;
             font-size: 14px;
         }
-
         #sendDate {
             margin-top: 4px;
             padding-left: 15px;
             font-size: 12px;
             color: #848484;
         }
-
         #receiveMessage {
             display: inline-block;
             margin-top: 10px;
         }
-
         #receiveMsg {
        	 	padding-left: 25px;
             color: #3296B6;
@@ -236,7 +206,6 @@ pageEncoding="UTF-8" %>
         	color: white;
         	border-bottom: 4px solid black;
         }
-
         #textBtn:hover {
             cursor: pointer;
         }
@@ -331,12 +300,9 @@ pageEncoding="UTF-8" %>
 
 <script id="rendered-js">
     var div2 = document.getElementsByClassName("list");
-
     function handleClick(event) {
         console.log(event.target);
-
         console.log(event.target.classList);
-
         if (event.target.classList[1] === "clicked") {
             event.target.classList.remove("clicked");
         } else {
@@ -345,11 +311,9 @@ pageEncoding="UTF-8" %>
                 div2[i].classList.remove("clicked");
             }
             window.CP.exitedLoop(0);
-
             event.target.classList.add("clicked");
         }
     }
-
     function init() {
         for (var i = 0; i < div2.length; i++) {
             if (window.CP.shouldStopExecution(1)) break;
@@ -357,7 +321,6 @@ pageEncoding="UTF-8" %>
         }
         window.CP.exitedLoop(1);
     }
-
     init(); 
 </script>
 

@@ -51,15 +51,12 @@
             margin: 0 auto;
             margin-top: 80px;
         }
-
         #navInnerWrap {
             display: block;
         }
-
         #navSub {
             display: block;
         }
-
         #banner {
             display: table;
             margin: 0 auto;
@@ -68,7 +65,6 @@
             background-color: white;
             border-radius: 5px;
         }
-
         #banner div {
             display: table-cell;
             width: 1920px;
@@ -80,12 +76,9 @@
             font-family: 'Noto Sans KR', sans-serif;
             vertical-align: middle;
         }
-
-
         body {
             background: #F4F4F4;
         }
-
         #cardWrap {
             width: 18rem;
             background: white;
@@ -93,41 +86,33 @@
             border: none;
             border-radius: 10px;
         }
-
         .boardListWrap {
             width: 870px;
             margin: 0 auto;
         }
-
         .boardListWrap th,
         .boardListWrap td {
             padding: 10px;
             font-size: 14px;
         }
-
         .boardListWrap td, th {
             text-align: center;
         }
-
         #deleteBtn:hover {
             cursor: pointer;
         }
-
         a:link {
             color: #3E454D;
             text-decoration: none;
         }
-
         a:visited {
             color: #3E454D;
             text-decoration: none;
         }
-
         a:hover {
             color: #3E454D;
             text-decoration: underline;
         }
-
         #logoutBtn {
             display: block;
             width: 100px;
@@ -138,7 +123,6 @@
             background: white;
             border-radius: 5px;
         }
-
         #logoutBtn:hover {
             display: block;
             width: 100px;
@@ -149,7 +133,6 @@
             border-radius: 5px;
             cursor: pointer;
         }
-
         #cardTitle {
             display: flex;
             align-items: center;
@@ -157,17 +140,14 @@
             height: 50px;
             font-size: 18px;
         }
-
         #cardBody {
             padding: 20px 0;
             text-align: center;
             height: 180px;
         }
-
         #userUniv {
             margin: 10px 0 40px 0;
         }
-
         #thBorder {
             border-bottom: 1px solid #eee;
         }

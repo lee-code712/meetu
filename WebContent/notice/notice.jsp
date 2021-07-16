@@ -30,13 +30,11 @@
             list-style: none;
             text-decoration: none;
         }
-
         section {
             width: 100%;
             height: 80px;
             background-color: #FFFEFC;
         }
-
         #banner {
             display: table;
             margin: 0 auto;
@@ -45,7 +43,6 @@
             background-color: white;
             border-radius: 5px;
         }
-
         #banner div {
             display: table-cell;
             width: 1920px;
@@ -57,15 +54,12 @@
             font-family: 'Noto Sans KR', sans-serif;
             vertical-align: middle;
         }
-
-
         #noticeTable {
             display: table;
             width: 1194px;
             margin: 0 auto;
             text-align: center;
         }
-
         #search {
             height: 34px;
             width: 330px;
@@ -78,7 +72,6 @@
             margin-bottom: 30px;
             box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 2px;
         }
-
         #searchText {
             font-size: 14px;
             width: 200px;
@@ -89,7 +82,6 @@
             float: left;
             border-radius: 30px;
         }
-
         #searchBtn {
             width: 54px;
             height: 28px;
@@ -98,11 +90,9 @@
             outline: none;
             float: right;
         }
-
         #searchBtn:hover {
             cursor: pointer;
         }
-
         #noticeNav {
             margin-top: 60px;
             margin-left: 660px;
@@ -113,54 +103,43 @@
             border-radius: 30px;
             padding-left: 10px;
         }
-
         table {
             border-collapse: collapse;
         }
-
         a {
             text-decoration: none;
             color: inherit;
         }
-
         .board {
             padding: 10px;
         }
-
         .boardListWrap {
             width: 1194px;
             border-top: 2px solid #3E454D;
             margin: 0 auto;
         }
-
         .boardListWrap tr:first-child {
             border-top: 1px solid #ccc;
         }
-
         .boardListWrap th,
         .boardListWrap td {
             padding: 10px;
             font-size: 14px;
         }
-
         .boardListWrap td {
             text-align: center;
         }
-
         .boardListWrap .tit {
             text-align: left;
         }
-
         .bt:hover {
             text-decoration: underline;
         }
-
         .board .paging {
             margin-top: 50px;
             text-align: center;
             font-size: 0;
         }
-
         .board .paging a {
             display: inline-block;
             margin-left: 10px;
@@ -168,29 +147,24 @@
             border-radius: 100px;
             font-size: 12px;
         }
-
         .board .paging a:first-child {
             margin-left: 0;
         }
-
         .board .paging a.c_num {
             border: 1px solid gray;
             font-weight: 600;
             color: gray;
         }
-
         .board .paging a.num {
             border: 1px solid #3E454D;
             background: #3E454D;
             font-weight: 600;
             color: white;
         }
-
         .board .paging a.num,
         .board .paging a.c_num:hover {
             cursor: pointer
         }
-
         #boardList:hover {
             width: 1194px;
             height: 40px;
@@ -199,7 +173,6 @@
             cursor: pointer;
             background: white;
         }
-
         body {
             background: #F4F4F4;
         }
@@ -212,7 +185,6 @@
         a:link { color: white; text-decoration: none;}
  		a:visited { color: white; text-decoration: none;}
  		a:hover { color: white; text-decoration: underline;}
-
     </style>
    
 </head>

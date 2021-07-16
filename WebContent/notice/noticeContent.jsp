@@ -20,11 +20,9 @@
             margin: 0px;
             text-align: none;
         }
-
         body {
             background: #F4F4F4;
         }
-
         #banner {
             display: table;
             margin: 0 auto;
@@ -33,7 +31,6 @@
             background-color: white;
             border-radius: 5px;
         }
-
         #banner div {
             display: table-cell;
             width: 1920px;
@@ -45,7 +42,6 @@
             font-family: 'Noto Sans KR', sans-serif;
             vertical-align: middle;
         }
-
         #contentTitle {
             margin: 0 auto;
             margin-top: 50px;
@@ -58,9 +54,7 @@
             font-size: 14px;
             font-weight: bold;
             vertical-align: center;
-
         }
-
         #content {
             margin: 0 auto;
             padding-left: 20px;
@@ -72,7 +66,6 @@
             vertical-align: center;
 			border-bottom: 1px solid #C4C4C4;
         }
-
         #listBtn {
             display: block;
             float: right;
@@ -84,11 +77,9 @@
             color: white;
             background: #3E454D;
         }
-
         #listBtn:hover {
             cursor: pointer;
         }
-
 		#noticeContent {
 			margin: 0 auto;
 			width: 1194px;
@@ -135,4 +126,3 @@
 </div>
 </body>
 </html>
-
