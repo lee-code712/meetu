@@ -75,6 +75,7 @@
         }
 
         #dropdown-content {
+        	margin-left: 50px;
             display: none;
             position: absolute;
             min-width: 160px;
