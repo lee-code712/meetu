@@ -297,6 +297,7 @@ pageEncoding="UTF-8" %>
         	background: black;
         	color: white;
         	border-bottom: 4px solid black;
+        	border-radius: 0 0 10px 0;
         }
         #textBtn:hover {
             cursor: pointer;
