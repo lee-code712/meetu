@@ -266,7 +266,7 @@
         </div>
         <div id="dropdown">
             <div id="dropBtn">
-            	<div id="dropBtnTitle">(이름)님</div>
+            	<div id="dropBtnTitle">${mem_dto.getName()}님</div>
             <div>
             	<img src="/components/images/keyboard_arrow_down_black_24dp.svg" id="dropImg"/>
             </div>
