@@ -1,13 +1,8 @@
-		header {
+	#header {
             width: 100%;
             height: 100px;
-            top: 0px;
-            box-sizing: border-box;
-            transition: All 0.2s ease;
-            -webkit-transition: All 0.2s ease;
-            -moz-transition: All 0.2s ease;
-            -o-transition: All 0.2s ease;
             border-bottom: 1px solid #eee;
+            background: white;
         }
 
         #header_inner {
@@ -36,9 +31,9 @@
         #gnb {
             display: flex;
             width: 100%;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
-            color: black;
+            color: #535353;
             align-items: center;
         }
 
@@ -60,8 +55,9 @@
         }
 
         #dropBtn {
+        	display: flex;
             width: 160px;
-            color: black;
+            color: #535353;
             padding: 16px;
             font-size: 16px;
             border: none;
@@ -69,6 +65,7 @@
         }
 
         #dropdown-content {
+        	margin-left: 50px;
             display: none;
             position: absolute;
             min-width: 160px;
@@ -92,4 +89,15 @@
 
         #dropdown:hover #dropdown-content {
             display: block;
+        }
+        
+        #dropBtnTitle {
+        	font-weight: bold;
+        	padding: 0 4px 0 50px;
+        	height: 100%;
+        }
+        
+        #dropImg {
+        	width: 20px;
+        	heihgt: 20px;
         }
