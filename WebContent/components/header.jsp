@@ -12,7 +12,7 @@
 		#header {
             width: 100%;
             height: 100px;
-            border-bottom: 1px solid #C4C4C4;
+            border-bottom: 1px solid #eee;
         }
 
         #header_inner {
