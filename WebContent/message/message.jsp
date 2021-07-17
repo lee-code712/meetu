@@ -233,7 +233,7 @@ pageEncoding="UTF-8" %>
         }
         #messageTextWrap {
             margin-left: 80px;
-            width: 840px;
+            width: 830px;
             height: 50px;
             background: white;
             border-radius: 0 0 10px 10px;
@@ -293,7 +293,7 @@ pageEncoding="UTF-8" %>
         
         #textBtn {
         	text-align: center;
-        	padding: 14px 33px;
+        	padding: 14px 28px;
         	background: black;
         	color: white;
         	border-bottom: 4px solid black;
