@@ -352,7 +352,7 @@ pageEncoding="UTF-8" %>
     <tr>
         <td>
             <ul id="mylist">
-                <li id="selectProf"><img src="/message/images/school_black_24dp.svg"/>&nbsp;&nbsp;쪽지함</li>
+                <li id="selectProf"><img src="/message/images/email_black_24dp.svg"/>&nbsp;&nbsp;쪽지함</li>
                 <%-- 쪽지 가능한 member list 출력 --%>
                 <c:choose>
                     <c:when test="${mem_dto.getRole() =='0'}">
