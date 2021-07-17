@@ -193,9 +193,9 @@
             color: #8B8B8B;
         }
 		
-		a:link { color: white; text-decoration: none;}
- 		a:visited { color: white; text-decoration: none;}
- 		a:hover { color: white; text-decoration: underline;}
+		a:link { color: #535353; text-decoration: none;}
+ 		a:visited { color: #535353; text-decoration: none;}
+ 		a:hover { color: #535353; text-decoration: underline;}
     </style>
 </head>
 <body>
