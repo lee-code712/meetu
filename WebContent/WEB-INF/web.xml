@@ -27,7 +27,7 @@
      <init-param>
 	     <description>Model2 Task Properties</description>
 	     <param-name>configProperty</param-name>
-	     <param-value>C:\Users\huff0\Desktop\01\meetu\meetu\src\meetu\ctr\Command.properties</param-value>
+	     <param-value>C:\Users\mimi8\git\meetu\src\meetu\ctr\Command.properties</param-value>
      </init-param>
   </servlet>
       <filter>
