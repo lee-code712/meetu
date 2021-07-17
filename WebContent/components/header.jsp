@@ -101,13 +101,14 @@
         }
         
         #dropBtnTitle {
-        	padding: 0 4px;
+        	font-weight: bold;
+        	padding: 0 4px 0 50px;
         	height: 100%;
         }
         
         #dropImg {
-        	width: 19px;
-        	heihgt: 19px;
+        	width: 20px;
+        	heihgt: 20px;
         }
         
       
