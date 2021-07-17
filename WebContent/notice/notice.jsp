@@ -320,10 +320,9 @@
 
 <div id="noticeTable">
     <select id="noticeNav">
-        <option>전체</option>
+        <option>제목+내용</option>
         <option>제목</option>
         <option>내용</option>
-        <option>작성자</option>
     </select>
 
     <div id="search">
