@@ -139,15 +139,8 @@
  		a:hover { color: #535353; text-decoration: underline;}
  		
  		#title a:link {
- 			color: black;
- 		}
- 		
- 		#reserveIcon {
- 			border-top: 14px solid #35454D;
- 			border-bottom: 14px solid #35454D;
- 			background: #3E454D;
- 			color: white;
- 			border-radius: 5px;
+ 			color: #FBAB7E;
+ 			
  		}
  		
  		* {
@@ -369,10 +362,17 @@
         	display: block;
         	padding: 10px 20px;
         	border-radius: 5px;
-        	background: #3E454D;
+        	background-color: #FBAB7E;
         	color: white;
         	border: none;
-        	border: 1px solid #3E454D;
+        	border: 1px solid #FBAB7E;
+        }
+        
+        #topHeader {
+        	width: 100%;
+        	height: 34px;
+        	background-color: #FBAB7E;
+			background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
         }
         
         #reservationBtn:hover {
@@ -403,6 +403,7 @@
 	</style>
 </head>
 <body>
+	<div id="topHeader"></div>
 	<div id="header">
 	    <div id="header_inner">
 	        <div id="title"><a href="index.do">MEETU</a></div>
