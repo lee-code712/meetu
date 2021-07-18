@@ -303,21 +303,29 @@ pageEncoding="UTF-8" %>
             cursor: pointer;
         }
         
-        #reserveIcon,
-        #noticeIcon {
-            color: #8B8B8B;
+        #noticeIcon,
+        #reserveIcon {
+            color: #535353;
         }
         
-        #messageIcon {
-        	color: #535353;
-        }
-    
-      	a:link { color: #535353; text-decoration: none;}
+		a:link { color: #535353; text-decoration: none;}
  		a:visited { color: #535353; text-decoration: none;}
  		a:hover { color: #535353; text-decoration: underline;}
  		
+ 		#title a:link {
+ 			color: black;
+ 		}
+ 		
  		#sendMessageText {
  			margin-right: 20px;
+ 		}
+ 		
+ 		#messageIcon {
+ 			border-top: 14px solid #35454D;
+ 			border-bottom: 14px solid #35454D;
+ 			background: #3E454D;
+ 			color: white;
+ 			border-radius: 5px;
  		}
  		
     </style>

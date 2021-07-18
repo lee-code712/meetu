@@ -129,19 +129,25 @@
         }
         
         #messageIcon,
-        #noticeIcon {
+        #noticeIcon,
+        #reserveIcon {
             color: #535353;
         }
         
-        #reserveIcon {
-        	color: #535353;
-        }
 		a:link { color: #535353; text-decoration: none;}
  		a:visited { color: #535353; text-decoration: none;}
  		a:hover { color: #535353; text-decoration: underline;}
  		
  		#title a:link {
  			color: black;
+ 		}
+ 		
+ 		#reserveIcon {
+ 			border-top: 14px solid #35454D;
+ 			border-bottom: 14px solid #35454D;
+ 			background: #3E454D;
+ 			color: white;
+ 			border-radius: 5px;
  		}
  		
  		* {
