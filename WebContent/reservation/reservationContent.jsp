@@ -282,6 +282,38 @@
             font-weight: regular;
         }
         
+        #timeBox:hover {
+        	display: inline-block;
+            padding: 6px 0px;
+            width: 96px;
+            border: 1px solid #C4C4C4;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: regular;
+        	border-radius: 5px;
+        	background: #3E454D;
+        	color: white;
+        	border: none;
+        	border: 1px solid #3E454D;
+        	cursor: pointer;
+        }
+        
+        #timeBoxMid:hover {
+        	display: inline-block;
+            padding: 6px 0px;
+            width: 96px;
+            border: 1px solid #C4C4C4;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: regular;
+        	border-radius: 5px;
+        	background: #3E454D;
+        	color: white;
+        	border: none;
+        	border: 1px solid #3E454D;
+        	cursor: pointer;
+        }
+        
         #timeBoxMid {
         	display: inline-block;
         	margin: 0 10px;
@@ -311,6 +343,18 @@
             border: 1px solid #C4C4C4;
             border-radius: 30px;
             text-align: center;
+        }
+        
+        #typeBtn:hover {
+        	padding: 6px 0px;
+            width: 96px;
+            border-radius: 30px;
+            text-align: center;
+        	background: #3E454D;
+        	color: white;
+        	border: none;
+        	border: 1px solid #3E454D;
+        	cursor: pointer;
         }
         
         #reservationBtn {
@@ -344,7 +388,11 @@
         #timdBoxWrap {
         	margin-top: 8px;
         }
-    
+    	
+    	#reason {
+    		width: 248px;
+    		height: 24px;
+    	}
 	</style>
 </head>
 <body>
@@ -445,7 +493,7 @@
 						    <div class="form-check">
 						        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
 						        <label class="form-check-label" for="flexCheckDefault">
-						            기타
+						            기타: &nbsp; <input type="text" id="reason"/>
 						        </label>
 						    </div>
 				</td>
