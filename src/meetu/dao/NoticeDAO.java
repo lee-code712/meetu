@@ -26,7 +26,7 @@ public class NoticeDAO {
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "select * from notice";
+			String sql = "select * from notice order by write_date";
 
 			pstmt = conn.prepareStatement(sql);
 			
@@ -108,6 +108,72 @@ public class NoticeDAO {
 		return notice_dto;
 	}
 	
+	// option에 따라 검색한 notice dto 반환
+	public ArrayList<NoticeDTO> searchNotices(String option, String keyword, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<NoticeDTO> notices = new ArrayList<NoticeDTO>();
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from notice ";
+			keyword = "%" + keyword + "%";
+				
+			if(option.equals("t+c")) {
+				sql += "where title like ? or content like ? order by write_date";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, keyword);
+				pstmt.setString(2, keyword);
+			}
+			else {
+				if(option.equals("t")) {
+					sql += "where title like ? order by write_date";
+				}
+				else {
+					sql += "where content like ? order by write_date";
+				}
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, keyword);
+			}
+				
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				NoticeDTO notice_dto = new NoticeDTO();
+				notice_dto.setNoticeId(rs.getInt("notice_id"));
+				notice_dto.setTitle(rs.getString("title"));
+				notice_dto.setWriteDate(rs.getString("write_date"));
+				notice_dto.setViews(rs.getInt("views"));
+				notice_dto.setContent(rs.getString("content"));
+				notices.add(notice_dto);
+						
+				while(rs.next()) {
+					notice_dto = new NoticeDTO();
+					notice_dto.setNoticeId(rs.getInt("notice_id"));
+					notice_dto.setTitle(rs.getString("title"));
+					notice_dto.setWriteDate(rs.getString("write_date"));
+					notice_dto.setViews(rs.getInt("views"));
+					notice_dto.setContent(rs.getString("content"));
+					notices.add(notice_dto);
+				}
+			}
+			else {
+				return null;
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return notices;
+	}
+	
 	// view 증가
 	public boolean changeView(int notice_id, String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
@@ -140,7 +206,7 @@ public class NoticeDAO {
 	}
 	
 	// 총 공지사항 개수(row) 반환
-	public int getNoticeRowSize(String univ) throws NamingException/* , SQLException */ {
+	public int getAllNoticeRowSize(String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int row_size = 0;
@@ -169,4 +235,52 @@ public class NoticeDAO {
 
 		return row_size;
 	}
+	
+	// 검색 결과 공지 개수(row) 반환
+	public int getSearchNoticeRowSize(String option, String keyword, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int row_size = 0;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from notice ";
+			keyword = "%" + keyword + "%";
+			
+			if(option.equals("t+c")) {
+				sql += "where title like ? or content like ?";
+				pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+				pstmt.setString(1, keyword);
+				pstmt.setString(2, keyword);
+			}
+			else {
+				if(option.equals("t")) {
+					sql += "where title like ?";
+				}
+				else {
+					sql += "where content like ?";
+				}
+				pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+				pstmt.setString(1, keyword);
+			}
+			
+			rs = pstmt.executeQuery();
+			
+			rs.last();
+			row_size = rs.getRow(); 
+			
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return row_size;
+	}
+	
 }

@@ -49,7 +49,7 @@
 		
 		ObjectMapper mapper = new ObjectMapper();
 		String result = mapper.writeValueAsString(msg_map);
-		System.out.println(result);
+		// System.out.println(result);
 		out.print(result);
 	}
 %>

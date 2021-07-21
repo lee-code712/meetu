@@ -18,9 +18,6 @@
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="/notice/js/notice.js"></script>
-	<script>
-		var total_data = '${notice_size}';
-	</script>
 	
     <style>
     		#header {
@@ -322,7 +319,7 @@
             </div>
             <div id="dropdown-content">
                 <a href="myPage.do">마이페이지</a>
-                <a href="#">로그아웃</a>
+                <a href="logout.do">로그아웃</a>
             </div>
         </div>
        
@@ -332,14 +329,14 @@
 
 <div id="noticeTable">
     <select id="noticeNav">
-        <option>제목+내용</option>
-        <option>제목</option>
-        <option>내용</option>
+        <option value="t+c">제목+내용</option>
+        <option value="t">제목</option>
+        <option value="c">내용</option>
     </select>
 
     <div id="search">
         <input type="text" placeholder="검색어를 입력하세요." id="searchText">
-        <img src="/notice/images/search.svg" id="searchBtn"/>
+        <img src="/notice/images/search.svg" id="searchBtn" onclick="searchNotices()"/>
     </div>
 </div>
 

@@ -3,11 +3,11 @@ package meetu.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class NoticeAction implements CommandAction {
+public class myPageAction implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {	
-		return "/notice/notice.jsp";
+		return "/myPage/myPage.jsp";
 	}
 
 }

@@ -1,8 +1,9 @@
 var rpp = 2; // 한 화면에 나타낼 데이터 수
 var page_cnt = 5; // 한 화면에 나타낼 페이지 수
+var total_data;
 
-$(document).ready(function() { // html이 로드되면 실행됨 
-  	console.log("실행됨"); 
+$(document).ready(function() { // html이 로드되면 실행됨
+	total_data = getTotalData();
   	paging(total_data, rpp, page_cnt, 1);
 });
 
@@ -62,9 +63,15 @@ function paging(total_data, rpp, page_cnt, current_page) {
 function getNotices() {
 	$('#noticeList').children().remove();
 	
+	var option = $('#noticeNav').val();
+	var keyword = $('#searchText').val();
+	var data = {"option":option, "keyword":keyword};
+	
 	$.ajax({
-		 type: "GET",
-		url: "/notice/getAllNotices.jsp",
+	 	type: "POST",
+		url: "/notice/getNotices.jsp",
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		data: data,
 		dataType: "text",
 		success: updateNotices,
 		error: function(jqXHR, textStatus, errorThrown) {
@@ -97,8 +104,6 @@ function updateNotices(responseText) {
 	else {
 		last_no = start_no + rpp;
 	}
-	
-	console.log(start_no, last_no);
 			
 	for(var key = start_no + 1; key <= last_no; key++) {
 		var notice_id = notices[key].noticeId;
@@ -108,12 +113,44 @@ function updateNotices(responseText) {
 		var temp_html = '';
 		
 		temp_html += "<tr id=\"boardList\" onclick=\"location.href='noticeContent.do?no=" + notice_id + "'\">";
-		temp_html += "<td>" + notice_id + "</td> <td>" + title + "</td> <td>MEETU 관리자</td>";
+		temp_html += "<td>" + key + "</td> <td>" + title + "</td> <td>MEETU 관리자</td>";
 		temp_html += "<td>" + write_date + "</td> <td>" + views + "</td>";
 		temp_html += "</tr>";
 
-		console.log(temp_html);
 		$('#noticeList').append(temp_html);
-	}
-	
+	}	
 }
+
+function searchNotices() {
+	total_data = getTotalData();
+	paging(total_data, rpp, page_cnt, 1);
+}
+
+function getTotalData() {
+	var option = $('#noticeNav').val();
+	var keyword = $('#searchText').val();
+	var data = {"option":option, "keyword":keyword};
+	var size;
+	
+	$.ajax({
+	 	type: "POST",
+		url: "/notice/getNoticesCount.jsp",
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		data: data,
+		dataType: "text",
+		async: false,
+		success: function(response) {
+			size = response;
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			var message = jqXHR.getResponseHeader("Status");
+			if ((message == null) || (message.length <= 0)) {
+				alert("Error! Request status is " + jqXHR.status);
+			} else {
+				alert(message);	
+			}
+		}
+	});
+	
+	return size;
+} 
