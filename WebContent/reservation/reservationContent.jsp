@@ -306,7 +306,7 @@
             font-weight: regular;
         }
         
-        .timeBox:hover {
+        .clicked {
         	display: inline-block;
             padding: 6px 0px;
             width: 96px;
@@ -359,7 +359,7 @@
             font-weight: regular;
         }
         
-        .startTimeBox:hover {
+        .startTimeBoxClicked {
         	display: inline-block;
             padding: 6px 0px;
             width: 96px;
@@ -553,19 +553,19 @@
 							<div class="timeTitle">◈ 상담 시작 시간</div>
 							<div>
 								<div>
-									<div class="startTimeBox">9:00</div> <div class="startTimeBoxMid">10:00</div> <div class="startTimeBox">11:00</div>
+									<div class="startTimeBox">9:00</div> &nbsp;&nbsp; <div class="startTimeBox">10:00</div> &nbsp;&nbsp; <div class="startTimeBox">11:00</div>
 								</div>
 								<div class="timdBoxWrap">
-									<div class="startTimeBox">12:00</div> <div class="startTimeBoxMid">13:00</div> <div class="startTimeBox">14:00</div>
+									<div class="startTimeBox">12:00</div> &nbsp;&nbsp; <div class="startTimeBox">13:00</div> &nbsp;&nbsp; <div class="startTimeBox">14:00</div>
 								</div>
 								<div class="timdBoxWrap">
-									<div class="startTimeBox">15:00</div> <div class="startTimeBoxMid">16:00</div> <div class="startTimeBox">17:00</div>
+									<div class="startTimeBox">15:00</div> &nbsp;&nbsp; <div class="startTimeBox">16:00</div> &nbsp;&nbsp; <div class="startTimeBox">17:00</div>
 								</div>
 							</div>
 							<br/>
 							<div class="timeTitle">◈ 상담 시간</div>
 							<div>
-								<div class="timeBox">30분</div> <div class="timeBoxMid">1시간</div> <div class="timeBox">2시간</div>
+								<div class="timeBox">30분</div> &nbsp;&nbsp; <div class="timeBox">1시간</div> &nbsp;&nbsp; <div class="timeBox">2시간</div>
 							</div>
 						</td>
 					</tr>
@@ -624,6 +624,63 @@
         </div>
 </div>
 </form>
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-8216c69d01441f36c0ea791ae2d4469f0f8ff5326f00ae2d00e4bb7d20e24edb.js"></script>
+
+<script id="rendered-js">
+    var div2 = document.getElementsByClassName("timeBox");
+    function handleClick(event) {
+        console.log(event.target);
+        console.log(event.target.classList);
+        if (event.target.classList[1] === "clicked") {
+            event.target.classList.remove("clicked");
+        } else {
+            for (var i = 0; i < div2.length; i++) {
+                if (window.CP.shouldStopExecution(0)) break;
+                div2[i].classList.remove("clicked");
+            }
+            window.CP.exitedLoop(0);
+            event.target.classList.add("clicked");
+        }
+    }
+    function init() {
+        for (var i = 0; i < div2.length; i++) {
+            if (window.CP.shouldStopExecution(1)) break;
+            div2[i].addEventListener("click", handleClick);
+        }
+        window.CP.exitedLoop(1);
+    }
+    init(); 
+</script>
+
+<script id="rendered-js">
+    var div2 = document.getElementsByClassName("startTimeBox");
+    function handleClick(event) {
+        console.log(event.target);
+        console.log(event.target.classList);
+        if (event.target.classList[1] === "startTimeBoxClicked") {
+            event.target.classList.remove("startTimeBoxClicked");
+        } else {
+            for (var i = 0; i < div2.length; i++) {
+                if (window.CP.shouldStopExecution(0)) break;
+                div2[i].classList.remove("startTimeBoxClicked");
+            }
+            window.CP.exitedLoop(0);
+            event.target.classList.add("startTimeBoxClicked");
+        }
+    }
+    function init() {
+        for (var i = 0; i < div2.length; i++) {
+            if (window.CP.shouldStopExecution(1)) break;
+            div2[i].addEventListener("click", handleClick);
+        }
+        window.CP.exitedLoop(1);
+    }
+    init(); 
+</script>
+
+
+
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-4793b73c6332f7f14a9b6bba5d5e62748e9d1bd0b5c52d7af6376f3d1c625d7e.js"></script>
 
 </body>
 </html>
