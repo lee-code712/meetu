@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <title>공지사항</title>
 
-    <link rel="stylesheet" href="/notice/css/notice.css" />
+    <!-- <link rel="stylesheet" href="/notice/css/notice.css" /> -->
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +20,7 @@
 	<script src="/notice/js/notice.js"></script>
 	
     <style>
-    		#header {
+   	#header {
             width: 100%;
             height: 100px;
             border-bottom: 1px solid #eee;
@@ -40,7 +40,7 @@
             align-items: center;
             width: 200px;
             height: 100%;
-            color: black;
+            color: #FBAB7E;
             font-size: 24px;
             font-family: 'Yellowtail', cursive;
             font-weight: bold;
@@ -123,6 +123,43 @@
         	width: 20px;
         	heihgt: 20px;
         }
+        
+        #messageIcon,
+        #noticeIcon,
+        #reserveIcon {
+            color: #535353;
+        }
+        
+		a:link { color: #535353; text-decoration: none;}
+ 		a:visited { color: #535353; text-decoration: none;}
+ 		a:hover { color: #535353; text-decoration: underline;}
+ 		
+ 		#title a:link {
+ 			color: #FBAB7E;
+ 			
+ 		}
+ 		
+ 		#topHeader {
+        	width: 100%;
+        	height: 34px;
+        	background-color: #FBAB7E;
+			background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+        }
+        
+        #topHeaderInner {    		
+    		margin: 0 auto;
+    		width: 1194px;
+    		height: 100%;
+    	}
+    	
+    	#topHeaderInner div {
+    		display: flex;
+    		justify-content: flex-end;
+    		align-items: center;
+    		height: 100%;
+    		float: right;
+    		color: white;
+    	}
         
         * {
             margin: 0;
@@ -215,7 +252,7 @@
         }
         .boardListWrap {
             width: 1194px;
-            border-top: 2px solid #3E454D;
+            border-top: 2px solid #FBAB7E;
             margin: 0 auto;
         }
         .boardListWrap tr:first-child {
@@ -256,8 +293,8 @@
             color: gray;
         }
         .board .paging a.num {
-            border: 1px solid #3E454D;
-            background: #3E454D;
+            border: 1px solid #FBAB7E;;
+            background: #FBAB7E;;
             font-weight: 600;
             color: white;
         }
@@ -276,56 +313,61 @@
         body {
             background: #FAFAFA;
         }
-        
-        #messageIcon,
-        #reserveIcon {
-            color: #535353;
+  
+ 		#writeBtn {
+            display: block;
+            float: right;
+            margin-top: 20px;
+            width: 114px;
+            height: 40px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            background: #FBAB7E;
+        }
+        #writeBtn:hover {
+            cursor: pointer;
         }
         
-		a:link { color: #535353; text-decoration: none;}
- 		a:visited { color: #535353; text-decoration: none;}
- 		a:hover { color: #535353; text-decoration: underline;}
- 		
- 		#title a:link {
- 			color: black;
- 		}
- 		
- 		#noticeIcon {
- 			border-top: 14px solid #35454D;
- 			border-bottom: 14px solid #35454D;
- 			background: #3E454D;
- 			color: white;
- 			border-radius: 5px;
- 		}
+        #writeBtnWrap {
+        	margin: 0 auto;
+        	width: 1194px;
+        }
+        
     </style>
    
 </head>
 
 <body>
-<div id="header">
-    <div id="header_inner">
-        <div id="title"><a href="index.do">MEETU</a></div>
-        <div id="gnb">
-            <a id="noticeIcon" href="notice.do">공지사항</a>
-            <a id="reserveIcon" href="reservationPro.do">상담예약</a>
-            <a id="messageIcon" href="message.do">쪽지함</a>
-        </div>
-        <div id="dropdown">
-            <div id="dropBtn">
-            	<div id="dropBtnTitle">${mem_dto.getName()}님</div>
-            <div>
-            	<img src="/components/images/keyboard_arrow_down_black_24dp.svg" id="dropImg"/>
-            </div>
-            </div>
-            <div id="dropdown-content">
-                <a href="myPage.do">마이페이지</a>
-                <a href="logout.do">로그아웃</a>
-            </div>
-        </div>
-       
-        <img src="/components/images/notification.svg" id="alertIcon"/>
-    </div>
-</div>
+<div id="topHeader">
+		<div id="topHeaderInner">
+			<div>로그아웃</div>
+		</div>
+	</div>
+	<div id="header">
+	    <div id="header_inner">
+	        <div id="title"><a href="index.do">MEETU</a></div>
+	        <div id="gnb">
+	            <a id="noticeIcon" href="notice.do">공지사항</a>
+	            <a id="reserveIcon" href="reservationPro.do">상담예약</a>
+	            <a id="messageIcon" href="message.do">쪽지함</a>
+	        </div>
+	        <div id="dropdown">
+	            <div id="dropBtn">
+	            	<div id="dropBtnTitle">${mem_dto.getName()}님</div>
+	            <div>
+	            	<img src="/components/images/keyboard_arrow_down_black_24dp.svg" id="dropImg"/>
+	            </div>
+	            </div>
+	            <div id="dropdown-content">
+	                <a href="myPage.do">마이페이지</a>
+	                <a href="#">로그아웃</a>
+	            </div>
+	        </div>
+	       
+	        <img src="/components/images/notification.svg" id="alertIcon"/>
+	    </div>
+	</div>
 
 <div id="noticeTable">
     <select id="noticeNav">
@@ -360,6 +402,9 @@
     <div class="paging" id="paging">
 
     </div>
+</div>
+<div id="writeBtnWrap">
+<button id="writeBtn">글쓰기</button>
 </div>
 </body>
 </html>
