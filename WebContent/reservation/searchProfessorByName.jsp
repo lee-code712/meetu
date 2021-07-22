@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="application/json; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <%@ page import="java.util.*"%>
+<%@ page import="org.json.simple.*"%>
+
 <%@ page import="meetu.dao.MemberDAO"%>
 <%@ page import="meetu.dto.MemberDTO"%>
 <%@ page import="meetu.dto.CourseDTO"%>
 <%@ page import="meetu.dto.DepartmentDTO"%>
 <%@ page import="meetu.dto.ProfessorDTO"%>
 <%@ page import="meetu.dto.UniversityDTO"%>
-<%@ page import="org.json.simple.*"%>
 
 <%!@SuppressWarnings("unchecked")%>
 <%

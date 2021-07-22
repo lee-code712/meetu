@@ -37,6 +37,9 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="/index/js/jquery.bxslider.min.js"></script>
     <link href="/index/css/jquery.bxslider.css" rel="stylesheet"/>
+    
+    <script src="/index/js/indexStu.js"></script>
+    
     <script>
         var week = new Array('일', '월', '화', '수', '목', '금', '토');
         var today = null;
@@ -355,7 +358,7 @@
             border: 1px solid #C4C4C4;
             border-radius: 5px;
             background-color: #F9F9F9;
-            color: #C4C4C4;
+            color: black;
             font-size: 14px;
         }
         
@@ -582,11 +585,13 @@
                 </div>
     
                 <button type="button" class="btn btn-dark" id="logout_btn">+ 등록된 일정 더보기</button>
-                <div id="cal_msg"><p>등록된 일정이 없습니다.</p>
+                <div id="cal_msg">
+                	<p>등록된 일정이 없습니다.</p>
                     <p>등록된 일정이 없습니다.</p>
                     <p>등록된 일정이 없습니다.</p>
                     <p>등록된 일정이 없습니다.</p>
-                    <p>등록된 일정이 없습니다.</p></div>
+                    <p>등록된 일정이 없습니다.</p>
+                </div>
             </td>
     
             <td id="calendar">
