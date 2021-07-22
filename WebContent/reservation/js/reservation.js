@@ -182,6 +182,7 @@ function updatePage(responseText) {
 			$(newCheckBtnElement).attr("id", "checkBtn");
 			newCheckBtnElement.innerHTML = "선택하기";
 			$(newCheckTdElement).append(newCheckBtnElement);
+			$(newCheckBtnElement).click({name: name, major: major, email: email, office: office, course: course}, selectProf);
 		}
 		
 		// tr에 td들 추가
@@ -299,4 +300,15 @@ function getCollege() {
 	});
 	
 	return colleges;
+}
+
+function selectProf(prof) {
+	alert(prof.data.name);
+	
+	param = "name=" + prof.data.name;
+	param += "&major=" + prof.data.major;
+	param += "&email=" + prof.data.email;
+	param += "&office=" + prof.data.office;
+	param += "&course=" + prof.data.course;
+	location.href = "reservationContent.do?" + param;
 }

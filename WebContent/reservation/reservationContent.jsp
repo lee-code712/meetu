@@ -23,6 +23,9 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+	
+	<script src="/reservation/js/reservationContent.js"></script>
+	
 	<style>
 		#header {
             width: 100%;
@@ -327,7 +330,7 @@
         	display: flex;
         }
         
-        #typeBtn:first-child {
+        #typeBtnOff {
         	margin-right: 128px;
             padding: 6px 0px;
             width: 96px;
@@ -336,7 +339,7 @@
             text-align: center;
         }
         
-        #typeBtn {
+        #typeBtnOff, #typeBtnOn {
         	padding: 6px 0px;
             width: 96px;
             border: 1px solid #C4C4C4;
@@ -344,7 +347,7 @@
             text-align: center;
         }
         
-        #typeBtn:hover {
+        #typeBtnOff:hover, #typeBtnOn:hover {
         	padding: 6px 0px;
             width: 96px;
             border-radius: 30px;
@@ -448,15 +451,16 @@
 	    </div>
 	</div>
 	
+	<form method="post" action="">
 	<div id="reservationWrap">
     <div>
             <ul id="mylist">
                 <li id="selectProf"><img src="/reservation/images/beenhere_black_24dp.svg"/>&nbsp;&nbsp;상담예약</li>
-              	<li id="list" class="list">▶ 교수명: (교수명)</li>
-                <li id="list" class="list">▶ 학과: (학과)</li>
-                <li id="list" class="list">▶ 담당과목: (담당과목)</li>
-                <li id="list" class="list">▶ 이메일: (이메일)</li>
-                <li id="list" class="list">▶ 연구실 위치: (연구실 위치)</li>
+              	<li id="list" class="list">▶ 교수명: ${param.name} </li>
+                <li id="list" class="list">▶ 학과: ${param.major}</li>
+                <li id="list" class="list">▶ 담당과목: ${param.course}</li>
+                <li id="list" class="list">▶ 이메일: ${param.email}</li>
+                <li id="list" class="list">▶ 연구실 위치: ${param.office}</li>
             </ul>
      </div>
 
@@ -473,13 +477,13 @@
 							<div id="timeTitle">◈ 상담 시작 시간</div>
 							<div>
 								<div>
-								<div id="timeBox">9:00</div> <div id="timeBoxMid">10:00</div> <div id="timeBox">11:00</div>
+									<div id="timeBox">9:00</div> <div id="timeBoxMid">10:00</div> <div id="timeBox">11:00</div>
 								</div>
-								<div  id="timdBoxWrap">
-								<div id="timeBox">12:00</div> <div id="timeBoxMid">13:00</div> <div id="timeBox">14:00</div>
+								<div id="timdBoxWrap">
+									<div id="timeBox">12:00</div> <div id="timeBoxMid">13:00</div> <div id="timeBox">14:00</div>
 								</div>
-								<div  id="timdBoxWrap">
-								<div id="timeBox">15:00</div> <div id="timeBoxMid">16:00</div> <div id="timeBox">17:00</div>
+								<div id="timdBoxWrap">
+									<div id="timeBox">15:00</div> <div id="timeBoxMid">16:00</div> <div id="timeBox">17:00</div>
 								</div>
 							</div>
 							<br/>
@@ -529,13 +533,13 @@
 						<td id="contentTitle">상담 유형</td>
 						<td id="contentBody">
 							<div id="typeBtnWrap">
-								<div id="typeBtn">오프라인</div> <div id="typeBtn">온라인</div>
+								<div id="typeBtnOff">오프라인</div> <div id="typeBtnOn">온라인</div>
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<button id="reservationBtn">예약하기</button>
+							<input id="reservationBtn" type="submit" value="예약하기" />
 						</td>
 					</tr>
 					
@@ -543,6 +547,7 @@
             </div>
         </div>
 </div>
+</form>
 
 </body>
 </html>
