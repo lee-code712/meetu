@@ -399,11 +399,30 @@
     		width: 248px;
     		height: 24px;
     	}
+    	
+    	#topHeaderInner {    		
+    		margin: 0 auto;
+    		width: 1194px;
+    		height: 100%;
+    	}
+    	
+    	#topHeaderInner div {
+    		display: flex;
+    		justify-content: flex-end;
+    		align-items: center;
+    		height: 100%;
+    		float: right;
+    		color: white;
+    	}
     
 	</style>
 </head>
 <body>
-	<div id="topHeader"></div>
+	<div id="topHeader">
+		<div id="topHeaderInner">
+			<div>로그아웃</div>
+		</div>
+	</div>
 	<div id="header">
 	    <div id="header_inner">
 	        <div id="title"><a href="index.do">MEETU</a></div>
