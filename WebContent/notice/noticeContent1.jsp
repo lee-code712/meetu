@@ -350,7 +350,6 @@
 	        	<div id="moreDropBtnTitle"><img src="/notice/images/more_vert_black_24dp.svg" id="moreIcon"/></div>	 
 	        </div>
 	        <div id="moreDropdownContent">
-	        	<a href="#">수정하기</a>
 	            <a href="#">삭제하기</a>
 	    	</div>
 	    </div>
