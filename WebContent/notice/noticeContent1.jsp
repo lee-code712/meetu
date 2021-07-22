@@ -234,6 +234,7 @@
         	text-align: center;
         	padding: 9px;
         	padding-left: 28px;
+        	background: white;
         }
       
         #writeDateNum {
