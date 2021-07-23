@@ -31,8 +31,8 @@
 	
 	<script src="/reservation/js/reservation.js"></script>
 	
-    <style>
-    	#header {
+	<style>
+		#header {
             width: 100%;
             height: 100px;
             border-bottom: 1px solid #eee;
@@ -52,7 +52,7 @@
             align-items: center;
             width: 200px;
             height: 100%;
-            color: black;
+            color: #FBAB7E;
             font-size: 24px;
             font-family: 'Yellowtail', cursive;
             font-weight: bold;
@@ -127,7 +127,7 @@
         
         #dropBtnTitle {
         	font-weight: bold;
-        	padding: 0 4px 0 20px;
+        	padding: 0 4px 0 50px;
         	height: 100%;
         }
         
@@ -136,6 +136,42 @@
         	heihgt: 20px;
         }
         
+        #messageIcon,
+        #noticeIcon,
+        #reserveIcon {
+            color: #535353;
+        }
+        
+		a:link { color: #535353; text-decoration: none;}
+ 		a:visited { color: #535353; text-decoration: none;}
+ 		a:hover { color: #535353; text-decoration: underline;}
+ 		
+ 		#title a:link {
+ 			color: #FBAB7E;
+ 			
+ 		}
+ 		
+ 		#topHeader {
+        	width: 100%;
+        	height: 34px;
+        	background-color: #FBAB7E;
+			background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+        }
+        
+        #topHeaderInner {    		
+    		margin: 0 auto;
+    		width: 1194px;
+    		height: 100%;
+    	}
+    	
+    	#topHeaderInner div {
+    		display: flex;
+    		justify-content: flex-end;
+    		align-items: center;
+    		height: 100%;
+    		float: right;
+    		color: white;
+    	}
         * {
             margin: 0;
             padding: 0;
@@ -191,7 +227,7 @@
         .profList {
             width: 854px;
             margin: 0 auto;
-            border-top: 2px solid #3E454D;
+            border-top: 2px solid #FBAB7E;
         }
         .profList th,
         .profList td {
@@ -218,7 +254,7 @@
             width: 894px;
             height: 840px;
         }
-        body {
+        #reservationBodyBg {
             background: #FAFAFA;
         }
         #sender {
@@ -351,56 +387,39 @@
             color: white;
             border-radius: 30px;
         }
-        
-     	#messageIcon,
-        #noticeIcon,
-        #reserveIcon {
-            color: #535353;
-        }
-        
-		a:link { color: #535353; text-decoration: none;}
- 		a:visited { color: #535353; text-decoration: none;}
- 		a:hover { color: #535353; text-decoration: underline;}
- 		
- 		#title a:link {
- 			color: black;
- 		}
- 		
- 		#reserveIcon {
- 			border-top: 14px solid #35454D;
- 			border-bottom: 14px solid #35454D;
- 			background: #3E454D;
- 			color: white;
- 			border-radius: 5px;
- 		}
-    </style>
+	</style>
 </head>
 
-<body>
-<div id="header">
-    <div id="header_inner">
-        <div id="title"><a href="index.do">MEETU</a></div>
-        <div id="gnb">
-            <a id="noticeIcon" href="notice.do">공지사항</a>
-            <a id="reserveIcon" href="reservationPro.do">상담예약</a>
-            <a id="messageIcon" href="message.do">쪽지함</a>
-        </div>
-        <div id="dropdown">
-            <div id="dropBtn">
-            	<div id="dropBtnTitle">${mem_dto.getName()}님</div>
-            <div>
-            	<img src="/components/images/keyboard_arrow_down_black_24dp.svg" id="dropImg"/>
-            </div>
-            </div>
-            <div id="dropdown-content">
-                <a href="myPage.do">마이페이지</a>
-                <a href="logout.do">로그아웃</a>
-            </div>
-        </div>
-       
-        <img src="/components/images/notification.svg" id="alertIcon"/>
-    </div>
-</div>
+<body id="reservationBodyBg">
+<div id="topHeader">
+		<div id="topHeaderInner">
+			<div>로그아웃</div>
+		</div>
+	</div>
+	<div id="header">
+	    <div id="header_inner">
+	        <div id="title"><a href="index.do">MEETU</a></div>
+	        <div id="gnb">
+	            <a id="noticeIcon" href="notice.do">공지사항</a>
+	            <a id="reserveIcon" href="reservationPro.do">상담예약</a>
+	            <a id="messageIcon" href="message.do">쪽지함</a>
+	        </div>
+	        <div id="dropdown">
+	            <div id="dropBtn">
+	            	<div id="dropBtnTitle">${mem_dto.getName()}님</div>
+	            <div>
+	            	<img src="/components/images/keyboard_arrow_down_black_24dp.svg" id="dropImg"/>
+	            </div>
+	            </div>
+	            <div id="dropdown-content">
+	                <a href="myPage.do">마이페이지</a>
+	                <a href="#">로그아웃</a>
+	            </div>
+	        </div>
+	       
+	        <img src="/components/images/notification.svg" id="alertIcon"/>
+	    </div>
+	</div>
 
 <table id="reservationWrap">
     <tr>
