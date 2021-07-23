@@ -30,7 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body id="bodyBg">
 <div id="joinWrap">
     <div id="loginTitle"><a>MEETU</a></div>
     <%
@@ -61,7 +61,7 @@
         </div>
         <small id="account" class="form-text text-muted">계정을 잊으셨나요? <a id="link">아이디 찾기</a> 또는 <a id="link">비밀번호 찾기</a></small>
         <small class="form-text text-muted">아직 회원이 아니신가요? <a href="joinForm.do">회원가입</a></small>
-        <button type="submit" class="btn btn-primary" id="login_btn">Submit</button>
+        <button type="submit" id="login_btn">로그인</button>
     </form>
 </div>
 </body>

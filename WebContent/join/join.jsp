@@ -39,7 +39,7 @@
 
 </head>
 
-<body>
+<body id="joinBodyBg">
 <%
 	String ck = request.getParameter("ck");
 	if(ck != null) {
@@ -104,7 +104,7 @@
             </div>
         </div>
     </fieldset>
-    <button type="submit" class="btn btn-primary" id="join_btn">가입하기</button>
+    <button type="submit" id="join_btn">가입하기</button>
     </form>
 </div>
 </body>

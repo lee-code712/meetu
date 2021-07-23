@@ -9,21 +9,35 @@
             font-size: 48px;
             font-family: 'Yellowtail', cursive;
             font-weight: bold;
+            color: #FBAB7E;
         }
 
         #loginTitle:hover {
             cursor: pointer;
         }
 
-        body {
-            background: #F4F4F4;
+        #bodyBg {
+            background: #FAFAFA;
+        }
+        
+        #id,
+        #pwd {
+        	background: white;
         }
 
         #login_btn {
-            display: block;
             margin: 30px auto;
+            display: block;
             width: 500px;
             height: 40px;
+            background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+            color: white;
+            border:none;
+            border-radius: 5px;
+        }
+        
+        #login_btn:hover {
+        	cursor: pointer;
         }
 
         #account {
