@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"  %>
+pageEncoding="UTF-8"  %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -9,9 +9,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <title>index</title>
-    
-    <link rel="stylesheet" href="/index/css/indexStu.css" />
-    
+
+    <link rel="stylesheet" href="/index/css/indexStu.css"/>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
@@ -37,9 +37,9 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="/index/js/jquery.bxslider.min.js"></script>
     <link href="/index/css/jquery.bxslider.css" rel="stylesheet"/>
-    
+
     <script src="/index/js/indexStu.js"></script>
-    
+
     <script>
         var week = new Array('일', '월', '화', '수', '목', '금', '토');
         var today = null;
@@ -63,6 +63,7 @@
                 moveNextMonth();
             });
         });
+
         //Calendar 그리기
         function drawCalendar() {
             var setTableHTML = "";
@@ -81,6 +82,7 @@
             setTableHTML += '</table>';
             $("#cal_tab").html(setTableHTML);
         }
+
         //날짜 초기화
         function initDate() {
             week = new Array('일', '월', '화', '수', '목', '금', '토');
@@ -98,6 +100,7 @@
             firstDay = new Date(year, month - 1, 1);
             lastDay = new Date(year, month, 0);
         }
+
         //calendar 날짜표시
         function drawDays() {
             $("#cal_top_year").text(year);
@@ -114,6 +117,7 @@
                 $tdDay.eq(i).css("color", "blue");
             }
         }
+
         //calendar 월 이동
         function movePrevMonth() {
             month--;
@@ -126,6 +130,7 @@
             }
             getNewInfo();
         }
+
         function moveNextMonth() {
             month++;
             if (month > 12) {
@@ -137,6 +142,7 @@
             }
             getNewInfo();
         }
+
         //정보갱신
         function getNewInfo() {
             for (var i = 0; i < 42; i++) {
@@ -149,6 +155,7 @@
             drawDays();
             drawSche();
         }
+
         //데이터 등록
         function setData() {
             jsonData =
@@ -169,6 +176,7 @@
                     }
                 }
         }
+
         //스케줄 그리기
         function drawSche() {
             setData();
@@ -186,6 +194,7 @@
                 }
             }
         }
+
         $(document).ready(function () {
             var slider_01 = $('.banner_slide').bxSlider({
                 auto: true, autoControls: true, mode: 'horizontal',
@@ -232,7 +241,7 @@
             height: 720px;
             position: relative;
         }
-        
+
         .banner_01 {
             width: 1920px;
             height: 720px;
@@ -240,7 +249,7 @@
             background-position: center;
             background-size: cover;
         }
-        
+
         .banner_02 {
             width: 1920px;
             height: 720px;
@@ -248,7 +257,7 @@
             background-position: center;
             background-size: cover;
         }
-        
+
         .banner_03 {
             width: 1920px;
             height: 720px;
@@ -256,7 +265,7 @@
             background-position: center;
             background-size: cover;
         }
-        
+
         #bx-pager1 a {
             float: left;
             margin: 0 5px;
@@ -269,17 +278,28 @@
             background: pink;
             color: #333
         }
-        
+
         * {
             padding: 0;
             margin: 0;
             text-decoration: none;
         }
-	    
-		a:link { color: white; text-decoration: none;}
- 		a:visited { color: white; text-decoration: none;}
- 		a:hover { color: white; text-decoration: underline;}
-       
+
+        a:link {
+            color: white;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: white;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
         #footer {
             display: flex;
             margin: 0 auto;
@@ -290,14 +310,14 @@
             align-items: center;
             color: white;
         }
-       
+
         #calendar_wrap {
             width: 348px;
             height: 700px;
             border-radius: 5px 0 0 5px;
             background: #3E454D;
         }
-        
+
         #section {
             display: table;
             margin: 40px auto;
@@ -305,12 +325,12 @@
             width: 1194px;
             height: 390px;
         }
-        
+
         #calendar {
             float: right;
             background: white;
         }
-        
+
         #calendarHeader {
             display: table-cell;
             padding-left: 30px;
@@ -322,7 +342,7 @@
             background: white;
             font-weight: bold;
         }
-        
+
         #calendarBody {
             display: table;
             width: 853px;
@@ -330,7 +350,7 @@
             border-radius: 0 0 5px 0;
             background-color: white;
         }
-        
+
         .cal_top {
             display: table-cell;
             float: left;
@@ -342,14 +362,14 @@
             font-family: 'Yellowtail', cursive;
             color: white;
         }
-        
+
         #cal_tab {
             display: table-cell;
             text-align: center;
             width: 400px;
             height: 320px;
         }
-        
+
         #cal_msg {
             margin-left: 24px;
             padding: 20px 10px;
@@ -361,13 +381,13 @@
             color: black;
             font-size: 14px;
         }
-        
+
         table.calendar {
             display: inline-table;
             margin-top: 80px;
             text-align: left;
         }
-        
+
         table.calendar th {
             width: 50px;
             text-align: center;
@@ -375,27 +395,27 @@
             padding-bottom: 20px;
             font-family: 'Yellowtail', cursive;
         }
-        
+
         table.calendar td {
             width: 100px;
             height: 86px;
             text-align: center;
         }
-        
+
         #cal_top_date {
             margin-top: 20px;
             font-size: 36px;
         }
-        
+
         .cal_tit {
             padding: 10px;
             color: white;
         }
-        
+
         body {
             background: #edf0f2;
         }
-        
+
         #logout_btn {
             display: flex;
             justify-content: center;
@@ -404,21 +424,21 @@
             width: 300px;
             cursor: pointer;
         }
-        
+
         #logo {
             color: black;
             font-size: 36px;
             font-family: 'Yellowtail', cursive;
         }
-        
+
         #l_text {
             font-size: 24px;
         }
-        
+
         #l_title {
             margin-bottom: 40px;
         }
-      
+
         #intro {
             margin: 0 auto;
             margin-top: 80px;
@@ -426,18 +446,18 @@
             height: 800px;
             background: white;
         }
-        
+
         #intro_title {
             padding-top: 80px;
             width: 1194px;
             margin: 0 auto;
         }
-        
+
         #intro_text {
             margin: 40px auto;
             width: 1194px;
         }
-        
+
         header {
             width: 100%;
             height: 100px;
@@ -450,10 +470,10 @@
             -moz-transition: All 0.2s ease;
             -o-transition: All 0.2s ease;
         }
-     
-    	#header_inner {
-        	display: flex;
-         	align-items: center;
+
+        #header_inner {
+            display: flex;
+            align-items: center;
             margin: 0 auto;
             width: 1194px;
             height: 100px;
@@ -469,9 +489,9 @@
             font-family: 'Yellowtail', cursive;
             font-weight: bold;
         }
-        
+
         #title:hover {
-        	cursor: pointer;
+            cursor: pointer;
         }
 
         #gnb {
@@ -516,7 +536,7 @@
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
             border: 1px solid white;
-            border-radius: 500px;
+            border-radius: 5px;
         }
 
         #dropdown-content a {
@@ -528,7 +548,7 @@
 
         #dropdown-content a:hover {
             background: rgba(0, 0, 0, 0.1);
-            border-radius: 500px;
+            border-radius: 5px;
         }
 
         #dropdown:hover #dropdown-content {
@@ -538,24 +558,24 @@
 </head>
 
 <body>
-	<header>
-    	<nav id="header_inner">
-        	<div id="title"><a>MEETU</a></div>
-       	 	<div id="gnb">
-            	<a id="noticeIcon" href="notice.do">공지사항</a>
-            	<a id="reserveIcon" href="reservationPro.do">상담예약</a>
-            	<a id="messageIcon" href="message.do">쪽지함</a>
-            	<a id="myPageIcon">마이페이지</a>
-        	</div>
-        	<div id="dropdown">
-            	<button id="dropBtn">${mem_dto.getName()}님 ▽</button>
-            	<div id="dropdown-content">
-                	<a href="logout.do">로그아웃</a>
-            	</div>
-        	</div>
-        	<img src="/index/images/notifications_black_24dp.svg" id="alertIcon"/>
-    	</nav>
-	</header>
+    <header>
+        <nav id="header_inner">
+            <div id="title"><a>MEETU</a></div>
+            <div id="gnb">
+                <a id="noticeIcon" href="notice.do">공지사항</a>
+                <a id="reserveIcon" href="reservationPro.do">상담예약</a>
+                <a id="messageIcon" href="message.do">쪽지함</a>
+            </div>
+            <div id="dropdown">
+                <button id="dropBtn">${mem_dto.getName()}님 ▽</button>
+                <div id="dropdown-content">
+                	<a href="myPage.do">마이페이지</a>
+                    <a href="logout.do">로그아웃</a>
+                </div>
+            </div>
+            <img src="/index/images/notifications_black_24dp.svg" id="alertIcon"/>
+        </nav>
+    </header>
     
     
     <div id="banner_wrap">
@@ -586,7 +606,7 @@
     
                 <button type="button" class="btn btn-dark" id="logout_btn">+ 등록된 일정 더보기</button>
                 <div id="cal_msg">
-                	<p>등록된 일정이 없습니다.</p>
+                    <p>등록된 일정이 없습니다.</p>
                     <p>등록된 일정이 없습니다.</p>
                     <p>등록된 일정이 없습니다.</p>
                     <p>등록된 일정이 없습니다.</p>
