@@ -44,242 +44,37 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <style>
-    	#header {
-            width: 100%;
-            height: 100px;
-            border-bottom: 1px solid #eee;
-            background: white;
-        }
-
-        #header_inner {
-            display: flex;
-            align-items: center;
-            margin: 0 auto;
-            width: 1194px;
-            height: 100px;
-        }
-
-        #title {
-            display: flex;
-            align-items: center;
-            width: 200px;
-            height: 100%;
-            color: black;
-            font-size: 24px;
-            font-family: 'Yellowtail', cursive;
-            font-weight: bold;
-        }
-
-        #title:hover {
-            cursor: pointer;
-        }
-
-        #gnb {
-            display: flex;
-            width: 100%;
-            font-size: 16px;
-            font-weight: bold;
-            color: #535353;
-            align-items: center;
-        }
-
-        #gnb a {
-            padding: 0 40px;
-        }
-
-        #alertIcon:hover,
-        #noticeIcon:hover,
-        #reserveIcon:hover,
-        #messageIcon:hover,
-        #myPageIcon:hover {
-            cursor: pointer;
-        }
-
-        #dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        #dropBtn {
-        	display: flex;
-            width: 160px;
-            color: #535353;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            background: none;
-        }
-
-        #dropdown-content {
-        	margin-left: 50px;
-            display: none;
-            position: absolute;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            border: 1px solid white;
-            border-radius: 5px;
-            background: rgba(0, 0, 0, .800);
-        }
-
-        #dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        #dropdown-content a:hover {
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        #dropdown:hover #dropdown-content {
-            display: block;
-        }
-        
-        #dropBtnTitle {
-        	font-weight: bold;
-        	padding: 0 4px 0 20px;
-        	height: 100%;
-        }
-        
-        #dropImg {
-        	width: 20px;
-        	heihgt: 20px;
-        }
-        #navWrap {
-            width: 1194px;
-            margin: 0 auto;
-            margin-top: 80px;
-        }
-        #navInnerWrap {
-            display: block;
-        }
-        #navSub {
-            display: block;
-        }
-      
-        body {
-            background: #FAFAFA;
-        }
-        #cardWrap {
-            width: 18rem;
-            background: white;
-            border: 1px solid #eee;
-            border-radius: 10px;
-        }
-        .boardListWrap {
-            width: 870px;
-            margin: 0 auto;
-        }
-        .boardListWrap th,
-        .boardListWrap td {
-            padding: 10px;
-            font-size: 14px;
-        }
-        .boardListWrap td, th {
-            text-align: center;
-        }
-        #deleteBtn:hover {
-            cursor: pointer;
-        }
-        a:link {
-            color: #3E454D;
-            text-decoration: none;
-        }
-        a:visited {
-            color: #3E454D;
-            text-decoration: none;
-        }
-        a:hover {
-            color: #3E454D;
-            text-decoration: underline;
-        }
-        #logoutBtn {
-            display: block;
-            width: 100px;
-            height: 40px;
-            margin: 0 auto;
-            border: 1px solid #3E454D;
-            color: #3E454D;
-            background: white;
-            border-radius: 5px;
-        }
-        #logoutBtn:hover {
-            display: block;
-            width: 100px;
-            height: 40px;
-            margin: 0 auto;
-            background: #3E454D;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        #cardTitle {
-            display: flex;
-            align-items: center;
-            padding-left: 10px;
-            height: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #535353;
-        }
-        #cardBody {
-            padding: 20px 0;
-            text-align: center;
-            height: 180px;
-        }
-        #userUniv {
-            margin: 10px 0 40px 0;
-        }
-        #thBorder {
-            border-bottom: 1px solid #eee;
-        }
-        
-        a:link { color: white; text-decoration: none;}
- 		a:visited { color: white; text-decoration: none;}
- 		a:hover { color: white; text-decoration: underline;}
- 		
- 		#completeBtn,
- 		#cancelBtn,
- 		#okBtn {
- 			color: #3E454D;
- 		}
- 		
- 		#reserveIcon,
-        #noticeIcon,
-        #messageIcon {
-            color: #8B8B8B;
-        }
-    </style>
 </head>
-<body>
-<div id="header">
-    <div id="header_inner">
-        <div id="title"><a href="index.do">MEETU</a></div>
-        <div id="gnb">
-            <a id="noticeIcon" href="notice.do">공지사항</a>
-            <a id="reserveIcon" href="reservationPro.do">상담예약</a>
-            <a id="messageIcon" href="message.do">쪽지함</a>
-        </div>
-        <div id="dropdown">
-            <div id="dropBtn">
-            	<div id="dropBtnTitle">${mem_dto.getName()}님</div>
-            <div>
-            	<img src="/components/images/keyboard_arrow_down_black_24dp.svg" id="dropImg"/>
-            </div>
-            </div>
-            <div id="dropdown-content">
-                <a href="myPage.do">마이페이지</a>
-                <a href="logout.do">로그아웃</a>
-            </div>
-        </div>
-       
-        <img src="/components/images/notification.svg" id="alertIcon"/>
-    </div>
-</div>
+<body id="myPageBodyBg">
+<div id="topHeader">
+		<div id="topHeaderInner">
+			<div>로그아웃</div>
+		</div>
+	</div>
+	<div id="header">
+	    <div id="header_inner">
+	        <div id="title"><a href="index.do">MEETU</a></div>
+	        <div id="gnb">
+	            <a id="noticeIcon" href="notice.do">공지사항</a>
+	            <a id="reserveIcon" href="reservationPro.do">상담예약</a>
+	            <a id="messageIcon" href="message.do">쪽지함</a>
+	        </div>
+	        <div id="dropdown">
+	            <div id="dropBtn">
+	            	<div id="dropBtnTitle">${mem_dto.getName()}님</div>
+	            <div>
+	            	<img src="/components/images/keyboard_arrow_down_black_24dp.svg" id="dropImg"/>
+	            </div>
+	            </div>
+	            <div id="dropdown-content">
+	                <a href="myPage.do">마이페이지</a>
+	                <a href="#">로그아웃</a>
+	            </div>
+	        </div>
+	       
+	        <img src="/components/images/notification.svg" id="alertIcon"/>
+	    </div>
+	</div>
 
 <div id="navWrap">
     <table id="navInnerWrap">
