@@ -196,7 +196,7 @@
         #selectProf a:hover {
             cursor: pointer;
         }
-        body {
+        #messageBodyBg {
             background: #FAFAFA;
         }
         #sender {

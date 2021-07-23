@@ -19,7 +19,7 @@ pageEncoding="UTF-8" %>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body id="messageBodyBg">
 <div id="topHeader">
 		<div id="topHeaderInner">
 			<div>로그아웃</div>
