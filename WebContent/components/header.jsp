@@ -5,16 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>header</title>
-	<!--<link rel="stylesheet" href="css/header.css" /> -->
+	<link rel="stylesheet" href="css/header.css" />
 	<link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
 </head>
 
 <body>
-<div id="topHeader">
+	<div id="topHeader">
 		<div id="topHeaderInner">
-			<div>로그아웃</div>
+			<div></div>
 		</div>
 	</div>
+	
 	<div id="header">
 	    <div id="header_inner">
 	        <div id="title"><a href="index.do">MEETU</a></div>

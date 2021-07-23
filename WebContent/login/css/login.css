@@ -1,58 +1,60 @@
-	 	#joinWrap {
-            width: 500px;
-            margin: 180px auto;
-        }
+@charset "UTF-8";
 
-        #loginTitle {
-            margin-bottom: 40px;
-            text-align: center;
-            font-size: 48px;
-            font-family: 'Yellowtail', cursive;
-            font-weight: bold;
-            color: #FBAB7E;
-        }
+#joinWrap {
+    width: 500px;
+    margin: 180px auto;
+}
 
-        #loginTitle:hover {
-            cursor: pointer;
-        }
+#loginTitle {
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 48px;
+    font-family: 'Yellowtail', cursive;
+    font-weight: bold;
+    color: #FBAB7E;
+}
 
-        #bodyBg {
-            background: #FAFAFA;
-        }
-        
-        #id,
-        #pwd {
-        	background: white;
-        }
+#loginTitle:hover {
+    cursor: pointer;
+}
 
-        #login_btn {
-            margin: 30px auto;
-            display: block;
-            width: 500px;
-            height: 40px;
-            background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-            color: white;
-            border:none;
-            border-radius: 5px;
-        }
-        
-        #login_btn:hover {
-        	cursor: pointer;
-        }
+#bodyBg {
+    background: #FAFAFA;
+}
 
-        #account {
-            margin: 30px 0 20px 0;
-        }
+#id,
+#pwd {
+    background: white;
+}
 
-        #link {
-            color: #007BFF;
-        }
+#login_btn {
+    margin: 30px auto;
+    display: block;
+    width: 500px;
+    height: 40px;
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
 
-        #link:hover {
-            cursor: pointer;
-            text-decoration: underline;
-        }
+#login_btn:hover {
+    cursor: pointer;
+}
 
-        #position {
-            margin-bottom: 30px;
-        }
+#account {
+    margin: 30px 0 20px 0;
+}
+
+#link {
+    color: #007BFF;
+}
+
+#link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#position {
+    margin-bottom: 30px;
+}
