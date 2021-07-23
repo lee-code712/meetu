@@ -23,7 +23,7 @@ pageEncoding="UTF-8" %>
 <body id="messageBodyBg">
     <div id="topHeader">
         <div id="topHeaderInner">
-            <div>로그아웃</div>
+            <div></div>
         </div>
     </div>
     <div id="header">
