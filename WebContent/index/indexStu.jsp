@@ -10,29 +10,11 @@ pageEncoding="UTF-8"  %>
 
     <title>index</title>
 
-    <link rel="stylesheet" href="/index/css/indexStu.css"/>
+    <!--<link rel="stylesheet" href="/index/css/indexStu.css"/>-->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="/index/js/jquery.bxslider.min.js"></script>
@@ -312,15 +294,16 @@ pageEncoding="UTF-8"  %>
         }
 
         #calendar_wrap {
-            width: 348px;
-            height: 700px;
+        	display: inline-block;
+            width: 300px;
+            height: 657px;
             border-radius: 5px 0 0 5px;
-            background: #3E454D;
+    	
         }
 
         #section {
             display: table;
-            margin: 40px auto;
+            margin: 70px auto;
             margin-bottom: 100px;
             width: 1194px;
             height: 390px;
@@ -329,18 +312,13 @@ pageEncoding="UTF-8"  %>
         #calendar {
             float: right;
             background: white;
+            border: 1px solid #eee;
+            border-radius: 0 5px 5px 0;
         }
 
         #calendarHeader {
-            display: table-cell;
-            padding-left: 30px;
-            width: 853px;
-            height: 60px;
-            border-bottom: 1px solid #eee;
-            border-radius: 0 5px 0 0;
-            vertical-align: middle;
-            background: white;
-            font-weight: bold;
+        	border-radius: 5px 5px 0 0;
+            background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
         }
 
         #calendarBody {
@@ -352,14 +330,10 @@ pageEncoding="UTF-8"  %>
         }
 
         .cal_top {
-            display: table-cell;
-            float: left;
-            margin: 0 0 0 44px;
-            width: 260px;
-            height: 240px;
-            text-align: center;
+        	display: flex;
+        	justify-content: center;
+        	padding: 10px 0;
             font-size: 18px;
-            font-family: 'Yellowtail', cursive;
             color: white;
         }
 
@@ -371,15 +345,26 @@ pageEncoding="UTF-8"  %>
         }
 
         #cal_msg {
-            margin-left: 24px;
+        	margin-bottom: 10px;
             padding: 20px 10px;
-            width: 300px;
-            height: 214px;
-            border: 1px solid #C4C4C4;
-            border-radius: 5px;
-            background-color: #F9F9F9;
+            text-align: center;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.2);
             color: black;
             font-size: 14px;
+        }
+        
+        #more_btn {
+        	background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 240px;
+            height: 40px;
+            border-radius: 50px;
+            border: 1px solid #eee;
+            cursor: pointer;
         }
 
         table.calendar {
@@ -393,7 +378,6 @@ pageEncoding="UTF-8"  %>
             text-align: center;
             font-size: 18px;
             padding-bottom: 20px;
-            font-family: 'Yellowtail', cursive;
         }
 
         table.calendar td {
@@ -402,32 +386,18 @@ pageEncoding="UTF-8"  %>
             text-align: center;
         }
 
-        #cal_top_date {
-            margin-top: 20px;
-            font-size: 36px;
-        }
-
         .cal_tit {
             padding: 10px;
             color: white;
         }
 
         body {
-            background: #edf0f2;
-        }
-
-        #logout_btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 0 0 24px;
-            width: 300px;
-            cursor: pointer;
+            background: #FAFAFA;
         }
 
         #logo {
             color: black;
-            font-size: 36px;
+            font-size: 24px;
             font-family: 'Yellowtail', cursive;
         }
 
@@ -436,7 +406,18 @@ pageEncoding="UTF-8"  %>
         }
 
         #l_title {
+        	display: block;
             margin-bottom: 40px;
+        	width: 100%;
+        	text-align: center;
+        }
+        
+        #sub_title {
+        	display: block;
+        	width: 100%;
+        	text-align: center;
+        	font-size: 12px;
+        	color: #FBAB7E;
         }
 
         #intro {
@@ -589,35 +570,38 @@ pageEncoding="UTF-8"  %>
     
     <table id="section">
         <tr>
-            <td>
+            <td colspan="2">
+            	<div id="sub_title">캘린더를 통해 일정을 확인해주세요.</div>
                 <div id="l_title"><span id="logo">MEETU</span> &nbsp;&nbsp; <span id="l_text">상담일정 관리</span></div>
             </td>
         </tr>
+        
         <tr>
             <td id="calendar_wrap">
-                <div class="cal_top">
-                    <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit">◀</span></a>
-                    <span id="cal_top_year"></span>.
-                    <span id="cal_top_month"></span>
-                    <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit">▶</span></a>
-                    <div id="cal_top_date"></div>
-                    <span id="cal_top_dayName"></span>요일
-                </div>
-    
-                <button type="button" class="btn btn-dark" id="logout_btn">+ 등록된 일정 더보기</button>
-                <div id="cal_msg">
-                    <p>등록된 일정이 없습니다.</p>
-                    <p>등록된 일정이 없습니다.</p>
-                    <p>등록된 일정이 없습니다.</p>
-                    <p>등록된 일정이 없습니다.</p>
-                    <p>등록된 일정이 없습니다.</p>
-                </div>
+                <div id="cal_msg">등록된 일정이 없습니다.</div>
+                <div id="cal_msg">등록된 일정이 없습니다.</div>
+                <div id="cal_msg">등록된 일정이 없습니다.</div>
+                <div id="cal_msg">등록된 일정이 없습니다.</div>
+                    
+                
+ <!--               <div id="more_btn">
+                    + <span id="cal_top_dayName"></span>요일
+                    (<span id="cal_top_date"></span>일)
+                    일정 더 보기
+                </div>-->
             </td>
     
             <td id="calendar">
                 <div id="calendarHeader">
-                    상담일정
+                    <div class="cal_top">
+                    <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit">◀</span></a>
+                    <span id="cal_top_year"></span>.
+                    <span id="cal_top_month"></span>
+                    <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit">▶</span></a>
                 </div>
+                
+                </div>
+       
                 <div id="calendarBody">
                     <div id="cal_tab" class="cal"></div>
                 </div>
