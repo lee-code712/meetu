@@ -303,8 +303,7 @@ pageEncoding="UTF-8"  %>
 
         #section {
             display: table;
-            margin: 70px auto;
-            margin-bottom: 100px;
+            margin: 0 auto;
             width: 1194px;
             height: 390px;
         }
@@ -312,13 +311,14 @@ pageEncoding="UTF-8"  %>
         #calendar {
             float: right;
             background: white;
-            border: 1px solid #eee;
             border-radius: 0 5px 5px 0;
         }
 
         #calendarHeader {
         	border-radius: 5px 5px 0 0;
-            background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+            border-top: 1px solid #DFE3E4;
+            border-left: 1px solid #DFE3E4;
+            border-right: 1px solid #DFE3E4;
         }
 
         #calendarBody {
@@ -327,14 +327,17 @@ pageEncoding="UTF-8"  %>
             height: 640px;
             border-radius: 0 0 5px 0;
             background-color: white;
+            border-bottom: 1px solid #DFE3E4;
+            border-left: 1px solid #DFE3E4;
+            border-right: 1px solid #DFE3E4;
         }
 
         .cal_top {
         	display: flex;
         	justify-content: center;
-        	padding: 10px 0;
-            font-size: 18px;
-            color: white;
+        	padding-top: 40px;
+            font-size: 24px;
+            font-weight: bold;
         }
 
         #cal_tab {
@@ -350,7 +353,7 @@ pageEncoding="UTF-8"  %>
             text-align: center;
             border-radius: 10px;
             background-color: white;
-            box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.2);
+            border: 1px solid #DFE3E4;
             color: black;
             font-size: 14px;
         }
@@ -387,8 +390,8 @@ pageEncoding="UTF-8"  %>
         }
 
         .cal_tit {
-            padding: 10px;
-            color: white;
+            padding: 40px;
+            color: #FBAB7E;
         }
 
         body {
@@ -413,6 +416,7 @@ pageEncoding="UTF-8"  %>
         }
         
         #sub_title {
+        	margin-bottom: 6px;
         	display: block;
         	width: 100%;
         	text-align: center;
@@ -422,7 +426,7 @@ pageEncoding="UTF-8"  %>
 
         #intro {
             margin: 0 auto;
-            margin-top: 80px;
+            padding-top: 100px;
             width: 1920px;
             height: 800px;
             background: white;
@@ -535,6 +539,67 @@ pageEncoding="UTF-8"  %>
         #dropdown:hover #dropdown-content {
             display: block;
         }
+        
+        #introBody {
+        	display: flex;
+        	justify-content: space-between;
+        	margin: 0 auto;
+        	width: 1194px;
+        }
+        
+        #introBox {
+        	margin-top: 40px;
+        	width: 380px;
+        	height: 500px;	
+        }
+        
+        #introBox img {
+        	display: block; 
+        	margin: 0px auto;
+        	margin-top: 70px;
+        }
+        
+        #introBox div {
+        	text-align: center;
+        }
+        
+        #introBoxTitle {
+        	margin-top: 60px;
+        	font-size: 18px;
+        	font-weight: bold;
+        }
+        
+        #introBoxText {
+        	margin-top: 20px;
+        	margin-bottom: 14px;
+        	color: #535353;
+        }
+        
+        #calendarBg {
+        	padding: 100px 0 100px 0;
+        	width: 1920px;
+        	margin: 0 auto;
+        	background: #EEF0F4;
+        }
+        
+        .introBox1 {
+        	background: #FDAC8A;
+        }
+        
+        .introBox2 {
+        	background: #FBAB7E;
+        }
+        
+        .introBox3 {
+        	background: #FFD597;
+        }
+        
+        #imgimg {
+        	width: 300px;
+        	height: 340px;
+        	background: white;
+        	margin: 0 auto;
+        }
     </style>
 </head>
 
@@ -567,7 +632,7 @@ pageEncoding="UTF-8"  %>
         </ul>
     </div>
     
-    
+    <div id="calendarBg">
     <table id="section">
         <tr>
             <td colspan="2">
@@ -598,8 +663,7 @@ pageEncoding="UTF-8"  %>
                     <span id="cal_top_year"></span>.
                     <span id="cal_top_month"></span>
                     <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit">▶</span></a>
-                </div>
-                
+                	</div>
                 </div>
        
                 <div id="calendarBody">
@@ -608,10 +672,17 @@ pageEncoding="UTF-8"  %>
             </td>
         </tr>
     </table>
+    </div>
     
     <div id="intro">
-        <div id="intro_title"><span id="logo">MEETU</span> &nbsp;&nbsp; <span id="l_text">소개</span></div>
-        <div id="intro_text">소개 부분 만드는 중 + 배너 이미지 준비 중 (일단 샘플로 넣어둠)</div>
+        <div id="sub_title">어떤 기능이 있나요?</div>
+        <div id="l_title"><span id="logo">MEETU</span> &nbsp;&nbsp; <span id="l_text">소개</span></div>
+    	
+    	<div id="introBody">
+    		<div id="introBox" class="introBox1"><div id="introBoxTitle">상담일정</div><div id="introBoxText">상담일정을 통해 등록된 예약을<br/> 한 눈에 확인할 수 있습니다.</div><div id="imgimg">(이미지)</div></div>
+    		<div id="introBox" class="introBox2"><div id="introBoxTitle">쪽지기능</div><div id="introBoxText">상담예약이 확정된 교수님과<br/> 메시지를 주고 받을 수 있습니다.</div><div id="imgimg">(이미지)</div></div>
+    		<div id="introBox" class="introBox3"><div id="introBoxTitle">알림기능</div><div id="introBoxText">알림 기능을 통해<br/> 상담 가능 여부를 전달해드립니다.</div><div id="imgimg">(이미지)</div></div>
+    	</div>
     </div>
     
     
