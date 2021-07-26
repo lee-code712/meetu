@@ -493,3 +493,25 @@ a:hover {
     float: right;
     color: white;
 }
+
+#calendar {
+    width: 320px;
+    height: 280px;
+}
+
+#calendar td {
+    text-align: center;
+    border-radius: 10px;
+}
+
+#selectBox {
+    margin-top: 20px;
+}
+
+#selectOk {
+    color: #4E65B5;
+}
+
+#selectNotOk {
+    color: #DA3D3D;
+}
