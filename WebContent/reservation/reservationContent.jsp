@@ -7,91 +7,6 @@ pageEncoding="UTF-8"%>
     <meta charset="UTF-8">
     <title>예약 페이지</title>
 
-    <script type="text/javascript">
-        var today = new Date();//오늘 날짜//내 컴퓨터 로컬을 기준으로 today에 Date 객체를 넣어줌
-        var date = new Date();//today의 Date를 세어주는 역할
-        function prevCalendar() {//이전 달
-            // 이전 달을 today에 값을 저장하고 달력에 today를 넣어줌
-            //today.getFullYear() 현재 년도//today.getMonth() 월  //today.getDate() 일
-            //getMonth()는 현재 달을 받아 오므로 이전달을 출력하려면 -1을 해줘야함
-            today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
-            buildCalendar(); //달력 cell 만들어 출력
-        }
-
-        function nextCalendar() {//다음 달
-            // 다음 달을 today에 값을 저장하고 달력에 today 넣어줌
-            //today.getFullYear() 현재 년도//today.getMonth() 월  //today.getDate() 일
-            //getMonth()는 현재 달을 받아 오므로 다음달을 출력하려면 +1을 해줘야함
-            today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
-            buildCalendar();//달력 cell 만들어 출력
-        }
-
-        function buildCalendar() {//현재 달 달력 만들기
-            var doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-            //이번 달의 첫째 날,
-            //new를 쓰는 이유 : new를 쓰면 이번달의 로컬 월을 정확하게 받아온다.
-            //new를 쓰지 않았을때 이번달을 받아오려면 +1을 해줘야한다.
-            //왜냐면 getMonth()는 0~11을 반환하기 때문
-            var lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-            //이번 달의 마지막 날
-            //new를 써주면 정확한 월을 가져옴, getMonth()+1을 해주면 다음달로 넘어가는데
-            //day를 1부터 시작하는게 아니라 0부터 시작하기 때문에
-            //대로 된 다음달 시작일(1일)은 못가져오고 1 전인 0, 즉 전달 마지막일 을 가져오게 된다
-            var tbCalendar = document.getElementById("calendar");
-            //날짜를 찍을 테이블 변수 만듬, 일 까지 다 찍힘
-            var tbCalendarYM = document.getElementById("tbCalendarYM");
-            //테이블에 정확한 날짜 찍는 변수
-            //innerHTML : js 언어를 HTML의 권장 표준 언어로 바꾼다
-            //new를 찍지 않아서 month는 +1을 더해줘야 한다.
-            tbCalendarYM.innerHTML = today.getFullYear() + "년 " + (today.getMonth() + 1) + "월";
-
-            /*while은 이번달이 끝나면 다음달로 넘겨주는 역할*/
-            while (tbCalendar.rows.length > 2) {
-                //열을 지워줌
-                //기본 열 크기는 body 부분에서 2로 고정되어 있다.
-                tbCalendar.deleteRow(tbCalendar.rows.length - 1);
-                //테이블의 tr 갯수 만큼의 열 묶음은 -1칸 해줘야지
-                //30일 이후로 담을달에 순서대로 열이 계속 이어진다.
-            }
-            var row = null;
-            row = tbCalendar.insertRow();
-            //테이블에 새로운 열 삽입//즉, 초기화
-            var cnt = 0;// count, 셀의 갯수를 세어주는 역할
-            // 1일이 시작되는 칸을 맞추어 줌
-            for (i = 0; i < doMonth.getDay(); i++) {
-                /*이번달의 day만큼 돌림*/
-                cell = row.insertCell();//열 한칸한칸 계속 만들어주는 역할
-                cnt = cnt + 1;//열의 갯수를 계속 다음으로 위치하게 해주는 역할
-            }
-            /*달력 출력*/
-            for (i = 1; i <= lastDate.getDate(); i++) {
-                //1일부터 마지막 일까지 돌림
-                cell = row.insertCell();//열 한칸한칸 계속 만들어주는 역할
-                cell.innerHTML = i;//셀을 1부터 마지막 day까지 HTML 문법에 넣어줌
-                cnt = cnt + 1;//열의 갯수를 계속 다음으로 위치하게 해주는 역할
-                if (cnt % 7 == 1) {/*일요일 계산*/
-                    //1주일이 7일 이므로 일요일 구하기
-                    //월화수목금토일을 7로 나눴을때 나머지가 1이면 cnt가 1번째에 위치함을 의미한다
-                    cell.innerHTML = "<font color=#F79DC2>" + i
-                    //1번째의 cell에만 색칠
-                }
-                if (cnt % 7 == 0) {/* 1주일이 7일 이므로 토요일 구하기*/
-                    //월화수목금토일을 7로 나눴을때 나머지가 0이면 cnt가 7번째에 위치함을 의미한다
-                    cell.innerHTML = "<font color=skyblue>" + i
-                    //7번째의 cell에만 색칠
-                    row = calendar.insertRow();
-                    //토요일 다음에 올 셀을 추가
-                }
-                /*오늘의 날짜에 노란색 칠하기*/
-                if (today.getFullYear() == date.getFullYear()
-                    && today.getMonth() == date.getMonth()
-                    && i == date.getDate()) {
-                    //달력에 있는 년,달과 내 컴퓨터의 로컬 년,달이 같고, 일이 오늘의 일과 같으면
-                    cell.bgColor = "#FBAB7E";//셀의 배경색을 노랑으로
-                }
-            }
-        }
-    </script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <link rel="stylesheet" href="/reservation/css/reservationContent.css"/>
@@ -113,31 +28,252 @@ pageEncoding="UTF-8"%>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
 
     <script src="/reservation/js/reservationContent.js"></script>
-    
-    <style> 
-    #calendar {
-    	width:320px;
-    	height: 280px;
-    }
-    
-    #calendar td {
-    	text-align: center;
-    	border-radius: 10px;
-    }
-    
-    #selectBox {
-    	margin-top: 20px;
-    }
-    
-    #selectOk {
-    	color: #4E65B5;
-    }
-    
-    #selectNotOk {
-    	color: #DA3D3D;
-    }
-   
+
+    <style type="text/css">
+        a {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .scriptCalendar {
+            text-align: center;
+        }
+
+        .scriptCalendar > thead > tr > td {
+            width: 50px;
+            height: 50px;
+        }
+
+        .scriptCalendar > thead > tr:first-child > td {
+            font-weight: bold;
+        }
+
+        .scriptCalendar > thead > tr:last-child > td {
+            background-color: #90EE90;
+        }
+
+        .scriptCalendar > tbody > tr > td {
+            width: 50px;
+            height: 50px;
+        }
+
+        #selectBox {
+            margin-top: 20px;
+        }
+
+        #selectOk {
+            color: #4E65B5;
+        }
+
+        #selectNotOk {
+            color: #DA3D3D;
+        }
     </style>
+    
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            buildCalendar();
+        });
+
+        var today = new Date(); // @param 전역 변수, 오늘 날짜 / 내 컴퓨터 로컬을 기준으로 today에 Date 객체를 넣어줌
+        var date = new Date();  // @param 전역 변수, today의 Date를 세어주는 역할
+
+        /**
+         * @brief   이전달 버튼 클릭
+         */
+        function prevCalendar() {
+            this.today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
+            buildCalendar();    // @param 전월 캘린더 출력 요청
+        }
+
+        /**
+         * @brief   다음달 버튼 클릭
+         */
+        function nextCalendar() {
+            this.today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
+            buildCalendar();    // @param 명월 캘린더 출력 요청
+        }
+
+        /**
+         * @brief   캘린더 오픈
+         * @details 날짜 값을 받아 캘린더 폼을 생성하고, 날짜값을 채워넣는다.
+         */
+        function buildCalendar() {
+
+            let doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+            let lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+
+            let tbCalendar = document.querySelector(".scriptCalendar > tbody");
+
+
+            document.getElementById("calYear").innerText = today.getFullYear();                                  // @param YYYY월
+            document.getElementById("calMonth").innerText = autoLeftPad((today.getMonth() + 1), 2);   // @param MM월
+
+
+            // @details 이전 캘린더의 출력결과가 남아있다면, 이전 캘린더를 삭제한다.
+            while (tbCalendar.rows.length > 0) {
+                tbCalendar.deleteRow(tbCalendar.rows.length - 1);
+            }
+
+
+            // @param 첫번째 개행
+            let row = tbCalendar.insertRow();
+
+
+            // @param 날짜가 표기될 열의 증가값
+            let dom = 1;
+
+            // @details 시작일의 요일값( doMonth.getDay() ) + 해당월의 전체일( lastDate.getDate())을  더해준 값에서
+            //               7로 나눈값을 올림( Math.ceil() )하고 다시 시작일의 요일값( doMonth.getDay() )을 빼준다.
+
+
+            let daysLength = (Math.ceil((doMonth.getDay() + lastDate.getDate()) / 7) * 7) - doMonth.getDay();
+
+            // @param 달력 출력
+
+            // @details 시작값은 1일을 직접 지정하고 요일값( doMonth.getDay() )를 빼서 마이너스( - )로 for문을 시작한다.
+            for (let day = 1 - doMonth.getDay(); daysLength >= day; day++) {
+
+                let column = row.insertCell();
+
+                // @param 평일( 전월일과 익월일의 데이터 제외 )
+                if (Math.sign(day) == 1 && lastDate.getDate() >= day) {
+
+
+                    // @param 평일 날짜 데이터 삽입
+
+                    column.innerText = autoLeftPad(day, 2);
+
+
+                    // @param 일요일인 경우
+                    if (dom % 7 == 1) {
+                        column.style.color = "#FF4D4D";
+                    }
+
+                    // @param 토요일인 경우
+                    if (dom % 7 == 0) {
+                        column.style.color = "#4D4DFF";
+                        row = tbCalendar.insertRow();   // @param 토요일이 지나면 다시 가로 행을 한줄 추가한다.
+                    }
+
+                }
+
+                // @param 평일 전월일과 익월일의 데이터 날짜변경
+                else {
+                    let exceptDay = new Date(doMonth.getFullYear(), doMonth.getMonth(), day);
+                    column.innerText = autoLeftPad(exceptDay.getDate(), 2);
+                    column.style.color = "#E5E5E5";
+                }
+
+                // @brief   전월, 명월 음영처리
+                // @details 현재년과 선택 년도가 같은경우
+                if (today.getFullYear() == date.getFullYear()) {
+
+                    // @details 현재월과 선택월이 같은경우
+                    if (today.getMonth() == date.getMonth()) {
+
+                        // @details 현재일보다 이전인 경우이면서 현재월에 포함되는 일인경우
+                        if (date.getDate() > day && Math.sign(day) == 1) {
+                            column.style.color = "#E5E5E5";
+                        }
+
+                        // @details 현재일보다 이후이면서 현재월에 포함되는 일인경우
+                        else if (date.getDate() < day && lastDate.getDate() >= day) {
+                            column.style.backgroundColor = "#FFFFFF";
+                            column.style.cursor = "pointer";
+                            column.onclick = function () {
+                                calendarChoiceDay(this);
+                            }
+                        }
+
+                        // @details 현재일인 경우
+                        else if (date.getDate() == day) {
+                            column.style.backgroundColor = "#FBAB7E";
+                            column.style.cursor = "pointer";
+                            column.onclick = function () {
+                                calendarChoiceDay(this);
+                            }
+                        }
+
+                        // @details 현재월보다 이전인경우
+                    } else if (today.getMonth() < date.getMonth()) {
+                        if (Math.sign(day) == 1 && day <= lastDate.getDate()) {
+                            column.style.color = "#E5E5E5";
+                        }
+                    }
+
+                    // @details 현재월보다 이후인경우
+                    else {
+                        if (Math.sign(day) == 1 && day <= lastDate.getDate()) {
+                            column.style.backgroundColor = "#FFFFFF";
+                            column.style.cursor = "pointer";
+                            column.onclick = function () {
+                                calendarChoiceDay(this);
+                            }
+                        }
+                    }
+                }
+
+                // @details 선택한년도가 현재년도보다 작은경우
+                else if (today.getFullYear() < date.getFullYear()) {
+                    if (Math.sign(day) == 1 && day <= lastDate.getDate()) {
+                        column.style.backgroundColor = "#E5E5E5";
+                    }
+                }
+
+                // @details 선택한년도가 현재년도보다 큰경우
+                else {
+                    if (Math.sign(day) == 1 && day <= lastDate.getDate()) {
+                        column.style.backgroundColor = "#FFFFFF";
+                        column.style.cursor = "pointer";
+                        column.onclick = function () {
+                            calendarChoiceDay(this);
+                        }
+                    }
+                }
+
+
+                dom++;
+
+            }
+        }
+
+        /**
+         * @brief   날짜 선택
+         * @details 사용자가 선택한 날짜에 체크표시를 남긴다.
+         */
+        function calendarChoiceDay(column) {
+
+            // @param 기존 선택일이 존재하는 경우 기존 선택일의 표시형식을 초기화 한다.
+            if (document.getElementsByClassName("choiceDay")[0]) {
+                document.getElementsByClassName("choiceDay")[0].style.backgroundColor = "#FFFFFF";
+                document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay");
+            }
+
+            // @param 선택일 체크 표시
+            column.style.backgroundColor = "#FF9999";
+
+
+            // @param 선택일 클래스명 변경
+
+            column.classList.add("choiceDay");
+        }
+
+        /**
+         * @brief   숫자 두자릿수( 00 ) 변경
+         * @details 자릿수가 한지라인 ( 1, 2, 3등 )의 값을 10, 11, 12등과 같은 두자리수 형식으로 맞추기위해 0을 붙인다.
+         * @param   num     앞에 0을 붙일 숫자 값
+         * @param   digit   글자의 자릿수를 지정 ( 2자릿수인 경우 00, 3자릿수인 경우 000 … )
+         */
+        function autoLeftPad(num, digit) {
+            if (String(num).length < digit) {
+                num = new Array(digit - String(num).length + 1).join("0") + num;
+            }
+            return num;
+
+        }
+
+    </script>
 </head>
 
 <body id="reservationContentBodyBg">
@@ -190,30 +326,30 @@ pageEncoding="UTF-8"%>
                     <tr class="contentWrap">
                         <td class="contentTitle">날짜 및 시간 선택</td>
                         <td class="contentBody">
-                            <table id="calendar" align="center">
-                                <tr><!-- label은 마우스로 클릭을 편하게 해줌 -->
-                                    <td><label onclick="prevCalendar()">◀</label></td>
-                                    <td align="center" id="tbCalendarYM" colspan="5">
-                                        yyyy년 m월
+                            <table class="scriptCalendar">
+                                <thead>
+                                <tr>
+                                    <td onClick="prevCalendar();" style="cursor:pointer;">&#60;&#60;</td>
+                                    <td colspan="5">
+                                        <span id="calYear">YYYY</span>년
+                                        <span id="calMonth">MM</span>월
                                     </td>
-                                    <td><label onclick="nextCalendar()">▶
-
-                                    </label></td>
+                                    <td onClick="nextCalendar();" style="cursor:pointer;">&#62;&#62;</td>
                                 </tr>
                                 <tr>
-                                    <td align="center"><font color="#F79DC2">일</td>
-                                    <td align="center">월</td>
-                                    <td align="center">화</td>
-                                    <td align="center">수</td>
-                                    <td align="center">목</td>
-                                    <td align="center">금</td>
-                                    <td align="center"><font color="skyblue">토</td>
+                                    <td style="background: white;">일</td>
+                                    <td style="background: white;">월</td>
+                                    <td style="background: white;">화</td>
+                                    <td style="background: white;">수</td>
+                                    <td style="background: white;">목</td>
+                                    <td style="background: white;">금</td>
+                                    <td style="background: white;">토</td>
                                 </tr>
+                                </thead>
+                                <tbody></tbody>
                             </table>
-                            <script language="javascript" type="text/javascript">
-                                buildCalendar();//
-                            </script>
-                            <div id="selectBox"><span id="selectOk">■</span> 선택 가능 <span id="selectNotOk">■</span> 선택 불가</div>
+                            <div id="selectBox"><span id="selectOk">■</span> 선택 가능 <span id="selectNotOk">■</span> 선택 불가
+                            </div>
                         </td>
                     </tr>
                     <tr class="contentWrap">
