@@ -21,7 +21,7 @@ public class IndexAction implements CommandAction {
 			return "/index/indexProf.jsp"; // 아직 교수용 index페이지 구현 X
 		}
 		else {
-			return "/index/indexStu.jsp"; // 관리자용 페이지가 없으므로 일단 학생 페이지로 이동
+			return "/index/indexAdmin.jsp"; // 관리자용 index페이지 일단 분리
 		}	
 	}
 

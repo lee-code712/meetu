@@ -69,7 +69,7 @@ pageEncoding="UTF-8"%>
                 </div>
                 <div id="dropdown-content">
                     <a href="myPage.do">마이페이지</a>
-                    <a href="#">로그아웃</a>
+                    <a href="logout.do">로그아웃</a>
                 </div>
             </div>
     

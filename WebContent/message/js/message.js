@@ -73,7 +73,7 @@ function sendMessage() {
 			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 			data: data,
 			dataType: "text",
-			success: UpdateMessages,
+			success: updateMessages,
 			error: function(jqXHR, textStatus, errorThrown) {
 				var message = jqXHR.getResponseHeader("Status");
 				if ((message == null) || (message.length <= 0)) {
@@ -86,7 +86,7 @@ function sendMessage() {
 	}
 }
 
-function UpdateMessages() {
+function updateMessages() {
 	alert("메시지가 성공적으로 전송되었습니다.");
 
 	$('#messageText').val("");

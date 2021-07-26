@@ -52,6 +52,10 @@ pageEncoding="UTF-8"%>
                     <input class="form-check-input" type="radio" name="role" id="professor_ck" value="1">
                     <label class="form-check-label">교직원</label>
                 </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="role" id="admin_ck" value="2">
+                    <label class="form-check-label">관리자</label>
+                </div>
             </div>
             <div class="form-group">
                 <label>아이디</label>

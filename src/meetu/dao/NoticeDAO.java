@@ -283,4 +283,67 @@ public class NoticeDAO {
 		return row_size;
 	}
 	
+	// 특정 공지사항 dto db에서 삭제
+	public boolean deleteNotice(NoticeDTO notice_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_deleted = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "delete from notice where notice_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, notice_dto.getNoticeId());
+
+			rs = pstmt.executeQuery();
+						
+			is_deleted = true;
+
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_deleted;
+	}
+	
+	// 공지사항 dto db에 추가
+	public boolean addNotice(NoticeDTO notice_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_added = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "insert into notice (notice_id, title, write_date, content) ";
+			sql += "values (notice_seq.NEXTVAL, ?, sysdate, ?)";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, notice_dto.getTitle());
+			pstmt.setString(2, notice_dto.getContent());
+
+			rs = pstmt.executeQuery();
+					
+			is_added = true;
+					
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_added;
+	}
 }

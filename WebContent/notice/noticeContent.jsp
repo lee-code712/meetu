@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -13,6 +14,12 @@ pageEncoding="UTF-8"%>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/notice/js/noticeContent.js"></script>
+    <script>
+    	var notice_id = "${notice_dto.getNoticeId()}";
+    </script>
 </head>
 
 <body id="noticeContentBodyBg">
@@ -38,7 +45,7 @@ pageEncoding="UTF-8"%>
                 </div>
                 <div id="dropdown-content">
                     <a href="myPage.do">마이페이지</a>
-                    <a href="#">로그아웃</a>
+                    <a href="logout.do">로그아웃</a>
                 </div>
             </div>
     
@@ -49,20 +56,22 @@ pageEncoding="UTF-8"%>
     
     <div id="noticeContent">
         <div id="contentHeader">
-            <div id="moreDropdown">
-                <div id="moreDropBtn">
-                    <div id="moreDropBtnTitle"><img src="/notice/images/more_vert_black_24dp.svg" id="moreIcon"/></div>
-                </div>
-                <div id="moreDropdownContent">
-                    <a href="#">삭제하기</a>
-                </div>
-            </div>
+        	<c:if test="${mem_dto.getRole()=='2'}">
+	            <div id="moreDropdown">
+	                <div id="moreDropBtn">
+	                    <div id="moreDropBtnTitle"><img src="/notice/images/more_vert_black_24dp.svg" id="moreIcon"/></div>
+	                </div>
+	                <div id="moreDropdownContent">
+	                    <a href="#" onclick="deleteNotice()">삭제하기</a>
+	                </div>
+	            </div>
+            </c:if>
             <div id="contentTitle">
                 <span>◈</span> ${notice_dto.getTitle()} <span>◈</span>
             </div>
         </div>
         <div id="contentDate">
-            <div id="writeDate">2021년 07월 22일 목요일</div>
+            <div id="writeDate">${notice_dto.getWriteDate()}</div>
         </div>
         <div id="content">${notice_dto.getContent()}</div>
         <button id="listBtn" onclick="location.href='notice.do'">목록</button>

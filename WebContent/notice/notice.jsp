@@ -44,7 +44,7 @@ pageEncoding="UTF-8"%>
                 </div>
                 <div id="dropdown-content">
                     <a href="myPage.do">마이페이지</a>
-                    <a href="#">로그아웃</a>
+                    <a href="logout.do">로그아웃</a>
                 </div>
             </div>
     
@@ -87,7 +87,9 @@ pageEncoding="UTF-8"%>
         </div>
     </div>
     <div id="writeBtnWrap">
-        <button id="writeBtn">글쓰기</button>
+    	<c:if test="${mem_dto.getRole()=='2'}">
+	    	<button id="writeBtn" onclick="location.href='noticeWrite.do'">글쓰기</button>
+		</c:if>       
     </div>
 </body>
 </html>

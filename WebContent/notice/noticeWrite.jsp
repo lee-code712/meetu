@@ -12,6 +12,9 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/notice/js/noticeWrite.js"></script>
 
     <style>
     	#header {
@@ -330,7 +333,7 @@
 	            </div>
 	            <div id="dropdown-content">
 	                <a href="myPage.do">마이페이지</a>
-	                <a href="#">로그아웃</a>
+	                <a href="logout.do">로그아웃</a>
 	            </div>
 	        </div>
 	       
@@ -345,7 +348,7 @@
     	</div>
     </div>
     <div id="content"><textarea cols="50" rows="24" id="contentInput" placeholder="내용을 입력하세요."></textarea></div>
-    <button id="listBtn" onclick="location.href='notice.do'">완료</button>
+    <button id="listBtn" onclick="addNotice()">완료</button>
 </div>
 </body>
 </html>
