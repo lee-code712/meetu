@@ -422,8 +422,8 @@ pageEncoding="UTF-8"%>
                         <td class="contentTitle">상담 유형</td>
                         <td class="contentBody">
                             <div class="typeBtnWrap">
-                                <div class="typeBtnOff">오프라인</div>
-                                <div class="typeBtnOn">온라인</div>
+                                <div class="typeBtnOff" id="typeBtn">오프라인</div>
+                                <div class="typeBtnOn" id="typeBtn">온라인</div>
                             </div>
                         </td>
                     </tr>
@@ -498,6 +498,34 @@ pageEncoding="UTF-8"%>
     init();
 </script>
 
+<script id="rendered-js">
+    var div2 = document.getElementsByClassName("typeBtn");
+
+    function handleClick(event) {
+        console.log(event.target);
+        console.log(event.target.classList);
+        if (event.target.classList[1] === "typeBtnOn") {
+            event.target.classList.remove("typeBtnOn");
+        } else {
+            for (var i = 0; i < div2.length; i++) {
+                if (window.CP.shouldStopExecution(0)) break;
+                div2[i].classList.remove("typeBtnOn");
+            }
+            window.CP.exitedLoop(0);
+            event.target.classList.add("typeBtnOn");
+        }
+    }
+
+    function init() {
+        for (var i = 0; i < div2.length; i++) {
+            if (window.CP.shouldStopExecution(1)) break;
+            div2[i].addEventListener("click", handleClick);
+        }
+        window.CP.exitedLoop(1);
+    }
+
+    init();
+</script>
 
 <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-4793b73c6332f7f14a9b6bba5d5e62748e9d1bd0b5c52d7af6376f3d1c625d7e.js"></script>
 
