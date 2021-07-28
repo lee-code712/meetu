@@ -24,7 +24,7 @@ function updatePage (responseText) {
 	var reservations = JSON.parse(responseText);
 	
 	if (reservations != null) {
-		$("#cal_msg").children().remove();
+		$("#cal_msg").remove();
 	}
 	
 	count = 0;
@@ -38,11 +38,12 @@ function updatePage (responseText) {
 			count++;
 			var res_time = res_date.substring(5,16);
 			
-			var newPElement = document.createElement("p");
+			var newDivElement = document.createElement("div");
+			$(newDivElement).attr("id", "cal_msg");
 			var content = res_time + ", " + p_name + " 교수님과 " + reason;
-			newPElement.innerHTML = content;
+			newDivElement.innerHTML = content;
 			
-			$("#cal_msg").append(newPElement);
+			$("#calendar_wrap").prepend(newDivElement);
 		}
 	});
 }

@@ -643,12 +643,7 @@ pageEncoding="UTF-8"  %>
         
         <tr>
             <td id="calendar_wrap">
-                <div id="cal_msg">등록된 일정이 없습니다.</div>
-                <div id="cal_msg">등록된 일정이 없습니다.</div>
-                <div id="cal_msg">등록된 일정이 없습니다.</div>
-                <div id="cal_msg">등록된 일정이 없습니다.</div>
-                    
-                
+            
  <!--               <div id="more_btn">
                     + <span id="cal_top_dayName"></span>요일
                     (<span id="cal_top_date"></span>일)
