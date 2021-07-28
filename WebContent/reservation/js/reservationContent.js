@@ -21,6 +21,7 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 	$(newInputElement).attr("id", "prof_email");
 	
 	var content = email.innerHTML;
+	content = content.substring(7, content.length);
 	$(newInputElement).attr("value", content);
 	
 	$(".mylist").append(newInputElement);
@@ -91,9 +92,9 @@ function typeBtnOnClick() {
 }
 
 function reservationBtnClick() {
-	alert($("#choiceMonth").attr("value"));
-	alert($("#choiceDay").attr("value"));
-	alert($("#startTime").attr("value"));
-	alert($("#consultTime").attr("value"));
-	alert($("#typeBtn").attr("value"));
+	// alert($("#choiceMonth").attr("value"));
+	// alert($("#choiceDay").attr("value"));
+	// alert($("#startTime").attr("value"));
+	// alert($("#consultTime").attr("value"));
+	// alert($("#typeBtn").attr("value"));
 }

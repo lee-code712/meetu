@@ -178,5 +178,41 @@ public class ReservationDAO {
 
 		return is_deleted;
 	}
+	
+	// 예약 레코드 추가
+	public boolean makeReservation(String univ, String res_date, String reason, int type, String p_user_id, String s_user_id)throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_added = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "insert into reservation (res_id, res_date, reason, type, approval, p_user_id, s_user_id) ";
+			sql += "values (reservation_seq.NEXTVAL, TO_DATE(?,'YY/MM/DD HH24:MI:SS'), ?, ?, 0, ?, ?)";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, res_date);
+			pstmt.setString(2, reason);
+			pstmt.setInt(3, type);
+			pstmt.setString(4, p_user_id);
+			pstmt.setString(5, s_user_id);
+
+			rs = pstmt.executeQuery();
+								
+			is_added = true;
+								
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_added;
+	}
 
 }

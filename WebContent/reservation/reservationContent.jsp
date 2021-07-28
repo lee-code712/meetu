@@ -849,7 +849,7 @@ pageEncoding="UTF-8"%>
     </div>
 </div>
 
-<form method="post" action="/reservation/makeReservation.jsp">
+<form method="post" action="reservation.do">
     <div class="reservationWrap">
         <div>
             <ul class="mylist">
