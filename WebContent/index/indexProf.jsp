@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" %>
+pageEncoding="UTF-8"  %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -9,32 +9,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <title>index</title>
-    
+
+    <!--<link rel="stylesheet" href="/index/css/indexStu.css"/>-->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="/index/js/jquery.bxslider.min.js"></script>
     <link href="/index/css/jquery.bxslider.css" rel="stylesheet"/>
+
+    <script src="/index/js/indexStu.js"></script>
+
     <script>
         var week = new Array('일', '월', '화', '수', '목', '금', '토');
         var today = null;
@@ -58,6 +45,7 @@
                 moveNextMonth();
             });
         });
+
         //Calendar 그리기
         function drawCalendar() {
             var setTableHTML = "";
@@ -76,6 +64,7 @@
             setTableHTML += '</table>';
             $("#cal_tab").html(setTableHTML);
         }
+
         //날짜 초기화
         function initDate() {
             week = new Array('일', '월', '화', '수', '목', '금', '토');
@@ -93,6 +82,7 @@
             firstDay = new Date(year, month - 1, 1);
             lastDay = new Date(year, month, 0);
         }
+
         //calendar 날짜표시
         function drawDays() {
             $("#cal_top_year").text(year);
@@ -109,6 +99,7 @@
                 $tdDay.eq(i).css("color", "blue");
             }
         }
+
         //calendar 월 이동
         function movePrevMonth() {
             month--;
@@ -121,6 +112,7 @@
             }
             getNewInfo();
         }
+
         function moveNextMonth() {
             month++;
             if (month > 12) {
@@ -132,6 +124,7 @@
             }
             getNewInfo();
         }
+
         //정보갱신
         function getNewInfo() {
             for (var i = 0; i < 42; i++) {
@@ -144,6 +137,7 @@
             drawDays();
             drawSche();
         }
+
         //데이터 등록
         function setData() {
             jsonData =
@@ -164,6 +158,7 @@
                     }
                 }
         }
+
         //스케줄 그리기
         function drawSche() {
             setData();
@@ -181,6 +176,7 @@
                 }
             }
         }
+
         $(document).ready(function () {
             var slider_01 = $('.banner_slide').bxSlider({
                 auto: true, autoControls: true, mode: 'horizontal',
@@ -227,7 +223,7 @@
             height: 720px;
             position: relative;
         }
-        
+
         .banner_01 {
             width: 1920px;
             height: 720px;
@@ -235,7 +231,7 @@
             background-position: center;
             background-size: cover;
         }
-        
+
         .banner_02 {
             width: 1920px;
             height: 720px;
@@ -243,7 +239,7 @@
             background-position: center;
             background-size: cover;
         }
-        
+
         .banner_03 {
             width: 1920px;
             height: 720px;
@@ -251,7 +247,7 @@
             background-position: center;
             background-size: cover;
         }
-        
+
         #bx-pager1 a {
             float: left;
             margin: 0 5px;
@@ -264,13 +260,28 @@
             background: pink;
             color: #333
         }
-        
+
         * {
             padding: 0;
             margin: 0;
             text-decoration: none;
         }
-       
+
+        a:link {
+            color: white;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: white;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
         #footer {
             display: flex;
             margin: 0 auto;
@@ -281,154 +292,157 @@
             align-items: center;
             color: white;
         }
-       
+
         #calendar_wrap {
-            width: 348px;
-            height: 700px;
+        	display: inline-block;
+            width: 300px;
+            height: 657px;
             border-radius: 5px 0 0 5px;
-            background: #3E454D;
+    	
         }
-        
+
         #section {
             display: table;
-            margin: 40px auto;
-            margin-bottom: 100px;
+            margin: 0 auto;
             width: 1194px;
             height: 390px;
         }
-        
+
         #calendar {
             float: right;
             background: white;
+            border-radius: 0 5px 5px 0;
         }
-        
+
         #calendarHeader {
-            display: table-cell;
-            padding-left: 30px;
-            width: 853px;
-            height: 60px;
-            border-bottom: 1px solid #eee;
-            border-radius: 0 5px 0 0;
-            vertical-align: middle;
-            background: white;
-            font-weight: bold;
+        	border-radius: 5px 5px 0 0;
+            border-top: 1px solid #DFE3E4;
+            border-left: 1px solid #DFE3E4;
+            border-right: 1px solid #DFE3E4;
         }
-        
+
         #calendarBody {
             display: table;
             width: 853px;
             height: 640px;
             border-radius: 0 0 5px 0;
             background-color: white;
+            border-bottom: 1px solid #DFE3E4;
+            border-left: 1px solid #DFE3E4;
+            border-right: 1px solid #DFE3E4;
         }
-        
+
         .cal_top {
-            display: table-cell;
-            float: left;
-            margin: 0 0 0 44px;
-            width: 260px;
-            height: 240px;
-            text-align: center;
-            font-size: 18px;
-            font-family: 'Yellowtail', cursive;
-            color: white;
+        	display: flex;
+        	justify-content: center;
+        	padding-top: 40px;
+            font-size: 24px;
+            font-weight: bold;
         }
-        
+
         #cal_tab {
             display: table-cell;
             text-align: center;
             width: 400px;
             height: 320px;
         }
-        
+
         #cal_msg {
-            margin-left: 24px;
+        	margin-bottom: 10px;
             padding: 20px 10px;
-            width: 300px;
-            height: 214px;
-            border: 1px solid #C4C4C4;
-            border-radius: 5px;
-            background-color: #F9F9F9;
-            color: #C4C4C4;
+            text-align: center;
+            border-radius: 10px;
+            background-color: white;
+            border: 1px solid #DFE3E4;
+            color: black;
             font-size: 14px;
         }
         
+        #more_btn {
+        	background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 240px;
+            height: 40px;
+            border-radius: 50px;
+            border: 1px solid #eee;
+            cursor: pointer;
+        }
+
         table.calendar {
             display: inline-table;
             margin-top: 80px;
             text-align: left;
         }
-        
+
         table.calendar th {
             width: 50px;
             text-align: center;
             font-size: 18px;
             padding-bottom: 20px;
-            font-family: 'Yellowtail', cursive;
         }
-        
+
         table.calendar td {
             width: 100px;
             height: 86px;
             text-align: center;
         }
-        
-        #cal_top_date {
-            margin-top: 20px;
-            font-size: 36px;
-        }
-        
+
         .cal_tit {
-            padding: 10px;
-            color: white;
+            padding: 40px;
+            color: #FBAB7E;
         }
-        
+
         body {
-            background: #edf0f2;
+            background: #FAFAFA;
         }
-        
-        #logout_btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 0 0 24px;
-            width: 300px;
-            cursor: pointer;
-        }
-        
+
         #logo {
             color: black;
-            font-size: 36px;
+            font-size: 24px;
             font-family: 'Yellowtail', cursive;
         }
-        
+
         #l_text {
             font-size: 24px;
         }
-        
+
         #l_title {
+        	display: block;
             margin-bottom: 40px;
+        	width: 100%;
+        	text-align: center;
         }
-      
+        
+        #sub_title {
+        	margin-bottom: 6px;
+        	display: block;
+        	width: 100%;
+        	text-align: center;
+        	font-size: 12px;
+        	color: #FBAB7E;
+        }
+
         #intro {
             margin: 0 auto;
-            margin-top: 80px;
+            padding-top: 100px;
             width: 1920px;
             height: 800px;
             background: white;
         }
-        
+
         #intro_title {
             padding-top: 80px;
             width: 1194px;
             margin: 0 auto;
         }
-        
+
         #intro_text {
             margin: 40px auto;
             width: 1194px;
         }
-        
+
         header {
             width: 100%;
             height: 100px;
@@ -441,10 +455,10 @@
             -moz-transition: All 0.2s ease;
             -o-transition: All 0.2s ease;
         }
-     
-    	#header_inner {
-        	display: flex;
-         	align-items: center;
+
+        #header_inner {
+            display: flex;
+            align-items: center;
             margin: 0 auto;
             width: 1194px;
             height: 100px;
@@ -460,9 +474,9 @@
             font-family: 'Yellowtail', cursive;
             font-weight: bold;
         }
-        
+
         #title:hover {
-        	cursor: pointer;
+            cursor: pointer;
         }
 
         #gnb {
@@ -507,7 +521,7 @@
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
             border: 1px solid white;
-            border-radius: 500px;
+            border-radius: 5px;
         }
 
         #dropdown-content a {
@@ -519,34 +533,95 @@
 
         #dropdown-content a:hover {
             background: rgba(0, 0, 0, 0.1);
-            border-radius: 500px;
+            border-radius: 5px;
         }
 
         #dropdown:hover #dropdown-content {
             display: block;
         }
+        
+        #introBody {
+        	display: flex;
+        	justify-content: space-between;
+        	margin: 0 auto;
+        	width: 1194px;
+        }
+        
+        #introBox {
+        	margin-top: 40px;
+        	width: 380px;
+        	height: 500px;	
+        }
+        
+        #introBox img {
+        	display: block; 
+        	margin: 0px auto;
+        	margin-top: 70px;
+        }
+        
+        #introBox div {
+        	text-align: center;
+        }
+        
+        #introBoxTitle {
+        	margin-top: 60px;
+        	font-size: 18px;
+        	font-weight: bold;
+        }
+        
+        #introBoxText {
+        	margin-top: 20px;
+        	margin-bottom: 14px;
+        	color: #535353;
+        }
+        
+        #calendarBg {
+        	padding: 100px 0 100px 0;
+        	width: 1920px;
+        	margin: 0 auto;
+        	background: #EEF0F4;
+        }
+        
+        .introBox1 {
+        	background: #FDAC8A;
+        }
+        
+        .introBox2 {
+        	background: #FBAB7E;
+        }
+        
+        .introBox3 {
+        	background: #FFD597;
+        }
+        
+        #imgimg {
+        	width: 300px;
+        	height: 340px;
+        	background: white;
+        	margin: 0 auto;
+        }
     </style>
 </head>
 
 <body>
-	<header>
-    	<nav id="header_inner">
-        	<div id="title"><a>MEETU</a></div>
-       	 	<div id="gnb">
-            	<a id="noticeIcon" href="notice.do">공지사항</a>
-            	<a id="reserveIcon" href="reservationPro.do">상담예약</a>
-            	<a id="messageIcon" href="message.do">쪽지함</a>
-            	<a id="myPageIcon">마이페이지</a>
-        	</div>
-        	<div id="dropdown">
-            	<button id="dropBtn">${mem_dto.getName()}님 ▽</button>
-            	<div id="dropdown-content">
-                	<a href="logout.do">로그아웃</a>
-            	</div>
-        	</div>
-        	<img src="/index/images/notifications_black_24dp.svg" id="alertIcon"/>
-    	</nav>
-	</header>
+    <header>
+        <nav id="header_inner">
+            <div id="title"><a>MEETU</a></div>
+            <div id="gnb">
+                <a id="noticeIcon" href="notice.do">공지사항</a>
+                <a id="reserveIcon" href="reservationPro.do">상담예약</a>
+                <a id="messageIcon" href="message.do">쪽지함</a>
+            </div>
+            <div id="dropdown">
+                <button id="dropBtn">${mem_dto.getName()}님 ▽</button>
+                <div id="dropdown-content">
+                	<a href="myPage.do">마이페이지</a>
+                    <a href="logout.do">로그아웃</a>
+                </div>
+            </div>
+            <img src="/index/images/notifications_black_24dp.svg" id="alertIcon"/>
+        </nav>
+    </header>
     
     
     <div id="banner_wrap">
@@ -557,46 +632,57 @@
         </ul>
     </div>
     
-    
+    <div id="calendarBg">
     <table id="section">
         <tr>
-            <td>
-                <div id="l_title"><span id="logo"><a href="index.do">MEETU</a></span> &nbsp;&nbsp; <span id="l_text">상담일정 관리</span></div>
+            <td colspan="2">
+            	<div id="sub_title">캘린더를 통해 일정을 확인해주세요.</div>
+                <div id="l_title"><span id="logo">MEETU</span> &nbsp;&nbsp; <span id="l_text">상담일정 관리</span></div>
             </td>
         </tr>
+        
         <tr>
             <td id="calendar_wrap">
-                <div class="cal_top">
-                    <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit">◀</span></a>
-                    <span id="cal_top_year"></span>.
-                    <span id="cal_top_month"></span>
-                    <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit">▶</span></a>
-                    <div id="cal_top_date"></div>
-                    <span id="cal_top_dayName"></span>요일
-                </div>
-    
-                <button type="button" class="btn btn-dark" id="logout_btn">+ 등록된 일정 더보기</button>
-                <div id="cal_msg"><p>등록된 일정이 없습니다.</p>
-                    <p>등록된 일정이 없습니다.</p>
-                    <p>등록된 일정이 없습니다.</p>
-                    <p>등록된 일정이 없습니다.</p>
-                    <p>등록된 일정이 없습니다.</p></div>
+                <div id="cal_msg">등록된 일정이 없습니다.</div>
+                <div id="cal_msg">등록된 일정이 없습니다.</div>
+                <div id="cal_msg">등록된 일정이 없습니다.</div>
+                <div id="cal_msg">등록된 일정이 없습니다.</div>
+                    
+                
+ <!--               <div id="more_btn">
+                    + <span id="cal_top_dayName"></span>요일
+                    (<span id="cal_top_date"></span>일)
+                    일정 더 보기
+                </div>-->
             </td>
     
             <td id="calendar">
                 <div id="calendarHeader">
-                    상담일정
+                    <div class="cal_top">
+                    <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit">◀</span></a>
+                    <span id="cal_top_year"></span>.
+                    <span id="cal_top_month"></span>
+                    <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit">▶</span></a>
+                	</div>
                 </div>
+       
                 <div id="calendarBody">
                     <div id="cal_tab" class="cal"></div>
                 </div>
             </td>
         </tr>
     </table>
+    </div>
     
     <div id="intro">
-        <div id="intro_title"><span id="logo">MEETU</span> &nbsp;&nbsp; <span id="l_text">소개</span></div>
-        <div id="intro_text">소개 부분 만드는 중 + 배너 이미지 준비 중 (일단 샘플로 넣어둠)</div>
+        <div id="sub_title">어떤 기능이 있나요?</div>
+        <div id="l_title"><span id="logo">MEETU</span> &nbsp;&nbsp; <span id="l_text">소개</span></div>
+    	
+    	<div id="introBody">
+    		<div id="introBox" class="introBox1"><div id="introBoxTitle">상담일정</div><div id="introBoxText">상담일정을 통해 등록된 예약을<br/> 한 눈에 확인할 수 있습니다.</div><div id="imgimg">(이미지)</div></div>
+    		<div id="introBox" class="introBox2"><div id="introBoxTitle">쪽지기능</div><div id="introBoxText">상담예약이 확정된 교수님과<br/> 메시지를 주고 받을 수 있습니다.</div><div id="imgimg">(이미지)</div></div>
+    		<div id="introBox" class="introBox3"><div id="introBoxTitle">알림기능</div><div id="introBoxText">알림 기능을 통해<br/> 상담 가능 여부를 전달해드립니다.</div><div id="imgimg">(이미지)</div></div>
+    	</div>
     </div>
     
     
