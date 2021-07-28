@@ -22,6 +22,7 @@ pageEncoding="UTF-8" %>
 </head>
 
 <body id="messageBodyBg">
+	
 	<div id="topHeader">
 	    <div id="topHeaderInner">
 	        <div><a href="myPage.do">${mem_dto.getName()}님 환영합니다!</a><span>|</span><span><a href="logout.do">로그아웃</a></span>
@@ -38,10 +39,10 @@ pageEncoding="UTF-8" %>
 	            <li><a id="messageIcon" href="message.do">쪽지함</a></li>
 	        </ul>
 	
-	        <img src="images/bell.svg" id="alertIcon"/>
+	        <a href="#pop01"><img src="images/bell.svg" id="alertIcon"/></a>
 	    </div>
 	</div>
-    
+	
     <table id="reservationWrap">
         <tr>
             <td>
