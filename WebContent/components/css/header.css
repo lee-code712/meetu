@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+ul, li {
+    text-decoration: none;
+    list-style: none;
+}
+
 #header {
     width: 100%;
     height: 100px;
@@ -22,6 +27,7 @@
     height: 100%;
     color: #FBAB7E;
     font-size: 24px;
+    margin-right: -30px;
     font-family: 'Yellowtail', cursive;
     font-weight: bold;
 }
@@ -43,65 +49,16 @@
     padding: 0 40px;
 }
 
+#alertIcon {
+    width: 18px;
+    height: 18px;
+}
+
 #alertIcon:hover,
 #noticeIcon:hover,
 #reserveIcon:hover,
-#messageIcon:hover,
-#myPageIcon:hover {
+#messageIcon:hover {
     cursor: pointer;
-}
-
-#dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-#dropBtn {
-    display: flex;
-    width: 160px;
-    color: #535353;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    background: none;
-}
-
-#dropdown-content {
-    margin-left: 50px;
-    display: none;
-    position: absolute;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    border: 1px solid white;
-    border-radius: 5px;
-    background: rgba(0, 0, 0, .800);
-}
-
-#dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-#dropdown-content a:hover {
-    background: rgba(0, 0, 0, 0.3);
-}
-
-#dropdown:hover #dropdown-content {
-    display: block;
-}
-
-#dropBtnTitle {
-    font-weight: bold;
-    padding: 0 4px 0 50px;
-    height: 100%;
-}
-
-#dropImg {
-    width: 20px;
-    height: 20px;
 }
 
 #messageIcon,
@@ -122,10 +79,12 @@ a:visited {
 
 a:hover {
     color: #535353;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
-#title a:link {
+#title a:link,
+#title a:visited,
+#title a:hover {
     color: #FBAB7E;
 
 }
@@ -150,4 +109,35 @@ a:hover {
     height: 100%;
     float: right;
     color: white;
+}
+
+#topHeaderInner div span {
+    margin-left: 20px;
+}
+
+#topHeaderInner div a:link,
+#topHeaderInner div a:visited,
+#topHeaderInner div a:hover {
+    color: white;
+}
+
+#gnb li a {
+    font-size: 14px;
+    position: relative;
+}
+
+#gnb li a:before {
+    content: '';
+    position: absolute;
+    background-color: #FBAB7E;
+    height: 6px;
+    width: 0;
+    bottom: -42px;
+    transition: 0.5s;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#gnb li a:hover:before {
+    width: 100%;
 }

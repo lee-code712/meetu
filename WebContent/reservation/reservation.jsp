@@ -33,157 +33,149 @@ pageEncoding="UTF-8"%>
     <script src="/reservation/js/reservation.js"></script>
 
     <style>
-        #header {
-            width: 100%;
-            height: 100px;
-            border-bottom: 1px solid #eee;
-            background: white;
-        }
+        @charset "UTF-8";
 
-        #header_inner {
-            display: flex;
-            align-items: center;
-            margin: 0 auto;
-            width: 1194px;
-            height: 100px;
-        }
-
-        #title {
-            display: flex;
-            align-items: center;
-            width: 200px;
-            height: 100%;
-            color: #FBAB7E;
-            font-size: 24px;
-            font-family: 'Yellowtail', cursive;
-            font-weight: bold;
-        }
-
-        #title:hover {
-            cursor: pointer;
-        }
-
-        #gnb {
-            display: flex;
-            width: 100%;
-            font-size: 16px;
-            font-weight: bold;
-            color: #535353;
-            align-items: center;
-        }
-
-        #gnb a {
-            padding: 0 40px;
-        }
-
-        #alertIcon:hover,
-        #noticeIcon:hover,
-        #reserveIcon:hover,
-        #messageIcon:hover,
-        #myPageIcon:hover {
-            cursor: pointer;
-        }
-
-        #dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        #dropBtn {
-            display: flex;
-            width: 160px;
-            color: #535353;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            background: none;
-        }
-
-        #dropdown-content {
-            margin-left: 50px;
-            display: none;
-            position: absolute;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            border: 1px solid white;
-            border-radius: 5px;
-            background: rgba(0, 0, 0, .800);
-        }
-
-        #dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        #dropdown-content a:hover {
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        #dropdown:hover #dropdown-content {
-            display: block;
-        }
-
-        #dropBtnTitle {
-            font-weight: bold;
-            padding: 0 4px 0 50px;
-            height: 100%;
-        }
-
-        #dropImg {
-            width: 20px;
-            heihgt: 20px;
-        }
-
-        #messageIcon,
-        #noticeIcon,
-        #reserveIcon {
-            color: #535353;
-        }
-
-        a:link {
-            color: #535353;
-            text-decoration: none;
-        }
-
-        a:visited {
-            color: #535353;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #535353;
-            text-decoration: underline;
-        }
-
-        #title a:link {
-            color: #FBAB7E;
-
-        }
-
-        #topHeader {
-            width: 100%;
-            height: 34px;
-            background-color: #FBAB7E;
-            background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-        }
-
-        #topHeaderInner {
-            margin: 0 auto;
-            width: 1194px;
-            height: 100%;
-        }
-
-        #topHeaderInner div {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            height: 100%;
-            float: right;
-            color: white;
-        }
+		ul, li {
+		    text-decoration: none;
+		    list-style: none;
+		}
+		
+		#header {
+		    width: 100%;
+		    height: 100px;
+		    border-bottom: 1px solid #eee;
+		    background: white;
+		}
+		
+		#header_inner {
+		    display: flex;
+		    align-items: center;
+		    margin: 0 auto;
+		    width: 1194px;
+		    height: 100px;
+		}
+		
+		#title {
+		    display: flex;
+		    align-items: center;
+		    width: 200px;
+		    height: 100%;
+		    color: #FBAB7E;
+		    font-size: 24px;
+		    margin-right: -30px;
+		    font-family: 'Yellowtail', cursive;
+		    font-weight: bold;
+		}
+		
+		#title:hover {
+		    cursor: pointer;
+		}
+		
+		#gnb {
+		    display: flex;
+		    width: 100%;
+		    font-size: 16px;
+		    font-weight: bold;
+		    color: #535353;
+		    align-items: center;
+		}
+		
+		#gnb a {
+		    padding: 0 40px;
+		}
+		
+		#alertIcon {
+		    width: 18px;
+		    height: 18px;
+		}
+		
+		#alertIcon:hover,
+		#noticeIcon:hover,
+		#reserveIcon:hover,
+		#messageIcon:hover {
+		    cursor: pointer;
+		}
+		
+		#messageIcon,
+		#noticeIcon,
+		#reserveIcon {
+		    color: #535353;
+		}
+		
+		a:link {
+		    color: #535353;
+		    text-decoration: none;
+		}
+		
+		a:visited {
+		    color: #535353;
+		    text-decoration: none;
+		}
+		
+		a:hover {
+		    color: #535353;
+		    text-decoration: none;
+		}
+		
+		#title a:link,
+		#title a:visited,
+		#title a:hover {
+		    color: #FBAB7E;
+		
+		}
+		
+		#topHeader {
+		    width: 100%;
+		    height: 34px;
+		    background-color: #FBAB7E;
+		    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+		}
+		
+		#topHeaderInner {
+		    margin: 0 auto;
+		    width: 1194px;
+		    height: 100%;
+		}
+		
+		#topHeaderInner div {
+		    display: flex;
+		    justify-content: flex-end;
+		    align-items: center;
+		    height: 100%;
+		    float: right;
+		    color: white;
+		}
+		
+		#topHeaderInner div span {
+		    margin-left: 20px;
+		}
+		
+		#topHeaderInner div a:link,
+		#topHeaderInner div a:visited,
+		#topHeaderInner div a:hover {
+		    color: white;
+		}
+		
+		#gnb li a {
+		    font-size: 14px;
+		    position: relative;
+		}
+		
+		#gnb li a:before {
+		    content: '';
+		    position: absolute;
+		    background-color: #FBAB7E;
+		    height: 6px;
+		    width: 0;
+		    bottom: -42px;
+		    transition: 0.5s;
+		    left: 50%;
+		    transform: translateX(-50%);
+		}
+		
+		#gnb li a:hover:before {
+		    width: 100%;
+		}
 
         * {
             margin: 0;
@@ -441,34 +433,24 @@ pageEncoding="UTF-8"%>
 
 <body id="reservationBodyBg">
     <div id="topHeader">
-        <div id="topHeaderInner">
-            <div></div>
-        </div>
-    </div>
-    <div id="header">
-        <div id="header_inner">
-            <div id="title"><a href="index.do">MEETU</a></div>
-            <div id="gnb">
-                <a id="noticeIcon" href="notice.do">공지사항</a>
-                <a id="reserveIcon" href="reservationPro.do">상담예약</a>
-                <a id="messageIcon" href="message.do">쪽지함</a>
-            </div>
-            <div id="dropdown">
-                <div id="dropBtn">
-                    <div id="dropBtnTitle">${mem_dto.getName()}님</div>
-                    <div>
-                        <img src="/components/images/keyboard_arrow_down_black_24dp.svg" id="dropImg"/>
-                    </div>
-                </div>
-                <div id="dropdown-content">
-                    <a href="myPage.do">마이페이지</a>
-                    <a href="logout.do">로그아웃</a>
-                </div>
-            </div>
-    
-            <img src="/components/images/notification.svg" id="alertIcon"/>
-        </div>
-    </div>
+	    <div id="topHeaderInner">
+	        <div><a href="myPage.do">${mem_dto.getName()}님 환영합니다!</a><span>|</span><span><a href="logout.do">로그아웃</a></span>
+	        </div>
+	    </div>
+	</div>
+	
+	<div id="header">
+	    <div id="header_inner">
+	        <div id="title"><a href="index.do">MEETU</a></div>
+	        <ul id="gnb">
+	            <li><a id="noticeIcon" href="notice.do">공지사항</a></li>
+	            <li><a id="reserveIcon" href="reservationPro.do">상담예약</a></li>
+	            <li><a id="messageIcon" href="message.do">쪽지함</a></li>
+	        </ul>
+	
+	        <img src="images/bell.svg" id="alertIcon"/>
+	    </div>
+	</div>
     
     <table id="reservationWrap">
         <tr>
