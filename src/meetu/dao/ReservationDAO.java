@@ -85,5 +85,98 @@ public class ReservationDAO {
 
 		return reservations;
 	}
+	
+	// approval을 승인(1)으로 변경
+	public boolean changeToApproval(ReservationDTO reservation_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_changed = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "update reservation set approval=1 where res_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, reservation_dto.getResId());
+
+			rs = pstmt.executeQuery();
+						
+			is_changed = true;
+						
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+			return is_changed;
+	}
+
+	// approval을 거절(2)로 변경
+	public boolean changeToReject(ReservationDTO reservation_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_changed = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "update reservation set approval=2 where res_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, reservation_dto.getResId());
+
+			rs = pstmt.executeQuery();
+							
+			is_changed = true;
+							
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_changed;
+	}
+		
+	// 특정 예약정보 dto db에서 삭제
+	public boolean deleteReservation(ReservationDTO reservation_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_deleted = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "delete from reservation where res_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, reservation_dto.getResId());
+
+			rs = pstmt.executeQuery();
+								
+			is_deleted = true;
+								
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_deleted;
+	}
 
 }

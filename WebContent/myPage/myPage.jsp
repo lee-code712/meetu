@@ -30,20 +30,9 @@ pageEncoding="UTF-8"%>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 
-    <title>쪽지함</title>
-
-    <script type="text/javascript">
-        function button_event() {
-            if (confirm("정말 삭제하시겠습니까?") == true) {    //확인
-                document.form.submit();
-            } else {   //취소
-                return;
-            }
-        }
-    </script>
-
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/myPage/js/myPage.js"></script>
 </head>
 
 <body id="myPageBodyBg">
@@ -85,9 +74,9 @@ pageEncoding="UTF-8"%>
                         <div id="cardTitle"><img src="/myPage/images/person.svg"/> &nbsp; 마이페이지</div>
                         <img src="/myPage/images/userImg3.svg" class="card-img-top" alt="..." id="userImg">
                         <div id="cardBody">
-                            <div id="userName">(이름)</div>
-                            <div id="userUniv">동덕여자대학교</div>
-                            <button id="logoutBtn">로그아웃</button>
+                            <div id="userName">${mem_dto.getName()}</div>
+                            <div id="userUniv">${univ_dto.getUnivName()}</div>
+                            <button id="logoutBtn" onclick="location.href='logout.do'">로그아웃</button>
                         </div>
                     </div>
                 </td>
@@ -99,7 +88,7 @@ pageEncoding="UTF-8"%>
                 <td id="navSub">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#qwe" id="completeBtn">예약완료</a>
+                            <a class="nav-link active" data-toggle="tab" href="#qwe" id="completeBtn">예약현황</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#asd" id="cancelBtn">예약취소</a>
@@ -121,20 +110,7 @@ pageEncoding="UTF-8"%>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr id="boardList">
-                                        <td>000교수님</td>
-                                        <td>컴퓨터학과</td>
-                                        <td>2021-07-10 오전 9:00</td>
-                                        <td><img src="/myPage/images/edit.svg" id="deleteBtn" onclick="button_event();"/>
-                                        </td>
-                                    </tr>
-                                    <tr id="boardList">
-                                        <td>000교수님</td>
-                                        <td>컴퓨터학과</td>
-                                        <td>2021-07-10 오전 9:00</td>
-                                        <td><img src="/myPage/images/edit.svg" id="deleteBtn" onclick="button_event();"/>
-                                        </td>
-                                    </tr>
+                                    
                                     </tbody>
                                 </table>
                             </div>
@@ -151,20 +127,7 @@ pageEncoding="UTF-8"%>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr id="boardList">
-                                        <td>000교수님</td>
-                                        <td>컴퓨터학과</td>
-                                        <td>2021-07-10 오전 9:00</td>
-                                        <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"
-                                                 onclick="button_event();"/></td>
-                                    </tr>
-                                    <tr id="boardList">
-                                        <td>000교수님</td>
-                                        <td>컴퓨터학과</td>
-                                        <td>2021-07-10 오전 9:00</td>
-                                        <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"
-                                                 onclick="button_event();"/></td>
-                                    </tr>
+ 
                                     </tbody>
                                 </table>
                             </div>
@@ -181,20 +144,7 @@ pageEncoding="UTF-8"%>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr id="boardList">
-                                        <td>000교수님</td>
-                                        <td>컴퓨터학과</td>
-                                        <td>2021-07-10 오전 9:00</td>
-                                        <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"
-                                                 onclick="button_event();"/></td>
-                                    </tr>
-                                    <tr id="boardList">
-                                        <td>000교수님</td>
-                                        <td>컴퓨터학과</td>
-                                        <td>2021-07-10 오전 9:00</td>
-                                        <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"
-                                                 onclick="button_event();"/></td>
-                                    </tr>
+
                                     </tbody>
                                 </table>
                             </div>
