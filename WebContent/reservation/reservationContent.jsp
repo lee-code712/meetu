@@ -764,6 +764,9 @@ pageEncoding="UTF-8"%>
             if (document.getElementsByClassName("choiceDay")[0]) {
                 document.getElementsByClassName("choiceDay")[0].style.backgroundColor = "#FFFFFF";
                 document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay");
+                // 추가 - 기존 선택일이 존재하는 경우 hidden 값 삭제
+                $("#choiceDay").remove();
+                $("#choiceMonth").remove();
             }
 
             // @param 선택일 체크 표시
@@ -773,6 +776,29 @@ pageEncoding="UTF-8"%>
             // @param 선택일 클래스명 변경
 
             column.classList.add("choiceDay");
+            
+            // 추가 - hidden 값 생성
+            // 선택한 일
+            var newInputDayElement = document.createElement("input");
+        	$(newInputDayElement).attr("type", "hidden");
+        	$(newInputDayElement).attr("id", "choiceDay");
+        	$(newInputDayElement).attr("name", "choiceDay");
+        	
+        	var contentDay = column.innerHTML;
+        	$(newInputDayElement).attr("value", contentDay);
+        	
+        	$("#contentBody").append(newInputDayElement);
+        	
+        	// 선택한 월
+        	var newInputMonthElement = document.createElement("input");
+         	$(newInputMonthElement).attr("type", "hidden");
+         	$(newInputMonthElement).attr("id", "choiceMonth");
+         	$(newInputMonthElement).attr("name", "choiceMonth");
+         	
+         	var contentMonth = document.getElementById("calMonth").innerHTML;
+         	$(newInputMonthElement).attr("value", contentMonth);
+         	
+         	$("#contentBody").append(newInputMonthElement);
         }
 
         /**
@@ -823,7 +849,7 @@ pageEncoding="UTF-8"%>
     </div>
 </div>
 
-<form method="post" action="">
+<form method="post" action="/reservation/makeReservation.jsp">
     <div class="reservationWrap">
         <div>
             <ul class="mylist">
@@ -843,7 +869,7 @@ pageEncoding="UTF-8"%>
                         <td class="contentTitle">날짜 및 시간 선택</td>
                     </tr>
                     <tr>
-                        <td class="contentBody">
+                        <td class="contentBody" id="contentBody">
                             <table class="scriptCalendar">
                                 <thead>
                                 <tr>
@@ -880,30 +906,30 @@ pageEncoding="UTF-8"%>
                     </tr>
                     <tr>
                         <td class="contentBody">
-                            <div class="timeTitle">◈ 상담 시작 시간</div>
+                            <div class="timeTitle" id="startTimeTitle">◈ 상담 시작 시간</div>
                             <div>
                                 <div>
-                                    <div class="startTimeBox">9:00</div> &nbsp;&nbsp;
-                                    <div class="startTimeBox">10:00</div> &nbsp;&nbsp;
-                                    <div class="startTimeBox">11:00</div>
+                                    <div class="startTimeBox" id="9am">9:00</div> &nbsp;&nbsp;
+                                    <div class="startTimeBox" id="10am">10:00</div> &nbsp;&nbsp;
+                                    <div class="startTimeBox" id=11am">11:00</div>
                                 </div>
                                 <div class="timdBoxWrap">
-                                    <div class="startTimeBox">12:00</div> &nbsp;&nbsp;
-                                    <div class="startTimeBox">13:00</div> &nbsp;&nbsp;
-                                    <div class="startTimeBox">14:00</div>
+                                    <div class="startTimeBox" id="12pm">12:00</div> &nbsp;&nbsp;
+                                    <div class="startTimeBox" id="13pm">13:00</div> &nbsp;&nbsp;
+                                    <div class="startTimeBox" id="14pm">14:00</div>
                                 </div>
                                 <div class="timdBoxWrap">
-                                    <div class="startTimeBox">15:00</div> &nbsp;&nbsp;
-                                    <div class="startTimeBox">16:00</div> &nbsp;&nbsp;
-                                    <div class="startTimeBox">17:00</div>
+                                    <div class="startTimeBox" id="15pm">15:00</div> &nbsp;&nbsp;
+                                    <div class="startTimeBox" id="16pm">16:00</div> &nbsp;&nbsp;
+                                    <div class="startTimeBox" id="17pm">17:00</div>
                                 </div>
                             </div>
                             <br/>
-                            <div class="timeTitle">◈ 상담 시간</div>
+                            <div class="timeTitle" id="timeTitle">◈ 상담 시간</div>
                             <div>
-                                <div class="timeBox">30분</div> &nbsp;&nbsp;
-                                <div class="timeBox">1시간</div> &nbsp;&nbsp;
-                                <div class="timeBox">2시간</div>
+                                <div class="timeBox" id="30m">30분</div> &nbsp;&nbsp;
+                                <div class="timeBox" id="1h">1시간</div> &nbsp;&nbsp;
+                                <div class="timeBox" id="2h">2시간</div>
                             </div>
                         </td>
                     </tr>
@@ -919,34 +945,34 @@ pageEncoding="UTF-8"%>
                     <tr>
                         <td class="contentBody">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="reason" value="전담 교수 면담" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault" id="type1">
                                     전담 교수 면담
                                 </label>
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="reason" value="진로 상담" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault" id="type2">
                                     진로 상담
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="reason" value="휴학 상담" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault" id="type3">
                                     휴학 상담
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="reason" value="대학원 상담" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault" id="type4">
                                     대학원 상담
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    기타: &nbsp; <input type="text" class="reason"/>
+                                <input class="form-check-input" type="checkbox" name="reason" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault" id="type5">
+                                    기타: &nbsp; <input type="text" class="reason" id="reasonEtc"/>
                                 </label>
                             </div>
                         </td>
@@ -963,8 +989,8 @@ pageEncoding="UTF-8"%>
                     <tr>
                         <td class="contentBody">
                             <div class="typeBtnWrap">
-                                <div class="typeBtnOff" id="typeBtn">오프라인</div>
-                                <div class="typeBtnOn" id="typeBtn">온라인</div>
+                                <div class="typeBtnOff" id="typeBtnOff">오프라인</div>
+                                <div class="typeBtnOn" id="typeBtnOn">온라인</div>
                             </div>
                         </td>
                     </tr>
