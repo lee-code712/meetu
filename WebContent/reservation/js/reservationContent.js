@@ -9,10 +9,25 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 	$(".typeBtnOff").click(typeBtnOffClick);
 	$(".typeBtnOn").click(typeBtnOnClick);
 	$(".reservationBtn").click(reservationBtnClick);
+	
+	// 교수 이메일을 파라미터로 보내기 위해 이메일 정보 hidden으로 저장
+	var email = document.getElementById("email");
+	
+	$("#prof_email").remove();
+	
+	var newInputElement = document.createElement("input");
+	$(newInputElement).attr("type", "hidden");
+	$(newInputElement).attr("name", "prof_email");
+	$(newInputElement).attr("id", "prof_email");
+	
+	var content = email.innerHTML;
+	$(newInputElement).attr("value", content);
+	
+	$(".mylist").append(newInputElement);
 });
 
 function startTimeBoxClick() {
-	timeBox = this;
+	var timeBox = this;
 	
 	$("#startTime").remove();
 	
@@ -28,7 +43,7 @@ function startTimeBoxClick() {
 }
 
 function timeBoxClick() {
-	timeBox = this;
+	var timeBox = this;
 	
 	$("#consultTime").remove();
 	
@@ -44,7 +59,7 @@ function timeBoxClick() {
 }
 
 function typeBtnOffClick() {
-	offBtn = this;
+	var offBtn = this;
 	
 	$("#typeBtn").remove();
 	
@@ -60,7 +75,7 @@ function typeBtnOffClick() {
 }
 
 function typeBtnOnClick() {
-	onBtn = this;
+	var onBtn = this;
 	
 	$("#typeBtn").remove();
 	

@@ -854,11 +854,11 @@ pageEncoding="UTF-8"%>
         <div>
             <ul class="mylist">
                 <li class="selectProf"><img src="/reservation/images/beenhere_black_24dp.svg"/>&nbsp;&nbsp;상담예약</li>
-                <li class="list">▶ 교수명: ${param.name}</li>
-                <li class="list">▶ 학과: ${param.major}</li>
-                <li class="list">▶ 담당과목: ${param.course}</li>
-                <li class="list">▶ 이메일: ${param.email}</li>
-                <li class="list">▶ 연구실 위치: ${param.office}</li>
+                <li class="list" id="name">▶ 교수명: ${param.name}</li>
+                <li class="list" id="dept">▶ 학과: ${param.major}</li>
+                <li class="list" id="course">▶ 담당과목: ${param.course}</li>
+                <li class="list" id="email">▶ 이메일: ${param.email}</li>
+                <li class="list" id="office">▶ 연구실 위치: ${param.office}</li>
             </ul>
         </div>
 

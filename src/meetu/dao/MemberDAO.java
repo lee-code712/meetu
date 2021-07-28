@@ -225,6 +225,55 @@ public class MemberDAO {
 
 		return members;
 	}
+	
+	// 모든 교수 정보 반환
+	public ArrayList<ProfessorDTO> getAllProfessors (String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<ProfessorDTO> professors = new ArrayList<ProfessorDTO>();
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from professor";
+
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				ProfessorDTO prof_dto = new ProfessorDTO();
+				prof_dto.setProfId(rs.getString("prof_id"));
+				prof_dto.setMajor(rs.getString("major"));
+				prof_dto.setEmail(rs.getString("email"));
+				prof_dto.setOffice(rs.getString("office"));
+				prof_dto.setDeptId(rs.getString("dept_id"));
+				professors.add(prof_dto);
+
+				while (rs.next()) {
+					prof_dto = new ProfessorDTO();
+					prof_dto.setProfId(rs.getString("prof_id"));
+					prof_dto.setMajor(rs.getString("major"));
+					prof_dto.setEmail(rs.getString("email"));
+					prof_dto.setOffice(rs.getString("office"));
+					prof_dto.setDeptId(rs.getString("dept_id"));
+					professors.add(prof_dto);
+				}
+			} else {
+				return null;
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return professors;
+	}
 
 	// 특정 회원 정보 dto 반환
 	public MemberDTO getMemberInfo(String univ, String id) throws NamingException/* , SQLException */ {
