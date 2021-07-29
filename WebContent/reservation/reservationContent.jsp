@@ -216,11 +216,18 @@ pageEncoding="UTF-8"%>
         }
 
         .list {
+        	display: flex;
             line-height: 40px;
             font-size: 14px;
+            border-bottom: 1px dotted black;
             cursor: pointer;
-            border-bottom: 1px dotted #C4C4C4;
         }
+        
+        .list img {
+			display: flex;
+			align-items: center;
+			padding-right: 10px;
+		}
 
         .profList th,
         .profList td {
@@ -552,7 +559,6 @@ pageEncoding="UTF-8"%>
             border-radius: 50px;
         }
 
-
         #timeBoxesWrap,
         #reasonWrap {
             margin-left: 240px;
@@ -842,12 +848,12 @@ pageEncoding="UTF-8"%>
     <div class="reservationWrap">
         <div>
             <ul class="mylist">
-                <li class="selectProf"><img src="/reservation/images/beenhere_black_24dp.svg"/>&nbsp;&nbsp;상담예약</li>
-                <li class="list" id="name">▶ 교수명: ${param.name}</li>
-                <li class="list" id="dept">▶ 학과: ${param.major}</li>
-                <li class="list" id="course">▶ 담당과목: ${param.course}</li>
-                <li class="list" id="email">▶ 이메일: ${param.email}</li>
-                <li class="list" id="office">▶ 연구실 위치: ${param.office}</li>
+                <li class="selectProf">상담예약</li>
+                <li class="list" id="name"><img src="/reservation/images/profName.svg"/> 교수명: ${param.name}</li>
+                <li class="list" id="dept"><img src="/reservation/images/dept.svg"/> 학과: ${param.major}</li>
+                <li class="list" id="course"><img src="/reservation/images/book.svg"/> 담당과목: ${param.course}</li>
+                <li class="list" id="email"><img src="/reservation/images/email.svg"/> 이메일: ${param.email}</li>
+                <li class="list" id="office"><img src="/reservation/images/office.svg"/> 연구실 위치: ${param.office}</li>
             </ul>
         </div>
 
