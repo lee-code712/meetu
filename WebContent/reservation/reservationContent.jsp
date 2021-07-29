@@ -834,7 +834,7 @@ pageEncoding="UTF-8"%>
             <li><a id="messageIcon" href="message.do">쪽지함</a></li>
         </ul>
 
-        <img src="images/bell.svg" id="alertIcon"/>
+        <img src="/reservation/images/bell.svg" id="alertIcon"/>
     </div>
 </div>
 
