@@ -882,7 +882,7 @@ pageEncoding="UTF-8"%>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="reason" value="전담 교수 면담"
                                        id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault" id="type1">
+                                <label class="form-check-label" for="flexCheckDefault">
                                     전담 교수 면담
                                 </label>
                             </div>
@@ -890,28 +890,28 @@ pageEncoding="UTF-8"%>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="reason" value="진로 상담"
                                        id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault" id="type2">
+                                <label class="form-check-label" for="flexCheckDefault">
                                     진로 상담
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="reason" value="휴학 상담"
                                        id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault" id="type3">
+                                <label class="form-check-label" for="flexCheckDefault">
                                     휴학 상담
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="reason" value="대학원 상담"
                                        id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault" id="type4">
+                                <label class="form-check-label" for="flexCheckDefault">
                                     대학원 상담
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="reason" value=""
-                                       id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault" id="type5">
+                                       id="type5">
+                                <label class="form-check-label" for="flexCheckDefault">
                                     기타: &nbsp; <input type="text" class="reason" id="reasonEtc"/>
                                 </label>
                             </div>
