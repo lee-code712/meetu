@@ -7,173 +7,180 @@ pageEncoding="UTF-8"%>
     <meta charset="UTF-8">
     <title>예약 페이지</title>
 
-	<link rel="stylesheet" href="../components/css/header.css"/>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/reservation/css/reservationContent.css"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <link rel="stylesheet" href="../components/css/header.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-
     <script src="/reservation/js/reservationContent.js"></script>
+
+    <script>
+        $(function () {
+            var btn1 = $(".startTimeBox")
+            btn1.find("a").click(function () {
+                btn1.removeClass("active");
+                $(this).parent().addClass("active");
+            })
+        })
+
+        $(function () {
+            var btn2 = $(".timeBox")
+            btn2.find("a").click(function () {
+                btn2.removeClass("active");
+                $(this).parent().addClass("active");
+            })
+        })
+
+        $(function () {
+            var btn3 = $(".typeBtn")
+            btn3.find("a").click(function () {
+                btn3.removeClass("active");
+                $(this).parent().addClass("active");
+            })
+        })
+    </script>
 
     <style type="text/css">
         @charset "UTF-8";
 
-		ul, li {
-		    text-decoration: none;
-		    list-style: none;
-		}
-		
-		#header {
-		    width: 100%;
-		    height: 100px;
-		    border-bottom: 1px solid #eee;
-		    background: white;
-		}
-		
-		#header_inner {
-		    display: flex;
-		    align-items: center;
-		    margin: 0 auto;
-		    width: 1194px;
-		    height: 100px;
-		}
-		
-		#title {
-		    display: flex;
-		    align-items: center;
-		    width: 200px;
-		    height: 100%;
-		    color: #FBAB7E;
-		    font-size: 24px;
-		    margin-right: -30px;
-		    font-family: 'Yellowtail', cursive;
-		    font-weight: bold;
-		}
-		
-		#title:hover {
-		    cursor: pointer;
-		}
-		
-		#gnb {
-		    display: flex;
-		    width: 100%;
-		    font-size: 16px;
-		    font-weight: bold;
-		    color: #535353;
-		    align-items: center;
-		}
-		
-		#gnb a {
-		    padding: 0 40px;
-		}
-		
-		#alertIcon {
-		    width: 18px;
-		    height: 18px;
-		}
-		
-		#alertIcon:hover,
-		#noticeIcon:hover,
-		#reserveIcon:hover,
-		#messageIcon:hover {
-		    cursor: pointer;
-		}
-		
-		#messageIcon,
-		#noticeIcon,
-		#reserveIcon {
-		    color: #535353;
-		}
-		
-		a:link {
-		    color: #535353;
-		    text-decoration: none;
-		}
-		
-		a:visited {
-		    color: #535353;
-		    text-decoration: none;
-		}
-		
-		a:hover {
-		    color: #535353;
-		    text-decoration: none;
-		}
-		
-		#title a:link,
-		#title a:visited,
-		#title a:hover {
-		    color: #FBAB7E;
-		
-		}
-		
-		#topHeader {
-		    width: 100%;
-		    height: 34px;
-		    background-color: #FBAB7E;
-		    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-		}
-		
-		#topHeaderInner {
-		    margin: 0 auto;
-		    width: 1194px;
-		    height: 100%;
-		}
-		
-		#topHeaderInner div {
-		    display: flex;
-		    justify-content: flex-end;
-		    align-items: center;
-		    height: 100%;
-		    float: right;
-		    color: white;
-		}
-		
-		#topHeaderInner div span {
-		    margin-left: 20px;
-		}
-		
-		#topHeaderInner div a:link,
-		#topHeaderInner div a:visited,
-		#topHeaderInner div a:hover {
-		    color: white;
-		}
-		
-		#gnb li a {
-		    font-size: 14px;
-		    position: relative;
-		}
-		
-		#gnb li a:before {
-		    content: '';
-		    position: absolute;
-		    background-color: #FBAB7E;
-		    height: 6px;
-		    width: 0;
-		    bottom: -42px;
-		    transition: 0.5s;
-		    left: 50%;
-		    transform: translateX(-50%);
-		}
-		
-		#gnb li a:hover:before {
-		    width: 100%;
-		}
+        ul, li {
+            text-decoration: none;
+            list-style: none;
+        }
+
+        #header {
+            width: 100%;
+            height: 100px;
+            border-bottom: 1px solid #eee;
+            background: white;
+        }
+
+        #header_inner {
+            display: flex;
+            align-items: center;
+            margin: 0 auto;
+            width: 1194px;
+            height: 100px;
+        }
+
+        #title {
+            display: flex;
+            align-items: center;
+            width: 200px;
+            height: 100%;
+            color: #FBAB7E;
+            font-size: 24px;
+            margin-right: -30px;
+            font-family: 'Yellowtail', cursive;
+            font-weight: bold;
+        }
+
+        #title:hover {
+            cursor: pointer;
+        }
+
+        #gnb {
+            display: flex;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            color: #535353;
+            align-items: center;
+        }
+
+        #gnb a {
+            padding: 0 40px;
+        }
+
+        #alertIcon {
+            width: 18px;
+            height: 18px;
+        }
+
+        #alertIcon:hover,
+        #noticeIcon:hover,
+        #reserveIcon:hover,
+        #messageIcon:hover {
+            cursor: pointer;
+        }
+
+        #messageIcon,
+        #noticeIcon,
+        #reserveIcon {
+            color: #535353;
+        }
+
+        a:link {
+            color: #535353;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: #535353;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #535353;
+            text-decoration: none;
+        }
+
+        #title a:link,
+        #title a:visited,
+        #title a:hover {
+            color: #FBAB7E;
+
+        }
+
+        #topHeader {
+            width: 100%;
+            height: 34px;
+            background-color: #FBAB7E;
+            background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+        }
+
+        #topHeaderInner {
+            margin: 0 auto;
+            width: 1194px;
+            height: 100%;
+        }
+
+        #topHeaderInner div {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 100%;
+            float: right;
+            color: white;
+        }
+
+        #topHeaderInner div span {
+            margin-left: 20px;
+        }
+
+        #topHeaderInner div a:link,
+        #topHeaderInner div a:visited,
+        #topHeaderInner div a:hover {
+            color: white;
+        }
+
+        #gnb li a {
+            font-size: 14px;
+            position: relative;
+        }
+
+        #gnb li a:before {
+            content: '';
+            position: absolute;
+            background-color: #FBAB7E;
+            height: 6px;
+            width: 0;
+            bottom: -42px;
+            transition: 0.5s;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #gnb li a:hover:before {
+            width: 100%;
+        }
 
         * {
             margin: 0;
@@ -214,11 +221,6 @@ pageEncoding="UTF-8"%>
             border-bottom: 1px dotted #C4C4C4;
         }
 
-        .clicked {
-            background: #363B40;
-            color: white;
-        }
-
         .profList th,
         .profList td {
             padding: 10px;
@@ -247,23 +249,6 @@ pageEncoding="UTF-8"%>
 
         #reservationContentBodyBg {
             background: #FAFAFA;
-        }
-
-        .sender {
-            margin-left: 80px;
-            margin-top: 80px;
-            padding-bottom: 10px;
-            padding-top: 14px;
-            padding-left: 20px;
-            width: 810px;
-            font-size: 16px;
-            font-weight: bold;
-            color: #3E454D;
-            background: white;
-            border-radius: 10px 10px 0 0;
-            border-top: 1px solid #eee;
-            border-left: 1px solid #eee;
-            border-right: 1px solid #eee;
         }
 
         #contentBlank {
@@ -322,9 +307,12 @@ pageEncoding="UTF-8"%>
             font-weight: bold;
         }
 
-        .timeBox {
-            display: inline-block;
-            padding: 6px 0px;
+        .startTimeBox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            height: 40px;
             width: 96px;
             border: 1px solid #C4C4C4;
             border-radius: 5px;
@@ -333,69 +321,127 @@ pageEncoding="UTF-8"%>
             cursor: pointer;
         }
 
-        .clicked {
-            display: inline-block;
-            padding: 6px 0px;
+        .startTimeBox:hover > a,
+        .startTimeBox:focus > a,
+        .startTimeBox:active > a,
+        .startTimeBox.active > a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
             width: 96px;
             border-radius: 5px;
             text-align: center;
             font-weight: regular;
-            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #F8CA6B;
             background: #F8CA6B;
             color: white;
-            border: none;
+
+        }
+
+        .timeBox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            height: 40px;
+            width: 96px;
+            border: 1px solid #C4C4C4;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: regular;
+            cursor: pointer;
+        }
+
+        .timeBox:hover,
+        .startTimeBox:hover {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            width: 96px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: regular;
+            cursor: pointer;
             border: 1px solid #F8CA6B;
-            cursor: pointer;
-        }
-
-        .timeBoxMid:hover {
-            display: inline-block;
-            padding: 6px 0px;
-            width: 96px;
-            border: 1px solid #C4C4C4;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: regular;
-            border-radius: 5px;
-            background: #3E454D;
+            background: #F8CA6B;
             color: white;
-            border: none;
-            border: 1px solid #3E454D;
-            cursor: pointer;
         }
 
-        .startTimeBox {
-            display: inline-block;
-            padding: 6px 0px;
+        .typeBtn:hover {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
             width: 96px;
-            border: 1px solid #C4C4C4;
+            border-radius: 50px;
+            text-align: center;
+            font-weight: regular;
+            cursor: pointer;
+            border: 1px solid #F8CA6B;
+            background: #F8CA6B;
+            color: white;
+        }
+
+        .timeBox:hover > a,
+        .timeBox:focus > a,
+        .timeBox:active > a,
+        .timeBox.active > a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            width: 96px;
             border-radius: 5px;
             text-align: center;
             font-weight: regular;
             cursor: pointer;
+            border: 1px solid #F8CA6B;
+            background: #F8CA6B;
+            color: white;
+
         }
 
         .typeBtnWrap {
             display: flex;
             margin-left: 240px;
+            margin-bottom: 20px;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 328px;
         }
 
-        .typeBtnOff {
-            margin-right: 128px;
-            padding: 6px 0px;
+        .typeBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
             width: 96px;
             border: 1px solid #C4C4C4;
-            border-radius: 30px;
+            border-radius: 50px;
             text-align: center;
+            font-weight: regular;
+            cursor: pointer;
         }
 
-
-        #typeBtn {
-            padding: 6px 0px;
+        .typeBtn:hover > a,
+        .typeBtn:focus > a,
+        .typeBtn:active > a,
+        .typeBtn.active > a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
             width: 96px;
-            border: 1px solid #C4C4C4;
-            border-radius: 30px;
+            border-radius: 50px;
             text-align: center;
+            font-weight: regular;
+            cursor: pointer;
+            border: 1px solid #F8CA6B;
+            background: #F8CA6B;
+            color: white;
         }
 
         .reservationBtn {
@@ -418,28 +464,27 @@ pageEncoding="UTF-8"%>
         }
 
         .reservationBtn:hover {
-            margin-top: 40px;
-            float: right;
-            display: block;
-            padding: 10px 20px;
-            border-radius: 5px;
-            color: #3E454D;
-            border: 1px solid #3E454D;
-            background: white;
             cursor: pointer;
         }
 
         .timeTitle {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
-        .timdBoxWrap {
-            margin-top: 8px;
+        .timeBoxWrap {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 328px;
         }
 
-        .reason {
-            width: 248px;
-            height: 24px;
+        #anotherReason {
+            width: 236px;
+            border-radius: 30px;
+            border: 1px solid #C4C4C4;
+            margin-left: 20px;
+            padding: 4px 10px;
         }
 
         #topHeaderInner {
@@ -472,6 +517,7 @@ pageEncoding="UTF-8"%>
         }
 
         #selectNotOk {
+            margin-left: 20px;
             color: #DA3D3D;
         }
 
@@ -505,26 +551,36 @@ pageEncoding="UTF-8"%>
             border-radius: 50px;
         }
 
-        .startTimeBoxClicked {
-            display: inline-block;
-            padding: 6px 0px;
-            width: 96px;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: regular;
-            border-radius: 5px;
-            background: #F8CA6B;
-            color: white;
-            border: none;
-            border: 1px solid #F8CA6B;
-            cursor: pointer;
-        }
 
         #timeBoxesWrap,
         #reasonWrap {
             margin-left: 240px;
         }
 
+        input[type=checkbox]:not(old),
+        input[type=radio   ]:not(old) {
+            width: 28px;
+            margin: 0;
+            padding: 0;
+            opacity: 0;
+        }
+
+        input[type=checkbox]:not(old) + label,
+        input[type=radio   ]:not(old) + label {
+            display: inline-block;
+            margin-left: -28px;
+            padding-left: 28px;
+            background: url('images/checkesImg.svg') no-repeat 0 0;
+            line-height: 24px;
+        }
+
+        input[type=checkbox]:not(old):checked + label {
+            background-position: 0 -24px;
+        }
+
+        input[type=radio]:not(old):checked + label {
+            background-position: 0 -48px;
+        }
     </style>
 
     <script type="text/javascript">
@@ -761,25 +817,25 @@ pageEncoding="UTF-8"%>
 </head>
 
 <body id="reservationContentBodyBg">
-	<div id="topHeader">
-	    <div id="topHeaderInner">
-	        <div><a href="myPage.do">${mem_dto.getName()}님 환영합니다!</a><span>|</span><span><a href="logout.do">로그아웃</a></span>
-	        </div>
-	    </div>
-	</div>
-	
-	<div id="header">
-	    <div id="header_inner">
-	        <div id="title"><a href="index.do">MEETU</a></div>
-	        <ul id="gnb">
-	            <li><a id="noticeIcon" href="notice.do">공지사항</a></li>
-	            <li><a id="reserveIcon" href="reservationPro.do">상담예약</a></li>
-	            <li><a id="messageIcon" href="message.do">쪽지함</a></li>
-	        </ul>
-	
-	        <img src="images/bell.svg" id="alertIcon"/>
-	    </div>
-	</div>
+<div id="topHeader">
+    <div id="topHeaderInner">
+        <div><a href="myPage.do">${mem_dto.getName()}님 환영합니다!</a><span>|</span><span><a href="logout.do">로그아웃</a></span>
+        </div>
+    </div>
+</div>
+
+<div id="header">
+    <div id="header_inner">
+        <div id="title"><a href="index.do">MEETU</a></div>
+        <ul id="gnb">
+            <li><a id="noticeIcon" href="notice.do">공지사항</a></li>
+            <li><a id="reserveIcon" href="reservationPro.do">상담예약</a></li>
+            <li><a id="messageIcon" href="message.do">쪽지함</a></li>
+        </ul>
+
+        <img src="images/bell.svg" id="alertIcon"/>
+    </div>
+</div>
 
 <form method="post" name="reservation_form" action="reservation.do" onsubmit="return ck_reservation_form()">
     <div class="reservationWrap">
@@ -805,12 +861,12 @@ pageEncoding="UTF-8"%>
                             <table class="scriptCalendar">
                                 <thead>
                                 <tr>
-                                    <td onClick="prevCalendar();" style="cursor:pointer;">&#60;&#60;</td>
+                                    <td onClick="prevCalendar();" style="cursor:pointer; color: #FBAB7E;">◀</td>
                                     <td colspan="5">
                                         <span id="calYear">YYYY</span>년
                                         <span id="calMonth">MM</span>월
                                     </td>
-                                    <td onClick="nextCalendar();" style="cursor:pointer;">&#62;&#62;</td>
+                                    <td onClick="nextCalendar();" style="cursor:pointer; color: #FBAB7E;">▶</td>
                                 </tr>
                                 <tr>
                                     <td style="background: white;">일</td>
@@ -839,30 +895,32 @@ pageEncoding="UTF-8"%>
                     <tr>
                         <td class="contentBody">
                             <div id="timeBoxesWrap">
-                                <div class="timeTitle" id="startTimeTitle">◈ 상담 시작 시간</div>
+                                <div class="timeTitle" id="startTimeTitle"><span style="color: #FBAB7E;">◈</span> 상담 시작
+                                    시간
+                                </div>
                                 <div>
-                                    <div>
-                                        <div class="startTimeBox" id="9am">9:00</div> &nbsp;&nbsp;
-                                        <div class="startTimeBox" id="10am">10:00</div> &nbsp;&nbsp;
-                                        <div class="startTimeBox" id=11am">11:00</div>
+                                    <div class="timeBoxWrap">
+                                        <div class="startTimeBox" id="9am"><a>9:00</a></div>
+                                        <div class="startTimeBox" id="10am"><a>10:00</a></div>
+                                        <div class="startTimeBox" id=11am"><a>11:00</a></div>
                                     </div>
-                                    <div class="timdBoxWrap">
-                                        <div class="startTimeBox" id="12pm">12:00</div> &nbsp;&nbsp;
-                                        <div class="startTimeBox" id="13pm">13:00</div> &nbsp;&nbsp;
-                                        <div class="startTimeBox" id="14pm">14:00</div>
+                                    <div class="timeBoxWrap">
+                                        <div class="startTimeBox" id="12pm"><a>12:00</a></div>
+                                        <div class="startTimeBox" id="13pm"><a>13:00</a></div>
+                                        <div class="startTimeBox" id="14pm"><a>14:00</a></div>
                                     </div>
-                                    <div class="timdBoxWrap">
-                                        <div class="startTimeBox" id="15pm">15:00</div> &nbsp;&nbsp;
-                                        <div class="startTimeBox" id="16pm">16:00</div> &nbsp;&nbsp;
-                                        <div class="startTimeBox" id="17pm">17:00</div>
+                                    <div class="timeBoxWrap">
+                                        <div class="startTimeBox" id="15pm"><a>15:00</a></div>
+                                        <div class="startTimeBox" id="16pm"><a>16:00</a></div>
+                                        <div class="startTimeBox" id="17pm"><a>17:00</a></div>
                                     </div>
                                 </div>
                                 <br/>
-                                <div class="timeTitle" id="timeTitle">◈ 상담 시간</div>
-                                <div>
-                                    <div class="timeBox" id="30m">30분</div> &nbsp;&nbsp;
-                                    <div class="timeBox" id="1h">1시간</div> &nbsp;&nbsp;
-                                    <div class="timeBox" id="2h">2시간</div>
+                                <div class="timeTitle" id="timeTitle"><span style="color: #FBAB7E;">◈</span> 상담 시간</div>
+                                <div class="timeBoxWrap">
+                                    <div class="timeBox" id="30m"><a>30분</a></div> &nbsp;&nbsp;
+                                    <div class="timeBox" id="1h"><a>1시간</a></div> &nbsp;&nbsp;
+                                    <div class="timeBox" id="2h"><a>2시간</a></div>
                                 </div>
                             </div>
                         </td>
@@ -879,43 +937,28 @@ pageEncoding="UTF-8"%>
                     <tr>
                         <td class="contentBody">
                             <div id="reasonWrap">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="reason" value="전담 교수 면담"
-                                       id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    전담 교수 면담
-                                </label>
-                            </div>
-
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="reason" value="진로 상담"
-                                       id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    진로 상담
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="reason" value="휴학 상담"
-                                       id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    휴학 상담
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="reason" value="대학원 상담"
-                                       id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    대학원 상담
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="reason" value=""
-                                       id="type5">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    기타: &nbsp; <input type="text" class="reason" id="reasonEtc"/>
-                                </label>
-                            </div>
+                                <div>
+                                    <input id="radio1" type="radio" name="radio" value="1" checked="checked"><label
+                                        for="radio1">전담 교수 상담</label>
                                 </div>
+                                <div>
+                                    <input id="radio2" type="radio" name="radio" value="2"><label for="radio2">진로
+                                    상담</label>
+                                </div>
+                                <div>
+                                    <input id="radio3" type="radio" name="radio" value="3"><label for="radio3">휴학
+                                    상담</label>
+                                </div>
+                                <div>
+                                    <input id="radio4" type="radio" name="radio" value="4"><label for="radio4">대학원
+                                    상담</label>
+                                </div>
+                                <div>
+                                    <input id="radio5" type="radio" name="radio" value="5"><label
+                                        for="radio5">기타:</label>
+                                    <input type="input" placeholder="내용을 적어주세요." id="anotherReason">
+                                </div>
+                            </div>
                         </td>
                     </tr>
 
@@ -930,8 +973,8 @@ pageEncoding="UTF-8"%>
                     <tr>
                         <td class="contentBody">
                             <div class="typeBtnWrap">
-                                <div class="typeBtnOff" id="typeBtn">오프라인</div>
-                                <div class="typeBtnOn" id="typeBtn">온라인</div>
+                                <div id="typeBtnOff" class="typeBtn"><a>오프라인</a></div>
+                                <div id="typeBtnOn" class="typeBtn"><a>온라인</a></div>
                             </div>
                         </td>
                     </tr>
@@ -946,96 +989,5 @@ pageEncoding="UTF-8"%>
         </div>
     </div>
 </form>
-<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-8216c69d01441f36c0ea791ae2d4469f0f8ff5326f00ae2d00e4bb7d20e24edb.js"></script>
-
-<script id="rendered-js">
-    var div2 = document.getElementsByClassName("timeBox");
-
-    function handleClick(event) {
-        console.log(event.target);
-        console.log(event.target.classList);
-        if (event.target.classList[1] === "clicked") {
-            event.target.classList.remove("clicked");
-        } else {
-            for (var i = 0; i < div2.length; i++) {
-                if (window.CP.shouldStopExecution(0)) break;
-                div2[i].classList.remove("clicked");
-            }
-            window.CP.exitedLoop(0);
-            event.target.classList.add("clicked");
-        }
-    }
-
-    function init() {
-        for (var i = 0; i < div2.length; i++) {
-            if (window.CP.shouldStopExecution(1)) break;
-            div2[i].addEventListener("click", handleClick);
-        }
-        window.CP.exitedLoop(1);
-    }
-
-    init();
-</script>
-
-<script id="rendered-js">
-    var div2 = document.getElementsByClassName("startTimeBox");
-
-    function handleClick(event) {
-        console.log(event.target);
-        console.log(event.target.classList);
-        if (event.target.classList[1] === "startTimeBoxClicked") {
-            event.target.classList.remove("startTimeBoxClicked");
-        } else {
-            for (var i = 0; i < div2.length; i++) {
-                if (window.CP.shouldStopExecution(0)) break;
-                div2[i].classList.remove("startTimeBoxClicked");
-            }
-            window.CP.exitedLoop(0);
-            event.target.classList.add("startTimeBoxClicked");
-        }
-    }
-
-    function init() {
-        for (var i = 0; i < div2.length; i++) {
-            if (window.CP.shouldStopExecution(1)) break;
-            div2[i].addEventListener("click", handleClick);
-        }
-        window.CP.exitedLoop(1);
-    }
-
-    init();
-</script>
-
-<script id="rendered-js">
-    var div2 = document.getElementsByClassName("typeBtn");
-
-    function handleClick(event) {
-        console.log(event.target);
-        console.log(event.target.classList);
-        if (event.target.classList[1] === "typeBtnClicked") {
-            event.target.classList.remove("typeBtnClicked");
-        } else {
-            for (var i = 0; i < div2.length; i++) {
-                if (window.CP.shouldStopExecution(0)) break;
-                div2[i].classList.remove("typeBtnClicked");
-            }
-            window.CP.exitedLoop(0);
-            event.target.classList.add("typeBtnClicked");
-        }
-    }
-
-    function init() {
-        for (var i = 0; i < div2.length; i++) {
-            if (window.CP.shouldStopExecution(1)) break;
-            div2[i].addEventListener("click", handleClick);
-        }
-        window.CP.exitedLoop(1);
-    }
-
-    init();
-</script>
-
-<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-4793b73c6332f7f14a9b6bba5d5e62748e9d1bd0b5c52d7af6376f3d1c625d7e.js"></script>
-
 </body>
 </html>
