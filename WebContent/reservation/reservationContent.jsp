@@ -8,6 +8,7 @@ pageEncoding="UTF-8"%>
     <title>예약 페이지</title>
 
     <link rel="stylesheet" href="../components/css/header.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/reservation/js/reservationContent.js"></script>
 
