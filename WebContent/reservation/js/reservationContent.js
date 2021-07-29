@@ -5,10 +5,10 @@ isTypeBtnOnClicked = false;
 
 $(document).ready(function(){ // html이 로드되면 실행됨  
 	// 각 버튼에 click 이벤트 설정
-  	// $(".startTimeBox").click(startTimeBoxClick);
+  	$(".startTimeBox").click(startTimeBoxClick);
 	$(".timeBox").click(timeBoxClick);
-	$(".typeBtnOff").click(typeBtnOffClick);
-	$(".typeBtnOn").click(typeBtnOnClick);
+	$("#typeBtnOff").click(typeBtnOffClick);
+	$("#typeBtnOn").click(typeBtnOnClick);
 	$(".reservationBtn").click(reservationBtnClick);
 	
 	// 교수 이메일을 파라미터로 보내기 위해 이메일 정보 hidden으로 저장
@@ -22,7 +22,7 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 	$(newInputElement).attr("id", "prof_email");
 	
 	var content = email.innerHTML;
-	content = content.substring(7, content.length);
+	content = content.substring(47, content.length);
 	$(newInputElement).attr("value", content);
 	
 	$(".mylist").append(newInputElement);
@@ -72,7 +72,8 @@ function startTimeBoxClick() { // 시간 선택되어 있으면 닫히도록
 	$(newInputElement).attr("name", "startTime");
 	$(newInputElement).attr("id", "startTime");
 	
-	var content = timeBox.innerHTML;
+	var content = timeBox.childNodes[0].innerHTML;
+	
 	$(newInputElement).attr("value", content);
 	
 	$("#startTimeTitle").append(newInputElement);
@@ -127,8 +128,8 @@ function typeBtnOnClick() {
 }
 
 function reservationBtnClick() {
-	if($("input:checkbox[id='type5']").is(":checked") && $("#reasonEtc").val()) {
-		$("#type5").attr("value", $("#reasonEtc").val());
+	if($("input:radio[id='radio5']").is(":checked") && $("#anotherReason").val()) {
+		$("#radio5").attr("value", $("#anotherReason").val());
 	}
 }
 
@@ -150,7 +151,7 @@ function ck_reservation_form() {
 		return false;
 	}
 	
-	if(!$("input:checkbox[name=reason]").is(":checked")) {
+	if(!$("input:radio[name=radio]").is(":checked")) {
 		alert("상담 신청 사유를 선택해 주세요.");
 		return false;
 	}
@@ -160,7 +161,7 @@ function ck_reservation_form() {
 		return false;
 	}
 	
-	if($("input:checkbox[id='type5']").is(":checked") && !$("#reasonEtc").val()) {
+	if($("input:radio[id='radio5']").is(":checked") && !$("#anotherReason").val()) {
 		alert("기타 사유를 입력해 주세요.");
 		return false;
 	}

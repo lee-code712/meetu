@@ -16,7 +16,7 @@
 	String startTime = request.getParameter("startTime");
 	String consultTime = request.getParameter("consultTime");
 	String typeBtn = request.getParameter("type");
-	String reason = request.getParameter("reason");
+	String radio = request.getParameter("radio");
 	
 	MemberDAO memberDAO = new MemberDAO();
 	
@@ -56,6 +56,24 @@
 				}
 			}
 		}
+	}
+	
+	// 상담 이유
+	String reason = "";
+	if (radio.equals("1")) {
+		reason = "전담 교수 상담";
+	}
+	else if (radio.equals("2")) {
+		reason = "진로 상담";
+	}
+	else if (radio.equals("3")) {
+		reason = "휴학 상담";
+	}
+	else if (radio.equals("4")) {
+		reason = "대학원 상담";
+	}
+	else {
+		reason = radio; // 기타
 	}
 	
 	ReservationDAO reservationDAO = new ReservationDAO();

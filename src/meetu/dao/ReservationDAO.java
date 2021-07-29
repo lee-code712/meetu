@@ -189,7 +189,7 @@ public class ReservationDAO {
 			Connection conn = DBConnection.getConnection(univ);
 			String sql = "insert into reservation (res_id, res_date, reason, type, approval, p_user_id, s_user_id) ";
 			sql += "values (reservation_seq.NEXTVAL, TO_DATE(?,'YY/MM/DD HH24:MI:SS'), ?, ?, 0, ?, ?)";
-
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, res_date);
 			pstmt.setString(2, reason);
