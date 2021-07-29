@@ -214,5 +214,44 @@ public class ReservationDAO {
 
 		return is_added;
 	}
+	
+	// 교수 상담 가능 시간 반환
+	public ArrayList<ConsultableTimeDTO> getConsultableTimes(String univ, String p_user_id) throws NamingException {
+		ArrayList<ConsultableTimeDTO> consultableTimes = new ArrayList<ConsultableTimeDTO>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from consultable_time where p_user_id=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, p_user_id);
+
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				ConsultableTimeDTO consultableTime_dto = new ConsultableTimeDTO();
+				
+				consultableTime_dto.setAble_date(rs.getString("able_date"));
+				consultableTime_dto.setAble_time(rs.getString("able_time"));
+				consultableTime_dto.setP_user_id(p_user_id);
+				
+				consultableTimes.add(consultableTime_dto);
+			}
+								
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return consultableTimes;
+	}
 
 }

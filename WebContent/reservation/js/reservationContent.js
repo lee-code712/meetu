@@ -4,6 +4,7 @@ isTypeBtnOffClicked = false;
 isTypeBtnOnClicked = false;
 
 $(document).ready(function(){ // html이 로드되면 실행됨  
+	// 각 버튼에 click 이벤트 설정
   	$(".startTimeBox").click(startTimeBoxClick);
 	$(".timeBox").click(timeBoxClick);
 	$(".typeBtnOff").click(typeBtnOffClick);
@@ -25,7 +26,34 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 	$(newInputElement).attr("value", content);
 	
 	$(".mylist").append(newInputElement);
+	
+	// ajax로 교수 상담 가능 시간 받아오기
+	$.ajax({
+	 	type: "GET",
+		url: "/reservation/getProfessorSchedule.jsp?prof_email=" + content,
+		dataType: "text",
+		success: updatePage,
+		error: function(jqXHR, textStatus, errorThrown) {
+			var message = jqXHR.getResponseHeader("Status");
+			if ((message == null) || (message.length <= 0)) {
+				alert("Error! Request status is " + jqXHR.status);
+			} else {
+				alert(message);	
+			}
+		}
+	});
+	
 });
+
+function updatePage(responseText) {
+	var schedules = JSON.parse(responseText);
+	
+	Array.from(schedules).forEach(function(schedule, idx) {
+		var able_date = schedule.able_date;
+		var able_time = schedule.able_time;
+		var p_user_id = schedule.p_user_id;
+	});
+}
 
 function startTimeBoxClick() {
 	var timeBox = this;
