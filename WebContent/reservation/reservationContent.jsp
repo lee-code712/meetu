@@ -775,7 +775,6 @@ pageEncoding="UTF-8"%>
 
             // @param 선택일 체크 표시
             column.style.backgroundColor = "#F8CA6B";
-            column.style.color = "white";
 
 
             // @param 선택일 클래스명 변경
