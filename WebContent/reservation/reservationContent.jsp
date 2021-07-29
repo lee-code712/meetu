@@ -571,7 +571,7 @@ pageEncoding="UTF-8"%>
             display: inline-block;
             margin-left: -28px;
             padding-left: 28px;
-            background: url('images/checkesImg.svg') no-repeat 0 0;
+            background: url('/reservation/images/checkesImg.svg') no-repeat 0 0;
             line-height: 24px;
         }
 
