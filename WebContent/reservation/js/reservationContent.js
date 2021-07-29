@@ -5,7 +5,7 @@ isTypeBtnOnClicked = false;
 
 $(document).ready(function(){ // html이 로드되면 실행됨  
 	// 각 버튼에 click 이벤트 설정
-  	$(".startTimeBox").click(startTimeBoxClick);
+  	// $(".startTimeBox").click(startTimeBoxClick);
 	$(".timeBox").click(timeBoxClick);
 	$(".typeBtnOff").click(typeBtnOffClick);
 	$(".typeBtnOn").click(typeBtnOnClick);
@@ -48,14 +48,21 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 function updatePage(responseText) {
 	var schedules = JSON.parse(responseText);
 	
-	Array.from(schedules).forEach(function(schedule, idx) {
+	Array.from(schedules).forEach(function(schedule, i) {
 		var able_date = schedule.able_date;
 		var able_time = schedule.able_time;
 		var p_user_id = schedule.p_user_id;
+		
+		// 가능 일자
+		
+		// 가능 시작 시간
+		
+		// 가능 시간
+		
 	});
 }
 
-function startTimeBoxClick() {
+function startTimeBoxClick() { // 시간 선택되어 있으면 닫히도록
 	var timeBox = this;
 	
 	$("#startTime").remove();
@@ -71,7 +78,7 @@ function startTimeBoxClick() {
 	$("#startTimeTitle").append(newInputElement);
 }
 
-function timeBoxClick() {
+function timeBoxClick() { // 시작 시간 선택되어 있으면 닫히도록
 	var timeBox = this;
 	
 	$("#consultTime").remove();
