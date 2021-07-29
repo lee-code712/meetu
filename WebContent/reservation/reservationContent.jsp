@@ -7,6 +7,7 @@ pageEncoding="UTF-8"%>
     <meta charset="UTF-8">
     <title>예약 페이지</title>
 
+	<link rel="stylesheet" href="../components/css/header.css"/>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <link rel="stylesheet" href="/reservation/css/reservationContent.css"/>
@@ -32,157 +33,147 @@ pageEncoding="UTF-8"%>
     <style type="text/css">
         @charset "UTF-8";
 
-        #header {
-            width: 100%;
-            height: 100px;
-            border-bottom: 1px solid #eee;
-            background: white;
-        }
-
-        #header_inner {
-            display: flex;
-            align-items: center;
-            margin: 0 auto;
-            width: 1194px;
-            height: 100px;
-        }
-
-        #title {
-            display: flex;
-            align-items: center;
-            width: 200px;
-            height: 100%;
-            color: black;
-            font-size: 24px;
-            font-family: 'Yellowtail', cursive;
-            font-weight: bold;
-        }
-
-        #title:hover {
-            cursor: pointer;
-        }
-
-        #gnb {
-            display: flex;
-            width: 100%;
-            font-size: 16px;
-            font-weight: bold;
-            color: #535353;
-            align-items: center;
-        }
-
-        #gnb a {
-            padding: 0 40px;
-        }
-
-        #alertIcon:hover,
-        #noticeIcon:hover,
-        #reserveIcon:hover,
-        #messageIcon:hover,
-        #myPageIcon:hover {
-            cursor: pointer;
-        }
-
-        #dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        #dropBtn {
-            display: flex;
-            width: 160px;
-            color: #535353;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            background: none;
-        }
-
-        #dropdown-content {
-            margin-left: 50px;
-            display: none;
-            position: absolute;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            border: 1px solid white;
-            border-radius: 5px;
-            background: rgba(0, 0, 0, .800);
-        }
-
-        #dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        #dropdown-content a:hover {
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        #dropdown:hover #dropdown-content {
-            display: block;
-        }
-
-        #dropBtnTitle {
-            font-weight: bold;
-            padding: 0 4px 0 50px;
-            height: 100%;
-        }
-
-        #dropImg {
-            width: 20px;
-            heihgt: 20px;
-        }
-
-        #messageIcon,
-        #noticeIcon,
-        #reserveIcon {
-            color: #535353;
-        }
-
-        a:link {
-            color: #535353;
-            text-decoration: none;
-        }
-
-        a:visited {
-            color: #535353;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #535353;
-            text-decoration: underline;
-        }
-
-        #title a:link {
-            color: #FBAB7E;
-
-        }
-
-        #topHeader {
-            width: 100%;
-            height: 34px;
-            background-color: #FBAB7E;
-            background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-        }
-
-        #topHeaderInner {
-            margin: 0 auto;
-            width: 1194px;
-            height: 100%;
-        }
-
-        #topHeaderInner div {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            height: 100%;
-            float: right;
-            color: white;
-        }
+		ul, li {
+		    text-decoration: none;
+		    list-style: none;
+		}
+		
+		#header {
+		    width: 100%;
+		    height: 100px;
+		    border-bottom: 1px solid #eee;
+		    background: white;
+		}
+		
+		#header_inner {
+		    display: flex;
+		    align-items: center;
+		    margin: 0 auto;
+		    width: 1194px;
+		    height: 100px;
+		}
+		
+		#title {
+		    display: flex;
+		    align-items: center;
+		    width: 200px;
+		    height: 100%;
+		    color: #FBAB7E;
+		    font-size: 24px;
+		    margin-right: -30px;
+		    font-family: 'Yellowtail', cursive;
+		    font-weight: bold;
+		}
+		
+		#title:hover {
+		    cursor: pointer;
+		}
+		
+		#gnb {
+		    display: flex;
+		    width: 100%;
+		    font-size: 16px;
+		    font-weight: bold;
+		    color: #535353;
+		    align-items: center;
+		}
+		
+		#gnb a {
+		    padding: 0 40px;
+		}
+		
+		#alertIcon {
+		    width: 18px;
+		    height: 18px;
+		}
+		
+		#alertIcon:hover,
+		#noticeIcon:hover,
+		#reserveIcon:hover,
+		#messageIcon:hover {
+		    cursor: pointer;
+		}
+		
+		#messageIcon,
+		#noticeIcon,
+		#reserveIcon {
+		    color: #535353;
+		}
+		
+		a:link {
+		    color: #535353;
+		    text-decoration: none;
+		}
+		
+		a:visited {
+		    color: #535353;
+		    text-decoration: none;
+		}
+		
+		a:hover {
+		    color: #535353;
+		    text-decoration: none;
+		}
+		
+		#title a:link,
+		#title a:visited,
+		#title a:hover {
+		    color: #FBAB7E;
+		
+		}
+		
+		#topHeader {
+		    width: 100%;
+		    height: 34px;
+		    background-color: #FBAB7E;
+		    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+		}
+		
+		#topHeaderInner {
+		    margin: 0 auto;
+		    width: 1194px;
+		    height: 100%;
+		}
+		
+		#topHeaderInner div {
+		    display: flex;
+		    justify-content: flex-end;
+		    align-items: center;
+		    height: 100%;
+		    float: right;
+		    color: white;
+		}
+		
+		#topHeaderInner div span {
+		    margin-left: 20px;
+		}
+		
+		#topHeaderInner div a:link,
+		#topHeaderInner div a:visited,
+		#topHeaderInner div a:hover {
+		    color: white;
+		}
+		
+		#gnb li a {
+		    font-size: 14px;
+		    position: relative;
+		}
+		
+		#gnb li a:before {
+		    content: '';
+		    position: absolute;
+		    background-color: #FBAB7E;
+		    height: 6px;
+		    width: 0;
+		    bottom: -42px;
+		    transition: 0.5s;
+		    left: 50%;
+		    transform: translateX(-50%);
+		}
+		
+		#gnb li a:hover:before {
+		    width: 100%;
+		}
 
         * {
             margin: 0;
@@ -274,11 +265,11 @@ pageEncoding="UTF-8"%>
             border-left: 1px solid #eee;
             border-right: 1px solid #eee;
         }
-        
+
         #contentBlank {
-        	width: 700px;
-        	height: 20px;
-        	
+            width: 700px;
+            height: 20px;
+
         }
 
         .profList th {
@@ -309,7 +300,7 @@ pageEncoding="UTF-8"%>
             margin-left: 80px;
             width: 820px;
         }
-	
+
         .contentTitle {
             display: flex;
             justify-content: flex-start;
@@ -328,7 +319,6 @@ pageEncoding="UTF-8"%>
             width: 830px;
             background: white;
             border: 1px solid #eee;
-            padding-left: 240px;
             font-weight: bold;
         }
 
@@ -347,15 +337,14 @@ pageEncoding="UTF-8"%>
             display: inline-block;
             padding: 6px 0px;
             width: 96px;
-            border: 1px solid #C4C4C4;
             border-radius: 5px;
             text-align: center;
             font-weight: regular;
             border-radius: 5px;
-            background: #FF9999;
+            background: #F8CA6B;
             color: white;
             border: none;
-            border: 1px solid #FF9999;
+            border: 1px solid #F8CA6B;
             cursor: pointer;
         }
 
@@ -375,17 +364,6 @@ pageEncoding="UTF-8"%>
             cursor: pointer;
         }
 
-        .timeBoxMid {
-            display: inline-block;
-            margin: 0 10px;
-            padding: 6px 0px;
-            width: 96px;
-            border: 1px solid #C4C4C4;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: regular;
-        }
-
         .startTimeBox {
             display: inline-block;
             padding: 6px 0px;
@@ -397,51 +375,9 @@ pageEncoding="UTF-8"%>
             cursor: pointer;
         }
 
-        .startTimeBoxClicked {
-            display: inline-block;
-            padding: 6px 0px;
-            width: 96px;
-            border: 1px solid #C4C4C4;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: regular;
-            border-radius: 5px;
-            background: #FF9999;
-            color: white;
-            border: none;
-            border: 1px solid #FF9999;
-            cursor: pointer;
-        }
-
-        .startTimeBoxMid:hover {
-            display: inline-block;
-            padding: 6px 0px;
-            width: 96px;
-            border: 1px solid #C4C4C4;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: regular;
-            border-radius: 5px;
-            background: #3E454D;
-            color: white;
-            border: none;
-            border: 1px solid #3E454D;
-            cursor: pointer;
-        }
-
-        .startTimeBoxMid {
-            display: inline-block;
-            margin: 0 10px;
-            padding: 6px 0px;
-            width: 96px;
-            border: 1px solid #C4C4C4;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: regular;
-        }
-
         .typeBtnWrap {
             display: flex;
+            margin-left: 240px;
         }
 
         .typeBtnOff {
@@ -460,18 +396,6 @@ pageEncoding="UTF-8"%>
             border: 1px solid #C4C4C4;
             border-radius: 30px;
             text-align: center;
-        }
-
-        #typeBtnOn {
-            padding: 6px 0px;
-            width: 96px;
-            border-radius: 30px;
-            text-align: center;
-            background: #FF9999;
-            color: white;
-            border: none;
-            border: 1px solid #FF9999;
-            cursor: pointer;
         }
 
         .reservationBtn {
@@ -533,11 +457,6 @@ pageEncoding="UTF-8"%>
             color: white;
         }
 
-        #calendar {
-            width: 300px;
-            height: 280px;
-        }
-
         #calendar td {
             text-align: center;
             border-radius: 10px;
@@ -563,11 +482,13 @@ pageEncoding="UTF-8"%>
 
         .scriptCalendar {
             text-align: center;
+            margin-left: 234px;
         }
 
         .scriptCalendar > thead > tr > td {
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50px;
         }
 
         .scriptCalendar > thead > tr:first-child > td {
@@ -579,10 +500,30 @@ pageEncoding="UTF-8"%>
         }
 
         .scriptCalendar > tbody > tr > td {
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50px;
         }
 
+        .startTimeBoxClicked {
+            display: inline-block;
+            padding: 6px 0px;
+            width: 96px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: regular;
+            border-radius: 5px;
+            background: #F8CA6B;
+            color: white;
+            border: none;
+            border: 1px solid #F8CA6B;
+            cursor: pointer;
+        }
+
+        #timeBoxesWrap,
+        #reasonWrap {
+            margin-left: 240px;
+        }
 
     </style>
 
@@ -770,35 +711,36 @@ pageEncoding="UTF-8"%>
             }
 
             // @param 선택일 체크 표시
-            column.style.backgroundColor = "#FF9999";
+            column.style.backgroundColor = "#F8CA6B";
+            column.style.color = "white";
 
 
             // @param 선택일 클래스명 변경
 
             column.classList.add("choiceDay");
-            
+
             // 추가 - hidden 값 생성
             // 선택한 일
             var newInputDayElement = document.createElement("input");
-        	$(newInputDayElement).attr("type", "hidden");
-        	$(newInputDayElement).attr("id", "choiceDay");
-        	$(newInputDayElement).attr("name", "choiceDay");
-        	
-        	var contentDay = column.innerHTML;
-        	$(newInputDayElement).attr("value", contentDay);
-        	
-        	$("#contentBody").append(newInputDayElement);
-        	
-        	// 선택한 월
-        	var newInputMonthElement = document.createElement("input");
-         	$(newInputMonthElement).attr("type", "hidden");
-         	$(newInputMonthElement).attr("id", "choiceMonth");
-         	$(newInputMonthElement).attr("name", "choiceMonth");
-         	
-         	var contentMonth = document.getElementById("calMonth").innerHTML;
-         	$(newInputMonthElement).attr("value", contentMonth);
-         	
-         	$("#contentBody").append(newInputMonthElement);
+            $(newInputDayElement).attr("type", "hidden");
+            $(newInputDayElement).attr("id", "choiceDay");
+            $(newInputDayElement).attr("name", "choiceDay");
+
+            var contentDay = column.innerHTML;
+            $(newInputDayElement).attr("value", contentDay);
+
+            $("#contentBody").append(newInputDayElement);
+
+            // 선택한 월
+            var newInputMonthElement = document.createElement("input");
+            $(newInputMonthElement).attr("type", "hidden");
+            $(newInputMonthElement).attr("id", "choiceMonth");
+            $(newInputMonthElement).attr("name", "choiceMonth");
+
+            var contentMonth = document.getElementById("calMonth").innerHTML;
+            $(newInputMonthElement).attr("value", contentMonth);
+
+            $("#contentBody").append(newInputMonthElement);
         }
 
         /**
@@ -819,35 +761,25 @@ pageEncoding="UTF-8"%>
 </head>
 
 <body id="reservationContentBodyBg">
-<div id="topHeader">
-    <div id="topHeaderInner">
-        <div></div>
-    </div>
-</div>
-<div id="header">
-    <div id="header_inner">
-        <div id="title"><a href="index.do">MEETU</a></div>
-        <div id="gnb">
-            <a id="noticeIcon" href="notice.do">공지사항</a>
-            <a id="reserveIcon" href="reservationPro.do">상담예약</a>
-            <a id="messageIcon" href="message.do">쪽지함</a>
-        </div>
-        <div id="dropdown">
-            <div id="dropBtn">
-                <div id="dropBtnTitle">${mem_dto.getName()}님</div>
-                <div>
-                    <img src="/components/images/keyboard_arrow_down_black_24dp.svg" id="dropImg"/>
-                </div>
-            </div>
-            <div id="dropdown-content">
-                <a href="myPage.do">마이페이지</a>
-                <a href="logout.do">로그아웃</a>
-            </div>
-        </div>
-
-        <img src="/components/images/notification.svg" id="alertIcon"/>
-    </div>
-</div>
+	<div id="topHeader">
+	    <div id="topHeaderInner">
+	        <div><a href="myPage.do">${mem_dto.getName()}님 환영합니다!</a><span>|</span><span><a href="logout.do">로그아웃</a></span>
+	        </div>
+	    </div>
+	</div>
+	
+	<div id="header">
+	    <div id="header_inner">
+	        <div id="title"><a href="index.do">MEETU</a></div>
+	        <ul id="gnb">
+	            <li><a id="noticeIcon" href="notice.do">공지사항</a></li>
+	            <li><a id="reserveIcon" href="reservationPro.do">상담예약</a></li>
+	            <li><a id="messageIcon" href="message.do">쪽지함</a></li>
+	        </ul>
+	
+	        <img src="images/bell.svg" id="alertIcon"/>
+	    </div>
+	</div>
 
 <form method="post" action="reservation.do">
     <div class="reservationWrap">
@@ -896,101 +828,110 @@ pageEncoding="UTF-8"%>
                             </div>
                         </td>
                     </tr>
-                    
+
                     <tr>
-                    	<td id="contentBlank"></td>
+                        <td id="contentBlank"></td>
                     </tr>
-                    
+
                     <tr id="contentWrap">
                         <td class="contentTitle">상담 시간</td>
                     </tr>
                     <tr>
                         <td class="contentBody">
-                            <div class="timeTitle" id="startTimeTitle">◈ 상담 시작 시간</div>
-                            <div>
+                            <div id="timeBoxesWrap">
+                                <div class="timeTitle" id="startTimeTitle">◈ 상담 시작 시간</div>
                                 <div>
-                                    <div class="startTimeBox" id="9am">9:00</div> &nbsp;&nbsp;
-                                    <div class="startTimeBox" id="10am">10:00</div> &nbsp;&nbsp;
-                                    <div class="startTimeBox" id=11am">11:00</div>
+                                    <div>
+                                        <div class="startTimeBox" id="9am">9:00</div> &nbsp;&nbsp;
+                                        <div class="startTimeBox" id="10am">10:00</div> &nbsp;&nbsp;
+                                        <div class="startTimeBox" id=11am">11:00</div>
+                                    </div>
+                                    <div class="timdBoxWrap">
+                                        <div class="startTimeBox" id="12pm">12:00</div> &nbsp;&nbsp;
+                                        <div class="startTimeBox" id="13pm">13:00</div> &nbsp;&nbsp;
+                                        <div class="startTimeBox" id="14pm">14:00</div>
+                                    </div>
+                                    <div class="timdBoxWrap">
+                                        <div class="startTimeBox" id="15pm">15:00</div> &nbsp;&nbsp;
+                                        <div class="startTimeBox" id="16pm">16:00</div> &nbsp;&nbsp;
+                                        <div class="startTimeBox" id="17pm">17:00</div>
+                                    </div>
                                 </div>
-                                <div class="timdBoxWrap">
-                                    <div class="startTimeBox" id="12pm">12:00</div> &nbsp;&nbsp;
-                                    <div class="startTimeBox" id="13pm">13:00</div> &nbsp;&nbsp;
-                                    <div class="startTimeBox" id="14pm">14:00</div>
+                                <br/>
+                                <div class="timeTitle" id="timeTitle">◈ 상담 시간</div>
+                                <div>
+                                    <div class="timeBox" id="30m">30분</div> &nbsp;&nbsp;
+                                    <div class="timeBox" id="1h">1시간</div> &nbsp;&nbsp;
+                                    <div class="timeBox" id="2h">2시간</div>
                                 </div>
-                                <div class="timdBoxWrap">
-                                    <div class="startTimeBox" id="15pm">15:00</div> &nbsp;&nbsp;
-                                    <div class="startTimeBox" id="16pm">16:00</div> &nbsp;&nbsp;
-                                    <div class="startTimeBox" id="17pm">17:00</div>
-                                </div>
-                            </div>
-                            <br/>
-                            <div class="timeTitle" id="timeTitle">◈ 상담 시간</div>
-                            <div>
-                                <div class="timeBox" id="30m">30분</div> &nbsp;&nbsp;
-                                <div class="timeBox" id="1h">1시간</div> &nbsp;&nbsp;
-                                <div class="timeBox" id="2h">2시간</div>
                             </div>
                         </td>
                     </tr>
-                    
+
                     <tr>
-                    	<td id="contentBlank"></td>
+                        <td id="contentBlank"></td>
                     </tr>
-                    
+
                     <tr id="contentWrap">
                         <td class="contentTitle">상담 신청 사유</td>
                     </tr>
 
                     <tr>
                         <td class="contentBody">
+                            <div id="reasonWrap">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="reason" value="전담 교수 면담" id="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="reason" value="전담 교수 면담"
+                                       id="flexCheckDefault">
                                 <label class="form-check-label" for="flexCheckDefault" id="type1">
                                     전담 교수 면담
                                 </label>
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="reason" value="진로 상담" id="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="reason" value="진로 상담"
+                                       id="flexCheckDefault">
                                 <label class="form-check-label" for="flexCheckDefault" id="type2">
                                     진로 상담
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="reason" value="휴학 상담" id="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="reason" value="휴학 상담"
+                                       id="flexCheckDefault">
                                 <label class="form-check-label" for="flexCheckDefault" id="type3">
                                     휴학 상담
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="reason" value="대학원 상담" id="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="reason" value="대학원 상담"
+                                       id="flexCheckDefault">
                                 <label class="form-check-label" for="flexCheckDefault" id="type4">
                                     대학원 상담
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="reason" value="" id="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="reason" value=""
+                                       id="flexCheckDefault">
                                 <label class="form-check-label" for="flexCheckDefault" id="type5">
                                     기타: &nbsp; <input type="text" class="reason" id="reasonEtc"/>
                                 </label>
                             </div>
+                                </div>
                         </td>
                     </tr>
-                    
+
                     <tr>
-                    	<td id="contentBlank"></td>
+                        <td id="contentBlank"></td>
                     </tr>
-                    
+
                     <tr id="contentWrap">
                         <td class="contentTitle">상담 유형</td>
                     </tr>
-                    
+
                     <tr>
                         <td class="contentBody">
                             <div class="typeBtnWrap">
-                                <div class="typeBtnOff" id="typeBtnOff">오프라인</div>
-                                <div class="typeBtnOn" id="typeBtnOn">온라인</div>
+                                <div class="typeBtnOff" id="typeBtn">오프라인</div>
+                                <div class="typeBtnOn" id="typeBtn">온라인</div>
                             </div>
                         </td>
                     </tr>
@@ -1071,15 +1012,15 @@ pageEncoding="UTF-8"%>
     function handleClick(event) {
         console.log(event.target);
         console.log(event.target.classList);
-        if (event.target.classList[1] === "typeBtnOn") {
-            event.target.classList.remove("typeBtnOn");
+        if (event.target.classList[1] === "typeBtnClicked") {
+            event.target.classList.remove("typeBtnClicked");
         } else {
             for (var i = 0; i < div2.length; i++) {
                 if (window.CP.shouldStopExecution(0)) break;
-                div2[i].classList.remove("typeBtnOn");
+                div2[i].classList.remove("typeBtnClicked");
             }
             window.CP.exitedLoop(0);
-            event.target.classList.add("typeBtnOn");
+            event.target.classList.add("typeBtnClicked");
         }
     }
 
