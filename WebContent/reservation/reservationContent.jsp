@@ -781,7 +781,7 @@ pageEncoding="UTF-8"%>
 	    </div>
 	</div>
 
-<form method="post" action="reservation.do">
+<form method="post" name="reservation_form" action="reservation.do" onsubmit="return ck_reservation_form()">
     <div class="reservationWrap">
         <div>
             <ul class="mylist">

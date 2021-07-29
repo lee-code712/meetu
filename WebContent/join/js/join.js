@@ -62,7 +62,7 @@ function process(responseText) {
 }
 
 function ck_join_form() {
-	var form = document.join_form;
+	var form = document.reservation_form;
         
 	if(!form.univ_name.value) {
 		alert("대학명을 입력해 주세요.");

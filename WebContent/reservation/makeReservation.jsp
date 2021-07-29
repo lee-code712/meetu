@@ -15,7 +15,7 @@
 	String choiceDay = request.getParameter("choiceDay");
 	String startTime = request.getParameter("startTime");
 	String consultTime = request.getParameter("consultTime");
-	String typeBtn = request.getParameter("typeBtn");
+	String typeBtn = request.getParameter("type");
 	String reason = request.getParameter("reason");
 	
 	MemberDAO memberDAO = new MemberDAO();

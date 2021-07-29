@@ -78,12 +78,12 @@ function typeBtnOffClick() {
 function typeBtnOnClick() {
 	var onBtn = this;
 	
-	$("#typeBtn").remove();
+	$("#type").remove();
 	
 	var newInputElement = document.createElement("input");
 	$(newInputElement).attr("type", "hidden");
-	$(newInputElement).attr("name", "typeBtn");
-	$(newInputElement).attr("id", "typeBtn");
+	$(newInputElement).attr("name", "type");
+	$(newInputElement).attr("id", "type");
 	
 	var content = onBtn.innerHTML;
 	$(newInputElement).attr("value", content);
@@ -97,4 +97,33 @@ function reservationBtnClick() {
 	// alert($("#startTime").attr("value"));
 	// alert($("#consultTime").attr("value"));
 	// alert($("#typeBtn").attr("value"));
+}
+
+function ck_reservation_form() {
+	var form = document.join_form;
+        
+	if(!$("#choiceDay").attr("value")) {
+		alert("상담 날짜를 선택해 주세요.");
+		return false;
+	}
+    	
+	if(!$("#startTime").attr("value")) {
+		alert("상담 시작 시간을 선택해 주세요.");
+		return false;
+	}
+    
+	if(!$("#consultTime").attr("value")) {
+		alert("상담 시간을 선택해 주세요.");
+		return false;
+	}
+	
+	if(!$("input:checkbox[name=reason]").is(":checked")) {
+		alert("상담 신청 사유를 선택해 주세요.");
+		return false;
+	}
+	
+	if(!$("#type").attr("value")) {
+		alert("상담 유형을 선택해 주세요.");
+		return false;
+	}
 }
