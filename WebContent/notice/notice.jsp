@@ -75,11 +75,11 @@ pageEncoding="UTF-8"%>
 	<div id="header">
 	    <div id="header_inner">
 	        <div id="title"><a href="index.do">MEETU</a></div>
-	        <ul id="gnb">
-	            <li><a id="noticeIcon" href="notice.do">공지사항</a></li>
-	            <li><a id="reserveIcon" href="reservationPro.do">상담예약</a></li>
-	            <li><a id="messageIcon" href="message.do">쪽지함</a></li>
-	        </ul>
+	        <div id="gnb">
+	            <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
+	            <div><a id="reserveIcon" href="reservationPro.do">상담예약</a></div>
+	            <div><a id="messageIcon" href="message.do">쪽지함</a></div>
+	        </div>
 	
 	        <div id="dropdown">
 	            <div id="dropdown-button">${mem_dto.getName()}<img src="/components/images/more.svg"/></div>
