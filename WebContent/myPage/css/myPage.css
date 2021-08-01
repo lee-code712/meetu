@@ -41,7 +41,11 @@
     text-align: center;
 }
 
-#deleteBtn:hover {
+#deleteBtn:hover,
+#editBtn:hover,
+#cancelBtn:hover,
+#rejectMessageBtn:hover,
+#messageBtn:hover {
     cursor: pointer;
 }
 
@@ -104,12 +108,10 @@ a:hover {
 
 #thBorder {
     border-bottom: 1px solid #eee;
-    background: green;
 }
 
 #thBorder th {
-	text-align: center;
-	background: green;
+    text-align: center;
 }
 
 #completeBtn,
@@ -118,3 +120,43 @@ a:hover {
     color: #3E454D;
 }
 
+
+#dropdown-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 60px;
+    padding: 8px;
+    width: 140px;
+    font-size: 15px;
+    border: none;
+}
+
+#dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 140px;
+    padding: 8px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+#dropdown-content a {
+    color: black;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+}
+
+#dropdown-content a:hover {
+    background-color: #f3f3f3;
+}
+
+#dropdown:hover #dropdown-content {
+    display: block;
+}
