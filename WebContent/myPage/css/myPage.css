@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 #navWrap {
     width: 1194px;
     margin: 0 auto;
@@ -103,6 +104,12 @@ a:hover {
 
 #thBorder {
     border-bottom: 1px solid #eee;
+    background: green;
+}
+
+#thBorder th {
+	text-align: center;
+	background: green;
 }
 
 #completeBtn,
@@ -110,3 +117,4 @@ a:hover {
 #okBtn {
     color: #3E454D;
 }
+

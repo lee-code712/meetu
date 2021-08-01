@@ -20,12 +20,54 @@ pageEncoding="UTF-8"%>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/notice/js/notice.js"></script>
+    
+    <style>
+		#dropdown-button {
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    margin-right: 60px;
+		    padding: 8px;
+		    width: 140px;
+		    font-size: 15px;
+		    border: none;
+		}
+		
+		#dropdown {
+		    position: relative;
+		    display: inline-block;
+		}
+		
+		#dropdown-content {
+		    display: none;
+		    position: absolute;
+		    background-color: white;
+		    min-width: 140px;
+		    padding: 8px;
+		    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+		}
+		
+		#dropdown-content a {
+		    color: black;
+		    padding: 8px;
+		    text-decoration: none;
+		    display: block;
+		}
+		
+		#dropdown-content a:hover {
+		    background-color: #f3f3f3;
+		}
+		
+		#dropdown:hover #dropdown-content {
+		    display: block;
+		}
+   	</style>
 </head>
 
 <body id="noticeBodyBg">
 	<div id="topHeader">
 	    <div id="topHeaderInner">
-	        <div><a href="myPage.do">${mem_dto.getName()}님 환영합니다!</a><span>|</span><span><a href="logout.do">로그아웃</a></span>
+	        <div>
 	        </div>
 	    </div>
 	</div>
@@ -39,7 +81,15 @@ pageEncoding="UTF-8"%>
 	            <li><a id="messageIcon" href="message.do">쪽지함</a></li>
 	        </ul>
 	
-	        <img src="images/bell.svg" id="alertIcon"/>
+	        <div id="dropdown">
+	            <div id="dropdown-button">${mem_dto.getName()}<img src="/components/images/more.svg"/></div>
+	            <div id="dropdown-content">
+	                <a href="myPage.do">마이페이지</a>
+	                <a href="logout.do">로그아웃</a>
+	            </div>
+	        </div>
+	
+	        <img src="/components/images/bell.svg" id="alertIcon"/>
 	    </div>
 	</div>
     
