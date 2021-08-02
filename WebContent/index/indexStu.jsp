@@ -443,7 +443,6 @@ pageEncoding="UTF-8"  %>
         #introBox img {
             display: block;
             margin: 0px auto;
-            margin-top: 40px;
         }
 
         #introBox div {
@@ -451,9 +450,17 @@ pageEncoding="UTF-8"  %>
         }
 
         #introWrap {
-            padding: 100px 0 100px 0;
+        	position: absolute;
+        	display: flex;
+        	justify-content: center;
+        	top: 600px;
+        	left: 50%;
+    		transform: translate(-50%, 0%);
             margin: 0 auto;
-            width: 100%;
+            width: 1194px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 2px 4px 0px rgb(0, 0, 0, 0.2);
         }
 
         #intro,
@@ -498,13 +505,15 @@ pageEncoding="UTF-8"  %>
         }
 
         #manageHeader {
-            margin-bottom: 60px;
+        	margin-top: 100px;
+            margin-bottom: 40px;
         }
 
         #manageWrap {
             padding: 100px 0 200px 0;
             margin: 0 auto;
             width: 100%;
+            background: #FAFAFA;
         }
 
         #manageBody {
@@ -558,9 +567,8 @@ pageEncoding="UTF-8"  %>
         }
 
         #introBox {
-            margin-top: 20px;
-            width: 350px;
-            padding: 120px 0;
+            width: 386px;
+            padding: 40px 0;
         }
 
         #introBox:hover {
@@ -601,13 +609,6 @@ pageEncoding="UTF-8"  %>
 
 <div id="introWrap">
     <div id="intro">
-        <div id="introHeader">
-            <div id="subTitle">어떤 기능이 있나요?</div>
-            <div id="originTitleWrap"><span id="siteName">MEETU</span> &nbsp;&nbsp; <span id="originTitle">소개</span>
-            </div>
-            <div id="shortLine"></div>
-        </div>
-
         <div id="introBody">
             <div id="introBox">
                 <div id="introImg"><img src="images/calendarImg.svg"/></div>
