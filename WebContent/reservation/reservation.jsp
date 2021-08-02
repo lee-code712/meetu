@@ -327,7 +327,7 @@ pageEncoding="UTF-8"%>
 	        </div>
 	
 	        <div id="dropdown">
-	            <div id="dropdown-button">${mem_dto.getName()}<img src="/components/images/more.svg"/></div>
+	            <div id="dropdown-button">${mem_dto.getName()}님<img src="/components/images/more.svg"/></div>
 	            <div id="dropdown-content">
 	                <a href="myPage.do">마이페이지</a>
 	                <a href="logout.do">로그아웃</a>

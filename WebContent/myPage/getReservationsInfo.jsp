@@ -22,41 +22,54 @@
 		TreeMap<Date, ArrayList<String>> reservation_map = new TreeMap<Date, ArrayList<String>>(); // 예약정보를 시간 순으로 정렬하기 위해 treemap 사용, 근데 보낸 시간이 정확히 같으면 하나만 저장됨..
 		Iterator<ReservationDTO> iterator = reservations.iterator();
 		
-		int approval = -1;
-		if(clicked_item.equals("completeBtn")) {
-			approval = 0;
+		int state = -1;
+		if(clicked_item.equals("bookedList")) {
+			state = 0;
 		}
-		else if(clicked_item.equals("cancelBtn")) {
-			approval = 2;
+		else if(clicked_item.equals("approvedList")) {
+			state = 1;
 		}
-		else if(clicked_item.equals("okBtn")) {
-			approval = 1;
+		else if(clicked_item.equals("completedList")) {
+			state = 3;
 		}
 		
 		while(iterator.hasNext()) {
 			ReservationDTO reservation_dto = iterator.next();
 			
-			if(reservation_dto.getState() == approval) {
-				String res_date = reservation_dto.getResDate();
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-				Date date = sdf.parse(res_date);
-				
-				MemberDTO member = null;
-				if(reservation_dto.getSUserId().equals(user_id)) {
-					member = (MemberDTO) mem_dao.getMemberInfo(univ, reservation_dto.getPUserId());
+			String res_date = reservation_dto.getResDate();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+			Date date = sdf.parse(res_date);
+			
+			MemberDTO member = null;
+			if(reservation_dto.getSUserId().equals(user_id)) {
+				member = (MemberDTO) mem_dao.getMemberInfo(univ, reservation_dto.getPUserId());
+			}
+			else {
+				member = (MemberDTO) mem_dao.getMemberInfo(univ, reservation_dto.getSUserId());
+			}
+			DepartmentDTO dept_dto = mem_dao.getDepartmentInfo(member, univ);
+			
+			if(clicked_item.equals("canceledList")) {
+				if(reservation_dto.getState() == 2 || reservation_dto.getState() == 4) {
+					ArrayList<String> mem_list = new ArrayList<>();
+					mem_list.add(reservation_dto.getResId());
+					mem_list.add(Integer.toString(reservation_dto.getState()));
+					mem_list.add(member.getName());
+					mem_list.add(member.getRole());
+					mem_list.add(dept_dto.getDeptName());
+					reservation_map.put(date, mem_list);
 				}
-				else {
-					member = (MemberDTO) mem_dao.getMemberInfo(univ, reservation_dto.getSUserId());
-				}
-				DepartmentDTO dept_dto = mem_dao.getDepartmentInfo(member, univ);
-				
-				ArrayList<String> mem_list = new ArrayList<>();
-				mem_list.add(reservation_dto.getResId());
-				mem_list.add(member.getName());
-				mem_list.add(member.getRole());
-				mem_list.add(dept_dto.getDeptName());
-				
-				reservation_map.put(date, mem_list);
+			}
+			else {
+				if(reservation_dto.getState() == state) {
+					ArrayList<String> mem_list = new ArrayList<>();
+					mem_list.add(reservation_dto.getResId());
+					mem_list.add(Integer.toString(reservation_dto.getState()));
+					mem_list.add(member.getName());
+					mem_list.add(member.getRole());
+					mem_list.add(dept_dto.getDeptName());
+					reservation_map.put(date, mem_list);
+				}	
 			}
 		}
 		

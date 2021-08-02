@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +33,7 @@ pageEncoding="UTF-8"%>
 
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <style>
+        <style>
         @charset "UTF-8";
 
         ul, li {
@@ -383,9 +385,10 @@ pageEncoding="UTF-8"%>
             display: block;
         }
 
-        #editingBtn,
+		#approvalBtn,
+        #editBtn,
         #rejectMsgBtn {
-            padding: 4px 8px;
+            padding: 4px 12px;
             border-radius: 30px;
             background: #ee6868;
             color: white;
@@ -393,8 +396,9 @@ pageEncoding="UTF-8"%>
             cursor: pointer;
         }
 
-        #cancelingBtn {
-            padding: 4px 8px;
+		#rejectBtn,
+        #cancelBtn {
+            padding: 4px 12px;
             border-radius: 30px;
             background: #6885ee;
             color: white;
@@ -403,7 +407,17 @@ pageEncoding="UTF-8"%>
         }
 
         #msgBtn {
-            padding: 4px 8px;
+            padding: 4px 12px;
+            border-radius: 30px;
+            background: #eeb868;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #consultedBtn,
+        #consultationRecordBtn {
+            padding: 4px 12px;
             border-radius: 30px;
             background: #eeb868;
             color: white;
@@ -412,7 +426,7 @@ pageEncoding="UTF-8"%>
         }
 
         #incompleteBtn {
-            padding: 4px 8px;
+            padding: 4px 12px;
             border-radius: 30px;
             background: #cecece;
             color: white;
@@ -441,7 +455,7 @@ pageEncoding="UTF-8"%>
         </div>
 
         <div id="dropdown">
-            <div id="dropdown-button">${mem_dto.getName()}<img src="/components/images/more.svg"/></div>
+            <div id="dropdown-button">${mem_dto.getName()}님<img src="/components/images/more.svg"/></div>
             <div id="dropdown-content">
                 <a href="myPage.do">마이페이지</a>
                 <a href="logout.do">로그아웃</a>
@@ -474,13 +488,16 @@ pageEncoding="UTF-8"%>
             <td id="navSub">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#qwe" id="completeBtn">예약현황</a>
+                        <a class="nav-link active" data-toggle="tab" href="#qwe" id="bookedList">예약현황</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#asd" id="cancelBtn">예약취소</a>
+                        <a class="nav-link" data-toggle="tab" href="#asd" id="canceledList">예약취소</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#zxc" id="okBtn">예약확정</a>
+                        <a class="nav-link" data-toggle="tab" href="#zxc" id="approvedList">예약확정</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#aaa" id="completedList">상담완료</a>
                     </li>
                 </ul>
                 <div class="tab-content" style="background: white">
@@ -492,33 +509,10 @@ pageEncoding="UTF-8"%>
                                     <th>교수명</th>
                                     <th>학과</th>
                                     <th>날짜</th>
-                                    <th></th>
-                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr id="boardList">
-                                    <td>000교수님</td>
-                                    <td>컴퓨터학과</td>
-                                    <td>2021-07-10 오전 9:00</td>
-                                    <td>
-                                        <button id="editingBtn">수정하기</button>
-                                    </td>
-                                    <td>
-                                        <button id="cancelingBtn">취소하기</button>
-                                    </td>
-                                </tr>
-                                <tr id="boardList">
-                                    <td>000교수님</td>
-                                    <td>컴퓨터학과</td>
-                                    <td>2021-07-10 오전 9:00</td>
-                                    <td>
-                                        <button id="editingBtn">수정하기</button>
-                                    </td>
-                                    <td>
-                                        <button id="cancelingBtn">취소하기</button>
-                                    </td>
-                                </tr>
+                                
                                 </tbody>
                             </table>
                         </div>
@@ -531,31 +525,10 @@ pageEncoding="UTF-8"%>
                                     <th>교수명</th>
                                     <th>학과</th>
                                     <th>날짜</th>
-                                    <th></th>
-                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr id="boardList">
-                                    <td>000교수님</td>
-                                    <td>컴퓨터학과</td>
-                                    <td>2021-07-10 오전 9:00</td>
-                                    <td>
-                                        <button id="rejectMsgBtn">거절 메시지</button>
-                                    </td>
-                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"
-                                             onclick="button_event();"/></td>
-                                </tr>
-                                <tr id="boardList">
-                                    <td>000교수님</td>
-                                    <td>컴퓨터학과</td>
-                                    <td>2021-07-10 오전 9:00</td>
-                                    <td>
-                                        <button id="rejectMsgBtn">거절 메시지</button>
-                                    </td>
-                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"
-                                             onclick="button_event();"/></td>
-                                </tr>
+                                
                                 </tbody>
                             </table>
                         </div>
@@ -568,27 +541,26 @@ pageEncoding="UTF-8"%>
                                     <th>교수명</th>
                                     <th>학과</th>
                                     <th>날짜</th>
-                                    <th></th>
-                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr id="boardList">
-                                    <td>000교수님</td>
-                                    <td>컴퓨터학과</td>
-                                    <td>2021-07-10 오전 9:00</td>
-                                    <td>
-                                        <button id="msgBtn">쪽지함 바로가기</button>
-                                    </td>
+                                
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="aaa">
+                        <div id="board">
+                            <table class="boardListWrap">
+                                <thead>
+                                <tr id="thBorder">
+                                    <th>교수명</th>
+                                    <th>학과</th>
+                                    <th>날짜</th>
                                 </tr>
-                                <tr id="boardList">
-                                    <td>000교수님</td>
-                                    <td>컴퓨터학과</td>
-                                    <td>2021-07-10 오전 9:00</td>
-                                    <td>
-                                        <button id="msgBtn">쪽지함 바로가기</button>
-                                    </td>
-                                </tr>
+                                </thead>
+                                <tbody>
+                                
                                 </tbody>
                             </table>
                         </div>

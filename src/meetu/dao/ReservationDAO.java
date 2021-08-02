@@ -86,18 +86,60 @@ public class ReservationDAO {
 		return reservations;
 	}
 	
-	// state를 승인(1)으로 변경
-	public boolean changeToApproval(ReservationDTO reservation_dto, String univ) throws NamingException/* , SQLException */ {
+	// 특정 예약정보 dto 반환
+	public ReservationDTO getReservation(ReservationDTO reservation_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from reservation where res_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, reservation_dto.getResId());
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				reservation_dto.setResId(rs.getString("res_id"));
+				reservation_dto.setResDate(rs.getString("res_date"));
+				reservation_dto.setReason(rs.getString("reason"));
+				reservation_dto.setType(rs.getInt("type"));
+				reservation_dto.setState(rs.getInt("state"));
+				reservation_dto.setRejectMsg(rs.getString("reject_msg"));
+				reservation_dto.setPUserId(rs.getString("p_user_id"));
+				reservation_dto.setSUserId(rs.getString("s_user_id"));
+			}
+			else {
+				return null;
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return reservation_dto;
+	}
+	
+	// state를 dto에 들어있는 상태에 따라 변경
+	public boolean changeState(ReservationDTO reservation_dto, String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		boolean is_changed = false;
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "update reservation set state=1 where res_id=?";
+			String sql = "update reservation set state=? where res_id=?";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, reservation_dto.getResId());
+			pstmt.setInt(1, reservation_dto.getState());
+			pstmt.setString(2, reservation_dto.getResId());
 
 			rs = pstmt.executeQuery();
 						
@@ -115,37 +157,6 @@ public class ReservationDAO {
 		}
 
 			return is_changed;
-	}
-
-	// state를 거절(2)로 변경
-	public boolean changeToReject(ReservationDTO reservation_dto, String univ) throws NamingException/* , SQLException */ {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		boolean is_changed = false;
-
-		try {
-			Connection conn = DBConnection.getConnection(univ);
-			String sql = "update reservation set state=2 where res_id=?";
-
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, reservation_dto.getResId());
-
-			rs = pstmt.executeQuery();
-							
-			is_changed = true;
-							
-			// if close
-			if (rs != null)
-				rs.close();
-			if (pstmt != null)
-				pstmt.close();
-			if (conn != null)
-				conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return is_changed;
 	}
 		
 	// 특정 예약정보 dto db에서 삭제
@@ -177,6 +188,38 @@ public class ReservationDAO {
 		}
 
 		return is_deleted;
+	}
+	
+	// 예약 dto에 거절 메시지 추가
+	public boolean addRejectMessage(ReservationDTO reservation_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_added = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "update reservation set reject_msg=? where res_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, reservation_dto.getRejectMsg());
+			pstmt.setString(2, reservation_dto.getResId());
+
+			rs = pstmt.executeQuery();
+						
+			is_added = true;
+						
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+			return is_added;
 	}
 	
 	// 예약 레코드 추가
