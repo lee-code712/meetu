@@ -285,7 +285,7 @@ pageEncoding="UTF-8"  %>
         #footer {
             display: flex;
             margin: 0 auto;
-            width: 1920px;
+            width: 100%;
             height: 200px;
             background: #333333;
             justify-content: center;
@@ -294,154 +294,46 @@ pageEncoding="UTF-8"  %>
         }
 
         #calendar_wrap {
-        	display: inline-block;
-            width: 300px;
-            height: 657px;
+            display: inline-block;
+            width: 276px;
             border-radius: 5px 0 0 5px;
-    	
-        }
-
-        #section {
-            display: table;
-            margin: 0 auto;
-            width: 1194px;
-            height: 390px;
-        }
-
-        #calendar {
-            float: right;
-            background: white;
-            border-radius: 0 5px 5px 0;
-        }
-
-        #calendarHeader {
-        	border-radius: 5px 5px 0 0;
-            border-top: 1px solid #DFE3E4;
-            border-left: 1px solid #DFE3E4;
-            border-right: 1px solid #DFE3E4;
-        }
-
-        #calendarBody {
-            display: table;
-            width: 853px;
-            height: 640px;
-            border-radius: 0 0 5px 0;
-            background-color: white;
-            border-bottom: 1px solid #DFE3E4;
-            border-left: 1px solid #DFE3E4;
-            border-right: 1px solid #DFE3E4;
-        }
-
-        .cal_top {
-        	display: flex;
-        	justify-content: center;
-        	padding-top: 40px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        #cal_tab {
-            display: table-cell;
-            text-align: center;
-            width: 400px;
-            height: 320px;
         }
 
         #cal_msg {
-        	margin-bottom: 10px;
-            padding: 20px 10px;
+            margin-bottom: 20px;
+            padding: 14px 0;
             text-align: center;
-            border-radius: 10px;
-            background-color: white;
-            border: 1px solid #DFE3E4;
-            color: black;
+            border-radius: 50px;
+            color: #535353;
+            background: white;
             font-size: 14px;
+            border: 1px solid #eee;
         }
-        
-        #more_btn {
-        	background: white;
+
+
+        table.calendar {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 240px;
-            height: 40px;
-            border-radius: 50px;
-            border: 1px solid #eee;
-            cursor: pointer;
-        }
-
-        table.calendar {
-            display: inline-table;
-            margin-top: 80px;
-            text-align: left;
         }
 
         table.calendar th {
-            width: 50px;
-            text-align: center;
+            width: 80px;
             font-size: 18px;
-            padding-bottom: 20px;
+            padding-top: 90px;
+            padding-bottom: 30px;
         }
 
         table.calendar td {
-            width: 100px;
-            height: 86px;
+            width: 80px;
+            height: 70px;
             text-align: center;
         }
 
         .cal_tit {
-            padding: 40px;
-            color: #FBAB7E;
+            color: white;
         }
 
-        body {
-            background: #FAFAFA;
-        }
-
-        #logo {
-            color: black;
-            font-size: 24px;
-            font-family: 'Yellowtail', cursive;
-        }
-
-        #l_text {
-            font-size: 24px;
-        }
-
-        #l_title {
-        	display: block;
-            margin-bottom: 40px;
-        	width: 100%;
-        	text-align: center;
-        }
-        
-        #sub_title {
-        	margin-bottom: 6px;
-        	display: block;
-        	width: 100%;
-        	text-align: center;
-        	font-size: 12px;
-        	color: #FBAB7E;
-        }
-
-        #intro {
-            margin: 0 auto;
-            padding-top: 100px;
-            width: 1920px;
-            height: 800px;
-            background: white;
-        }
-
-        #intro_title {
-            padding-top: 80px;
-            width: 1194px;
-            margin: 0 auto;
-        }
-
-        #intro_text {
-            margin: 40px auto;
-            width: 1194px;
-        }
 
         header {
             width: 100%;
@@ -539,150 +431,243 @@ pageEncoding="UTF-8"  %>
         #dropdown:hover #dropdown-content {
             display: block;
         }
-        
+
         #introBody {
-        	display: flex;
-        	justify-content: space-between;
-        	margin: 0 auto;
-        	width: 1194px;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+            width: 1194px;
+
         }
-        
-        #introBox {
-        	margin-top: 40px;
-        	width: 380px;
-        	height: 500px;	
-        }
-        
+
         #introBox img {
-        	display: block; 
-        	margin: 0px auto;
-        	margin-top: 70px;
+            display: block;
+            margin: 0px auto;
+            margin-top: 40px;
         }
-        
+
         #introBox div {
-        	text-align: center;
+            text-align: center;
         }
-        
-        #introBoxTitle {
-        	margin-top: 60px;
-        	font-size: 18px;
-        	font-weight: bold;
+
+        #introWrap {
+            padding: 100px 0 100px 0;
+            margin: 0 auto;
+            width: 100%;
         }
-        
-        #introBoxText {
-        	margin-top: 20px;
-        	margin-bottom: 14px;
-        	color: #535353;
+
+        #intro,
+        #manage {
+            margin: 0 auto;
+            width: 1194px;
         }
-        
-        #calendarBg {
-        	padding: 100px 0 100px 0;
-        	width: 1920px;
-        	margin: 0 auto;
-        	background: #EEF0F4;
+
+        #subTitle,
+        #originTitleWrap {
+            display: flex;
+            justify-content: center;
         }
-        
-        .introBox1 {
-        	background: #FDAC8A;
+
+        #introTitle {
+            margin-top: 30px;
+            margin-bottom: 14px;
         }
-        
-        .introBox2 {
-        	background: #FBAB7E;
+
+        #introText {
+            font-size: 10px;
+            color: #535353;
         }
-        
-        .introBox3 {
-        	background: #FFD597;
+
+        #siteName {
+            font-size: 24px;
+            font-family: 'Yellowtail', cursive;
         }
-        
-        #imgimg {
-        	width: 300px;
-        	height: 340px;
-        	background: white;
-        	margin: 0 auto;
+
+        #originTitle {
+            font-size: 24px;
+        }
+
+        #subTitle {
+            color: #535353;
+            font-size: 10px;
+            margin-bottom: 10px;
+        }
+
+        #introHeader {
+            margin-bottom: 20px;
+        }
+
+        #manageHeader {
+            margin-bottom: 60px;
+        }
+
+        #manageWrap {
+            padding: 100px 0 200px 0;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        #manageBody {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        #prevMonth {
+            padding-right: 20px;
+        }
+
+        #nextMonth {
+            padding-left: 20px;
+        }
+
+        #manageInnerHeader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 816px;
+            height: 40px;
+            border: 1px solid #FBAB7E;
+            border-radius: 10px 10px 0 0;
+            background: #FBAB7E;
+        }
+
+        #manageInnerBody {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 816px;
+            height: 500px;
+            border-radius: 0 0 10px 10px;
+            background: white;
+            box-shadow: 0px 2px 4px 0px rgb(0, 0, 0, 0.2);
+        }
+
+        #cal_top_year,
+        #cal_top_month,
+        #dot {
+            color: white;
+        }
+
+        #shortLine {
+            margin: 0 auto;
+            margin-top: 24px;
+            width: 30px;
+            height: 4px;
+            background: #FBAB7E;
+        }
+
+        #introBox {
+            margin-top: 20px;
+            width: 350px;
+            padding: 120px 0;
+        }
+
+        #introBox:hover {
+            box-shadow: 0px 2px 4px 0px rgb(0, 0, 0, 0.2);
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <nav id="header_inner">
-            <div id="title"><a>MEETU</a></div>
-            <div id="gnb">
-                <a id="noticeIcon" href="notice.do">공지사항</a>
-                <a id="reserveIcon" href="reservationPro.do">상담예약</a>
-                <a id="messageIcon" href="message.do">쪽지함</a>
+<header>
+    <nav id="header_inner">
+        <div id="title"><a>MEETU</a></div>
+        <div id="gnb">
+            <a id="noticeIcon" href="notice.do">공지사항</a>
+            <a id="reserveIcon" href="reservationPro.do">상담예약</a>
+            <a id="messageIcon" href="message.do">쪽지함</a>
+        </div>
+        <div id="dropdown">
+            <button id="dropBtn">${mem_dto.getName()}님 ▽</button>
+            <div id="dropdown-content">
+                <a href="myPage.do">마이페이지</a>
+                <a href="logout.do">로그아웃</a>
             </div>
-            <div id="dropdown">
-                <button id="dropBtn">${mem_dto.getName()}님 ▽</button>
-                <div id="dropdown-content">
-                	<a href="myPage.do">마이페이지</a>
-                    <a href="logout.do">로그아웃</a>
-                </div>
+        </div>
+        <img src="/index/images/notifications_black_24dp.svg" id="alertIcon"/>
+    </nav>
+</header>
+
+
+<div id="banner_wrap">
+    <ul class="banner_slide">
+        <li class="banner_01"></li>
+        <li class="banner_02"></li>
+        <li class="banner_03"></li>
+    </ul>
+</div>
+
+<div id="introWrap">
+    <div id="intro">
+        <div id="introHeader">
+            <div id="subTitle">어떤 기능이 있나요?</div>
+            <div id="originTitleWrap"><span id="siteName">MEETU</span> &nbsp;&nbsp; <span id="originTitle">소개</span>
             </div>
-            <img src="/index/images/notifications_black_24dp.svg" id="alertIcon"/>
-        </nav>
-    </header>
-    
-    
-    <div id="banner_wrap">
-        <ul class="banner_slide">
-            <li class="banner_01"></li>
-            <li class="banner_02"></li>
-            <li class="banner_03"></li>
-        </ul>
+            <div id="shortLine"></div>
+        </div>
+
+        <div id="introBody">
+            <div id="introBox">
+                <div id="introImg"><img src="images/calendarImg.svg"/></div>
+                <div id="introTitle">상담일정</div>
+                <div id="introText">상담일정을 통해 등록된 예약을<br/>한 눈에 확인할 수 있습니다.</div>
+            </div>
+
+            <div id="introBox">
+                <div id="introImg"><img src="images/messageImg.svg"/></div>
+                <div id="introTitle">쪽지기능</div>
+                <div id="introText">상담예약이 확정된 교수님과<br/>메시지를 주고 받을 수 있습니다.</div>
+            </div>
+
+            <div id="introBox">
+                <div id="introImg"><img src="images/clockImg.svg"/></div>
+                <div id="introTitle">알람기능</div>
+                <div id="introText">알람기능을 통해<br/>상담 가능 여부를 전달해드립니다.</div>
+            </div>
+        </div>
     </div>
-    
-    <div id="calendarBg">
-    <table id="section">
-        <tr>
-            <td colspan="2">
-            	<div id="sub_title">캘린더를 통해 일정을 확인해주세요.</div>
-                <div id="l_title"><span id="logo">MEETU</span> &nbsp;&nbsp; <span id="l_text">상담일정 관리</span></div>
-            </td>
-        </tr>
-        
-        <tr>
-            <td id="calendar_wrap">
-            
- <!--               <div id="more_btn">
-                    + <span id="cal_top_dayName"></span>요일
-                    (<span id="cal_top_date"></span>일)
-                    일정 더 보기
-                </div>-->
-            </td>
-    
-            <td id="calendar">
-                <div id="calendarHeader">
-                    <div class="cal_top">
+</div>
+
+<div id="manageWrap">
+    <div id="manage">
+        <div id="manageHeader">
+            <div id="subTitle">캘린더를 통해 상담일정을 관리해보세요.</div>
+            <div id="originTitleWrap"><span id="siteName">MEETU</span> &nbsp;&nbsp; <span
+                    id="originTitle">상담일정 관리</span></div>
+            <div id="shortLine"></div>
+        </div>
+
+        <div id="manageBody">
+            <div id="calendar_wrap">
+                <div id="cal_msg">등록된 예약이 없습니다.</div>
+                <div id="cal_msg">등록된 예약이 없습니다.</div>
+                <div id="cal_msg">등록된 예약이 없습니다.</div>
+            </div>
+
+            <div id="manageInnerWrap">
+                <div id="manageInnerHeader">
                     <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit">◀</span></a>
-                    <span id="cal_top_year"></span>.
+                    <span id="cal_top_year"></span><span id="dot">.</span>
                     <span id="cal_top_month"></span>
                     <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit">▶</span></a>
-                	</div>
                 </div>
-       
-                <div id="calendarBody">
+                <div id="manageInnerBody">
                     <div id="cal_tab" class="cal"></div>
                 </div>
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
     </div>
-    
-    <div id="intro">
-        <div id="sub_title">어떤 기능이 있나요?</div>
-        <div id="l_title"><span id="logo">MEETU</span> &nbsp;&nbsp; <span id="l_text">소개</span></div>
-    	
-    	<div id="introBody">
-    		<div id="introBox" class="introBox1"><div id="introBoxTitle">상담일정</div><div id="introBoxText">상담일정을 통해 등록된 예약을<br/> 한 눈에 확인할 수 있습니다.</div><div id="imgimg">(이미지)</div></div>
-    		<div id="introBox" class="introBox2"><div id="introBoxTitle">쪽지기능</div><div id="introBoxText">상담예약이 확정된 교수님과<br/> 메시지를 주고 받을 수 있습니다.</div><div id="imgimg">(이미지)</div></div>
-    		<div id="introBox" class="introBox3"><div id="introBoxTitle">알림기능</div><div id="introBoxText">알림 기능을 통해<br/> 상담 가능 여부를 전달해드립니다.</div><div id="imgimg">(이미지)</div></div>
-    	</div>
-    </div>
-    
-    
-    <div id="footer">
-        Copyrights © 2021 by 시나브로. All Rights Reserved.
-    </div>
+</div>
+
+<!--               <div id="more_btn">
+                                   + <span id="cal_top_dayName"></span>요일
+                                   (<span id="cal_top_date"></span>일)
+                                   일정 더 보기
+                               </div>-->
+<div id="footer">
+    Copyrights © 2021 by 시나브로. All Rights Reserved.
+</div>
 </body>
 </html>
