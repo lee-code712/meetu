@@ -5,7 +5,7 @@ public class ReservationDTO {
 	private String res_date;
 	private String reason;
 	private int type;
-	private int approval;
+	private int state;
 	private String reject_msg;
 	private String p_user_id;
 	private String s_user_id;
@@ -42,12 +42,12 @@ public class ReservationDTO {
 		this.type = type;
 	}
 	
-	public int getApproval() {
-		return approval;
+	public int getState() {
+		return state;
 	}
 	
-	public void setApproval(int approval) {
-		this.approval = approval;
+	public void setState(int state) {
+		this.state = state;
 	}
 	
 	public String getRejectMsg() {

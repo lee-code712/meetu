@@ -31,7 +31,7 @@ public class MessageAction implements CommandAction {
 			
 			while(iterator.hasNext()) {
 				ReservationDTO reservation_dto = iterator.next();
-				if(reservation_dto.getApproval() == 1) { // 예약이 승인된 경우에만
+				if(reservation_dto.getState() == 1) { // 예약이 승인된 경우에만
 					String user_id;
 					if(mem_dto.getRole().equals("0")) {
 						user_id = reservation_dto.getPUserId();

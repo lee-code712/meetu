@@ -31,7 +31,7 @@
 			String res_date = reservations.get(i).getResDate();
 			String reason = reservations.get(i).getReason();
 			int type = reservations.get(i).getType();
-			int approval = reservations.get(i).getApproval();
+			int approval = reservations.get(i).getState();
 			String reject_msg = reservations.get(i).getRejectMsg();
 			String p_user_id = reservations.get(i).getPUserId();
 			String s_user_id = reservations.get(i).getSUserId();

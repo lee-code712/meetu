@@ -36,7 +36,7 @@
 		while(iterator.hasNext()) {
 			ReservationDTO reservation_dto = iterator.next();
 			
-			if(reservation_dto.getApproval() == approval) {
+			if(reservation_dto.getState() == approval) {
 				String res_date = reservation_dto.getResDate();
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
 				Date date = sdf.parse(res_date);

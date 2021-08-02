@@ -47,7 +47,7 @@ public class LoginAction implements CommandAction {
 			session.setAttribute("mem_dto", mem_dto); // 회원정보(학번,이름,역할) 저장
 			session.setAttribute("univ_dto", univ_dto); // 대학정보(id,이름) 저장
 			
-			return "indexPro.do";
+			return "index.do";
 		}
 		else { // 로그인 실패
 			return "/login/login.jsp?ck=0";

@@ -113,7 +113,7 @@ function approval(selected_button) {
 	
 	$.ajax({
 		 type: "POST",
-		url: "/myPage/changeToApprovalState.jsp",
+		url: "/myPage/changeToState.jsp",
 		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 		data: data,
 		dataType: "text",

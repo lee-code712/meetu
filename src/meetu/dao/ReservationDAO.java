@@ -50,7 +50,7 @@ public class ReservationDAO {
 				reservation_dto.setResDate(rs.getString("res_date"));
 				reservation_dto.setReason(rs.getString("reason"));
 				reservation_dto.setType(rs.getInt("type"));
-				reservation_dto.setApproval(rs.getInt("approval"));
+				reservation_dto.setState(rs.getInt("state"));
 				reservation_dto.setRejectMsg(rs.getString("reject_msg"));
 				reservation_dto.setPUserId(rs.getString("p_user_id"));
 				reservation_dto.setSUserId(rs.getString("s_user_id"));
@@ -62,7 +62,7 @@ public class ReservationDAO {
 					reservation_dto.setResDate(rs.getString("res_date"));
 					reservation_dto.setReason(rs.getString("reason"));
 					reservation_dto.setType(rs.getInt("type"));
-					reservation_dto.setApproval(rs.getInt("approval"));
+					reservation_dto.setState(rs.getInt("state"));
 					reservation_dto.setRejectMsg(rs.getString("reject_msg"));
 					reservation_dto.setPUserId(rs.getString("p_user_id"));
 					reservation_dto.setSUserId(rs.getString("s_user_id"));
@@ -86,7 +86,7 @@ public class ReservationDAO {
 		return reservations;
 	}
 	
-	// approval을 승인(1)으로 변경
+	// state를 승인(1)으로 변경
 	public boolean changeToApproval(ReservationDTO reservation_dto, String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -94,7 +94,7 @@ public class ReservationDAO {
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "update reservation set approval=1 where res_id=?";
+			String sql = "update reservation set state=1 where res_id=?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, reservation_dto.getResId());
@@ -117,7 +117,7 @@ public class ReservationDAO {
 			return is_changed;
 	}
 
-	// approval을 거절(2)로 변경
+	// state를 거절(2)로 변경
 	public boolean changeToReject(ReservationDTO reservation_dto, String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -125,7 +125,7 @@ public class ReservationDAO {
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "update reservation set approval=2 where res_id=?";
+			String sql = "update reservation set state=2 where res_id=?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, reservation_dto.getResId());
@@ -187,7 +187,7 @@ public class ReservationDAO {
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "insert into reservation (res_id, res_date, reason, type, approval, p_user_id, s_user_id) ";
+			String sql = "insert into reservation (res_id, res_date, reason, type, state, p_user_id, s_user_id) ";
 			sql += "values (reservation_seq.NEXTVAL, TO_DATE(?,'YY/MM/DD HH24:MI:SS'), ?, ?, 0, ?, ?)";
 			
 			pstmt = conn.prepareStatement(sql);
