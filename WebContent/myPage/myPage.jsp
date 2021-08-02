@@ -33,7 +33,7 @@ pageEncoding="UTF-8"%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         @charset "UTF-8";
-        
+
         ul, li {
             text-decoration: none;
             list-style: none;
@@ -382,6 +382,43 @@ pageEncoding="UTF-8"%>
         #dropdown:hover #dropdown-content {
             display: block;
         }
+
+        #editingBtn,
+        #rejectMsgBtn {
+            padding: 4px 8px;
+            border-radius: 30px;
+            background: #ee6868;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #cancelingBtn {
+            padding: 4px 8px;
+            border-radius: 30px;
+            background: #6885ee;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #msgBtn {
+            padding: 4px 8px;
+            border-radius: 30px;
+            background: #eeb868;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #incompleteBtn {
+            padding: 4px 8px;
+            border-radius: 30px;
+            background: #cecece;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
     </style>
     <script src="/myPage/js/myPage.js"></script>
 </head>
@@ -455,8 +492,8 @@ pageEncoding="UTF-8"%>
                                     <th>교수명</th>
                                     <th>학과</th>
                                     <th>날짜</th>
-                                    <th>수정</th>
-                                    <th>취소</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -464,15 +501,23 @@ pageEncoding="UTF-8"%>
                                     <td>000교수님</td>
                                     <td>컴퓨터학과</td>
                                     <td>2021-07-10 오전 9:00</td>
-                                    <td><img src="images/edit.svg" id="editBtn"/></td>
-                                    <td><img src="images/delete_black_24dp.svg" id="cancelBtn"/></td>
+                                    <td>
+                                        <button id="editingBtn">수정하기</button>
+                                    </td>
+                                    <td>
+                                        <button id="cancelingBtn">취소하기</button>
+                                    </td>
                                 </tr>
                                 <tr id="boardList">
                                     <td>000교수님</td>
                                     <td>컴퓨터학과</td>
                                     <td>2021-07-10 오전 9:00</td>
-                                    <td><img src="images/edit.svg" id="editBtn"/></td>
-                                    <td><img src="images/delete_black_24dp.svg" id="cancelBtn"/></td>
+                                    <td>
+                                        <button id="editingBtn">수정하기</button>
+                                    </td>
+                                    <td>
+                                        <button id="cancelingBtn">취소하기</button>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -486,8 +531,8 @@ pageEncoding="UTF-8"%>
                                     <th>교수명</th>
                                     <th>학과</th>
                                     <th>날짜</th>
-                                    <th>거절메시지 확인</th>
-                                    <th>목록 삭제</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -495,16 +540,20 @@ pageEncoding="UTF-8"%>
                                     <td>000교수님</td>
                                     <td>컴퓨터학과</td>
                                     <td>2021-07-10 오전 9:00</td>
-                                    <td><img src="images/unsubscribe_black_24dp.svg" id="rejectMessageBtn"/></td>
-                                    <td><img src="images/backspace_black_24dp.svg" id="deleteBtn"
+                                    <td>
+                                        <button id="rejectMsgBtn">거절 메시지</button>
+                                    </td>
+                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"
                                              onclick="button_event();"/></td>
                                 </tr>
                                 <tr id="boardList">
                                     <td>000교수님</td>
                                     <td>컴퓨터학과</td>
                                     <td>2021-07-10 오전 9:00</td>
-                                    <td><img src="images/unsubscribe_black_24dp.svg" id="rejectMessageBtn"/></td>
-                                    <td><img src="images/backspace_black_24dp.svg" id="deleteBtn"
+                                    <td>
+                                        <button id="rejectMsgBtn">거절 메시지</button>
+                                    </td>
+                                    <td><img src="/myPage/images/delete_black_24dp.svg" id="deleteBtn"
                                              onclick="button_event();"/></td>
                                 </tr>
                                 </tbody>
@@ -519,7 +568,8 @@ pageEncoding="UTF-8"%>
                                     <th>교수명</th>
                                     <th>학과</th>
                                     <th>날짜</th>
-                                    <th>쪽지함 가기</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -527,14 +577,17 @@ pageEncoding="UTF-8"%>
                                     <td>000교수님</td>
                                     <td>컴퓨터학과</td>
                                     <td>2021-07-10 오전 9:00</td>
-                                    <td><img src="images/message.svg" id="deleteBtn"
-                                             onclick="button_event();"/></td>
+                                    <td>
+                                        <button id="msgBtn">쪽지함 바로가기</button>
+                                    </td>
                                 </tr>
                                 <tr id="boardList">
                                     <td>000교수님</td>
                                     <td>컴퓨터학과</td>
                                     <td>2021-07-10 오전 9:00</td>
-                                    <td><img src="images/message.svg" id="messageBtn"/></td>
+                                    <td>
+                                        <button id="msgBtn">쪽지함 바로가기</button>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
