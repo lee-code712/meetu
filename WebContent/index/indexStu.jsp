@@ -19,7 +19,7 @@ pageEncoding="UTF-8"  %>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="/index/js/jquery.bxslider.min.js"></script>
     <link href="/index/css/jquery.bxslider.css" rel="stylesheet"/>
-
+	 
     <script src="/index/js/indexStu.js"></script>
 
     <script>
@@ -50,7 +50,7 @@ pageEncoding="UTF-8"  %>
         function drawCalendar() {
             var setTableHTML = "";
             setTableHTML += '<table class="calendar">';
-            setTableHTML += '<tr><th style="color: red " >SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THUR</th><th>FRI</th><th style="color: blue">SAT</th></tr>';
+            setTableHTML += '<tr><th style="color: red " >일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th style="color: blue">토</th></tr>';
             for (var i = 0; i < 6; i++) {
                 setTableHTML += '<tr height="45">';
                 for (var j = 0; j < 7; j++) {
@@ -218,16 +218,16 @@ pageEncoding="UTF-8"  %>
     <style>
         /* 배너사이즈와 위치 */
         #banner_wrap {
+        	margin-top: 100px;
             margin: 0 auto;
             width: 1920px;
             height: 720px;
-            position: relative;
         }
 
         .banner_01 {
             width: 1920px;
             height: 720px;
-            background-image: url('/index/images/cat-6309964_1920.jpg');
+            background-image: url('/index/images/banner1.svg');
             background-position: center;
             background-size: cover;
         }
@@ -235,7 +235,7 @@ pageEncoding="UTF-8"  %>
         .banner_02 {
             width: 1920px;
             height: 720px;
-            background-image: url('/index/images/cat-2536662_1920.jpg');
+            background-image: url('/index/images/cat-6309964_1920.jpg');
             background-position: center;
             background-size: cover;
         }
@@ -284,13 +284,14 @@ pageEncoding="UTF-8"  %>
 
         #footer {
             display: flex;
+            margin-top: -40px;
             margin: 0 auto;
             width: 100%;
             height: 200px;
-            background: #333333;
+            background: #EDEDED;
             justify-content: center;
             align-items: center;
-            color: white;
+            color: #535353;
         }
 
         #calendar_wrap {
@@ -335,17 +336,18 @@ pageEncoding="UTF-8"  %>
         }
 
 
-        header {
+        @charset "UTF-8";
+
+        ul, li {
+            text-decoration: none;
+            list-style: none;
+        }
+
+        #header {
             width: 100%;
             height: 100px;
-            z-index: 10;
-            top: 0px;
-            position: fixed;
-            box-sizing: border-box;
-            transition: All 0.2s ease;
-            -webkit-transition: All 0.2s ease;
-            -moz-transition: All 0.2s ease;
-            -o-transition: All 0.2s ease;
+            border-bottom: 1px solid #eee;
+            background: white;
         }
 
         #header_inner {
@@ -355,14 +357,15 @@ pageEncoding="UTF-8"  %>
             width: 1194px;
             height: 100px;
         }
-
+		
         #title {
             display: flex;
             align-items: center;
             width: 200px;
             height: 100%;
-            color: white;
+            color: #FBAB7E;
             font-size: 24px;
+            margin-right: 30px;
             font-family: 'Yellowtail', cursive;
             font-weight: bold;
         }
@@ -374,9 +377,9 @@ pageEncoding="UTF-8"  %>
         #gnb {
             display: flex;
             width: 100%;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
-            color: white;
+            color: #535353;
             align-items: center;
         }
 
@@ -384,12 +387,108 @@ pageEncoding="UTF-8"  %>
             padding: 0 40px;
         }
 
+        #alertIcon {
+            width: 18px;
+            height: 18px;
+        }
+
         #alertIcon:hover,
         #noticeIcon:hover,
         #reserveIcon:hover,
-        #messageIcon:hover,
-        #myPageIcon:hover {
+        #messageIcon:hover {
             cursor: pointer;
+        }
+
+        #messageIcon,
+        #noticeIcon,
+        #reserveIcon {
+            color: #535353;
+        }
+
+        a:link {
+            color: #535353;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: #535353;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #535353;
+            text-decoration: none;
+        }
+
+        #title a:link,
+        #title a:visited,
+        #title a:hover {
+            color: #FBAB7E;
+
+        }
+
+        #topHeader {
+            width: 100%;
+            height: 34px;
+            background-color: #FBAB7E;
+            background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+        }
+
+        #topHeaderInner {
+            margin: 0 auto;
+            width: 1194px;
+            height: 100%;
+        }
+
+        #topHeaderInner div {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 100%;
+            float: right;
+            color: white;
+        }
+
+        #topHeaderInner div span {
+            margin-left: 20px;
+        }
+
+        #topHeaderInner div a:link,
+        #topHeaderInner div a:visited,
+        #topHeaderInner div a:hover {
+            color: white;
+        }
+
+        #gnb div a {
+            font-size: 14px;
+            position: relative;
+        }
+
+        #gnb div a:before {
+            content: '';
+            position: absolute;
+            background-color: #FBAB7E;
+            height: 6px;
+            width: 0;
+            bottom: -42px;
+            transition: 0.5s;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #gnb div a:hover:before {
+            width: 100%;
+        }
+
+        #dropdown-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 60px;
+            padding: 8px;
+            width: 140px;
+            font-size: 15px;
+            border: none;
         }
 
         #dropdown {
@@ -397,35 +496,24 @@ pageEncoding="UTF-8"  %>
             display: inline-block;
         }
 
-        #dropBtn {
-            width: 160px;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            background: none;
-        }
-
         #dropdown-content {
             display: none;
             position: absolute;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            border: 1px solid white;
-            border-radius: 5px;
+            background-color: white;
+            min-width: 140px;
+            padding: 8px;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
         }
 
         #dropdown-content a {
-            color: white;
-            padding: 12px 16px;
+            color: black;
+            padding: 8px;
             text-decoration: none;
             display: block;
         }
 
         #dropdown-content a:hover {
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
+            background-color: #f3f3f3;
         }
 
         #dropdown:hover #dropdown-content {
@@ -453,7 +541,7 @@ pageEncoding="UTF-8"  %>
         	position: absolute;
         	display: flex;
         	justify-content: center;
-        	top: 600px;
+        	top: 740px;
         	left: 50%;
     		transform: translate(-50%, 0%);
             margin: 0 auto;
@@ -506,11 +594,11 @@ pageEncoding="UTF-8"  %>
 
         #manageHeader {
         	margin-top: 100px;
-            margin-bottom: 40px;
+            margin-bottom: 100px;
         }
 
         #manageWrap {
-            padding: 100px 0 200px 0;
+            padding: 100px 0 140px 0;
             margin: 0 auto;
             width: 100%;
             background: #FAFAFA;
@@ -575,33 +663,89 @@ pageEncoding="UTF-8"  %>
             box-shadow: 0px 2px 4px 0px rgb(0, 0, 0, 0.2);
             cursor: pointer;
         }
+        
+        #logo {
+			color: #FBAB7E;
+			font-family: 'Yellowtail', cursive;
+		}
+		
+		#banner1Title {
+			margin-top: 100px;
+			display: flex;
+			justify-content: center;
+			font-weight: bold;
+			font-size: 18px;
+		}
+		
+		#banner1Text {
+			padding: 20px 0 60px 0;
+			margin: 0 auto;
+			text-align: center;
+			width: 300px;
+			font-size: 12px;
+			color: #535353;
+		}
+		
+		#reservationBtn {
+			display: block;
+			margin: 0 auto;
+			width: 200px;
+			padding: 8px 0;
+			border: 1px solid #FBAB7E;
+			color: #FBAB7E;
+			border-radius: 500px;
+			background: white;
+		}
+		
+		#reservationBtn:hover {
+			display: block;
+			margin: 0 auto;
+			width: 200px;
+			padding: 8px 0;
+			border: 1px solid #FBAB7E;
+			color: white;
+			border-radius: 500px;
+			background: #FBAB7E;
+			cursor: pointer;
+		}
     </style>
 </head>
 
 <body>
-<header>
-    <nav id="header_inner">
-        <div id="title"><a>MEETU</a></div>
-        <div id="gnb">
-            <a id="noticeIcon" href="notice.do">공지사항</a>
-            <a id="reserveIcon" href="reservationPro.do">상담예약</a>
-            <a id="messageIcon" href="message.do">쪽지함</a>
+<div id="topHeader">
+    <div id="topHeaderInner">
+        <div>
         </div>
+    </div>
+</div>
+
+<div id="header">
+    <div id="header_inner">
+        <div id="title"><a href="index.do">MEETU</a></div>
+        <div id="gnb">
+            <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
+            <div><a id="reserveIcon" href="reservationPro.do">상담예약</a></div>
+            <div><a id="messageIcon" href="message.do">쪽지함</a></div>
+        </div>
+
         <div id="dropdown">
-            <button id="dropBtn">${mem_dto.getName()}님 ▽</button>
+            <div id="dropdown-button">${mem_dto.getName()}<img src="/components/images/more.svg"/></div>
             <div id="dropdown-content">
                 <a href="myPage.do">마이페이지</a>
                 <a href="logout.do">로그아웃</a>
             </div>
         </div>
-        <img src="/index/images/notifications_black_24dp.svg" id="alertIcon"/>
-    </nav>
-</header>
 
+        <img src="/components/images/bell.svg" id="alertIcon"/>
+    </div>
+</div>
 
 <div id="banner_wrap">
     <ul class="banner_slide">
-        <li class="banner_01"></li>
+        <li class="banner_01"><div id="banner1Title">간편한 상담 예약 시스템 &nbsp; <span id="logo">MEETU</span></div>
+        	<div id="banner1Text">교수님과 상담을 하고 싶다면 간편한 상담 예약 시스템 MEETU를 사용하여 상담을 예약해보세요!</div>
+        	<button id="reservationBtn">예약하러 가기</button>
+      	</li>
         <li class="banner_02"></li>
         <li class="banner_03"></li>
     </ul>
