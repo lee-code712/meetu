@@ -1,0 +1,293 @@
+#header {
+    width: 100%;
+    height: 100px;
+    border-bottom: 1px solid #eee;
+    background: white;
+}
+
+#header_inner {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    width: 1194px;
+    height: 100px;
+}
+
+#title {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 100%;
+    color: #FBAB7E;
+    font-size: 24px;
+    margin-right: 30px;
+    font-family: 'Yellowtail', cursive;
+    font-weight: bold;
+}
+
+#title:hover {
+    cursor: pointer;
+}
+
+#gnb {
+    display: flex;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #535353;
+    align-items: center;
+}
+
+#gnb a {
+    padding: 0 40px;
+}
+
+#alertIcon {
+    width: 18px;
+    height: 18px;
+}
+
+#alertIcon:hover,
+#noticeIcon:hover,
+#reserveIcon:hover,
+#messageIcon:hover {
+    cursor: pointer;
+}
+
+#messageIcon,
+#noticeIcon,
+#reserveIcon {
+    color: #535353;
+}
+
+a:link {
+    color: #535353;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #535353;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #535353;
+    text-decoration: none;
+}
+
+#title a:link,
+#title a:visited,
+#title a:hover {
+    color: #FBAB7E;
+
+}
+
+#topHeader {
+    width: 100%;
+    height: 34px;
+    background-color: #FBAB7E;
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+}
+
+#topHeaderInner {
+    margin: 0 auto;
+    width: 1194px;
+    height: 100%;
+}
+
+#topHeaderInner div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    float: right;
+    color: white;
+}
+
+#topHeaderInner div span {
+    margin-left: 20px;
+}
+
+#topHeaderInner div a:link,
+#topHeaderInner div a:visited,
+#topHeaderInner div a:hover {
+    color: white;
+}
+
+#gnb div a {
+    font-size: 14px;
+    position: relative;
+}
+
+#gnb div a:before {
+    content: '';
+    position: absolute;
+    background-color: #FBAB7E;
+    height: 6px;
+    width: 0;
+    bottom: -42px;
+    transition: 0.5s;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#gnb div a:hover:before {
+    width: 100%;
+}
+
+#dropdown-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 60px;
+    padding: 8px;
+    width: 140px;
+    font-size: 15px;
+    border: none;
+}
+
+#dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 140px;
+    padding: 8px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+#dropdown-content a {
+    color: black;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+}
+
+#dropdown-content a:hover {
+    background-color: #f3f3f3;
+}
+
+#dropdown:hover #dropdown-content {
+    display: block;
+}
+
+#recordPageWrap {
+    display: flex;
+    justify-content: space-between;
+    margin: 80px auto 0 auto;
+    width: 1194px;
+}
+
+#stuListWrap {
+    width: 278px;
+}
+
+#pageTitle {
+    display: flex;
+    padding-left: 20px;
+    align-items: center;
+    width: 258px;
+    height: 50px;
+    border-bottom: 1px dotted #535353;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#stuList {
+    display: flex;
+    padding-left: 20px;
+    align-items: center;
+    width: 258px;
+    height: 40px;
+    border-bottom: 1px dotted #535353;
+}
+
+#recordInfoWrap {
+    width: 816px;
+}
+
+#recordWrap {
+    margin-top: 40px;
+    width: 100%;
+    height: 560px;
+    background: white;
+    border-radius: 10px;
+}
+
+#recordTitle {
+    display: flex;
+    padding-left: 20px;
+    align-items: center;
+    width: 796px;
+    height: 40px;
+    font-weight: bold;
+    color: white;
+    background: #FBAB7E;
+    border: 1px solid #FBAB7E;
+    border-radius: 10px 10px 0 0;
+}
+
+#recordTextWrap {
+    width: 796px;
+    height: 500px;
+    border-bottom: 1px solid #eee;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    border-radius: 0 0 10px 10px;
+    padding: 20px 0 0 20px;
+}
+
+#recordText {
+    width: 776px;
+    height: 490px;
+    border: none;
+}
+
+#saveBtn {
+    margin-top: 40px;
+    display: block;
+    float: right;
+    width: 100px;
+    height: 40px;
+    color: white;
+    background: #FBAB7E;
+    border: none;
+    border-radius: 5px;
+}
+
+#saveBtn:hover {
+    cursor: pointer;
+}
+
+#recordInfo {
+    width: 776px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 4px 0 rgb(0, 0, 0, 0.2);
+}
+
+#writerWrap {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#stuInfo {
+    font-size: 14px;
+}
+
+#stuInfo span {
+    color: #FBAB7E;
+    font-weight: bold;
+}
+
+#recordDate,
+#writeName {
+    font-size: 12px;
+    color: #535353;
+}
