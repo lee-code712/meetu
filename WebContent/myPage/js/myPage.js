@@ -50,10 +50,10 @@ function updatePage(responseText) {
 			}
 			else if(clicked_item == "canceledList") {
 				if(state == "2") {
-					temp_html += "<td id=" + res_id + "><button id=\"rejectMsgBtn\" onclick=\"getRejectMsg();\">반려사유</button></td></tr>";
+					temp_html += "<td id=" + res_id + "><button id=\"rejectMsgBtn\" onclick=\"getRejectMessage();\">반려사유</button></td></tr>";
 				}
 				else {
-					temp_html += "<td id=" + res_id + "><button id=\"rejectMsgBtn\" onclick=\"getRejectMsg();\">취소사유</button></td></tr>";
+					temp_html += "<td id=" + res_id + "><button id=\"rejectMsgBtn\" onclick=\"getRejectMessage();\">취소사유</button></td></tr>";
 				}
 				$('#asd tbody').append(temp_html);
 			}
@@ -75,10 +75,10 @@ function updatePage(responseText) {
 			}
 			else if(clicked_item == "canceledList") {
 				if(state == "2") {
-					temp_html += "<td id=" + res_id + "><button id=\"rejectMsgBtn\" onclick=\"getRejectMsg();\">반려사유</button></td></tr>";
+					temp_html += "<td id=" + res_id + "><button id=\"rejectMsgBtn\" onclick=\"getRejectMessage();\">반려사유</button></td></tr>";
 				}
 				else {
-					temp_html += "<td id=" + res_id + "><button id=\"rejectMsgBtn\" onclick=\"getRejectMsg();\">취소사유</button></td></tr>";
+					temp_html += "<td id=" + res_id + "><button id=\"rejectMsgBtn\" onclick=\"getRejectMessage();\">취소사유</button></td></tr>";
 				}
 				$('#asd tbody').append(temp_html);
 			}
@@ -101,13 +101,7 @@ function buttonEvent() {
 	selected_button = event.currentTarget.id;
 	res_id = event.currentTarget.closest("td").id;
 	
-	if(selected_button == "editBtn") {
-		if (confirm("선택한 예약을 수정하시겠습니까?") == true) 
-			editReservation();
-		else 
-			return;
-	}
-	else if(selected_button == "cancelBtn") {
+	if(selected_button == "cancelBtn") {
 		if (confirm("선택한 예약을 취소하시겠습니까?") == true) 
 			window.open("/myPage/writeRejectMessage.jsp", "childform", "width=500; height=300; left=400; top=130; resizable = no;");
 		else 
@@ -156,7 +150,7 @@ function changeReservationState() {
 				alert("취소되었습니다.");
 			}
 			else if(selected_button == "consultedBtn") {
-				if (confirm("상담기록을 진행하시겠습니까? 기록한 내역은 학교측에 전달됩니다.\n[마이페이지]-[상담완료]에서 작성 및 수정이 가능합니다.") == true) {
+				if (confirm("진행한 상담을 지금 기록하시겠습니까? 기록한 내역은 학교측에 전달됩니다.\n[마이페이지]-[상담완료]에서 작성 및 수정이 가능합니다.") == true) {
 					recodeAConsultation();
 					alert("완료되었습니다.");
 				}
@@ -198,7 +192,7 @@ window.addRejectMessage = function(reject_msg) {
 }
 
 // 거절메시지(반려/취소사유) 확인
-function getRejectMsg() {
+function getRejectMessage() {
 	res_id = event.currentTarget.closest("td").id;
 	
 	$.ajax({
@@ -229,4 +223,3 @@ function editReservation() {
 function recodeAConsultation() {
 	
 }
-
