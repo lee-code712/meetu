@@ -506,6 +506,7 @@ pageEncoding="UTF-8"%>
                             <table class="boardListWrap">
                                 <thead>
                                 <tr id="thBorder">
+                                	<th></th>
                                     <th>교수명</th>
                                     <th>학과</th>
                                     <th>날짜</th>
@@ -522,6 +523,7 @@ pageEncoding="UTF-8"%>
                             <table class="boardListWrap">
                                 <thead>
                                 <tr id="thBorder">
+                                	<th></th>
                                     <th>교수명</th>
                                     <th>학과</th>
                                     <th>날짜</th>
@@ -538,6 +540,7 @@ pageEncoding="UTF-8"%>
                             <table class="boardListWrap">
                                 <thead>
                                 <tr id="thBorder">
+                                	<th></th>
                                     <th>교수명</th>
                                     <th>학과</th>
                                     <th>날짜</th>
@@ -554,6 +557,7 @@ pageEncoding="UTF-8"%>
                             <table class="boardListWrap">
                                 <thead>
                                 <tr id="thBorder">
+                                	<th></th>
                                     <th>교수명</th>
                                     <th>학과</th>
                                     <th>날짜</th>

@@ -156,7 +156,7 @@ public class ReservationDAO {
 			e.printStackTrace();
 		}
 
-			return is_changed;
+		return is_changed;
 	}
 		
 	// 특정 예약정보 dto db에서 삭제
@@ -219,7 +219,7 @@ public class ReservationDAO {
 			e.printStackTrace();
 		}
 
-			return is_added;
+		return is_added;
 	}
 	
 	// 예약 레코드 추가
@@ -328,5 +328,107 @@ public class ReservationDAO {
 		}
 		
 		return false;
+	}
+	
+	// res_id에 해당하는 상담기록이 존재하는지 확인하여 상담기록 dto 반환
+	public ConsultDTO getConsult(ReservationDTO reservation_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ConsultDTO consult_dto = null;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from consult where res_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, reservation_dto.getResId());
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				consult_dto = new ConsultDTO();
+				consult_dto.setResId(rs.getString("res_id"));
+				consult_dto.setContent(rs.getString("content"));
+			}
+			else {
+				return null;
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return consult_dto;
+	}
+		
+	// 상담기록  dto db에 추가
+	public boolean addConsult(ConsultDTO consult_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_added = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "insert into consult (res_id, content) ";
+			sql += "values (?, ?)";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, consult_dto.getResId());
+			pstmt.setString(2, consult_dto.getContent());
+
+			rs = pstmt.executeQuery();
+						
+			is_added = true;
+						
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_added;
+	}
+		
+	// 상담기록 dto content 수정
+	public boolean updateConsultContent(ConsultDTO consult_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_changed = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "update consult set content=? where res_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, consult_dto.getContent());
+			pstmt.setString(2, consult_dto.getResId());
+
+			rs = pstmt.executeQuery();
+							
+			is_changed = true;
+							
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_changed;
 	}
 }
