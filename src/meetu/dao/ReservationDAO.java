@@ -297,4 +297,36 @@ public class ReservationDAO {
 		return consultableTimes;
 	}
 
+	// 같은 교수 예약 레코드 존재 여부 반환
+	public boolean isReservatedProfessor(String univ, String s_user_id, String p_user_id) throws NamingException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from reservation where s_user_id=? and p_user_id=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, s_user_id);
+			pstmt.setString(2, p_user_id);
+
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				return true;
+			}
+								
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 }

@@ -36,7 +36,7 @@
 		type = 1;
 	}
 	
-	// 교수 학번 구하기
+	// 교수 아이디 구하기
 	// 모든 교수 정보를 가져옴
 	UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
 	ArrayList<ProfessorDTO> professors = memberDAO.getAllProfessors(univ_dto.getUnivId());
