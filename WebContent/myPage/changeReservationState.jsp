@@ -48,24 +48,26 @@
 		}
 		
 		ArrayList<MessageInformationDTO> messages = (ArrayList<MessageInformationDTO>) msg_dao.getMessagesInfo(user_id, mem_usr_id, univ);
-		Iterator<MessageInformationDTO> iterator = messages.iterator();
+		if(messages != null) {
+			Iterator<MessageInformationDTO> iterator = messages.iterator();
+			
+			while(iterator.hasNext()) {
+				MessageInformationDTO msg_info_dto = iterator.next();
+				int msg_id = msg_info_dto.getMsgId();
 		
-		while(iterator.hasNext()) {
-			MessageInformationDTO msg_info_dto = iterator.next();
-			int msg_id = msg_info_dto.getMsgId();
-	
-			boolean delete_msg_success = msg_dao.deleteMessage(msg_id, univ);		
-			if(!delete_msg_success) {
-				response.setStatus(400);		// bad request
-				response.addHeader("Status", "delete message content failed");
+				boolean delete_msg_success = msg_dao.deleteMessage(msg_id, univ);		
+				if(!delete_msg_success) {
+					response.setStatus(400);		// bad request
+					response.addHeader("Status", "delete message content failed");
+				}
 			}
+			
+			boolean delete_msg_info_success = msg_dao.deleteMessagesInfo(univ);
+			if(!delete_msg_info_success) {
+				response.setStatus(400);		// bad request
+				response.addHeader("Status", "delete message information failed");
+			}	
 		}
-		
-		boolean delete_msg_info_success = msg_dao.deleteMessagesInfo(univ);
-		if(!delete_msg_info_success) {
-			response.setStatus(400);		// bad request
-			response.addHeader("Status", "delete message information failed");
-		}	
 	}
 	
 	if(!change_success) {
