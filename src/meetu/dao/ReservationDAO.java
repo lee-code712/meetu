@@ -312,8 +312,10 @@ public class ReservationDAO {
 
 			rs = pstmt.executeQuery();
 			
-			if (rs.next()) {
-				return true;
+			while (rs.next()) {
+				if(rs.getString("state").equals("0") || rs.getString("state").equals("1")) {
+					return true;
+				}
 			}
 								
 			// if close
