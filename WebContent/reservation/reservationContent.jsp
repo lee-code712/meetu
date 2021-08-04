@@ -329,10 +329,7 @@ pageEncoding="UTF-8"%>
             cursor: pointer;
         }
 
-        .startTimeBox:hover > a,
-        .startTimeBox:focus > a,
-        .startTimeBox:active > a,
-        .startTimeBox.active > a {
+        .startTimeBox:hover > a {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -393,10 +390,7 @@ pageEncoding="UTF-8"%>
             color: white;
         }
 
-        .timeBox:hover > a,
-        .timeBox:focus > a,
-        .timeBox:active > a,
-        .timeBox.active > a {
+        .timeBox:hover > a {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -409,7 +403,6 @@ pageEncoding="UTF-8"%>
             border: 1px solid #F8CA6B;
             background: #F8CA6B;
             color: white;
-
         }
 
         .typeBtnWrap {
