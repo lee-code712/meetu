@@ -11,6 +11,7 @@ pageEncoding="UTF-8"  %>
     <title>index</title>
 
     <!--<link rel="stylesheet" href="/index/css/indexStu.css"/>-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -793,10 +794,12 @@ pageEncoding="UTF-8"  %>
 
             <div id="manageInnerWrap">
                 <div id="manageInnerHeader">
-                    <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit">◀</span></a>
-                    <span id="cal_top_year"></span><span id="dot">.</span>
-                    <span id="cal_top_month"></span>
-                    <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit">▶</span></a>
+                	<div class="cal_top">
+	                    <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit">◀</span></a>
+	                    <span id="cal_top_year"></span><span id="dot">.</span>
+	                    <span id="cal_top_month"></span>
+	                    <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit">▶</span></a>
+                    </div>
                 </div>
                 <div id="manageInnerBody">
                     <div id="cal_tab" class="cal"></div>
