@@ -297,7 +297,7 @@ public class ReservationDAO {
 		return consultableTimes;
 	}
 
-	// 같은 교수 예약 레코드 존재 여부 반환
+	// 같은 교수 예약 신청 대기/승인 레코드 존재 여부 반환
 	public boolean isReservatedProfessor(String univ, String s_user_id, String p_user_id) throws NamingException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
