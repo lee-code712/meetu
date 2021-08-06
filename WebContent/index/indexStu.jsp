@@ -756,19 +756,19 @@ pageEncoding="UTF-8"  %>
     <div id="intro">
         <div id="introBody">
             <div id="introBox">
-                <div id="introImg"><img src="images/calendarImg.svg"/></div>
+                <div id="introImg"><img src="/index/images/calendarImg.svg"/></div>
                 <div id="introTitle">상담일정</div>
                 <div id="introText">상담일정을 통해 등록된 예약을<br/>한 눈에 확인할 수 있습니다.</div>
             </div>
 
             <div id="introBox">
-                <div id="introImg"><img src="images/messageImg.svg"/></div>
+                <div id="introImg"><img src="/index/images/messageImg.svg"/></div>
                 <div id="introTitle">쪽지기능</div>
                 <div id="introText">상담예약이 확정된 교수님과<br/>메시지를 주고 받을 수 있습니다.</div>
             </div>
 
             <div id="introBox">
-                <div id="introImg"><img src="images/clockImg.svg"/></div>
+                <div id="introImg"><img src="/index/images/clockImg.svg"/></div>
                 <div id="introTitle">알람기능</div>
                 <div id="introText">알람기능을 통해<br/>상담 가능 여부를 전달해드립니다.</div>
             </div>
