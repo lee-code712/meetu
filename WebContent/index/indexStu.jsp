@@ -417,7 +417,7 @@ pageEncoding="UTF-8"  %>
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-right: 60px;
+            margin-right: 20px;
             padding: 8px;
             width: 140px;
             font-size: 15px;
