@@ -188,6 +188,44 @@ pageEncoding="UTF-8"  %>
                 }
             }
         }
+        
+        $(document).ready(function () {
+            var slider_01 = $('.banner_slide').bxSlider({
+                auto: true, autoControls: true, mode: 'horizontal',
+            });
+            // 클릭시 멈춤 현상 해결 //
+            $(document).on('click', '.bx-next, .bx-prev', function () {
+                slider.stopAuto();
+                slider.startAuto();
+                slider_01.stopAuto();
+                slider_01.startAuto();
+            });
+            $(document).on('mouseover', '.bx-pager, #bx-pager1', function () {
+                slider.stopAuto();
+                slider.startAuto();
+                slider_01.stopAuto();
+                slider_01.startAuto();
+                slider_02.stopAuto();
+                slider_02.startAuto();
+            });
+        });
+        $(function () {
+            var lastScrollTop = 0, delta = 15;
+            $(window).scroll(function (event) {
+                var st = $(this).scrollTop();
+                if (Math.abs(lastScrollTop - st) <= delta) return; // 스크롤값을 받아서 리턴한다.
+                if ((st > lastScrollTop) && (lastScrollTop > 0)) {
+                    $("header").css("top", "0px"); // 스크롤을 내렸을때 #header의 CSS 속성중 top 값을 -50px로 변경한다.
+                    $("header").css("background", "rgba(0, 0, 0, .800)");
+                    $("header").css("color", "black");
+                } else {
+                    $("header").css("top", "0px"); // 스크롤을 올렸을때 #header의 CSS 속성중 top 값을 0px로 변경한다.
+                    $("header").css("background", "none");
+                    $("header").css("color", "white");
+                }
+                lastScrollTop = st;
+            });
+        });
     </script>
     <style>
         /* 배너사이즈와 위치 */
