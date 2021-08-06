@@ -512,7 +512,7 @@ pageEncoding="UTF-8"  %>
             position: absolute;
             display: flex;
             justify-content: center;
-            top: 840px;
+            top: 740px;
             left: 50%;
             transform: translate(-50%, 0%);
             margin: 0 auto;
