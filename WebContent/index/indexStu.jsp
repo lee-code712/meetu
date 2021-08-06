@@ -766,9 +766,9 @@ pageEncoding="UTF-8"  %>
                 <span id="cal_top_year"></span>.
                 <span id="cal_top_month"></span>
                 <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit"><img
-                        src="images/prevImg.svg"/></span></a>
+                        src="/index/images/prevImg.svg"/></span></a>
                 <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit"><img
-                        src="images/nextImg.svg"/></span></a>
+                        src="/indx/images/nextImg.svg"/></span></a>
             </div>
         </div>
         <div id="cal_tab" class="cal">
