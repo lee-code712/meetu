@@ -11,7 +11,6 @@ pageEncoding="UTF-8"  %>
     <title>index</title>
 
     <!--<link rel="stylesheet" href="/index/css/indexStu.css"/>-->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +19,7 @@ pageEncoding="UTF-8"  %>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="/index/js/jquery.bxslider.min.js"></script>
     <link href="/index/css/jquery.bxslider.css" rel="stylesheet"/>
-	 
+
     <script src="/index/js/indexStu.js"></script>
 
     <script>
@@ -51,12 +50,12 @@ pageEncoding="UTF-8"  %>
         function drawCalendar() {
             var setTableHTML = "";
             setTableHTML += '<table class="calendar">';
-            setTableHTML += '<tr><th style="color: red " >일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th style="color: blue">토</th></tr>';
+            setTableHTML += '<tr><th style="color: #FB7E7E; padding-left: 6px;">일</th><th style="padding-left: 6px;">월</th><th style="padding-left: 6px;">화</th><th style="padding-left: 6px;">수</th><th style="padding-left: 6px;">목</th><th style="padding-left: 6px;">금</th><th style="color: #7E99FB; padding-left: 6px;">토</th></tr>';
             for (var i = 0; i < 6; i++) {
-                setTableHTML += '<tr height="45">';
+                setTableHTML += '<tr height="120px" >';
                 for (var j = 0; j < 7; j++) {
                     setTableHTML += '<td style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap">';
-                    setTableHTML += '    <div class="cal-day"></div>';
+                    setTableHTML += '    <div style="padding: 0 0 0 10px; background: white" class="cal-day"></div>';
                     setTableHTML += '    <div class="cal-schedule"></div>';
                     setTableHTML += '</td>';
                 }
@@ -92,13 +91,24 @@ pageEncoding="UTF-8"  %>
             $("#cal_top_dayName").text(dayName);
             for (var i = firstDay.getDay(); i < firstDay.getDay() + lastDay.getDate(); i++) {
                 $tdDay.eq(i).text(++dayCount);
+
+                if (today.getFullYear()) {
+                    $tdDay.eq(today.getDay()).css("width", "20px");
+                    $tdDay.eq(today.getDay()).css("height", "24px");
+                    $tdDay.eq(today.getDay()).css("background", "#F7CE68");
+                    $tdDay.eq(today.getDay()).css("color", "white");
+                    $tdDay.eq(today.getDay()).css("border-radius", "50px");
+                }
             }
             for (var i = 0; i < 42; i += 7) {
-                $tdDay.eq(i).css("color", "red");
+                $tdDay.eq(i).css("color", "#FB7E7E");
             }
+
+
             for (var i = 6; i < 42; i += 7) {
-                $tdDay.eq(i).css("color", "blue");
+                $tdDay.eq(i).css("color", "#7E99FB");
             }
+
         }
 
         //calendar 월 이동
@@ -143,18 +153,15 @@ pageEncoding="UTF-8"  %>
         function setData() {
             jsonData =
                 {
-                    "2019": {
-                        "07": {
-                            "17": "제헌절"
-                        }
-                        , "08": {
-                            "7": "칠석"
-                            , "15": "광복절"
-                            , "23": "처서"
+                    "2021": {
+                        "08": {
+                            "7": "000교수님 오전 9:00"
+                            , "15": "000교수님 오전 10:00"
+                            , "23": "000교수님 오전 12:00"
                         }
                         , "09": {
-                            "13": "추석"
-                            , "23": "추분"
+                            "4": "000교수님 오후 1:00"
+                            , "23": "000교수님 오후 2:00"
                         }
                     }
                 }
@@ -173,53 +180,19 @@ pageEncoding="UTF-8"  %>
                         txt = jsonData[year][month][i];
                         dateMatch = firstDay.getDay() + i - 1;
                         $tdSche.eq(dateMatch).text(txt);
+                        $tdSche.eq(dateMatch).css("background", "#FBAB7E");
+                        $tdSche.eq(dateMatch).css("color", "white");
+                        $tdSche.eq(dateMatch).css("padding-left", "10px");
+                        $tdSche.eq(dateMatch).css("border-radius", "3px");
                     }
                 }
             }
         }
-
-        $(document).ready(function () {
-            var slider_01 = $('.banner_slide').bxSlider({
-                auto: true, autoControls: true, mode: 'horizontal',
-            });
-            // 클릭시 멈춤 현상 해결 //
-            $(document).on('click', '.bx-next, .bx-prev', function () {
-                slider.stopAuto();
-                slider.startAuto();
-                slider_01.stopAuto();
-                slider_01.startAuto();
-            });
-            $(document).on('mouseover', '.bx-pager, #bx-pager1', function () {
-                slider.stopAuto();
-                slider.startAuto();
-                slider_01.stopAuto();
-                slider_01.startAuto();
-                slider_02.stopAuto();
-                slider_02.startAuto();
-            });
-        });
-        $(function () {
-            var lastScrollTop = 0, delta = 15;
-            $(window).scroll(function (event) {
-                var st = $(this).scrollTop();
-                if (Math.abs(lastScrollTop - st) <= delta) return; // 스크롤값을 받아서 리턴한다.
-                if ((st > lastScrollTop) && (lastScrollTop > 0)) {
-                    $("header").css("top", "0px"); // 스크롤을 내렸을때 #header의 CSS 속성중 top 값을 -50px로 변경한다.
-                    $("header").css("background", "rgba(0, 0, 0, .800)");
-                    $("header").css("color", "black");
-                } else {
-                    $("header").css("top", "0px"); // 스크롤을 올렸을때 #header의 CSS 속성중 top 값을 0px로 변경한다.
-                    $("header").css("background", "none");
-                    $("header").css("color", "white");
-                }
-                lastScrollTop = st;
-            });
-        });
     </script>
     <style>
         /* 배너사이즈와 위치 */
         #banner_wrap {
-        	margin-top: 100px;
+            margin-top: 100px;
             margin: 0 auto;
             width: 1920px;
             height: 720px;
@@ -295,47 +268,6 @@ pageEncoding="UTF-8"  %>
             color: #535353;
         }
 
-        #calendar_wrap {
-            display: inline-block;
-            width: 276px;
-            border-radius: 5px 0 0 5px;
-        }
-
-        #cal_msg {
-            margin-bottom: 20px;
-            padding: 14px 0;
-            text-align: center;
-            border-radius: 50px;
-            color: #535353;
-            background: white;
-            font-size: 14px;
-            border: 1px solid #eee;
-        }
-
-
-        table.calendar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        table.calendar th {
-            width: 80px;
-            font-size: 18px;
-            padding-top: 90px;
-            padding-bottom: 30px;
-        }
-
-        table.calendar td {
-            width: 80px;
-            height: 70px;
-            text-align: center;
-        }
-
-        .cal_tit {
-            color: white;
-        }
-
 
         @charset "UTF-8";
 
@@ -358,7 +290,7 @@ pageEncoding="UTF-8"  %>
             width: 1194px;
             height: 100px;
         }
-		
+
         #title {
             display: flex;
             align-items: center;
@@ -539,12 +471,12 @@ pageEncoding="UTF-8"  %>
         }
 
         #introWrap {
-        	position: absolute;
-        	display: flex;
-        	justify-content: center;
-        	top: 740px;
-        	left: 50%;
-    		transform: translate(-50%, 0%);
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            top: 840px;
+            left: 50%;
+            transform: translate(-50%, 0%);
             margin: 0 auto;
             width: 1194px;
             background: white;
@@ -552,16 +484,9 @@ pageEncoding="UTF-8"  %>
             box-shadow: 0px 2px 4px 0px rgb(0, 0, 0, 0.2);
         }
 
-        #intro,
-        #manage {
+        #intro {
             margin: 0 auto;
             width: 1194px;
-        }
-
-        #subTitle,
-        #originTitleWrap {
-            display: flex;
-            justify-content: center;
         }
 
         #introTitle {
@@ -579,81 +504,6 @@ pageEncoding="UTF-8"  %>
             font-family: 'Yellowtail', cursive;
         }
 
-        #originTitle {
-            font-size: 24px;
-        }
-
-        #subTitle {
-            color: #535353;
-            font-size: 10px;
-            margin-bottom: 10px;
-        }
-
-        #introHeader {
-            margin-bottom: 20px;
-        }
-
-        #manageHeader {
-        	margin-top: 100px;
-            margin-bottom: 100px;
-        }
-
-        #manageWrap {
-            padding: 100px 0 140px 0;
-            margin: 0 auto;
-            width: 100%;
-            background: #FAFAFA;
-        }
-
-        #manageBody {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        #prevMonth {
-            padding-right: 20px;
-        }
-
-        #nextMonth {
-            padding-left: 20px;
-        }
-
-        #manageInnerHeader {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 816px;
-            height: 40px;
-            border: 1px solid #FBAB7E;
-            border-radius: 10px 10px 0 0;
-            background: #FBAB7E;
-        }
-
-        #manageInnerBody {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 816px;
-            height: 500px;
-            border-radius: 0 0 10px 10px;
-            background: white;
-            box-shadow: 0px 2px 4px 0px rgb(0, 0, 0, 0.2);
-        }
-
-        #cal_top_year,
-        #cal_top_month,
-        #dot {
-            color: white;
-        }
-
-        #shortLine {
-            margin: 0 auto;
-            margin-top: 24px;
-            width: 30px;
-            height: 4px;
-            background: #FBAB7E;
-        }
 
         #introBox {
             width: 386px;
@@ -664,51 +514,135 @@ pageEncoding="UTF-8"  %>
             box-shadow: 0px 2px 4px 0px rgb(0, 0, 0, 0.2);
             cursor: pointer;
         }
-        
+
         #logo {
-			color: #FBAB7E;
-			font-family: 'Yellowtail', cursive;
-		}
-		
-		#banner1Title {
-			margin-top: 100px;
-			display: flex;
-			justify-content: center;
-			font-weight: bold;
-			font-size: 18px;
-		}
-		
-		#banner1Text {
-			padding: 20px 0 60px 0;
-			margin: 0 auto;
-			text-align: center;
-			width: 300px;
-			font-size: 12px;
-			color: #535353;
-		}
-		
-		#reservationBtn {
-			display: block;
-			margin: 0 auto;
-			width: 200px;
-			padding: 8px 0;
-			border: 1px solid #FBAB7E;
-			color: #FBAB7E;
-			border-radius: 500px;
-			background: white;
-		}
-		
-		#reservationBtn:hover {
-			display: block;
-			margin: 0 auto;
-			width: 200px;
-			padding: 8px 0;
-			border: 1px solid #FBAB7E;
-			color: white;
-			border-radius: 500px;
-			background: #FBAB7E;
-			cursor: pointer;
-		}
+            color: #FBAB7E;
+            font-family: 'Yellowtail', cursive;
+        }
+
+        #banner1Title {
+            margin-top: 100px;
+            display: flex;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        #banner1Text {
+            padding: 20px 0 60px 0;
+            margin: 0 auto;
+            text-align: center;
+            width: 300px;
+            font-size: 12px;
+            color: #535353;
+        }
+
+        #reservationBtn {
+            display: block;
+            margin: 0 auto;
+            width: 200px;
+            padding: 8px 0;
+            border: 1px solid #FBAB7E;
+            color: #FBAB7E;
+            border-radius: 500px;
+            background: white;
+        }
+
+        #reservationBtn:hover {
+            display: block;
+            margin: 0 auto;
+            width: 200px;
+            padding: 8px 0;
+            border: 1px solid #FBAB7E;
+            color: white;
+            border-radius: 500px;
+            background: #FBAB7E;
+            cursor: pointer;
+        }
+
+
+        .cal_top {
+            display: flex;
+            font-size: 24px;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .cal {
+            text-align: center;
+        }
+
+        table.calendar {
+            display: inline-table;
+            text-align: left;
+        }
+
+        table.calendar th {
+            padding-bottom: 10px;
+        }
+
+        table.calendar td {
+            vertical-align: top;
+            border: 1px solid #eee;
+            width: 170px;
+            background: white;
+        }
+
+        #manageWrap {
+            padding: 100px 0 140px 0;
+            margin: 0 auto;
+            width: 100%;
+            background: #FAFAFA;
+        }
+
+        #manage {
+            margin: 0 auto;
+            width: 1194px;
+        }
+
+        #cal_top_left {
+            display: flex;
+            align-items: center;
+        }
+
+        #prevMonth {
+            margin-left: 10px;
+        }
+
+        #manageHeader {
+            margin-top: 100px;
+            margin-bottom: 60px;
+        }
+
+        #siteName {
+            font-size: 24px;
+            font-family: 'Yellowtail', cursive;
+        }
+
+        #subTitle {
+            display: flex;
+            justify-content: center;
+            color: #535353;
+            font-size: 10px;
+            margin-bottom: 10px;
+        }
+
+        #originTitleWrap {
+            display: flex;
+            justify-content: center;
+        }
+
+        #originTitle {
+            font-size: 24px;
+        }
+
+        #shortLine {
+            margin: 0 auto;
+            margin-top: 24px;
+            width: 30px;
+            height: 4px;
+            background: #FBAB7E;
+        }
     </style>
 </head>
 
@@ -743,10 +677,11 @@ pageEncoding="UTF-8"  %>
 
 <div id="banner_wrap">
     <ul class="banner_slide">
-        <li class="banner_01"><div id="banner1Title">간편한 상담 예약 시스템 &nbsp; <span id="logo">MEETU</span></div>
-        	<div id="banner1Text">교수님과 상담을 하고 싶다면 간편한 상담 예약 시스템 MEETU를 사용하여 상담을 예약해보세요!</div>
-        	<button id="reservationBtn">예약하러 가기</button>
-      	</li>
+        <li class="banner_01">
+            <div id="banner1Title">간편한 상담 예약 시스템 &nbsp; <span id="logo">MEETU</span></div>
+            <div id="banner1Text">교수님과 상담을 하고 싶다면 간편한 상담 예약 시스템 MEETU를 사용하여 상담을 예약해보세요!</div>
+            <button id="reservationBtn">예약하러 가기</button>
+        </li>
         <li class="banner_02"></li>
         <li class="banner_03"></li>
     </ul>
@@ -756,25 +691,26 @@ pageEncoding="UTF-8"  %>
     <div id="intro">
         <div id="introBody">
             <div id="introBox">
-                <div id="introImg"><img src="/index/images/calendarImg.svg"/></div>
+                <div id="introImg"><img src="images/calendarImg.svg"/></div>
                 <div id="introTitle">상담일정</div>
                 <div id="introText">상담일정을 통해 등록된 예약을<br/>한 눈에 확인할 수 있습니다.</div>
             </div>
 
             <div id="introBox">
-                <div id="introImg"><img src="/index/images/messageImg.svg"/></div>
+                <div id="introImg"><img src="images/messageImg.svg"/></div>
                 <div id="introTitle">쪽지기능</div>
                 <div id="introText">상담예약이 확정된 교수님과<br/>메시지를 주고 받을 수 있습니다.</div>
             </div>
 
             <div id="introBox">
-                <div id="introImg"><img src="/index/images/clockImg.svg"/></div>
+                <div id="introImg"><img src="images/clockImg.svg"/></div>
                 <div id="introTitle">알람기능</div>
                 <div id="introText">알람기능을 통해<br/>상담 가능 여부를 전달해드립니다.</div>
             </div>
         </div>
     </div>
 </div>
+
 
 <div id="manageWrap">
     <div id="manage">
@@ -784,36 +720,25 @@ pageEncoding="UTF-8"  %>
                     id="originTitle">상담일정 관리</span></div>
             <div id="shortLine"></div>
         </div>
-
-        <div id="manageBody">
-            <div id="calendar_wrap">
-                <div id="cal_msg">등록된 예약이 없습니다.</div>
-                <div id="cal_msg">등록된 예약이 없습니다.</div>
-                <div id="cal_msg">등록된 예약이 없습니다.</div>
+        <!--
+        <span id="cal_top_dayName"></span>요일
+                (<span id="cal_top_date"></span>일) -->
+        <div class="cal_top">
+            <div id="cal_top_left">
+                <span id="cal_top_year"></span>.
+                <span id="cal_top_month"></span>
+                <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit"><img
+                        src="images/prevImg.svg"/></span></a>
+                <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit"><img
+                        src="images/nextImg.svg"/></span></a>
             </div>
+        </div>
+        <div id="cal_tab" class="cal">
 
-            <div id="manageInnerWrap">
-                <div id="manageInnerHeader">
-                	<div class="cal_top">
-	                    <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit">◀</span></a>
-	                    <span id="cal_top_year"></span><span id="dot">.</span>
-	                    <span id="cal_top_month"></span>
-	                    <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit">▶</span></a>
-                    </div>
-                </div>
-                <div id="manageInnerBody">
-                    <div id="cal_tab" class="cal"></div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
 
-<!--               <div id="more_btn">
-                                   + <span id="cal_top_dayName"></span>요일
-                                   (<span id="cal_top_date"></span>일)
-                                   일정 더 보기
-                               </div>-->
 <div id="footer">
     Copyrights © 2021 by 시나브로. All Rights Reserved.
 </div>
