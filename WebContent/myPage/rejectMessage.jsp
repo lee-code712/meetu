@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>${param.reject_msg}</div>
+<div>${reject_msg}</div>
 <button onclick="window.close()">닫기</button>
 </body>
 </html>

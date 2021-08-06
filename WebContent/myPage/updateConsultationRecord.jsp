@@ -7,19 +7,20 @@
 <%
 	UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
 	String univ = univ_dto.getUnivId();
-	String user_id = (String) session.getAttribute("user_id");
 	String res_id = request.getParameter("res_id");
+	String content = request.getParameter("content");
 	
 	// 인스턴스 가져오기
-	MemberDAO mem_dao = MemberDAO.getInstance();
 	ReservationDAO reservation_dao = ReservationDAO.getInstance();
 
 	// reseved list json 만들어 반환
-	ReservationDTO reservation_dto = new ReservationDTO();
-	reservation_dto.setResId(res_id);
-	reservation_dto = reservation_dao.getReservation(reservation_dto, univ);
+	ConsultDTO consult_dto = new ConsultDTO();
+	consult_dto.setResId(res_id);
+	consult_dto.setContent(content);
 	
-	String result = reservation_dto.getRejectMsg();
-	// System.out.println(result);
-	out.print(result);
+	boolean update_success = reservation_dao.updateConsultContent(consult_dto, univ);
+	if(!update_success) {
+		response.setStatus(400);		// bad request
+		response.addHeader("Status", "update consult content failed");
+	}	
 %>

@@ -39,26 +39,26 @@ function updatePage(responseText) {
 		var dept_name = reservations[key][4];
 		var temp_html = '';
 			
-		temp_html += "<tr id=\"boardList\">";
+		temp_html += "<tr id=" + res_id + ">";
 		if(role == "1") {
-			temp_html += "<td>" + name + "교수님</td><td>" + dept_name + "</td><td>" + res_date + "</td>";
+			temp_html += "<td onclick=\"readReservationInfo();\">더보기</td><td>" + name + "교수님</td><td>" + dept_name + "</td><td>" + res_date + "</td>";
 			
 			if(clicked_item == "bookedList") {
-				temp_html += "<td id=" + res_id + "><button id=\"editBtn\" onclick=\"buttonEvent();\">수정하기</button></td>"
-				temp_html += "<td id=" + res_id + "><button id=\"cancelBtn\" onclick=\"buttonEvent();\">취소하기</button></td></tr>";
+				temp_html += "<td><button id=\"editBtn\" onclick=\"buttonEvent();\">수정하기</button></td>"
+				temp_html += "<td><button id=\"cancelBtn\" onclick=\"buttonEvent();\">취소하기</button></td></tr>";
 				$('#qwe tbody').append(temp_html);
 			}
 			else if(clicked_item == "canceledList") {
 				if(state == "2") {
-					temp_html += "<td id=" + res_id + "><button id=\"rejectMsgBtn\" onclick=\"getRejectMessage();\">반려사유</button></td></tr>";
+					temp_html += "<td><button id=\"rejectMsgBtn\" onclick=\"readRejectMessage();\">반려사유</button></td></tr>";
 				}
 				else {
-					temp_html += "<td id=" + res_id + "><button id=\"rejectMsgBtn\" onclick=\"getRejectMessage();\">취소사유</button></td></tr>";
+					temp_html += "<td><button id=\"rejectMsgBtn\" onclick=\"readRejectMessage();\">취소사유</button></td></tr>";
 				}
 				$('#asd tbody').append(temp_html);
 			}
 			else if(clicked_item == "approvedList") {
-				temp_html += "<td id=" + res_id + "><button id=\"msgBtn\" onclick=\"location.href='message.do'\">쪽지함</button></td></tr>";
+				temp_html += "<td><button id=\"msgBtn\" onclick=\"location.href='message.do'\">쪽지함</button></td></tr>";
 				$('#zxc tbody').append(temp_html);
 			}
 			else {
@@ -67,29 +67,29 @@ function updatePage(responseText) {
 			}
 		}
 		else {
-			temp_html += "<td>" + name + "학생</td><td>" + dept_name + "</td><td>" + res_date + "</td>";
+			temp_html += "<td onclick=\"readReservationInfo();\">더보기</td><td>" + name + "학생</td><td>" + dept_name + "</td><td>" + res_date + "</td>";
 			if(clicked_item == "bookedList") {
-				temp_html += "<td id=" + res_id + "><button id=\"approvalBtn\" onclick=\"buttonEvent();\">승인하기</button></td>";
-				temp_html += "<td id=" + res_id + "><button id=\"rejectBtn\" onclick=\"buttonEvent();\">반려하기</button></td></tr>";
+				temp_html += "<td><button id=\"approvalBtn\" onclick=\"buttonEvent();\">승인하기</button></td>";
+				temp_html += "<td><button id=\"rejectBtn\" onclick=\"buttonEvent();\">반려하기</button></td></tr>";
 				$('#qwe tbody').append(temp_html);
 			}
 			else if(clicked_item == "canceledList") {
 				if(state == "2") {
-					temp_html += "<td id=" + res_id + "><button id=\"rejectMsgBtn\" onclick=\"getRejectMessage();\">반려사유</button></td></tr>";
+					temp_html += "<td><button id=\"rejectMsgBtn\" onclick=\"readRejectMessage();\">반려사유</button></td></tr>";
 				}
 				else {
-					temp_html += "<td id=" + res_id + "><button id=\"rejectMsgBtn\" onclick=\"getRejectMessage();\">취소사유</button></td></tr>";
+					temp_html += "<td><button id=\"rejectMsgBtn\" onclick=\"readRejectMessage();\">취소사유</button></td></tr>";
 				}
 				$('#asd tbody').append(temp_html);
 			}
 			else if(clicked_item == "approvedList") {
-				temp_html += "<td id=" + res_id + "><button id=\"editBtn\" onclick=\"buttonEvent();\">수정하기</button></td>"
-				temp_html += "<td id=" + res_id + "><button id=\"cancelBtn\" onclick=\"buttonEvent();\">취소하기</button></td>";
-				temp_html += "<td id=" + res_id + "><button id=\"consultedBtn\" onclick=\"buttonEvent();\">완료하기</button></td></tr>"
+				temp_html += "<td><button id=\"editBtn\" onclick=\"buttonEvent();\">수정하기</button></td>"
+				temp_html += "<td><button id=\"cancelBtn\" onclick=\"buttonEvent();\">취소하기</button></td>";
+				temp_html += "<td><button id=\"consultedBtn\" onclick=\"buttonEvent();\">완료하기</button></td></tr>"
 				$('#zxc tbody').append(temp_html);
 			}
 			else {
-				temp_html += "<td id=" + res_id + "><button id=\"consultationRecordBtn\" onclick=\"recodeAConsultation();\">상담기록</button></td></tr>"
+				temp_html += "<td><button id=\"consultationRecordBtn\" onclick=\"buttonEvent();\">상담일지</button></td></tr>"
 				$('#aaa tbody').append(temp_html);
 			}
 		}
@@ -99,9 +99,12 @@ function updatePage(responseText) {
 // confirm이 필요한 버튼 이벤트
 function buttonEvent() {
 	selected_button = event.currentTarget.id;
-	res_id = event.currentTarget.closest("td").id;
+	res_id = event.currentTarget.closest("tr").id;
 	
-	if(selected_button == "cancelBtn") {
+	if(selected_button == "editBtn") {
+		// 수정하는 페이지 이동
+	}
+	else if(selected_button == "cancelBtn") {
 		if (confirm("선택한 예약을 취소하시겠습니까?") == true) 
 			window.open("/myPage/writeRejectMessage.jsp", "childform", "width=500; height=300; left=400; top=130; resizable = no;");
 		else 
@@ -127,6 +130,9 @@ function buttonEvent() {
 		else 
 			return;
 	}
+	else if(selected_button == "consultationRecordBtn") {
+		location.href="consultationRecord.do?res_id=" + res_id;
+	}
 }
 
 // 예약 상태 변경
@@ -142,22 +148,25 @@ function changeReservationState() {
 		success: function() {
 			if(selected_button == "approvalBtn") {
 				alert("승인되었습니다.");
+				location.reload();
 			}
 			else if(selected_button == "rejectBtn") {
 				alert("반려되었습니다.");
+				location.reload();
 			}
 			else if(selected_button == "cancelBtn") {
 				alert("취소되었습니다.");
+				location.reload();
 			}
 			else if(selected_button == "consultedBtn") {
-				if (confirm("진행한 상담을 지금 기록하시겠습니까? 기록한 내역은 학교측에 전달됩니다.\n[마이페이지]-[상담완료]에서 작성 및 수정이 가능합니다.") == true) {
-					recodeAConsultation();
-					alert("완료되었습니다.");
+				if (confirm("상담일지를 지금 기록하시겠습니까? 기록한 내역은 학교측에 전달됩니다.\n[마이페이지]-[상담완료]에서 작성 및 수정이 가능합니다.") == true) {
+					location.href="consultationRecord.do?res_id=" + res_id;
 				}
-				else
+				else {
 					alert("완료되었습니다.");
+					location.reload();
+				}
 			}
-			location.reload();
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
 			var message = jqXHR.getResponseHeader("Status");
@@ -192,34 +201,17 @@ window.addRejectMessage = function(reject_msg) {
 }
 
 // 거절메시지(반려/취소사유) 확인
-function getRejectMessage() {
-	res_id = event.currentTarget.closest("td").id;
+function readRejectMessage() {
+	res_id = event.currentTarget.closest("tr").id;
+	var url = "rejectMessage.do?res_id=" + res_id;
 	
-	$.ajax({
-		 type: "GET",
-		url: "/myPage/getRejectMessage.jsp?res_id=" + res_id,
-		dataType: "text",
-		success: function(responseText) {
-			url = "/myPage/rejectMessage.jsp?reject_msg=" + responseText;
-			window.open(url, "childform", "width=400; height=300; left=450; top=130; resizable = no;");
-		},
-		error: function(jqXHR, textStatus, errorThrown) {
-			var message = jqXHR.getResponseHeader("Status");
-			if ((message == null) || (message.length <= 0)) {
-				alert("Error! Request status is " + jqXHR.status);
-			} else {
-				alert(message);	
-			}
-		}
-	});
+	window.open(url, "childform", "width=500; height=300; left=400; top=130; resizable = no;");
 }
 
-//예약 수정
-function editReservation() {
+// 각 항목별 예약정보 확인
+function readReservationInfo() {
+	res_id = event.currentTarget.closest("tr").id;
+	var url = "reservationInfo.do?res_id=" + res_id;
 	
-}
-
-// 상담 기록
-function recodeAConsultation() {
-	
+	window.open(url, "childform", "width=500; height=300; left=400; top=130; resizable = no;");
 }

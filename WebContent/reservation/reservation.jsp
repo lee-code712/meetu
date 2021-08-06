@@ -310,6 +310,14 @@ pageEncoding="UTF-8"%>
 </head>
 
 <body id="reservationBodyBg">
+	<%
+		String isReservated = request.getParameter("isReservated");
+	            
+		if(isReservated != null) {
+			out.println("<script>alert('이미 상담 예약이 신청된 교수님입니다.');</script>");
+		}
+	%>
+	
     <div id="topHeader">
 	    <div id="topHeaderInner">
 	        <div>
