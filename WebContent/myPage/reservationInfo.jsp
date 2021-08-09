@@ -58,12 +58,11 @@
 
 		#infoTitle {
 			font-weight: bold;
-			color: #F7CE68;
 		}
         #infoText {
             margin-top: 10px;
             font-size: 14px;
-            color: #535353;
+            color: #C4C4C4;
         }
     </style>
 </head>
