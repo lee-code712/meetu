@@ -439,7 +439,7 @@ pageEncoding="UTF-8"%>
             float: right;
             width: 260px;
             height: 24px;
-            border: none;
+            border-bottom: 1px solid #eee;
             border-radius: 30px;
             background: #ffffff;
             box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 2px;
@@ -467,6 +467,10 @@ pageEncoding="UTF-8"%>
 
         #profSearchBtn:hover {
             cursor: pointer;
+        }
+        
+        #navBox {
+        	border: none;
         }
     </style>
     <script src="/myPage/js/myPage.js"></script>
