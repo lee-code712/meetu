@@ -36,9 +36,9 @@
 		while(iterator.hasNext()) {
 			ReservationDTO reservation_dto = iterator.next();
 			
-			String res_date = reservation_dto.getResDate();
+			String start_time = reservation_dto.getStartTime();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-			Date date = sdf.parse(res_date);
+			Date date = sdf.parse(start_time);
 			
 			MemberDTO member = null;
 			if(reservation_dto.getSUserId().equals(user_id)) {

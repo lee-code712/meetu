@@ -28,7 +28,7 @@
 			JSONObject r = null; // JSONArray 내에 들어갈 json
 			
 			String res_id = reservations.get(i).getResId();
-			String res_date = reservations.get(i).getResDate();
+			String start_time = reservations.get(i).getStartTime();
 			String reason = reservations.get(i).getReason();
 			int type = reservations.get(i).getType();
 			int approval = reservations.get(i).getState();
@@ -45,7 +45,7 @@
 				
 			r = new JSONObject();
 			r.put("res_id", res_id);
-			r.put("res_date", res_date);
+			r.put("start_time", start_time);
 			r.put("reason", reason);
 			r.put("type", type);
 			r.put("approval", approval);

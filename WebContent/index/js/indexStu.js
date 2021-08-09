@@ -29,14 +29,14 @@ function updatePage (responseText) {
 	
 	count = 0;
 	Array.from(reservations).forEach(function(reservation, idx) {
-		var res_date = reservation.res_date;
+		var start_time = reservation.start_time;
 		var p_name = reservation.p_name;
 		var approval = reservation.approval;
 		var reason = reservation.reason;
 		
 		if(approval == 1 && count < 5) {
 			count++;
-			var res_time = res_date.substring(5,16);
+			var res_time = start_time.substring(5,16);
 			
 			var newDivElement = document.createElement("div");
 			$(newDivElement).attr("id", "cal_msg");

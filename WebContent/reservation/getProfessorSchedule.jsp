@@ -51,17 +51,17 @@
 		for (int i = 0; i < consultableTimes.size(); i++) {
 			JSONObject c = null; // JSONArray 내에 들어갈 json
 	
-			String able_date = consultableTimes.get(i).getAble_date();
-			String able_time = consultableTimes.get(i).getAble_time();
+			String disable_date = consultableTimes.get(i).getDisableDate();
+			String disable_time = consultableTimes.get(i).getDisableTime();
 
 			c = new JSONObject(); // JSONArray 내에 들어갈 json
 	
 			if (p_user_id != null)
 				c.put("p_user_id", p_user_id);
-			if (able_date != null)
-				c.put("able_date", able_date);
-			if (able_time != null)
-				c.put("able_time", able_time);
+			if (disable_date != null)
+				c.put("disable_date", disable_date);
+			if (disable_time != null)
+				c.put("disable_time", disable_time);
 		
 			if (c != null)
 				timeJsonArray.add(c);

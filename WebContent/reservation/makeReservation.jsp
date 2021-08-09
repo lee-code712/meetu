@@ -25,7 +25,7 @@
 	String year = Integer.toString(cal.get(Calendar.YEAR));
 	year = year.substring(2, 4);
 	
-	String res_date = year + "/" + choiceMonth + "/" + choiceDay + " " + startTime + ":00";
+	String start_time = year + "/" + choiceMonth + "/" + choiceDay + " " + startTime + ":00";
 	
 	// 온라인/오프라인 상담 구분. 오프라인 0, 온라인 1
 	int type;
@@ -77,7 +77,7 @@
 	}
 	
 	ReservationDAO reservationDAO = new ReservationDAO();
-	boolean is_added = reservationDAO.makeReservation(univ_dto.getUnivId(), res_date, reason, type, p_user_id, (String)session.getAttribute("user_id"));
+	boolean is_added = reservationDAO.makeReservation(univ_dto.getUnivId(), start_time, reason, type, p_user_id, (String)session.getAttribute("user_id"));
 	
 	if(is_added) {
 		out.println("<script>alert('성공적으로 예약 신청되었습니다.'); location.href='reservationPro.do';</script>");

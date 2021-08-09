@@ -2,7 +2,8 @@ package meetu.dto;
 
 public class ReservationDTO {
 	private String res_id;
-	private String res_date;
+	private String start_time;
+	private String end_time;
 	private String reason;
 	private int type;
 	private int state;
@@ -18,14 +19,22 @@ public class ReservationDTO {
 		this.res_id = res_id;
 	}
 	
-	public String getResDate() {
-		return res_date;
+	public String getStartTime() {
+		return start_time;
 	}
-	
-	public void setResDate(String res_date) {
-		this.res_date = res_date;
+
+	public void setStartTime(String start_time) {
+		this.start_time = start_time;
 	}
-	
+
+	public String getEndTime() {
+		return end_time;
+	}
+
+	public void setEndTime(String end_time) {
+		this.end_time = end_time;
+	}
+
 	public String getReason() {
 		return reason;
 	}

@@ -47,7 +47,8 @@ public class ReservationDAO {
 			if (rs.next()) {
 				ReservationDTO reservation_dto = new ReservationDTO();
 				reservation_dto.setResId(rs.getString("res_id"));
-				reservation_dto.setResDate(rs.getString("res_date"));
+				reservation_dto.setStartTime(rs.getString("start_time"));
+				reservation_dto.setEndTime(rs.getString("end_time"));
 				reservation_dto.setReason(rs.getString("reason"));
 				reservation_dto.setType(rs.getInt("type"));
 				reservation_dto.setState(rs.getInt("state"));
@@ -59,7 +60,8 @@ public class ReservationDAO {
 				while(rs.next()) {
 					reservation_dto = new ReservationDTO();
 					reservation_dto.setResId(rs.getString("res_id"));
-					reservation_dto.setResDate(rs.getString("res_date"));
+					reservation_dto.setStartTime(rs.getString("start_time"));
+					reservation_dto.setEndTime(rs.getString("end_time"));
 					reservation_dto.setReason(rs.getString("reason"));
 					reservation_dto.setType(rs.getInt("type"));
 					reservation_dto.setState(rs.getInt("state"));
@@ -102,7 +104,8 @@ public class ReservationDAO {
 
 			if (rs.next()) {
 				reservation_dto.setResId(rs.getString("res_id"));
-				reservation_dto.setResDate(rs.getString("res_date"));
+				reservation_dto.setStartTime(rs.getString("start_time"));
+				reservation_dto.setEndTime(rs.getString("end_time"));
 				reservation_dto.setReason(rs.getString("reason"));
 				reservation_dto.setType(rs.getInt("type"));
 				reservation_dto.setState(rs.getInt("state"));
@@ -223,18 +226,18 @@ public class ReservationDAO {
 	}
 	
 	// 예약 레코드 추가
-	public boolean makeReservation(String univ, String res_date, String reason, int type, String p_user_id, String s_user_id)throws NamingException/* , SQLException */ {
+	public boolean makeReservation(String univ, String start_time, String reason, int type, String p_user_id, String s_user_id)throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		boolean is_added = false;
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "insert into reservation (res_id, res_date, reason, type, state, p_user_id, s_user_id) ";
+			String sql = "insert into reservation (res_id, start_time, reason, type, state, p_user_id, s_user_id) ";
 			sql += "values (reservation_seq.NEXTVAL, TO_DATE(?,'YY/MM/DD HH24:MI:SS'), ?, ?, 0, ?, ?)";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, res_date);
+			pstmt.setString(1, start_time);
 			pstmt.setString(2, reason);
 			pstmt.setInt(3, type);
 			pstmt.setString(4, p_user_id);
@@ -276,8 +279,8 @@ public class ReservationDAO {
 			while (rs.next()) {
 				ConsultableTimeDTO consultableTime_dto = new ConsultableTimeDTO();
 				
-				consultableTime_dto.setAble_date(rs.getString("able_date"));
-				consultableTime_dto.setAble_time(rs.getString("able_time"));
+				consultableTime_dto.setDisableDate(rs.getString("disable_date"));
+				consultableTime_dto.setDisableTime(rs.getString("disable_time"));
 				consultableTime_dto.setP_user_id(p_user_id);
 				
 				consultableTimes.add(consultableTime_dto);

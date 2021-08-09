@@ -31,7 +31,7 @@ function updatePage(responseText) {
 	var reservations = JSON.parse(responseText);
 	
 	for(var key in reservations) {
-		var res_date = key;
+		var start_time = key;
 		var res_id = reservations[key][0];
 		var state = reservations[key][1];
 		var name = reservations[key][2];
@@ -41,7 +41,7 @@ function updatePage(responseText) {
 			
 		temp_html += "<tr id=" + res_id + ">";
 		if(role == "1") {
-			temp_html += "<td onclick=\"readReservationInfo();\">더보기</td><td>" + name + "교수님</td><td>" + dept_name + "</td><td>" + res_date + "</td>";
+			temp_html += "<td onclick=\"readReservationInfo();\">더보기</td><td>" + name + "교수님</td><td>" + dept_name + "</td><td>" + start_time + "</td>";
 			
 			if(clicked_item == "bookedList") {
 				temp_html += "<td><button id=\"editBtn\" onclick=\"buttonEvent();\">수정하기</button></td>"
@@ -67,7 +67,7 @@ function updatePage(responseText) {
 			}
 		}
 		else {
-			temp_html += "<td onclick=\"readReservationInfo();\">더보기</td><td>" + name + "학생</td><td>" + dept_name + "</td><td>" + res_date + "</td>";
+			temp_html += "<td onclick=\"readReservationInfo();\">더보기</td><td>" + name + "학생</td><td>" + dept_name + "</td><td>" + start_time + "</td>";
 			if(clicked_item == "bookedList") {
 				temp_html += "<td><button id=\"approvalBtn\" onclick=\"buttonEvent();\">승인하기</button></td>";
 				temp_html += "<td><button id=\"rejectBtn\" onclick=\"buttonEvent();\">반려하기</button></td></tr>";

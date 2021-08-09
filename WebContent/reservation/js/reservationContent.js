@@ -212,8 +212,8 @@ function buildCalendar(responseText) {
                 else if (date.getDate() < day && lastDate.getDate() >= day) {
 					// 교수 불가능 일자 disable
 					Array.from(schedules).forEach(function(schedule, i) {
-						var disable_date = schedule.able_date;
-						var disable_time = schedule.able_time;
+						var disable_date = schedule.disable_date;
+						var disable_time = schedule.disable_time;
 						var p_user_id = schedule.p_user_id;
 						
 						var dateObj = new Date(doMonth.getFullYear(), doMonth.getMonth(), Number(day));
@@ -241,8 +241,8 @@ function buildCalendar(responseText) {
                 else if (date.getDate() == day) {
 					// 교수 불가능 일자 disable
 					Array.from(schedules).forEach(function(schedule, i) {
-						var disable_date = schedule.able_date;
-						var disable_time = schedule.able_time;
+						var disable_date = schedule.disable_date;
+						var disable_time = schedule.disable_time;
 						var p_user_id = schedule.p_user_id;
 						
 						// 불가능 일자
@@ -276,8 +276,8 @@ function buildCalendar(responseText) {
                 if (Math.sign(day) == 1 && day <= lastDate.getDate()) {
                     // 교수 불가능 일자 disable
 					Array.from(schedules).forEach(function(schedule, i) {
-						var disable_date = schedule.able_date;
-						var disable_time = schedule.able_time;
+						var disable_date = schedule.disable_date;
+						var disable_time = schedule.disable_time;
 						var p_user_id = schedule.p_user_id;
 						
 						var dateObj = new Date(doMonth.getFullYear(), doMonth.getMonth(), Number(day));
