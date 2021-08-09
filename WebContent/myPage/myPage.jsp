@@ -433,6 +433,41 @@ pageEncoding="UTF-8"%>
             border: none;
             cursor: pointer;
         }
+        
+        #profSearchWrap {
+        	margin-top: 8px;
+            float: right;
+            width: 260px;
+            height: 24px;
+            border: none;
+            border-radius: 30px;
+            background: #ffffff;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 2px;
+        }
+
+        #profSearchText {
+            font-size: 12px;
+            width: 120px;
+            margin: 2px 0 4px 10px;
+            padding-left: 4px;
+            border: 0px;
+            outline: none;
+            float: left;
+            border-radius: 30px;
+        }
+
+        #profSearchBtn {
+            width: 20px;
+            height: 20px;
+            margin: 2px 10px 2px 0;
+            border: none;
+            outline: none;
+            float: right;
+        }
+
+        #profSearchBtn:hover {
+            cursor: pointer;
+        }
     </style>
     <script src="/myPage/js/myPage.js"></script>
 </head>
@@ -486,7 +521,11 @@ pageEncoding="UTF-8"%>
             </td>
 
             <td id="navSub">
-                <ul class="nav nav-tabs">
+            	<div id="profSearchWrap">
+            		<input type="text" placeholder="교수명을 입력하세요." id="profSearchText"/>
+            		<img src="/myPage/images/search.svg" id="profSearchBtn"/>
+            	</div>
+                <ul class="nav nav-tabs" id="navBox">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#qwe" id="bookedList">예약현황</a>
                     </li>
