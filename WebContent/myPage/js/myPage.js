@@ -31,18 +31,25 @@ function updatePage(responseText) {
 	var reservations = JSON.parse(responseText);
 	
 	for(var key in reservations) {
-		var start_time = key;
-		var res_id = reservations[key][0];
-		var state = reservations[key][1];
-		var name = reservations[key][2];
-		var role = reservations[key][3];
-		var dept_name = reservations[key][4];
+		var name = reservations[key][0];
+		var role = reservations[key][1];
+		var res_id = reservations[key][2];
+		var state = reservations[key][3];
+		var start_time = reservations[key][4];
+		var type = reservations[key][5];
+		var office = reservations[key][6];
 		var temp_html = '';
 			
 		temp_html += "<tr id=" + res_id + ">";
+		temp_html += "<td><img src=\"/myPage/images/more.svg\" id=\"moreImg\" onclick=\"readReservationInfo();\"/></td><td>" + name + "</td><td>" + start_time + "</td>";
+		if(type == "오프라인") {
+			temp_html += "<td>" + office + "</td>";
+		}
+		else {
+			temp_html += "<td>" + type + "</td>";
+		}
+		
 		if(role == "1") {
-			temp_html += "<td onclick=\"readReservationInfo();\">더보기</td><td>" + name + "교수님</td><td>" + dept_name + "</td><td>" + start_time + "</td>";
-			
 			if(clicked_item == "bookedList") {
 				temp_html += "<td><button id=\"editBtn\" onclick=\"buttonEvent();\">수정하기</button></td>"
 				temp_html += "<td><button id=\"cancelBtn\" onclick=\"buttonEvent();\">취소하기</button></td></tr>";
@@ -67,7 +74,6 @@ function updatePage(responseText) {
 			}
 		}
 		else {
-			temp_html += "<td onclick=\"readReservationInfo();\">더보기</td><td>" + name + "학생</td><td>" + dept_name + "</td><td>" + start_time + "</td>";
 			if(clicked_item == "bookedList") {
 				temp_html += "<td><button id=\"approvalBtn\" onclick=\"buttonEvent();\">승인하기</button></td>";
 				temp_html += "<td><button id=\"rejectBtn\" onclick=\"buttonEvent();\">반려하기</button></td></tr>";
@@ -106,7 +112,7 @@ function buttonEvent() {
 	}
 	else if(selected_button == "cancelBtn") {
 		if (confirm("선택한 예약을 취소하시겠습니까?") == true) 
-			window.open("/myPage/writeRejectMessage.jsp", "childform", "width=500; height=300; left=400; top=130; resizable = no;");
+			window.open("/myPage/writeRejectMessage.jsp", "childform", "width=500; height=280; left=400; top=150; resizable = no;");
 		else 
 			return;
 	}
@@ -118,7 +124,7 @@ function buttonEvent() {
 	}
 	else if(selected_button == "rejectBtn") {
 		if (confirm("선택한 예약을 반려하시겠습니까?") == true) {
-			window.open("/myPage/writeRejectMessage.jsp", "childform", "width=500; height=300; left=400; top=130; resizable = no;");
+			window.open("/myPage/writeRejectMessage.jsp", "childform", "width=500; height=280; left=400; top=150; resizable = no;");
 		}
 		else 
 			return;
@@ -205,7 +211,7 @@ function readRejectMessage() {
 	res_id = event.currentTarget.closest("tr").id;
 	var url = "rejectMessage.do?res_id=" + res_id;
 	
-	window.open(url, "childform", "width=500; height=300; left=400; top=130; resizable = no;");
+	window.open(url, "childform", "width=500; height=280; left=400; top=150; resizable = no;");
 }
 
 // 각 항목별 예약정보 확인
@@ -213,5 +219,5 @@ function readReservationInfo() {
 	res_id = event.currentTarget.closest("tr").id;
 	var url = "reservationInfo.do?res_id=" + res_id;
 	
-	window.open(url, "childform", "width=500; height=300; left=400; top=130; resizable = no;");
+	window.open(url, "childform", "width=700; height=400; left=300; top=130; resizable = no;");
 }

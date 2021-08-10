@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            min-height: 50vh;
             background-image: url('/myPage/images/rejectMsgBg.svg');
             background-position: center;
             background-size: cover;
@@ -72,26 +72,26 @@
 	    <div id="reservationInfo">
 	        <div id="infoWrap">
 	            <div id="infoTitle">[교수정보]</div>
-	            <div id="infoText">(교수정보)</div>
+	            <div id="infoText">[성명] ${prof_info.get(0)} &nbsp;&nbsp; [학과] ${prof_info.get(1)} &nbsp;&nbsp; [이메일] ${prof_info.get(2)}</div>
 	        </div>
 	        <div id="infoWrap">
 	            <div id="infoTitle">[학생정보]</div>
-	            <div id="infoText">(학생정보)</div>
+	            <div id="infoText">[성명] ${stu_info.get(0)} &nbsp;&nbsp; [학과] ${stu_info.get(1)} (${stu_info.get(2)}) &nbsp;&nbsp; [이메일] ${stu_info.get(3)}</div>
 	        </div>
 	        <div id="infoWrap">
-	            <div id="infoTitle">[상담일시]</div>
-	            <div id="infoText">${reservation_dto.getResDate()}</div>
+	            <div id="infoTitle">[시작시간]</div>
+	            <div id="infoText">${reservation_dto.getStartTime()}</div>
 	        </div>
 	        <div id="infoWrap">
-	            <div id="infoTitle">[상담 신청 사유]</div>
+	            <div id="infoTitle">[종료시간]</div>
+	            <div id="infoText">${reservation_dto.getEndTime()}</div>
+	        </div>
+	        <div id="infoWrap">
+	            <div id="infoTitle">[상담목적]</div>
 	            <div id="infoText">${reservation_dto.getReason()}</div>
 	        </div>
 	        <div id="infoWrap">
-	            <div id="infoTitle">[상담일시]</div>
-	            <div id="infoText">${reservation_dto.getResDate()}</div>
-	        </div>
-	        <div id="infoWrap">
-	            <div id="infoTitle">[상담 유형]</div>
+	            <div id="infoTitle">[상담유형]</div>
 	            <div id="infoText">
 	                <c:choose>
 	                    <c:when test="${reservation_dto.getType() == 0}">오프라인</c:when>

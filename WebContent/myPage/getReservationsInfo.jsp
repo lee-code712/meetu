@@ -47,27 +47,41 @@
 			else {
 				member = (MemberDTO) mem_dao.getMemberInfo(univ, reservation_dto.getSUserId());
 			}
-			DepartmentDTO dept_dto = mem_dao.getDepartmentInfo(member, univ);
-			
+			ProfessorDTO prof_dto = mem_dao.getProfessorInfo(univ, reservation_dto.getPUserId());
+		
 			if(clicked_item.equals("canceledList")) {
 				if(reservation_dto.getState() == 2 || reservation_dto.getState() == 4) {
 					ArrayList<String> mem_list = new ArrayList<>();
-					mem_list.add(reservation_dto.getResId());
-					mem_list.add(Integer.toString(reservation_dto.getState()));
 					mem_list.add(member.getName());
 					mem_list.add(member.getRole());
-					mem_list.add(dept_dto.getDeptName());
+					mem_list.add(reservation_dto.getResId());
+					mem_list.add(Integer.toString(reservation_dto.getState()));
+					mem_list.add(reservation_dto.getStartTime());
+					if(reservation_dto.getType() == 0) {
+						mem_list.add("오프라인");
+					}
+					else {
+						mem_list.add("온라인");
+					}
+					mem_list.add(prof_dto.getOffice());
 					reservation_map.put(date, mem_list);
 				}
 			}
 			else {
 				if(reservation_dto.getState() == state) {
 					ArrayList<String> mem_list = new ArrayList<>();
-					mem_list.add(reservation_dto.getResId());
-					mem_list.add(Integer.toString(reservation_dto.getState()));
 					mem_list.add(member.getName());
 					mem_list.add(member.getRole());
-					mem_list.add(dept_dto.getDeptName());
+					mem_list.add(reservation_dto.getResId());
+					mem_list.add(Integer.toString(reservation_dto.getState()));
+					mem_list.add(reservation_dto.getStartTime());
+					if(reservation_dto.getType() == 0) {
+						mem_list.add("오프라인");
+					}
+					else {
+						mem_list.add("온라인");
+					}
+					mem_list.add(prof_dto.getOffice());
 					reservation_map.put(date, mem_list);
 				}	
 			}

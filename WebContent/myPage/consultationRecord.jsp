@@ -52,8 +52,8 @@
 	                        <c:otherwise>온라인</c:otherwise>
                 		</c:choose>
                 	</div>
-        			<div id="reason">상담이유: ${reservation_dto.getReason()}</div>
-                    <div id="consultDate">상담일시: ${reservation_dto.getResDate()}</div>
+        			<div id="reason">상담목적: ${reservation_dto.getReason()}</div>
+                    <div id="consultDate">상담일시: ${reservation_dto.getStartTime()}</div>
                     <div id="writeName">작성자: ${mem_dto.getName()}</div>
                 </div>
             </div>

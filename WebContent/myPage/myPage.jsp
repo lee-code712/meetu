@@ -434,7 +434,7 @@ pageEncoding="UTF-8"%>
             cursor: pointer;
         }
         
-        #profSearchWrap {
+        #searchWrap {
         	margin-top: 8px;
             float: right;
             width: 260px;
@@ -445,7 +445,7 @@ pageEncoding="UTF-8"%>
             box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 2px;
         }
 
-        #profSearchText {
+        #searchText {
             font-size: 12px;
             width: 120px;
             margin: 2px 0 4px 10px;
@@ -456,7 +456,7 @@ pageEncoding="UTF-8"%>
             border-radius: 30px;
         }
 
-        #profSearchBtn {
+        #searchBtn {
             width: 20px;
             height: 20px;
             margin: 2px 10px 2px 0;
@@ -465,12 +465,17 @@ pageEncoding="UTF-8"%>
             float: right;
         }
 
-        #profSearchBtn:hover {
+        #searchBtn:hover {
             cursor: pointer;
         }
         
         #navBox {
         	border: none;
+        }
+        
+        #moreImg {
+            width: 20px;
+            margin: 4px;
         }
     </style>
     <script src="/myPage/js/myPage.js"></script>
@@ -525,9 +530,16 @@ pageEncoding="UTF-8"%>
             </td>
 
             <td id="navSub">
-            	<div id="profSearchWrap">
-            		<input type="text" placeholder="교수명을 입력하세요." id="profSearchText"/>
-            		<img src="/myPage/images/search.svg" id="profSearchBtn"/>
+            	<div id="searchWrap">
+            		<c:choose>
+	                    <c:when test="${mem_dto.getRole() == 0}">
+	                    	<input type="text" placeholder="교수명으로 검색" id="searchText"/>
+	                    </c:when>
+	                    <c:otherwise>
+	                    	<input type="text" placeholder="학생명으로 검색" id="searchText"/>
+						</c:otherwise>
+	                </c:choose>
+            		<img src="/myPage/images/search.svg" id="searchBtn"/>
             	</div>
                 <ul class="nav nav-tabs" id="navBox">
                     <li class="nav-item">
@@ -550,9 +562,12 @@ pageEncoding="UTF-8"%>
                                 <thead>
                                 <tr id="thBorder">
                                 	<th></th>
-                                    <th>교수명</th>
-                                    <th>학과</th>
-                                    <th>날짜</th>
+                                	<c:choose>
+	                    				<c:when test="${mem_dto.getRole() == 0}"><th>교수명</th></c:when>
+	                    				<c:otherwise><th>학생명</th></c:otherwise>
+	               					</c:choose>
+	               					<th>상담일시</th> 
+	               					<th>장소</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -566,10 +581,13 @@ pageEncoding="UTF-8"%>
                             <table class="boardListWrap">
                                 <thead>
                                 <tr id="thBorder">
-                                	<th></th>
-                                    <th>교수명</th>
-                                    <th>학과</th>
-                                    <th>날짜</th>
+									<th></th>
+                                	<c:choose>
+	                    				<c:when test="${mem_dto.getRole() == 0}"><th>교수명</th></c:when>
+	                    				<c:otherwise><th>학생명</th></c:otherwise>
+	               					</c:choose>
+	               					<th>상담일시</th> 
+	               					<th>장소</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -583,10 +601,13 @@ pageEncoding="UTF-8"%>
                             <table class="boardListWrap">
                                 <thead>
                                 <tr id="thBorder">
-                                	<th></th>
-                                    <th>교수명</th>
-                                    <th>학과</th>
-                                    <th>날짜</th>
+									<th></th>
+                                	<c:choose>
+	                    				<c:when test="${mem_dto.getRole() == 0}"><th>교수명</th></c:when>
+	                    				<c:otherwise><th>학생명</th></c:otherwise>
+	               					</c:choose>
+	               					<th>상담일시</th> 
+	               					<th>장소</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -600,10 +621,13 @@ pageEncoding="UTF-8"%>
                             <table class="boardListWrap">
                                 <thead>
                                 <tr id="thBorder">
-                                	<th></th>
-                                    <th>교수명</th>
-                                    <th>학과</th>
-                                    <th>날짜</th>
+									<th></th>
+                                	<c:choose>
+	                    				<c:when test="${mem_dto.getRole() == 0}"><th>교수명</th></c:when>
+	                    				<c:otherwise><th>학생명</th></c:otherwise>
+	               					</c:choose>
+	               					<th>상담일시</th> 
+	               					<th>장소</th>   
                                 </tr>
                                 </thead>
                                 <tbody>
