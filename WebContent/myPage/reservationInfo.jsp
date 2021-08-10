@@ -72,22 +72,18 @@
 	    <div id="reservationInfo">
 	        <div id="infoWrap">
 	            <div id="infoTitle">[교수정보]</div>
-	            <div id="infoText">[성명] ${prof_info.get(0)} &nbsp;&nbsp; [학과] ${prof_info.get(1)} &nbsp;&nbsp; [이메일] ${prof_info.get(2)}</div>
+	            <div id="infoText">${prof_info.get(1)} ${prof_info.get(0)} ( 이메일: ${prof_info.get(2)} )</div>
 	        </div>
 	        <div id="infoWrap">
 	            <div id="infoTitle">[학생정보]</div>
-	            <div id="infoText">[성명] ${stu_info.get(0)} &nbsp;&nbsp; [학과] ${stu_info.get(1)} (${stu_info.get(2)}) &nbsp;&nbsp; [이메일] ${stu_info.get(3)}</div>
+	            <div id="infoText">${stu_info.get(1)} ${stu_info.get(0)} ( 학년: ${stu_info.get(2)}, 이메일: ${stu_info.get(3)} )</div>
 	        </div>
 	        <div id="infoWrap">
-	            <div id="infoTitle">[시작시간]</div>
-	            <div id="infoText">${reservation_dto.getStartTime()}</div>
+	            <div id="infoTitle">[상담일시]</div>
+	            <div id="infoText">${reservation_dto.getStartTime()} ~ ${reservation_dto.getEndTime()}</div>
 	        </div>
 	        <div id="infoWrap">
-	            <div id="infoTitle">[종료시간]</div>
-	            <div id="infoText">${reservation_dto.getEndTime()}</div>
-	        </div>
-	        <div id="infoWrap">
-	            <div id="infoTitle">[상담목적]</div>
+	            <div id="infoTitle">[상담신청사유]</div>
 	            <div id="infoText">${reservation_dto.getReason()}</div>
 	        </div>
 	        <div id="infoWrap">

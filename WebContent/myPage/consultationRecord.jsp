@@ -44,17 +44,18 @@
     <div id="recordInfoWrap">
         <div id="recordInfo">
             <div id="stuInfoWrap">
-                <div id="stuInfo"><span>[학생 정보]</span> &nbsp; ${stu_dept_dto.getDeptName()} ${stu_mem_dto.getName()} ( ${stu_mem_dto.getMemberId()} )</div>
+            	<div id="profInfo"><span>[교수 정보]</span> &nbsp; ${prof_info.get(1)} ${prof_info.get(0)} ( 교번: ${prof_info.get(2)} )</div>
+                <div id="stuInfo"><span>[학생 정보]</span> &nbsp; ${stu_info.get(1)} ${stu_info.get(0)} ( 학년: ${stu_info.get(2)}, 학번: ${stu_info.get(3)} )</div>
                 <div id="writerWrap">
-                	<div id="type">상담유형:
-                		<c:choose>
+                	<div id="type">상담일시: ${reservation_dto.getStartTime()} ~ ${reservation_dto.getEndTime()}</div>
+        			<div id="reason">상담신청사유: ${reservation_dto.getReason()}</div>
+                    <div id="consultDate">상담유형: 
+                    	<c:choose>
 	                        <c:when test="${reservation_dto.getType() == 0}">오프라인</c:when>
 	                        <c:otherwise>온라인</c:otherwise>
                 		</c:choose>
-                	</div>
-        			<div id="reason">상담목적: ${reservation_dto.getReason()}</div>
-                    <div id="consultDate">상담일시: ${reservation_dto.getStartTime()}</div>
-                    <div id="writeName">작성자: ${mem_dto.getName()}</div>
+                    </div>
+                    <div id="writeName">작성자: ${prof_info.get(0)}</div>
                 </div>
             </div>
         </div>

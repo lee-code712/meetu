@@ -280,10 +280,13 @@ a:hover {
     justify-content: space-between;
 }
 
+#profInfo,
 #stuInfo {
     font-size: 14px;
+    margin-bottom: 4px;
 }
 
+#profInfo span,
 #stuInfo span {
     color: #FBAB7E;
     font-weight: bold;

@@ -539,7 +539,7 @@ pageEncoding="UTF-8"%>
 	                    	<input type="text" placeholder="학생명으로 검색" id="searchText"/>
 						</c:otherwise>
 	                </c:choose>
-            		<img src="/myPage/images/search.svg" id="searchBtn"/>
+            		<img src="/myPage/images/search.svg" id="searchBtn" onclick="search()"/>
             	</div>
                 <ul class="nav nav-tabs" id="navBox">
                     <li class="nav-item">
