@@ -138,7 +138,7 @@ function buttonEvent() {
 	}
 	else if(selected_button == "cancelBtn") {
 		if (confirm("선택한 예약을 취소하시겠습니까?") == true) 
-			window.open("/myPage/writeRejectMessage.jsp", "childform", "width=500; height=280; left=400; top=150; resizable = no;");
+			window.open("writeRejectMessagePage.do", "childform", "width=500; height=280; left=400; top=150; resizable = no;");
 		else 
 			return;
 	}
@@ -150,7 +150,7 @@ function buttonEvent() {
 	}
 	else if(selected_button == "rejectBtn") {
 		if (confirm("선택한 예약을 반려하시겠습니까?") == true) {
-			window.open("/myPage/writeRejectMessage.jsp", "childform", "width=500; height=280; left=400; top=150; resizable = no;");
+			window.open("writeRejectMessagePage.do", "childform", "width=500; height=280; left=400; top=150; resizable = no;");
 		}
 		else 
 			return;
@@ -163,7 +163,7 @@ function buttonEvent() {
 			return;
 	}
 	else if(selected_button == "consultationRecordBtn") {
-		location.href="consultationRecord.do?res_id=" + res_id;
+		location.href="consultationRecordPage.do?res_id=" + res_id;
 	}
 }
 
@@ -173,7 +173,7 @@ function changeReservationState() {
 	
 	$.ajax({
 		 type: "POST",
-		url: "/myPage/changeReservationState.jsp",
+		url: "changeReservationState.do",
 		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 		data: data,
 		dataType: "text",
@@ -192,7 +192,7 @@ function changeReservationState() {
 			}
 			else if(selected_button == "consultedBtn") {
 				if (confirm("상담일지를 지금 기록하시겠습니까? 기록한 내역은 학교측에 전달됩니다.\n[마이페이지]-[상담완료]에서 작성 및 수정이 가능합니다.") == true) {
-					location.href="consultationRecord.do?res_id=" + res_id;
+					location.href="consultationRecordPage.do?res_id=" + res_id;
 				}
 				else {
 					alert("완료되었습니다.");
@@ -216,7 +216,7 @@ window.addRejectMessage = function(reject_msg) {
 	var data = {"res_id":res_id, "reject_msg":reject_msg};
 	$.ajax({
 		 type: "POST",
-		url: "/myPage/addRejectMessage.jsp",
+		url: "addRejectMessage.do",
 		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 		data: data,
 		dataType: "text",
@@ -235,7 +235,7 @@ window.addRejectMessage = function(reject_msg) {
 // 거절메시지(반려/취소사유) 확인
 function readRejectMessage() {
 	res_id = event.currentTarget.closest("tr").id;
-	var url = "rejectMessage.do?res_id=" + res_id;
+	var url = "rejectMessagePage.do?res_id=" + res_id;
 	
 	window.open(url, "childform", "width=500; height=280; left=400; top=150; resizable = no;");
 }
@@ -243,7 +243,7 @@ function readRejectMessage() {
 // 각 항목별 예약정보 확인
 function readReservationInfo() {
 	res_id = event.currentTarget.closest("tr").id;
-	var url = "reservationInfo.do?res_id=" + res_id;
+	var url = "reservationInfoPage.do?res_id=" + res_id;
 	
 	window.open(url, "childform", "width=700; height=400; left=300; top=130; resizable = no;");
 }

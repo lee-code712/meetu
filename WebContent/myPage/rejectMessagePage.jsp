@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-	<title>Insert title here</title>
-	<style>
+    <meta charset="UTF-8">
+    <title>반려/취소 사유</title>
+    <style>
         #rejectMsgBg {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 50vh;
+            min-height: 100vh;
             background-image: url('/myPage/images/rejectMsgBg.svg');
             background-position: center;
             background-size: cover;
@@ -29,46 +30,33 @@
             color: #535353;
         }
 
-        #saveBtnWrap {
-        	display: flex;
+        #closeBtnWrap {
+            display: flex;
             justify-content: flex-end;
-            
+            align-items: flex-end;
             width: 100%;
             height: 100%;
 
         }
 
-        #saveBtn {
+        #closeBtn {
             background: none;
             border: none;
             color: #FBAB7E;
             font-size: 14px;
         }
 
-        #saveBtn:hover {
+        #closeBtn:hover {
             cursor: pointer;
         }
     </style>
-    
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script>
-		function returnMessage() {
-			var reject_msg = $("#rejectMsg").val();
-			if(reject_msg == "") {
-				alert("사유를 입력해주세요.");
-				return;
-			}
-			opener.addRejectMessage(reject_msg);
-			window.close();
-		}
-	</script>
 </head>
 
 <body id="rejectMsgBg">
 	<div id="rejectMsgWrap">
-	    <textarea id="rejectMsg" style="resize: none; border: none;" rows="10" cols="65"></textarea>
-	    <div id="saveBtnWrap">
-	        <button onclick="returnMessage()" id="saveBtn">저장</button>
+	    <div id="rejectMsg">${reject_msg}</div>
+	    <div id="closeBtnWrap">
+	        <button onclick="window.close()" id="closeBtn">닫기</button>
 	    </div>
 	</div>
 </body>

@@ -1,14 +1,15 @@
-package meetu.action;
+package meetu.action.mypage;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import meetu.action.CommandAction;
 import meetu.dao.ReservationDAO;
 import meetu.dto.ReservationDTO;
 import meetu.dto.UniversityDTO;
 
-public class RejectMessageAction implements CommandAction {
+public class RejectMessagePageAction implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
@@ -26,7 +27,7 @@ public class RejectMessageAction implements CommandAction {
 		
 		req.setAttribute("reject_msg", reject_msg);
 		
-		return "/myPage/rejectMessage.jsp";
+		return "/myPage/rejectMessagePage.jsp";
 	}
 
 }

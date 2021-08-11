@@ -1,15 +1,17 @@
-package meetu.action;
+package meetu.action.mypage;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.util.ArrayList;
+
+import meetu.action.CommandAction;
 import meetu.dao.MemberDAO;
 import meetu.dao.ReservationDAO;
 import meetu.dto.*;
 
-public class ReservationInfoAction implements CommandAction {
+public class ReservationInfoPageAction implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
@@ -49,7 +51,7 @@ public class ReservationInfoAction implements CommandAction {
 		req.setAttribute("stu_info", stu_info);
 		req.setAttribute("prof_info", prof_info);
 		
-		return "/myPage/reservationInfo.jsp";
+		return "/myPage/reservationInfoPage.jsp";
 	}
 
 }
