@@ -129,7 +129,7 @@ pageEncoding="UTF-8"%>
     </div>
     <div id="writeBtnWrap">
     	<c:if test="${mem_dto.getRole()=='2'}">
-	    	<button id="writeBtn" onclick="location.href='noticeWrite.do'">글쓰기</button>
+	    	<button id="writeBtn" onclick="location.href='noticeWritePage.do'">글쓰기</button>
 		</c:if>       
     </div>
 </body>

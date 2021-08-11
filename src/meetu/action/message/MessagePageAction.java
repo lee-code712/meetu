@@ -1,4 +1,4 @@
-package meetu.action;
+package meetu.action.message;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,10 +8,11 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import meetu.action.CommandAction;
 import meetu.dao.*;
 import meetu.dto.*;
 
-public class MessageAction implements CommandAction {
+public class MessagePageAction implements CommandAction {
 	
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
@@ -53,6 +54,6 @@ public class MessageAction implements CommandAction {
 			req.setAttribute("msg_mem", mem_map);
 		}
 		
-		return "/message/message.jsp";
+		return "/message/messagePage.jsp";
 	}
 }

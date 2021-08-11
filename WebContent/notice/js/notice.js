@@ -112,7 +112,7 @@ function updateNotices(responseText) {
 		var views = notices[key].views;
 		var temp_html = '';
 		
-		temp_html += "<tr id=\"boardList\" onclick=\"location.href='noticeContent.do?no=" + notice_id + "'\">";
+		temp_html += "<tr id=\"boardList\" onclick=\"location.href='noticeContentPage.do?no=" + notice_id + "'\">";
 		temp_html += "<td>" + key + "</td> <td>" + title + "</td> <td>MEETU 관리자</td>";
 		temp_html += "<td>" + write_date + "</td> <td>" + views + "</td>";
 		temp_html += "</tr>";

@@ -69,7 +69,7 @@ function sendMessage() {
 		
 		$.ajax({
 	 		type: "POST",
-			url: "/message/addMessage.jsp",
+			url: "addMessage.do",
 			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 			data: data,
 			dataType: "text",

@@ -13,7 +13,7 @@ function addNotice() {
 		
 		$.ajax({
 		 	type: "POST",
-			url: "/notice/addNotice.jsp",
+			url: "addNotice.do",
 			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 			data: data,
 			dataType: "text",

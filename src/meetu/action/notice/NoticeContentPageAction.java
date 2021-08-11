@@ -1,14 +1,15 @@
-package meetu.action;
+package meetu.action.notice;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import meetu.action.CommandAction;
 import meetu.dao.NoticeDAO;
 import meetu.dto.UniversityDTO;
 import meetu.dto.NoticeDTO;
 
-public class NoticeContentAction implements CommandAction {
+public class NoticeContentPageAction implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
@@ -23,7 +24,7 @@ public class NoticeContentAction implements CommandAction {
 		
 		req.setAttribute("notice_dto", notice_dto);
 		
-		return "/notice/noticeContent.jsp";
+		return "/notice/noticeContentPage.jsp";
 	}
 
 }

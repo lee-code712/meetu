@@ -3,7 +3,7 @@ function deleteNotice() {
 
 	$.ajax({
 		 type: "POST",
-		url: "/notice/deleteNotice.jsp",
+		url: "deleteNotice.do",
 		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 		data: data,
 		dataType: "text",
