@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="/myPage/css/record.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="/myPage/js/consultationRecord.js"></script>
+    <script src="/myPage/js/consultationRecord.js"></script>
 </head>
-<body>
+
+<body id="consultationRPBg">
 <div id="topHeader">
     <div id="topHeaderInner">
         <div>
@@ -41,39 +42,46 @@
 </div>
 
 <div id="recordPageWrap">
-    <div id="recordInfoWrap">
-        <div id="recordInfo">
-            <div id="stuInfoWrap">
-            	<div id="profInfo"><span>[교수 정보]</span> &nbsp; ${prof_info.get(1)} ${prof_info.get(0)} ( 교번: ${prof_info.get(2)} )</div>
-                <div id="stuInfo"><span>[학생 정보]</span> &nbsp; ${stu_info.get(1)} ${stu_info.get(0)} ( 학년: ${stu_info.get(2)}, 학번: ${stu_info.get(3)} )</div>
-                <div id="writerWrap">
-                	<div id="type">상담일시: ${reservation_dto.getStartTime()} ~ ${reservation_dto.getEndTime()}</div>
-        			<div id="reason">상담신청사유: ${reservation_dto.getReason()}</div>
-                    <div id="consultDate">상담유형: 
-                    	<c:choose>
-	                        <c:when test="${reservation_dto.getType() == 0}">오프라인</c:when>
-	                        <c:otherwise>온라인</c:otherwise>
-                		</c:choose>
-                    </div>
-                    <div id="writeName">작성자: ${prof_info.get(0)}</div>
+    <div id="consultStuInfoWrap">
+        <div id="consultationRPTitle">
+            상담일지
+        </div>
+        <div id="consultStuInfo">
+            <div id="consultStuInfoTit">
+                [학생정보]
+            </div>
+            <div id="consultStuInfoContent">
+                <div id="consultStuInfoText">${stu_info.get(1)} ${stu_info.get(0)} <br/> ( 학년: ${stu_info.get(2)}, 학번:
+                    ${stu_info.get(3)} )
+                </div>
+                <div id="type">상담일시: ${reservation_dto.getStartTime()} ~ ${reservation_dto.getEndTime()}</div>
+                <div id="reason">상담신청사유: ${reservation_dto.getReason()}</div>
+                <div id="consultDate">상담유형:
+                    <c:choose>
+                        <c:when test="${reservation_dto.getType() == 0}">오프라인</c:when>
+                        <c:otherwise>온라인</c:otherwise>
+                    </c:choose>
+                </div>
+                <div id="writeName">작성자: ${prof_info.get(1)} ${prof_info.get(0)} <br/> ( 교번: ${prof_info.get(2)} )
                 </div>
             </div>
         </div>
-        <div id="recordWrap">
-            <div id="recordTitle">상담일지</div>
-            <div id="recordTextWrap">
-            	<c:choose>
-                        <c:when test="${consult_dto.getContent() == ' '}">
-  							<textarea id="recordText" name="story" rows="30" cols="120" placeholder="내용을 입력하세요."></textarea>
-                        </c:when>
-                        <c:otherwise>
-							<textarea id="recordText" name="story" rows="30" cols="120" placeholder="내용을 입력하세요.">${consult_dto.getContent()}</textarea>
-                        </c:otherwise>
-                </c:choose>
-            </div>
-            <button id="backBtn" onclick="history.back();">닫기</button>
-            <button id="saveBtn" onclick="updateContent();">저장</button>
+    </div>
+    <div id="recordWrap">
+        <div id="recordTitle">(학생이름)</div>
+        <div id="recordTextWrap">
+            <c:choose>
+                <c:when test="${consult_dto.getContent() == ' '}">
+                    <textarea id="recordText" name="story" rows="30" cols="120" placeholder="내용을 입력하세요."></textarea>
+                </c:when>
+                <c:otherwise>
+                     <textarea id="recordText" name="story" rows="30" cols="120" placeholder="내용을 입력하세요.">${consult_dto.getContent()}</textarea>
+                 </c:otherwise>
+            </c:choose>
         </div>
+
+        <button id="backBtn" onclick="history.back();">닫기</button>
+        <button id="saveBtn" onclick="updateContent();">저장</button>
     </div>
 </div>
 </body>
