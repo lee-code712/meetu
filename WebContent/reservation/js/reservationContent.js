@@ -1,16 +1,27 @@
-isTimeBoxClicked = false;
-isTimeBoxMidClicked = false;
-isTypeBtnOffClicked = false;
-isTypeBtnOnClicked = false;
-
-document.addEventListener("DOMContentLoaded", function () {
-	buildCalendar();
-});
-
-$(document).ready(function(){ // html이 로드되면 실행됨  
+$(document).ready(function(){ // html이 로드되면 실행됨 
+	$(".startTimeBox").css("display", "flex");
+	$(".startTimeBox").css("align-items", "center");
+	$(".startTimeBox").css("justify-content", "center");
+	$(".startTimeBox").css("height", "40px");
+	$(".startTimeBox").css("width", "96px");
+	$(".startTimeBox").css("border", "1px solid #C4C4C4");
+	$(".startTimeBox").css("border-radius", "5px");
+	$(".startTimeBox").css("text-align", "center");
+	$(".startTimeBox").css("font-weight", "regular");
+	$(".startTimeBox").css("background", "#FFFFFF");
+	
+	$(".timeBox").css("display", "flex");
+	$(".timeBox").css("align-items", "center");
+	$(".timeBox").css("justify-content", "center");
+	$(".timeBox").css("height", "40px");
+	$(".timeBox").css("width", "96px");
+	$(".timeBox").css("border", "1px solid #C4C4C4");
+	$(".timeBox").css("border-radius", "5px");
+	$(".timeBox").css("text-align", "center");
+	$(".timeBox").css("font-weight", "regular");
+	$(".timeBox").css("background", "#FFFFFF");
+	
 	// 각 버튼에 click 이벤트 설정
-  	$(".startTimeBox").click(startTimeBoxClick);
-	$(".timeBox").click(timeBoxClick);
 	$("#typeBtnOff").click(typeBtnOffClick);
 	$("#typeBtnOn").click(typeBtnOnClick);
 	$(".reservationBtn").click(reservationBtnClick);
@@ -31,7 +42,7 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 	
 	$(".mylist").append(newInputElement);
 	
-	// ajax로 교수 상담 가능 시간 받아오기
+	// ajax로 교수 상담 가능 시간 받아와 캘린더 생성
 	$.ajax({
 	 	type: "GET",
 		url: "/reservation/getProfessorSchedule.jsp?prof_email=" + content,
@@ -46,8 +57,8 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 			}
 		}
 	});
-	
 });
+
 
 var today = new Date(); // @param 전역 변수, 오늘 날짜 / 내 컴퓨터 로컬을 기준으로 today에 Date 객체를 넣어줌
 var date = new Date();  // @param 전역 변수, today의 Date를 세어주는 역할
@@ -142,10 +153,8 @@ function buildCalendar(responseText) {
 
     let tbCalendar = document.querySelector(".scriptCalendar > tbody");
 
-
-    document.getElementById("calYear").innerText = today.getFullYear();                                  // @param YYYY월
+    document.getElementById("calYear").innerText = today.getFullYear();		// @param YYYY월
     document.getElementById("calMonth").innerText = autoLeftPad((today.getMonth() + 1), 2);   // @param MM월
-
 
     // @details 이전 캘린더의 출력결과가 남아있다면, 이전 캘린더를 삭제한다.
     while (tbCalendar.rows.length > 0) {
@@ -155,12 +164,11 @@ function buildCalendar(responseText) {
     // @param 첫번째 개행
     let row = tbCalendar.insertRow();
 
-
     // @param 날짜가 표기될 열의 증가값
     let dom = 1;
 
     // @details 시작일의 요일값( doMonth.getDay() ) + 해당월의 전체일( lastDate.getDate())을  더해준 값에서
-    //               7로 나눈값을 올림( Math.ceil() )하고 다시 시작일의 요일값( doMonth.getDay() )을 빼준다.
+    // 7로 나눈값을 올림( Math.ceil() )하고 다시 시작일의 요일값( doMonth.getDay() )을 빼준다.
 
     let daysLength = (Math.ceil((doMonth.getDay() + lastDate.getDate()) / 7) * 7) - doMonth.getDay();
 
@@ -219,22 +227,17 @@ function buildCalendar(responseText) {
 						var dateObj = new Date(doMonth.getFullYear(), doMonth.getMonth(), Number(day));
 						
 						// 불가능 일자
-						if (dateObj.getDay() == disable_date && disable_time == "09:00~19:00") { // 해당 일이 아예 상담 불가능한 경우
+						if (dateObj.getDay() == (disable_date) && disable_time == "09:00~19:00") { // 해당 일이 아예 상담 불가능한 경우
 							column.style.color = "#E5E5E5";
 						}
-						else if (dateObj.getDay() != (disable_date - 1) && disable_time != "09:00~19:00") {
+						else if (dateObj.getDay() != (disable_date - 1)) {
 							// alert("getDay(): " + (dateObj.getDay() - 1) + ", disable_date: " + disable_date + ", disable_time: " + disable_time);
 							column.style.backgroundColor = "#FFFFFF";
                     		column.style.cursor = "pointer";
                     		column.onclick = function () {
-                        		calendarChoiceDay(this);
+                        		calendarChoiceDay(this, schedules);
                     		}
 						}
-						
-						// 불가능 시작 시간
-						
-						// 불가능 시간
-						
 					});
                 }
 
@@ -257,14 +260,9 @@ function buildCalendar(responseText) {
 							column.style.backgroundColor = "#FBAB7E";
                     		column.style.cursor = "pointer";
                     		column.onclick = function () {
-                        		calendarChoiceDay(this);
+                        		calendarChoiceDay(this, schedules);
                     		}
 						}
-						
-						// 불가능 시작 시간
-						
-						// 불가능 시간
-						
 					});
                 }
 
@@ -294,14 +292,9 @@ function buildCalendar(responseText) {
 							column.style.backgroundColor = "#FFFFFF";
                     		column.style.cursor = "pointer";
                     		column.onclick = function () {
-                        		calendarChoiceDay(this);
+                        		calendarChoiceDay(this, schedules);
                     		}
 						}
-						
-						// 불가능 시작 시간
-						
-						// 불가능 시간
-						
 					});
                 }
             }
@@ -320,7 +313,7 @@ function buildCalendar(responseText) {
                 column.style.backgroundColor = "#FFFFFF";
                 column.style.cursor = "pointer";
                 column.onclick = function () {
-                    calendarChoiceDay(this);
+                    calendarChoiceDay(this, schedules);
                 }
             }
         }
@@ -333,7 +326,7 @@ function buildCalendar(responseText) {
  * @brief   날짜 선택
  * @details 사용자가 선택한 날짜에 체크표시를 남긴다.
  */
-function calendarChoiceDay(column) {
+function calendarChoiceDay(column, schedules) {
     // @param 기존 선택일이 존재하는 경우 기존 선택일의 표시형식을 초기화 한다.
     if (document.getElementsByClassName("choiceDay")[0]) {
         document.getElementsByClassName("choiceDay")[0].style.backgroundColor = "#FFFFFF";
@@ -372,6 +365,54 @@ function calendarChoiceDay(column) {
     $(newInputMonthElement).attr("value", contentMonth);
 
     $("#contentBody").append(newInputMonthElement);
+
+	// 추가 - startTimeBox, timeBox onclick 이벤트 생성
+	let doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+	
+	// startTimeBox
+	var all_able_day = true;
+	
+	Array.from(schedules).forEach(function(schedule, i) {
+		var disable_date = schedule.disable_date;
+		var disable_time = schedule.disable_time;
+		var p_user_id = schedule.p_user_id;
+		
+		var dateObj = new Date(doMonth.getFullYear(), doMonth.getMonth(), Number(contentDay));
+		// alert("getDay(): " + (dateObj.getDay()) + ", disable_date: " + disable_date + ", disable_time: " + disable_time);
+		if (disable_time != "09:00~19:00") { // 전체 불가능 일이 아니고
+			if (dateObj.getDay() == disable_date) { // 선택 요일이 disable_date인 경우
+				all_able_day = false;
+				
+				// 불가능 시작 시간
+				var disable_timeArr = disable_time.split("~");
+				var c = document.getElementsByClassName("startTimeBox");
+				var j = 0;
+				
+				while ($(c[j]).attr("id") != disable_timeArr[0]) {
+					$(c[j]).click(startTimeBoxClick);
+					j++;
+				}
+				
+				while ($(c[j]).attr("id") != disable_timeArr[1]) {
+					$(c[j]).unbind("hover");
+					c[j].style.backgroundColor = "#E5E5E5";
+					j++;
+				}
+				
+				while ($(c[j]).attr("id") != "17:00") {
+					$(c[j]).click(startTimeBoxClick);
+					j++;
+				}
+			}
+		}
+	});
+	
+	if (all_able_day) {
+		var classes = document.getElementsByClassName("startTimeBox");
+		Array.from(classes).forEach(function(c, i) {
+			$(c).click(startTimeBoxClick);
+		});
+	}
 }
 
 /**
@@ -384,29 +425,16 @@ function autoLeftPad(num, digit) {
     if (String(num).length < digit) {
         num = new Array(digit - String(num).length + 1).join("0") + num;
     }
-    return num;
 
+    return num;
 }
 
-
-function startTimeBoxClick() { // 시간 선택되어 있으면 닫히도록
-	$(".startTimeBox").css("display", "flex");
-	$(".startTimeBox").css("align-items", "center");
-	$(".startTimeBox").css("justify-content", "center");
-	$(".startTimeBox").css("height", "40px");
-	$(".startTimeBox").css("width", "96px");
-	$(".startTimeBox").css("border", "1px solid #C4C4C4");
-	$(".startTimeBox").css("border-radius", "5px");
-	$(".startTimeBox").css("text-align", "center");
-	$(".startTimeBox").css("font-weight", "regular");
-	$(".startTimeBox").css("cursor", "pointer");
-	$(".startTimeBox").css("background", "#FFFFFF");
-	
+function startTimeBoxClick() { // 매개변수 받도록
 	if(!$("#choiceDay").attr("value")) {
 		alert("상담 날짜를 먼저 선택해 주세요.");
 		return false;
 	}
-
+	
 	var timeBox = this;
 	
 	$(timeBox).css("display", "flex");
@@ -437,18 +465,6 @@ function startTimeBoxClick() { // 시간 선택되어 있으면 닫히도록
 }
 
 function timeBoxClick() { // 시작 시간 선택되어 있으면 닫히도록
-	$(".timeBox").css("display", "flex");
-	$(".timeBox").css("align-items", "center");
-	$(".tTimeBox").css("justify-content", "center");
-	$(".timeBox").css("height", "40px");
-	$(".timeBox").css("width", "96px");
-	$(".timeBox").css("border", "1px solid #C4C4C4");
-	$(".timeBox").css("border-radius", "5px");
-	$(".timeBox").css("text-align", "center");
-	$(".timeBox").css("font-weight", "regular");
-	$(".timeBox").css("cursor", "pointer");
-	$(".timeBox").css("background", "#FFFFFF");
-	
 	if(!$("#choiceDay").attr("value")) {
 		alert("상담 날짜를 먼저 선택해 주세요.");
 		return false;
@@ -458,7 +474,7 @@ function timeBoxClick() { // 시작 시간 선택되어 있으면 닫히도록
 		alert("상담 시작 시간을 먼저 선택해 주세요.");
 		return false;
 	}
-
+	
 	var timeBox = this;
 	
 	$(timeBox).css("display", "flex");

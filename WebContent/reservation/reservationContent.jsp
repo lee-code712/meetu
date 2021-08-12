@@ -11,31 +11,30 @@ pageEncoding="UTF-8"%>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/reservation/js/reservationContent.js"></script>
-
     <script>
-        $(function () {
-            var btn1 = $(".startTimeBox")
-            btn1.find("a").click(function () {
-                btn1.removeClass("active");
-                $(this).parent().addClass("active");
-            })
-        })
-
-        $(function () {
-            var btn2 = $(".timeBox")
-            btn2.find("a").click(function () {
-                btn2.removeClass("active");
-                $(this).parent().addClass("active");
-            })
-        })
-
-        $(function () {
-            var btn3 = $(".typeBtn")
-            btn3.find("a").click(function () {
-                btn3.removeClass("active");
-                $(this).parent().addClass("active");
-            })
-        })
+	    $(function () {
+	        var btn1 = $(".startTimeBox")
+	        btn1.find("a").click(function () {
+	            btn1.removeClass("active");
+	            $(this).parent().addClass("active");
+	        })
+	    })
+	
+	    $(function () {
+	        var btn2 = $(".timeBox")
+	        btn2.find("a").click(function () {
+	            btn2.removeClass("active");
+	            $(this).parent().addClass("active");
+	        })
+	    })
+	
+	    $(function () {
+	        var btn3 = $(".typeBtn")
+	        btn3.find("a").click(function () {
+	            btn3.removeClass("active");
+	            $(this).parent().addClass("active");
+	        })
+	    })
     </script>
 
     <style type="text/css">
@@ -319,16 +318,14 @@ pageEncoding="UTF-8"%>
             display: flex;
             align-items: center;
             justify-content: center;
-
             height: 40px;
             width: 96px;
             border: 1px solid #C4C4C4;
             border-radius: 5px;
             text-align: center;
             font-weight: regular;
-            cursor: pointer;
         }
-
+        
         .startTimeBox:hover > a {
             display: flex;
             align-items: center;
@@ -342,9 +339,8 @@ pageEncoding="UTF-8"%>
             border: 1px solid #F8CA6B;
             background: #F8CA6B;
             color: white;
-
         }
-
+        
         .timeBox {
             display: flex;
             align-items: center;
@@ -356,9 +352,8 @@ pageEncoding="UTF-8"%>
             border-radius: 5px;
             text-align: center;
             font-weight: regular;
-            cursor: pointer;
         }
-
+        
         .timeBox:hover,
         .startTimeBox:hover {
             display: flex;
@@ -374,22 +369,7 @@ pageEncoding="UTF-8"%>
             background: #F8CA6B;
             color: white;
         }
-
-        .typeBtn:hover {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 40px;
-            width: 96px;
-            border-radius: 50px;
-            text-align: center;
-            font-weight: regular;
-            cursor: pointer;
-            border: 1px solid #F8CA6B;
-            background: #F8CA6B;
-            color: white;
-        }
-
+        
         .timeBox:hover > a {
             display: flex;
             align-items: center;
@@ -425,6 +405,21 @@ pageEncoding="UTF-8"%>
             text-align: center;
             font-weight: regular;
             cursor: pointer;
+        }
+
+        .typeBtn:hover {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            width: 96px;
+            border-radius: 50px;
+            text-align: center;
+            font-weight: regular;
+            cursor: pointer;
+            border: 1px solid #F8CA6B;
+            background: #F8CA6B;
+            color: white;
         }
 
         .typeBtn:hover > a,
@@ -716,19 +711,19 @@ pageEncoding="UTF-8"%>
                                 </div>
                                 <div>
                                     <div class="timeBoxWrap">
-                                        <div class="startTimeBox" id="9am"><a>9:00</a></div>
-                                        <div class="startTimeBox" id="10am"><a>10:00</a></div>
-                                        <div class="startTimeBox" id=11am"><a>11:00</a></div>
+                                        <div class="startTimeBox" id="9:00"><a>9:00</a></div>
+                                        <div class="startTimeBox" id="10:00"><a>10:00</a></div>
+                                        <div class="startTimeBox" id="11:00"><a>11:00</a></div>
                                     </div>
                                     <div class="timeBoxWrap">
-                                        <div class="startTimeBox" id="12pm"><a>12:00</a></div>
-                                        <div class="startTimeBox" id="13pm"><a>13:00</a></div>
-                                        <div class="startTimeBox" id="14pm"><a>14:00</a></div>
+                                        <div class="startTimeBox" id="12:00"><a>12:00</a></div>
+                                        <div class="startTimeBox" id="13:00"><a>13:00</a></div>
+                                        <div class="startTimeBox" id="14:00"><a>14:00</a></div>
                                     </div>
                                     <div class="timeBoxWrap">
-                                        <div class="startTimeBox" id="15pm"><a>15:00</a></div>
-                                        <div class="startTimeBox" id="16pm"><a>16:00</a></div>
-                                        <div class="startTimeBox" id="17pm"><a>17:00</a></div>
+                                        <div class="startTimeBox" id="15:00"><a>15:00</a></div>
+                                        <div class="startTimeBox" id="16:00"><a>16:00</a></div>
+                                        <div class="startTimeBox" id="17:00"><a>17:00</a></div>
                                     </div>
                                 </div>
                                 <br/>
