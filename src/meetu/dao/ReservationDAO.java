@@ -233,7 +233,7 @@ public class ReservationDAO {
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "insert into reservation (res_id, start_time, reason, type, state, p_user_id, s_user_id) ";
+			String sql = "insert into reservation (res_id, start_time, reason, type, approval, p_user_id, s_user_id) ";
 			sql += "values (reservation_seq.NEXTVAL, TO_DATE(?,'YY/MM/DD HH24:MI:SS'), ?, ?, 0, ?, ?)";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -316,7 +316,7 @@ public class ReservationDAO {
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-				if(rs.getString("state").equals("0") || rs.getString("state").equals("1")) {
+				if(rs.getString("approval").equals("0") || rs.getString("approval").equals("1")) {
 					return true;
 				}
 			}

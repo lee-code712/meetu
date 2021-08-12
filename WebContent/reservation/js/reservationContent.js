@@ -1,5 +1,6 @@
 $(document).ready(function(){ // html이 로드되면 실행됨 
 	// 각 버튼에 click 이벤트 설정
+	$(".timeBox").click(timeBoxClick);
 	$("#typeBtnOff").click(typeBtnOffClick);
 	$("#typeBtnOn").click(typeBtnOnClick);
 	$(".reservationBtn").click(reservationBtnClick);
