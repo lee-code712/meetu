@@ -205,11 +205,13 @@ function buildCalendar(responseText) {
 						var dateObj = new Date(doMonth.getFullYear(), doMonth.getMonth(), Number(day));
 						
 						// 불가능 일자
-						if (dateObj.getDay() == (disable_date) && disable_time == "09:00~19:00") { // 해당 일이 아예 상담 불가능한 경우
+						if (dateObj.getDay() == disable_date && disable_time == "09:00~19:00") { // 해당 일이 아예 상담 불가능한 경우
 							column.style.color = "#E5E5E5";
+							$(column).attr("disabledDate", "true");
+							// $(column).off("click");
 						}
-						else if (dateObj.getDay() != (disable_date - 1)) {
-							// alert("getDay(): " + (dateObj.getDay() - 1) + ", disable_date: " + disable_date + ", disable_time: " + disable_time);
+						else if (dateObj.getDay() != disable_date && $(column).attr("disabledDate") != "true") {
+							// alert("getDay(): " + (dateObj.getDay()) + ", disable_date: " + disable_date + ", disable_time: " + disable_time);
 							column.style.backgroundColor = "#FFFFFF";
                     		column.style.cursor = "pointer";
                     		column.onclick = function () {
@@ -233,8 +235,9 @@ function buildCalendar(responseText) {
 						if (dateObj.getDay() == disable_date && disable_time == "09:00~19:00") { // 해당 일이 아예 상담 불가능한 경우
 							column.style.color = "#E5E5E5";
 							column.style.backgroundColor = "#FBAB7E";
+							$(column).attr("disabledDate", "true");
 						}
-						else if (dateObj.getDay() != (disable_date - 1) && disable_time != "09:00~19:00") {
+						else if (dateObj.getDay() != disable_date && $(column).attr("disabledDate") != "true") {
 							column.style.backgroundColor = "#FBAB7E";
                     		column.style.cursor = "pointer";
                     		column.onclick = function () {
@@ -265,8 +268,9 @@ function buildCalendar(responseText) {
 						// 불가능 일자
 						if (dateObj.getDay() == disable_date && disable_time == "09:00~19:00") { // 해당 일이 아예 상담 불가능한 경우
 							column.style.color = "#E5E5E5";
+							$(column).attr("disabledDate", "true");
 						}
-						else if (dateObj.getDay() != (disable_date - 1) && disable_time != "09:00~19:00") {
+						else if (dateObj.getDay() != disable_date && $(column).attr("disabledDate") != "true") {
 							column.style.backgroundColor = "#FFFFFF";
                     		column.style.cursor = "pointer";
                     		column.onclick = function () {
