@@ -197,20 +197,20 @@ function buildCalendar(responseText) {
                 // @details 현재일보다 이후이면서 현재월에 포함되는 일인경우
                 else if (date.getDate() < day && lastDate.getDate() >= day) {
 					// 교수 불가능 일자 disable
-					Array.from(schedules).forEach(function(schedule, i) {
-						var disable_date = schedule.disable_date;
-						var disable_time = schedule.disable_time;
-						var p_user_id = schedule.p_user_id;
+					for(var key in schedules) {
+						var disable_date = schedules[key].disable_date;
+						var disable_time = schedules[key].disable_time;
+						var p_user_id = schedules[key].p_user_id;
+						var size = Object.keys(schedules).length;
 						
 						var dateObj = new Date(doMonth.getFullYear(), doMonth.getMonth(), Number(day));
 						
 						// 불가능 일자
 						if (dateObj.getDay() == disable_date && disable_time == "09:00~19:00") { // 해당 일이 아예 상담 불가능한 경우
 							column.style.color = "#E5E5E5";
-							$(column).attr("disabledDate", "true");
-							// $(column).off("click");
+							break;
 						}
-						else if (dateObj.getDay() != disable_date && $(column).attr("disabledDate") != "true") {
+						else if (key == Object.keys(schedules)[size - 1]) {
 							// alert("getDay(): " + (dateObj.getDay()) + ", disable_date: " + disable_date + ", disable_time: " + disable_time);
 							column.style.backgroundColor = "#FFFFFF";
                     		column.style.cursor = "pointer";
@@ -218,33 +218,41 @@ function buildCalendar(responseText) {
                         		calendarChoiceDay(this, schedules);
                     		}
 						}
-					});
+						else {
+							continue;
+						}
+					}
                 }
 
                 // @details 현재일인 경우
                 else if (date.getDate() == day) {
 					// 교수 불가능 일자 disable
-					Array.from(schedules).forEach(function(schedule, i) {
-						var disable_date = schedule.disable_date;
-						var disable_time = schedule.disable_time;
-						var p_user_id = schedule.p_user_id;
+					for(var key in schedules) {
+						var disable_date = schedules[key].disable_date;
+						var disable_time = schedules[key].disable_time;
+						var p_user_id = schedules[key].p_user_id;
+						var size = Object.keys(schedules).length;
 						
-						// 불가능 일자
 						var dateObj = new Date(doMonth.getFullYear(), doMonth.getMonth(), Number(day));
 						
+						// 불가능 일자
 						if (dateObj.getDay() == disable_date && disable_time == "09:00~19:00") { // 해당 일이 아예 상담 불가능한 경우
 							column.style.color = "#E5E5E5";
 							column.style.backgroundColor = "#FBAB7E";
-							$(column).attr("disabledDate", "true");
+							break;
 						}
-						else if (dateObj.getDay() != disable_date && $(column).attr("disabledDate") != "true") {
-							column.style.backgroundColor = "#FBAB7E";
+						else if (key == Object.keys(schedules)[size - 1]) {
+							// alert("getDay(): " + (dateObj.getDay()) + ", disable_date: " + disable_date + ", disable_time: " + disable_time);
+							column.style.backgroundColor = "#FFFFFF";
                     		column.style.cursor = "pointer";
                     		column.onclick = function () {
                         		calendarChoiceDay(this, schedules);
                     		}
 						}
-					});
+						else {
+							continue;
+						}
+					}
                 }
 
                 // @details 현재월보다 이전인경우
@@ -258,26 +266,31 @@ function buildCalendar(responseText) {
             else {
                 if (Math.sign(day) == 1 && day <= lastDate.getDate()) {
                     // 교수 불가능 일자 disable
-					Array.from(schedules).forEach(function(schedule, i) {
-						var disable_date = schedule.disable_date;
-						var disable_time = schedule.disable_time;
-						var p_user_id = schedule.p_user_id;
+					for(var key in schedules) {
+						var disable_date = schedules[key].disable_date;
+						var disable_time = schedules[key].disable_time;
+						var p_user_id = schedules[key].p_user_id;
+						var size = Object.keys(schedules).length;
 						
 						var dateObj = new Date(doMonth.getFullYear(), doMonth.getMonth(), Number(day));
 						
 						// 불가능 일자
 						if (dateObj.getDay() == disable_date && disable_time == "09:00~19:00") { // 해당 일이 아예 상담 불가능한 경우
 							column.style.color = "#E5E5E5";
-							$(column).attr("disabledDate", "true");
+							break;
 						}
-						else if (dateObj.getDay() != disable_date && $(column).attr("disabledDate") != "true") {
+						else if (key == Object.keys(schedules)[size - 1]) {
+							// alert("getDay(): " + (dateObj.getDay()) + ", disable_date: " + disable_date + ", disable_time: " + disable_time);
 							column.style.backgroundColor = "#FFFFFF";
                     		column.style.cursor = "pointer";
                     		column.onclick = function () {
                         		calendarChoiceDay(this, schedules);
                     		}
 						}
-					});
+						else {
+							continue;
+						}
+					}
                 }
             }
         }
