@@ -350,6 +350,7 @@ function calendarChoiceDay(column, schedules) {
 	Array.from(classes).forEach(function(c, i) {
 		$(c).css("background", "#FFFFFF");
 		$(c).attr("isDisabled", "false");
+		$(c).off("click");
 	});
 	
 	let doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
