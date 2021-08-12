@@ -1,26 +1,4 @@
 $(document).ready(function(){ // html이 로드되면 실행됨 
-	$(".startTimeBox").css("display", "flex");
-	$(".startTimeBox").css("align-items", "center");
-	$(".startTimeBox").css("justify-content", "center");
-	$(".startTimeBox").css("height", "40px");
-	$(".startTimeBox").css("width", "96px");
-	$(".startTimeBox").css("border", "1px solid #C4C4C4");
-	$(".startTimeBox").css("border-radius", "5px");
-	$(".startTimeBox").css("text-align", "center");
-	$(".startTimeBox").css("font-weight", "regular");
-	$(".startTimeBox").css("background", "#FFFFFF");
-	
-	$(".timeBox").css("display", "flex");
-	$(".timeBox").css("align-items", "center");
-	$(".timeBox").css("justify-content", "center");
-	$(".timeBox").css("height", "40px");
-	$(".timeBox").css("width", "96px");
-	$(".timeBox").css("border", "1px solid #C4C4C4");
-	$(".timeBox").css("border-radius", "5px");
-	$(".timeBox").css("text-align", "center");
-	$(".timeBox").css("font-weight", "regular");
-	$(".timeBox").css("background", "#FFFFFF");
-	
 	// 각 버튼에 click 이벤트 설정
 	$("#typeBtnOff").click(typeBtnOffClick);
 	$("#typeBtnOn").click(typeBtnOnClick);
@@ -367,6 +345,13 @@ function calendarChoiceDay(column, schedules) {
     $("#contentBody").append(newInputMonthElement);
 
 	// 추가 - startTimeBox, timeBox onclick 이벤트 생성
+	var classes = document.getElementsByClassName("startTimeBox");
+	
+	Array.from(classes).forEach(function(c, i) {
+		$(c).css("background", "#FFFFFF");
+		$(c).attr("isDisabled", "false");
+	});
+	
 	let doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
 	
 	// startTimeBox
@@ -385,30 +370,28 @@ function calendarChoiceDay(column, schedules) {
 				
 				// 불가능 시작 시간
 				var disable_timeArr = disable_time.split("~");
-				var c = document.getElementsByClassName("startTimeBox");
 				var j = 0;
 				
-				while ($(c[j]).attr("id") != disable_timeArr[0]) {
-					$(c[j]).click(startTimeBoxClick);
+				while ($(classes[j]).attr("id") != disable_timeArr[0]) {
+					$(classes[j]).click(startTimeBoxClick);
 					j++;
 				}
 				
-				while ($(c[j]).attr("id") != disable_timeArr[1]) {
-					$(c[j]).unbind("hover");
-					c[j].style.backgroundColor = "#E5E5E5";
+				while ($(classes[j]).attr("id") != disable_timeArr[1]) {
+					// $(classes[j]).unbind("hover"); // 동작 X
+					$(classes[j]).attr("isDisabled", "true");
+					classes[j].style.backgroundColor = "#E5E5E5";
 					j++;
 				}
 				
-				while ($(c[j]).attr("id") != "17:00") {
-					$(c[j]).click(startTimeBoxClick);
-					j++;
+				for(j; j < classes.length; j++) {
+					$(classes[j]).click(startTimeBoxClick);
 				}
 			}
 		}
 	});
 	
 	if (all_able_day) {
-		var classes = document.getElementsByClassName("startTimeBox");
 		Array.from(classes).forEach(function(c, i) {
 			$(c).click(startTimeBoxClick);
 		});
@@ -429,11 +412,28 @@ function autoLeftPad(num, digit) {
     return num;
 }
 
-function startTimeBoxClick() { // 매개변수 받도록
+function startTimeBoxClick() { 
 	if(!$("#choiceDay").attr("value")) {
 		alert("상담 날짜를 먼저 선택해 주세요.");
 		return false;
 	}
+
+	var classes = document.getElementsByClassName("startTimeBox");
+	
+	Array.from(classes).forEach(function(c, i) {
+		if($(c).attr("isDisabled") != "true") {
+			$(c).css("display", "flex");
+			$(c).css("align-items", "center");
+			$(c).css("justify-content", "center");
+			$(c).css("height", "40px");
+			$(c).css("width", "96px");
+			$(c).css("border", "1px solid #C4C4C4");
+			$(c).css("border-radius", "5px");
+			$(c).css("text-align", "center");
+			$(c).css("font-weight", "regular");
+			$(c).css("background", "#FFFFFF");
+		}
+	});
 	
 	var timeBox = this;
 	
@@ -464,7 +464,7 @@ function startTimeBoxClick() { // 매개변수 받도록
 	$("#startTimeTitle").append(newInputElement);
 }
 
-function timeBoxClick() { // 시작 시간 선택되어 있으면 닫히도록
+function timeBoxClick() {
 	if(!$("#choiceDay").attr("value")) {
 		alert("상담 날짜를 먼저 선택해 주세요.");
 		return false;
@@ -474,6 +474,23 @@ function timeBoxClick() { // 시작 시간 선택되어 있으면 닫히도록
 		alert("상담 시작 시간을 먼저 선택해 주세요.");
 		return false;
 	}
+	
+	var classes = document.getElementsByClassName("timeBox");
+	
+	Array.from(classes).forEach(function(c, i) {
+		if($(c).attr("isDisabled") != "true") {
+			$(c).css("display", "flex");
+			$(c).css("align-items", "center");
+			$(c).css("justify-content", "center");
+			$(c).css("height", "40px");
+			$(c).css("width", "96px");
+			$(c).css("border", "1px solid #C4C4C4");
+			$(c).css("border-radius", "5px");
+			$(c).css("text-align", "center");
+			$(c).css("font-weight", "regular");
+			$(c).css("background", "#FFFFFF");
+		}
+	});
 	
 	var timeBox = this;
 	
