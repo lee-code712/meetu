@@ -609,7 +609,7 @@ pageEncoding="UTF-8"  %>
             <div id="title"><a>MEETU</a></div>
             <div id="gnb">
                 <a id="noticeIcon" href="notice.do">공지사항</a>
-                <a id="reserveIcon" href="reservationPro.do">상담예약</a>
+                <a id="reserveIcon" href="reservation.do">상담예약</a>
                 <a id="messageIcon" href="message.do">쪽지함</a>
             </div>
             <div id="dropdown">

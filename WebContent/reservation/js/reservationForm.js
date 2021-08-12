@@ -609,4 +609,6 @@ function ck_reservation_form() {
 		alert("기타 사유를 입력해 주세요.");
 		return false;
 	}
+	
+	makeReservation();
 }

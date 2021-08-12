@@ -1,13 +1,15 @@
-package meetu.action;
+package meetu.action.reservation;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ReservationProAction implements CommandAction {
+import meetu.action.CommandAction;
+
+public class ReservationPageAction implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
-		return "/reservation/reservation.jsp";
+		return "/reservation/reservationPage.jsp";
 	}
 
 }

@@ -1,4 +1,4 @@
-package meetu.action;
+package meetu.action.reservation;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,11 +10,11 @@ import meetu.dto.MemberUserDTO;
 import meetu.dto.MemberDTO;
 import meetu.dto.UniversityDTO;
 import meetu.dto.ProfessorDTO;
-
+import meetu.action.CommandAction;
 import meetu.dao.MemberDAO;
 import meetu.dao.ReservationDAO;
 
-public class ReservationContentAction implements CommandAction {
+public class ReservationFormAction implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
@@ -54,10 +54,10 @@ public class ReservationContentAction implements CommandAction {
 		boolean isReservated = reservationDAO.isReservatedProfessor(univ_dto.getUnivId(), s_user_id, p_user_id);
 		
 		if(isReservated) { // 예약 레코드가 있는 경우 교수 선택 페이지로 리턴
-			return "/reservation/reservation.jsp?isReservated=1";
+			return "/reservation/reservationPage.jsp?isReservated=1";
 		}
 		else {
-			return "/reservation/reservationContent.jsp";
+			return "/reservation/reservationForm.jsp";
 		}
 	}
 

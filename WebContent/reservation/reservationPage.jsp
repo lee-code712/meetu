@@ -316,6 +316,12 @@ pageEncoding="UTF-8"%>
 		if(isReservated != null) {
 			out.println("<script>alert('이미 상담 예약이 신청된 교수님입니다.');</script>");
 		}
+		
+		String add_ck = (String) request.getAttribute("add_ck");
+		
+		if(add_ck != null) {
+			out.println("<script>alert('성공적으로 예약 신청되었습니다.');</script>");
+		}
 	%>
 	
     <div id="topHeader">
@@ -330,7 +336,7 @@ pageEncoding="UTF-8"%>
 	        <div id="title"><a href="index.do">MEETU</a></div>
 	        <div id="gnb">
 	            <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
-	            <div><a id="reserveIcon" href="reservationPro.do">상담예약</a></div>
+	            <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
 	            <div><a id="messageIcon" href="message.do">쪽지함</a></div>
 	        </div>
 	

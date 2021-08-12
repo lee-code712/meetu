@@ -14,7 +14,6 @@ import meetu.dto.ReservationDTO;
 import meetu.dto.StudentDTO;
 import meetu.dto.ConsultDTO;
 import meetu.dto.MemberDTO;
-import meetu.dto.ProfessorDTO;
 import meetu.dto.DepartmentDTO;
 
 public class ConsultationRecordPageAction implements CommandAction {

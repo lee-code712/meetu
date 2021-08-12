@@ -309,5 +309,5 @@ function selectProf(prof) {
 	param += "&office=" + prof.data.office;
 	param += "&course=" + prof.data.course;
 	
-	location.href = "reservationContent.do?" + param;
+	location.href = "reservationForm.do?" + param;
 }

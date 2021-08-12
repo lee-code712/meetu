@@ -10,7 +10,7 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="../components/css/header.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/reservation/js/reservationContent.js"></script>
+    <script src="/reservation/js/reservationForm.js"></script>
     <script>
 	    $(function () {
 	        var btn1 = $(".startTimeBox")
@@ -632,7 +632,7 @@ pageEncoding="UTF-8"%>
 	        <div id="title"><a href="index.do">MEETU</a></div>
 	        <div id="gnb">
 	            <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
-	            <div><a id="reserveIcon" href="reservationPro.do">상담예약</a></div>
+	            <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
 	            <div><a id="messageIcon" href="message.do">쪽지함</a></div>
 	        </div>
 	
@@ -648,7 +648,7 @@ pageEncoding="UTF-8"%>
 	    </div>
 	</div>
 
-<form method="post" name="reservation_form" action="reservation.do" onsubmit="return ck_reservation_form()">
+<form method="post" name="reservation_form" action="makeReservation.do" onsubmit="return ck_reservation_form()">
     <div class="reservationWrap">
         <div>
             <ul class="mylist">
