@@ -29,7 +29,7 @@ pageEncoding="UTF-8"%>
                     <a href="logout.do">로그아웃</a>
                 </div>
             </div>
-            <img src="../images/bell.svg" id="noticeImg"/>
+            <img src="/images/bell.svg" id="noticeImg"/>
         </div>
     </div>
 </div>
@@ -41,7 +41,7 @@ pageEncoding="UTF-8"%>
         <c:if test="${mem_dto.getRole()=='2'}">
             <div id="moreDropdown">
                 <div id="moreDropBtn">
-                    <div id="moreDropBtnTitle"><img src="../images/moreVert.svg" id="moreIcon"/></div>
+                    <div id="moreDropBtnTitle"><img src="/images/moreVert.svg" id="moreIcon"/></div>
                 </div>
                 <div id="moreDropdownContent">
                     <a href="#" onclick="deleteNotice()">삭제하기</a>

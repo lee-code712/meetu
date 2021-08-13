@@ -248,7 +248,7 @@ pageEncoding="UTF-8"  %>
                     <a href="logout.do">로그아웃</a>
                 </div>
             </div>
-            <img src="../images/bell.svg" id="noticeImg"/>
+            <img src="/images/bell.svg" id="noticeImg"/>
         </div>
     </div>
 </div>
@@ -269,19 +269,19 @@ pageEncoding="UTF-8"  %>
         <div id="intro">
             <div id="introBody">
                 <div id="introBox">
-                    <div id="introImg"><img src="../images/calendarImage.svg"/></div>
+                    <div id="introImg"><img src="/images/calendarImage.svg"/></div>
                     <div id="introTitle">상담일정</div>
                     <div id="introText">상담일정을 통해 등록된 예약을<br/>한 눈에 확인할 수 있습니다.</div>
                 </div>
 
                 <div id="introBox">
-                    <div id="introImg"><img src="../images/messageImage.svg"/></div>
+                    <div id="introImg"><img src="/images/messageImage.svg"/></div>
                     <div id="introTitle">쪽지기능</div>
                     <div id="introText">상담예약이 확정된 교수님과<br/>메시지를 주고 받을 수 있습니다.</div>
                 </div>
 
                 <div id="introBox">
-                    <div id="introImg"><img src="../images/clockImage.svg"/></div>
+                    <div id="introImg"><img src="/images/clockImage.svg"/></div>
                     <div id="introTitle">알람기능</div>
                     <div id="introText">알람기능을 통해<br/>상담 가능 여부를 전달해드립니다.</div>
                 </div>
@@ -306,9 +306,9 @@ pageEncoding="UTF-8"  %>
                     <span id="cal_top_year"></span>.
                     <span id="cal_top_month"></span>
                     <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit"><img
-                            src="../images/prevImg.svg"/></span></a>
+                            src="/images/prevImg.svg"/></span></a>
                     <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit"><img
-                            src="../images/nextImg.svg"/></span></a>
+                            src="/images/nextImg.svg"/></span></a>
                 </div>
             </div>
             <div id="cal_tab" class="cal">

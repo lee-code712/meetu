@@ -32,7 +32,7 @@
                     <a href="logout.do">로그아웃</a>
                 </div>
             </div>
-            <img src="../images/bell.svg" id="noticeImg"/>
+            <img src="/images/bell.svg" id="noticeImg"/>
         </div>
     </div>
 </div>
