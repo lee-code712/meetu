@@ -8,9 +8,9 @@ pageEncoding="UTF-8"  %>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <title>index</title>
+    <title>MEETU</title>
 
-    <!--<link rel="stylesheet" href="/index/css/indexStu.css"/>-->
+    <link rel="stylesheet" href="/index/css/indexStu.css"/>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,7 +95,7 @@ pageEncoding="UTF-8"  %>
                 if (today.getFullYear()) {
                     $tdDay.eq(today.getDay()).css("width", "20px");
                     $tdDay.eq(today.getDay()).css("height", "24px");
-                    $tdDay.eq(today.getDay()).css("background", "#F7CE68");
+                    $tdDay.eq(today.getDay()).css("background", "#1abc9c");
                     $tdDay.eq(today.getDay()).css("color", "white");
                     $tdDay.eq(today.getDay()).css("border-radius", "50px");
                 }
@@ -180,7 +180,7 @@ pageEncoding="UTF-8"  %>
                         txt = jsonData[year][month][i];
                         dateMatch = firstDay.getDay() + i - 1;
                         $tdSche.eq(dateMatch).text(txt);
-                        $tdSche.eq(dateMatch).css("background", "#FBAB7E");
+                        $tdSche.eq(dateMatch).css("background", "#1abc9c");
                         $tdSche.eq(dateMatch).css("color", "white");
                         $tdSche.eq(dateMatch).css("padding-left", "10px");
                         $tdSche.eq(dateMatch).css("border-radius", "3px");
@@ -188,7 +188,7 @@ pageEncoding="UTF-8"  %>
                 }
             }
         }
-        
+
         $(document).ready(function () {
             var slider_01 = $('.banner_slide').bxSlider({
                 auto: true, autoControls: true, mode: 'horizontal',
@@ -227,558 +227,98 @@ pageEncoding="UTF-8"  %>
             });
         });
     </script>
-    <style>
-        /* 배너사이즈와 위치 */
-        #banner_wrap {
-            margin-top: 100px;
-            margin: 0 auto;
-            width: 1920px;
-            height: 720px;
-        }
-
-        .banner_01 {
-            width: 1920px;
-            height: 720px;
-            background-image: url('/index/images/banner1.svg');
-            background-position: center;
-            background-size: cover;
-        }
-
-        .banner_02 {
-            width: 1920px;
-            height: 720px;
-            background-image: url('/index/images/cat-6309964_1920.jpg');
-            background-position: center;
-            background-size: cover;
-        }
-
-        .banner_03 {
-            width: 1920px;
-            height: 720px;
-            background-image: url('/index/images/fox-1758183_1920.jpg');
-            background-position: center;
-            background-size: cover;
-        }
-
-        #bx-pager1 a {
-            float: left;
-            margin: 0 5px;
-            display: block;
-            width: 20px;
-            height: 20px;
-            font-size: 12px;
-            line-height: 18px;
-            text-align: center;
-            background: pink;
-            color: #333
-        }
-
-        * {
-            padding: 0;
-            margin: 0;
-            text-decoration: none;
-        }
-
-        a:link {
-            color: white;
-            text-decoration: none;
-        }
-
-        a:visited {
-            color: white;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: white;
-            text-decoration: underline;
-        }
-
-        #footer {
-            display: flex;
-            margin-top: -40px;
-            margin: 0 auto;
-            width: 100%;
-            height: 200px;
-            background: #EDEDED;
-            justify-content: center;
-            align-items: center;
-            color: #535353;
-        }
-
-
-        @charset "UTF-8";
-
-        ul, li {
-            text-decoration: none;
-            list-style: none;
-        }
-
-        #header {
-            width: 100%;
-            height: 100px;
-            border-bottom: 1px solid #eee;
-            background: white;
-        }
-
-        #header_inner {
-            display: flex;
-            align-items: center;
-            margin: 0 auto;
-            width: 1194px;
-            height: 100px;
-        }
-
-        #title {
-            display: flex;
-            align-items: center;
-            width: 200px;
-            height: 100%;
-            color: #FBAB7E;
-            font-size: 24px;
-            margin-right: 30px;
-            font-family: 'Yellowtail', cursive;
-            font-weight: bold;
-        }
-
-        #title:hover {
-            cursor: pointer;
-        }
-
-        #gnb {
-            display: flex;
-            width: 100%;
-            font-size: 16px;
-            font-weight: bold;
-            color: #535353;
-            align-items: center;
-        }
-
-        #gnb a {
-            padding: 0 40px;
-        }
-
-        #alertIcon {
-            width: 18px;
-            height: 18px;
-        }
-
-        #alertIcon:hover,
-        #noticeIcon:hover,
-        #reserveIcon:hover,
-        #messageIcon:hover {
-            cursor: pointer;
-        }
-
-        #messageIcon,
-        #noticeIcon,
-        #reserveIcon {
-            color: #535353;
-        }
-
-        a:link {
-            color: #535353;
-            text-decoration: none;
-        }
-
-        a:visited {
-            color: #535353;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #535353;
-            text-decoration: none;
-        }
-
-        #title a:link,
-        #title a:visited,
-        #title a:hover {
-            color: #FBAB7E;
-
-        }
-
-        #topHeader {
-            width: 100%;
-            height: 34px;
-            background-color: #FBAB7E;
-            background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-        }
-
-        #topHeaderInner {
-            margin: 0 auto;
-            width: 1194px;
-            height: 100%;
-        }
-
-        #topHeaderInner div {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            height: 100%;
-            float: right;
-            color: white;
-        }
-
-        #topHeaderInner div span {
-            margin-left: 20px;
-        }
-
-        #topHeaderInner div a:link,
-        #topHeaderInner div a:visited,
-        #topHeaderInner div a:hover {
-            color: white;
-        }
-
-        #gnb div a {
-            font-size: 14px;
-            position: relative;
-        }
-
-        #gnb div a:before {
-            content: '';
-            position: absolute;
-            background-color: #FBAB7E;
-            height: 6px;
-            width: 0;
-            bottom: -42px;
-            transition: 0.5s;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        #gnb div a:hover:before {
-            width: 100%;
-        }
-
-        #dropdown-button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 20px;
-            padding: 8px;
-            width: 140px;
-            font-size: 15px;
-            border: none;
-        }
-
-        #dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        #dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            min-width: 140px;
-            padding: 8px;
-            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
-        }
-
-        #dropdown-content a {
-            color: black;
-            padding: 8px;
-            text-decoration: none;
-            display: block;
-        }
-
-        #dropdown-content a:hover {
-            background-color: #f3f3f3;
-        }
-
-        #dropdown:hover #dropdown-content {
-            display: block;
-        }
-
-        #introBody {
-            display: flex;
-            justify-content: space-between;
-            margin: 0 auto;
-            width: 1194px;
-
-        }
-
-        #introBox img {
-            display: block;
-            margin: 0px auto;
-        }
-
-        #introBox div {
-            text-align: center;
-        }
-
-        #introWrap {
-            position: absolute;
-            display: flex;
-            justify-content: center;
-            top: 740px;
-            left: 50%;
-            transform: translate(-50%, 0%);
-            margin: 0 auto;
-            width: 1194px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0px 2px 4px 0px rgb(0, 0, 0, 0.2);
-        }
-
-        #intro {
-            margin: 0 auto;
-            width: 1194px;
-        }
-
-        #introTitle {
-            margin-top: 30px;
-            margin-bottom: 14px;
-        }
-
-        #introText {
-            font-size: 10px;
-            color: #535353;
-        }
-
-        #siteName {
-            font-size: 24px;
-            font-family: 'Yellowtail', cursive;
-        }
-
-
-        #introBox {
-            width: 386px;
-            padding: 40px 0;
-        }
-
-        #introBox:hover {
-            box-shadow: 0px 2px 4px 0px rgb(0, 0, 0, 0.2);
-            cursor: pointer;
-        }
-
-        #logo {
-            color: #FBAB7E;
-            font-family: 'Yellowtail', cursive;
-        }
-
-        #banner1Title {
-            margin-top: 100px;
-            display: flex;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        #banner1Text {
-            padding: 20px 0 60px 0;
-            margin: 0 auto;
-            text-align: center;
-            width: 300px;
-            font-size: 12px;
-            color: #535353;
-        }
-
-        #reservationBtn {
-            display: block;
-            margin: 0 auto;
-            width: 200px;
-            padding: 8px 0;
-            border: 1px solid #FBAB7E;
-            color: #FBAB7E;
-            border-radius: 500px;
-            background: white;
-        }
-
-        #reservationBtn:hover {
-            display: block;
-            margin: 0 auto;
-            width: 200px;
-            padding: 8px 0;
-            border: 1px solid #FBAB7E;
-            color: white;
-            border-radius: 500px;
-            background: #FBAB7E;
-            cursor: pointer;
-        }
-
-
-        .cal_top {
-            display: flex;
-            font-size: 24px;
-            justify-content: space-between;
-            margin-bottom: 40px;
-        }
-
-        .cal {
-            text-align: center;
-        }
-
-        table.calendar {
-            display: inline-table;
-            text-align: left;
-        }
-
-        table.calendar th {
-            padding-bottom: 10px;
-        }
-
-        table.calendar td {
-            vertical-align: top;
-            border: 1px solid #eee;
-            width: 170px;
-            background: white;
-        }
-
-        #manageWrap {
-            padding: 100px 0 140px 0;
-            margin: 0 auto;
-            width: 100%;
-            background: #FAFAFA;
-        }
-
-        #manage {
-            margin: 0 auto;
-            width: 1194px;
-        }
-
-        #cal_top_left {
-            display: flex;
-            align-items: center;
-        }
-
-        #prevMonth {
-            margin-left: 10px;
-        }
-
-        #manageHeader {
-            margin-top: 100px;
-            margin-bottom: 60px;
-        }
-
-        #siteName {
-            font-size: 24px;
-            font-family: 'Yellowtail', cursive;
-        }
-
-        #subTitle {
-            display: flex;
-            justify-content: center;
-            color: #535353;
-            font-size: 10px;
-            margin-bottom: 10px;
-        }
-
-        #originTitleWrap {
-            display: flex;
-            justify-content: center;
-        }
-
-        #originTitle {
-            font-size: 24px;
-        }
-
-        #shortLine {
-            margin: 0 auto;
-            margin-top: 24px;
-            width: 30px;
-            height: 4px;
-            background: #FBAB7E;
-        }
-    </style>
 </head>
 
 <body>
-<div id="topHeader">
-    <div id="topHeaderInner">
-        <div>
-        </div>
-    </div>
-</div>
-
 <div id="header">
-    <div id="header_inner">
-        <div id="title"><a href="index.do">MEETU</a></div>
-        <div id="gnb">
-            <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
-            <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
-            <div><a id="messageIcon" href="message.do">쪽지함</a></div>
-        </div>
-
-        <div id="dropdown">
-            <div id="dropdown-button">${mem_dto.getName()}님 <img src="/components/images/more.svg"/></div>
-            <div id="dropdown-content">
-                <a href="myPage.do">마이페이지</a>
-                <a href="logout.do">로그아웃</a>
+    <div id="headerInner">
+        <div id="headerInnerL">
+            <div id="title">MEETU</div>
+            <div id="gnb">
+                <div><a href="#" id="noticeIcon">공지사항</a></div>
+                <div><a href="#" id="reserveIcon">상담예약</a></div>
+                <div><a href="#" id="messageIcon">쪽지함</a></div>
             </div>
         </div>
-
-        <img src="/components/images/bell.svg" id="alertIcon"/>
-    </div>
-</div>
-
-<div id="banner_wrap">
-    <ul class="banner_slide">
-        <li class="banner_01">
-            <div id="banner1Title">간편한 상담 예약 시스템 &nbsp; <span id="logo">MEETU</span></div>
-            <div id="banner1Text">교수님과 상담을 하고 싶다면 간편한 상담 예약 시스템 MEETU를 사용하여 상담을 예약해보세요!</div>
-            <button id="reservationBtn">예약하러 가기</button>
-        </li>
-        <li class="banner_02"></li>
-        <li class="banner_03"></li>
-    </ul>
-</div>
-
-<div id="introWrap">
-    <div id="intro">
-        <div id="introBody">
-            <div id="introBox">
-                <div id="introImg"><img src="/index/images/calendarImg.svg"/></div>
-                <div id="introTitle">상담일정</div>
-                <div id="introText">상담일정을 통해 등록된 예약을<br/>한 눈에 확인할 수 있습니다.</div>
+        <div id="headerInnerR">
+            <div id="dropdown">
+                <div id="dropdown-button">김혜란님 😊</div>
+                <div id="dropdown-content">
+                    <a href="myPage.do">마이페이지</a>
+                    <a href="logout.do">로그아웃</a>
+                </div>
             </div>
-
-            <div id="introBox">
-                <div id="introImg"><img src="/index/images/messageImg.svg"/></div>
-                <div id="introTitle">쪽지기능</div>
-                <div id="introText">상담예약이 확정된 교수님과<br/>메시지를 주고 받을 수 있습니다.</div>
-            </div>
-
-            <div id="introBox">
-                <div id="introImg"><img src="/index/images/clockImg.svg"/></div>
-                <div id="introTitle">알람기능</div>
-                <div id="introText">알람기능을 통해<br/>상담 가능 여부를 전달해드립니다.</div>
-            </div>
+            <img src="../images/bell.svg" id="noticeImg"/>
         </div>
     </div>
-</div>
 
+    <div id="banner_wrap">
+        <ul class="banner_slide">
+            <li class="banner_01">
+                <div id="banner1Title">간편한 상담 예약 시스템 &nbsp; <span id="logo">MEETU</span></div>
+                <div id="banner1Text">교수님과 상담을 하고 싶다면 간편한 상담 예약 시스템 MEETU를 사용하여 상담을 예약해보세요!</div>
+                <button id="reservationBtn">예약하러 가기</button>
+            </li>
+            <li class="banner_02"></li>
+            <li class="banner_03"></li>
+        </ul>
+    </div>
 
-<div id="manageWrap">
-    <div id="manage">
-        <div id="manageHeader">
-            <div id="subTitle">캘린더를 통해 상담일정을 관리해보세요.</div>
-            <div id="originTitleWrap"><span id="siteName">MEETU</span> &nbsp;&nbsp; <span
-                    id="originTitle">상담일정 관리</span></div>
-            <div id="shortLine"></div>
-        </div>
-        <!--
-        <span id="cal_top_dayName"></span>요일
-                (<span id="cal_top_date"></span>일) -->
-        <div class="cal_top">
-            <div id="cal_top_left">
-                <span id="cal_top_year"></span>.
-                <span id="cal_top_month"></span>
-                <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit"><img
-                        src="/index/images/prevImg.svg"/></span></a>
-                <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit"><img
-                        src="/indx/images/nextImg.svg"/></span></a>
+    <div id="introWrap">
+        <div id="intro">
+            <div id="introBody">
+                <div id="introBox">
+                    <div id="introImg"><img src="../images/calendarImage.svg"/></div>
+                    <div id="introTitle">상담일정</div>
+                    <div id="introText">상담일정을 통해 등록된 예약을<br/>한 눈에 확인할 수 있습니다.</div>
+                </div>
+
+                <div id="introBox">
+                    <div id="introImg"><img src="../images/messageImage.svg"/></div>
+                    <div id="introTitle">쪽지기능</div>
+                    <div id="introText">상담예약이 확정된 교수님과<br/>메시지를 주고 받을 수 있습니다.</div>
+                </div>
+
+                <div id="introBox">
+                    <div id="introImg"><img src="../images/clockImage.svg"/></div>
+                    <div id="introTitle">알람기능</div>
+                    <div id="introText">알람기능을 통해<br/>상담 가능 여부를 전달해드립니다.</div>
+                </div>
             </div>
         </div>
-        <div id="cal_tab" class="cal">
+    </div>
 
+
+    <div id="manageWrap">
+        <div id="manage">
+            <div id="manageHeader">
+                <div id="subTitle">캘린더를 통해 상담일정을 관리해보세요.</div>
+                <div id="originTitleWrap"><span id="siteName">MEETU</span> &nbsp;&nbsp; <span
+                        id="originTitle">상담일정 관리</span></div>
+                <div id="shortLine"></div>
+            </div>
+            <!--
+            <span id="cal_top_dayName"></span>요일
+                    (<span id="cal_top_date"></span>일) -->
+            <div class="cal_top">
+                <div id="cal_top_left">
+                    <span id="cal_top_year"></span>.
+                    <span id="cal_top_month"></span>
+                    <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit"><img
+                            src="../images/prevImg.svg"/></span></a>
+                    <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit"><img
+                            src="../images/nextImg.svg"/></span></a>
+                </div>
+            </div>
+            <div id="cal_tab" class="cal">
+
+            </div>
         </div>
     </div>
-</div>
 
-<div id="footer">
-    Copyrights © 2021 by 시나브로. All Rights Reserved.
+    <div id="footer">
+        Copyrights © 2021 by 시나브로. All Rights Reserved.
+    </div>
 </div>
 </body>
 </html>
