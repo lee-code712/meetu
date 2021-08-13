@@ -192,6 +192,7 @@ pageEncoding="UTF-8"%>
         }
 
         .deptList {
+		display: none;
             width: 298px;
             background: #F5F5F5;
             padding-left: 20px;
