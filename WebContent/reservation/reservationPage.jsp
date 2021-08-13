@@ -5,7 +5,6 @@ pageEncoding="UTF-8"%>
 <html>
 <head>
     <title>상담예약</title>
-    <link rel="stylesheet" href="../components/css/header.css"/>
     <!-- <link rel="stylesheet" href="/reservation/css/reservation.css"/>  -->
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -13,7 +12,137 @@ pageEncoding="UTF-8"%>
 
     <style>
         @charset "UTF-8";
-		
+
+        #noticeImg {
+            width: 14px;
+            height: 14px;
+        }
+
+        #noticeImg:hover {
+            cursor: pointer;
+        }
+
+        #noticeIcon:hover,
+        #reserveIcon:hover,
+        #messageIcon:hover {
+            cursor: pointer;
+        }
+
+        #noticeIcon,
+        #reserveIcon,
+        #messageIcon {
+            color: black;
+        }
+
+        a:link {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: black;
+            text-decoration: none;
+        }
+
+        #title,
+        #title a:link,
+        #title a:visited,
+        #title a:hover {
+            color: #1abc9c;
+
+        }
+
+        #header {
+            width: 100%;
+            height: 80px;
+            background: white;
+            border-bottom: 1px solid #EAEAEA;
+        }
+
+        #headerInner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+            width: 1194px;
+            height: 100%;
+        }
+
+        #headerInnerL {
+            display: flex;
+            align-items: center;
+        }
+
+        #title {
+            font-family: 'Yellowtail', cursive;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #gnb {
+            margin-left: 140px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 300px;
+            font-size: 14px;
+        }
+
+        #headerInnerR {
+            display: flex;
+            align-items: center;
+        }
+
+        #dropdown {
+            position: relative;
+            display: inline-block;
+            font-size: 14px;
+            padding: 14px;
+        }
+
+        #dropdown-button:hover {
+            cursor: pointer;
+        }
+
+        #dropdown-button div {
+            justify-content: flex-end;
+        }
+
+        #dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            margin-top: 14px;
+            min-width: 130px;
+            padding: 4px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        #dropdown-content a {
+            color: black;
+            padding: 8px;
+            text-decoration: none;
+            display: block;
+        }
+
+        #dropdown-content a:hover {
+            background-color: #FAFAFA;
+            border-radius: 5px;
+        }
+
+        #dropdown:hover #dropdown-content {
+            display: block;
+        }
+
+        #headerInnerR img {
+            margin-left: 60px;
+        }
 
         * {
             margin: 0;
@@ -23,6 +152,8 @@ pageEncoding="UTF-8"%>
         }
 
         #reservationWrap {
+            display: flex;
+            justify-content: space-between;
             margin: 0 auto;
             width: 1194px;
             height: 840px;
@@ -30,40 +161,41 @@ pageEncoding="UTF-8"%>
 
         #deptWrap {
             margin-top: 80px;
-            width: 18rem;
-            height: 840px;
-            border: none;
-            border-radius: 10px;
+            width: 348px;
         }
 
         #selectDept {
             display: flex;
-            align-items: flex-start;
-            padding-top: 10px;
-            padding-bottom: 55px;
-            width: 100%;
+            justify-content: center;
+            align-items: center;
+            width: 318px;
             height: 40px;
             font-size: 18px;
-            font-weight: bold;
-            border-bottom: 1px dotted #363B40;
+            border: 1px solid #EAEAEA;
+            border-radius: 5px 5px 0px 0px;
+            background: white;
         }
 
         .college {
             line-height: 40px;
             font-size: 14px;
+            width: 318px;
             cursor: pointer;
-            border-bottom: 1px dotted #C4C4C4;
+            border-left: 1px solid #EAEAEA;
+            border-right: 1px solid #EAEAEA;
+            background: white;
         }
 
         .college:hover {
-            background: #363B40;
+            background: #1abc9c;
             color: white;
         }
 
         .deptList {
-            width: 290px;
+            width: 298px;
+            background: #EAEAEA;
             padding-left: 20px;
-            background: #ECECEC;
+
         }
 
         .dept {
@@ -72,14 +204,12 @@ pageEncoding="UTF-8"%>
 
         .profListWrap {
             display: table-cell;
-            float: right;
-            margin-top: 40px;
         }
 
         .profList {
-            width: 854px;
+            width: 816px;
             margin: 0 auto;
-            border-top: 2px solid #FBAB7E;
+            border-top: 3px solid #1abc9c;
         }
 
         .profList th,
@@ -110,7 +240,7 @@ pageEncoding="UTF-8"%>
 
         #messageInner {
             display: block;
-            width: 894px;
+            width: 816px;
             height: 840px;
         }
 
@@ -120,17 +250,13 @@ pageEncoding="UTF-8"%>
 
         #sender {
             margin-top: 80px;
-            margin-bottom: 30px;
-            height: 34px;
-            width: 900px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #3E454D;
+            margin-bottom: 40px;
+            height: 40px;
+            width: 816px;
         }
 
         #profListWrap {
-            margin-left: 48px;
-            width: 500px;
+            width: 816px;
             height: 700px;
             font-size: 18px;
             font-weight: bold;
@@ -250,8 +376,8 @@ pageEncoding="UTF-8"%>
             display: block;
             padding: 4px 8px;
             margin: 0 auto;
-            border: 1px solid #3E454D;
-            color: #3E454D;
+            border: 1px solid #1abc9c;
+            color: #1abc9c;
             background: white;
             border-radius: 30px;
             cursor: pointer;
@@ -261,56 +387,20 @@ pageEncoding="UTF-8"%>
             display: block;
             padding: 4px 8px;
             margin: 0 auto;
-            background: #3E454D;
-            border: 1px solid #3E454D;
+            background: #1abc9c;
+            border: 1px solid #1abc9c;
             color: white;
             border-radius: 30px;
         }
-        
-		#dropdown-button {
-		    display: flex;
-		    justify-content: center;
-		    align-items: center;
-		    margin-right: 60px;
-		    padding: 8px;
-		    width: 140px;
-		    font-size: 15px;
-		    border: none;
-		}
-		
-		#dropdown {
-		    position: relative;
-		    display: inline-block;
-		}
-		
-		#dropdown-content {
-		    display: none;
-		    position: absolute;
-		    background-color: white;
-		    min-width: 140px;
-		    padding: 8px;
-		    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
-		}
-		
-		#dropdown-content a {
-		    color: black;
-		    padding: 8px;
-		    text-decoration: none;
-		    display: block;
-		}
-		
-		#dropdown-content a:hover {
-		    background-color: #f3f3f3;
-		}
-		
-		#dropdown:hover #dropdown-content {
-		    display: block;
-		}
+
+        #reservationBodyBg {
+            background: #FAFAFA;
+        }
     </style>
 </head>
 
 <body id="reservationBodyBg">
-	<%
+    <%
 		String isReservated = request.getParameter("isReservated");
 	            
 		if(isReservated != null) {
@@ -323,72 +413,65 @@ pageEncoding="UTF-8"%>
 			out.println("<script>alert('성공적으로 예약 신청되었습니다.');</script>");
 		}
 	%>
-	
-    <div id="topHeader">
-	    <div id="topHeaderInner">
-	        <div>
-	        </div>
-	    </div>
-	</div>
-	
-	<div id="header">
-	    <div id="header_inner">
-	        <div id="title"><a href="index.do">MEETU</a></div>
-	        <div id="gnb">
-	            <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
-	            <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
-	            <div><a id="messageIcon" href="message.do">쪽지함</a></div>
-	        </div>
-	
-	        <div id="dropdown">
-	            <div id="dropdown-button">${mem_dto.getName()}님<img src="/components/images/more.svg"/></div>
-	            <div id="dropdown-content">
-	                <a href="myPage.do">마이페이지</a>
-	                <a href="logout.do">로그아웃</a>
-	            </div>
-	        </div>
-	
-	        <img src="/components/images/bell.svg" id="alertIcon"/>
-	    </div>
-	</div>
-    
-    <table id="reservationWrap">
-        <tr>
-            <td>
-                <ul id="deptWrap">
-                    <li id="selectDept"><img src="/reservation/images/beenhere_black_24dp.svg"/>&nbsp;&nbsp;상담예약</li>
-    
-                </ul>
-            </td>
-    
-            <td id="messageInner">
-                <div id="sender">
-                    <div id="search">
-                        <input type="text" placeholder="검색어를 입력하세요." id="searchText">
-                        <img src="/reservation/images/search.svg" id="searchBtn"/>
-                    </div>
+
+<div id="header">
+    <div id="headerInner">
+        <div id="headerInnerL">
+            <div id="title">MEETU</div>
+            <div id="gnb">
+                <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
+                <div><a id="reserveIcon" href="reservationPro.do">상담예약</a></div>
+                <div><a id="messageIcon" href="message.do">쪽지함</a></div>
+            </div>
+        </div>
+        <div id="headerInnerR">
+            <div id="dropdown">
+                <div id="dropdown-button">${mem_dto.getName()} 😊</div>
+                <div id="dropdown-content">
+                    <a href="myPage.do">마이페이지</a>
+                    <a href="logout.do">로그아웃</a>
                 </div>
-                <div id="messageInnerWrap">
-                    <div id="profListWrap">
-                        <table class="profList">
-                            <thead>
-                            <tr>
-                                <th>번호</th>
-                                <th>교수명</th>
-                                <th>학과</th>
-                                <th>정보보기</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-    
-                            <tbody id="searchResult">
-    
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </td>
-        </tr>
-    </table>
+            </div>
+            <img src="/images/bell.svg" id="noticeImg"/>
+        </div>
+    </div>
+</div>
+
+<div id="reservationWrap">
+    <div>
+        <ul id="deptWrap">
+            <li id="selectDept">상담예약</li>
+
+        </ul>
+    </div>
+
+    <div id="messageInner">
+        <div id="sender">
+            <div id="search">
+                <input type="text" placeholder="검색어를 입력하세요." id="searchText">
+                <img src="/reservation/images/search.svg" id="searchBtn"/>
+            </div>
+        </div>
+        <div id="messageInnerWrap">
+            <div id="profListWrap">
+                <table class="profList">
+                    <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>교수명</th>
+                        <th>학과</th>
+                        <th>상세정보</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="searchResult">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

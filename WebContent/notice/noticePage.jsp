@@ -205,12 +205,12 @@ a {
 
 .boardListWrap {
     width: 1194px;
-    background: #EFEFEF;
+    background: white;
     margin: 0 auto;
 }
 
-.boardListWrap tr:first-child {
-    background: #EFEFEF;
+#thTable {
+	background: #EAEAEA;
 }
 
 .boardListWrap th,
@@ -395,7 +395,7 @@ a {
     <div class="board">
         <table class="boardListWrap">
             <thead>
-            <tr>
+            <tr id="thTable">
                 <th>번호</th>
                 <th>제목</th>
                 <th>작성자</th>
