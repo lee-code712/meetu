@@ -3,118 +3,61 @@ pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>공지사항</title>
-
-	<link rel="stylesheet" href="../components/css/header.css"/>
-    <link rel="stylesheet" href="/notice/css/noticeContent.css"/>
+    <title>공지사항 내용</title>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/notice/js/noticeContent.js"></script>
-    <script>
-    	var notice_id = "${notice_dto.getNoticeId()}";
-    </script>
-    
-    <style>
-		#dropdown-button {
-		    display: flex;
-		    justify-content: center;
-		    align-items: center;
-		    margin-right: 60px;
-		    padding: 8px;
-		    width: 140px;
-		    font-size: 15px;
-		    border: none;
-		}
-		
-		#dropdown {
-		    position: relative;
-		    display: inline-block;
-		}
-		
-		#dropdown-content {
-		    display: none;
-		    position: absolute;
-		    background-color: white;
-		    min-width: 140px;
-		    padding: 8px;
-		    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
-		}
-		
-		#dropdown-content a {
-		    color: black;
-		    padding: 8px;
-		    text-decoration: none;
-		    display: block;
-		}
-		
-		#dropdown-content a:hover {
-		    background-color: #f3f3f3;
-		}
-		
-		#dropdown:hover #dropdown-content {
-		    display: block;
-		}
-   	</style>
+    <link rel="stylesheet" href="/notice/css/noticeContent.css"/>
 </head>
-
-<body id="noticeContentBodyBg">
-   <div id="topHeader">
-	    <div id="topHeaderInner">
-	        <div>
-	        </div>
-	    </div>
-	</div>
-	
-	<div id="header">
-	    <div id="header_inner">
-	        <div id="title"><a href="index.do">MEETU</a></div>
-	        <div id="gnb">
-	            <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
-	            <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
-	            <div><a id="messageIcon" href="message.do">쪽지함</a></div>
-	        </div>
-	
-	        <div id="dropdown">
-	            <div id="dropdown-button">${mem_dto.getName()}<img src="/components/images/more.svg"/></div>
-	            <div id="dropdown-content">
-	                <a href="myPage.do">마이페이지</a>
-	                <a href="logout.do">로그아웃</a>
-	            </div>
-	        </div>
-	
-	        <img src="/components/images/bell.svg" id="alertIcon"/>
-	    </div>
-	</div> 
-    
-    <div id="noticeContent">
-        <div id="contentHeader">
-        	<c:if test="${mem_dto.getRole()=='2'}">
-	            <div id="moreDropdown">
-	                <div id="moreDropBtn">
-	                    <div id="moreDropBtnTitle"><img src="/notice/images/more_vert_black_24dp.svg" id="moreIcon"/></div>
-	                </div>
-	                <div id="moreDropdownContent">
-	                    <a href="#" onclick="deleteNotice()">삭제하기</a>
-	                </div>
-	            </div>
-            </c:if>
-            <div id="contentTitle">
-                <span>◈</span> ${notice_dto.getTitle()} <span>◈</span>
+<body id="ntContentPgBg">
+<div id="header">
+    <div id="headerInner">
+        <div id="headerInnerL">
+            <div id="title">MEETU</div>
+            <div id="gnb">
+                <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
+                <div><a id="reserveIcon" href="reservationPro.do">상담예약</a></div>
+                <div><a id="messageIcon" href="message.do">쪽지함</a></div>
             </div>
         </div>
-        <div id="contentDate">
-            <div id="writeDate">${notice_dto.getWriteDate()}</div>
+        <div id="headerInnerR">
+            <div id="dropdown">
+                <div id="dropdown-button">${mem_dto.getName()} 😊</div>
+                <div id="dropdown-content">
+                    <a href="myPage.do">마이페이지</a>
+                    <a href="logout.do">로그아웃</a>
+                </div>
+            </div>
+            <img src="../images/bell.svg" id="noticeImg"/>
         </div>
-        <div id="content">${notice_dto.getContent()}</div>
+    </div>
+</div>
+
+<div id="noticeContentWrap">
+    <div id="ntContentHeader">
+        <div></div>
+        <div id="ntContentTit">${notice_dto.getTitle()}</div>
+        <c:if test="${mem_dto.getRole()=='2'}">
+            <div id="moreDropdown">
+                <div id="moreDropBtn">
+                    <div id="moreDropBtnTitle"><img src="../images/moreVert.svg" id="moreIcon"/></div>
+                </div>
+                <div id="moreDropdownContent">
+                    <a href="#" onclick="deleteNotice()">삭제하기</a>
+                </div>
+            </div>
+        </c:if>
+    </div>
+    <div id="ntContentInfo">
+        <div id="date"><span>◈</span> 작성일: ${notice_dto.getWriteDate()}</div>
+    </div>
+    <div id="ntContentWrap">
+        <div id="ntContent">${notice_dto.getContent()}</div>
+    </div>
+    <div id="listBtnWrap">
         <button id="listBtn" onclick="location.href='notice.do'">목록</button>
     </div>
+</div>
 </body>
 </html>

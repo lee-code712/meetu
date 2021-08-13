@@ -235,14 +235,14 @@ pageEncoding="UTF-8"  %>
         <div id="headerInnerL">
             <div id="title">MEETU</div>
             <div id="gnb">
-                <div><a href="#" id="noticeIcon">공지사항</a></div>
-                <div><a href="#" id="reserveIcon">상담예약</a></div>
-                <div><a href="#" id="messageIcon">쪽지함</a></div>
+                <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
+                <div><a id="reserveIcon" href="reservationPro.do">상담예약</a></div>
+                <div><a id="messageIcon" href="message.do">쪽지함</a></div>
             </div>
         </div>
         <div id="headerInnerR">
             <div id="dropdown">
-                <div id="dropdown-button">김혜란님 😊</div>
+                <div id="dropdown-button">${mem_dto.getName()} 😊</div>
                 <div id="dropdown-content">
                     <a href="myPage.do">마이페이지</a>
                     <a href="logout.do">로그아웃</a>
@@ -251,6 +251,7 @@ pageEncoding="UTF-8"  %>
             <img src="../images/bell.svg" id="noticeImg"/>
         </div>
     </div>
+</div>
 
     <div id="banner_wrap">
         <ul class="banner_slide">
@@ -319,6 +320,5 @@ pageEncoding="UTF-8"  %>
     <div id="footer">
         Copyrights © 2021 by 시나브로. All Rights Reserved.
     </div>
-</div>
 </body>
 </html>
