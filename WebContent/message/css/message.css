@@ -192,19 +192,13 @@ a {
     margin-top: 10px;
 }
 
-#receiveMsg {
-    padding-left: 25px;
-    color: #3296B6;
-    font-size: 14px;
-    margin-bottom: 4px;
-}
 
 #textBtn {
     text-align: center;
     padding: 14px 28px;
-    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+    background: #1abc9c;
     color: white;
-    border-bottom: 4px solid #FBAB7E;
+    border-bottom: 4px solid #1abc9c;
     border-radius: 0 0 10px 0;
 }
 

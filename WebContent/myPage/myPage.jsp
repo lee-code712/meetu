@@ -8,7 +8,11 @@ pageEncoding="UTF-8"%>
     <meta charset="UTF-8">
     <title>마이페이지</title>
 
-    <link rel="stylesheet" href="/myPage/css/myPage.css"/>
+    <link rel="stylesheet" href="../myPage/css/myPage.css"/>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -33,504 +37,419 @@ pageEncoding="UTF-8"%>
 
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <style>
-        @charset "UTF-8";
-
-        ul, li {
-            text-decoration: none;
-            list-style: none;
-        }
-
-        #navWrap {
-            width: 1194px;
-            margin: 0 auto;
-            margin-top: 80px;
-        }
-
-        #navInnerWrap {
-            display: block;
-        }
-
-        #navSub {
-            display: block;
-        }
-
-        #myPageBodyBg {
-            background: #FAFAFA;
-        }
-
-        #cardWrap {
-            width: 18rem;
-            background: white;
-            border: 1px solid #eee;
-            border-radius: 10px;
-        }
-
-        .boardListWrap {
-            width: 870px;
-            margin: 0 auto;
-        }
-
-        .boardListWrap th,
-        .boardListWrap td {
-            padding: 10px;
-            font-size: 14px;
-        }
-
-        .boardListWrap td, th {
-            text-align: center;
-        }
-
-        #deleteBtn:hover,
-        #editBtn:hover,
-        #cancelBtn:hover,
-        #rejectMessageBtn:hover,
-        #messageBtn:hover {
-            cursor: pointer;
-        }
-
-        a:link {
-            color: #3E454D;
-            text-decoration: none;
-        }
-
-        a:visited {
-            color: #3E454D;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #3E454D;
-            text-decoration: underline;
-        }
-
-        #logoutBtn {
-            display: block;
-            width: 100px;
-            height: 40px;
-            margin: 0 auto;
-            border: 1px solid #FBAB7E;
-            color: #FBAB7E;
-            background: white;
-            border-radius: 5px;
-        }
-
-        #logoutBtn:hover {
-            display: block;
-            width: 100px;
-            height: 40px;
-            margin: 0 auto;
-            background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #cardTitle {
-            display: flex;
-            align-items: center;
-            padding-left: 10px;
-            height: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #535353;
-        }
-
-        #cardBody {
-            padding: 20px 0;
-            text-align: center;
-            height: 180px;
-        }
-
-        #userUniv {
-            margin: 10px 0 40px 0;
-        }
-
-        #thBorder {
-            border-bottom: 1px solid #eee;
-        }
-
-        #thBorder th {
-            text-align: center;
-        }
-
-        #completeBtn,
-        #cancelBtn,
-        #okBtn {
-            color: #3E454D;
-        }
-
-
-        #dropdown-button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 60px;
-            padding: 8px;
-            width: 140px;
-            font-size: 15px;
-            border: none;
-        }
-
-        #dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        #dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            min-width: 140px;
-            padding: 8px;
-            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
-        }
-
-        #dropdown-content a {
-            color: black;
-            padding: 8px;
-            text-decoration: none;
-            display: block;
-        }
-
-        #dropdown-content a:hover {
-            background-color: #f3f3f3;
-        }
-
-        #dropdown:hover #dropdown-content {
-            display: block;
-        }
-
-        @charset "UTF-8";
-
-        ul, li {
-            text-decoration: none;
-            list-style: none;
-        }
-
-        #header {
-            width: 100%;
-            height: 100px;
-            border-bottom: 1px solid #eee;
-            background: white;
-        }
-
-        #header_inner {
-            display: flex;
-            align-items: center;
-            margin: 0 auto;
-            width: 1194px;
-            height: 100px;
-        }
-
-        #title {
-            display: flex;
-            align-items: center;
-            width: 200px;
-            height: 100%;
-            color: #FBAB7E;
-            font-size: 24px;
-            margin-right: 30px;
-            font-family: 'Yellowtail', cursive;
-            font-weight: bold;
-        }
-
-        #title:hover {
-            cursor: pointer;
-        }
-
-        #gnb {
-            display: flex;
-            width: 100%;
-            font-size: 16px;
-            font-weight: bold;
-            color: #535353;
-            align-items: center;
-        }
-
-        #gnb a {
-            padding: 0 40px;
-        }
-
-        #alertIcon {
-            width: 18px;
-            height: 18px;
-        }
-
-        #alertIcon:hover,
-        #noticeIcon:hover,
-        #reserveIcon:hover,
-        #messageIcon:hover {
-            cursor: pointer;
-        }
-
-        #messageIcon,
-        #noticeIcon,
-        #reserveIcon {
-            color: #535353;
-        }
-
-        a:link {
-            color: #535353;
-            text-decoration: none;
-        }
-
-        a:visited {
-            color: #535353;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #535353;
-            text-decoration: none;
-        }
-
-        #title a:link,
-        #title a:visited,
-        #title a:hover {
-            color: #FBAB7E;
-
-        }
-
-        #topHeader {
-            width: 100%;
-            height: 34px;
-            background-color: #FBAB7E;
-            background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-        }
-
-        #topHeaderInner {
-            margin: 0 auto;
-            width: 1194px;
-            height: 100%;
-        }
-
-        #topHeaderInner div {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            height: 100%;
-            float: right;
-            color: white;
-        }
-
-        #topHeaderInner div span {
-            margin-left: 20px;
-        }
-
-        #topHeaderInner div a:link,
-        #topHeaderInner div a:visited,
-        #topHeaderInner div a:hover {
-            color: white;
-        }
-
-        #gnb div a {
-            font-size: 14px;
-            position: relative;
-        }
-
-        #gnb div a:before {
-            content: '';
-            position: absolute;
-            background-color: #FBAB7E;
-            height: 6px;
-            width: 0;
-            bottom: -42px;
-            transition: 0.5s;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        #gnb div a:hover:before {
-            width: 100%;
-        }
-
-        #dropdown-button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 60px;
-            padding: 8px;
-            width: 140px;
-            font-size: 15px;
-            border: none;
-        }
-
-        #dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        #dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            min-width: 140px;
-            padding: 8px;
-            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
-        }
-
-        #dropdown-content a {
-            color: black;
-            padding: 8px;
-            text-decoration: none;
-            display: block;
-        }
-
-        #dropdown-content a:hover {
-            background-color: #f3f3f3;
-        }
-
-        #dropdown:hover #dropdown-content {
-            display: block;
-        }
-
-		#approvalBtn,
-        #editBtn,
-        #rejectMsgBtn {
-            padding: 4px 12px;
-            border-radius: 30px;
-            background: #ee6868;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-		#rejectBtn,
-        #cancelBtn {
-            padding: 4px 12px;
-            border-radius: 30px;
-            background: #6885ee;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        #msgBtn {
-            padding: 4px 12px;
-            border-radius: 30px;
-            background: #eeb868;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        #consultedBtn,
-        #consultationRecordBtn {
-            padding: 4px 12px;
-            border-radius: 30px;
-            background: #eeb868;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        #incompleteBtn {
-            padding: 4px 12px;
-            border-radius: 30px;
-            background: #cecece;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        
-        #searchWrap {
-        	margin-top: 8px;
-            float: right;
-            width: 260px;
-            height: 24px;
-            border-bottom: 1px solid #eee;
-            border-radius: 30px;
-            background: #ffffff;
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 2px;
-        }
-
-        #searchText {
-            font-size: 12px;
-            width: 120px;
-            margin: 2px 0 4px 10px;
-            padding-left: 4px;
-            border: 0px;
-            outline: none;
-            float: left;
-            border-radius: 30px;
-        }
-
-        #searchBtn {
-            width: 20px;
-            height: 20px;
-            margin: 2px 10px 2px 0;
-            border: none;
-            outline: none;
-            float: right;
-        }
-
-        #searchBtn:hover {
-            cursor: pointer;
-        }
-        
-        #navBox {
-        	border: none;
-        }
-        
-        #moreImg {
-            width: 20px;
-            margin: 4px;
-        }
-    </style>
     <script src="/myPage/js/myPage.js"></script>
+    
+    <style>
+    	@charset "UTF-8";
+
+ul, li {
+    text-decoration: none;
+    list-style: none;
+}
+
+#navWrap {
+    width: 1194px;
+    margin: 0 auto;
+    margin-top: 80px;
+}
+
+#navInnerWrap {
+    display: block;
+}
+
+#navSub {
+    width: 816px;
+    display: block;
+}
+
+#myPageBodyBg {
+    background: #FAFAFA;
+}
+
+#cardWrap {
+    width: 318px;
+    height: 500px;
+    border-radius: 5px;
+}
+
+.boardListWrap {
+    width: 816px;
+    margin: 0 auto;
+}
+
+.boardListWrap th,
+.boardListWrap td {
+    padding: 10px;
+    font-size: 14px;
+}
+
+.boardListWrap td, th {
+    text-align: center;
+}
+
+#deleteBtn:hover,
+#editBtn:hover,
+#cancelBtn:hover,
+#rejectMessageBtn:hover,
+#messageBtn:hover {
+    cursor: pointer;
+}
+
+a:link {
+    color: #3E454D;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #3E454D;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #3E454D;
+    text-decoration: underline;
+}
+
+#thBorder {
+    background: #EAEAEA;
+}
+
+#thBorder th {
+    text-align: center;
+}
+
+
+@charset "UTF-8";
+
+ul, li {
+    text-decoration: none;
+    list-style: none;
+}
+
+#searchWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    float: right;
+    padding: 0px 8px;
+    width: 260px;
+    height: 34px;
+    border-bottom: 1px solid #EAEAEA;
+    border-radius: 50px;
+    background: #ffffff;
+}
+
+#searchText {
+    font-size: 12px;
+    width: 120px;
+    padding-left: 4px;
+    border: 0px;
+    outline: none;
+    float: left;
+    border-radius: 30px;
+}
+
+#searchBtn {
+    width: 20px;
+    height: 20px;
+    border: none;
+    outline: none;
+    float: right;
+}
+
+#searchBtn:hover {
+    cursor: pointer;
+}
+
+#navBox {
+    height: 80px;
+    border: none;
+}
+
+#navListWrap {
+    width: 100%;
+    border-bottom: 1px solid #EAEAEA;
+    border-left: 1px solid #EAEAEA;
+    border-right: 1px solid #EAEAEA;
+    background: white;
+    border-radius: 0px 0px 5px 5px;
+}
+
+#logoutBtnWrap {
+    display: flex;
+    align-items: center;
+    width: 316px;
+    height: 60px;
+    margin-top: 50px;
+    padding-bottom: 20px;
+    font-size: 14px;
+}
+
+#userImgWrap {
+    display: flex;
+    align-items: center;
+    width: 316px;
+    height: 180px;
+    font-size: 14px;
+}
+
+
+#navList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 316px;
+    height: 40px;
+    font-size: 14px;
+}
+
+
+#navListOn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 316px;
+    height: 40px;
+    font-size: 14px;
+    background: #1abc9c;
+    color: white;
+}
+
+#navLTit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #EAEAEA;
+    font-size: 18px;
+    background: white;
+    border-radius: 5px 5px 0px 0px;
+}
+
+#noticeIcon:hover,
+#reserveIcon:hover,
+#messageIcon:hover {
+    cursor: pointer;
+}
+
+#noticeIcon,
+#reserveIcon,
+#messageIcon {
+    color: black;
+}
+
+a:link {
+    color: black;
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+#title,
+#title a:link,
+#title a:visited,
+#title a:hover {
+    color: #1abc9c;
+
+}
+
+#header {
+    width: 100%;
+    height: 80px;
+    background: white;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+#headerInner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 1194px;
+    height: 100%;
+}
+
+#headerInnerL {
+    display: flex;
+    align-items: center;
+}
+
+#title {
+    font-family: 'Yellowtail', cursive;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#gnb {
+    margin-left: 140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    font-size: 14px;
+}
+
+#headerInnerR {
+    display: flex;
+    align-items: center;
+}
+
+#dropdown {
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    padding: 14px;
+}
+
+#dropdown-button div {
+    justify-content: flex-end;
+}
+
+#dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    margin-top: 14px;
+    min-width: 130px;
+    padding: 4px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+#dropdown-content a {
+    color: black;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+}
+
+#dropdown-content a:hover {
+    background-color: #FAFAFA;
+    border-radius: 5px;
+}
+
+#dropdown:hover #dropdown-content {
+    display: block;
+}
+
+#headerInnerR img {
+    margin-left: 60px;
+}
+
+#noticeImg {
+    width: 14px;
+    height: 14px;
+}
+
+#noticeImg:hover {
+    cursor: pointer;
+}
+
+#bookedList,
+#canceledList,
+#approvedList,
+#completedList {
+    border: none;
+    background: #FAFAFA;
+}
+
+#bookedList:focus,
+#canceledList:focus,
+#approvedList:focus,
+#completedList:focus {
+    border-radius: 50px;
+    background: #1abc9c;
+    color: white;
+}
+
+#logoutBtn {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: 40px;
+    border: 1px solid #1abc9c;
+    border-radius: 5px;
+    color: #1abc9c;
+    background: white;
+}
+
+#logoutBtn:hover {
+    background: #1abc9c;
+    color: white;
+    border: 1px solid #1abc9c;
+    cursor: pointer;
+}
+
+#moreImg {
+    display: block;
+    margin: 0 auto;
+    width: 16px;
+    height: 16px;
+}
+
+.swal-button {
+    background: #1abc9c;
+    font-size: 12px;
+}
+    </style>
 </head>
 
 <body id="myPageBodyBg">
-<div id="topHeader">
-    <div id="topHeaderInner">
-        <div>
-        </div>
-    </div>
-</div>
-
 <div id="header">
-    <div id="header_inner">
-        <div id="title"><a href="index.do">MEETU</a></div>
-        <div id="gnb">
-            <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
-            <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
-            <div><a id="messageIcon" href="message.do">쪽지함</a></div>
-        </div>
-
-        <div id="dropdown">
-            <div id="dropdown-button">${mem_dto.getName()}님<img src="/components/images/more.svg"/></div>
-            <div id="dropdown-content">
-                <a href="myPage.do">마이페이지</a>
-                <a href="logout.do">로그아웃</a>
+    <div id="headerInner">
+        <div id="headerInnerL">
+            <div id="title">MEETU</div>
+            <div id="gnb">
+                <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
+                <div><a id="reserveIcon" href="reservationPro.do">상담예약</a></div>
+                <div><a id="messageIcon" href="message.do">쪽지함</a></div>
             </div>
         </div>
-
-        <img src="/components/images/bell.svg" id="alertIcon"/>
+        <div id="headerInnerR">
+            <div id="dropdown">
+                <div id="dropdown-button">${mem_dto.getName()} 😊</div>
+                <div id="dropdown-content">
+                    <a href="myPage.do">마이페이지</a>
+                    <a href="logout.do">로그아웃</a>
+                </div>
+            </div>
+            <img src="/images/bell.svg" id="noticeImg"/>
+        </div>
     </div>
 </div>
 
-<div id="navWrap">
-    <table id="navInnerWrap">
-        <tr>
-            <td>
-                <div id="cardWrap">
-                    <div id="cardTitle">내 정보</div>
-                    <img src="/myPage/images/uesrImg.svg" class="card-img-top" alt="..." id="userImg">
-                    <div id="cardBody">
-                        <div id="userName">${mem_dto.getName()}</div>
-                        <div id="userUniv">${univ_dto.getUnivName()}</div>
-                        <button id="logoutBtn" onclick="location.href='logout.do'">로그아웃</button>
+    <div id="navWrap">
+        <table id="navInnerWrap">
+            <tr>
+                <td>
+                    <div id="cardWrap">
+                        <div id="navLTit">마이페이지</div>
+                        <div id="navListWrap">
+                            <div id="userImgWrap"><img src="../images/user.svg" id="userImg"/></div>
+                            <div id="navListOn">${mem_dto.getName()}</div>
+                            <div id="navList">${univ_dto.getUnivName()}</div>
+                            <div id="logoutBtnWrap">
+                                <button id="logoutBtn" onclick="location.href='logout.do'">로그아웃</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </td>
+                </td>
 
-            <td>
-                <div style="width: 40px"></div>
-            </td>
+                <td>
+                    <div style="width: 60px"></div>
+                </td>
 
-            <td id="navSub">
-            	<div id="searchWrap">
+                <td id="navSub">
+                    <div id="searchWrap">
             		<c:choose>
 	                    <c:when test="${mem_dto.getRole() == 0}">
 	                    	<input type="text" placeholder="교수명으로 검색" id="searchText"/>
@@ -566,12 +485,12 @@ pageEncoding="UTF-8"%>
 	                    				<c:when test="${mem_dto.getRole() == 0}"><th>교수명</th></c:when>
 	                    				<c:otherwise><th>학생명</th></c:otherwise>
 	               					</c:choose>
-	               					<th>상담일시</th> 
+	               					<th>상담일시</th>
 	               					<th>장소</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                
+
                                 </tbody>
                             </table>
                         </div>
@@ -586,12 +505,12 @@ pageEncoding="UTF-8"%>
 	                    				<c:when test="${mem_dto.getRole() == 0}"><th>교수명</th></c:when>
 	                    				<c:otherwise><th>학생명</th></c:otherwise>
 	               					</c:choose>
-	               					<th>상담일시</th> 
+	               					<th>상담일시</th>
 	               					<th>장소</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                
+
                                 </tbody>
                             </table>
                         </div>
@@ -606,12 +525,12 @@ pageEncoding="UTF-8"%>
 	                    				<c:when test="${mem_dto.getRole() == 0}"><th>교수명</th></c:when>
 	                    				<c:otherwise><th>학생명</th></c:otherwise>
 	               					</c:choose>
-	               					<th>상담일시</th> 
+	               					<th>상담일시</th>
 	               					<th>장소</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                
+
                                 </tbody>
                             </table>
                         </div>
@@ -626,20 +545,20 @@ pageEncoding="UTF-8"%>
 	                    				<c:when test="${mem_dto.getRole() == 0}"><th>교수명</th></c:when>
 	                    				<c:otherwise><th>학생명</th></c:otherwise>
 	               					</c:choose>
-	               					<th>상담일시</th> 
-	               					<th>장소</th>   
+	               					<th>상담일시</th>
+	               					<th>장소</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-            </td>
-        </tr>
-    </table>
-</div>
+                </td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>

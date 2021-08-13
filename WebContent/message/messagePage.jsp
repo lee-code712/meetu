@@ -6,8 +6,6 @@ pageEncoding="UTF-8" %>
 <html>
 <head>
     <title>쪽지함</title>
-
-	<link rel="stylesheet" href="../components/css/header.css"/>
     <link rel="stylesheet" href="/message/css/message.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -16,82 +14,176 @@ pageEncoding="UTF-8" %>
         var user_id = '${user_id}';
     </script>
 
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
-    
-    <style>
-		#dropdown-button {
-		    display: flex;
-		    justify-content: center;
-		    align-items: center;
-		    margin-right: 60px;
-		    padding: 8px;
-		    width: 140px;
-		    font-size: 15px;
-		    border: none;
-		}
-		
-		#dropdown {
-		    position: relative;
-		    display: inline-block;
-		}
-		
-		#dropdown-content {
-		    display: none;
-		    position: absolute;
-		    background-color: white;
-		    min-width: 140px;
-		    padding: 8px;
-		    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
-		}
-		
-		#dropdown-content a {
-		    color: black;
-		    padding: 8px;
-		    text-decoration: none;
-		    display: block;
-		}
-		
-		#dropdown-content a:hover {
-		    background-color: #f3f3f3;
-		}
-		
-		#dropdown:hover #dropdown-content {
-		    display: block;
-		}
-    </style>
+   <style>
+   
+   #noticeImg {
+            width: 14px;
+            height: 14px;
+        }
+
+        #noticeImg:hover {
+            cursor: pointer;
+        }
+        
+        #noticeIcon:hover,
+        #reserveIcon:hover,
+        #messageIcon:hover {
+            cursor: pointer;
+        }
+
+        #noticeIcon,
+        #reserveIcon,
+        #messageIcon {
+            color: black;
+        }
+
+        a:link {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: black;
+            text-decoration: none;
+        }
+
+        #title,
+        #title a:link,
+        #title a:visited,
+        #title a:hover {
+            color: #1abc9c;
+
+        }
+
+        #header {
+            width: 100%;
+            height: 80px;
+            background: white;
+            border-bottom: 1px solid #EAEAEA;
+        }
+
+        #headerInner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+            width: 1194px;
+            height: 100%;
+        }
+
+        #headerInnerL {
+            display: flex;
+            align-items: center;
+        }
+
+        #title {
+            font-family: 'Yellowtail', cursive;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #gnb {
+            margin-left: 140px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 300px;
+            font-size: 14px;
+        }
+
+        #headerInnerR {
+            display: flex;
+            align-items: center;
+        }
+
+        #dropdown {
+            position: relative;
+            display: inline-block;
+            font-size: 14px;
+            padding: 14px;
+        }
+
+        #dropdown-button:hover {
+            cursor: pointer;
+        }
+
+        #dropdown-button div {
+            justify-content: flex-end;
+        }
+
+        #dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            margin-top: 14px;
+            min-width: 130px;
+            padding: 4px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        #dropdown-content a {
+            color: black;
+            padding: 8px;
+            text-decoration: none;
+            display: block;
+        }
+
+        #dropdown-content a:hover {
+            background-color: #FAFAFA;
+            border-radius: 5px;
+        }
+
+        #dropdown:hover #dropdown-content {
+            display: block;
+        }
+
+        #headerInnerR img {
+            margin-left: 60px;
+        }
+        
+        #receiveMsg {
+    padding-left: 25px;
+    color: #3296B6;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+   </style>
 </head>
 
 <body id="messageBodyBg">
 	
-	<div id="topHeader">
-	    <div id="topHeaderInner">
-	        <div>
-	        </div>
-	    </div>
-	</div>
-	
 	<div id="header">
-	    <div id="header_inner">
-	        <div id="title"><a href="index.do">MEETU</a></div>
-	        <div id="gnb">
-	            <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
-	            <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
-	            <div><a id="messageIcon" href="message.do">쪽지함</a></div>
-	        </div>
-	
-	        <div id="dropdown">
-	            <div id="dropdown-button">${mem_dto.getName()}님<img src="/components/images/more.svg"/></div>
-	            <div id="dropdown-content">
-	                <a href="myPage.do">마이페이지</a>
-	                <a href="logout.do">로그아웃</a>
-	            </div>
-	        </div>
-	
-	        <img src="/components/images/bell.svg" id="alertIcon"/>
-	    </div>
-	</div>
+    <div id="headerInner">
+        <div id="headerInnerL">
+            <div id="title">MEETU</div>
+            <div id="gnb">
+                <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
+                <div><a id="reserveIcon" href="reservationPro.do">상담예약</a></div>
+                <div><a id="messageIcon" href="message.do">쪽지함</a></div>
+            </div>
+        </div>
+        <div id="headerInnerR">
+            <div id="dropdown">
+                <div id="dropdown-button">${mem_dto.getName()} 😊</div>
+                <div id="dropdown-content">
+                    <a href="myPage.do">마이페이지</a>
+                    <a href="logout.do">로그아웃</a>
+                </div>
+            </div>
+            <img src="/images/bell.svg" id="noticeImg"/>
+        </div>
+    </div>
+</div>
 	
     <table id="reservationWrap">
         <tr>
