@@ -36,7 +36,7 @@ pageEncoding="UTF-8"%>
 
 <div id="noticeContentWrap">
     <div id="ntContentHeader">
-        <div></div>
+        <div id="blankDiv"></div>
         <div id="ntContentTit">${notice_dto.getTitle()}</div>
         <c:if test="${mem_dto.getRole()=='2'}">
             <div id="moreDropdown">
