@@ -14,14 +14,11 @@ public class IndexAction implements CommandAction {
 		MemberDTO m_dto = (MemberDTO) session.getAttribute("mem_dto");
 		String role = m_dto.getRole();
 		
-		if(role.equals("0")) {
-			return "/index/indexStu.jsp";
-		}
-		else if(role.equals("1")) {
-			return "/index/indexProf.jsp"; // 아직 교수용 index페이지 구현 X
+		if(role.equals("2")) {
+			return "notice.do"; // 관리자인 경우 공지사항 페이지만 접근
 		}
 		else {
-			return "/index/indexAdmin.jsp"; // 관리자용 index페이지 일단 분리
+			return "/index/indexPage.jsp";
 		}	
 	}
 
