@@ -31,6 +31,25 @@ public class MakeReservationAction implements CommandAction {
 		
 		String start_time = year + "/" + choiceMonth + "/" + choiceDay + " " + startTime + ":00";
 		
+		// end_time 생성 - 21/07/28 09:00:00의 형식
+		cal = Calendar.getInstance();
+		year = Integer.toString(cal.get(Calendar.YEAR));
+		
+		String[] startTimeArr = startTime.split(":"); // 09:00을 09, 00으로 분리
+		int start_timeInt =  Integer.parseInt(startTimeArr[0]); // 09만 이용
+		int consultTimeInt = Integer.parseInt(consultTime.replaceAll("[^0-9]", ""));
+		int endTimeInt = start_timeInt + consultTimeInt;
+		
+		String endTime = "";
+		if (endTimeInt < 10) { // 시간이 한 자리 수인 경우 0을 붙여서 09와 같이 두 자리 수로 만들어 주어야 함
+			endTime = "0" + Integer.toString(start_timeInt + consultTimeInt);
+		}
+		else {
+			endTime = Integer.toString(start_timeInt + consultTimeInt);
+		}
+		
+		String end_time = year + "/" + choiceMonth + "/" + choiceDay + " " + endTime + ":00:00";
+		
 		// 온라인/오프라인 상담 구분. 오프라인 0, 온라인 1
 		int type;
 		if(typeBtn.equals("오프라인")) {
@@ -82,7 +101,7 @@ public class MakeReservationAction implements CommandAction {
 		}
 		
 		ReservationDAO reservationDAO = new ReservationDAO();
-		boolean is_added = reservationDAO.makeReservation(univ_dto.getUnivId(), start_time, reason, type, p_user_id, (String)session.getAttribute("user_id"));
+		boolean is_added = reservationDAO.makeReservation(univ_dto.getUnivId(), start_time, end_time, reason, type, p_user_id, (String)session.getAttribute("user_id"));
 		
 		if(!is_added) {
 			res.setStatus(400); // bad request

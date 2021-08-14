@@ -10,7 +10,7 @@ pageEncoding="UTF-8"  %>
 
     <title>MEETU</title>
 
-    <link rel="stylesheet" href="/index/css/indexStu.css"/>
+    <link rel="stylesheet" href="/index/css/index.css"/>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +20,7 @@ pageEncoding="UTF-8"  %>
     <script src="/index/js/jquery.bxslider.min.js"></script>
     <link href="/index/css/jquery.bxslider.css" rel="stylesheet"/>
 
-    <script src="/index/js/indexStu.js"></script>
+    <script src="/index/js/index.js"></script>
 
     <script>
         var week = new Array('일', '월', '화', '수', '목', '금', '토');
@@ -233,10 +233,12 @@ pageEncoding="UTF-8"  %>
 <div id="header">
     <div id="headerInner">
         <div id="headerInnerL">
-            <div id="title"><a a href="index.do">MEETU</a></div>
+            <div id="title"><a href="index.do">MEETU</a></div>
             <div id="gnb">
                 <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
-                <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
+                <c:if test="${mem_dto.getRole()=='0'}">
+	    			<div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
+				</c:if>
                 <div><a id="messageIcon" href="message.do">쪽지함</a></div>
             </div>
         </div>

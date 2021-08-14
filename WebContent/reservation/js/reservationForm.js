@@ -16,10 +16,11 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 	$(newInputElement).attr("id", "prof_email");
 	
 	var content = email.innerHTML;
-	content = content.substring(47, content.length); // bad
+	content = content.substring(5, content.length); // bad
+	
 	$(newInputElement).attr("value", content);
 	
-	$(".mylist").append(newInputElement);
+	$("#navL").append(newInputElement);
 	
 	// ajax로 교수 상담 가능 시간 받아와 캘린더 생성
 	$.ajax({
@@ -59,10 +60,10 @@ function prevCalendar() {
 	$(newInputElement).attr("id", "prof_email");
 	
 	var content = email.innerHTML;
-	content = content.substring(47, content.length); // bad
+	content = content.substring(5, content.length); // bad
 	$(newInputElement).attr("value", content);
 			
-	$(".mylist").append(newInputElement);
+	$("#navL").append(newInputElement);
 
 	// ajax로 교수 상담 가능 시간 받아오기
 	$.ajax({
@@ -98,10 +99,10 @@ function nextCalendar() {
 	$(newInputElement).attr("id", "prof_email");
 
 	var content = email.innerHTML;
-	content = content.substring(47, content.length); // bad
+	content = content.substring(5, content.length); // bad
 	$(newInputElement).attr("value", content);
 	
-	$(".mylist").append(newInputElement);
+	$("#navL").append(newInputElement);
     
 	// ajax로 교수 상담 가능 시간 받아오기
 	$.ajax({
@@ -281,7 +282,6 @@ function buildCalendar(responseText) {
 							break;
 						}
 						else if (key == Object.keys(schedules)[size - 1]) {
-							// alert("getDay(): " + (dateObj.getDay()) + ", disable_date: " + disable_date + ", disable_time: " + disable_time);
 							column.style.backgroundColor = "#FFFFFF";
                     		column.style.cursor = "pointer";
                     		column.onclick = function () {
@@ -349,7 +349,7 @@ function calendarChoiceDay(column, schedules) {
 
     $(newInputDayElement).attr("value", contentDay);
 
-    $("#contentBody").append(newInputDayElement);
+    $("#navRContentWrap").append(newInputDayElement);
 
     // 선택한 월
     var newInputMonthElement = document.createElement("input");
@@ -360,7 +360,7 @@ function calendarChoiceDay(column, schedules) {
     var contentMonth = document.getElementById("calMonth").innerHTML;
     $(newInputMonthElement).attr("value", contentMonth);
 
-    $("#contentBody").append(newInputMonthElement);
+    $("#navRContentWrap").append(newInputMonthElement);
 
 	// 추가 - startTimeBox, timeBox onclick 이벤트 생성
 	var classes = document.getElementsByClassName("startTimeBox");

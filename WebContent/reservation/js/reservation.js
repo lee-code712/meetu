@@ -45,7 +45,6 @@ function searchProfessorByDept() {
 }
 
 function updatePage(responseText) {
-	// alert("profs: " + responseText);
 	var profs = JSON.parse(responseText);
 	
 	if (jQuery.isEmptyObject(profs)) {
@@ -177,7 +176,7 @@ function updatePage(responseText) {
 		// checkBtn
 		var newCheckTdElement = document.createElement("td");
 		
-		if(is_member) { // 회원인 경우에만 선택하기 출력
+		if (is_member) { // 회원인 경우에만 선택하기 출력
 			var newCheckBtnElement = document.createElement("button");
 			$(newCheckBtnElement).attr("id", "checkBtn");
 			newCheckBtnElement.innerHTML = "선택하기";

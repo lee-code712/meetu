@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -418,10 +419,12 @@ pageEncoding="UTF-8"%>
 <div id="header">
     <div id="headerInner">
         <div id="headerInnerL">
-            <div id="title"><a a href="index.do">MEETU</a></div>
+            <div id="title"><a href="index.do">MEETU</a></div>
             <div id="gnb">
                 <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
-                <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
+                <c:if test="${mem_dto.getRole()=='0'}">
+	    			<div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
+				</c:if>
                 <div><a id="messageIcon" href="message.do">쪽지함</a></div>
             </div>
         </div>

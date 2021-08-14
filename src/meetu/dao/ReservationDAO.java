@@ -51,7 +51,7 @@ public class ReservationDAO {
 				reservation_dto.setEndTime(rs.getString("end_time"));
 				reservation_dto.setReason(rs.getString("reason"));
 				reservation_dto.setType(rs.getInt("type"));
-				reservation_dto.setState(rs.getInt("state"));
+				reservation_dto.setState(rs.getInt("approval"));
 				reservation_dto.setRejectMsg(rs.getString("reject_msg"));
 				reservation_dto.setPUserId(rs.getString("p_user_id"));
 				reservation_dto.setSUserId(rs.getString("s_user_id"));
@@ -64,7 +64,7 @@ public class ReservationDAO {
 					reservation_dto.setEndTime(rs.getString("end_time"));
 					reservation_dto.setReason(rs.getString("reason"));
 					reservation_dto.setType(rs.getInt("type"));
-					reservation_dto.setState(rs.getInt("state"));
+					reservation_dto.setState(rs.getInt("approval"));
 					reservation_dto.setRejectMsg(rs.getString("reject_msg"));
 					reservation_dto.setPUserId(rs.getString("p_user_id"));
 					reservation_dto.setSUserId(rs.getString("s_user_id"));
@@ -108,7 +108,7 @@ public class ReservationDAO {
 				reservation_dto.setEndTime(rs.getString("end_time"));
 				reservation_dto.setReason(rs.getString("reason"));
 				reservation_dto.setType(rs.getInt("type"));
-				reservation_dto.setState(rs.getInt("state"));
+				reservation_dto.setState(rs.getInt("approval"));
 				reservation_dto.setRejectMsg(rs.getString("reject_msg"));
 				reservation_dto.setPUserId(rs.getString("p_user_id"));
 				reservation_dto.setSUserId(rs.getString("s_user_id"));
@@ -138,7 +138,7 @@ public class ReservationDAO {
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "update reservation set state=? where res_id=?";
+			String sql = "update reservation set approval=? where res_id=?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, reservation_dto.getState());
@@ -226,22 +226,23 @@ public class ReservationDAO {
 	}
 	
 	// 예약 레코드 추가
-	public boolean makeReservation(String univ, String start_time, String reason, int type, String p_user_id, String s_user_id)throws NamingException/* , SQLException */ {
+	public boolean makeReservation(String univ, String start_time, String end_time, String reason, int type, String p_user_id, String s_user_id)throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		boolean is_added = false;
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "insert into reservation (res_id, start_time, reason, type, state, p_user_id, s_user_id) ";
-			sql += "values (reservation_seq.NEXTVAL, TO_DATE(?,'YY/MM/DD HH24:MI:SS'), ?, ?, 0, ?, ?)";
+			String sql = "insert into reservation (res_id, start_time, end_time, reason, type, approval, p_user_id, s_user_id) ";
+			sql += "values (reservation_seq.NEXTVAL, TO_DATE(?,'YY/MM/DD HH24:MI:SS'), TO_DATE(?,'YY/MM/DD HH24:MI:SS'), ?, ?, 0, ?, ?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, start_time);
-			pstmt.setString(2, reason);
-			pstmt.setInt(3, type);
-			pstmt.setString(4, p_user_id);
-			pstmt.setString(5, s_user_id);
+			pstmt.setString(2, end_time);
+			pstmt.setString(3, reason);
+			pstmt.setInt(4, type);
+			pstmt.setString(5, p_user_id);
+			pstmt.setString(6, s_user_id);
 
 			rs = pstmt.executeQuery();
 								
