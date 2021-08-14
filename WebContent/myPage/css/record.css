@@ -187,6 +187,7 @@ a:hover {
 
 #navRTit {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding-left: 20px;
     width: 796px;
@@ -195,6 +196,12 @@ a:hover {
     background: white;
     border-radius: 5px 5px 0px 0px;
     border: 1px solid #EAEAEA;
+}
+
+#writerName {
+	padding-right: 20px;
+	color: #535353;
+	font-size: 14px;
 }
 
 #navRContentWrap {
