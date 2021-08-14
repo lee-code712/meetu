@@ -63,7 +63,7 @@
     </div>
 
     <div id="navR">
-        <div id="navRTit">상담내용 <span>작성자: ${prof_info.get(0)}</span></div>
+        <div id="navRTit"><div>상담내용</div> <div id="writerName">작성자: ${prof_info.get(0)}</div></div>
         <div id="navRContentWrap">
             <c:choose>
                 <c:when test="${consult_dto.getContent() == ' '}">
