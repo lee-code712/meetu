@@ -109,9 +109,61 @@ a:hover {
     color: #3E454D;
     text-decoration: underline;
 }
+	    
+#editBtn,
+#cancelBtn,
+#rejectMsgBtn,
+#msgBtn,
+#approvalBtn,
+#rejectBtn,
+#consultedBtn,
+#consultationRecordBtn {
+    cursor: pointer;
+}
+
+#approvalBtn,
+#editBtn,
+#rejectMsgBtn {
+    padding: 4px 12px;
+    border-radius: 30px;
+    background: #ee6868;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#rejectBtn,
+#cancelBtn {
+    padding: 4px 12px;
+    border-radius: 30px;
+    background: #6885ee;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#msgBtn {
+    padding: 4px 12px;
+    border-radius: 30px;
+    background: #eeb868;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#consultedBtn,
+#consultationRecordBtn {
+    padding: 4px 12px;
+    border-radius: 30px;
+    background: #eeb868;
+    color: white;
+    border: none;
+    cursor: pointer;
+}	    
 
 #thBorder {
-    background: #EAEAEA;
+    border-top: 3px solid #1abc9c;
+    border-bottom: 1px solid #EAEAEA;
 }
 
 #thBorder th {
