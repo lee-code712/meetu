@@ -38,420 +38,437 @@ pageEncoding="UTF-8"%>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/myPage/js/myPage.js"></script>
-    
+
     <style>
-    	@charset "UTF-8";
+        @charset "UTF-8";
 
-ul, li {
-    text-decoration: none;
-    list-style: none;
-}
+        ul, li {
+            text-decoration: none;
+            list-style: none;
+        }
 
-#navWrap {
-    width: 1194px;
-    margin: 0 auto;
-    margin-top: 80px;
-}
+        #navWrap {
+            width: 1194px;
+            margin: 0 auto;
+            margin-top: 80px;
+        }
 
-#navInnerWrap {
-    display: block;
-}
+        #navInnerWrap {
+            display: block;
+        }
 
-#navSub {
-    width: 816px;
-    display: block;
-}
+        #navSub {
+            width: 816px;
+            display: block;
+        }
 
-#myPageBodyBg {
-    background: #FAFAFA;
-}
+        #myPageBodyBg {
+            background: #FAFAFA;
+        }
 
-#cardWrap {
-    width: 318px;
-    height: 500px;
-    border-radius: 5px;
-}
+        #cardWrap {
+            width: 318px;
+            height: 500px;
+            border-radius: 5px;
+        }
 
-.boardListWrap {
-    width: 816px;
-    margin: 0 auto;
-}
+        .boardListWrap {
+            width: 816px;
+            margin: 0 auto;
+        }
 
-.boardListWrap th,
-.boardListWrap td {
-    padding: 10px;
-    font-size: 14px;
-}
+        .boardListWrap th,
+        .boardListWrap td {
+            padding: 10px;
+            font-size: 14px;
+        }
 
-.boardListWrap td, th {
-    text-align: center;
-}
+        .boardListWrap td, th {
+            text-align: center;
+        }
 
-#deleteBtn:hover,
-#editBtn:hover,
-#cancelBtn:hover,
-#rejectMessageBtn:hover,
-#messageBtn:hover {
-    cursor: pointer;
-}
+        #deleteBtn:hover,
+        #editBtn:hover,
+        #cancelBtn:hover,
+        #rejectMessageBtn:hover,
+        #messageBtn:hover {
+            cursor: pointer;
+        }
 
-a:link {
-    color: #3E454D;
-    text-decoration: none;
-}
+        a:link {
+            color: #3E454D;
+            text-decoration: none;
+        }
 
-a:visited {
-    color: #3E454D;
-    text-decoration: none;
-}
+        a:visited {
+            color: #3E454D;
+            text-decoration: none;
+        }
 
-a:hover {
-    color: #3E454D;
-    text-decoration: underline;
-}
-	    
-#editBtn,
-#cancelBtn,
-#rejectMsgBtn,
-#msgBtn,
-#approvalBtn,
-#rejectBtn,
-#consultedBtn,
-#consultationRecordBtn {
-    cursor: pointer;
-}
+        a:hover {
+            color: #3E454D;
+            text-decoration: underline;
+        }
 
-#approvalBtn,
-#editBtn,
-#rejectMsgBtn {
-    padding: 4px 12px;
-    border-radius: 30px;
-    background: #ee6868;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
+        #editBtn,
+        #cancelBtn,
+        #rejectMsgBtn,
+        #msgBtn,
+        #approvalBtn,
+        #rejectBtn,
+        #consultedBtn,
+        #consultationRecordBtn {
+            cursor: pointer;
+        }
 
-#rejectBtn,
-#cancelBtn {
-    padding: 4px 12px;
-    border-radius: 30px;
-    background: #6885ee;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
+        #approvalBtn,
+        #editBtn,
+        #rejectMsgBtn {
+            padding: 4px 12px;
+            border-radius: 30px;
+            background: #ee6868;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
 
-#msgBtn {
-    padding: 4px 12px;
-    border-radius: 30px;
-    background: #eeb868;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
+        #rejectBtn,
+        #cancelBtn {
+            padding: 4px 12px;
+            border-radius: 30px;
+            background: #6885ee;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
 
-#consultedBtn,
-#consultationRecordBtn {
-    padding: 4px 12px;
-    border-radius: 30px;
-    background: #eeb868;
-    color: white;
-    border: none;
-    cursor: pointer;
-}	    
+        #msgBtn {
+            padding: 4px 12px;
+            border-radius: 30px;
+            background: #eeb868;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
 
-#thBorder {
-    border-top: 3px solid #1abc9c;
-    border-bottom: 1px solid #EAEAEA;
-}
+        #consultedBtn,
+        #consultationRecordBtn {
+            padding: 4px 12px;
+            border-radius: 30px;
+            background: #eeb868;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
 
-#thBorder th {
-    text-align: center;
-}
+        #thBorder {
+            border-top: 3px solid #1abc9c;
+            border-bottom: 1px solid #EAEAEA;
+        }
 
-
-@charset "UTF-8";
-
-ul, li {
-    text-decoration: none;
-    list-style: none;
-}
-
-#searchWrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    float: right;
-    padding: 0px 8px;
-    width: 260px;
-    height: 34px;
-    border-bottom: 1px solid #EAEAEA;
-    border-radius: 50px;
-    background: #ffffff;
-}
-
-#searchText {
-    font-size: 12px;
-    width: 120px;
-    padding-left: 4px;
-    border: 0px;
-    outline: none;
-    float: left;
-    border-radius: 30px;
-}
-
-#searchBtn {
-    width: 20px;
-    height: 20px;
-    border: none;
-    outline: none;
-    float: right;
-}
-
-#searchBtn:hover {
-    cursor: pointer;
-}
-
-#navBox {
-    height: 80px;
-    border: none;
-}
-
-#navListWrap {
-    width: 100%;
-    border-bottom: 1px solid #EAEAEA;
-    border-left: 1px solid #EAEAEA;
-    border-right: 1px solid #EAEAEA;
-    background: white;
-    border-radius: 0px 0px 5px 5px;
-}
-
-#logoutBtnWrap {
-    display: flex;
-    align-items: center;
-    width: 316px;
-    height: 60px;
-    margin-top: 50px;
-    padding-bottom: 20px;
-    font-size: 14px;
-}
-
-#userImgWrap {
-    display: flex;
-    align-items: center;
-    width: 316px;
-    height: 180px;
-    font-size: 14px;
-}
+        #thBorder th {
+            text-align: center;
+        }
 
 
-#navList {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 316px;
-    height: 40px;
-    font-size: 14px;
-}
+        @charset "UTF-8";
+
+        ul, li {
+            text-decoration: none;
+            list-style: none;
+        }
+
+        #searchWrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            float: right;
+            padding: 0px 8px;
+            width: 260px;
+            height: 34px;
+            border-bottom: 1px solid #EAEAEA;
+            border-radius: 50px;
+            background: #ffffff;
+        }
+
+        #searchText {
+            font-size: 12px;
+            width: 120px;
+            padding-left: 4px;
+            border: 0px;
+            outline: none;
+            float: left;
+            border-radius: 30px;
+        }
+
+        #searchBtn {
+            width: 20px;
+            height: 20px;
+            border: none;
+            outline: none;
+            float: right;
+        }
+
+        #searchBtn:hover {
+            cursor: pointer;
+        }
+
+        #navBox {
+            height: 80px;
+            border: none;
+        }
+
+        #navListWrap {
+            width: 100%;
+            border-bottom: 1px solid #EAEAEA;
+            border-left: 1px solid #EAEAEA;
+            border-right: 1px solid #EAEAEA;
+            background: white;
+            border-radius: 0px 0px 5px 5px;
+        }
+
+        #logoutBtnWrap {
+            display: flex;
+            align-items: center;
+            width: 316px;
+            height: 60px;
+            margin-top: 40px;
+            padding-bottom: 20px;
+            font-size: 14px;
+        }
+
+        #userImgWrap {
+            display: flex;
+            align-items: center;
+            width: 316px;
+            height: 180px;
+            font-size: 14px;
+        }
 
 
-#navListOn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 316px;
-    height: 40px;
-    font-size: 14px;
-    background: #1abc9c;
-    color: white;
-}
+        #navList {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 316px;
+            height: 40px;
+            font-size: 14px;
+        }
 
-#navLTit {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 40px;
-    border: 1px solid #EAEAEA;
-    font-size: 18px;
-    background: white;
-    border-radius: 5px 5px 0px 0px;
-}
 
-#noticeIcon:hover,
-#reserveIcon:hover,
-#messageIcon:hover {
-    cursor: pointer;
-}
+        #navListOn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 316px;
+            height: 40px;
+            font-size: 14px;
+            background: #1abc9c;
+            color: white;
+        }
 
-#noticeIcon,
-#reserveIcon,
-#messageIcon {
-    color: black;
-}
+        #navLTit {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 40px;
+            border: 1px solid #EAEAEA;
+            font-size: 18px;
+            background: white;
+            border-radius: 5px 5px 0px 0px;
+        }
 
-a:link {
-    color: black;
-    text-decoration: none;
-}
+        #noticeIcon:hover,
+        #reserveIcon:hover,
+        #messageIcon:hover {
+            cursor: pointer;
+        }
 
-a:visited {
-    color: black;
-    text-decoration: none;
-}
+        #noticeIcon,
+        #reserveIcon,
+        #messageIcon {
+            color: black;
+        }
 
-a:hover {
-    color: black;
-    text-decoration: none;
-}
+        a:link {
+            color: black;
+            text-decoration: none;
+        }
 
-#title,
-#title a:link,
-#title a:visited,
-#title a:hover {
-    color: #1abc9c;
+        a:visited {
+            color: black;
+            text-decoration: none;
+        }
 
-}
+        a:hover {
+            color: black;
+            text-decoration: none;
+        }
 
-#header {
-    width: 100%;
-    height: 80px;
-    background: white;
-    border-bottom: 1px solid #EAEAEA;
-}
+        #title,
+        #title a:link,
+        #title a:visited,
+        #title a:hover {
+            color: #1abc9c;
 
-#headerInner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-    width: 1194px;
-    height: 100%;
-}
+        }
 
-#headerInnerL {
-    display: flex;
-    align-items: center;
-}
+        #header {
+            width: 100%;
+            height: 80px;
+            background: white;
+            border-bottom: 1px solid #EAEAEA;
+        }
 
-#title {
-    font-family: 'Yellowtail', cursive;
-    font-size: 18px;
-    font-weight: bold;
-}
+        #headerInner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+            width: 1194px;
+            height: 100%;
+        }
 
-#gnb {
-    margin-left: 140px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 300px;
-    font-size: 14px;
-}
+        #headerInnerL {
+            display: flex;
+            align-items: center;
+        }
 
-#headerInnerR {
-    display: flex;
-    align-items: center;
-}
+        #title {
+            font-family: 'Yellowtail', cursive;
+            font-size: 18px;
+            font-weight: bold;
+        }
 
-#dropdown {
-    position: relative;
-    display: inline-block;
-    font-size: 14px;
-    padding: 14px;
-}
+        #gnb {
+            margin-left: 140px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 300px;
+            font-size: 14px;
+        }
 
-#dropdown-button div {
-    justify-content: flex-end;
-}
+        #headerInnerR {
+            display: flex;
+            align-items: center;
+        }
 
-#dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    margin-top: 14px;
-    min-width: 130px;
-    padding: 4px;
-    border-radius: 5px;
-    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
-}
+        #dropdown {
+            position: relative;
+            display: inline-block;
+            font-size: 14px;
+            padding: 14px;
+        }
 
-#dropdown-content a {
-    color: black;
-    padding: 8px;
-    text-decoration: none;
-    display: block;
-}
+        #dropdown-button div {
+            justify-content: flex-end;
+        }
 
-#dropdown-content a:hover {
-    background-color: #FAFAFA;
-    border-radius: 5px;
-}
+        #dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            margin-top: 14px;
+            min-width: 130px;
+            padding: 4px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+        }
 
-#dropdown:hover #dropdown-content {
-    display: block;
-}
+        #dropdown-content a {
+            color: black;
+            padding: 8px;
+            text-decoration: none;
+            display: block;
+        }
 
-#headerInnerR img {
-    margin-left: 60px;
-}
+        #dropdown-content a:hover {
+            background-color: #FAFAFA;
+            border-radius: 5px;
+        }
 
-#noticeImg {
-    width: 14px;
-    height: 14px;
-}
+        #dropdown:hover #dropdown-content {
+            display: block;
+        }
 
-#noticeImg:hover {
-    cursor: pointer;
-}
+        #headerInnerR img {
+            margin-left: 60px;
+        }
 
-#bookedList,
-#canceledList,
-#approvedList,
-#completedList {
-    border: none;
-    background: #FAFAFA;
-}
+        #noticeImg {
+            width: 14px;
+            height: 14px;
+        }
 
-#bookedList:focus,
-#canceledList:focus,
-#approvedList:focus,
-#completedList:focus {
-    border-radius: 50px;
-    background: #1abc9c;
-    color: white;
-}
+        #noticeImg:hover {
+            cursor: pointer;
+        }
 
-#logoutBtn {
-    display: block;
-    margin: 0 auto;
-    width: 100px;
-    height: 40px;
-    border: 1px solid #1abc9c;
-    border-radius: 5px;
-    color: #1abc9c;
-    background: white;
-}
+        #bookedList,
+        #canceledList,
+        #approvedList,
+        #completedList {
+            border: none;
+            background: #FAFAFA;
+        }
 
-#logoutBtn:hover {
-    background: #1abc9c;
-    color: white;
-    border: 1px solid #1abc9c;
-    cursor: pointer;
-}
+        #bookedList:focus,
+        #canceledList:focus,
+        #approvedList:focus,
+        #completedList:focus {
+            border-radius: 50px;
+            background: #1abc9c;
+            color: white;
+        }
 
-#moreImg {
-    display: block;
-    margin: 0 auto;
-    width: 16px;
-    height: 16px;
-}
+        #logoutBtn {
+            display: block;
+            margin: 0 auto;
+            width: 100px;
+            height: 40px;
+            border: 1px solid #1abc9c;
+            border-radius: 5px;
+            color: #1abc9c;
+            background: white;
+        }
 
-.swal-button {
-    background: #1abc9c;
-    font-size: 12px;
-}
+        #logoutBtn:hover {
+            background: #1abc9c;
+            color: white;
+            border: 1px solid #1abc9c;
+            cursor: pointer;
+        }
+
+        #moreImg {
+            display: block;
+            margin: 0 auto;
+            width: 16px;
+            height: 16px;
+        }
+
+        .swal-button {
+            background: #1abc9c;
+            font-size: 12px;
+        }
+
+        #myPageEditBtn {
+            float: right;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        #myPageEditBtn:hover {
+            cursor: pointer;
+        }
+
+        #blank,
+        #myPageEditBtnWrap {
+            width: 30px;
+        }
+
     </style>
 </head>
 
@@ -463,8 +480,8 @@ a:hover {
             <div id="gnb">
                 <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
                 <c:if test="${mem_dto.getRole()=='0'}">
-	    			<div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
-				</c:if>
+                    <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
+                </c:if>
                 <div><a id="messageIcon" href="message.do">쪽지함</a></div>
             </div>
         </div>
@@ -481,42 +498,47 @@ a:hover {
     </div>
 </div>
 
-    <div id="navWrap">
-        <table id="navInnerWrap">
-            <tr>
-                <td>
-                    <div id="cardWrap">
-                        <div id="navLTit">마이페이지</div>
-                        <div id="navListWrap">
-                            <div id="userImgWrap"><img src="../images/user.svg" id="userImg"/></div>
-                            <div id="navListOn">${mem_dto.getName()}</div>
-                            <div id="navList">${univ_dto.getUnivName()}</div>
+<div id="navWrap">
+    <table id="navInnerWrap">
+        <tr>
+            <td>
+                <div id="cardWrap">
+                    <div id="navLTit">
+                        <div id="blank"></div>
+                        <div>마이페이지</div>
+                        <div id="myPageEditBtnWrap">
                             <c:if test="${mem_dto.getRole()=='1'}">
-	    						<div id="navList"><button>내정보</button></div>
-							</c:if>
-                            <div id="logoutBtnWrap">
-                                <button id="logoutBtn" onclick="location.href='logout.do'">로그아웃</button>
-                            </div>
+                                <img src="../images/edit.svg" id="myPageEditBtn"/>
+                            </c:if>
                         </div>
                     </div>
-                </td>
+                    <div id="navListWrap">
+                        <div id="userImgWrap"><img src="../images/user.svg" id="userImg"/></div>
+                        <div id="navListOn">${mem_dto.getName()}</div>
+                        <div id="navList">${univ_dto.getUnivName()}</div>
+                        <div id="logoutBtnWrap">
+                            <button id="logoutBtn" onclick="location.href='logout.do'">로그아웃</button>
+                        </div>
+                    </div>
+                </div>
+            </td>
 
-                <td>
-                    <div style="width: 60px"></div>
-                </td>
+            <td>
+                <div style="width: 60px"></div>
+            </td>
 
-                <td id="navSub">
-                    <div id="searchWrap">
-            		<c:choose>
-	                    <c:when test="${mem_dto.getRole() == 0}">
-	                    	<input type="text" placeholder="교수명으로 검색" id="searchText"/>
-	                    </c:when>
-	                    <c:otherwise>
-	                    	<input type="text" placeholder="학생명으로 검색" id="searchText"/>
-						</c:otherwise>
-	                </c:choose>
-            		<img src="/myPage/images/search.svg" id="searchBtn" onclick="search()"/>
-            	</div>
+            <td id="navSub">
+                <div id="searchWrap">
+                    <c:choose>
+                        <c:when test="${mem_dto.getRole() == 0}">
+                            <input type="text" placeholder="교수명으로 검색" id="searchText"/>
+                        </c:when>
+                        <c:otherwise>
+                            <input type="text" placeholder="학생명으로 검색" id="searchText"/>
+                        </c:otherwise>
+                    </c:choose>
+                    <img src="/myPage/images/search.svg" id="searchBtn" onclick="search()"/>
+                </div>
                 <ul class="nav nav-tabs" id="navBox">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#qwe" id="bookedList">예약현황</a>
@@ -537,13 +559,17 @@ a:hover {
                             <table class="boardListWrap">
                                 <thead>
                                 <tr id="thBorder">
-                                	<th></th>
-                                	<c:choose>
-	                    				<c:when test="${mem_dto.getRole() == 0}"><th>교수명</th></c:when>
-	                    				<c:otherwise><th>학생명</th></c:otherwise>
-	               					</c:choose>
-	               					<th>상담일시</th>
-	               					<th>장소</th>
+                                    <th></th>
+                                    <c:choose>
+                                        <c:when test="${mem_dto.getRole() == 0}">
+                                            <th>교수명</th>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <th>학생명</th>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <th>상담일시</th>
+                                    <th>장소</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -557,13 +583,17 @@ a:hover {
                             <table class="boardListWrap">
                                 <thead>
                                 <tr id="thBorder">
-									<th></th>
-                                	<c:choose>
-	                    				<c:when test="${mem_dto.getRole() == 0}"><th>교수명</th></c:when>
-	                    				<c:otherwise><th>학생명</th></c:otherwise>
-	               					</c:choose>
-	               					<th>상담일시</th>
-	               					<th>장소</th>
+                                    <th></th>
+                                    <c:choose>
+                                        <c:when test="${mem_dto.getRole() == 0}">
+                                            <th>교수명</th>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <th>학생명</th>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <th>상담일시</th>
+                                    <th>장소</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -577,13 +607,17 @@ a:hover {
                             <table class="boardListWrap">
                                 <thead>
                                 <tr id="thBorder">
-									<th></th>
-                                	<c:choose>
-	                    				<c:when test="${mem_dto.getRole() == 0}"><th>교수명</th></c:when>
-	                    				<c:otherwise><th>학생명</th></c:otherwise>
-	               					</c:choose>
-	               					<th>상담일시</th>
-	               					<th>장소</th>
+                                    <th></th>
+                                    <c:choose>
+                                        <c:when test="${mem_dto.getRole() == 0}">
+                                            <th>교수명</th>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <th>학생명</th>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <th>상담일시</th>
+                                    <th>장소</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -597,13 +631,17 @@ a:hover {
                             <table class="boardListWrap">
                                 <thead>
                                 <tr id="thBorder">
-									<th></th>
-                                	<c:choose>
-	                    				<c:when test="${mem_dto.getRole() == 0}"><th>교수명</th></c:when>
-	                    				<c:otherwise><th>학생명</th></c:otherwise>
-	               					</c:choose>
-	               					<th>상담일시</th>
-	               					<th>장소</th>
+                                    <th></th>
+                                    <c:choose>
+                                        <c:when test="${mem_dto.getRole() == 0}">
+                                            <th>교수명</th>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <th>학생명</th>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <th>상담일시</th>
+                                    <th>장소</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -613,9 +651,9 @@ a:hover {
                         </div>
                     </div>
                 </div>
-                </td>
-            </tr>
-        </table>
-    </div>
+            </td>
+        </tr>
+    </table>
+</div>
 </body>
 </html>
