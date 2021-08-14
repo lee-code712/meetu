@@ -51,7 +51,7 @@ public class ReservationDAO {
 				reservation_dto.setEndTime(rs.getString("end_time"));
 				reservation_dto.setReason(rs.getString("reason"));
 				reservation_dto.setType(rs.getInt("type"));
-				reservation_dto.setState(rs.getInt("approval"));
+				reservation_dto.setState(rs.getInt("state"));
 				reservation_dto.setRejectMsg(rs.getString("reject_msg"));
 				reservation_dto.setPUserId(rs.getString("p_user_id"));
 				reservation_dto.setSUserId(rs.getString("s_user_id"));
@@ -64,7 +64,7 @@ public class ReservationDAO {
 					reservation_dto.setEndTime(rs.getString("end_time"));
 					reservation_dto.setReason(rs.getString("reason"));
 					reservation_dto.setType(rs.getInt("type"));
-					reservation_dto.setState(rs.getInt("approval"));
+					reservation_dto.setState(rs.getInt("state"));
 					reservation_dto.setRejectMsg(rs.getString("reject_msg"));
 					reservation_dto.setPUserId(rs.getString("p_user_id"));
 					reservation_dto.setSUserId(rs.getString("s_user_id"));
@@ -108,7 +108,7 @@ public class ReservationDAO {
 				reservation_dto.setEndTime(rs.getString("end_time"));
 				reservation_dto.setReason(rs.getString("reason"));
 				reservation_dto.setType(rs.getInt("type"));
-				reservation_dto.setState(rs.getInt("approval"));
+				reservation_dto.setState(rs.getInt("state"));
 				reservation_dto.setRejectMsg(rs.getString("reject_msg"));
 				reservation_dto.setPUserId(rs.getString("p_user_id"));
 				reservation_dto.setSUserId(rs.getString("s_user_id"));
@@ -138,7 +138,7 @@ public class ReservationDAO {
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "update reservation set approval=? where res_id=?";
+			String sql = "update reservation set state=? where res_id=?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, reservation_dto.getState());
@@ -233,7 +233,7 @@ public class ReservationDAO {
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "insert into reservation (res_id, start_time, end_time, reason, type, approval, p_user_id, s_user_id) ";
+			String sql = "insert into reservation (res_id, start_time, end_time, reason, type, state, p_user_id, s_user_id) ";
 			sql += "values (reservation_seq.NEXTVAL, TO_DATE(?,'YY/MM/DD HH24:MI:SS'), TO_DATE(?,'YY/MM/DD HH24:MI:SS'), ?, ?, 0, ?, ?)";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -317,7 +317,7 @@ public class ReservationDAO {
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-				if(rs.getString("approval").equals("0") || rs.getString("approval").equals("1")) {
+				if(rs.getString("state").equals("0") || rs.getString("state").equals("1")) {
 					return true;
 				}
 			}
