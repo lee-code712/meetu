@@ -1,264 +1,244 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>공지사항</title>
-    
-    <!-- <link rel="stylesheet" href="/notice/css/noticeContent.css" /> -->
-	<link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-	
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/notice/js/noticeWrite.js"></script>
+    <title>공지사항 내용</title>
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/notice/css/noticeContent.css"/>  -->
 
     <style>
-    	@charset "UTF-8";
-
-		ul, li {
-		    text-decoration: none;
-		    list-style: none;
-		}
-		
-		#header {
-		    width: 100%;
-		    height: 100px;
-		    border-bottom: 1px solid #eee;
-		    background: white;
-		}
-		
-		#header_inner {
-		    display: flex;
-		    align-items: center;
-		    margin: 0 auto;
-		    width: 1194px;
-		    height: 100px;
-		}
-		
-		#title {
-		    display: flex;
-		    align-items: center;
-		    width: 200px;
-		    height: 100%;
-		    color: #FBAB7E;
-		    font-size: 24px;
-		    margin-right: -30px;
-		    font-family: 'Yellowtail', cursive;
-		    font-weight: bold;
-		}
-		
-		#title:hover {
-		    cursor: pointer;
-		}
-		
-		#gnb {
-		    display: flex;
-		    width: 100%;
-		    font-size: 16px;
-		    font-weight: bold;
-		    color: #535353;
-		    align-items: center;
-		}
-		
-		#gnb a {
-		    padding: 0 40px;
-		}
-		
-		#alertIcon {
-		    width: 18px;
-		    height: 18px;
-		}
-		
-		#alertIcon:hover,
-		#noticeIcon:hover,
-		#reserveIcon:hover,
-		#messageIcon:hover {
-		    cursor: pointer;
-		}
-		
-		#messageIcon,
-		#noticeIcon,
-		#reserveIcon {
-		    color: #535353;
-		}
-		
-		a:link {
-		    color: #535353;
-		    text-decoration: none;
-		}
-		
-		a:visited {
-		    color: #535353;
-		    text-decoration: none;
-		}
-		
-		a:hover {
-		    color: #535353;
-		    text-decoration: none;
-		}
-		
-		#title a:link,
-		#title a:visited,
-		#title a:hover {
-		    color: #FBAB7E;
-		
-		}
-		
-		#topHeader {
-		    width: 100%;
-		    height: 34px;
-		    background-color: #FBAB7E;
-		    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-		}
-		
-		#topHeaderInner {
-		    margin: 0 auto;
-		    width: 1194px;
-		    height: 100%;
-		}
-		
-		#topHeaderInner div {
-		    display: flex;
-		    justify-content: flex-end;
-		    align-items: center;
-		    height: 100%;
-		    float: right;
-		    color: white;
-		}
-		
-		#topHeaderInner div span {
-		    margin-left: 20px;
-		}
-		
-		#topHeaderInner div a:link,
-		#topHeaderInner div a:visited,
-		#topHeaderInner div a:hover {
-		    color: white;
-		}
-		
-		#gnb div a {
-		    font-size: 14px;
-		    position: relative;
-		}
-		
-		#gnb div a:before {
-		    content: '';
-		    position: absolute;
-		    background-color: #FBAB7E;
-		    height: 6px;
-		    width: 0;
-		    bottom: -42px;
-		    transition: 0.5s;
-		    left: 50%;
-		    transform: translateX(-50%);
-		}
-		
-		#gnb div a:hover:before {
-		    width: 100%;
-		}
-    	
         * {
             padding: 0px;
             margin: 0px;
-            text-align: none;
         }
-        body {
+
+        #ntContentPgBg {
             background: #FAFAFA;
         }
-        #banner {
-            display: table;
-            margin: 0 auto;
-            width: 100%;
-            height: 120px;
-            background-color: white;
-            border-radius: 5px;
-        }
-        #banner div {
-            display: table-cell;
-            width: 1920px;
-            height: 100%;
-           	background: white;
-            text-align: center;
-            font-size: 24px;
-            color: #333330;
-            font-family: 'Noto Sans KR', sans-serif;
-            vertical-align: middle;
-        }
-    
-        #content {
-            margin: 0 auto;
-            padding-left: 30px;
-            padding-top: 10px;
-            width: 1174px;
-            height: 510px;
-            border-top: 1px solid #C4C4C4;
-            font-size: 14px;
-            vertical-align: center;
-			background: white;
-        }
-        #listBtn {
-            display: block;
-            float: right;
-            margin-top: 20px;
-            width: 114px;
-            height: 40px;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            background: #FBAB7E;
-        }
-        #listBtn:hover {
+
+        #noticeIcon:hover,
+        #reserveIcon:hover,
+        #messageIcon:hover {
             cursor: pointer;
         }
-		#noticeContent {
-			margin: 0 auto;
-			width: 1194px;
-		}
-	
- 		 #contentHeader {
- 		 	display: inline-block;
- 		 	vertical-align: center;
+
+        #noticeIcon,
+        #reserveIcon,
+        #messageIcon {
+            color: black;
+        }
+
+        a:link {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: black;
+            text-decoration: none;
+        }
+
+        #title,
+        #title a:link,
+        #title a:visited,
+        #title a:hover {
+            color: #1abc9c;
+
+        }
+
+        #header {
+            width: 100%;
+            height: 80px;
+            background: white;
+            border-bottom: 1px solid #EAEAEA;
+        }
+
+        #headerInner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin: 0 auto;
-            margin-top: 50px;   
             width: 1194px;
+            height: 100%;
+        }
+
+        #headerInnerL {
+            display: flex;
+            align-items: center;
+        }
+
+        #title {
+            font-family: 'Yellowtail', cursive;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #gnb {
+            margin-left: 140px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 300px;
+            font-size: 14px;
+        }
+
+        #headerInnerR {
+            display: flex;
+            align-items: center;
+        }
+
+        #dropdown {
+            position: relative;
+            display: inline-block;
+            font-size: 14px;
+            padding: 14px;
+        }
+
+        #dropdown-button div {
+            justify-content: flex-end;
+        }
+
+        #dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            margin-top: 14px;
+            min-width: 130px;
+            padding: 4px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        #dropdown-content a {
+            color: black;
+            padding: 8px;
+            text-decoration: none;
+            display: block;
+        }
+
+        #dropdown-content a:hover {
+            background-color: #FAFAFA;
+            border-radius: 5px;
+        }
+
+        #dropdown:hover #dropdown-content {
+            display: block;
+        }
+
+        #headerInnerR img {
+            margin-left: 60px;
+        }
+
+        #noticeImg {
+            width: 14px;
+            height: 14px;
+        }
+
+        #noticeImg:hover {
+            cursor: pointer;
+        }
+
+        #noticeContentWrap {
+            margin: 80px auto 0px auto;
+            width: 1194px;
+        }
+
+        #ntContentHeader {
+            display: flex;
+            padding-left: 20px;
+            align-items: center;
+            width: 1174px;
+            height: 60px;
+            font-size: 18px;
+            background: white;
+            border-bottom: 1px solid #EAEAEA;
+            border-top: 1px solid #EAEAEA;
+            border-left: 1px solid #EAEAEA;
+            border-right: 1px solid #EAEAEA;
+        }
+
+        #ntContentInfo {
+            padding-left: 20px;
+            display: flex;
+            align-items: center;
+            width: 1174px;
             height: 40px;
-            border-top: 2px solid #FBAB7E;
-            color: #3E454D;
+            font-size: 14px;
+            background: white;
+            border-bottom: 1px solid #EAEAEA;
+            border-left: 1px solid #EAEAEA;
+            border-right: 1px solid #EAEAEA;
         }
-        
-        #contentTitle {
-        	display: flex;
-        	float: left; width: 33%; padding:10px;
+
+        #writer > span {
+            color: #1abc9c;
         }
-        
-        #contentDate {
-        	display: flex;
-        	 float: left; width: 33%; padding:10px;
+
+        #date > span {
+            color: #1abc9c;
         }
-        
-        #textInput,
-        #writeDateNum {
-        	padding-left: 20px;
+
+        #ntContentWrap {
+            margin: 0 auto;
+            width: 1194px;
+            background: white;
+            border-bottom: 1px solid #EAEAEA;
+            border-left: 1px solid #EAEAEA;
+            border-right: 1px solid #EAEAEA;
         }
-        
- 		#moreDropdown {
- 			float: right;
- 			padding-bottom: 20px;
+
+        #content {
+            width: 1154px;
+            font-size: 14px;
+            padding: 20px;
+            height: 400px;
+            background: white;
+            border-bottom: 1px solid #EAEAEA;
+            border-right: 1px solid #EAEAEA;
+        }
+
+        #listBtnWrap {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        #listBtnWrap > button {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 40px;
+            background: #1abc9c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #listBtnWrap > button:hover {
+            cursor: pointer;
+        }
+
+        #moreDropdown {
+            padding-top: 8px;
+            float: right;
             position: relative;
             display: inline-block;
         }
 
         #moreDropBtn {
-        	display: flex;
-        	margin-bottom: 20px;
-            width: 100px;
+            display: flex;
             color: #535353;
-            padding: 16px;
             font-size: 16px;
             border: none;
             background: none;
@@ -270,9 +250,13 @@
             min-width: 160px;
             box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
-            border: 1px solid white;
+            border: 1px solid #eee;
             border-radius: 5px;
             background: white;
+        }
+
+        #blankDiv {
+            width: 100px;
         }
 
         #moreDropdownContent a {
@@ -283,120 +267,75 @@
         }
 
         #moreDropdownContent a:hover {
-            background: white;
+            background: #F8F8F8;
         }
 
         #moreDropdown:hover #moreDropdownContent {
             display: block;
         }
-        
+
         #moreDropBtnTitle {
-        	font-weight: bold;
-        	padding: 0 4px 0 50px;
-        	height: 100%;
+            font-weight: bold;
+            padding: 0 4px 0 0;
+            height: 100%;
         }
-        
-        img {
-        	display: block;
-        }
-        
-        #titleInput {
-        	width: 1140px;
-        	border: none;
-        	font-size: 14px;
-        }
-        
+
         #contentInput {
-        	width: 1140px;
-        	border: none;
+            width: 1174px;
+            border: none;
         }
-        
-        input:focus {outline:none;}
-      
-		#dropdown-button {
-		    display: flex;
-		    justify-content: center;
-		    align-items: center;
-		    margin-right: 60px;
-		    padding: 8px;
-		    width: 140px;
-		    font-size: 15px;
-		    border: none;
-		}
-		
-		#dropdown {
-		    position: relative;
-		    display: inline-block;
-		}
-		
-		#dropdown-content {
-		    display: none;
-		    position: absolute;
-		    background-color: white;
-		    min-width: 140px;
-		    padding: 8px;
-		    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
-		}
-		
-		#dropdown-content a {
-		    color: black;
-		    padding: 8px;
-		    text-decoration: none;
-		    display: block;
-		}
-		
-		#dropdown-content a:hover {
-		    background-color: #f3f3f3;
-		}
-		
-		#dropdown:hover #dropdown-content {
-		    display: block;
-		}
+
+        #titleInput {
+            width: 1154px;
+            border: none;
+        }
+
+        #contentInput:focus,
+        #titleInput:focus {
+            outline: none;
+        }
     </style>
 </head>
-<body>
-	 <div id="topHeader">
-	    <div id="topHeaderInner">
-	        <div>
-	        </div>
-	    </div>
-	</div>
-	
-	<div id="header">
-	    <div id="header_inner">
-	        <div id="title"><a href="index.do">MEETU</a></div>
-	        <div id="gnb">
-	            <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
-	            <c:if test="${mem_dto.getRole()!='2'}">
-	                <c:if test="${mem_dto.getRole()=='0'}">
-		    			<div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
-					</c:if>
-					<div><a id="messageIcon" href="message.do">쪽지함</a></div>
-				</c:if>
-	        </div>
-	
-	        <div id="dropdown">
-	            <div id="dropdown-button">${mem_dto.getName()}<img src="/components/images/more.svg"/></div>
-	            <div id="dropdown-content">
-	                <c:if test="${mem_dto.getRole()!='2'}">
-		    			<a href="myPage.do">마이페이지</a>
-					</c:if>
-	                <a href="logout.do">로그아웃</a>
-	            </div>
-	        </div>
-	
-	        <img src="/components/images/bell.svg" id="alertIcon"/>
-	    </div>
-	</div>
-	
-	<div id="noticeContent">
-	    <div id="contentHeader">
-	    	<div id="contentTitle">
-	    		<div id="textInput"><input type="text" placeholder="제목을 입력하세요." id="titleInput"/></div>
-	    	</div>
-	    </div>
-	    <div id="content"><textarea cols="50" rows="24" id="contentInput" placeholder="내용을 입력하세요."></textarea></div>
-	    <button id="listBtn" onclick="addNotice()">완료</button>
-	</div>
+<body id="ntContentPgBg">
+<div id="header">
+    <div id="headerInner">
+        <div id="headerInnerL">
+            <div id="title"><a href="index.do">MEETU</a></div>
+            <div id="gnb">
+                <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
+                <c:if test="${mem_dto.getRole()!='2'}">
+                    <c:if test="${mem_dto.getRole()=='0'}">
+                        <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
+                    </c:if>
+                    <div><a id="messageIcon" href="message.do">쪽지함</a></div>
+                </c:if>
+            </div>
+        </div>
+        <div id="headerInnerR">
+            <div id="dropdown">
+                <div id="dropdown-button">${mem_dto.getName()} 😊</div>
+                <div id="dropdown-content">
+                    <c:if test="${mem_dto.getRole()!='2'}">
+                        <a href="myPage.do">마이페이지</a>
+                    </c:if>
+                    <a href="logout.do">로그아웃</a>
+                </div>
+            </div>
+            <img src="/images/bell.svg" id="noticeImg"/>
+        </div>
+    </div>
+</div>
+
+<div id="noticeContentWrap">
+    <div id="ntContentHeader">
+        <div id="ntContentTit"><input type="text" placeholder="제목을 입력하세요." id="titleInput"/></div>
+    </div>
+    <div id="ntContentWrap">
+        <div id="content"><textarea cols="50" rows="24" id="contentInput" placeholder="내용을 입력하세요."></textarea></div>
+    </div>
+    <div id="listBtnWrap">
+        <button id="listBtn" onclick="addNotice()">완료</button>
+    </div>
+</div>
 </body>
 </html>
