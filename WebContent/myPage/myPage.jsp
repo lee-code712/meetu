@@ -390,6 +390,11 @@ pageEncoding="UTF-8"%>
         #profInfoEditBtn:hover {
             cursor: pointer;
         }
+        
+        #moreImg {
+            width: 20px;
+            height: 20px;
+        }
 
     </style>
 </head>
