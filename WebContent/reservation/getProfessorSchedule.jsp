@@ -29,16 +29,18 @@
 	
 	String p_user_id = "";
 	for(int i = 0; i < professors.size(); i++) {
-		if(professors.get(i).getEmail().equals(prof_email)) { // 이메일은 중복 불가 - 교수 구분 위해 사용
-			String prof_id = professors.get(i).getProfId(); // 이메일이 같은 경우, 해당 교수 학번을 불러옴
-			
-			// 모든 회원 정보를 가져와 해당 교수의 id 검색
-			ArrayList<MemberDTO> members = memberDAO.getAllMemberUsers(univ_dto.getUnivId());
-			for (int j = 0; j < members.size(); j++) {
-				if (members.get(j).getMemberId().equals(prof_id)) { 
-					MemberUserDTO p_user = memberDAO.getMemberUserInfo(members.get(j), univ_dto.getUnivId());
-					
-					p_user_id = p_user.getUserId();
+		if(professors.get(i).getEmail() != null) {
+			if(professors.get(i).getEmail().equals(prof_email)) { // 이메일은 중복 불가 - 교수 구분 위해 사용
+				String prof_id = professors.get(i).getProfId(); // 이메일이 같은 경우, 해당 교수 학번을 불러옴
+				
+				// 모든 회원 정보를 가져와 해당 교수의 id 검색
+				ArrayList<MemberDTO> members = memberDAO.getAllMemberUsers(univ_dto.getUnivId());
+				for (int j = 0; j < members.size(); j++) {
+					if (members.get(j).getMemberId().equals(prof_id)) { 
+						MemberUserDTO p_user = memberDAO.getMemberUserInfo(members.get(j), univ_dto.getUnivId());
+						
+						p_user_id = p_user.getUserId();
+					}
 				}
 			}
 		}
