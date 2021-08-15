@@ -126,6 +126,7 @@ function nextCalendar() {
  * @details 날짜 값을 받아 캘린더 폼을 생성하고, 날짜값을 채워넣는다.
  */
 function buildCalendar(responseText) {
+	// alert(responseText);
 	var schedules = JSON.parse(responseText);
 
     let doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
@@ -461,12 +462,12 @@ function startTimeBoxClick() {
 	$(timeBox).css("justify-content", "center");
 	$(timeBox).css("height", "40px");
 	$(timeBox).css("width", "96px");
-	$(timeBox).css("border", "1px solid  #F8CA6B");
+	$(timeBox).css("border", "1px solid  #1abc9c");
 	$(timeBox).css("border-radius", "5px");
 	$(timeBox).css("text-align", "center");
 	$(timeBox).css("font-weight", "regular");
 	$(timeBox).css("cursor", "pointer");
-	$(timeBox).css("background", "#F8CA6B");
+	$(timeBox).css("background", "#1abc9c");
 	$(timeBox).css("color", "white");
 	
 	$("#startTime").remove();
@@ -518,12 +519,12 @@ function timeBoxClick() {
 	$(timeBox).css("justify-content", "center");
 	$(timeBox).css("height", "40px");
 	$(timeBox).css("width", "96px");
-	$(timeBox).css("border", "1px solid  #F8CA6B");
+	$(timeBox).css("border", "1px solid  #1abc9c");
 	$(timeBox).css("border-radius", "5px");
 	$(timeBox).css("text-align", "center");
 	$(timeBox).css("font-weight", "regular");
 	$(timeBox).css("cursor", "pointer");
-	$(timeBox).css("background", "#F8CA6B");
+	$(timeBox).css("background", "#1abc9c");
 	$(timeBox).css("color", "white");
 	
 	$("#consultTime").remove();

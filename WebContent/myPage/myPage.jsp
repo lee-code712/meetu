@@ -41,52 +41,42 @@ pageEncoding="UTF-8"%>
 
     <style>
         @charset "UTF-8";
-
         ul, li {
             text-decoration: none;
             list-style: none;
         }
-
         #navWrap {
             width: 1194px;
             margin: 0 auto;
             margin-top: 80px;
         }
-
         #navInnerWrap {
             display: block;
         }
-
         #navSub {
             width: 816px;
             display: block;
         }
-
         #myPageBodyBg {
             background: #FAFAFA;
         }
-
         #cardWrap {
             width: 318px;
             height: 500px;
             border-radius: 5px;
         }
-
         .boardListWrap {
             width: 816px;
             margin: 0 auto;
         }
-
         .boardListWrap th,
         .boardListWrap td {
             padding: 10px;
             font-size: 14px;
         }
-
         .boardListWrap td, th {
             text-align: center;
         }
-
         #deleteBtn:hover,
         #editBtn:hover,
         #cancelBtn:hover,
@@ -94,22 +84,18 @@ pageEncoding="UTF-8"%>
         #messageBtn:hover {
             cursor: pointer;
         }
-
         a:link {
             color: #3E454D;
             text-decoration: none;
         }
-
         a:visited {
             color: #3E454D;
             text-decoration: none;
         }
-
         a:hover {
             color: #3E454D;
             text-decoration: underline;
         }
-
         #editBtn,
         #cancelBtn,
         #rejectMsgBtn,
@@ -120,7 +106,6 @@ pageEncoding="UTF-8"%>
         #consultationRecordBtn {
             cursor: pointer;
         }
-
         #approvalBtn,
         #editBtn,
         #rejectMsgBtn {
@@ -131,7 +116,6 @@ pageEncoding="UTF-8"%>
             border: none;
             cursor: pointer;
         }
-
         #rejectBtn,
         #cancelBtn {
             padding: 4px 12px;
@@ -141,7 +125,6 @@ pageEncoding="UTF-8"%>
             border: none;
             cursor: pointer;
         }
-
         #msgBtn {
             padding: 4px 12px;
             border-radius: 30px;
@@ -150,7 +133,6 @@ pageEncoding="UTF-8"%>
             border: none;
             cursor: pointer;
         }
-
         #consultedBtn,
         #consultationRecordBtn {
             padding: 4px 12px;
@@ -160,24 +142,18 @@ pageEncoding="UTF-8"%>
             border: none;
             cursor: pointer;
         }
-
         #thBorder {
             border-top: 3px solid #1abc9c;
             border-bottom: 1px solid #EAEAEA;
         }
-
         #thBorder th {
             text-align: center;
         }
-
-
         @charset "UTF-8";
-
         ul, li {
             text-decoration: none;
             list-style: none;
         }
-
         #searchWrap {
             display: flex;
             justify-content: space-between;
@@ -190,7 +166,6 @@ pageEncoding="UTF-8"%>
             border-radius: 50px;
             background: #ffffff;
         }
-
         #searchText {
             font-size: 12px;
             width: 120px;
@@ -200,7 +175,6 @@ pageEncoding="UTF-8"%>
             float: left;
             border-radius: 30px;
         }
-
         #searchBtn {
             width: 20px;
             height: 20px;
@@ -208,16 +182,13 @@ pageEncoding="UTF-8"%>
             outline: none;
             float: right;
         }
-
         #searchBtn:hover {
             cursor: pointer;
         }
-
         #navBox {
             height: 80px;
             border: none;
         }
-
         #navListWrap {
             width: 100%;
             border-bottom: 1px solid #EAEAEA;
@@ -226,7 +197,6 @@ pageEncoding="UTF-8"%>
             background: white;
             border-radius: 0px 0px 5px 5px;
         }
-
         #logoutBtnWrap {
             display: flex;
             align-items: center;
@@ -236,7 +206,6 @@ pageEncoding="UTF-8"%>
             padding-bottom: 20px;
             font-size: 14px;
         }
-
         #userImgWrap {
             display: flex;
             align-items: center;
@@ -244,8 +213,6 @@ pageEncoding="UTF-8"%>
             height: 180px;
             font-size: 14px;
         }
-
-
         #navList {
             display: flex;
             justify-content: center;
@@ -254,8 +221,6 @@ pageEncoding="UTF-8"%>
             height: 40px;
             font-size: 14px;
         }
-
-
         #navListOn {
             display: flex;
             justify-content: center;
@@ -266,10 +231,9 @@ pageEncoding="UTF-8"%>
             background: #1abc9c;
             color: white;
         }
-
         #navLTit {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             width: 100%;
             height: 40px;
@@ -278,49 +242,40 @@ pageEncoding="UTF-8"%>
             background: white;
             border-radius: 5px 5px 0px 0px;
         }
-
         #noticeIcon:hover,
         #reserveIcon:hover,
         #messageIcon:hover {
             cursor: pointer;
         }
-
         #noticeIcon,
         #reserveIcon,
         #messageIcon {
             color: black;
         }
-
         a:link {
             color: black;
             text-decoration: none;
         }
-
         a:visited {
             color: black;
             text-decoration: none;
         }
-
         a:hover {
             color: black;
             text-decoration: none;
         }
-
         #title,
         #title a:link,
         #title a:visited,
         #title a:hover {
             color: #1abc9c;
-
         }
-
         #header {
             width: 100%;
             height: 80px;
             background: white;
             border-bottom: 1px solid #EAEAEA;
         }
-
         #headerInner {
             display: flex;
             justify-content: space-between;
@@ -329,18 +284,15 @@ pageEncoding="UTF-8"%>
             width: 1194px;
             height: 100%;
         }
-
         #headerInnerL {
             display: flex;
             align-items: center;
         }
-
         #title {
             font-family: 'Yellowtail', cursive;
             font-size: 18px;
             font-weight: bold;
         }
-
         #gnb {
             margin-left: 140px;
             display: flex;
@@ -349,23 +301,19 @@ pageEncoding="UTF-8"%>
             width: 300px;
             font-size: 14px;
         }
-
         #headerInnerR {
             display: flex;
             align-items: center;
         }
-
         #dropdown {
             position: relative;
             display: inline-block;
             font-size: 14px;
             padding: 14px;
         }
-
         #dropdown-button div {
             justify-content: flex-end;
         }
-
         #dropdown-content {
             display: none;
             position: absolute;
@@ -376,36 +324,29 @@ pageEncoding="UTF-8"%>
             border-radius: 5px;
             box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
         }
-
         #dropdown-content a {
             color: black;
             padding: 8px;
             text-decoration: none;
             display: block;
         }
-
         #dropdown-content a:hover {
             background-color: #FAFAFA;
             border-radius: 5px;
         }
-
         #dropdown:hover #dropdown-content {
             display: block;
         }
-
         #headerInnerR img {
             margin-left: 60px;
         }
-
         #noticeImg {
             width: 14px;
             height: 14px;
         }
-
         #noticeImg:hover {
             cursor: pointer;
         }
-
         #bookedList,
         #canceledList,
         #approvedList,
@@ -413,7 +354,6 @@ pageEncoding="UTF-8"%>
             border: none;
             background: #FAFAFA;
         }
-
         #bookedList:focus,
         #canceledList:focus,
         #approvedList:focus,
@@ -422,7 +362,6 @@ pageEncoding="UTF-8"%>
             background: #1abc9c;
             color: white;
         }
-
         #logoutBtn {
             display: block;
             margin: 0 auto;
@@ -433,7 +372,6 @@ pageEncoding="UTF-8"%>
             color: #1abc9c;
             background: white;
         }
-
         #logoutBtn:hover {
             background: #1abc9c;
             color: white;
@@ -441,32 +379,16 @@ pageEncoding="UTF-8"%>
             cursor: pointer;
         }
 
-        #moreImg {
-            display: block;
-            margin: 0 auto;
-            width: 16px;
-            height: 16px;
+        #profInfoEditBtn {
+            padding: 4px 10px;
+            border-radius: 50px;
+            background: #f1f1f1;
+            color: #C4C4C4;
+            border: 1px solid #EAEAEA;
         }
-
-        .swal-button {
-            background: #1abc9c;
-            font-size: 12px;
-        }
-
-        #myPageEditBtn {
-            float: right;
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-        }
-
-        #myPageEditBtn:hover {
+        
+        #profInfoEditBtn:hover {
             cursor: pointer;
-        }
-
-        #blank,
-        #myPageEditBtnWrap {
-            width: 30px;
         }
 
     </style>
@@ -504,18 +426,15 @@ pageEncoding="UTF-8"%>
             <td>
                 <div id="cardWrap">
                     <div id="navLTit">
-                        <div id="blank"></div>
-                        <div>마이페이지</div>
-                        <div id="myPageEditBtnWrap">
-                            <c:if test="${mem_dto.getRole()=='1'}">
-                                <img src="../images/edit.svg" id="myPageEditBtn"/>
-                            </c:if>
-                        </div>
+                        마이페이지
                     </div>
                     <div id="navListWrap">
                         <div id="userImgWrap"><img src="../images/user.svg" id="userImg"/></div>
                         <div id="navListOn">${mem_dto.getName()}</div>
                         <div id="navList">${univ_dto.getUnivName()}</div>
+                        <c:if test="${mem_dto.getRole()=='1'}">
+                        <div id="navList"><button id="profInfoEditBtn">내 정보</button></div>
+                            </c:if>
                         <div id="logoutBtnWrap">
                             <button id="logoutBtn" onclick="location.href='logout.do'">로그아웃</button>
                         </div>

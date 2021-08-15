@@ -112,19 +112,19 @@ pageEncoding="UTF-8"%>
                     </div>
                     <div>
                         <div class="timeBoxWrap">
-                            <div class="startTimeBox" id="9am"><a>9:00</a></div>
-                            <div class="startTimeBox" id="10am"><a>10:00</a></div>
-                            <div class="startTimeBox" id=11am"><a>11:00</a></div>
+                            <div class="startTimeBox" id="9:00"><a>9:00</a></div>
+                            <div class="startTimeBox" id="10:00"><a>10:00</a></div>
+                            <div class="startTimeBox" id="11:00"><a>11:00</a></div>
                         </div>
                         <div class="timeBoxWrap">
-                            <div class="startTimeBox" id="12pm"><a>12:00</a></div>
-                            <div class="startTimeBox" id="13pm"><a>13:00</a></div>
-                            <div class="startTimeBox" id="14pm"><a>14:00</a></div>
+                            <div class="startTimeBox" id="12:00"><a>12:00</a></div>
+                            <div class="startTimeBox" id="13:00"><a>13:00</a></div>
+                            <div class="startTimeBox" id="14:00"><a>14:00</a></div>
                         </div>
                         <div class="timeBoxWrap">
-                            <div class="startTimeBox" id="15pm"><a>15:00</a></div>
-                            <div class="startTimeBox" id="16pm"><a>16:00</a></div>
-                            <div class="startTimeBox" id="17pm"><a>17:00</a></div>
+                            <div class="startTimeBox" id="15:00"><a>15:00</a></div>
+                            <div class="startTimeBox" id="16:00"><a>16:00</a></div>
+                            <div class="startTimeBox" id="17:00"><a>17:00</a></div>
                         </div>
                     </div>
                     <br/>

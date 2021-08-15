@@ -62,8 +62,6 @@
 		out.println(reservationJsonArray);
 	}
 	else {
-		response.setStatus(400); // bad request
-		response.addHeader("Status", "Unregistered Reservation");
 		return;
 	}
 %>
