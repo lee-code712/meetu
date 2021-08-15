@@ -433,8 +433,7 @@ pageEncoding="UTF-8" %>
                 <c:choose>
                     <c:when test="${mem_dto.getRole() =='0'}">
                         <c:forEach items="${requestScope.msg_mem}" var="member">
-                            <li id="list" class="list"><img src="/message/images/label_important_black_24dp.svg"
-                                                            id="labelIcon"/>
+                            <li id="list" class="list">
                                 ${member.value.get(0)} ${member.value.get(1)} 교수
                             </li>
                             <input type='hidden' class='mem_usr_name' value='${member.value.get(1)}'/>
@@ -442,8 +441,7 @@ pageEncoding="UTF-8" %>
                     </c:when>
                     <c:otherwise>
                         <c:forEach items="${requestScope.msg_mem}" var="member">
-                            <li id="list" class="list"><img src="/message/images/label_important_black_24dp.svg"
-                                                            id="labelIcon"/>
+                            <li id="list" class="list">
                                 ${member.value.get(0)} ${member.value.get(1)} 학생
                             </li>
                             <input type='hidden' class='mem_usr_name' value='${member.value.get(1)}'/>
