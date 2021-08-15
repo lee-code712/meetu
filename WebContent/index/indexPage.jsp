@@ -541,7 +541,6 @@ pageEncoding="UTF-8"%>
             height: 80px;
             background: white;
             border-bottom: 1px solid #EAEAEA;
-            z-index: 1;
         }
 
         #headerInner {
@@ -598,6 +597,7 @@ pageEncoding="UTF-8"%>
             padding: 4px;
             border-radius: 5px;
             box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
         }
 
         #dropdown-content a {
