@@ -229,6 +229,7 @@ pageEncoding="UTF-8"%>
             margin: 0 auto;
             width: 1920px;
             height: 720px;
+            z-index: 0;
         }
 
         .banner_01 {
@@ -540,6 +541,7 @@ pageEncoding="UTF-8"%>
             height: 80px;
             background: white;
             border-bottom: 1px solid #EAEAEA;
+            z-index: 1;
         }
 
         #headerInner {
