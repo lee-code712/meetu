@@ -331,7 +331,7 @@ pageEncoding="UTF-8"%>
             position: absolute;
             display: flex;
             justify-content: center;
-            top: 790px;
+            top: 690px;
             left: 50%;
             transform: translate(-50%, 0%);
             margin: 0 auto;
