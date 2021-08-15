@@ -142,13 +142,8 @@
 					timeJsonArray.add(r);
 			}
 		}
-		
-		timeJson.put("time", timeJsonArray); // json 배열을 저장
-		out.println(timeJsonArray);
 	}
-	else {
-		response.setStatus(400); // bad request
-		response.addHeader("Status", "Unregistered reservation");
-		return;
-	}
+	
+	timeJson.put("time", timeJsonArray); // json 배열을 저장
+	out.println(timeJsonArray);
 %>
