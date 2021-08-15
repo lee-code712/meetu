@@ -9,6 +9,9 @@ pageEncoding="UTF-8"%>
     <title>공지사항 내용</title>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="/notice/css/noticeContent.css"/>  -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/notice/js/noticeWrite.js"></script>
 
     <style>
         * {
