@@ -416,7 +416,7 @@ pageEncoding="UTF-8" %>
         </div>
         <div id="headerInnerR">
             <div id="dropdown">
-                <div id="dropdown-button">${mem_dto.getName()} 😊</div>
+                <div id="dropdown-button">${mem_dto.getName()}님 😊</div>
                 <div id="dropdown-content">
                     <a href="myPage.do">마이페이지</a>
                     <a href="logout.do">로그아웃</a>
