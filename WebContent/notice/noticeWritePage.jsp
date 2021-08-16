@@ -306,17 +306,20 @@ pageEncoding="UTF-8"%>
             <div id="title"><a href="index.do">MEETU</a></div>
             <div id="gnb">
                 <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
-                <c:if test="${mem_dto.getRole()!='2'}">
-                    <c:if test="${mem_dto.getRole()=='0'}">
-                        <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
-                    </c:if>
+                <c:if test="${mem_dto.getRole()=='0'}">
+                    <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
                     <div><a id="messageIcon" href="message.do">쪽지함</a></div>
+                </c:if>
+               	<c:if test="${mem_dto.getRole()=='1'}">             
+                	<div><a id="messageIcon" href="message.do">쪽지함</a></div>
+                	<div><a id="reserveIcon" href="#"/></div>
+                </c:if>
                 </c:if>
             </div>
         </div>
         <div id="headerInnerR">
             <div id="dropdown">
-                <div id="dropdown-button">${mem_dto.getName()} 😊</div>
+                <div id="dropdown-button">${mem_dto.getName()}님 😊</div>
                 <div id="dropdown-content">
                     <c:if test="${mem_dto.getRole()!='2'}">
                         <a href="myPage.do">마이페이지</a>
