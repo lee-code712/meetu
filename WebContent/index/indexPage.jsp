@@ -651,6 +651,35 @@ pageEncoding="UTF-8"%>
             height: 657px;
             border-radius: 5px 0 0 5px;
         }
+        
+        #banner03Wrap {
+        	margin: 0 auto;
+        	padding-top: 90px;
+        	width: 1194px;
+        }
+        
+        #banner03Title {
+            display: flex;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        #banner03Text {
+            padding: 20px 0 60px 0;
+            width: 300px;
+            font-size: 12px;
+            color: #535353;
+        }
+
+        #banner03Btn {
+            display: block;
+            width: 200px;
+            padding: 8px 0;
+            border: 1px solid #1abc9c;
+            color: #1abc9c;
+            border-radius: 500px;
+            background: white;
+        }
     </style>
 </head>
 
@@ -688,7 +717,13 @@ pageEncoding="UTF-8"%>
                 <button id="reservationBtn">예약하러 가기</button>
             </li>
             <li class="banner_02"></li>
-            <li class="banner_03"></li>
+            <li class="banner_03">
+            	<div id="banner03Wrap">
+            		<div id="banner03Title">간편한 상담 예약 시스템 &nbsp; <span id="logo">MEETU</span></div>
+            		<div id="banner03Text">교수님과의 상담 예약일을 확인하고 싶다면 캘린더를 통해 상담 일정을 확인해보세요!</div>
+            		<button id="banner03Btn">캘린더 보러가기</button>
+            	</div>
+            </li>
         </ul>
     </div>
 
