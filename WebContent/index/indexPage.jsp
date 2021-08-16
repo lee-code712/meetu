@@ -243,7 +243,7 @@ pageEncoding="UTF-8"%>
         .banner_02 {
             width: 1920px;
             height: 720px;
-            background-image: url('/index/images/cat-6309964_1920.jpg');
+            background-image: url('../images/banner2.jpg');
             background-position: center;
             background-size: cover;
         }
@@ -251,7 +251,7 @@ pageEncoding="UTF-8"%>
         .banner_03 {
             width: 1920px;
             height: 720px;
-            background-image: url('/index/images/fox-1758183_1920.jpg');
+            background-image: url('../images/banner3.jpg');
             background-position: center;
             background-size: cover;
         }
