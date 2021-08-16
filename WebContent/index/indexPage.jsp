@@ -707,7 +707,14 @@ pageEncoding="UTF-8"%>
             border: 1px solid #1abc9c;
             color: #1abc9c;
             border-radius: 500px;
-            background: white;
+            background: #eaf0ff;
+        }
+            
+        #banner02Btn:hover,
+        #banner03Btn:hover {
+                cursor: pointer;
+                background: #1abc9c;
+                color: white;         
         }
     </style>
 </head>
