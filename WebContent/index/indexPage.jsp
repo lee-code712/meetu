@@ -541,6 +541,14 @@ pageEncoding="UTF-8"%>
             height: 80px;
             background: white;
             border-bottom: 1px solid #EAEAEA;
+            z-index: 10; 
+            top: 0px; 
+            position: fixed; 
+            box-sizing: border-box; 
+            transition: All 0.2s ease; 
+            -webkit-transition: All 0.2s ease; 
+            -moz-transition: All 0.2s ease; 
+            -o-transition: All 0.2s ease;
         }
 
         #headerInner {
@@ -716,10 +724,15 @@ pageEncoding="UTF-8"%>
                 background: #1abc9c;
                 color: white;         
         }
+        
+        #blank {
+        height: 80px;
+        }
     </style>
 </head>
 
 <body>
+<div id="blank"></div>
 <div id="header">
     <div id="headerInner">
         <div id="headerInnerL">
