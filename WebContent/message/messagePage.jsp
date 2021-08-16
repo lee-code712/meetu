@@ -174,13 +174,14 @@ pageEncoding="UTF-8" %>
         }
 
         #reservationWrap {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 80px;
             margin: 0 auto;
             width: 1194px;
-            height: 840px;
         }
 
         #mylist {
-            margin-top: 80px;
             width: 318px;
             height: 840px;
             border: none;
@@ -255,11 +256,10 @@ pageEncoding="UTF-8" %>
 
         #sender {
             margin-left: 80px;
-            margin-top: 80px;
             padding-bottom: 10px;
             padding-top: 14px;
             padding-left: 20px;
-            width: 810px;
+            width: 776px;
             font-size: 16px;
             font-weight: bold;
             color: #3E454D;
@@ -283,19 +283,19 @@ pageEncoding="UTF-8" %>
 
         #messageInner {
             display: block;
-            width: 894px;
+            width: 908px;
             height: 840px;
         }
 
         #messageInnerWrap {
-            width: 900px;
+            width: 100%;
             height: 550px;
         }
 
         #messageResult {
             display: block;
             margin-left: 80px;
-            width: 830px;
+            width: 796px;
             height: 500px;
             overflow-y: scroll;
             border-left: 5px solid white;
@@ -312,7 +312,7 @@ pageEncoding="UTF-8" %>
             align-items: center;
             padding: 0px 20px;
             margin-left: 80px;
-            width: 790px;
+            width: 756px;
             height: 50px;
             background: white;
             border-radius: 0 0 10px 10px;
@@ -348,8 +348,7 @@ pageEncoding="UTF-8" %>
             margin-left: 20px;
             padding: 10px;
             border-radius: 10px 10px 10px 0px;
-            background: white;
-            border: 1px solid #535353;
+            background: #cdeae2;
             font-size: 14px;
         }
 
@@ -419,54 +418,50 @@ pageEncoding="UTF-8" %>
                     <a href="logout.do">로그아웃</a>
                 </div>
             </div>
-            <img src="/images/bell.svg" id="noticeImg"/>
+            <img src="../images/bell.svg" id="noticeImg"/>
         </div>
     </div>
 </div>
 
-<table id="reservationWrap">
-    <tr>
-        <td>
-            <ul id="mylist">
-                <li id="selectProf">쪽지함</li>
-                <%-- 쪽지 가능한 member list 출력 --%>
-                <c:choose>
-                    <c:when test="${mem_dto.getRole() =='0'}">
-                        <c:forEach items="${requestScope.msg_mem}" var="member">
-                            <li id="list" class="list">
-                                ${member.value.get(0)} ${member.value.get(1)} 교수
-                            </li>
-                            <input type='hidden' class='mem_usr_name' value='${member.value.get(1)}'/>
-                        </c:forEach>
-                    </c:when>
-                    <c:otherwise>
-                        <c:forEach items="${requestScope.msg_mem}" var="member">
-                            <li id="list" class="list">
-                                ${member.value.get(0)} ${member.value.get(1)} 학생
-                            </li>
-                            <input type='hidden' class='mem_usr_name' value='${member.value.get(1)}'/>
-                        </c:forEach>
-                    </c:otherwise>
-                </c:choose>
-            </ul>
-        </td>
+<div id="reservationWrap">
+    <ul id="mylist">
+        <li id="selectProf">쪽지함</li>
+        <c:choose>
+            <c:when test="${mem_dto.getRole() =='0'}">
+                <c:forEach items="${requestScope.msg_mem}" var="member">
+                    <li id="list" class="list">
+                        ${member.value.get(0)} ${member.value.get(1)} 교수
+                    </li>
+                    <input type='hidden' class='mem_usr_name' value='${member.value.get(1)}'/>
+                </c:forEach>
+            </c:when>
+            <c:otherwise>
+                <c:forEach items="${requestScope.msg_mem}" var="member">
+                    <li id="list" class="list">
+                        ${member.value.get(0)} ${member.value.get(1)} 학생
+                    </li>
+                    <input type='hidden' class='mem_usr_name' value='${member.value.get(1)}'/>
+                </c:forEach>
+            </c:otherwise>
+        </c:choose>
+    </ul>
 
-        <td id="messageInner">
-            <div id="sender"></div>
-            <div id="messageInnerWrap">
-                <div id="messageResult">
-                   
-                </div>
-                <div id="messageTextWrap">
-                    <div id="messageTextInnerWrap">
-                        <input type="text" placeholder="메시지를 입력하세요." id="messageText"/>
-                        <img src="../images/send.svg" id="textBtn" onclick="sendMessage()"/>
-                    </div>
+    <div id="messageInner">
+        <div id="sender"></div>
+        <div id="messageInnerWrap">
+            <div id="messageResult">
+
+            </div>
+            <div id="messageTextWrap">
+                <div id="messageTextInnerWrap">
+                    <input type="text" placeholder="메시지를 입력하세요." id="messageText"/>
+                    <img src="../images/send.svg" id="textBtn" onclick="sendMessage()"/>
                 </div>
             </div>
-        </td>
-    </tr>
-</table>
+        </div>
+
+    </div>
+</div>
 
 <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-8216c69d01441f36c0ea791ae2d4469f0f8ff5326f00ae2d00e4bb7d20e24edb.js"></script>
 
