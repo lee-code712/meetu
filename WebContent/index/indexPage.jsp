@@ -243,7 +243,7 @@ pageEncoding="UTF-8"%>
         .banner_02 {
             width: 1920px;
             height: 720px;
-            background-image: url('../images/banner2.svg');
+            background-image: url('../images/banner2.jpg');
             background-position: center;
             background-size: cover;
         }
