@@ -314,7 +314,6 @@ pageEncoding="UTF-8"%>
                 	<div><a id="messageIcon" href="message.do">쪽지함</a></div>
                 	<div><a id="reserveIcon" href="#"/></div>
                 </c:if>
-                </c:if>
             </div>
         </div>
         <div id="headerInnerR">
