@@ -408,13 +408,17 @@ pageEncoding="UTF-8"%>
                 <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
                 <c:if test="${mem_dto.getRole()=='0'}">
                     <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
+                    <div><a id="messageIcon" href="message.do">쪽지함</a></div>
                 </c:if>
-                <div><a id="messageIcon" href="message.do">쪽지함</a></div>
+               	<c:if test="${mem_dto.getRole()=='1'}">             
+                	<div><a id="messageIcon" href="message.do">쪽지함</a></div>
+                	<div><a id="reserveIcon" href="#"/></div>
+                </c:if>
             </div>
         </div>
         <div id="headerInnerR">
             <div id="dropdown">
-                <div id="dropdown-button">${mem_dto.getName()} 😊</div>
+                <div id="dropdown-button">${mem_dto.getName()}님 😊</div>
                 <div id="dropdown-content">
                     <a href="myPage.do">마이페이지</a>
                     <a href="logout.do">로그아웃</a>
