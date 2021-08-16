@@ -720,7 +720,7 @@ pageEncoding="UTF-8"%>
             <li class="banner_03">
             	<div id="banner03Wrap">
             		<div id="banner03Title">간편한 상담 예약 시스템 &nbsp; <span id="logo">MEETU</span></div>
-            		<div id="banner03Text">교수님과의 상담 예약일을 확인하고 싶다면 캘린더를 통해 상담 일정을 확인해보세요!</div>
+            		<div id="banner03Text">교수님과 소통을 하고 싶다면 쪽지 기능을 통해 대화를 주고받아보세요!</div>
             		<button id="banner03Btn">캘린더 보러가기</button>
             	</div>
             </li>
