@@ -741,8 +741,12 @@ pageEncoding="UTF-8"%>
                 <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
                 <c:if test="${mem_dto.getRole()=='0'}">
                     <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
+                    <div><a id="messageIcon" href="message.do">쪽지함</a></div>
                 </c:if>
-                <div><a id="messageIcon" href="message.do">쪽지함</a></div>
+               	<c:if test="${mem_dto.getRole()=='1'}">             
+                	<div><a id="messageIcon" href="message.do">쪽지함</a></div>
+                	<div><a id="reserveIcon" href="#"/></div>
+                </c:if>
             </div>
         </div>
         <div id="headerInnerR">
