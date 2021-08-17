@@ -134,7 +134,6 @@ pageEncoding="UTF-8"%>
                     <br/>
                     <div class="timeTitle" id="timeTitle"><span style="color: #1abc9c;">◈</span> 상담 시간</div>
                     <div class="timeBoxWrap">
-                        <div class="timeBox" id="30m"><a>30분</a></div> &nbsp;&nbsp;
                         <div class="timeBox" id="1h"><a>1시간</a></div> &nbsp;&nbsp;
                         <div class="timeBox" id="2h"><a>2시간</a></div>
                     </div>
