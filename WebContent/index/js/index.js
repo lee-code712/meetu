@@ -7,13 +7,15 @@ var firstDay = null;
 var lastDay = null;
 var $tdDay = null;
 var $tdSche = null;
-var jsonData = null;
+var jsonData = new Object();
 
 $(document).ready(function () {
+	getSchedule(); // 사이드바 일정 출력
+	
     drawCalendar();
     initDate();
     drawDays();
-    drawSche();
+    // drawSche();
     $("#movePrevMonth").on("click", function () {
         movePrevMonth();
     });
@@ -39,8 +41,6 @@ $(document).ready(function () {
         slider_02.stopAuto();
         slider_02.startAuto();
     });
-
-	getSchedule(); // 사이드바 일정 출력
 });
 
 //Calendar 그리기
@@ -139,26 +139,66 @@ function getNewInfo() {
 }
 
 //데이터 등록
-function setData() {
-    jsonData =
+function setData(reservations) {
+	/* var today = new Date();
+    year = today.getFullYear();
+
+	var yearList = new Array();
+	var monthList = new Array();
+	
+	Array.from(reservations).forEach(function(reservation, idx) {
+		var start_time = reservation.start_time;
+		var p_name = reservation.p_name;
+		var approval = reservation.approval;
+		var reason = reservation.reason;
+		
+		if (approval == 1) {
+			var res_month = start_time.substring(5, 7);
+			var res_date = start_time.substring(8, 10);
+			var res_time = start_time.substring(11, 16);
+			
+			var res_info = new Object();
+			res_info[res_date] = p_name + " 교수님 " + res_time; // "7":"000 교수님 09:00"
+			
+			if (!yearList.res_month) { // 처음 등장한 달인 경우
+				var monthData = new Object();
+				var monthList = new Array();
+				var dateList = new Array();
+				dateList.push(res_info);
+				monthData[res_month] = dateList; // "08":{"7":"000 교수님 09:00"}
+				monthList.push(monthData);
+				yearList.push(monthList);
+			}
+			else {
+				yearList[res_month].push(res_info); // "08":{"7":"000 교수님 09:00", "15":"000 교수님 10:00"}
+			}
+		}
+	});
+	
+	jsonData[year] = yearList;
+	alert(JSON.stringify(jsonData)); // {"2021":[[{"08":[{"20":"박창섭 교수님 10:00"}]}],[{"08":[{"19":"이은영 교수님 13:00"}]}]]}
+	*/
+	
+   	jsonData =
         {
             "2021": {
                 "08": {
-                    "7": "000교수님 오전 9:00"
-                    , "15": "000교수님 오전 10:00"
-                    , "23": "000교수님 오전 12:00"
+                    "7": "000 교수님 9:00"
+                    , "15": "000 교수님 10:00"
+                    , "23": "000 교수님 12:00"
                 }
                 , "09": {
-                    "4": "000교수님 오후 1:00"
-                    , "23": "000교수님 오후 2:00"
+                    "4": "000 교수님 13:00"
+                    , "23": "000 교수님 14:00"
                 }
             }
-        }
+        } // "2021":{"08":{"7":"000 교수님 09:00", "15":"000 교수님 10:00"}, "09":{"4": "000 교수님 13:00"}}
+
+	drawSche(jsonData);
 }
 
 //스케줄 그리기
-function drawSche() {
-    setData();
+function drawSche(jsonData) {
     var dateMatch = null;
     for (var i = firstDay.getDay(); i < firstDay.getDay() + lastDay.getDate(); i++) {
         var txt = "";
@@ -223,6 +263,8 @@ function updatePage (responseText) {
 	if (reservations != null) {
 		$("#cal_msg").remove();
 	}
+	
+	setData(reservations); // 달력에 일정 그리기
 	
 	count = 0;
 	Array.from(reservations).forEach(function(reservation, idx) {
