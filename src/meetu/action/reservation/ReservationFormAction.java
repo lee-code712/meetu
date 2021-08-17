@@ -13,7 +13,6 @@ import meetu.dto.ProfessorDTO;
 import meetu.action.CommandAction;
 import meetu.dao.MemberDAO;
 import meetu.dao.ReservationDAO;
-import meetu.dto.ReservationDTO;
 
 public class ReservationFormAction implements CommandAction {
 
@@ -56,9 +55,9 @@ public class ReservationFormAction implements CommandAction {
 		boolean isReservated = reservationDAO.isReservatedProfessor(univ_dto.getUnivId(), s_user_id, p_user_id);
 		
 		// 예약정보가 존재하는지 확인(예약내역 수정 시)
-		ReservationDTO reservation_dto = (ReservationDTO) req.getAttribute("reservation_dto");
+		ArrayList<String> reservation = (ArrayList<String>) req.getAttribute("reservation");
 				
-		if(reservation_dto != null) {
+		if(reservation != null) {
 			return "/reservation/reservationUpdateForm.jsp";
 		}
 		else {

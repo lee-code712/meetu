@@ -10,7 +10,7 @@ pageEncoding="UTF-8"%>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/reservation/js/reservationForm.js"></script>
-    <link rel="stylesheet" href="../reservation/css/reservationContent.css"/>
+    <link rel="stylesheet" href="../reservation/css/reservationForm.css"/>
 
     <script>
         $(function () {
@@ -144,25 +144,20 @@ pageEncoding="UTF-8"%>
             <div id="navRContentWrap">
                 <div id="reasonWrap">
                     <div>
-                        <input id="radio1" type="radio" name="radio" value="1" checked="checked"><label
-                            for="radio1">전담 교수 상담</label>
+                        <input id="radio1" type="radio" name="radio" value="1" checked="checked"><label for="radio1">전담 교수 상담</label>
                     </div>
                     <div>
-                        <input id="radio2" type="radio" name="radio" value="2"><label for="radio2">진로
-                        상담</label>
+                        <input id="radio2" type="radio" name="radio" value="2"><label for="radio2">진로 상담</label>
                     </div>
                     <div>
-                        <input id="radio3" type="radio" name="radio" value="3"><label for="radio3">휴학
-                        상담</label>
+                        <input id="radio3" type="radio" name="radio" value="3"><label for="radio3">휴학 상담</label>
                     </div>
                     <div>
-                        <input id="radio4" type="radio" name="radio" value="4"><label for="radio4">대학원
-                        상담</label>
+                        <input id="radio4" type="radio" name="radio" value="4"><label for="radio4">대학원 상담</label>
                     </div>
                     <div>
-                        <input id="radio5" type="radio" name="radio" value="5"><label
-                            for="radio5">기타:</label>
-                        <input type="input" placeholder="내용을 적어주세요." id="anotherReason">
+                        <input id="radio5" type="radio" name="radio" value="5"><label for="radio5">기타:</label>
+                        <input type="text" placeholder="내용을 적어주세요." id="anotherReason">
                     </div>
                 </div>
             </div>
@@ -180,6 +175,6 @@ pageEncoding="UTF-8"%>
             </div>
         </div>
     </div>
-</div>
+	</form>
 </body>
 </html>

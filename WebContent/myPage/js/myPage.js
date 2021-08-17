@@ -134,7 +134,7 @@ function buttonEvent() {
 	res_id = event.currentTarget.closest("tr").id;
 	
 	if(selected_button == "editBtn") {
-		location.href="updateReservationForm.do?res_id=" + res_id;
+		location.href="reservationUpdateForm.do?res_id=" + res_id;
 	}
 	else if(selected_button == "cancelBtn") {
 		if (confirm("선택한 예약을 취소하시겠습니까?") == true) 

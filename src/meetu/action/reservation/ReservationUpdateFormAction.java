@@ -11,7 +11,7 @@ import meetu.dao.ReservationDAO;
 import meetu.dao.MemberDAO;
 import meetu.dto.*;
 
-public class UpdateReservationFormAction implements CommandAction {
+public class ReservationUpdateFormAction implements CommandAction {
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
 		HttpSession session = req.getSession();
@@ -27,7 +27,17 @@ public class UpdateReservationFormAction implements CommandAction {
 		reservation_dto.setResId(res_id);
 		reservation_dto = reservation_dao.getReservation(reservation_dto, univ);
 		
-		req.setAttribute("reservation_dto", reservation_dto);
+		ArrayList<String> reservation = new ArrayList<>();
+		reservation.add(reservation_dto.getResId());
+		reservation.add(reservation_dto.getStartTime().substring(8,10));
+		reservation.add(reservation_dto.getStartTime().substring(11,16));
+		reservation.add(reservation_dto.getEndTime().substring(11,16));
+		reservation.add(reservation_dto.getReason());
+		reservation.add(Integer.toString(reservation_dto.getType()));
+		reservation.add(reservation_dto.getPUserId());
+		reservation.add(reservation_dto.getSUserId());
+		
+		req.setAttribute("reservation", reservation);
 		
 		// 예약 페이지에서 보일 교수 정보 get으로 전송
 		MemberDTO mem_dto = mem_dao.getMemberInfo(univ, reservation_dto.getPUserId());

@@ -9,10 +9,16 @@ pageEncoding="UTF-8"%>
     <title>예약</title>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/reservation/js/reservationForm.js"></script>
-    <link rel="stylesheet" href="../reservation/css/reservationContent.css"/>
+    <script src="/reservation/js/reservationUpdateForm.js"></script>
+    <link rel="stylesheet" href="../reservation/css/reservationForm.css"/>
 
     <script>
+	    var consult_day = "${reservation.get(1)}";
+		var start = "${reservation.get(2)}";
+		var end = "${reservation.get(3)}";
+		var reason = "${reservation.get(4)}";
+		var type = "${reservation.get(5)}";
+		
         $(function () {
             var btn1 = $(".startTimeBox")
             btn1.find("a").click(function () {
@@ -68,7 +74,7 @@ pageEncoding="UTF-8"%>
     </div>
 </div>
 
-    <form method="post" name="reservation_form" action="makeReservation.do" onsubmit="return ck_reservation_form()">
+    <form method="post" name="reservation_form" action="updateReservation.do" onsubmit="return ck_reservation_form()">
     <div id="navWrap">
         <div id="navL">
             <div id="navLTit">상담예약</div>
@@ -144,25 +150,20 @@ pageEncoding="UTF-8"%>
             <div id="navRContentWrap">
                 <div id="reasonWrap">
                     <div>
-                        <input id="radio1" type="radio" name="radio" value="1" checked="checked"><label
-                            for="radio1">전담 교수 상담</label>
+                        <input id="radio1" type="radio" name="radio" value="1" checked="checked"><label for="radio1">전담 교수 상담</label>
                     </div>
                     <div>
-                        <input id="radio2" type="radio" name="radio" value="2"><label for="radio2">진로
-                        상담</label>
+                        <input id="radio2" type="radio" name="radio" value="2"><label for="radio2">진로 상담</label>
                     </div>
                     <div>
-                        <input id="radio3" type="radio" name="radio" value="3"><label for="radio3">휴학
-                        상담</label>
+                        <input id="radio3" type="radio" name="radio" value="3"><label for="radio3">휴학 상담</label>
                     </div>
                     <div>
-                        <input id="radio4" type="radio" name="radio" value="4"><label for="radio4">대학원
-                        상담</label>
+                        <input id="radio4" type="radio" name="radio" value="4"><label for="radio4">대학원 상담</label>
                     </div>
                     <div>
-                        <input id="radio5" type="radio" name="radio" value="5"><label
-                            for="radio5">기타:</label>
-                        <input type="input" placeholder="내용을 적어주세요." id="anotherReason">
+                        <input id="radio5" type="radio" name="radio" value="5"><label for="radio5">기타:</label>
+                        <input type="text" placeholder="내용을 적어주세요." id="anotherReason">
                     </div>
                 </div>
             </div>
@@ -176,10 +177,11 @@ pageEncoding="UTF-8"%>
             </div>
 
             <div>
-                <input class="reservationBtn" type="submit" value="예약하기" />
+                <input class="backBtn" type="submit" value="닫기" />
+                <input class="updateBtn" type="submit" value="수정" />
             </div>
         </div>
     </div>
-</div>
+	</form>
 </body>
 </html>
