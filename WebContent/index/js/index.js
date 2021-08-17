@@ -150,7 +150,8 @@ function setData(reservations) {
 	
 	Array.from(reservations).forEach(function(reservation, idx) {
 		var start_time = reservation.start_time;
-		var p_name = reservation.p_name;
+		var name = reservation.name;
+		var s_name = reservation.s_name;
 		var approval = reservation.approval;
 		var reason = reservation.reason;
 		
@@ -160,7 +161,7 @@ function setData(reservations) {
 			var res_time = start_time.substring(11, 16);
 			
 			var res_info = new Object();
-			res_info[res_date] = p_name + " 교수님 " + res_time; // "7":"000 교수님 09:00"
+			res_info[res_date] = name + "님과 상담"; // "7":"000 교수님 09:00"
 			
 			if (!yearList.res_month) { // 처음 등장한 달인 경우
 				var monthData = new Object();
@@ -278,7 +279,8 @@ function updatePage (responseText) {
 	count = 0;
 	Array.from(reservations).forEach(function(reservation, idx) {
 		var start_time = reservation.start_time;
-		var p_name = reservation.p_name;
+		var name = reservation.name;
+		var s_name = reservation.s_name;
 		var approval = reservation.approval;
 		var reason = reservation.reason;
 		
@@ -288,7 +290,7 @@ function updatePage (responseText) {
 			
 			var newDivElement = document.createElement("div");
 			$(newDivElement).attr("id", "cal_msg");
-			var content = res_time + ", " + p_name + " 교수님과 " + reason;
+			var content = res_time + ", " + name + " 님과 " + reason;
 			newDivElement.innerHTML = content;
 			
 			$("#calendar_wrap").prepend(newDivElement);
