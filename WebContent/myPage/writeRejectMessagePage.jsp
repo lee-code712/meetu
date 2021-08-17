@@ -93,7 +93,7 @@ pageEncoding="UTF-8"%>
         function returnMessage() {
             var reject_msg = $("#rejectMsg").val();
             if (reject_msg == "") {
-                alert("사유를 입력해주세요.");
+                alert("사유를 입력하세요.");
                 return;
             }
             opener.addRejectMessage(reject_msg);
@@ -106,9 +106,8 @@ pageEncoding="UTF-8"%>
 <div id="rejectMsgWrap">
     <div id="rejectMsgInnerWrap">
         <div id="rejectImgWrap"><img src="../images/rejected.svg" id="rejectImg"/></div>
-        <div id="rejectTit">거절 메시지</div>
         <div id="rejectMsgText"><textarea id="rejectMsg" style="resize: none; border: none;" rows="10" cols="65"
-                                          placeholder="거절 메시지를 입력하세요."></textarea></div>
+                                          placeholder="사유를 입력하세요."></textarea></div>
         <div id="closeBtnWrap">
             <button onclick="returnMessage()" id="saveBtn">저장</button>
         </div>

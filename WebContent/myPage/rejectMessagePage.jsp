@@ -88,7 +88,6 @@
 <div id="rejectMsgWrap">
     <div id="rejectMsgInnerWrap">
         <div id="rejectImgWrap"><img src="../images/rejected.svg" id="rejectImg"/></div>
-        <div id="rejectTit">거절 메시지</div>
         <div id="rejectMsg">${reject_msg}</div>
         <div id="closeBtnWrap">
             <button onclick="window.close()" id="closeBtn">닫기</button>

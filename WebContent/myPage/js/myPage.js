@@ -114,7 +114,7 @@ function updatePage(responseText) {
 	}
 }
 
-// 성명으로 검색
+// 이름으로 예약항목 검색
 function search() {
 	var string = $("#searchText").attr("placeholder");
 	var role_name = string.substr(0, 3);
@@ -134,7 +134,7 @@ function buttonEvent() {
 	res_id = event.currentTarget.closest("tr").id;
 	
 	if(selected_button == "editBtn") {
-		// 수정하는 페이지 이동
+		location.href="updateReservationForm.do?res_id=" + res_id;
 	}
 	else if(selected_button == "cancelBtn") {
 		if (confirm("선택한 예약을 취소하시겠습니까?") == true) 
