@@ -246,7 +246,7 @@ function buildCalendar(responseText) {
 						}
 						else if (key == Object.keys(schedules)[size - 1]) {
 							// alert("getDay(): " + (dateObj.getDay()) + ", disable_date: " + disable_date + ", disable_time: " + disable_time);
-							column.style.backgroundColor = "#FFFFFF";
+							column.style.backgroundColor = "#FBAB7E";
                     		column.style.cursor = "pointer";
                     		column.onclick = function () {
                         		calendarChoiceDay(this, schedules);
@@ -399,6 +399,10 @@ function calendarChoiceDay(column, schedules) {
 				
 				while ($(classes[j]).attr("id") != disable_timeArr[1]) {
 					// $(classes[j]).unbind("hover"); // 동작 X
+					// 버튼에 없는 시간이면 while문 종료
+					if(disable_timeArr[1] == "18:00" || disable_timeArr[1] == "19:00") {
+						break;
+					}
 					$(classes[j]).attr("isDisabled", "true");
 					classes[j].style.backgroundColor = "#E5E5E5";
 					j++;

@@ -246,7 +246,7 @@ function buildCalendar(responseText) {
 						}
 						else if (key == Object.keys(schedules)[size - 1]) {
 							// alert("getDay(): " + (dateObj.getDay()) + ", disable_date: " + disable_date + ", disable_time: " + disable_time);
-							column.style.backgroundColor = "#FFFFFF";
+							column.style.backgroundColor = "#FBAB7E";
                     		column.style.cursor = "pointer";
                     		column.onclick = function () {
                         		calendarChoiceDay(this, schedules);
@@ -406,7 +406,7 @@ function calendarChoiceDay(column, schedules) {
 		
 		var dateObj = new Date(doMonth.getFullYear(), doMonth.getMonth(), Number(contentDay));
 		// alert("getDay(): " + (dateObj.getDay()) + ", disable_date: " + disable_date + ", disable_time: " + disable_time);
-		if (disable_time != "09:00~19:00") { // 전체 불가능 일이 아니고
+		if (disable_time != "09:00~19:00" && start != disable_time.substring(0, 5)) { // 전체 불가능 일이 아니거나 내가 선택한 일이 아니고
 			if (dateObj.getDay() == disable_date) { // 선택 요일이 disable_date인 경우
 				all_able_day = false;
 				
@@ -421,6 +421,10 @@ function calendarChoiceDay(column, schedules) {
 				
 				while ($(classes[j]).attr("id") != disable_timeArr[1]) {
 					// $(classes[j]).unbind("hover"); // 동작 X
+					// 버튼에 없는 시간이면 while문 종료
+					if(disable_timeArr[1] == "18:00" || disable_timeArr[1] == "19:00") {
+						break;
+					}
 					$(classes[j]).attr("isDisabled", "true");
 					classes[j].style.backgroundColor = "#E5E5E5";
 					j++;
