@@ -3,7 +3,7 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 	$(".timeBox").click(timeBoxClick);
 	$("#typeBtnOff").click(typeBtnOffClick);
 	$("#typeBtnOn").click(typeBtnOnClick);
-	$(".reservationBtn").click(reservationBtnClick);
+	$(".updateBtn").click(updateBtnClick);
 	
 	// 교수 이메일을 파라미터로 보내기 위해 이메일 정보 hidden으로 저장
 	var email = document.getElementById("email");
@@ -600,7 +600,7 @@ function typeBtnOnClick() {
 	$(".typeBtnWrap").append(newInputElement);
 }
 
-function reservationBtnClick() {
+function updateBtnClick() {
 	if($("input:radio[id='radio5']").is(":checked") && $("#anotherReason").val()) {
 		$("#radio5").attr("value", $("#anotherReason").val());
 	}
