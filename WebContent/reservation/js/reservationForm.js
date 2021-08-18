@@ -393,7 +393,6 @@ function calendarChoiceDay(column, schedules) {
 				var j = 0;
 				
 				while ($(classes[j]).attr("id") != disable_timeArr[0]) {
-					$(classes[j]).click(startTimeBoxClick);
 					j++;
 				}
 				
@@ -407,11 +406,14 @@ function calendarChoiceDay(column, schedules) {
 					classes[j].style.backgroundColor = "#E5E5E5";
 					j++;
 				}
-				
-				for(j; j < classes.length; j++) {
-					$(classes[j]).click(startTimeBoxClick);
-				}
 			}
+		}
+	});
+	
+	// 각 시작시간 항목의 isDisabled속성이 true가 아닌 경우 클릭 이벤트 생성
+	Array.from(classes).forEach(function(element, i) {
+		if($(element).attr("isDisabled") != "true") {
+			$(element).click(startTimeBoxClick);
 		}
 	});
 	
