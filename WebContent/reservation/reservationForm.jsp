@@ -116,7 +116,7 @@ pageEncoding="UTF-8"%>
                     </div>
                     <div>
                         <div class="timeBoxWrap">
-                            <div class="startTimeBox" id="9:00"><a>9:00</a></div>
+                            <div class="startTimeBox" id="9:00"><a>09:00</a></div>
                             <div class="startTimeBox" id="10:00"><a>10:00</a></div>
                             <div class="startTimeBox" id="11:00"><a>11:00</a></div>
                         </div>

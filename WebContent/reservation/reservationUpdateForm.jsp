@@ -45,6 +45,17 @@ pageEncoding="UTF-8"%>
     </script>
 </head>
 <body>
+<%
+	String update_ck = request.getParameter("update_ck");
+	if(update_ck != null) {
+		if(update_ck.equals("1")) {
+			out.println("<script>alert('예약이 정상적으로 수정되었습니다.')</script>");
+		}
+		else {
+			out.println("<script>alert('예약 수정에 실패했습니다.')</script>");
+		}
+	}
+%>
 <div id="header">
     <div id="headerInner">
         <div id="headerInnerL">
@@ -74,7 +85,7 @@ pageEncoding="UTF-8"%>
     </div>
 </div>
 
-    <form method="post" name="reservation_form" action="updateReservation.do" onsubmit="return ck_reservation_form()">
+    <form method="post" name="reservation_form" action="updateReservation.do?res_id=${reservation.get(0)}" onsubmit="return ck_reservation_form()">
     <div id="navWrap">
         <div id="navL">
             <div id="navLTit">상담예약</div>
@@ -122,7 +133,7 @@ pageEncoding="UTF-8"%>
                     </div>
                     <div>
                         <div class="timeBoxWrap">
-                            <div class="startTimeBox" id="9:00"><a>9:00</a></div>
+                            <div class="startTimeBox" id="9:00"><a>09:00</a></div>
                             <div class="startTimeBox" id="10:00"><a>10:00</a></div>
                             <div class="startTimeBox" id="11:00"><a>11:00</a></div>
                         </div>
@@ -177,7 +188,7 @@ pageEncoding="UTF-8"%>
             </div>
 
             <div>
-                <input class="backBtn" type="submit" value="닫기" />
+                <input class="backBtn" type="button" onclick="location.href='myPage.do'" value="닫기" />
                 <input class="updateBtn" type="submit" value="수정" />
             </div>
         </div>

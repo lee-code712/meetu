@@ -409,10 +409,15 @@ pageEncoding="UTF-8"%>
 			out.println("<script>alert('이미 상담 예약이 신청된 교수님입니다.');</script>");
 		}
 		
-		String add_ck = (String) request.getAttribute("add_ck");
+		String add_ck = request.getParameter("add_ck");
 		
 		if(add_ck != null) {
-			out.println("<script>alert('성공적으로 예약 신청되었습니다.');</script>");
+			if(add_ck.equals("1")) {
+				out.println("<script>alert('성공적으로 예약 신청되었습니다.');</script>");
+			}
+			else {
+				out.println("<script>alert('예약 신청에 실패했습니다.');</script>");
+			}
 		}
 	%>
 
