@@ -54,11 +54,19 @@ public class ReservationFormAction implements CommandAction {
 		
 		boolean isReservated = reservationDAO.isReservatedProfessor(univ_dto.getUnivId(), s_user_id, p_user_id);
 		
-		if(isReservated) { // 예약 레코드가 있는 경우 교수 선택 페이지로 리턴
-			return "/reservation/reservationPage.jsp?isReservated=1";
+		// 예약정보가 존재하는지 확인(예약내역 수정 시)
+		ArrayList<String> reservation = (ArrayList<String>) req.getAttribute("reservation");
+				
+		if(reservation != null) {
+			return "/reservation/reservationUpdateForm.jsp";
 		}
 		else {
-			return "/reservation/reservationForm.jsp";
+			if(isReservated) { // 예약 레코드가 있는 경우 교수 선택 페이지로 리턴
+				return "/reservation/reservationPage.jsp?isReservated=1";
+			}
+			else {
+				return "/reservation/reservationForm.jsp";
+			}
 		}
 	}
 

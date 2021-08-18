@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,11 +49,15 @@
         <div id="navLTit">상담정보</div>
         <div id="navListWrap">
         	<div id="navList">[교수정보]</div>
-        	<div id="navList">${prof_info.get(1)} ${prof_info.get(0)} ( 교번: ${prof_info.get(2)} )</div>
+        	<div id="navList">${prof_info.get(1)} ${prof_info.get(0)} ( ${prof_info.get(2)} )</div>
             <div id="navList">[학생정보]</div>
-            <div id="navList">${stu_info.get(1)} ${stu_info.get(0)} ( 학년: ${stu_info.get(2)}, 학번: ${stu_info.get(3)} )</div>
+            <div id="navList">${stu_info.get(1)} ${stu_info.get(0)} ( ${stu_info.get(2)}학년, ${stu_info.get(3)} )</div>
             <div id="navList">[상담일시]</div>
-            <div id="navList">${reservation_dto.getStartTime()} ~ ${reservation_dto.getEndTime()}</div>
+            <div id="navList">
+            	<c:set var="startTime" value="${reservation_dto.getStartTime()}"/>${fn:substring(startTime, 0, 16)}
+            	 ~ 
+            	<c:set var="endTime" value="${reservation_dto.getEndTime()}"/>${fn:substring(endTime, 11, 16)}
+            </div>
             <div id="navList">[상담신청사유]</div>
             <div id="navList">${reservation_dto.getReason()}</div>
             <div id="navList">[상담유형]</div>

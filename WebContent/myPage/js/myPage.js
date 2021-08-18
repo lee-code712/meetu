@@ -42,16 +42,18 @@ function updatePage(responseText) {
 		var res_id = reservations[key][2];
 		var state = reservations[key][3];
 		var start_time = reservations[key][4];
-		var type = reservations[key][5];
-		var office = reservations[key][6];
+		var end_time = reservations[key][5];
+		var type = reservations[key][6];
+		var office = reservations[key][7];
 		
 		// 검색창이 비어있으면 모든 예약내역 출력, 키워드가 있으면 키워드와 성명이 동일한 예약내역을 출력
 		if(keyword == '' || keyword == name) {
 			var temp_html = '';
 	
 			temp_html += "<tr id=" + res_id + ">";
-			temp_html += "<td><img src=\"/myPage/images/more.svg\" id=\"moreImg\" onclick=\"readReservationInfo();\"/></td><td>" + name + "</td><td>" + start_time + "</td>";
-			if(type == "오프라인") {
+			temp_html += "<td><img src=\"/myPage/images/more.svg\" id=\"moreImg\" onclick=\"readReservationInfo();\"/></td><td>" + name + "</td>";
+			temp_html += "<td>" + start_time.substring(0, 16) + "~" + end_time.substring(11, 16) + "</td>";
+			if(type == "오프라인" && office != null) {
 				temp_html += "<td>" + office + "</td>";
 			}
 			else {
@@ -114,7 +116,7 @@ function updatePage(responseText) {
 	}
 }
 
-// 성명으로 검색
+// 이름으로 예약항목 검색
 function search() {
 	var string = $("#searchText").attr("placeholder");
 	var role_name = string.substr(0, 3);
@@ -134,7 +136,7 @@ function buttonEvent() {
 	res_id = event.currentTarget.closest("tr").id;
 	
 	if(selected_button == "editBtn") {
-		// 수정하는 페이지 이동
+		location.href="reservationUpdateForm.do?res_id=" + res_id;
 	}
 	else if(selected_button == "cancelBtn") {
 		if (confirm("선택한 예약을 취소하시겠습니까?") == true) 

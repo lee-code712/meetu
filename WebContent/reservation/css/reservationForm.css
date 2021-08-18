@@ -338,8 +338,11 @@
             color: white;
         }
 
+		.updateBtn,
+		.backBtn,
         .reservationBtn {
             margin-top: 20px;
+            margin-left: 20px;
             float: right;
             display: block;
             padding: 10px 20px;
@@ -357,6 +360,8 @@
             background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
         }
 
+		.updateBtn:hover,
+		.backBtn:hover,
         .reservationBtn:hover {
             cursor: pointer;
         }

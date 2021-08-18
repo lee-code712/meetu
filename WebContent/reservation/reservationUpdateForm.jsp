@@ -9,10 +9,16 @@ pageEncoding="UTF-8"%>
     <title>예약</title>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/reservation/js/reservationForm.js"></script>
+    <script src="/reservation/js/reservationUpdateForm.js"></script>
     <link rel="stylesheet" href="../reservation/css/reservationForm.css"/>
 
     <script>
+	    var consult_day = "${reservation.get(1)}";
+		var start = "${reservation.get(2)}";
+		var end = "${reservation.get(3)}";
+		var reason = "${reservation.get(4)}";
+		var type = "${reservation.get(5)}";
+		
         $(function () {
             var btn1 = $(".startTimeBox")
             btn1.find("a").click(function () {
@@ -39,6 +45,17 @@ pageEncoding="UTF-8"%>
     </script>
 </head>
 <body>
+<%
+	String update_ck = request.getParameter("update_ck");
+	if(update_ck != null) {
+		if(update_ck.equals("1")) {
+			out.println("<script>alert('예약이 정상적으로 수정되었습니다.')</script>");
+		}
+		else {
+			out.println("<script>alert('예약 수정에 실패했습니다.')</script>");
+		}
+	}
+%>
 <div id="header">
     <div id="headerInner">
         <div id="headerInnerL">
@@ -68,7 +85,7 @@ pageEncoding="UTF-8"%>
     </div>
 </div>
 
-    <form method="post" name="reservation_form" action="makeReservation.do" onsubmit="return ck_reservation_form()">
+    <form method="post" name="reservation_form" action="updateReservation.do?res_id=${reservation.get(0)}" onsubmit="return ck_reservation_form()">
     <div id="navWrap">
         <div id="navL">
             <div id="navLTit">상담예약</div>
@@ -171,7 +188,8 @@ pageEncoding="UTF-8"%>
             </div>
 
             <div>
-                <input class="reservationBtn" type="submit" value="예약하기" />
+                <input class="backBtn" type="button" onclick="location.href='myPage.do'" value="닫기" />
+                <input class="updateBtn" type="submit" value="수정" />
             </div>
         </div>
     </div>

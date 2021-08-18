@@ -262,6 +262,41 @@ public class ReservationDAO {
 		return is_added;
 	}
 	
+	// 예약 레코드 수정
+	public boolean updateReservation(ReservationDTO reservation_dto, String univ) throws NamingException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_changed = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "update reservation set start_time=TO_DATE(?,'YY/MM/DD HH24:MI:SS'), end_time=TO_DATE(?,'YY/MM/DD HH24:MI:SS'), reason=?, type=? where res_id=?";
+				
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, reservation_dto.getStartTime());
+			pstmt.setString(2, reservation_dto.getEndTime());
+			pstmt.setString(3, reservation_dto.getReason());
+			pstmt.setInt(4, reservation_dto.getType());
+			pstmt.setString(5, reservation_dto.getResId());
+
+			rs = pstmt.executeQuery();
+									
+			is_changed = true;
+									
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_changed;
+	}
+		
 	// 교수 상담 가능 시간 반환
 	public ArrayList<ConsultableTimeDTO> getConsultableTimes(String univ, String p_user_id) throws NamingException {
 		ArrayList<ConsultableTimeDTO> consultableTimes = new ArrayList<ConsultableTimeDTO>();

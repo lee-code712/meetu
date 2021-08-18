@@ -108,10 +108,10 @@ public class MakeReservationAction implements CommandAction {
 		if(!is_added) {
 			res.setStatus(400); // bad request
 			res.addHeader("Status", "add reservation failed");
+			return "reservation.do?add_ck=0";
 		}
-		req.setAttribute("add_ck", "성공");
 		
-		return "reservation.do";
+		return "reservation.do?add_ck=1";
 	}
 
 }

@@ -57,6 +57,7 @@
 					mem_list.add(reservation_dto.getResId());
 					mem_list.add(Integer.toString(reservation_dto.getState()));
 					mem_list.add(reservation_dto.getStartTime());
+					mem_list.add(reservation_dto.getEndTime());
 					if(reservation_dto.getType() == 0) {
 						mem_list.add("오프라인");
 					}
@@ -75,6 +76,7 @@
 					mem_list.add(reservation_dto.getResId());
 					mem_list.add(Integer.toString(reservation_dto.getState()));
 					mem_list.add(reservation_dto.getStartTime());
+					mem_list.add(reservation_dto.getEndTime());
 					if(reservation_dto.getType() == 0) {
 						mem_list.add("오프라인");
 					}

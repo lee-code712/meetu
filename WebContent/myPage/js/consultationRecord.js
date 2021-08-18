@@ -6,7 +6,7 @@ function updateContent() {
 	var data = {"res_id":res_id, "content":content};
 	$.ajax({
 		 type: "POST",
-		url: "UpdateConsultationRecord.do",
+		url: "updateConsultationRecord.do",
 		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 		data: data,
 		dataType: "text",

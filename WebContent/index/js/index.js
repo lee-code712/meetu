@@ -1,5 +1,252 @@
-$(document).ready(function(){ // html이 로드되면 실행됨  
-	getSchedule(); // 사이드바 학과들 출력
+var week = new Array('일', '월', '화', '수', '목', '금', '토');
+var today = null;
+var year = null;
+var month = null;
+var dayName = null;
+var firstDay = null;
+var lastDay = null;
+var $tdDay = null;
+var $tdSche = null;
+var jsonData = new Object();
+var reservations = null;
+
+$(document).ready(function () {
+	getSchedule(); // 사이드바 일정 출력
+	
+    drawCalendar();
+    initDate();
+    drawDays();
+    // drawSche();
+    $("#movePrevMonth").on("click", function () {
+        movePrevMonth();
+    });
+    $("#moveNextMonth").on("click", function () {
+        moveNextMonth();
+    });
+
+	var slider_01 = $('.banner_slide').bxSlider({
+        auto: true, autoControls: true, mode: 'horizontal',
+    });
+    // 클릭시 멈춤 현상 해결 //
+    $(document).on('click', '.bx-next, .bx-prev', function () {
+        slider.stopAuto();
+        slider.startAuto();
+        slider_01.stopAuto();
+        slider_01.startAuto();
+    });
+    $(document).on('mouseover', '.bx-pager, #bx-pager1', function () {
+        slider.stopAuto();
+        slider.startAuto();
+        slider_01.stopAuto();
+        slider_01.startAuto();
+        slider_02.stopAuto();
+        slider_02.startAuto();
+    });
+});
+
+//Calendar 그리기
+function drawCalendar() {
+    var setTableHTML = "";
+    setTableHTML += '<table class="calendar">';
+    setTableHTML += '<tr><th style="color: #FB7E7E; padding-left: 6px;">일</th><th style="padding-left: 6px;">월</th><th style="padding-left: 6px;">화</th><th style="padding-left: 6px;">수</th><th style="padding-left: 6px;">목</th><th style="padding-left: 6px;">금</th><th style="color: #7E99FB; padding-left: 6px;">토</th></tr>';
+    for (var i = 0; i < 6; i++) {
+        setTableHTML += '<tr height="80px" >';
+        for (var j = 0; j < 7; j++) {
+            setTableHTML += '<td style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap">';
+            setTableHTML += '    <div style="padding: 0 0 0 10px; background: white" class="cal-day"></div>';
+            setTableHTML += '    <div class="cal-schedule"></div>';
+            setTableHTML += '</td>';
+        }
+        setTableHTML += '</tr>';
+    }
+    setTableHTML += '</table>';
+    $("#cal_tab").html(setTableHTML);
+}
+
+//날짜 초기화
+function initDate() {
+    week = new Array('일', '월', '화', '수', '목', '금', '토');
+    $tdDay = $("td div.cal-day")
+    $tdSche = $("td div.cal-schedule")
+    dayCount = 0;
+    today = new Date();
+    year = today.getFullYear();
+    month = today.getMonth() + 1;
+    date = today.getDate();
+    dayName = week[today.getDay()];
+    if (month < 10) {
+        month = "0" + month;
+    }
+    firstDay = new Date(year, month - 1, 1);
+    lastDay = new Date(year, month, 0);
+}
+
+//calendar 날짜표시
+function drawDays() {
+    $("#cal_top_year").text(year);
+    $("#cal_top_month").text(month);
+    $("#cal_top_date").text(date);
+    $("#cal_top_dayName").text(dayName);
+    for (var i = firstDay.getDay(); i < firstDay.getDay() + lastDay.getDate(); i++) {
+        $tdDay.eq(i).text(++dayCount);
+    }
+    for (var i = 0; i < 42; i += 7) {
+        $tdDay.eq(i).css("color", "#FB7E7E");
+    }
+
+
+    for (var i = 6; i < 42; i += 7) {
+        $tdDay.eq(i).css("color", "#7E99FB");
+    }
+
+}
+
+//calendar 월 이동
+function movePrevMonth() {
+    month--;
+    if (month <= 0) {
+        month = 12;
+        year--;
+    }
+    if (month < 10) {
+        month = String("0" + month);
+    }
+    getNewInfo();
+}
+
+function moveNextMonth() {
+    month++;
+    if (month > 12) {
+        month = 1;
+        year++;
+    }
+    if (month < 10) {
+        month = String("0" + month);
+    }
+    getNewInfo();
+}
+
+//정보갱신
+function getNewInfo() {
+    for (var i = 0; i < 42; i++) {
+        $tdDay.eq(i).text("");
+        $tdSche.eq(i).text("");
+    }
+    dayCount = 0;
+    firstDay = new Date(year, month - 1, 1);
+    lastDay = new Date(year, month, 0);
+    drawDays();
+    // drawSche();
+	setData(reservations);
+}
+
+//데이터 등록
+function setData(reservations) {
+	var today = new Date();
+    year = today.getFullYear();
+
+	var yearList = new Array();
+	var monthList = new Array();
+	
+	Array.from(reservations).forEach(function(reservation, idx) {
+		var start_time = reservation.start_time;
+		var name = reservation.name;
+		var s_name = reservation.s_name;
+		var approval = reservation.approval;
+		var reason = reservation.reason;
+		
+		if (approval == 1) {
+			var res_month = start_time.substring(5, 7);
+			var res_date = start_time.substring(8, 10);
+			var res_time = start_time.substring(11, 16);
+			
+			var res_info = new Object();
+			res_info[res_date] = name + "님과 상담"; // "7":"000 교수님 09:00"
+			
+			if (!yearList.res_month) { // 처음 등장한 달인 경우
+				var monthData = new Object();
+				var monthList = new Array();
+				var dateList = new Array();
+				dateList.push(res_info);
+				monthData[res_month] = dateList; // "08":{"7":"000 교수님 09:00"}
+				monthList.push(monthData);
+				yearList.push(monthList);
+			}
+			else {
+				yearList[res_month].push(res_info); // "08":{"7":"000 교수님 09:00", "15":"000 교수님 10:00"}
+			}
+		}
+	});
+	
+	jsonData[year] = yearList;
+	// alert(JSON.stringify(jsonData)); // {"2021":[[{"08":[{"20":"박창섭 교수님 10:00"}]}],[{"08":[{"19":"이은영 교수님 13:00"}]}]]}
+	
+   	/* jsonData =
+        {
+            "2021": {
+                "08": {
+                    "7": "000 교수님 9:00"
+                    , "15": "000 교수님 10:00"
+                    , "23": "000 교수님 12:00"
+                }
+                , "09": {
+                    "4": "000 교수님 13:00"
+                    , "23": "000 교수님 14:00"
+                }
+            }
+        } // "2021":{"08":{"7":"000 교수님 09:00", "15":"000 교수님 10:00"}, "09":{"4": "000 교수님 13:00"}} */
+
+	drawSche(jsonData);
+}
+
+//스케줄 그리기
+function drawSche(jsonData) {
+    var dateMatch = null;
+    for (var i = firstDay.getDay(); i < firstDay.getDay() + lastDay.getDate(); i++) {
+        var txt = "";
+        // txt = jsonData[year]; // {"08":{"7":"000 교수님 9:00","15":"000 교수님 10:00","23":"000 교수님 12:00"},"09":{"4":"000 교수님 13:00","23":"000 교수님 14:00"}}
+        txt = jsonData[year]; // [[{"08":[{"20":"박창섭 교수님 10:00"}]}],[{"08":[{"19":"이은영 교수님 13:00"}]}]]
+		if (txt) {
+            // txt = jsonData[year][month]; // {"7":"000 교수님 9:00","15":"000 교수님 10:00","23":"000 교수님 12:00"}
+			Array.from(txt).forEach(function(monthData, j) {
+				t = monthData[0][month]; // [{"20":"박창섭 교수님 10:00"}] || [{"19":"이은영 교수님 13:00"}]
+				if (t) {
+					Array.from(t).forEach(function(dateData, k){
+						// txt = jsonData[year][month][i]; // undefined || 000 교수님 9:00
+						// var first_key = Object.keys(obj)[0];
+						content = dateData[i]; // {"20":"박창섭 교수님 10:00"}
+						// alert(JSON.stringify(content));
+		                dateMatch = firstDay.getDay() + i - 1;
+		                $tdSche.eq(dateMatch).text(content);
+		                $tdSche.eq(dateMatch).css("background", "#1abc9c");
+		                $tdSche.eq(dateMatch).css("color", "white");
+		                $tdSche.eq(dateMatch).css("padding-left", "10px");
+		                $tdSche.eq(dateMatch).css("border-radius", "3px");
+		                $tdSche.eq(dateMatch).css("width", "100px");
+		                $tdSche.eq(dateMatch).css("font-size", "14px");
+					});
+            	}
+			});
+        }
+    }
+}
+
+$(function () {
+    var lastScrollTop = 0, delta = 15;
+    $(window).scroll(function (event) {
+        var st = $(this).scrollTop();
+        if (Math.abs(lastScrollTop - st) <= delta) return; // 스크롤값을 받아서 리턴한다.
+        if ((st > lastScrollTop) && (lastScrollTop > 0)) {
+            $("header").css("top", "0px"); // 스크롤을 내렸을때 #header의 CSS 속성중 top 값을 -50px로 변경한다.
+            $("header").css("background", "rgba(0, 0, 0, .800)");
+            $("header").css("color", "black");
+        } else {
+            $("header").css("top", "0px"); // 스크롤을 올렸을때 #header의 CSS 속성중 top 값을 0px로 변경한다.
+            $("header").css("background", "none");
+            $("header").css("color", "white");
+        }
+        lastScrollTop = st;
+    });
 });
 
 function getSchedule() {
@@ -21,26 +268,29 @@ function getSchedule() {
 
 function updatePage (responseText) {
 	// alert("schedules: " + responseText);
-	var reservations = JSON.parse(responseText);
+	reservations = JSON.parse(responseText);
 	
 	if (reservations != null) {
 		$("#cal_msg").remove();
 	}
 	
+	setData(reservations); // 달력에 일정 그리기
+	
 	count = 0;
 	Array.from(reservations).forEach(function(reservation, idx) {
 		var start_time = reservation.start_time;
-		var p_name = reservation.p_name;
+		var name = reservation.name;
+		var s_name = reservation.s_name;
 		var approval = reservation.approval;
 		var reason = reservation.reason;
 		
 		if(approval == 1 && count < 5) {
 			count++;
-			var res_time = start_time.substring(5,16);
+			var res_time = start_time.substring(5, 16);
 			
 			var newDivElement = document.createElement("div");
 			$(newDivElement).attr("id", "cal_msg");
-			var content = res_time + ", " + p_name + " 교수님과 " + reason;
+			var content = res_time + ", " + name + " 님과 " + reason;
 			newDivElement.innerHTML = content;
 			
 			$("#calendar_wrap").prepend(newDivElement);

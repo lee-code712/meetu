@@ -3,7 +3,7 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 	$(".timeBox").click(timeBoxClick);
 	$("#typeBtnOff").click(typeBtnOffClick);
 	$("#typeBtnOn").click(typeBtnOnClick);
-	$(".reservationBtn").click(reservationBtnClick);
+	$(".updateBtn").click(updateBtnClick);
 	
 	// 교수 이메일을 파라미터로 보내기 위해 이메일 정보 hidden으로 저장
 	var email = document.getElementById("email");
@@ -317,6 +317,28 @@ function buildCalendar(responseText) {
 
         dom++;
     }
+    
+    // 불러온 예약정보에 맞춰 버튼 자동 클릭
+    $("td:contains("+ consult_day + ")").trigger("click");
+    $("div.startTimeBox:contains(" + start + ")").trigger("click");
+    var time = end.substring(0,2) - start.substring(0,2);
+    $("div.timeBox:contains(" + time + ")").trigger("click");
+    var radio_ck = $("label:contains(" + reason + ")").prop('tagName');
+    if(radio_ck == null) {
+    	 $("label[for='radio5']").trigger("click");
+    	 $("#anotherReason").val(reason);
+    }
+    else {
+    	$("label:contains(" + reason + ")").trigger("click");
+    }
+    
+    if(type == 0) {
+    	$("div#typeBtnOff > a").trigger("click");
+    }
+    else {
+    	$("div#typeBtnOn > a").trigger("click");
+    }
+    console.log(consult_day, start, end, time, reason, type);
 }
 
 /**
@@ -384,7 +406,7 @@ function calendarChoiceDay(column, schedules) {
 		
 		var dateObj = new Date(doMonth.getFullYear(), doMonth.getMonth(), Number(contentDay));
 		// alert("getDay(): " + (dateObj.getDay()) + ", disable_date: " + disable_date + ", disable_time: " + disable_time);
-		if (disable_time != "09:00~19:00") { // 전체 불가능 일이 아니고
+		if (disable_time != "09:00~19:00" && start != disable_time.substring(0, 5)) { // 전체 불가능 일이 아니거나 내가 선택한 일이 아니고
 			if (dateObj.getDay() == disable_date) { // 선택 요일이 disable_date인 경우
 				all_able_day = false;
 				
@@ -578,7 +600,7 @@ function typeBtnOnClick() {
 	$(".typeBtnWrap").append(newInputElement);
 }
 
-function reservationBtnClick() {
+function updateBtnClick() {
 	if($("input:radio[id='radio5']").is(":checked") && $("#anotherReason").val()) {
 		$("#radio5").attr("value", $("#anotherReason").val());
 	}
