@@ -368,7 +368,15 @@ pageEncoding="UTF-8"%>
         #approvedList,
         #completedList {
             border: none;
+            background: #FAFAFA;
+        }
+        #bookedList:focus,
+        #canceledList:focus,
+        #approvedList:focus,
+        #completedList:focus {
             border-radius: 50px;
+            background: #1abc9c;
+            color: white;
         }
        
         #logoutBtn {
