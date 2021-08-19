@@ -161,30 +161,27 @@ pageEncoding="UTF-8"%>
 		}
 		
 		#deptWrap {
-		    margin-top: 80px;
+		    margin-top: 40px;
 		    width: 348px;
 		}
 		
 		#selectDept {
 		    display: flex;
-		    justify-content: center;
-		    align-items: center;
 		    width: 318px;
 		    height: 40px;
-		    font-size: 18px;
-		    border: 1px solid #EAEAEA;
-		    border-radius: 5px 5px 0px 0px;
-		    background: white;
+		    margin-top: 80px;
+		    font-size: 24px;
 		}
 		
 		.college {
 		    line-height: 40px;
 		    font-size: 14px;
-		    width: 318px;
+		    width: 308px;
 		    cursor: pointer;
 		    border-left: 1px solid #EAEAEA;
 		    border-right: 1px solid #EAEAEA;
-		    background: white;
+		 	padding-left: 10px;
+		 	background: white;
 		}
 		
 		.college:hover {
@@ -192,12 +189,23 @@ pageEncoding="UTF-8"%>
 		    color: white;
 		}
 		
+		.college:first-child {
+		    border-top: 1px solid #EAEAEA;
+		    border-radius: 5px 5px 0px 0px;
+		}
+		
+		.college:last-child {
+		    border-bottom: 1px solid #EAEAEA;
+		    border-radius: 0px 0px 5px 5px;
+		}
+		
 		.deptList {
 		    display: none;
-		    width: 298px;
+		    width: 294px;
 		    background: #F5F5F5;
 		    padding-left: 20px;
-		
+		    margin-left: -10px;
+			border-left: 4px solid #F5F5F5;
 		}
 		
 		.dept {
@@ -211,7 +219,8 @@ pageEncoding="UTF-8"%>
 		.profList {
 		    width: 816px;
 		    margin: 0 auto;
-		    border-top: 3px solid #1abc9c;
+		    border: 1px solid #EAEAEA;
+		    border-radius: 5px;
 		}
 		
 		.profList th,
@@ -261,7 +270,6 @@ pageEncoding="UTF-8"%>
 		    width: 816px;
 		    height: 700px;
 		    font-size: 18px;
-		    font-weight: bold;
 		    color: #3E454D;
 		}
 		
@@ -305,7 +313,6 @@ pageEncoding="UTF-8"%>
 		
 		.profList th {
 		    font-size: 14px;
-		    border-bottom: 1px solid #C4C4C4;
 		    text-align: center;
 		    background: white;
 		}
@@ -458,8 +465,9 @@ pageEncoding="UTF-8"%>
 
 <div id="reservationWrap">
     <div>
+    	<div id="selectDept">상담예약</div>
         <ul id="deptWrap">
-            <li id="selectDept">상담예약</li>
+           
 
         </ul>
     </div>
