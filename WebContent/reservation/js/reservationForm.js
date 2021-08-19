@@ -446,6 +446,9 @@ function autoLeftPad(num, digit) {
 }
 
 function startTimeBoxClick() {
+	$(".timeBox").css("backgroundColor", "#FFFFFF"); // timeBox 초기화
+	$(".timeBox").attr("isDisabled", "false"); // timeBox 초기화
+		
 	var startTimeClasses = document.getElementsByClassName("startTimeBox");
 	
 	Array.from(startTimeClasses).forEach(function(c, i) {
@@ -496,11 +499,9 @@ function startTimeBoxClick() {
 	
 	if ($(timeBox).next().attr("isDisabled") == "true") { // 다음 startTime이 isDisabled == true면
 		$(timeClasses[1]).attr("isDisabled", "true"); // 2시간 block (1시간만 상담 가능)
-		timeClasses[1].style.backgroundColor = "#E5E5E5";
-		
-		$(timeClasses[0]).click(timeBoxClick);
 	}
-	else if (schedules != null && ($(timeBox).attr("id") == "16:00" || $(timeBox).attr("id") == "17:00")) { // 17시 이후 교수 불가능한 시간대 계산
+	
+	if (schedules != null && ($(timeBox).attr("id") == "16:00" || $(timeBox).attr("id") == "17:00")) { // 17시 이후 교수 불가능한 시간대 계산
 		for (var key in schedules) {
 			var disable_date = schedules[key].disable_date;
 			var disable_time = schedules[key].disable_time;
@@ -517,27 +518,22 @@ function startTimeBoxClick() {
 			// 교수 상담 가능 시간이 17시까지인데 16시부터 상담 시작을 원하는 경우
 			if (dateObj.getDay() == disable_date && disable_timeArr[1] == "17:00" && $(timeBox).attr("id") == "16:00") {
 				$(timeClasses[1]).attr("isDisabled", "true"); // 2시간 block (1시간만 상담 가능)
-				timeClasses[1].style.backgroundColor = "#E5E5E5";
-			
-				$(timeClasses[0]).click(timeBoxClick);
 			}
 			// 교수 상담 가능 시간이 18시까지인데 17시부터 상담 시작을 원하는 경우
 			else if (dateObj.getDay() == disable_date && disable_timeArr[0] == "18:00" && $(timeBox).attr("id") == "17:00") {
-				alert("18 err");
 				$(timeClasses[1]).attr("isDisabled", "true"); // 2시간 block (1시간만 상담 가능)
-				timeClasses[1].style.backgroundColor = "#E5E5E5";
-			
-				$(timeClasses[0]).click(timeBoxClick);
 			}
 		}
 	}
-	else {
-		$(timeClasses[1]).attr("isDisabled", "false"); // 아닌 경우 false로
-		$(timeClasses[1]).css("backgroundColor", "#FFFFFF");
-		
-		$(timeClasses[0]).click(timeBoxClick);
-		$(timeClasses[1]).click(timeBoxClick);
-	}
+	
+	Array.from(timeClasses).forEach(function(time, i) {
+		if($(time).attr("isDisabled") != "true") {
+			$(time).click(timeBoxClick);
+		}
+		else {
+			$(time).css("backgroundColor", "#E5E5E5");
+		}
+	});
 }
 
 function timeBoxClick() {
