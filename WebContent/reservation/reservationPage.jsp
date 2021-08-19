@@ -276,35 +276,36 @@ pageEncoding="UTF-8"%>
 		#messageInnerWrap {
 		    height: 648px;
 		}
-		
+	
 		#search {
-		    float: right;
-		    width: 330px;
-		    height: 34px;
-		    border: none;
-		    border-radius: 30px;
-		    background: #ffffff;
-		    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 2px;
+		    display: flex;
+            justify-content: space-between;
+            align-items: center;
+            float: right;
+            padding: 0px 8px;
+            width: 260px;
+            height: 34px;
+            border-bottom: 1px solid #EAEAEA;
+            border-radius: 50px;
+            background: #ffffff;
 		}
 		
 		#searchText {
-		    font-size: 14px;
-		    width: 200px;
-		    margin: 8px 0 4px 12px;
-		    padding-left: 4px;
-		    border: 0px;
-		    outline: none;
-		    float: left;
-		    border-radius: 30px;
+		    font-size: 12px;
+            width: 120px;
+            padding-left: 4px;
+            border: 0px;
+            outline: none;
+            float: left;
+            border-radius: 30px;
 		}
 		
 		#searchBtn {
-		    width: 54px;
-		    height: 28px;
-		    margin: 4px 0;
-		    border: none;
-		    outline: none;
-		    float: right;
+		   	width: 20px;
+            height: 20px;
+            border: none;
+            outline: none;
+            float: right;
 		}
 		
 		#searchBtn:hover {
