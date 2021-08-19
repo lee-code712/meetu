@@ -362,22 +362,7 @@ pageEncoding="UTF-8"%>
         }
         #noticeImg:hover {
             cursor: pointer;
-        }
-        #bookedList,
-        #canceledList,
-        #approvedList,
-        #completedList {
-            border: none;
-            background: #FAFAFA;
-        }
-        #bookedList:focus,
-        #canceledList:focus,
-        #approvedList:focus,
-        #completedList:focus {
-            border-radius: 50px;
-            background: #1abc9c;
-            color: white;
-        }
+        }     
        
         #logoutBtn {
             display: block;
@@ -484,7 +469,7 @@ pageEncoding="UTF-8"%>
                     </c:choose>
                     <img src="/myPage/images/search.svg" id="searchBtn" onclick="search()"/>
                 </div>
-                <ul class="nav nav-tabs" id="navBox">
+                <ul class="nav nav-pills" id="navBox">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#qwe" id="bookedList">예약현황</a>
                     </li>
