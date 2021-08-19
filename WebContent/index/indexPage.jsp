@@ -570,7 +570,7 @@ pageEncoding="UTF-8"%>
             <li class="banner_01">
                 <div id="banner1Title">간편한 상담 예약 시스템 &nbsp; <span id="logo">MEETU</span></div>
                 <div id="banner1Text">교수님과 상담을 하고 싶다면 간편한 상담 예약 시스템 MEETU를 사용하여 상담을 예약해보세요!</div>
-                <button id="reservationBtn">예약하러 가기</button>
+                <button id="reservationBtn" onclick="location.href='reservation.do'">예약하러 가기</button>
             </li>
             <li class="banner_02">
                 <div id="banner02Wrap">
@@ -582,8 +582,8 @@ pageEncoding="UTF-8"%>
             <li class="banner_03">
             	<div id="banner03Wrap">
             		<div id="banner03Title">간편한 상담 예약 시스템 &nbsp; <span id="logo">MEETU</span></div>
-            		<div id="banner03Text">교수님과 소통을 하고 싶다면 쪽지 기능을 통해 대화를 주고받아보세요!</div>
-            		<button id="banner03Btn">쪽지함 가기</button>
+            		<div id="banner03Text">교수님과 소통을 하고 싶다면 상담 승인 후 쪽지 기능을 통해 대화를 주고받아보세요!</div>
+            		<button id="banner03Btn" onclick="location.href='message.do'">쪽지함 가기</button>
             	</div>
             </li>
         </ul>
