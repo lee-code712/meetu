@@ -144,7 +144,7 @@ pageEncoding="UTF-8"%>
             border: none;
             cursor: pointer;
         }
-
+  
         #thBorder th {
             text-align: center;
         }
@@ -212,7 +212,7 @@ pageEncoding="UTF-8"%>
             height: 180px;
             font-size: 14px;
         }
-
+        
         #navListSub {
             display: flex;
             justify-content: center;
@@ -223,7 +223,7 @@ pageEncoding="UTF-8"%>
             border-top: 1px solid #EAEAEA;
             border-radius: 5px 5px 0px 0px;
         }
-
+        
         #navListName {
         	display: flex;
             justify-content: center;
@@ -232,7 +232,7 @@ pageEncoding="UTF-8"%>
             height: 40px;
             font-size: 14px;
         }
-
+        
         #navList {
             display: flex;
             justify-content: center;
@@ -367,10 +367,10 @@ pageEncoding="UTF-8"%>
         #canceledList,
         #approvedList,
         #completedList {
-            border-radius: 30px;
             border: none;
+            border-radius: 50px;
         }
-
+       
         #logoutBtn {
             display: block;
             margin: 0 auto;
@@ -395,28 +395,16 @@ pageEncoding="UTF-8"%>
             color: #C4C4C4;
             border: 1px solid #EAEAEA;
         }
-
+        
         #profInfoBtn:hover {
             cursor: pointer;
         }
-
+        
         #moreImg {
             width: 20px;
             height: 20px;
         }
-
     </style>
-    <script>
-        $(function () { // actvie 활성화
-            $(".nav-item > .active").css("color", "#1abc9c");
-            $('.nav-link').click(function () {
-                $(".nav-item > .active").css("color", "black");
-                $('.nav-link').removeClass('active');
-                $(this).addClass('active');
-                $(".nav-item > .active").css("color", "#1abc9c");
-            });
-        });
-    </script>
 </head>
 
 <body id="myPageBodyBg">
@@ -430,7 +418,7 @@ pageEncoding="UTF-8"%>
                     <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
                     <div><a id="messageIcon" href="message.do">쪽지함</a></div>
                 </c:if>
-               	<c:if test="${mem_dto.getRole()=='1'}">
+               	<c:if test="${mem_dto.getRole()=='1'}">             
                 	<div><a id="messageIcon" href="message.do">쪽지함</a></div>
                 	<div><a id="reserveIcon" href="#"/></div>
                 </c:if>
