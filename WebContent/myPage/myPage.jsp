@@ -379,7 +379,7 @@ pageEncoding="UTF-8"%>
             cursor: pointer;
         }
 
-        #profInfoEditBtn {
+        #profInfoBtn {
             padding: 4px 10px;
             border-radius: 50px;
             background: #f1f1f1;
@@ -387,7 +387,7 @@ pageEncoding="UTF-8"%>
             border: 1px solid #EAEAEA;
         }
         
-        #profInfoEditBtn:hover {
+        #profInfoBtn:hover {
             cursor: pointer;
         }
         
@@ -442,7 +442,7 @@ pageEncoding="UTF-8"%>
                         <div id="navListOn">${mem_dto.getName()}</div>
                         <div id="navList">${univ_dto.getUnivName()}</div>
                         <c:if test="${mem_dto.getRole()=='1'}">
-                        <div id="navList"><button id="profInfoEditBtn">내 정보</button></div>
+                        <div id="navList"><button id="profInfoBtn" onclick="location.href='profInfoPage.do'">내 정보</button></div>
                             </c:if>
                         <div id="logoutBtnWrap">
                             <button id="logoutBtn" onclick="location.href='logout.do'">로그아웃</button>
