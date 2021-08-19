@@ -68,6 +68,8 @@ pageEncoding="UTF-8"%>
         .boardListWrap {
             width: 816px;
             margin: 0 auto;
+            border: 1px solid #EAEAEA;
+            border-radius: 5px;
         }
         .boardListWrap th,
         .boardListWrap td {
@@ -142,10 +144,7 @@ pageEncoding="UTF-8"%>
             border: none;
             cursor: pointer;
         }
-        #thBorder {
-            border-top: 3px solid #1abc9c;
-            border-bottom: 1px solid #EAEAEA;
-        }
+  
         #thBorder th {
             text-align: center;
         }
@@ -190,12 +189,12 @@ pageEncoding="UTF-8"%>
             border: none;
         }
         #navListWrap {
-            width: 100%;
+            width: 317px;
             border-bottom: 1px solid #EAEAEA;
             border-left: 1px solid #EAEAEA;
             border-right: 1px solid #EAEAEA;
             background: white;
-            border-radius: 0px 0px 5px 5px;
+            border-radius: 5px;
         }
         #logoutBtnWrap {
             display: flex;
@@ -213,10 +212,31 @@ pageEncoding="UTF-8"%>
             height: 180px;
             font-size: 14px;
         }
-        #navList {
+        
+        #navListSub {
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 316px;
+            height: 40px;
+            font-size: 14px;
+            border-top: 1px solid #EAEAEA;
+            border-radius: 5px 5px 0px 0px;
+        }
+        
+        #navListName {
+        	display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 316px;
+            height: 40px;
+            font-size: 14px;
+        }
+        
+        #navList {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
             width: 316px;
             height: 40px;
             font-size: 14px;
@@ -233,14 +253,10 @@ pageEncoding="UTF-8"%>
         }
         #navLTit {
             display: flex;
-            justify-content: center;
-            align-items: center;
             width: 100%;
             height: 40px;
-            border: 1px solid #EAEAEA;
-            font-size: 18px;
-            background: white;
-            border-radius: 5px 5px 0px 0px;
+            font-size: 24px;
+            margin-bottom: 40px;
         }
         #noticeIcon:hover,
         #reserveIcon:hover,
@@ -438,8 +454,9 @@ pageEncoding="UTF-8"%>
                         마이페이지
                     </div>
                     <div id="navListWrap">
+                    	<div id="navListSub"></div>
                         <div id="userImgWrap"><img src="../images/user.svg" id="userImg"/></div>
-                        <div id="navListOn">${mem_dto.getName()}</div>
+                        <div id="navListName">${mem_dto.getName()}</div>
                         <div id="navList">${univ_dto.getUnivName()}</div>
                         <c:if test="${mem_dto.getRole()=='1'}">
                         <div id="navList"><button id="profInfoBtn" onclick="location.href='profInfoPage.do'">내 정보</button></div>
