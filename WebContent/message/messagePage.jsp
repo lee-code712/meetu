@@ -190,16 +190,22 @@ pageEncoding="UTF-8" %>
 
         #selectProf {
             display: flex;
-            justify-content: center;
-            align-items: center;
             width: 100%;
             height: 40px;
-            font-size: 18px;
-            border: 1px solid #EAEAEA;
-            background: white;
-            border-radius: 5px 5px 0px 0px;
+            font-size: 24px;
+            margin-bottom: 40px;
         }
 
+		.list:first-child {
+			border-top: 1px solid #EAEAEA;
+			border-radius: 0px 0px 5px 5px;
+		}
+		
+		.list:last-child {
+			border-bottom: 1px solid #EAEAEA;
+			border-radius: 0px 0px 5px 5px;
+		}
+		
         .list {
             display: flex;
             align-items: center;
@@ -211,6 +217,7 @@ pageEncoding="UTF-8" %>
             border-left: 1px solid #EAEAEA;
             border-right: 1px solid #EAEAEA;
             background: white;
+        
         }
 
         .list:hover {
@@ -261,7 +268,6 @@ pageEncoding="UTF-8" %>
             padding-left: 20px;
             width: 776px;
             font-size: 16px;
-            font-weight: bold;
             color: #3E454D;
             background: white;
             border-radius: 10px 10px 0 0;
@@ -428,8 +434,9 @@ pageEncoding="UTF-8" %>
 </div>
 
 <div id="reservationWrap">
+	<div>
+	<div id="selectProf">쪽지함</div>
     <ul id="mylist">
-        <li id="selectProf">쪽지함</li>
         <c:choose>
             <c:when test="${mem_dto.getRole() =='0'}">
                 <c:forEach items="${requestScope.msg_mem}" var="member">
@@ -449,6 +456,7 @@ pageEncoding="UTF-8" %>
             </c:otherwise>
         </c:choose>
     </ul>
+    </div>
 
     <div id="messageInner">
         <div id="sender"></div>
