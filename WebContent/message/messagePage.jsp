@@ -183,9 +183,8 @@ pageEncoding="UTF-8" %>
 
         #mylist {
             width: 318px;
-            height: 840px;
-            border: none;
-            border-radius: 10px;
+            border: 1px solid #EAEAEA;
+            border-radius: 5px;
         }
 
         #selectProf {
@@ -195,16 +194,7 @@ pageEncoding="UTF-8" %>
             font-size: 24px;
             margin-bottom: 40px;
         }
-
-		.list:first-child {
-			border-top: 1px solid #EAEAEA;
-			border-radius: 0px 0px 5px 5px;
-		}
 		
-		.list:last-child {
-			border-bottom: 1px solid #EAEAEA;
-			border-radius: 0px 0px 5px 5px;
-		}
 		
         .list {
             display: flex;
@@ -214,10 +204,8 @@ pageEncoding="UTF-8" %>
             line-height: 40px;
             font-size: 14px;
             cursor: pointer;
-            border-left: 1px solid #EAEAEA;
-            border-right: 1px solid #EAEAEA;
             background: white;
-        
+        	border-radius: 5px;
         }
 
         .list:hover {
