@@ -1,6 +1,9 @@
+var schedules = null; // 교수 상담 불가능 일자 정보
+
 $(document).ready(function(){ // html이 로드되면 실행됨 
 	// 각 버튼에 click 이벤트 설정
-	$(".timeBox").click(timeBoxClick);
+	$(".startTimeBox").click(ck_startTimeBox);
+	$(".timeBox").click(ck_timeBox);
 	$("#typeBtnOff").click(typeBtnOffClick);
 	$("#typeBtnOn").click(typeBtnOnClick);
 	$(".reservationBtn").click(reservationBtnClick);
@@ -9,7 +12,7 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 	var email = document.getElementById("email");
 	
 	$("#prof_email").remove();
-	
+		
 	var newInputElement = document.createElement("input");
 	$(newInputElement).attr("type", "hidden");
 	$(newInputElement).attr("name", "prof_email");
@@ -127,7 +130,7 @@ function nextCalendar() {
  */
 function buildCalendar(responseText) {
 	// alert(responseText);
-	var schedules = JSON.parse(responseText);
+	schedules = JSON.parse(responseText);
 
     let doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
     let lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
@@ -304,7 +307,7 @@ function buildCalendar(responseText) {
             }
         }
 
-        // @details 선택한년도가 현재년도보다 큰경우 - 어떻게 년도를 찾아야 할지 모르겠음...
+        // @details 선택한년도가 현재년도보다 큰경우 - 어떻게 년도를 찾아야 할지 모르겠음... > 다음 년도는 캘린더에서 넘어가지 않도록
         else {
             if (Math.sign(day) == 1 && day <= lastDate.getDate()) {
                 column.style.backgroundColor = "#FFFFFF";
@@ -394,12 +397,16 @@ function calendarChoiceDay(column, schedules) {
 				
 				while ($(classes[j]).attr("id") != disable_timeArr[0]) {
 					j++;
+					// 버튼에 없는 시간이면 while문 종료
+					if(disable_timeArr[0] == "18:00" || disable_timeArr[1] == "18:00" || disable_timeArr[1] == "19:00") {
+						break;
+					}
 				}
 				
 				while ($(classes[j]).attr("id") != disable_timeArr[1]) {
 					// $(classes[j]).unbind("hover"); // 동작 X
 					// 버튼에 없는 시간이면 while문 종료
-					if(disable_timeArr[1] == "18:00" || disable_timeArr[1] == "19:00") {
+					if(disable_timeArr[0] == "18:00" || disable_timeArr[1] == "18:00" || disable_timeArr[1] == "19:00") {
 						break;
 					}
 					$(classes[j]).attr("isDisabled", "true");
@@ -438,15 +445,10 @@ function autoLeftPad(num, digit) {
     return num;
 }
 
-function startTimeBoxClick() { 
-	if(!$("#choiceDay").attr("value")) {
-		alert("상담 날짜를 먼저 선택해 주세요.");
-		return false;
-	}
-
-	var classes = document.getElementsByClassName("startTimeBox");
+function startTimeBoxClick() {
+	var startTimeClasses = document.getElementsByClassName("startTimeBox");
 	
-	Array.from(classes).forEach(function(c, i) {
+	Array.from(startTimeClasses).forEach(function(c, i) {
 		if($(c).attr("isDisabled") != "true") {
 			$(c).css("display", "flex");
 			$(c).css("align-items", "center");
@@ -488,19 +490,57 @@ function startTimeBoxClick() {
 	$(newInputElement).attr("value", content);
 	
 	$("#startTimeTitle").append(newInputElement);
+	
+	// 시작 시간이 선택되면 케이스에 따라 상담 시간대 (1시간 / 2시간) 블락
+	var timeClasses = document.getElementsByClassName("timeBox");
+	
+	if ($(timeBox).next().attr("isDisabled") == "true") { // 다음 startTime이 isDisabled == true면
+		$(timeClasses[1]).attr("isDisabled", "true"); // 2시간 block (1시간만 상담 가능)
+		timeClasses[1].style.backgroundColor = "#E5E5E5";
+		
+		$(timeClasses[0]).click(timeBoxClick);
+	}
+	else if (schedules != null && ($(timeBox).attr("id") == "16:00" || $(timeBox).attr("id") == "17:00")) { // 17시 이후 교수 불가능한 시간대 계산
+		for (var key in schedules) {
+			var disable_date = schedules[key].disable_date;
+			var disable_time = schedules[key].disable_time;
+			var p_user_id = schedules[key].p_user_id;
+			var size = Object.keys(schedules).length;
+			
+			let doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+			var day = $("#choiceDay").attr("value");
+			var dateObj = new Date(doMonth.getFullYear(), doMonth.getMonth(), Number(day));
+			
+			var disable_timeArr = disable_time.split("~");
+			
+			// 불가능 일자
+			// 교수 상담 가능 시간이 17시까지인데 16시부터 상담 시작을 원하는 경우
+			if (dateObj.getDay() == disable_date && disable_timeArr[1] == "17:00" && $(timeBox).attr("id") == "16:00") {
+				$(timeClasses[1]).attr("isDisabled", "true"); // 2시간 block (1시간만 상담 가능)
+				timeClasses[1].style.backgroundColor = "#E5E5E5";
+			
+				$(timeClasses[0]).click(timeBoxClick);
+			}
+			// 교수 상담 가능 시간이 18시까지인데 17시부터 상담 시작을 원하는 경우
+			else if (dateObj.getDay() == disable_date && disable_timeArr[0] == "18:00" && $(timeBox).attr("id") == "17:00") {
+				alert("18 err");
+				$(timeClasses[1]).attr("isDisabled", "true"); // 2시간 block (1시간만 상담 가능)
+				timeClasses[1].style.backgroundColor = "#E5E5E5";
+			
+				$(timeClasses[0]).click(timeBoxClick);
+			}
+		}
+	}
+	else {
+		$(timeClasses[1]).attr("isDisabled", "false"); // 아닌 경우 false로
+		$(timeClasses[1]).css("backgroundColor", "#FFFFFF");
+		
+		$(timeClasses[0]).click(timeBoxClick);
+		$(timeClasses[1]).click(timeBoxClick);
+	}
 }
 
 function timeBoxClick() {
-	if(!$("#choiceDay").attr("value")) {
-		alert("상담 날짜를 먼저 선택해 주세요.");
-		return false;
-	}
-
-	if(!$("#startTime").attr("value")) {
-		alert("상담 시작 시간을 먼저 선택해 주세요.");
-		return false;
-	}
-	
 	var classes = document.getElementsByClassName("timeBox");
 	
 	Array.from(classes).forEach(function(c, i) {
@@ -581,6 +621,25 @@ function typeBtnOnClick() {
 function reservationBtnClick() {
 	if($("input:radio[id='radio5']").is(":checked") && $("#anotherReason").val()) {
 		$("#radio5").attr("value", $("#anotherReason").val());
+	}
+}
+
+function ck_startTimeBox() {
+	if(!$("#choiceDay").attr("value")) {
+		alert("상담 날짜를 먼저 선택해 주세요.");
+		return false;
+	}
+}
+
+function ck_timeBox() {
+	if(!$("#choiceDay").attr("value")) {
+		alert("상담 날짜를 먼저 선택해 주세요.");
+		return false;
+	}
+
+	if(!$("#startTime").attr("value")) {
+		alert("상담 시작 시간을 먼저 선택해 주세요.");
+		return false;
 	}
 }
 
