@@ -29,9 +29,10 @@ public class ReservationUpdateFormAction implements CommandAction {
 		
 		ArrayList<String> reservation = new ArrayList<>();
 		reservation.add(reservation_dto.getResId());
-		reservation.add(reservation_dto.getStartTime().substring(8,10));
-		reservation.add(reservation_dto.getStartTime().substring(11,16));
-		reservation.add(reservation_dto.getEndTime().substring(11,16));
+		reservation.add(reservation_dto.getStartTime().substring(5,7)); // month
+		reservation.add(reservation_dto.getStartTime().substring(8,10)); // day
+		reservation.add(reservation_dto.getStartTime().substring(11,16)); // start_time
+		reservation.add(reservation_dto.getEndTime().substring(11,16)); // end_time
 		reservation.add(reservation_dto.getReason());
 		reservation.add(Integer.toString(reservation_dto.getType()));
 		reservation.add(reservation_dto.getPUserId());

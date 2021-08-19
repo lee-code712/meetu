@@ -13,11 +13,12 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="../reservation/css/reservationForm.css"/>
 
     <script>
-	    var consult_day = "${reservation.get(1)}";
-		var start = "${reservation.get(2)}";
-		var end = "${reservation.get(3)}";
-		var reason = "${reservation.get(4)}";
-		var type = "${reservation.get(5)}";
+	    var consult_month = "${reservation.get(1)}";
+	    var consult_day = "${reservation.get(2)}";
+		var start = "${reservation.get(3)}";
+		var end = "${reservation.get(4)}";
+		var reason = "${reservation.get(5)}";
+		var type = "${reservation.get(6)}";
 		
         $(function () {
             var btn1 = $(".startTimeBox")
@@ -109,7 +110,7 @@ pageEncoding="UTF-8"%>
                             <span id="calYear">YYYY</span>년
                             <span id="calMonth">MM</span>월
                         </td>
-                        <td onClick="nextCalendar();" style="cursor:pointer; color: #1abc9c;">▶</td>
+                        <td onClick="nextCalendar();" style="cursor:pointer; color: #1abc9c;" id="nextMonth">▶</td>
                     </tr>
                     <tr>
                         <td style="background: white;">일</td>

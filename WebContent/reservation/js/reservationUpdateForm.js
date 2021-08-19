@@ -319,26 +319,31 @@ function buildCalendar(responseText) {
     }
     
     // 불러온 예약정보에 맞춰 버튼 자동 클릭
-    $("td:contains("+ consult_day + ")").trigger("click");
-    $("div.startTimeBox:contains(" + start + ")").trigger("click");
-    var time = end.substring(0,2) - start.substring(0,2);
-    $("div.timeBox:contains(" + time + ")").trigger("click");
-    var radio_ck = $("label:contains(" + reason + ")").prop('tagName');
-    if(radio_ck == null) {
-    	 $("label[for='radio5']").trigger("click");
-    	 $("#anotherReason").val(reason);
+    if($("#calMonth").text() != consult_month) {
+    	$("#nextMonth").trigger("click");
     }
     else {
-    	$("label:contains(" + reason + ")").trigger("click");
+	    $("td:contains("+ consult_day + ")").trigger("click");
+	    $("div.startTimeBox:contains(" + start + ")").trigger("click");
+	    var time = end.substring(0,2) - start.substring(0,2);
+	    $("div.timeBox:contains(" + time + ")").trigger("click");
+	    var radio_ck = $("label:contains(" + reason + ")").prop('tagName');
+	    if(radio_ck == null) {
+	    	 $("label[for='radio5']").trigger("click");
+	    	 $("#anotherReason").val(reason);
+	    }
+	    else {
+	    	$("label:contains(" + reason + ")").trigger("click");
+	    }
+	    
+	    if(type == 0) {
+	    	$("div#typeBtnOff > a").trigger("click");
+	    }
+	    else {
+	    	$("div#typeBtnOn > a").trigger("click");
+	    }
     }
-    
-    if(type == 0) {
-    	$("div#typeBtnOff > a").trigger("click");
-    }
-    else {
-    	$("div#typeBtnOn > a").trigger("click");
-    }
-    console.log(consult_day, start, end, time, reason, type);
+    console.log(consult_month, consult_day, start, end, time, reason, type);
 }
 
 /**
