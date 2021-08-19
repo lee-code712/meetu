@@ -397,6 +397,10 @@ pageEncoding="UTF-8"%>
             width: 20px;
             height: 20px;
         }
+        
+        .nav-pills > .nav-item > .active {
+            background: #1abc9c;
+        }
     </style>
 </head>
 
