@@ -244,12 +244,12 @@ function buildCalendar(responseText) {
 						// 불가능 일자
 						if (dateObj.getDay() == disable_date && disable_time == "09:00~19:00") { // 해당 일이 아예 상담 불가능한 경우
 							column.style.color = "#E5E5E5";
-							column.style.backgroundColor = "#FBAB7E";
+							column.style.backgroundColor = "#7195F1";
 							break;
 						}
 						else if (key == Object.keys(schedules)[size - 1]) {
 							// alert("getDay(): " + (dateObj.getDay()) + ", disable_date: " + disable_date + ", disable_time: " + disable_time);
-							column.style.backgroundColor = "#FBAB7E";
+							column.style.backgroundColor = "#7195F1";
                     		column.style.cursor = "pointer";
                     		column.onclick = function () {
                         		calendarChoiceDay(this, schedules);
@@ -337,7 +337,7 @@ function calendarChoiceDay(column, schedules) {
     }
 
     // @param 선택일 체크 표시
-    column.style.backgroundColor = "#F8CA6B";
+    column.style.backgroundColor = "#1abc9c";
 
     // @param 선택일 클래스명 변경
     column.classList.add("choiceDay");
