@@ -91,11 +91,16 @@ pageEncoding="UTF-8"%>
         <div id="navL">
             <div id="navLTit">상담예약</div>
             <div id="navListWrap">
-                <div class="navList" id="name">교수명: ${param.name}</div>
-                <div class="navList" id="dept">학과: ${param.major}</div>
-                <div class="navList" id="course">담당과목: ${param.course}</div>
+                <div class="navListName">교수명</div>
+                <div class="navList" id="name">${param.name}</div>
+                <div class="navListName">학과</div>
+                <div class="navList" id="dept">${param.major}</div>
+                <div class="navListName">담당과목</div>
+                <div class="navList" id="course">${param.course}</div>
+                <div class="navListName">이메일</div>
                 <div class="navList" id="email">이메일: ${param.email}</div>
-                <div class="navList" id="office">연구소 위치: ${param.office}</div>
+                <div class="navListName">연구소 위치</div>
+                <div class="navList" id="office">${param.office}</div>
             </div>
         </div>
 
