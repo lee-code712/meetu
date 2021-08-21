@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
     <meta charset="UTF-8">
     <title>내 정보</title>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <style>
         * {
             padding: 0px;
@@ -157,7 +157,7 @@ pageEncoding="UTF-8"%>
             width: 100%;
             height: 40px;
             border: 1px solid #EAEAEA;
-            font-size: 18px;
+            font-size: 16px;
             background: white;
             border-radius: 5px 5px 0px 0px;
         }
@@ -171,12 +171,31 @@ pageEncoding="UTF-8"%>
             border-radius: 0px 0px 5px 5px;
         }
 
-        #navList {
+        #navListName {
             display: flex;
             align-items: center;
             width: 298px;
             height: 40px;
             padding-left: 20px;
+            font-size: 14px;
+            color: #1abc9c;
+        }
+
+        #profDataMfBtnWrap {
+            margin-top: 60px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            font-size: 14px;
+        }
+
+        #navList {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
             font-size: 14px;
         }
 
@@ -202,7 +221,7 @@ pageEncoding="UTF-8"%>
             padding-left: 20px;
             width: 796px;
             height: 40px;
-            font-size: 18px;
+            font-size: 16px;
             background: white;
             border-radius: 5px 5px 0px 0px;
             border: 1px solid #EAEAEA;
@@ -210,7 +229,7 @@ pageEncoding="UTF-8"%>
 
         #navRContentWrap {
             width: 776px;
-            padding: 22px 20px;
+            padding: 35px 20px;
             background: white;
             border-radius: 0px 0px 5px 5px;
             border-bottom: 1px solid #EAEAEA;
@@ -228,62 +247,17 @@ pageEncoding="UTF-8"%>
             cursor: pointer;
         }
 
-        #profNameMfWrap,
-        #profDeptMfWrap,
-        #profMajorMfWrap,
-        #profEmailMfWrap {
-            margin-bottom: 34px;
-        }
-
-        #profNameMfWrap,
-        #profDeptMfWrap,
-        #profMajorMfWrap,
-        #profEmailMfWrap,
-        #profLocationMfWrap {
-            display: flex;
-            width: 100%;
-            height: 40px;
-            align-items: center;
-        }
-
-        #profNameMfTit,
-        #profDeptMfTit,
-        #profMajorMfTit,
-        #profEmailMfTit,
-        #profLocationMfTit {
-            margin-right: 40px;
-            width: 100px;
-            border-right: 2px solid #1abc9c;
-        }
-
-        #profNameMfText,
-        #profDeptMfText,
-        #profMajorMfText,
-        #profEmailMfText,
-        #profLocationMfText {
-            padding: 8px 10px;
-            background: white;
-            border: 1px solid #EAEAEA;
-            border-radius: 50px;
-        }
-
-        #profNameMfText:focus,
-        #profDeptMfText:focus,
-        #profMajorMfText:focus,
-        #profEmailMfText:focus,
-        #profLocationMfText:focus {
-            outline: none;
-        }
-
-        #profDataMfBtnWrap {
-            margin-top: 40px;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            width: 100%;
-        }
-
         #profDataMfBtn {
+            width: 100px;
+            height: 40px;
+            font-size: 14px;
+            color: #1abc9c;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #1abc9c;
+        }
+
+        #profDataMfBtn:hover {
             width: 100px;
             height: 40px;
             font-size: 14px;
@@ -291,9 +265,6 @@ pageEncoding="UTF-8"%>
             background: #1abc9c;
             border-radius: 5px;
             border: none;
-        }
-
-        #profDataMfBtn:hover {
             cursor: pointer;
         }
 
@@ -308,6 +279,73 @@ pageEncoding="UTF-8"%>
             background-position: center;
             background-size: cover;
         }
+
+        #profNameMfWrap,
+        #profDeptMfWrap {
+            display: flex;
+            align-items: center;
+        }
+
+        #profMajorMfWrap,
+        #profEmailMfWrap,
+        #profLocationMfWrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #profNameMfWrap,
+        #profDeptMfWrap,
+        #profMajorMfWrap,
+        #profEmailMfWrap {
+            margin-bottom: 50px;
+        }
+
+
+        #profMajorMfWrap > div,
+        #profEmailMfWrap > div,
+        #profLocationMfWrap > div {
+            display: flex;
+        }
+
+        #profNameMfTit,
+        #profDeptMfTit,
+        #profMajorMfTit,
+        #profEmailMfTit,
+        #profLocationMfTit {
+            width: 100px;
+            border-right: 3px solid #1abc9c;
+        }
+
+        #profNameMfText,
+        #profDeptMfText,
+        #profMajorMfText,
+        #profEmailMfText,
+        #profLocationMfText {
+            margin-left: 40px;
+        }
+
+        #modifyBtn {
+            padding: 2px 8px;
+            color: #C4C4C4;
+            background: #EAEAEA;
+            border: 1px solid #C4C4C4;
+            border-radius: 50px;
+        }
+
+        #modifyBtn:hover {
+            cursor: pointer;
+        }
+
+        .swal-button {
+            padding: 7px 19px;
+            border-radius: 2px;
+            background-color: #1abc9c;
+            font-size: 12px;
+            border: 1px solid #1abc9c;
+            text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+        }
+
     </style>
 </head>
 <body>
@@ -321,9 +359,9 @@ pageEncoding="UTF-8"%>
                     <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
                     <div><a id="messageIcon" href="message.do">쪽지함</a></div>
                 </c:if>
-               	<c:if test="${mem_dto.getRole()=='1'}">             
-                	<div><a id="messageIcon" href="message.do">쪽지함</a></div>
-                	<div><a id="reserveIcon" href="#"/></div>
+                <c:if test="${mem_dto.getRole()=='1'}">
+                    <div><a id="messageIcon" href="message.do">쪽지함</a></div>
+                    <div><a id="reserveIcon" href="#"/></div>
                 </c:if>
             </div>
         </div>
@@ -340,46 +378,93 @@ pageEncoding="UTF-8"%>
     </div>
 </div>
 
-    <div id="navWrap">
-        <div id="navL">
-            <div id="navLTit">교수 정보</div>
-            <div id="navListWrap">
-                <div id="userImgWrap"></div>
-                <div id="profMfName">(교수명)</div>
-                <div id="navList">학과: 컴퓨터학과</div>
-                <div id="navList">담당과목: 객체지향언어1, 객체지향언어2...</div>
-                <div id="navList">이메일: lee@dongduk.ac.kr</div>
-                <div id="navList">연구실 위치: 인문관 303호</div>
+<div id="navWrap">
+    <div id="navL">
+        <div id="navLTit">교수 정보</div>
+        <div id="navListWrap">
+            <div id="userImgWrap"></div>
+            <div id="profMfName">${mem_dto.getName()}</div>
+            <div id="navList">${univ_dto.getUnivName()}</div>
+            <div id="profDataMfBtnWrap">
+                <button id="profDataMfBtn">저장</button>
             </div>
         </div>
+    </div>
 
-        <div id="navR">
-            <div id="navRTit">교수 정보 수정</div>
-            <div id="navRContentWrap">
-                <div id="profNameMfWrap">
-                    <div id="profNameMfTit">교수명</div>
-                    <input type="text" placeholder="교수명을 입력하세요." id="profNameMfText"/>
-                </div>
-                <div id="profDeptMfWrap">
-                    <div id="profDeptMfTit">학과</div>
-                    <input type="text" placeholder="학과를 입력하세요." id="profDeptMfText"/>
-                </div>
-               <div id="profMajorMfWrap">
+    <div id="navR">
+        <div id="navRTit">교수 정보 수정</div>
+        <div id="navRContentWrap">
+            <div id="profNameMfWrap">
+                <div id="profNameMfTit">교수명</div>
+                <div id="profNameMfText">${mem_dto.getName()}</div>
+            </div>
+            <div id="profDeptMfWrap">
+                <div id="profDeptMfTit">학과</div>
+                <div id="profDeptMfText">${param.major}</div>
+            </div>
+            <div id="profMajorMfWrap">
+                <div>
                     <div id="profMajorMfTit">담당과목</div>
-                    <input type="text" placeholder="담당과목을 입력하세요." id="profMajorMfText"/>
+                    <div id="profMajorMfText">${param.course}</div>
                 </div>
-                <div id="profEmailMfWrap">
+                <button id="modifyBtn" onClick="majorMfBtn()">수정</button>
+            </div>
+            <div id="profEmailMfWrap">
+                <div>
                     <div id="profEmailMfTit">이메일</div>
-                    <input type="text" placeholder="이메일을 입력하세요." id="profEmailMfText"/>
-                </div>
-                <div id="profLocationMfWrap">
-                    <div id="profLocationMfTit">이메일</div>
-                    <input type="text" placeholder="이메일을 입력하세요." id="profLocationMfText"/>
+                    <div id="profEmailMfText"/>
+                    ${param.email}
                 </div>
             </div>
-            <div id="profDataMfBtnWrap"><button id="profDataMfBtn">저장</button></div>
+            <button id="modifyBtn" onClick="emailMfBtn()">수정</button>
+        </div>
+        <div id="profLocationMfWrap">
+            <div>
+                <div id="profLocationMfTit">연구실 위치</div>
+                <div id="profLocationMfText">${param.office}</div>
+            </div>
+            <button id="modifyBtn" onClick="profLocationMfBtn()">수정</button>
         </div>
     </div>
 </div>
+</div>
+</div>
+<script>
+    function majorMfBtn() {
+        swal({
+            button: "확인",
+            content: {
+                element: "input",
+                attributes: {
+                    placeholder: "새로운 담당과목을 작성해주세요.",
+                },
+            },
+        });
+    }
+
+    function emailMfBtn() {
+        swal({
+            button: "확인",
+            content: {
+                element: "input",
+                attributes: {
+                    placeholder: "새로운 이메일을 작성해주세요.",
+                },
+            },
+        });
+    }
+
+    function profLocationMfBtn() {
+        swal({
+            button: "확인",
+            content: {
+                element: "input",
+                attributes: {
+                    placeholder: "새로운 연구실 위치를 작성해주세요.",
+                },
+            },
+        });
+    }
+</script>
 </body>
 </html>
