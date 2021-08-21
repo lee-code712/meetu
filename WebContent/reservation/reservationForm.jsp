@@ -14,27 +14,15 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="../reservation/css/reservationForm.css"/>
 
     <script>
-        $(function () {
-            var btn1 = $(".startTimeBox")
-            btn1.find("a").click(function () {
-                btn1.removeClass("active");
-                $(this).parent().addClass("active");
-            })
-        })
-        $(function () {
-            var btn2 = $(".timeBox")
-            btn2.find("a").click(function () {
-                btn2.removeClass("active");
-                $(this).parent().addClass("active");
-            })
-        })
+    	var p_user_id = "${param.p_user_id}";
+
         $(function () {
             var btn3 = $(".typeBtn")
             btn3.find("a").click(function () {
                 btn3.removeClass("active");
                 $(this).parent().addClass("active");
             })
-        })
+        });
     </script>
 </head>
 <body>
@@ -67,14 +55,14 @@ pageEncoding="UTF-8"%>
     </div>
 </div>
 
-    <form method="post" name="reservation_form" action="makeReservation.do" onsubmit="return ck_reservation_form()">
+    <form method="post" name="reservation_form" action="makeReservation.do?p_user_id=${param.p_user_id}" onsubmit="return ck_reservation_form()">
     <div id="navWrap">
         <div id="navL">
             <div id="navLTit">상담예약</div>
             <div id="navListWrap">
             	<div class="navListName">교수명</div>
                 <div class="navList" id="name">${param.name}</div>
-                <div class="navListName">학과</div>
+                <div class="navListName">전공</div>
                 <div class="navList" id="dept">${param.major}</div>
                 <div class="navListName">담당과목</div>
                 <div class="navList" id="course">${param.course}</div>
@@ -120,7 +108,7 @@ pageEncoding="UTF-8"%>
                     </div>
                     <div>
                         <div class="timeBoxWrap">
-                            <div class="startTimeBox" id="9:00"><a>09:00</a></div>
+                            <div class="startTimeBox" id="09:00"><a>09:00</a></div>
                             <div class="startTimeBox" id="10:00"><a>10:00</a></div>
                             <div class="startTimeBox" id="11:00"><a>11:00</a></div>
                         </div>

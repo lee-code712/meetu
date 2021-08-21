@@ -52,6 +52,7 @@ function updatePage(responseText) {
 	}
 	
 	Array.from(profs).forEach(function(prof, idx) {
+		var p_user_id = prof.p_user_id;
 		var name = prof.name;
 		var major = prof.major;
 		var email = prof.email;
@@ -60,6 +61,8 @@ function updatePage(responseText) {
 		var is_member = prof.is_member;
 		
 		var newTrElement = document.createElement("tr");
+		// tr의 id로 교수 id 사용
+		$(newTrElement).attr("id", p_user_id);
 		
 		// 번호
 		var newCountTdElement = document.createElement("td");
@@ -181,7 +184,7 @@ function updatePage(responseText) {
 			$(newCheckBtnElement).attr("id", "checkBtn");
 			newCheckBtnElement.innerHTML = "선택하기";
 			$(newCheckTdElement).append(newCheckBtnElement);
-			$(newCheckBtnElement).click({name: name, major: major, email: email, office: office, course: course}, selectProf);
+			$(newCheckBtnElement).click(selectProf);
 		}
 		
 		// tr에 td들 추가
@@ -301,12 +304,7 @@ function getCollege() {
 	return colleges;
 }
 
-function selectProf(prof) {
-	param = "name=" + prof.data.name;
-	param += "&major=" + prof.data.major;
-	param += "&email=" + prof.data.email;
-	param += "&office=" + prof.data.office;
-	param += "&course=" + prof.data.course;
-	
-	location.href = "reservationForm.do?" + param;
+function selectProf() {
+	var p_user_id = event.currentTarget.closest("tr").id;
+	location.href = "reservationForm.do?p_user_id=" + p_user_id;
 }

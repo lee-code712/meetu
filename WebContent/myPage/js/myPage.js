@@ -1,5 +1,6 @@
 $(document).ready(function() { // html이 로드되면 실행됨 
 	$(".nav-item").children().click(getReservations);
+	//$(".nav-item:first-Child").trigger("click");
 	$("#bookedList").trigger("click");
 	var clicked_item;
 	var selected_button;

@@ -20,31 +20,13 @@
 	MemberDAO memberDAO = new MemberDAO();
 	ReservationDAO reservationDAO = new ReservationDAO();
 
-	String prof_email = request.getParameter("prof_email");
+	String p_user_id = request.getParameter("p_user_id");
+	System.out.println(p_user_id);
 
 	// 교수 학번 구하기
 	// 모든 교수 정보를 가져옴
 	UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
 	ArrayList<ProfessorDTO> professors = memberDAO.getAllProfessors(univ_dto.getUnivId());
-	
-	String p_user_id = "";
-	for(int i = 0; i < professors.size(); i++) {
-		if(professors.get(i).getEmail() != null) {
-			if(professors.get(i).getEmail().equals(prof_email)) { // 이메일은 중복 불가 - 교수 구분 위해 사용
-				String prof_id = professors.get(i).getProfId(); // 이메일이 같은 경우, 해당 교수 학번을 불러옴
-				
-				// 모든 회원 정보를 가져와 해당 교수의 id 검색
-				ArrayList<MemberDTO> members = memberDAO.getAllMemberUsers(univ_dto.getUnivId());
-				for (int j = 0; j < members.size(); j++) {
-					if (members.get(j).getMemberId().equals(prof_id)) { 
-						MemberUserDTO p_user = memberDAO.getMemberUserInfo(members.get(j), univ_dto.getUnivId());
-						
-						p_user_id = p_user.getUserId();
-					}
-				}
-			}
-		}
-	}
 	
 	// 해당 교수의 상담 가능 시간 DTO
 	ArrayList<ConsultableTimeDTO> consultableTimes = reservationDAO.getConsultableTimes(univ_dto.getUnivId(), p_user_id);
@@ -56,17 +38,17 @@
 		for (int i = 0; i < consultableTimes.size(); i++) {
 			JSONObject c = null; // JSONArray 내에 들어갈 json
 	
-			String disable_date = consultableTimes.get(i).getDisableDate(); // 0-6
-			String disable_time = consultableTimes.get(i).getDisableTime(); // 15:00~17:00
+			String able_date = consultableTimes.get(i).getAbleDate(); // 0-6
+			String able_time = consultableTimes.get(i).getAbleTime(); // 15:00~17:00
 
 			c = new JSONObject(); // JSONArray 내에 들어갈 json
 	
 			if (p_user_id != null)
 				c.put("p_user_id", p_user_id);
-			if (disable_date != null)
-				c.put("disable_date", disable_date);
-			if (disable_time != null)
-				c.put("disable_time", disable_time);
+			if (able_date != null)
+				c.put("able_date", able_date);
+			if (able_time != null)
+				c.put("able_time", able_time);
 		
 			if (c != null)
 				timeJsonArray.add(c);
@@ -129,6 +111,7 @@
 			    }
 				
 			    // 불가능 시간대를 구함
+			    String disable_day = start_time.substring(5, 10); 
 				start_time = start_time.substring(11, 16);
 				end_time = end_time.substring(11, 16);
 				String disable_time = start_time + "~" + end_time;
@@ -139,6 +122,9 @@
 					r.put("disable_date", disable_date);
 				if (disable_time != null)
 					r.put("disable_time", disable_time);
+				if(disable_day != null) {
+					r.put("disable_day", disable_day);
+				}
 			
 				if (r != null)
 					timeJsonArray.add(r);
@@ -147,5 +133,6 @@
 	}
 	
 	timeJson.put("time", timeJsonArray); // json 배열을 저장
+	// System.out.println(timeJsonArray);
 	out.println(timeJsonArray);
 %>

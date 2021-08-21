@@ -5,11 +5,7 @@
 <%@ page import="org.json.simple.*"%>
 
 <%@ page import="meetu.dao.MemberDAO"%>
-<%@ page import="meetu.dto.MemberDTO"%>
-<%@ page import="meetu.dto.CourseDTO"%>
-<%@ page import="meetu.dto.DepartmentDTO"%>
-<%@ page import="meetu.dto.ProfessorDTO"%>
-<%@ page import="meetu.dto.UniversityDTO"%>
+<%@ page import="meetu.dto.*"%>
 
 <%!@SuppressWarnings("unchecked")%>
 <%
@@ -42,14 +38,16 @@
 		}
 		
 		// 회원 정보를 가져와 회원인 교수는 is_member을 true로
-		ArrayList<MemberDTO> member_users = dao.getAllMemberUsers(univ_dto.getUnivId());
+		ArrayList<MemberUserDTO> member_users = dao.getAllMemberUsers(univ_dto.getUnivId());
 		boolean is_member = false;
+		String user_id = null;
 		
 		for (int j = 0; j < member_users.size(); j++) {
 			String member_id = member_users.get(j).getMemberId();
-			
+
 			if (member_id.equals(prof_id)) {
 				is_member = true;
+				user_id = member_users.get(j).getUserId();
 			}
 		}
 	
@@ -76,6 +74,8 @@
 		
 		p = new JSONObject(); // JSONArray 내에 들어갈 json
 
+		if(user_id != null)
+			p.put("p_user_id", user_id);
 		if (name != null)
 			p.put("name", name);
 		if (major != null)
