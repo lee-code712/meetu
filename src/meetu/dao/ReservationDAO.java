@@ -226,7 +226,7 @@ public class ReservationDAO {
 	}
 	
 	// 예약 레코드 추가
-	public boolean makeReservation(String univ, String start_time, String end_time, String reason, int type, String p_user_id, String s_user_id)throws NamingException/* , SQLException */ {
+	public boolean makeReservation(ReservationDTO reservation_dto, String univ)throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		boolean is_added = false;
@@ -237,12 +237,12 @@ public class ReservationDAO {
 			sql += "values (reservation_seq.NEXTVAL, TO_DATE(?,'YY/MM/DD HH24:MI:SS'), TO_DATE(?,'YY/MM/DD HH24:MI:SS'), ?, ?, 0, ?, ?)";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, start_time);
-			pstmt.setString(2, end_time);
-			pstmt.setString(3, reason);
-			pstmt.setInt(4, type);
-			pstmt.setString(5, p_user_id);
-			pstmt.setString(6, s_user_id);
+			pstmt.setString(1, reservation_dto.getStartTime());
+			pstmt.setString(2, reservation_dto.getEndTime());
+			pstmt.setString(3, reservation_dto.getReason());
+			pstmt.setInt(4, reservation_dto.getType());
+			pstmt.setString(5, reservation_dto.getPUserId());
+			pstmt.setString(6, reservation_dto.getSUserId());
 
 			rs = pstmt.executeQuery();
 								
@@ -315,9 +315,9 @@ public class ReservationDAO {
 			while (rs.next()) {
 				ConsultableTimeDTO consultableTime_dto = new ConsultableTimeDTO();
 				
-				consultableTime_dto.setDisableDate(rs.getString("disable_date"));
-				consultableTime_dto.setDisableTime(rs.getString("disable_time"));
-				consultableTime_dto.setP_user_id(p_user_id);
+				consultableTime_dto.setAbleDate(rs.getString("able_date"));
+				consultableTime_dto.setAbleTime(rs.getString("able_time"));
+				consultableTime_dto.setPUserId(p_user_id);
 				
 				consultableTimes.add(consultableTime_dto);
 			}

@@ -8,27 +8,10 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 	$("#typeBtnOn").click(typeBtnOnClick);
 	$(".reservationBtn").click(reservationBtnClick);
 	
-	// 교수 이메일을 파라미터로 보내기 위해 이메일 정보 hidden으로 저장
-	var email = document.getElementById("email");
-	
-	$("#prof_email").remove();
-		
-	var newInputElement = document.createElement("input");
-	$(newInputElement).attr("type", "hidden");
-	$(newInputElement).attr("name", "prof_email");
-	$(newInputElement).attr("id", "prof_email");
-	
-	var content = email.innerHTML;
-	content = content.substring(5, content.length); // bad
-	
-	$(newInputElement).attr("value", content);
-	
-	$("#navL").append(newInputElement);
-	
 	// ajax로 교수 상담 가능 시간 받아와 캘린더 생성
 	$.ajax({
 	 	type: "GET",
-		url: "/reservation/getProfessorSchedule.jsp?prof_email=" + content,
+		url: "/reservation/getProfessorSchedule.jsp?p_user_id=" + p_user_id,
 		dataType: "text",
 		success: buildCalendar,
 		error: function(jqXHR, textStatus, errorThrown) {
@@ -42,7 +25,6 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 	});
 });
 
-
 var today = new Date(); // @param 전역 변수, 오늘 날짜 / 내 컴퓨터 로컬을 기준으로 today에 Date 객체를 넣어줌
 var date = new Date();  // @param 전역 변수, today의 Date를 세어주는 역할
 
@@ -52,26 +34,10 @@ var date = new Date();  // @param 전역 변수, today의 Date를 세어주는 �
 function prevCalendar() {
 	this.today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
 
-	// 교수 이메일을 파라미터로 보내기 위해 이메일 정보 hidden으로 저장
-	var email = document.getElementById("email");
-			
-	$("#prof_email").remove();
-			
-	var newInputElement = document.createElement("input");
-	$(newInputElement).attr("type", "hidden");
-	$(newInputElement).attr("name", "prof_email");
-	$(newInputElement).attr("id", "prof_email");
-	
-	var content = email.innerHTML;
-	content = content.substring(5, content.length); // bad
-	$(newInputElement).attr("value", content);
-			
-	$("#navL").append(newInputElement);
-
 	// ajax로 교수 상담 가능 시간 받아오기
 	$.ajax({
 	 	type: "GET",
-		url: "/reservation/getProfessorSchedule.jsp?prof_email=" + content,
+		url: "/reservation/getProfessorSchedule.jsp?p_user_id=" + p_user_id,
 		dataType: "text",
 		success: buildCalendar, // @param 전월 캘린더 출력 요청
 		error: function(jqXHR, textStatus, errorThrown) {
@@ -90,27 +56,11 @@ function prevCalendar() {
  */
 function nextCalendar() {
     this.today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
-
-	// 교수 이메일을 파라미터로 보내기 위해 이메일 정보 hidden으로 저장
-	var email = document.getElementById("email");
-	
-	$("#prof_email").remove();
-	
-	var newInputElement = document.createElement("input");
-	$(newInputElement).attr("type", "hidden");
-	$(newInputElement).attr("name", "prof_email");
-	$(newInputElement).attr("id", "prof_email");
-
-	var content = email.innerHTML;
-	content = content.substring(5, content.length); // bad
-	$(newInputElement).attr("value", content);
-	
-	$("#navL").append(newInputElement);
     
 	// ajax로 교수 상담 가능 시간 받아오기
 	$.ajax({
 	 	type: "GET",
-		url: "/reservation/getProfessorSchedule.jsp?prof_email=" + content,
+		url: "/reservation/getProfessorSchedule.jsp?p_user_id=" + p_user_id,
 		dataType: "text",
 		success: buildCalendar, // @param 명월 캘린더 출력 요청
 		error: function(jqXHR, textStatus, errorThrown) {
@@ -202,27 +152,26 @@ function buildCalendar(responseText) {
 
                 // @details 현재일보다 이후이면서 현재월에 포함되는 일인경우
                 else if (date.getDate() < day && lastDate.getDate() >= day) {
-					// 교수 불가능 일자 disable
+					// 교수 가능 일자 able
 					for(var key in schedules) {
-						var disable_date = schedules[key].disable_date;
-						var disable_time = schedules[key].disable_time;
+						var able_date = schedules[key].able_date;
+						var able_time = schedules[key].able_time;
 						var p_user_id = schedules[key].p_user_id;
 						var size = Object.keys(schedules).length;
 						
 						var dateObj = new Date(doMonth.getFullYear(), doMonth.getMonth(), Number(day));
 						
-						// 불가능 일자
-						if (dateObj.getDay() == disable_date && disable_time == "09:00~19:00") { // 해당 일이 아예 상담 불가능한 경우
-							column.style.color = "#E5E5E5";
-							break;
-						}
-						else if (key == Object.keys(schedules)[size - 1]) {
-							// alert("getDay(): " + (dateObj.getDay()) + ", disable_date: " + disable_date + ", disable_time: " + disable_time);
+						if (dateObj.getDay() == able_date) { // 가능 일자
 							column.style.backgroundColor = "#FFFFFF";
                     		column.style.cursor = "pointer";
                     		column.onclick = function () {
                         		calendarChoiceDay(this, schedules);
                     		}
+							break;
+						}
+						else if (key == Object.keys(schedules)[size - 1]) {
+							// alert("getDay(): " + (dateObj.getDay()) + ", disable_date: " + disable_date + ", disable_time: " + disable_time);
+							column.style.color = "#E5E5E5";
 						}
 						else {
 							continue;
@@ -232,33 +181,7 @@ function buildCalendar(responseText) {
 
                 // @details 현재일인 경우
                 else if (date.getDate() == day) {
-					// 교수 불가능 일자 disable
-					for(var key in schedules) {
-						var disable_date = schedules[key].disable_date;
-						var disable_time = schedules[key].disable_time;
-						var p_user_id = schedules[key].p_user_id;
-						var size = Object.keys(schedules).length;
-						
-						var dateObj = new Date(doMonth.getFullYear(), doMonth.getMonth(), Number(day));
-						
-						// 불가능 일자
-						if (dateObj.getDay() == disable_date && disable_time == "09:00~19:00") { // 해당 일이 아예 상담 불가능한 경우
-							column.style.color = "#E5E5E5";
-							column.style.backgroundColor = "#7195F1";
-							break;
-						}
-						else if (key == Object.keys(schedules)[size - 1]) {
-							// alert("getDay(): " + (dateObj.getDay()) + ", disable_date: " + disable_date + ", disable_time: " + disable_time);
-							column.style.backgroundColor = "#7195F1";
-                    		column.style.cursor = "pointer";
-                    		column.onclick = function () {
-                        		calendarChoiceDay(this, schedules);
-                    		}
-						}
-						else {
-							continue;
-						}
-					}
+					column.style.backgroundColor = "#7195F1";
                 }
 
                 // @details 현재월보다 이전인경우
@@ -271,26 +194,26 @@ function buildCalendar(responseText) {
             // @details 현재월보다 이후인경우
             else {
                 if (Math.sign(day) == 1 && day <= lastDate.getDate()) {
-                    // 교수 불가능 일자 disable
+                    // 교수 가능 일자 able
 					for(var key in schedules) {
-						var disable_date = schedules[key].disable_date;
-						var disable_time = schedules[key].disable_time;
+						var able_date = schedules[key].able_date;
+						var able_time = schedules[key].able_time;
 						var p_user_id = schedules[key].p_user_id;
 						var size = Object.keys(schedules).length;
 						
 						var dateObj = new Date(doMonth.getFullYear(), doMonth.getMonth(), Number(day));
 						
-						// 불가능 일자
-						if (dateObj.getDay() == disable_date && disable_time == "09:00~19:00") { // 해당 일이 아예 상담 불가능한 경우
-							column.style.color = "#E5E5E5";
-							break;
-						}
-						else if (key == Object.keys(schedules)[size - 1]) {
+						if (dateObj.getDay() == able_date) { // 가능 일자
 							column.style.backgroundColor = "#FFFFFF";
                     		column.style.cursor = "pointer";
                     		column.onclick = function () {
                         		calendarChoiceDay(this, schedules);
                     		}
+							break;
+						}
+						else if (key == Object.keys(schedules)[size - 1]) {
+							// alert("getDay(): " + (dateObj.getDay()) + ", disable_date: " + disable_date + ", disable_time: " + disable_time);
+							column.style.color = "#E5E5E5";
 						}
 						else {
 							continue;
@@ -370,45 +293,62 @@ function calendarChoiceDay(column, schedules) {
 	var classes = document.getElementsByClassName("startTimeBox");
 	
 	Array.from(classes).forEach(function(c, i) {
-		$(c).css("background", "#FFFFFF");
-		$(c).attr("isDisabled", "false");
+		$(c).css("background", "#E5E5E5");
+		$(c).attr("isDisabled", "true");
 		$(c).off("click");
 	});
 	
 	let doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
 	
 	// startTimeBox
-	var all_able_day = true;
-	
 	Array.from(schedules).forEach(function(schedule, i) {
+		var able_date = schedule.able_date;
+		var able_time = schedule.able_time;
+		var disable_day = schedule.disable_day;
 		var disable_date = schedule.disable_date;
 		var disable_time = schedule.disable_time;
 		var p_user_id = schedule.p_user_id;
 		
 		var dateObj = new Date(doMonth.getFullYear(), doMonth.getMonth(), Number(contentDay));
-		// alert("getDay(): " + (dateObj.getDay()) + ", disable_date: " + disable_date + ", disable_time: " + disable_time);
-		if (disable_time != "09:00~19:00") { // 전체 불가능 일이 아니고
-			if (dateObj.getDay() == disable_date) { // 선택 요일이 disable_date인 경우
-				all_able_day = false;
+		if(able_date != null) {
+			if (dateObj.getDay() == able_date) { // 선택 요일이 able_date인 경우				
+				// 가능 시작 시간
+				var able_timeArr = able_time.split("~");
+				var j = 0;
 				
+				while (classes.length > j) {
+					if($(classes[j]).attr("id") == able_timeArr[0])
+						break;
+					j++;
+				}
+				
+				while (classes.length > j) {
+					if($(classes[j]).attr("id") == able_timeArr[1])
+						break;
+					$(classes[j]).css("background", "#FFFFFF");
+					$(classes[j]).attr("isDisabled", "false");
+					j++;
+				}
+			}
+		}
+		else {
+			var disable_dateArr = disable_day.split("-");
+			
+			// 선택 요일이 disable_date인 경우(이미 예약이 차 있는 경우)
+			if (dateObj.getDay() == disable_date && (doMonth.getMonth() + 1) == disable_dateArr[0] && Number(contentDay) == disable_dateArr[1]) { 			
 				// 불가능 시작 시간
 				var disable_timeArr = disable_time.split("~");
 				var j = 0;
 				
-				while ($(classes[j]).attr("id") != disable_timeArr[0]) {
-					j++;
-					// 버튼에 없는 시간이면 while문 종료
-					if(disable_timeArr[0] == "18:00" || disable_timeArr[1] == "18:00" || disable_timeArr[1] == "19:00") {
+				while (classes.length > j) {
+					if($(classes[j]).attr("id") == disable_timeArr[0])
 						break;
-					}
+					j++;
 				}
 				
-				while ($(classes[j]).attr("id") != disable_timeArr[1]) {
-					// $(classes[j]).unbind("hover"); // 동작 X
-					// 버튼에 없는 시간이면 while문 종료
-					if(disable_timeArr[0] == "18:00" || disable_timeArr[1] == "18:00" || disable_timeArr[1] == "19:00") {
+				while (classes.length > j) {
+					if($(classes[j]).attr("id") == disable_timeArr[1])
 						break;
-					}
 					$(classes[j]).attr("isDisabled", "true");
 					classes[j].style.backgroundColor = "#E5E5E5";
 					j++;
@@ -417,18 +357,12 @@ function calendarChoiceDay(column, schedules) {
 		}
 	});
 	
-	// 각 시작시간 항목의 isDisabled속성이 true가 아닌 경우 클릭 이벤트 생성
+	// 각 시작시간 항목의 isDisabled속성이 false인 경우 클릭 이벤트 생성
 	Array.from(classes).forEach(function(element, i) {
-		if($(element).attr("isDisabled") != "true") {
+		if($(element).attr("isDisabled") == "false") {
 			$(element).click(startTimeBoxClick);
 		}
 	});
-	
-	if (all_able_day) {
-		Array.from(classes).forEach(function(c, i) {
-			$(c).click(startTimeBoxClick);
-		});
-	}
 }
 
 /**

@@ -57,7 +57,8 @@ public class UpdateReservationAction  implements CommandAction {
 		reservation_dto.setResId(res_id);
 		reservation_dto.setStartTime(start_time);
 		reservation_dto.setEndTime(end_time);
-		if (radio.equals("1")) {
+		
+		if (radio.equals("1")) { // 상담 이유
 			reservation_dto.setReason("전담 교수 상담");
 		}
 		else if (radio.equals("2")) {
@@ -73,7 +74,7 @@ public class UpdateReservationAction  implements CommandAction {
 			reservation_dto.setReason(radio);
 		}
 		
-		if(typeBtn.equals("오프라인")) {
+		if(typeBtn.equals("오프라인")) { // 온라인/오프라인 상담 구분. 오프라인 0, 온라인 1
 			reservation_dto.setType(0);
 		}
 		else {

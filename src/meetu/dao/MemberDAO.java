@@ -137,10 +137,10 @@ public class MemberDAO {
 	}
 
 	// 모든 회원 정보 dto 반환
-	public ArrayList<MemberDTO> getAllMemberUsers(String univ) throws NamingException/* , SQLException */ {
+	public ArrayList<MemberUserDTO> getAllMemberUsers(String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		ArrayList<MemberDTO> members = new ArrayList<MemberDTO>();
+		ArrayList<MemberUserDTO> members = new ArrayList<MemberUserDTO>();
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
@@ -151,18 +151,18 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				MemberDTO mem_dto = new MemberDTO();
-				mem_dto.setMemberId(rs.getString("member_id"));
-				mem_dto.setName(rs.getString("name"));
-				mem_dto.setRole(rs.getString("role"));
-				members.add(mem_dto);
+				MemberUserDTO mem_usr_dto = new MemberUserDTO();
+				mem_usr_dto.setUserId(rs.getString("user_id"));
+				mem_usr_dto.setPhone(rs.getString("phone"));
+				mem_usr_dto.setMemberId(rs.getString("member_id"));
+				members.add(mem_usr_dto);
 
 				while (rs.next()) {
-					mem_dto = new MemberDTO();
-					mem_dto.setMemberId(rs.getString("member_id"));
-					mem_dto.setName(rs.getString("name"));
-					mem_dto.setRole(rs.getString("role"));
-					members.add(mem_dto);
+					mem_usr_dto = new MemberUserDTO();
+					mem_usr_dto.setUserId(rs.getString("user_id"));
+					mem_usr_dto.setPhone(rs.getString("phone"));
+					mem_usr_dto.setMemberId(rs.getString("member_id"));
+					members.add(mem_usr_dto);
 				}
 			} else {
 				return null;

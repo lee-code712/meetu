@@ -6,66 +6,57 @@ import javax.servlet.http.HttpSession;
 
 import java.util.*;
 
-import meetu.dto.MemberUserDTO;
-import meetu.dto.MemberDTO;
-import meetu.dto.UniversityDTO;
-import meetu.dto.ProfessorDTO;
 import meetu.action.CommandAction;
 import meetu.dao.MemberDAO;
 import meetu.dao.ReservationDAO;
+import meetu.dto.*;
 
 public class ReservationFormAction implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
 		HttpSession session = req.getSession();
-		
-		String s_user_id = (String) session.getAttribute("user_id");
-		String prof_email = req.getParameter("email");
-		
-		String p_user_id = "";
-		
-		// 교수 아이디 구하기
-		// 모든 교수 정보를 가져옴
-		MemberDAO memberDAO = new MemberDAO();
-		
 		UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
-		ArrayList<ProfessorDTO> professors = memberDAO.getAllProfessors(univ_dto.getUnivId());
-		for(int i = 0; i < professors.size(); i++) {
-			if(professors.get(i).getEmail() != null) {
-				if(professors.get(i).getEmail().equals(prof_email)) { // 이메일은 중복 불가 - 교수 구분 위해 사용
-					String prof_id = professors.get(i).getProfId(); // 이메일이 같은 경우, 해당 교수 학번을 불러옴
-					
-					// 모든 회원 정보를 가져와 해당 교수의 id 검색
-					ArrayList<MemberDTO> members = memberDAO.getAllMemberUsers(univ_dto.getUnivId());
-					for (int j = 0; j < members.size(); j++) {
-						if (members.get(j).getMemberId().equals(prof_id)) { 
-							MemberUserDTO p_user = memberDAO.getMemberUserInfo(members.get(j), univ_dto.getUnivId());
-							
-							p_user_id = p_user.getUserId();
-						}
-					}
-				}
-			}
+		String univ = univ_dto.getUnivId();
+		String s_user_id = (String) session.getAttribute("user_id");
+		String p_user_id = (String) req.getParameter("p_user_id");
+		
+		// 예약 페이지에서 보일 교수 정보 get으로 전송
+		MemberDAO mem_dao = MemberDAO.getInstance();
+		MemberDTO mem_dto = mem_dao.getMemberInfo(univ, p_user_id);
+		ProfessorDTO prof_dto = mem_dao.getProfessorInfo(univ, p_user_id);
+		ArrayList<CourseDTO> courses = mem_dao.getCourseInfo(prof_dto, univ);
+		String course = "";		
+		for (int j = 0; j < courses.size(); j++) {
+			if (j == courses.size() - 1)
+				course += courses.get(j).getTitle();
+			else
+				course += courses.get(j).getTitle() + ", ";
 		}
-		
+				
+		String param = "p_user_id=" + p_user_id;
+		param += "&name=" + mem_dto.getName();
+		param += "&major=" + prof_dto.getMajor();
+		param += "&email=" + prof_dto.getEmail();
+		param += "&office=" + prof_dto.getOffice();
+		param += "&course=" + course;
+
 		// 같은 교수에게 예약 레코드가 있는지 여부 구함
-		ReservationDAO reservationDAO = new ReservationDAO();
-		
+		ReservationDAO reservationDAO = new ReservationDAO();	
 		boolean isReservated = reservationDAO.isReservatedProfessor(univ_dto.getUnivId(), s_user_id, p_user_id);
 		
 		// 예약정보가 존재하는지 확인(예약내역 수정 시)
 		ArrayList<String> reservation = (ArrayList<String>) req.getAttribute("reservation");
 				
 		if(reservation != null) {
-			return "/reservation/reservationUpdateForm.jsp";
+			return "/reservation/reservationUpdateForm.jsp?" + param;
 		}
 		else {
 			if(isReservated) { // 예약 레코드가 있는 경우 교수 선택 페이지로 리턴
 				return "/reservation/reservationPage.jsp?isReservated=1";
 			}
 			else {
-				return "/reservation/reservationForm.jsp";
+				return "/reservation/reservationForm.jsp?" + param;
 			}
 		}
 	}
