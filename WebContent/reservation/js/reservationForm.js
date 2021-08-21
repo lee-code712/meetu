@@ -430,8 +430,10 @@ function startTimeBoxClick() {
 	
 	// 시작 시간이 선택되면 케이스에 따라 상담 시간대 (1시간 / 2시간) 블락
 	var timeClasses = document.getElementsByClassName("timeBox");
-	
-	if ($(timeBox).next().attr("isDisabled") == "true") { // 다음 startTime이 isDisabled == true면
+	var click_time = $(timeBox).attr("id").substring(0,2);
+	var next_time = Number(click_time) + 1;
+
+	if ($("div.startTimeBox:contains(" + next_time + ":00)").attr("isDisabled") == "true") { // 다음 startTime이 isDisabled == true면
 		$(timeClasses[1]).attr("isDisabled", "true"); // 2시간 block (1시간만 상담 가능)
 	}
 	
