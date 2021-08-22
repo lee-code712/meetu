@@ -4,8 +4,7 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 	// 각 버튼에 click 이벤트 설정
 	$(".startTimeBox").click(ck_startTimeBox);
 	$(".timeBox").click(ck_timeBox);
-	$("#typeBtnOff").click(typeBtnOffClick);
-	$("#typeBtnOn").click(typeBtnOnClick);
+	$(".typeBtn").click(typeBtnClick);
 	$(".updateBtn").click(reservationBtnClick);
 	
 	getCalendar(); // 캘린더 호출
@@ -233,7 +232,7 @@ function buildCalendar(responseText) {
 	    	$("div#typeBtnOn > a").trigger("click");
 	    }
     }
-    console.log(consult_month, consult_day, start, end, time, reason, type);
+    // console.log(consult_month, consult_day, start, end, time, reason, type);
 }
 
 /**
@@ -294,19 +293,18 @@ function calendarChoiceDay(column, schedules) {
 
     $("#navRContentWrap").append(newInputMonthElement);
 
-	// 추가 - startTimeBox, timeBox onclick 이벤트 생성
+    // startTimeBox 초기화
 	var classes = document.getElementsByClassName("startTimeBox");
-	
 	Array.from(classes).forEach(function(c, i) {
 		$(c).css("background", "#E5E5E5");
 		$(c).css("border", "1px solid #C4C4C4");
+		$(c).css("cursor", "");
+		$(c).children("a").css("color", "black");
 		$(c).attr("isDisabled", "true");
 		$(c).off("click");
 	});
 	
-	let doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-	
-	// startTimeBox
+	// startTimeBox onclick 이벤트 제어
 	Array.from(schedules).forEach(function(schedule, i) {
 		var able_date = schedule.able_date;
 		var able_time = schedule.able_time;
@@ -314,6 +312,7 @@ function calendarChoiceDay(column, schedules) {
 		var disable_date = schedule.disable_date;
 		var disable_time = schedule.disable_time;
 		
+		let doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
 		var dateObj = new Date(doMonth.getFullYear(), doMonth.getMonth(), Number(contentDay));
 		
 		// 상담 가능 일자에 대하여
@@ -341,7 +340,7 @@ function calendarChoiceDay(column, schedules) {
 		else {
 			var disable_dateArr = disable_day.split("-"); // 예약이 차 있는 날짜 배열
 			
-			if (dateObj.getDay() == disable_date && (doMonth.getMonth() + 1) == disable_dateArr[0] && Number(contentDay) == disable_dateArr[1]
+			if (dateObj.getDay() == disable_date && (doMonth.getMonth() + 1) == disable_dateArr[0] && Number(contentDay) == disable_dateArr[1] 			
 				&& (doMonth.getMonth() + 1) != consult_month) { // 예약 시간까지 동일하지만 달이 다른 경우
 				// 불가능 시작 시간
 				var disable_timeArr = disable_time.split("~"); // 예약이 차 있는 시간 배열
@@ -381,7 +380,10 @@ function startTimeBoxClick() {
 	// timeBox 초기화
 	$(".timeBox").css("background", "#FFFFFF");
 	$(".timeBox").css("border", "1px solid #C4C4C4");
+	$(".timeBox").css("cursor", "");
+	$(".timeBox").children("a").css("color", "black");
 	$(".timeBox").attr("isDisabled", "false"); 
+	$(".timeBox").off("click");
 		
 	var startTimeClasses = document.getElementsByClassName("startTimeBox");
 	
@@ -389,6 +391,7 @@ function startTimeBoxClick() {
 		if($(c).attr("isDisabled") == "false") {
 			$(c).css("background", "#FFFFFF");
 			$(c).css("border", "1px solid #C4C4C4");
+			$(c).children("a").css("color", "black");
 		}
 	});
 	
@@ -396,7 +399,7 @@ function startTimeBoxClick() {
 	
 	$(startTimeBox).css("border", "1px solid  #1abc9c");
 	$(startTimeBox).css("background", "#1abc9c");
-	$(startTimeBox).css("color", "white");
+	$(startTimeBox).children("a").css("color", "white");
 	
 	$("#startTime").remove();
 	
@@ -411,7 +414,7 @@ function startTimeBoxClick() {
 	
 	$("#startTimeTitle").append(newInputElement);
 	
-	// 시작 시간이 선택되면 케이스에 따라 상담 시간대 (1시간 / 2시간) 블락	
+	// startTimeBox onclick 이벤트 제어
 	var timeClasses = document.getElementsByClassName("timeBox");
 	var click_time = $(startTimeBox).attr("id").substring(0,2);
 	var next_time = Number(click_time) + 1;
@@ -468,6 +471,7 @@ function timeBoxClick() {
 		if($(c).attr("isDisabled") != "true") {
 			$(c).css("background", "#FFFFFF");
 			$(c).css("border", "1px solid #C4C4C4");
+			$(c).children("a").css("color", "black");
 		}
 	});
 	
@@ -475,7 +479,7 @@ function timeBoxClick() {
 	
 	$(timeBox).css("border", "1px solid  #1abc9c");
 	$(timeBox).css("background", "#1abc9c");
-	$(timeBox).css("color", "white");
+	$(timeBox).children("a").css("color", "white");
 	
 	$("#consultTime").remove();
 	
@@ -491,30 +495,28 @@ function timeBoxClick() {
 }
 
 /**
- * @brief   오프라인 버튼 클릭 시
+ * @brief   상담유형 버튼 클릭 시
  */
-function typeBtnOffClick() {
-	var offBtn = this;
+function typeBtnClick() {
+	var typeBtn = this;
 	
-	$("#type").remove();
-	
-	var newInputElement = document.createElement("input");
-	$(newInputElement).attr("type", "hidden");
-	$(newInputElement).attr("name", "type");
-	$(newInputElement).attr("id", "type");
-	
-	var content = offBtn.childNodes[0].innerHTML;
-	$(newInputElement).attr("value", content);
-	
-	$(".typeBtnWrap").append(newInputElement);
-}
+	if($(typeBtn).attr('id') == "typeBtnOff") {
+		$("div#typeBtnOff").css("border", "1px solid  #1abc9c");
+		$("div#typeBtnOff").css("background", "#1abc9c");
+		$("div#typeBtnOff > a").css("color", "white");
+		$("div#typeBtnOn").css("border", "1px solid  #C4C4C4");
+		$("div#typeBtnOn").css("background", "#FFFFFF");
+		$("div#typeBtnOn > a").css("color", "black");
+	}
+	else {
+		$("div#typeBtnOn").css("border", "1px solid  #1abc9c");
+		$("div#typeBtnOn").css("background", "#1abc9c");
+		$("div#typeBtnOn > a").css("color", "white");
+		$("div#typeBtnOff").css("border", "1px solid  #C4C4C4");
+		$("div#typeBtnOff").css("background", "#FFFFFF");
+		$("div#typeBtnOff > a").css("color", "black");
+	}
 
-/**
- * @brief   온라인 버튼 클릭 시
- */
-function typeBtnOnClick() {
-	var onBtn = this;
-	
 	$("#type").remove();
 	
 	var newInputElement = document.createElement("input");
@@ -522,7 +524,7 @@ function typeBtnOnClick() {
 	$(newInputElement).attr("name", "type");
 	$(newInputElement).attr("id", "type");
 	
-	var content = onBtn.childNodes[0].innerHTML;
+	var content = typeBtn.innerHTML;
 	$(newInputElement).attr("value", content);
 	
 	$(".typeBtnWrap").append(newInputElement);

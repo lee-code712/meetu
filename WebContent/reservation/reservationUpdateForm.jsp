@@ -20,30 +20,6 @@ pageEncoding="UTF-8"%>
 		var end = "${reservation.get(4)}";
 		var reason = "${reservation.get(5)}";
 		var type = "${reservation.get(6)}";
-		
-        $(function () {
-            var btn1 = $(".startTimeBox")
-            btn1.find("a").click(function () {
-                btn1.removeClass("active");
-                $(this).parent().addClass("active");
-            })
-        })
-
-        $(function () {
-            var btn2 = $(".timeBox")
-            btn2.find("a").click(function () {
-                btn2.removeClass("active");
-                $(this).parent().addClass("active");
-            })
-        })
-
-        $(function () {
-            var btn3 = $(".typeBtn")
-            btn3.find("a").click(function () {
-                btn3.removeClass("active");
-                $(this).parent().addClass("active");
-            })
-        })
     </script>
 </head>
 <body>
@@ -140,7 +116,7 @@ pageEncoding="UTF-8"%>
                     </div>
                     <div>
                         <div class="timeBoxWrap">
-                            <div class="startTimeBox" id="9:00"><a>09:00</a></div>
+                            <div class="startTimeBox" id="09:00"><a>09:00</a></div>
                             <div class="startTimeBox" id="10:00"><a>10:00</a></div>
                             <div class="startTimeBox" id="11:00"><a>11:00</a></div>
                         </div>
