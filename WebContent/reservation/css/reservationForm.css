@@ -225,26 +225,7 @@
 		    border-radius: 5px;
 		    text-align: center;
 		    font-weight: regular;
-		    cursor: pointer;
-		}
-		
-		.startTimeBox:hover > a,
-		.startTimeBox:focus > a,
-		.startTimeBox:active > a,
-		.startTimeBox.active > a {
-		    display: flex;
-		    align-items: center;
-		    justify-content: center;
-		    height: 40px;
-		    width: 96px;
-		    border-radius: 5px;
-		    text-align: center;
-		    font-weight: regular;
-		    cursor: pointer;
-		    border: 1px solid #1abc9c;
-		    background: #1abc9c;
-		    color: white;
-		
+		    background: #E5E5E5;
 		}
 		
 		.timeBox {
@@ -257,56 +238,6 @@
 		    border-radius: 5px;
 		    text-align: center;
 		    font-weight: regular;
-		    cursor: pointer;
-		}
-		
-		.timeBox:hover,
-		.startTimeBox:hover {
-		    display: flex;
-		    align-items: center;
-		    justify-content: center;
-		    height: 40px;
-		    width: 96px;
-		    border-radius: 5px;
-		    text-align: center;
-		    font-weight: regular;
-		    cursor: pointer;
-		    border: 1px solid #1abc9c;
-		    background: #1abc9c;
-		    color: white;
-		}
-		
-		.typeBtn:hover {
-		    display: flex;
-		    align-items: center;
-		    justify-content: center;
-		    height: 40px;
-		    width: 96px;
-		    border-radius: 50px;
-		    text-align: center;
-		    font-weight: regular;
-		    cursor: pointer;
-		    border: 1px solid #1abc9c;
-		    background: #1abc9c;
-		    color: white;
-		}
-		
-		.timeBox:hover > a,
-		.timeBox:focus > a,
-		.timeBox:active > a,
-		.timeBox.active > a {
-		    display: flex;
-		    align-items: center;
-		    justify-content: center;
-		    height: 40px;
-		    width: 96px;
-		    border-radius: 5px;
-		    text-align: center;
-		    font-weight: regular;
-		    cursor: pointer;
-		    border: 1px solid #1abc9c;
-		    background: #1abc9c;
-		    color: white;
 		}
 		
 		.typeBtnWrap {
@@ -328,24 +259,6 @@
 		    text-align: center;
 		    font-weight: regular;
 		    cursor: pointer;
-		}
-		
-		.typeBtn:hover > a,
-		.typeBtn:focus > a,
-		.typeBtn:active > a,
-		.typeBtn.active > a {
-		    display: flex;
-		    align-items: center;
-		    justify-content: center;
-		    height: 40px;
-		    width: 96px;
-		    border-radius: 50px;
-		    text-align: center;
-		    font-weight: regular;
-		    cursor: pointer;
-		    border: 1px solid #1abc9c;
-		    background: #1abc9c;
-		    color: white;
 		}
 		
 		.updateBtn,
