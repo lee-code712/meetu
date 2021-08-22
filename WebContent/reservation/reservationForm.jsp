@@ -15,14 +15,6 @@ pageEncoding="UTF-8"%>
 
     <script>
     	var p_user_id = "${param.p_user_id}";
-
-        $(function () {
-            var btn3 = $(".typeBtn")
-            btn3.find("a").click(function () {
-                btn3.removeClass("active");
-                $(this).parent().addClass("active");
-            })
-        });
     </script>
 </head>
 <body>
@@ -79,12 +71,12 @@ pageEncoding="UTF-8"%>
                 <table class="scriptCalendar">
                     <thead>
                     <tr>
-                        <td onClick="prevCalendar();" style="cursor:pointer; color: #1abc9c;">◀</td>
+                        <td id="prevMonth" onClick="getCalendar();" style="cursor:pointer; color: #1abc9c;">◀</td>
                         <td colspan="5">
                             <span id="calYear">YYYY</span>년
                             <span id="calMonth">MM</span>월
                         </td>
-                        <td onClick="nextCalendar();" style="cursor:pointer; color: #1abc9c;">▶</td>
+                        <td id="nextMonth" onClick="getCalendar();" style="cursor:pointer; color: #1abc9c;">▶</td>
                     </tr>
                     <tr>
                         <td style="background: white;">일</td>
