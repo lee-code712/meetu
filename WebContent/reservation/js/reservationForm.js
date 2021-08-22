@@ -275,6 +275,7 @@ function calendarChoiceDay(column, schedules) {
 		$(c).css("background", "#E5E5E5");
 		$(c).css("border", "1px solid #C4C4C4");
 		$(c).css("cursor", "");
+		$(c).children("a").css("color", "black");
 		$(c).attr("isDisabled", "true");
 		$(c).off("click");
 	});
@@ -355,6 +356,7 @@ function startTimeBoxClick() {
 	$(".timeBox").css("background", "#FFFFFF");
 	$(".timeBox").css("border", "1px solid #C4C4C4");
 	$(".timeBox").css("cursor", "");
+	$(".timeBox").children("a").css("color", "black");
 	$(".timeBox").attr("isDisabled", "false"); 
 	$(".timeBox").off("click");
 		
@@ -364,6 +366,7 @@ function startTimeBoxClick() {
 		if($(c).attr("isDisabled") == "false") {
 			$(c).css("background", "#FFFFFF");
 			$(c).css("border", "1px solid #C4C4C4");
+			$(c).children("a").css("color", "black");
 		}
 	});
 	
@@ -371,7 +374,7 @@ function startTimeBoxClick() {
 	
 	$(startTimeBox).css("border", "1px solid  #1abc9c");
 	$(startTimeBox).css("background", "#1abc9c");
-	$(startTimeBox).css("color", "white");
+	$(startTimeBox).children("a").css("color", "white");
 	
 	$("#startTime").remove();
 	
@@ -443,6 +446,7 @@ function timeBoxClick() {
 		if($(c).attr("isDisabled") != "true") {
 			$(c).css("background", "#FFFFFF");
 			$(c).css("border", "1px solid #C4C4C4");
+			$(c).children("a").css("color", "black");
 		}
 	});
 	
@@ -450,7 +454,7 @@ function timeBoxClick() {
 	
 	$(timeBox).css("border", "1px solid  #1abc9c");
 	$(timeBox).css("background", "#1abc9c");
-	$(timeBox).css("color", "white");
+	$(timeBox).children("a").css("color", "white");
 	
 	$("#consultTime").remove();
 	
@@ -471,10 +475,23 @@ function timeBoxClick() {
 function typeBtnClick() {
 	var typeBtn = this;
 	
-	$(typeBtn).css("border", "1px solid  #1abc9c");
-	$(typeBtn).css("background", "#1abc9c");
-	$(typeBtn).css("color", "white");
-	
+	if($(typeBtn).attr('id') == "typeBtnOff") {
+		$("div#typeBtnOff").css("border", "1px solid  #1abc9c");
+		$("div#typeBtnOff").css("background", "#1abc9c");
+		$("div#typeBtnOff > a").css("color", "white");
+		$("div#typeBtnOn").css("border", "1px solid  #C4C4C4");
+		$("div#typeBtnOn").css("background", "#FFFFFF");
+		$("div#typeBtnOn > a").css("color", "black");
+	}
+	else {
+		$("div#typeBtnOn").css("border", "1px solid  #1abc9c");
+		$("div#typeBtnOn").css("background", "#1abc9c");
+		$("div#typeBtnOn > a").css("color", "white");
+		$("div#typeBtnOff").css("border", "1px solid  #C4C4C4");
+		$("div#typeBtnOff").css("background", "#FFFFFF");
+		$("div#typeBtnOff > a").css("color", "black");
+	}
+
 	$("#type").remove();
 	
 	var newInputElement = document.createElement("input");
