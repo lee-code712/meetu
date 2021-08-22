@@ -4,8 +4,7 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 	// 각 버튼에 click 이벤트 설정
 	$(".startTimeBox").click(ck_startTimeBox);
 	$(".timeBox").click(ck_timeBox);
-	$("#typeBtnOff").click(typeBtnOffClick);
-	$("#typeBtnOn").click(typeBtnOnClick);
+	$(".typeBtn").click(typeBtnClick);
 	$(".reservationBtn").click(reservationBtnClick);
 	
 	getCalendar(); // 캘린더 호출
@@ -467,10 +466,14 @@ function timeBoxClick() {
 }
 
 /**
- * @brief   오프라인 버튼 클릭 시
+ * @brief   상담유형 버튼 클릭 시
  */
-function typeBtnOffClick() {
-	var offBtn = this;
+function typeBtnClick() {
+	var typeBtn = this;
+	
+	$(typeBtn).css("border", "1px solid  #1abc9c");
+	$(typeBtn).css("background", "#1abc9c");
+	$(typeBtn).css("color", "white");
 	
 	$("#type").remove();
 	
@@ -479,26 +482,7 @@ function typeBtnOffClick() {
 	$(newInputElement).attr("name", "type");
 	$(newInputElement).attr("id", "type");
 	
-	var content = offBtn.childNodes[0].innerHTML;
-	$(newInputElement).attr("value", content);
-	
-	$(".typeBtnWrap").append(newInputElement);
-}
-
-/**
- * @brief   온라인 버튼 클릭 시
- */
-function typeBtnOnClick() {
-	var onBtn = this;
-	
-	$("#type").remove();
-	
-	var newInputElement = document.createElement("input");
-	$(newInputElement).attr("type", "hidden");
-	$(newInputElement).attr("name", "type");
-	$(newInputElement).attr("id", "type");
-	
-	var content = onBtn.childNodes[0].innerHTML;
+	var content = typeBtn.innerHTML;
 	$(newInputElement).attr("value", content);
 	
 	$(".typeBtnWrap").append(newInputElement);
