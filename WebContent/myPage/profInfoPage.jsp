@@ -288,7 +288,8 @@ pageEncoding="UTF-8"%>
 
         #profMajorMfWrap,
         #profEmailMfWrap,
-        #profLocationMfWrap {
+        #profLocationMfWrap,
+        #profAbleTimeMfWrap {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -297,14 +298,16 @@ pageEncoding="UTF-8"%>
         #profNameMfWrap,
         #profDeptMfWrap,
         #profMajorMfWrap,
-        #profEmailMfWrap {
+        #profEmailMfWrap,
+        #profLocationMfWrap {
             margin-bottom: 50px;
         }
 
 
         #profMajorMfWrap > div,
         #profEmailMfWrap > div,
-        #profLocationMfWrap > div {
+        #profLocationMfWrap > div,
+        #profAbleTimeMfWrap > div {
             display: flex;
         }
 
@@ -312,8 +315,9 @@ pageEncoding="UTF-8"%>
         #profDeptMfTit,
         #profMajorMfTit,
         #profEmailMfTit,
-        #profLocationMfTit {
-            width: 100px;
+        #profLocationMfTit,
+        #profAbleTimeMfTit {
+            width: 140px;
             border-right: 3px solid #1abc9c;
         }
 
@@ -321,7 +325,8 @@ pageEncoding="UTF-8"%>
         #profDeptMfText,
         #profMajorMfText,
         #profEmailMfText,
-        #profLocationMfText {
+        #profLocationMfText,
+        #profAbleTimeMfText {
             margin-left: 40px;
         }
 
@@ -400,71 +405,86 @@ pageEncoding="UTF-8"%>
             </div>
             <div id="profDeptMfWrap">
                 <div id="profDeptMfTit">학과</div>
-                <div id="profDeptMfText">${param.major}</div>
+                <div id="profDeptMfText">(학과)</div>
             </div>
             <div id="profMajorMfWrap">
                 <div>
                     <div id="profMajorMfTit">담당과목</div>
-                    <div id="profMajorMfText">${param.course}</div>
+                    <div id="profMajorMfText">(담당과목)</div>
                 </div>
                 <button id="modifyBtn" onClick="majorMfBtn()">수정</button>
             </div>
             <div id="profEmailMfWrap">
                 <div>
                     <div id="profEmailMfTit">이메일</div>
-                    <div id="profEmailMfText"/>
-                    ${param.email}
+                    <div id="profEmailMfText">(이메일)</div>
                 </div>
+                <button id="modifyBtn" onClick="emailMfBtn()">수정</button>
             </div>
-            <button id="modifyBtn" onClick="emailMfBtn()">수정</button>
-        </div>
-        <div id="profLocationMfWrap">
-            <div>
-                <div id="profLocationMfTit">연구실 위치</div>
-                <div id="profLocationMfText">${param.office}</div>
+            <div id="profLocationMfWrap">
+                <div>
+                    <div id="profLocationMfTit">연구실 위치</div>
+                    <div id="profLocationMfText">(연구실 위치)</div>
+                </div>
+                <button id="modifyBtn" onClick="profLocationMfBtn()">수정</button>
             </div>
-            <button id="modifyBtn" onClick="profLocationMfBtn()">수정</button>
+            <div id="profAbleTimeMfWrap">
+                <div>
+                    <div id="profAbleTimeMfTit">상담 가능 시간</div>
+                    <div id="profAbleTimeMfText">(상담 가능 시간)</div>
+                </div>
+                <button id="modifyBtn" onClick="profAbleTimeMfBtn()">수정</button>
+            </div>
         </div>
     </div>
-</div>
-</div>
-</div>
-<script>
-    function majorMfBtn() {
-        swal({
-            button: "확인",
-            content: {
-                element: "input",
-                attributes: {
-                    placeholder: "새로운 담당과목을 작성해주세요.",
+    <script>
+        function majorMfBtn() {
+            swal({
+                button: "확인",
+                content: {
+                    element: "input",
+                    attributes: {
+                        placeholder: "새로운 담당과목을 작성해주세요.",
+                    },
                 },
-            },
-        });
-    }
+            });
+        }
 
-    function emailMfBtn() {
-        swal({
-            button: "확인",
-            content: {
-                element: "input",
-                attributes: {
-                    placeholder: "새로운 이메일을 작성해주세요.",
+        function emailMfBtn() {
+            swal({
+                button: "확인",
+                content: {
+                    element: "input",
+                    attributes: {
+                        placeholder: "새로운 이메일을 작성해주세요.",
+                    },
                 },
-            },
-        });
-    }
+            });
+        }
 
-    function profLocationMfBtn() {
-        swal({
-            button: "확인",
-            content: {
-                element: "input",
-                attributes: {
-                    placeholder: "새로운 연구실 위치를 작성해주세요.",
+        function profLocationMfBtn() {
+            swal({
+                button: "확인",
+                content: {
+                    element: "input",
+                    attributes: {
+                        placeholder: "새로운 연구실 위치를 작성해주세요.",
+                    },
                 },
-            },
-        });
-    }
-</script>
+            });
+        }
+
+        function profAbleTimeMfBtn() {
+            swal({
+                button: "확인",
+                content: {
+                    element: "input",
+                    attributes: {
+                        placeholder: "새로운 상담 가능 시간을 작성해주세요.",
+                    },
+                },
+            });
+        }
+    </script>
 </body>
 </html>
