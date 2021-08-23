@@ -4,6 +4,7 @@ pageEncoding="UTF-8"%>
 <html>
 
 <head>
+    <link rel="stylesheet" href="/login/css/login.css"/>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,24 +23,27 @@ pageEncoding="UTF-8"%>
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
-    <title>비밀번호 찾기</title>
+    <title>로그인</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-
+    
     <style>
     	 @charset "UTF-8";
 
-        #findPwWrap {
+        #joinWrap {
             width: 500px;
-            margin: 340px auto;
+            margin: 180px auto;
         }
 
         #loginTitle {
-            margin-bottom: 60px;
-            font-size: 24px;
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 48px;
+            font-family: 'Yellowtail', cursive;
             font-weight: bold;
+            color: #1abc9c;
         }
 
         #loginTitle:hover {
@@ -51,12 +55,12 @@ pageEncoding="UTF-8"%>
         }
 
         #id,
-        #email {
+        #pwd {
             background: white;
         }
 
-        #findPwBtn {
-            margin: 60px auto;
+        #login_btn {
+            margin: 30px auto;
             display: block;
             width: 500px;
             height: 40px;
@@ -66,8 +70,21 @@ pageEncoding="UTF-8"%>
             border-radius: 5px;
         }
 
-        #findPwBtn:hover {
+        #login_btn:hover {
             cursor: pointer;
+        }
+
+        #account {
+            margin: 30px 0 20px 0;
+        }
+
+        #link {
+            color: #007BFF;
+        }
+
+        #link:hover {
+            cursor: pointer;
+            text-decoration: underline;
         }
 
         #position {
@@ -77,8 +94,17 @@ pageEncoding="UTF-8"%>
 </head>
 
 <body id="bodyBg">
-    <div id="findPwWrap">
-        <div id="loginTitle"><a>비밀번호 찾기</a></div>
+    <div id="joinWrap">
+        <div id="loginTitle"><a>MEETU</a></div>
+        
+        <%
+            String ck = request.getParameter("ck");
+            
+            if(ck != null) {
+                out.println("<script>alert('로그인에 실패했습니다.');</script>");
+            }
+        %>
+        
         <form method="post" action="login.do">
             <div id="position">
                 <div class="form-check form-check-inline">
@@ -89,6 +115,10 @@ pageEncoding="UTF-8"%>
                     <input class="form-check-input" type="radio" name="role" id="professor_ck" value="1">
                     <label class="form-check-label">교직원</label>
                 </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="role" id="admin_ck" value="2">
+                    <label class="form-check-label">관리자</label>
+                </div>
             </div>
             <div class="form-group">
                 <label>아이디</label>
@@ -96,10 +126,12 @@ pageEncoding="UTF-8"%>
                        placeholder="아이디" required>
             </div>
             <div class="form-group">
-                <label>학교 이메일</label>
-                <input type="text" class="form-control" name="password" id="email" placeholder="학교 이메일" required>
+                <label>비밀번호</label>
+                <input type="password" class="form-control" name="password" id="pwd" placeholder="비밀번호" required>
             </div>
-            <button type="submit" id="findPwBtn">비밀번호 찾기</button>
+            <small id="account" class="form-text text-muted">계정을 잊으셨나요? <a id="link">아이디 찾기</a> 또는 <a href="findPwdForm.do" id="link">비밀번호 찾기</a></small>
+            <small class="form-text text-muted">아직 회원이 아니신가요? <a href="joinForm.do">회원가입</a></small>
+            <button type="submit" id="login_btn">로그인</button>
         </form>
     </div>
 </body>

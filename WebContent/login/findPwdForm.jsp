@@ -4,7 +4,6 @@ pageEncoding="UTF-8"%>
 <html>
 
 <head>
-    <link rel="stylesheet" href="/login/css/login.css"/>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,27 +22,24 @@ pageEncoding="UTF-8"%>
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
-    <title>로그인</title>
+    <title>비밀번호 찾기</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-    
+
     <style>
     	 @charset "UTF-8";
 
-        #joinWrap {
+        #findPwWrap {
             width: 500px;
-            margin: 180px auto;
+            margin: 340px auto;
         }
 
         #loginTitle {
-            margin-bottom: 40px;
-            text-align: center;
-            font-size: 48px;
-            font-family: 'Yellowtail', cursive;
+            margin-bottom: 60px;
+            font-size: 24px;
             font-weight: bold;
-            color: #1abc9c;
         }
 
         #loginTitle:hover {
@@ -55,12 +51,12 @@ pageEncoding="UTF-8"%>
         }
 
         #id,
-        #pwd {
+        #email {
             background: white;
         }
 
-        #login_btn {
-            margin: 30px auto;
+        #findPwBtn {
+            margin: 60px auto;
             display: block;
             width: 500px;
             height: 40px;
@@ -70,21 +66,8 @@ pageEncoding="UTF-8"%>
             border-radius: 5px;
         }
 
-        #login_btn:hover {
+        #findPwBtn:hover {
             cursor: pointer;
-        }
-
-        #account {
-            margin: 30px 0 20px 0;
-        }
-
-        #link {
-            color: #007BFF;
-        }
-
-        #link:hover {
-            cursor: pointer;
-            text-decoration: underline;
         }
 
         #position {
@@ -94,18 +77,20 @@ pageEncoding="UTF-8"%>
 </head>
 
 <body id="bodyBg">
-    <div id="joinWrap">
-        <div id="loginTitle"><a>MEETU</a></div>
-        
-        <%
-            String ck = request.getParameter("ck");
-            
-            if(ck != null) {
-                out.println("<script>alert('로그인에 실패했습니다.');</script>");
-            }
-        %>
-        
-        <form method="post" action="login.do">
+<%
+	String ck = request.getParameter("ck");
+	if(ck != null) {
+		if(ck.equals("-1"))
+			out.println("<script>alert('존재하지 않는 아이디입니다.');</script>");
+		else if(ck.equals("-2"))
+			out.println("<script>alert('이메일을 확인하세요.');</script>");
+		else
+			out.println("<script>alert('등록된 메일로 패스워드를 전송했습니다.');</script>");
+	}
+%>
+    <div id="findPwWrap">
+        <div id="loginTitle"><a>비밀번호 찾기</a></div>
+        <form method="post" action="findPwd.do">
             <div id="position">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="role" id="student_ck" value="0" checked>
@@ -115,10 +100,6 @@ pageEncoding="UTF-8"%>
                     <input class="form-check-input" type="radio" name="role" id="professor_ck" value="1">
                     <label class="form-check-label">교직원</label>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="role" id="admin_ck" value="2">
-                    <label class="form-check-label">관리자</label>
-                </div>
             </div>
             <div class="form-group">
                 <label>아이디</label>
@@ -126,12 +107,10 @@ pageEncoding="UTF-8"%>
                        placeholder="아이디" required>
             </div>
             <div class="form-group">
-                <label>비밀번호</label>
-                <input type="password" class="form-control" name="password" id="pwd" placeholder="비밀번호" required>
+                <label>학교 이메일</label>
+                <input type="text" class="form-control" name="email" id="email" placeholder="학교 이메일" required>
             </div>
-            <small id="account" class="form-text text-muted">계정을 잊으셨나요? <a id="link">아이디 찾기</a> 또는 <a id="link">비밀번호 찾기</a></small>
-            <small class="form-text text-muted">아직 회원이 아니신가요? <a href="joinForm.do">회원가입</a></small>
-            <button type="submit" id="login_btn">로그인</button>
+            <button type="submit" id="findPwBtn">확인</button>
         </form>
     </div>
 </body>

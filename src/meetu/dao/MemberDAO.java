@@ -62,6 +62,46 @@ public class MemberDAO {
 
 		return mem_dto;
 	}
+	
+	// 비밀번호 찾기 - 아이디가 존재하는지 확인 후, 비밀번호와 이메일 반환
+	public ArrayList<String> findPassword(String univ, String id, String role) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<String> find_info = null;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from member_user mu, ";
+			if(role.equals("1")) {
+				sql += "professor p where mu.member_id=p.prof_id and user_id=?";
+			}
+			else {
+				sql += "student s where mu.member_id=s.stu_id and user_id=?";
+			}
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				find_info = new ArrayList<String>();
+				find_info.add(rs.getString("email"));
+				find_info.add(rs.getString("password"));
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return find_info;
+	}
 
 	// 특정 학생 회원 정보 dto 반환
 	public StudentDTO getStudentInfo(String univ, String id) throws NamingException/* , SQLException */ {

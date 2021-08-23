@@ -1,4 +1,4 @@
-package meetu.action;
+package meetu.action.login;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import meetu.dto.MemberUserDTO;
 import meetu.dto.MemberDTO;
 import meetu.dto.UniversityDTO;
+import meetu.action.CommandAction;
 import meetu.dao.MemberDAO;
 import meetu.dao.UniversityDAO;
 
@@ -50,7 +51,7 @@ public class LoginAction implements CommandAction {
 			return "index.do";
 		}
 		else { // 로그인 실패
-			return "/login/login.jsp?ck=0";
+			return "login.do?ck=0";
 		}
 	}
 	
