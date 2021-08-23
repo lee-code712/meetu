@@ -205,7 +205,10 @@ function buildCalendar() {
 	    	$("div#typeBtnOn > a").trigger("click");
 	    }
     }
-    console.log(consult_month, consult_day, start, end, time, reason, type);
+    // console.log(consult_month, consult_day, start, end, time, reason, type);
+    
+    // 화면 상단이 나오도록 설정 
+    window.scrollTo({top:0, left:0, behavior:'auto'});
 }
 
 /**
@@ -228,9 +231,11 @@ function autoLeftPad(num, digit) {
  */
 function calendarChoiceDay(column, schedules) {
     // @param 기존 선택일이 존재하는 경우 기존 선택일의 표시형식을 초기화 한다.
-    if (document.getElementsByClassName("choiceDay")[0]) {
-        document.getElementsByClassName("choiceDay")[0].style.backgroundColor = "#FFFFFF";
-        document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay");
+	if ($("#choiceDay").length > 0) {
+    	if(document.getElementsByClassName("choiceDay")[0]) {
+	        document.getElementsByClassName("choiceDay")[0].style.backgroundColor = "#FFFFFF";
+	        document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay");
+    	}
         // 추가 - 기존 선택일이 존재하는 경우 hidden 값 삭제
         $("#choiceDay").remove();
         $("#choiceMonth").remove();
@@ -313,24 +318,25 @@ function calendarChoiceDay(column, schedules) {
 		else {
 			var disable_dateArr = disable_day.split("-"); // 예약이 차 있는 날짜 배열
 			
-			if (dateObj.getDay() == disable_date && (doMonth.getMonth() + 1) == disable_dateArr[0] && Number(contentDay) == disable_dateArr[1] 			
-				&& (doMonth.getMonth() + 1) != consult_month) { // 예약 시간까지 동일하지만 달이 다른 경우
+			if (dateObj.getDay() == disable_date && (doMonth.getMonth() + 1) == disable_dateArr[0] && Number(contentDay) == disable_dateArr[1]) {
 				// 불가능 시작 시간
 				var disable_timeArr = disable_time.split("~"); // 예약이 차 있는 시간 배열
 				var j = 0;
 				
-				while (classes.length > j) {
-					if($(classes[j]).attr("id") == disable_timeArr[0])
-						break;
-					j++;
-				}
-				
-				while (classes.length > j) {
-					if($(classes[j]).attr("id") == disable_timeArr[1])
-						break;
-					$(classes[j]).attr("isDisabled", "true");
-					classes[j].style.backgroundColor = "#E5E5E5";
-					j++;
+				if(start != disable_timeArr[0]) {
+					while (classes.length > j) {
+						if($(classes[j]).attr("id") == disable_timeArr[0])
+							break;
+						j++;
+					}
+						
+					while (classes.length > j) {
+						if($(classes[j]).attr("id") == disable_timeArr[1])
+							break;
+						$(classes[j]).attr("isDisabled", "true");
+						classes[j].style.backgroundColor = "#E5E5E5";
+						j++;
+					}
 				}
 			}
 		}
