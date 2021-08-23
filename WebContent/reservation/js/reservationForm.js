@@ -101,7 +101,6 @@ function buildCalendar(responseText) {
             }
 
         }
-
         // @param 평일 전월일과 익월일의 데이터 날짜변경
         else {
             let exceptDay = new Date(doMonth.getFullYear(), doMonth.getMonth(), day);
@@ -231,9 +230,11 @@ function autoLeftPad(num, digit) {
  */
 function calendarChoiceDay(column, schedules) {
     // @param 기존 선택일이 존재하는 경우 기존 선택일의 표시형식을 초기화 한다.
-    if (document.getElementsByClassName("choiceDay")[0]) {
-        document.getElementsByClassName("choiceDay")[0].style.backgroundColor = "#FFFFFF";
-        document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay");
+    if ($("#choiceDay").length > 0) {
+    	if(document.getElementsByClassName("choiceDay")[0]) {
+	        document.getElementsByClassName("choiceDay")[0].style.backgroundColor = "#FFFFFF";
+	        document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay");
+    	}
         // 추가 - 기존 선택일이 존재하는 경우 hidden 값 삭제
         $("#choiceDay").remove();
         $("#choiceMonth").remove();
@@ -253,6 +254,7 @@ function calendarChoiceDay(column, schedules) {
     $(newInputDayElement).attr("name", "choiceDay");
 
     var contentDay = column.innerHTML;
+    console.log(contentDay);
 
     $(newInputDayElement).attr("value", contentDay);
 
@@ -265,6 +267,7 @@ function calendarChoiceDay(column, schedules) {
     $(newInputMonthElement).attr("name", "choiceMonth");
 
     var contentMonth = document.getElementById("calMonth").innerHTML;
+    console.log(contentMonth);
     $(newInputMonthElement).attr("value", contentMonth);
 
     $("#navRContentWrap").append(newInputMonthElement);
