@@ -13,13 +13,15 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="../reservation/css/reservationForm.css"/>
 
     <script>
-    	var p_user_id =  "${param.p_user_id}";
+    	var p_user_id =  "${param.p_user_id}"; 	
 	    var consult_month = "${reservation.get(1)}";
 	    var consult_day = "${reservation.get(2)}";
 		var start = "${reservation.get(3)}";
 		var end = "${reservation.get(4)}";
 		var reason = "${reservation.get(5)}";
 		var type = "${reservation.get(6)}";
+		
+		var schedules = ${consultable_times};
     </script>
 </head>
 <body>
@@ -87,12 +89,12 @@ pageEncoding="UTF-8"%>
                 <table class="scriptCalendar">
                     <thead>
                     <tr>
-                        <td id="prevMonth" onClick="getCalendar();" style="cursor:pointer; color: #1abc9c;">◀</td>
+                        <td id="prevMonth" onClick="buildCalendar();" style="cursor:pointer; color: #1abc9c;">◀</td>
                         <td colspan="5">
                             <span id="calYear">YYYY</span>년
                             <span id="calMonth">MM</span>월
                         </td>
-                        <td id="nextMonth" onClick="getCalendar();" style="cursor:pointer; color: #1abc9c;">▶</td>
+                        <td id="nextMonth" onClick="buildCalendar();" style="cursor:pointer; color: #1abc9c;">▶</td>
                     </tr>
                     <tr>
                         <td style="background: white;">일</td>

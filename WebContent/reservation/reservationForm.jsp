@@ -15,6 +15,7 @@ pageEncoding="UTF-8"%>
 
     <script>
     	var p_user_id = "${param.p_user_id}";
+    	var schedules = ${consultable_times};
     </script>
 </head>
 <body>
@@ -71,12 +72,12 @@ pageEncoding="UTF-8"%>
                 <table class="scriptCalendar">
                     <thead>
                     <tr>
-                        <td id="prevMonth" onClick="getCalendar();" style="cursor:pointer; color: #1abc9c;">◀</td>
+                        <td id="prevMonth" onClick="buildCalendar();" style="cursor:pointer; color: #1abc9c;">◀</td>
                         <td colspan="5">
                             <span id="calYear">YYYY</span>년
                             <span id="calMonth">MM</span>월
                         </td>
-                        <td id="nextMonth" onClick="getCalendar();" style="cursor:pointer; color: #1abc9c;">▶</td>
+                        <td id="nextMonth" onClick="buildCalendar();" style="cursor:pointer; color: #1abc9c;">▶</td>
                     </tr>
                     <tr>
                         <td style="background: white;">일</td>

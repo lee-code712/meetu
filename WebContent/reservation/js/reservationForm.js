@@ -7,17 +7,17 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 	$(".typeBtn").click(typeBtnClick);
 	$(".reservationBtn").click(reservationBtnClick);
 	
-	getCalendar(); // 캘린더 호출
+	buildCalendar(); // 캘린더 호출
 });
 
 var today = new Date(); // @param 전역 변수, 오늘 날짜 / 내 컴퓨터 로컬을 기준으로 today에 Date 객체를 넣어줌
 var date = new Date();  // @param 전역 변수, today의 Date를 세어주는 역할
 
 /**
- * @brief   달에 따른 캘린더 호출
- * @details 이전 달, 다음 달 클릭 시 today를 변경해 호출
+ * @brief   캘린더 오픈
+ * @details 날짜 값을 받아 캘린더 폼을 생성하고, 날짜값을 채워넣는다. 이전 달, 다음 달 클릭 시 today를 변경해 호출한다.
  */
-function getCalendar() {
+function buildCalendar() {
 	if(event != null) {
 		var click_month = event.currentTarget.closest("td").id;
 		if(click_month == "prevMonth") {
@@ -27,31 +27,6 @@ function getCalendar() {
 			this.today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate()); // 다음달
 		}
 	}
-	
-	// ajax로 교수 상담 가능 시간 받아와 캘린더 생성
-	$.ajax({
-	 	type: "GET",
-		url: "/reservation/getProfessorSchedule.jsp?p_user_id=" + p_user_id,
-		dataType: "text",
-		success: buildCalendar,
-		error: function(jqXHR, textStatus, errorThrown) {
-			var message = jqXHR.getResponseHeader("Status");
-			if ((message == null) || (message.length <= 0)) {
-				alert("Error! Request status is " + jqXHR.status);
-			} else {
-				alert(message);	
-			}
-		}
-	});
-}
-
-/**
- * @brief   캘린더 오픈
- * @details 날짜 값을 받아 캘린더 폼을 생성하고, 날짜값을 채워넣는다.
- */
-function buildCalendar(responseText) {
-	// alert(responseText);
-	schedules = JSON.parse(responseText);
 
     let doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
     let lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
@@ -125,7 +100,6 @@ function buildCalendar(responseText) {
 					for(var key in schedules) {
 						var able_date = schedules[key].able_date;
 						var able_time = schedules[key].able_time;
-						var p_user_id = schedules[key].p_user_id;
 						var size = Object.keys(schedules).length;
 						
 						var dateObj = new Date(doMonth.getFullYear(), doMonth.getMonth(), Number(day));
@@ -165,7 +139,6 @@ function buildCalendar(responseText) {
 					for(var key in schedules) {
 						var able_date = schedules[key].able_date;
 						var able_time = schedules[key].able_time;
-						var p_user_id = schedules[key].p_user_id;
 						var size = Object.keys(schedules).length;
 						
 						var dateObj = new Date(doMonth.getFullYear(), doMonth.getMonth(), Number(day));
