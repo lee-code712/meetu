@@ -50,12 +50,12 @@ pageEncoding="UTF-8"%>
             background: #FAFAFA;
         }
 
-        #id,
-        #email {
+        #univId,
+        #userId {
             background: white;
         }
 
-        #findPwBtn {
+        #findIdBtn {
             margin: 60px auto;
             display: block;
             width: 500px;
@@ -66,7 +66,7 @@ pageEncoding="UTF-8"%>
             border-radius: 5px;
         }
 
-        #findPwBtn:hover {
+        #findIdBtn:hover {
             cursor: pointer;
         }
 
@@ -92,14 +92,14 @@ pageEncoding="UTF-8"%>
         </div>
         <div class="form-group">
             <label>대학 번호</label>
-            <input type="text" class="form-control" name="user_id" id="id" aria-describedby="emailHelp"
+            <input type="text" class="form-control" name="user_id" id="univId" aria-describedby="emailHelp"
                    placeholder="대학 번호" required>
         </div>
         <div class="form-group">
             <label>학번</label>
-            <input type="text" class="form-control" name="password" id="email" placeholder="학번" required>
+            <input type="text" class="form-control" name="password" id="userId" placeholder="학번" required>
         </div>
-        <button type="submit" id="findPwBtn">아이디 찾기</button>
+        <button type="submit" id="findIdBtn">아이디 찾기</button>
     </form>
 </div>
 </body>
