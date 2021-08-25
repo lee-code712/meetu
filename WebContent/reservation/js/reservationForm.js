@@ -1,5 +1,3 @@
-var schedules = null; // 교수 상담 불가능 일자 정보
-
 $(document).ready(function(){ // html이 로드되면 실행됨 
 	// 각 버튼에 click 이벤트 설정
 	$(".startTimeBox").click(ck_startTimeBox);

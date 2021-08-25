@@ -51,7 +51,7 @@ public class LoginAction implements CommandAction {
 			return "index.do";
 		}
 		else { // 로그인 실패
-			return "login.do?ck=0";
+			return "loginForm.do?ck=0";
 		}
 	}
 	

@@ -46,39 +46,42 @@ public class ReservationFormAction implements CommandAction {
 
 		// 같은 교수에게 예약 레코드가 있는지 여부 구함
 		ReservationDAO reservationDAO = new ReservationDAO();	
-		boolean isReservated = reservationDAO.isReservatedProfessor(univ, s_user_id, p_user_id);
+		boolean is_reservated = reservationDAO.isReservatedProfessor(univ, s_user_id, p_user_id);
 		
-		if(reservation == null && isReservated) { // 예약 레코드가 있는 경우 교수 선택 페이지로 리턴
-			return "/reservation/reservationPage.jsp?isReservated=1";
+		// 해당 교수의 상담 가능 시간 json배열에 저장
+		ArrayList<ConsultableTimeDTO> consultable_times = reservationDAO.getConsultableTimes(univ, p_user_id);
+								
+		JSONObject timeJson = new JSONObject();
+		JSONArray timeJsonArray = new JSONArray();
+ 	
+		if(consultable_times == null) {
+			return "reservation.do?has_consultable_time=0"; // 상담가능 시간대를 아직 작성하지 않은 경우 교수 선택 페이지로 리턴
 		}
 		else {
-			// 해당 교수의 상담 가능 시간 json배열에 저장
-			ArrayList<ConsultableTimeDTO> consultable_times = reservationDAO.getConsultableTimes(univ, p_user_id);
+			Iterator<ConsultableTimeDTO> iterator = consultable_times.iterator();
+									
+			while(iterator.hasNext()) {
+				JSONObject c = null; // JSONArray 내에 들어갈 json
+				ConsultableTimeDTO consultable_time = iterator.next();
+				String able_date = consultable_time.getAbleDate(); // 0-6
+				String able_time = consultable_time.getAbleTime(); // 15:00~17:00
+										
+				c = new JSONObject();
 						
-			JSONObject timeJson = new JSONObject();
-			JSONArray timeJsonArray = new JSONArray();
-						
-			if(consultable_times != null) {
-				Iterator<ConsultableTimeDTO> iterator = consultable_times.iterator();
-							
-				while(iterator.hasNext()) {
-					JSONObject c = null; // JSONArray 내에 들어갈 json
-					ConsultableTimeDTO consultable_time = iterator.next();
-					String able_date = consultable_time.getAbleDate(); // 0-6
-					String able_time = consultable_time.getAbleTime(); // 15:00~17:00
-								
-					c = new JSONObject();
-				
-					if (able_date != null)
-						c.put("able_date", able_date);
-					if (able_time != null)
-						c.put("able_time", able_time);
-							
-					if (c != null)
-						timeJsonArray.add(c);
-				}
+				if (able_date != null)
+					c.put("able_date", able_date);
+				if (able_time != null)
+					c.put("able_time", able_time);
+									
+				if (c != null)
+					timeJsonArray.add(c);
 			}
-						
+		}
+ 
+		if(reservation == null && is_reservated) { 
+			return "reservation.do?is_reservated=1"; // 예약 레코드가 있는 경우 교수 선택 페이지로 리턴
+		}
+		else {
 			// 이미 예약된 시간도 json 배열에 저장
 			ArrayList<ReservationDTO> reservations = reservationDAO.getReservationInfo(univ_dto.getUnivId(), p_user_id);
 						
@@ -148,17 +151,16 @@ public class ReservationFormAction implements CommandAction {
 					}
 				}
 			}
-						
+			
 			timeJson.put("time", timeJsonArray); // json 배열을 저장
-			System.out.println(timeJsonArray);
+			// System.out.println(timeJsonArray);
 			req.setAttribute("consultable_times", timeJsonArray);	
 			
-			
 			if(reservation != null) {
-				return "/reservation/reservationUpdateForm.jsp?" + param; // 예약 내역이 이미 존재하면
+				return "/reservation/reservationUpdateForm.jsp?" + param; // 전달받은 예약 내역이 존재하면 예약 수정 페이지로 이동
 			}
 			else {
-				return "/reservation/reservationForm.jsp?" + param;
+				return "/reservation/reservationForm.jsp?" + param; // 예약 내역이 없으면 예약 페이지로 이동
 			}
 		}
 	}

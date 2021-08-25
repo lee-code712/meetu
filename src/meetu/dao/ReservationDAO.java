@@ -299,10 +299,10 @@ public class ReservationDAO {
 		
 	// 교수 상담 가능 시간 반환
 	public ArrayList<ConsultableTimeDTO> getConsultableTimes(String univ, String p_user_id) throws NamingException {
-		ArrayList<ConsultableTimeDTO> consultableTimes = new ArrayList<ConsultableTimeDTO>();
-		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		ArrayList<ConsultableTimeDTO> consultableTimes = new ArrayList<ConsultableTimeDTO>();
+		
 		try {
 			Connection conn = DBConnection.getConnection(univ);
 			String sql = "select * from consultable_time where p_user_id=?";
@@ -312,16 +312,23 @@ public class ReservationDAO {
 
 			rs = pstmt.executeQuery();
 			
-			while (rs.next()) {
-				ConsultableTimeDTO consultableTime_dto = new ConsultableTimeDTO();
-				
-				consultableTime_dto.setAbleDate(rs.getString("able_date"));
-				consultableTime_dto.setAbleTime(rs.getString("able_time"));
-				consultableTime_dto.setPUserId(p_user_id);
-				
-				consultableTimes.add(consultableTime_dto);
-			}
-								
+			if (rs.next()) {
+				ConsultableTimeDTO consultable_time_dto = new ConsultableTimeDTO();
+				consultable_time_dto.setAbleDate(rs.getString("able_date"));
+				consultable_time_dto.setAbleTime(rs.getString("able_time"));
+				consultable_time_dto.setPUserId(p_user_id);			
+				consultableTimes.add(consultable_time_dto);
+
+				while (rs.next()) {
+					consultable_time_dto = new ConsultableTimeDTO();
+					consultable_time_dto.setAbleDate(rs.getString("able_date"));
+					consultable_time_dto.setAbleTime(rs.getString("able_time"));
+					consultable_time_dto.setPUserId(p_user_id);			
+					consultableTimes.add(consultable_time_dto);
+				}
+			} else {
+				return null;
+			}								
 			// if close
 			if (rs != null)
 				rs.close();

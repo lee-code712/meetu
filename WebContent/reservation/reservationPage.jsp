@@ -417,14 +417,17 @@ pageEncoding="UTF-8"%>
 
 <body id="reservationBodyBg">
     <%
-		String isReservated = request.getParameter("isReservated");
-	            
-		if(isReservated != null) {
+	    String is_reservated = request.getParameter("is_reservated");
+		if(is_reservated != null) {
 			out.println("<script>alert('이미 상담 예약이 신청된 교수님입니다.');</script>");
 		}
 		
-		String add_ck = request.getParameter("add_ck");
+		String has_consultable_time = request.getParameter("has_consultable_time");
+		if(has_consultable_time != null) {
+			out.println("<script>alert('상담이 가능한 시간대가 없습니다.');</script>");
+		}
 		
+		String add_ck = request.getParameter("add_ck");
 		if(add_ck != null) {
 			if(add_ck.equals("1")) {
 				out.println("<script>alert('성공적으로 예약 신청되었습니다.');</script>");
