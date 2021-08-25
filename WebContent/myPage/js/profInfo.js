@@ -10,6 +10,18 @@ function majorMfBtn() {
 	});
 }
 
+function subjectMfBtn() {
+	swal({
+		button: "확인",
+		content: {
+			element: "input",
+			attributes: {
+				placeholder: "담당과목을 작성해주세요.",
+			},
+		},
+	});
+}
+
 function emailMfBtn() {
 	swal({
 		button: "확인",

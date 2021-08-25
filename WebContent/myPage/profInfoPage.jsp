@@ -290,6 +290,7 @@ pageEncoding="UTF-8"%>
         }
 
         #profMajorMfWrap,
+        #profSubjectMfWrap,
         #profEmailMfWrap,
         #profLocationMfWrap,
         #profAbleTimeMfWrap {
@@ -301,6 +302,7 @@ pageEncoding="UTF-8"%>
         #profNameMfWrap,
         #profDeptMfWrap,
         #profMajorMfWrap,
+        #profSubjectMfWrap,
         #profEmailMfWrap,
         #profLocationMfWrap {
             margin-bottom: 50px;
@@ -308,6 +310,7 @@ pageEncoding="UTF-8"%>
 
 
         #profMajorMfWrap > div,
+        #profSubjectMfWrap > div,
         #profEmailMfWrap > div,
         #profLocationMfWrap > div,
         #profAbleTimeMfWrap > div {
@@ -317,6 +320,7 @@ pageEncoding="UTF-8"%>
         #profNameMfTit,
         #profDeptMfTit,
         #profMajorMfTit,
+        #profSubjectMfTit,
         #profEmailMfTit,
         #profLocationMfTit,
         #profAbleTimeMfTit {
@@ -327,6 +331,7 @@ pageEncoding="UTF-8"%>
         #profNameMfText,
         #profDeptMfText,
         #profMajorMfText,
+        #profSubjectMfText,
         #profEmailMfText,
         #profLocationMfText,
         #profAbleTimeMfText {
@@ -416,6 +421,13 @@ pageEncoding="UTF-8"%>
                     <div id="profMajorMfText">${param.major}</div>
                 </div>
                 <button id="modifyBtn" onClick="majorMfBtn()">수정</button>
+            </div>
+            <div id="profSubjectMfWrap">
+                <div>
+                    <div id="profSubjectMfTit">담당과목</div>
+                    <div id="profSubjectMfText">(담당과목)</div>
+                </div>
+                <button id="modifyBtn" onClick="subjectMfBtn()">수정</button>
             </div>
             <div id="profEmailMfWrap">
                 <div>
