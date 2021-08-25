@@ -8,7 +8,7 @@
 
 <%!@SuppressWarnings("unchecked")%>
 <%
-	MemberDAO dao = new MemberDAO();
+	MemberDAO dao = MemberDAO.getInstance();
 	
 	UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
 	String college_id = request.getParameter("college_id");

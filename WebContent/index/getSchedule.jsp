@@ -22,17 +22,17 @@
 %>
 
 <%
-	ReservationDAO reservationDAO = new ReservationDAO();
-	MemberDAO memberDAO = new MemberDAO();
+	ReservationDAO reservation_dao = ReservationDAO.getInstance();
+	MemberDAO member_dao = MemberDAO.getInstance();
 
 	String user_id = (String) session.getAttribute("user_id");
 	UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
-	MemberDTO loginedMember_dto = (MemberDTO) session.getAttribute("mem_dto");
+	MemberDTO logined_member_dto = (MemberDTO) session.getAttribute("mem_dto");
 	
-	ArrayList<ReservationDTO> reservations = reservationDAO.getReservationInfo(univ_dto.getUnivId(), user_id);
-	reservations.sort(ReservationsComparator);
+	ArrayList<ReservationDTO> reservations = reservation_dao.getReservationInfo(univ_dto.getUnivId(), user_id);
 	
 	if(reservations != null) {
+		reservations.sort(ReservationsComparator);
 		JSONObject reservationJson = new JSONObject();
 		JSONArray reservationJsonArray = new JSONArray(); 
 		
@@ -49,17 +49,17 @@
 			String s_user_id = reservations.get(i).getSUserId();
 			
 			// 이름 가져오기
-			MemberDTO memberDTO = null;
+			MemberDTO member_dto = null;
 			String name = "";
-			if (loginedMember_dto.getRole().equals("1")) { // 교수 회원의 경우
-				memberDTO = memberDAO.getMemberInfo(univ_dto.getUnivId(), s_user_id); // 학생의 이름이 달력에 출력되어야 함
+			if (logined_member_dto.getRole().equals("1")) { // 교수 회원의 경우
+				member_dto = member_dao.getMemberInfo(univ_dto.getUnivId(), s_user_id); // 학생의 이름이 달력에 출력되어야 함
 			}
 			else { // 학생 회원의 경우
-				memberDTO = memberDAO.getMemberInfo(univ_dto.getUnivId(), p_user_id);
+				member_dto = member_dao.getMemberInfo(univ_dto.getUnivId(), p_user_id);
 			}
 			
-			if (memberDTO != null) {
-				name = memberDTO.getName();
+			if (member_dto != null) {
+				name = member_dto.getName();
 			}
 				
 			r = new JSONObject();

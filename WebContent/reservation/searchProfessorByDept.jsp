@@ -9,7 +9,7 @@
 
 <%!@SuppressWarnings("unchecked")%>
 <%
-	MemberDAO dao = new MemberDAO();
+	MemberDAO dao = MemberDAO.getInstance();
 
 	UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
 	String dept_name = request.getParameter("dept_name");

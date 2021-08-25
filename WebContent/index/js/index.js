@@ -269,48 +269,49 @@ function getSchedule() {
 
 function updatePage (responseText) {
 	// alert("schedules: " + responseText);
-	reservations = JSON.parse(responseText);
 	
-	if (reservations == null) {
+	if (responseText == null || responseText == "" || (typeof(responseText) == "string" && !responseText.trim())) {
 		var newDivElement = document.createElement("div");
 		var content = "예정된 상담이 없습니다.";
+		$(newDivElement).attr("id", "cal_msg");
 		newDivElement.innerHTML = content;
 			
 		$("#calendar_wrap").prepend(newDivElement);
 	}
 	else {
+		reservations = JSON.parse(responseText);
 		$("#cal_msg").remove();
-	}
-	
-	setData(reservations); // 달력에 일정 그리기
-	
-	count = 0;
-	Array.from(reservations).forEach(function(reservation, idx) {
-		var start_time = reservation.start_time;
-		var name = reservation.name;
-		var s_name = reservation.s_name;
-		var approval = reservation.approval;
-		var reason = reservation.reason;
 		
-		if (approval == 1 && count < 5) {
-			count++;
-			var res_time = start_time.substring(5, 16);
+		setData(reservations); // 달력에 일정 그리기
+	
+		count = 0;
+		Array.from(reservations).forEach(function(reservation, idx) {
+			var start_time = reservation.start_time;
+			var name = reservation.name;
+			var s_name = reservation.s_name;
+			var approval = reservation.approval;
+			var reason = reservation.reason;
 			
+			if (approval == 1 && count < 5) {
+				count++;
+				var res_time = start_time.substring(5, 16);
+				
+				var newDivElement = document.createElement("div");
+				$(newDivElement).attr("id", "cal_msg");
+				var content = res_time + ", " + name + " 님과 " + reason;
+				newDivElement.innerHTML = content;
+				
+				$("#calendar_wrap").append(newDivElement);
+			}
+		});
+		
+		if (count == 0) {
 			var newDivElement = document.createElement("div");
 			$(newDivElement).attr("id", "cal_msg");
-			var content = res_time + ", " + name + " 님과 " + reason;
+			var content = "예정된 상담이 없습니다.";
 			newDivElement.innerHTML = content;
-			
-			$("#calendar_wrap").append(newDivElement);
+				
+			$("#calendar_wrap").prepend(newDivElement);
 		}
-	});
-	
-	if (count == 0) {
-		var newDivElement = document.createElement("div");
-		$(newDivElement).attr("id", "cal_msg");
-		var content = "예정된 상담이 없습니다.";
-		newDivElement.innerHTML = content;
-			
-		$("#calendar_wrap").prepend(newDivElement);
 	}
 }
