@@ -54,6 +54,7 @@ function updatePage(responseText) {
 	Array.from(profs).forEach(function(prof, idx) {
 		var p_user_id = prof.p_user_id;
 		var name = prof.name;
+		var dept = prof.dept;
 		var major = prof.major;
 		var email = prof.email;
 		var office = prof.office;
@@ -74,7 +75,7 @@ function updatePage(responseText) {
 		
 		// 교수 소속 학과
 		var newMajorTdElement = document.createElement("td");
-		newMajorTdElement.innerHTML = major;
+		newMajorTdElement.innerHTML = dept;
 		
 		// div를 자식으로 갖는 info td
 		var newInfoTdElement = document.createElement("td");

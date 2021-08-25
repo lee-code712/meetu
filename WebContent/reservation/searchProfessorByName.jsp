@@ -54,12 +54,16 @@
 		// 대학 구성원 정보를 가져와 교수 이름 구하기
 		ArrayList<MemberDTO> members = dao.getAllMembers(univ_dto.getUnivId());
 		String name = null;
+		String dept_name = null;
 		
 		for (int j = 0; j < members.size(); j++) {
 			String member_id = members.get(j).getMemberId();
 			
 			if (member_id.equals(prof_id)) {
 				name = members.get(j).getName();
+				// 학과 정보 구하기
+				DepartmentDTO dept_dto = dao.getDepartmentInfo(members.get(j), univ_dto.getUnivId());
+				dept_name = dept_dto.getDeptName();
 			}
 		}
 		
@@ -75,6 +79,8 @@
 			p.put("p_user_id", user_id);
 		if (name != null)
 			p.put("name", name);
+		if(dept_name != null)
+			p.put("dept", dept_name);
 		if (major != null)
 			p.put("major", major);
 		if (email != null)

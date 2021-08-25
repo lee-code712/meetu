@@ -75,6 +75,8 @@
 			p.put("p_user_id", user_id);
 		if (name != null)
 			p.put("name", name);
+		if(dept_name != null)
+			p.put("dept", dept_name);
 		if (major != null)
 			p.put("major", major);
 		if (email != null)
