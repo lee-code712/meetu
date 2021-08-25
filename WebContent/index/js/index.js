@@ -223,7 +223,7 @@ function drawSche(jsonData) {
 		                $tdSche.eq(dateMatch).css("color", "white");
 		                $tdSche.eq(dateMatch).css("padding-left", "10px");
 		                $tdSche.eq(dateMatch).css("border-radius", "3px");
-		                $tdSche.eq(dateMatch).css("width", "100px");
+		                $tdSche.eq(dateMatch).css("width", "110px");
 		                $tdSche.eq(dateMatch).css("font-size", "14px");
 					});
             	}

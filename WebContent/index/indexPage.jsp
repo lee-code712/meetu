@@ -243,7 +243,7 @@ pageEncoding="UTF-8"%>
         table.calendar td {
             vertical-align: top;
             border: 1px solid #eee;
-            width: 80px;
+            width: 120px;
             background: white;
         }
 
