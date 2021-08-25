@@ -202,6 +202,7 @@ function setData(reservations) {
 //스케줄 그리기
 function drawSche(jsonData) {
     var dateMatch = null;
+
     for (var i = firstDay.getDay(); i < firstDay.getDay() + lastDay.getDate(); i++) {
         var txt = "";
         // txt = jsonData[year]; // {"08":{"7":"000 교수님 9:00","15":"000 교수님 10:00","23":"000 교수님 12:00"},"09":{"4":"000 교수님 13:00","23":"000 교수님 14:00"}}
@@ -270,7 +271,14 @@ function updatePage (responseText) {
 	// alert("schedules: " + responseText);
 	reservations = JSON.parse(responseText);
 	
-	if (reservations != null) {
+	if (reservations == null) {
+		var newDivElement = document.createElement("div");
+		var content = "예정된 상담이 없습니다.";
+		newDivElement.innerHTML = content;
+			
+		$("#calendar_wrap").prepend(newDivElement);
+	}
+	else {
 		$("#cal_msg").remove();
 	}
 	
@@ -284,7 +292,7 @@ function updatePage (responseText) {
 		var approval = reservation.approval;
 		var reason = reservation.reason;
 		
-		if(approval == 1 && count < 5) {
+		if (approval == 1 && count < 5) {
 			count++;
 			var res_time = start_time.substring(5, 16);
 			
@@ -296,4 +304,13 @@ function updatePage (responseText) {
 			$("#calendar_wrap").prepend(newDivElement);
 		}
 	});
+	
+	if (count == 0) {
+		var newDivElement = document.createElement("div");
+		$(newDivElement).attr("id", "cal_msg");
+		var content = "예정된 상담이 없습니다.";
+		newDivElement.innerHTML = content;
+			
+		$("#calendar_wrap").prepend(newDivElement);
+	}
 }

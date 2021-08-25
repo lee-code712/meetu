@@ -529,7 +529,7 @@ pageEncoding="UTF-8"%>
         }
         
         #blank {
-        height: 80px;
+        	height: 80px;
         }
     </style>
 </head>
@@ -633,7 +633,7 @@ pageEncoding="UTF-8"%>
 						일정 더 보기
 					</div> -->
                 </div>
-                <div>
+                <div class="cal_body">
                     <div class="cal_top">
                         <div id="cal_top_left">
                             <span id="cal_top_year"></span>.
