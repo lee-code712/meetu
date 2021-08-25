@@ -8,6 +8,9 @@ pageEncoding="UTF-8"%>
     <title>내 정보</title>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/myPage/js/profInfo.js"></script>
+    
     <style>
         * {
             padding: 0px;
@@ -401,90 +404,54 @@ pageEncoding="UTF-8"%>
         <div id="navRContentWrap">
             <div id="profNameMfWrap">
                 <div id="profNameMfTit">교수명</div>
-                <div id="profNameMfText">${mem_dto.getName()}</div>
+                <div id="profNameMfText">${param.name}</div>
             </div>
             <div id="profDeptMfWrap">
                 <div id="profDeptMfTit">학과</div>
-                <div id="profDeptMfText">(학과)</div>
+                <div id="profDeptMfText">${param.dept}</div>
             </div>
             <div id="profMajorMfWrap">
                 <div>
-                    <div id="profMajorMfTit">담당과목</div>
-                    <div id="profMajorMfText">(담당과목)</div>
+                    <div id="profMajorMfTit">전공</div>
+                    <div id="profMajorMfText">${param.major}</div>
                 </div>
                 <button id="modifyBtn" onClick="majorMfBtn()">수정</button>
             </div>
             <div id="profEmailMfWrap">
                 <div>
                     <div id="profEmailMfTit">이메일</div>
-                    <div id="profEmailMfText">(이메일)</div>
+                    <div id="profEmailMfText">${param.email}</div>
                 </div>
                 <button id="modifyBtn" onClick="emailMfBtn()">수정</button>
             </div>
             <div id="profLocationMfWrap">
                 <div>
                     <div id="profLocationMfTit">연구실 위치</div>
-                    <div id="profLocationMfText">(연구실 위치)</div>
+                    <div id="profLocationMfText">${param.office}</div>
                 </div>
                 <button id="modifyBtn" onClick="profLocationMfBtn()">수정</button>
             </div>
             <div id="profAbleTimeMfWrap">
                 <div>
                     <div id="profAbleTimeMfTit">상담 가능 시간</div>
-                    <div id="profAbleTimeMfText">(상담 가능 시간)</div>
+                    <div id="profAbleTimeMfText">
+						<c:forEach items="${consultable_times}" var="list">
+							<c:choose>
+								<c:when test="${list.able_date == 0}">일</c:when>
+								<c:when test="${list.able_date == 1}">월</c:when>
+								<c:when test="${list.able_date == 2}">화</c:when>
+								<c:when test="${list.able_date == 3}">수</c:when>
+								<c:when test="${list.able_date == 4}">목</c:when>
+								<c:when test="${list.able_date == 5}">금</c:when>
+								<c:otherwise>토</c:otherwise>
+							</c:choose>
+							 ${list.able_time}<br/>
+						</c:forEach>
+					</div>
                 </div>
                 <button id="modifyBtn" onClick="profAbleTimeMfBtn()">수정</button>
             </div>
         </div>
     </div>
-    <script>
-        function majorMfBtn() {
-            swal({
-                button: "확인",
-                content: {
-                    element: "input",
-                    attributes: {
-                        placeholder: "새로운 담당과목을 작성해주세요.",
-                    },
-                },
-            });
-        }
-
-        function emailMfBtn() {
-            swal({
-                button: "확인",
-                content: {
-                    element: "input",
-                    attributes: {
-                        placeholder: "새로운 이메일을 작성해주세요.",
-                    },
-                },
-            });
-        }
-
-        function profLocationMfBtn() {
-            swal({
-                button: "확인",
-                content: {
-                    element: "input",
-                    attributes: {
-                        placeholder: "새로운 연구실 위치를 작성해주세요.",
-                    },
-                },
-            });
-        }
-
-        function profAbleTimeMfBtn() {
-            swal({
-                button: "확인",
-                content: {
-                    element: "input",
-                    attributes: {
-                        placeholder: "새로운 상담 가능 시간을 작성해주세요.",
-                    },
-                },
-            });
-        }
-    </script>
 </body>
 </html>

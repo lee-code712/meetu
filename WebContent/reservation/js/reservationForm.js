@@ -225,8 +225,6 @@ function calendarChoiceDay(column, schedules) {
     $(newInputDayElement).attr("name", "choiceDay");
 
     var contentDay = column.innerHTML;
-    console.log(contentDay);
-
     $(newInputDayElement).attr("value", contentDay);
 
     $("#navRContentWrap").append(newInputDayElement);
@@ -238,7 +236,6 @@ function calendarChoiceDay(column, schedules) {
     $(newInputMonthElement).attr("name", "choiceMonth");
 
     var contentMonth = document.getElementById("calMonth").innerHTML;
-    console.log(contentMonth);
     $(newInputMonthElement).attr("value", contentMonth);
 
     $("#navRContentWrap").append(newInputMonthElement);

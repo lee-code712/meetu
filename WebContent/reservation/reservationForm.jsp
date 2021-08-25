@@ -55,8 +55,10 @@ pageEncoding="UTF-8"%>
             <div id="navListWrap">
             	<div class="navListName">교수명</div>
                 <div class="navList" id="name">${param.name}</div>
+                <div class="navListName">학과</div>
+                <div class="navList" id="dept">${param.dept}</div>
                 <div class="navListName">전공</div>
-                <div class="navList" id="dept">${param.major}</div>
+                <div class="navList" id="major">${param.major}</div>
                 <div class="navListName">담당과목</div>
                 <div class="navList" id="course">${param.course}</div>
                 <div class="navListName">이메일</div>

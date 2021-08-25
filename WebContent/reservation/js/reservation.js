@@ -92,19 +92,6 @@ function updatePage(responseText) {
 		$(newInfoBoxDivElement).attr("id", "infoBox-content");
 		
 		// infoBox div의 자식 p
-		// 교수명 infoTitle
-		var newNameTitlePElement = document.createElement("p");
-		
-		var newNameTitleSpanElement = document.createElement("span");
-		$(newNameTitleSpanElement).attr("id", "infoTitle");
-		newNameTitleSpanElement.innerHTML = "교수명";
-		
-		$(newNameTitlePElement).append(newNameTitleSpanElement);
-		
-		// 교수명
-		var newNamePElement = document.createElement("p");
-		newNamePElement.innerHTML = name;
-		
 		// 전공 infoTitle
 		var newMajorTitlePElement = document.createElement("p");
 		
@@ -158,8 +145,6 @@ function updatePage(responseText) {
 		newOfficePElement.innerHTML = office;
 		
 		// infoBox-content div에 p들 추가
-		$(newInfoBoxDivElement).append(newNameTitlePElement);
-		$(newInfoBoxDivElement).append(newNamePElement);
 		$(newInfoBoxDivElement).append(newMajorTitlePElement);
 		$(newInfoBoxDivElement).append(newMajorPElement);
 		$(newInfoBoxDivElement).append(newCourseTitlePElement);

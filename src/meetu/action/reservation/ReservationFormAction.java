@@ -27,6 +27,7 @@ public class ReservationFormAction implements CommandAction {
 		// 예약 페이지에서 보일 교수 정보 반환
 		MemberDAO mem_dao = MemberDAO.getInstance();
 		MemberDTO mem_dto = mem_dao.getMemberInfo(univ, p_user_id);
+		DepartmentDTO dept_dto = mem_dao.getDepartmentInfo(mem_dto, univ);
 		ProfessorDTO prof_dto = mem_dao.getProfessorInfo(univ, p_user_id);
 		ArrayList<CourseDTO> courses = mem_dao.getCourseInfo(prof_dto, univ);
 		String course = "";		
@@ -39,6 +40,7 @@ public class ReservationFormAction implements CommandAction {
 				
 		String param = "p_user_id=" + p_user_id;
 		param += "&name=" + mem_dto.getName();
+		param += "&dept=" + dept_dto.getDeptName();
 		param += "&major=" + prof_dto.getMajor();
 		param += "&email=" + prof_dto.getEmail();
 		param += "&office=" + prof_dto.getOffice();

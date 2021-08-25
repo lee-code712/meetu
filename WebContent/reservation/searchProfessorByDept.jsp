@@ -63,12 +63,9 @@
 			}
 		}
 		
-		// 교수 학과 정보 구하기
-		DepartmentDTO dept_dto = dao.getDepartmentDTO(univ_dto, profs.get(i).getDeptId());
-		String major = dept_dto.getDeptName();
-		
 		// 이하 정보는 professor 테이블에 존재
 		
+		String major = profs.get(i).getMajor();
 		String email = profs.get(i).getEmail();
 		String office = profs.get(i).getOffice();
 		
