@@ -301,7 +301,7 @@ function updatePage (responseText) {
 			var content = res_time + ", " + name + " 님과 " + reason;
 			newDivElement.innerHTML = content;
 			
-			$("#calendar_wrap").prepend(newDivElement);
+			$("#calendar_wrap").append(newDivElement);
 		}
 	});
 	

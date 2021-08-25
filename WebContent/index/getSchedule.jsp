@@ -11,6 +11,16 @@
 <%@ page import="meetu.dto.UniversityDTO"%>
 <%@ page import="meetu.dto.ProfessorDTO"%>
 
+<%!
+	public static Comparator<ReservationDTO> ReservationsComparator = new Comparator<ReservationDTO>() 
+	{
+	    @Override
+	    public int compare(ReservationDTO r1, ReservationDTO r2) {
+	        return ((r1.getStartTime()).compareTo(r2.getStartTime()));
+	    }
+	};
+%>
+
 <%
 	ReservationDAO reservationDAO = new ReservationDAO();
 	MemberDAO memberDAO = new MemberDAO();
@@ -20,6 +30,7 @@
 	MemberDTO loginedMember_dto = (MemberDTO) session.getAttribute("mem_dto");
 	
 	ArrayList<ReservationDTO> reservations = reservationDAO.getReservationInfo(univ_dto.getUnivId(), user_id);
+	reservations.sort(ReservationsComparator);
 	
 	if(reservations != null) {
 		JSONObject reservationJson = new JSONObject();
@@ -62,8 +73,10 @@
 			r.put("s_user_id", s_user_id);
 			r.put("name", name);
 		
-			if (r != null)
+			if (r != null) {
 				reservationJsonArray.add(r);
+			}
+				
 		}
 		
 		reservationJson.put("reservation", reservationJsonArray); // json 배열을 저장
