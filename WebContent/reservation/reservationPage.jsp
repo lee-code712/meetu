@@ -412,6 +412,10 @@ pageEncoding="UTF-8"%>
 		#reservationBodyBg {
 		    background: #FAFAFA;
 		}
+		
+		#blankDiv {
+        	width: 60px;
+        }
     </style>
 </head>
 
@@ -450,7 +454,7 @@ pageEncoding="UTF-8"%>
                 </c:if>
                	<c:if test="${mem_dto.getRole()=='1'}">             
                 	<div><a id="messageIcon" href="message.do">쪽지함</a></div>
-                	<div><a id="reserveIcon" href="#"/></div>
+                	<div id="blankDiv"></div>
                 </c:if>
             </div>
         </div>

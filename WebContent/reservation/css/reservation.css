@@ -403,3 +403,7 @@ a:hover {
     color: white;
     border-radius: 30px;
 }
+
+#blankDiv {
+        	width: 60px;
+        }

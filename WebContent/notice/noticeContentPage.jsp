@@ -283,6 +283,10 @@ a:hover {
     padding: 0 4px 0 0;
     height: 100%;
 }
+
+#blankDiv {
+        	width: 60px;
+        }
     </style>
 </head>
 <body id="ntContentPgBg">
@@ -298,7 +302,7 @@ a:hover {
                 </c:if>
                	<c:if test="${mem_dto.getRole()=='1'}">             
                 	<div><a id="messageIcon" href="message.do">쪽지함</a></div>
-                	<div><a id="reserveIcon" href="#"/></div>
+                	<div id="blankDiv"></div>
                 </c:if>
             </div>
         </div>
@@ -306,9 +310,7 @@ a:hover {
             <div id="dropdown">
                 <div id="dropdown-button">${mem_dto.getName()}님 😊</div>
                 <div id="dropdown-content">
-                    <c:if test="${mem_dto.getRole()!='2'}">
-		    			<a href="myPage.do">마이페이지</a>
-					</c:if>
+                    <a href="myPage.do">마이페이지</a>
                     <a href="logout.do">로그아웃</a>
                 </div>
             </div>
@@ -316,7 +318,6 @@ a:hover {
         </div>
     </div>
 </div>
-
 <div id="noticeContentWrap">
     <div id="ntContentHeader">
         <div id="ntContentTit">${notice_dto.getTitle()}</div>

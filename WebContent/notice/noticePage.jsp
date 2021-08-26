@@ -349,11 +349,15 @@ a {
         #searchText:focus {
             outline: none;
         }
+        
+        #blankDiv {
+        	width: 60px;
+        }
     </style>
 </head>
 
 <body id="noticeBodyBg">
-	<div id="header">
+<div id="header">
     <div id="headerInner">
         <div id="headerInnerL">
             <div id="title"><a href="index.do">MEETU</a></div>
@@ -365,7 +369,7 @@ a {
                 </c:if>
                	<c:if test="${mem_dto.getRole()=='1'}">             
                 	<div><a id="messageIcon" href="message.do">쪽지함</a></div>
-                	<div><a id="reserveIcon" href="#"/></div>
+                	<div id="blankDiv"></div>
                 </c:if>
             </div>
         </div>
@@ -373,9 +377,7 @@ a {
             <div id="dropdown">
                 <div id="dropdown-button">${mem_dto.getName()}님 😊</div>
                 <div id="dropdown-content">
-                	<c:if test="${mem_dto.getRole()!='2'}">
-		    			<a href="myPage.do">마이페이지</a>
-					</c:if>                   
+                    <a href="myPage.do">마이페이지</a>
                     <a href="logout.do">로그아웃</a>
                 </div>
             </div>

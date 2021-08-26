@@ -411,3 +411,8 @@
 		#noticeImg:hover {
 		    cursor: pointer;
 		}
+
+		
+		#blankDiv {
+        	width: 60px;
+        }

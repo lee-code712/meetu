@@ -386,6 +386,10 @@ pageEncoding="UTF-8" %>
         #textBtn:hover {
             cursor: pointer;
         }
+        
+        #blankDiv {
+        	width: 60px;
+        }
 
     </style>
 </head>
@@ -404,7 +408,7 @@ pageEncoding="UTF-8" %>
                 </c:if>
                	<c:if test="${mem_dto.getRole()=='1'}">             
                 	<div><a id="messageIcon" href="message.do">쪽지함</a></div>
-                	<div><a id="reserveIcon" href="#"/></div>
+                	<div id="blankDiv"></div>
                 </c:if>
             </div>
         </div>
@@ -416,7 +420,7 @@ pageEncoding="UTF-8" %>
                     <a href="logout.do">로그아웃</a>
                 </div>
             </div>
-            <img src="../images/bell.svg" id="noticeImg"/>
+            <img src="/images/bell.svg" id="noticeImg"/>
         </div>
     </div>
 </div>
