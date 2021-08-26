@@ -98,7 +98,6 @@ pageEncoding="UTF-8" %>
 
 <script id="rendered-js">
     var div2 = document.getElementsByClassName("list");
-
     function handleClick(event) {
         console.log(event.target);
         console.log(event.target.classList);
@@ -113,7 +112,6 @@ pageEncoding="UTF-8" %>
             event.target.classList.add("clicked");
         }
     }
-
     function init() {
         for (var i = 0; i < div2.length; i++) {
             if (window.CP.shouldStopExecution(1)) break;
@@ -121,7 +119,6 @@ pageEncoding="UTF-8" %>
         }
         window.CP.exitedLoop(1);
     }
-
     init();
 </script>
 
