@@ -218,7 +218,7 @@ a:hover {
 
 #navRContentWrap {
     width: 776px;
-    padding: 20px;
+    padding: 0px 20px;
     background: white;
     border-radius: 0px 0px 5px 5px;
     border-bottom: 1px solid #EAEAEA;
@@ -264,7 +264,7 @@ a:hover {
     width: 316px;
     height: 180px;
     font-size: 14px;
-    background-image: url("/images/user.svg");
+    background-image: url("../images/user.svg");
     background-position: center;
     background-size: cover;
 }
@@ -295,8 +295,10 @@ a:hover {
 #profMajorMfWrap,
 #profSubjectMfWrap,
 #profEmailMfWrap,
-#profLocationMfWrap {
-    margin-bottom: 40px;
+#profLocationMfWrap,
+#profAbleTimeMfWrap {
+    padding: 20px 0px;
+    border-bottom: 1px dotted #EAEAEA;
 }
 
 #profNameMfTit,
@@ -322,4 +324,14 @@ a:hover {
 
 #blankDiv {
     width: 60px;
+}
+
+#profSubjectMfText,
+#profAbleTimeMfText {
+    margin-bottom: 10px;
+}
+
+#profSubjectMfText:last-child,
+#profAbleTimeMfText:last-child {
+    margin-bottom: 0px;
 }
