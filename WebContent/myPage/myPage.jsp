@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
     <meta charset="UTF-8">
     <title>마이페이지</title>
 
-    <link rel="stylesheet" href="../myPage/css/myPage.css"/>
+    <link rel="stylesheet" href="/myPage/css/myPage.css"/>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -38,9 +38,9 @@ pageEncoding="UTF-8"%>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/myPage/js/myPage.js"></script>
-
+    
     <style>
-        @charset "UTF-8";
+    	@charset "UTF-8";
         ul, li {
             text-decoration: none;
             list-style: none;
@@ -148,7 +148,7 @@ pageEncoding="UTF-8"%>
         #thBorder th {
             text-align: center;
         }
-        @charset "UTF-8";
+        
         ul, li {
             text-decoration: none;
             list-style: none;
