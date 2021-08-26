@@ -54,7 +54,7 @@ function drawCalendar() {
         for (var j = 0; j < 7; j++) {
             setTableHTML += '<td style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap">';
             setTableHTML += '    <div style="padding: 0 0 0 10px; background: white" class="cal-day"></div>';
-            setTableHTML += '    <div class="cal-schedule"></div>';
+            setTableHTML += '    <div class="cal-schedule" id="cal-schedule"></div>';
             setTableHTML += '</td>';
         }
         setTableHTML += '</tr>';
@@ -218,13 +218,30 @@ function drawSche(jsonData) {
 						content = dateData[i]; // {"20":"박창섭 교수님 10:00"}
 						// alert(JSON.stringify(content));
 		                dateMatch = firstDay.getDay() + i - 1;
-		                $tdSche.eq(dateMatch).text(content);
+
+						if (content != "undefined" && content != null) {
+							var newDivElement = document.createElement("div");
+							$(newDivElement).attr("class", "cal-schedule");
+							
+							$(newDivElement).css("background", "#1abc9c");
+			                $(newDivElement).css("color", "white");
+			                $(newDivElement).css("padding-left", "10px");
+			                $(newDivElement).css("border-radius", "3px");
+			                $(newDivElement).css("width", "110px");
+			                $(newDivElement).css("font-size", "14px");
+							
+							newDivElement.innerHTML = content;
+								
+							$tdSche.eq(dateMatch).append(newDivElement);
+						}
+					
+						/*$tdSche.eq(dateMatch).text(content);
 		                $tdSche.eq(dateMatch).css("background", "#1abc9c");
 		                $tdSche.eq(dateMatch).css("color", "white");
 		                $tdSche.eq(dateMatch).css("padding-left", "10px");
 		                $tdSche.eq(dateMatch).css("border-radius", "3px");
 		                $tdSche.eq(dateMatch).css("width", "110px");
-		                $tdSche.eq(dateMatch).css("font-size", "14px");
+		                $tdSche.eq(dateMatch).css("font-size", "14px");*/
 					});
             	}
 			});
