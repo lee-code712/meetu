@@ -248,5 +248,5 @@ function readReservationInfo() {
 	res_id = event.currentTarget.closest("tr").id;
 	var url = "reservationInfoPage.do?res_id=" + res_id;
 	
-	window.open(url, "childform", "width=700; height=400; left=300; top=130; resizable = no;");
+	window.open(url, "childform", "width=600; height=500; left=300; top=130; resizable = no;");
 }
