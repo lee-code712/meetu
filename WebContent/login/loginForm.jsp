@@ -28,69 +28,6 @@ pageEncoding="UTF-8"%>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-    
-    <style>
-    	 @charset "UTF-8";
-
-        #joinWrap {
-            width: 500px;
-            margin: 180px auto;
-        }
-
-        #loginTitle {
-            margin-bottom: 40px;
-            text-align: center;
-            font-size: 48px;
-            font-family: 'Yellowtail', cursive;
-            font-weight: bold;
-            color: #1abc9c;
-        }
-
-        #loginTitle:hover {
-            cursor: pointer;
-        }
-
-        #bodyBg {
-            background: #FAFAFA;
-        }
-
-        #id,
-        #pwd {
-            background: white;
-        }
-
-        #login_btn {
-            margin: 30px auto;
-            display: block;
-            width: 500px;
-            height: 40px;
-            background: #1abc9c;;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-
-        #login_btn:hover {
-            cursor: pointer;
-        }
-
-        #account {
-            margin: 30px 0 20px 0;
-        }
-
-        #link {
-            color: #007BFF;
-        }
-
-        #link:hover {
-            cursor: pointer;
-            text-decoration: underline;
-        }
-
-        #position {
-            margin-bottom: 30px;
-        }
-    </style>
 </head>
 
 <body id="bodyBg">
