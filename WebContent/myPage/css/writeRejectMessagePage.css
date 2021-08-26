@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+#rejectMsgBg {
+    background: #FAFAFA;
+}
+
+#rejectMsgWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#rejectMsgInnerWrap {
+    background: white;
+    border-radius: 10px;
+    box-shadow: -60px 0px 100px -90px #000000,
+    60px 0px 100px -90px #000000;
+}
+
+#rejectMsgText {
+    display: flex;
+    justify-content: center;
+    padding: 20px 40px;
+    width: 440px;
+    background: white;
+    border-radius: 5px;
+    color: #535353;
+}
+
+#closeBtnWrap {
+    padding: 40px 40px 40px 0px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: white;
+    border-radius: 0px 0px 10px 10px;
+}
+
+#saveBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    color: white;
+    background: #1abc9c;
+    border: none;
+}
+
+#saveBtn:hover {
+    cursor: pointer;
+}
+
+#rejectImg {
+    width: 80px;
+    height: 80px;
+}
+
+#rejectImgWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0px 10px 0px;
+    width: 500px;
+    background: white;
+    border-radius: 10px 10px 0px 0px;
+}
+
+#rejectTit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    background: white;
+    font-size: 24px;
+}
+
+#rejectMsg:focus {
+    outline: none;
+}
