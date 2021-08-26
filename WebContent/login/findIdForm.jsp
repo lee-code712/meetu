@@ -23,57 +23,11 @@ pageEncoding="UTF-8"%>
             crossorigin="anonymous"></script>
 
     <title>아이디 찾기</title>
-
+    
+    <link rel="stylesheet" href="/login/css/findIdForm.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-
-    <style>
-        @charset "UTF-8";
-
-        #findIdWrap {
-            width: 500px;
-            margin: 240px auto;
-        }
-
-        #loginTitle {
-            margin-bottom: 60px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        #loginTitle:hover {
-            cursor: pointer;
-        }
-
-        #bodyBg {
-            background: #FAFAFA;
-        }
-
-        #univId,
-        #userId {
-            background: white;
-        }
-
-        #findIdBtn {
-            margin: 60px auto;
-            display: block;
-            width: 500px;
-            height: 40px;
-            background: #1abc9c;;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-
-        #findIdBtn:hover {
-            cursor: pointer;
-        }
-
-        #position {
-            margin-bottom: 30px;
-        }
-    </style>
 </head>
 
 <body id="bodyBg">

@@ -24,56 +24,10 @@ pageEncoding="UTF-8"%>
 
     <title>비밀번호 찾기</title>
 
+	<link rel="stylesheet" href="/login/css/findPwdForm.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-
-    <style>
-    	 @charset "UTF-8";
-
-        #findPwWrap {
-            width: 500px;
-            margin: 340px auto;
-        }
-
-        #loginTitle {
-            margin-bottom: 60px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        #loginTitle:hover {
-            cursor: pointer;
-        }
-
-        #bodyBg {
-            background: #FAFAFA;
-        }
-
-        #id,
-        #email {
-            background: white;
-        }
-
-        #findPwBtn {
-            margin: 60px auto;
-            display: block;
-            width: 500px;
-            height: 40px;
-            background: #1abc9c;;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-
-        #findPwBtn:hover {
-            cursor: pointer;
-        }
-
-        #position {
-            margin-bottom: 30px;
-        }
-    </style>
 </head>
 
 <body id="bodyBg">
