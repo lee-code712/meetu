@@ -51,6 +51,8 @@ pageEncoding="UTF-8"%>
                 out.println("<script>alert('이미 가입된 학번입니다.');</script>");
             if (ck.equals("-4"))
                 out.println("<script>alert('회원가입에 실패했습니다.');</script>");
+            if (ck.equals("-5"))
+                out.println("<script>alert('메일 인증에 실패했습니다.');</script>");
         }
     %>
     

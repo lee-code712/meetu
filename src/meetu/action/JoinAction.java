@@ -2,6 +2,7 @@ package meetu.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import meetu.dao.MemberDAO;
 import meetu.dao.UniversityDAO;
@@ -14,6 +15,7 @@ public class JoinAction implements CommandAction {
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
 		MemberDAO mem_dao = MemberDAO.getInstance();
 		UniversityDAO univ_dao = UniversityDAO.getInstance();
+		HttpSession session = req.getSession();
 
 		UniversityDTO univ_dto = univ_dao.getUnivInfoByName(req.getParameter("univ_name"));
 		String univ_id = univ_dto.getUnivId(); // 대학 id 검색
@@ -23,6 +25,7 @@ public class JoinAction implements CommandAction {
 		}
 		else {
 			univ_dto.setUnivId(univ_id);
+			session.setAttribute("univ_dto", univ_dto);
 		}
 		
 		MemberUserDTO mem_usr_dto = new MemberUserDTO(); // 학번, id, pw 저장
@@ -38,15 +41,20 @@ public class JoinAction implements CommandAction {
 		else {
 			mem_usr_dto.setUserId(user_id);
 			mem_usr_dto.setPassword(req.getParameter("password")); // 아이디가 생성된 경우 dto에 pw 추가	
-		}
-
-		String is_added = mem_dao.addUser(mem_usr_dto, univ_dto);
-		
-		if (is_added.equals("-4")) { // db에 추가 실패한 경우
-			return "/join/join.jsp?ck=-4";
 			
+			session.setAttribute("mem_usr_dto", mem_usr_dto); // 메일 인증
 		}
-		else { // 회원가입 정보 db에 추가 성공 
+		
+		// 메일 인증 페이지
+		// return "joinAuthForm.do";
+
+		
+		String is_added = mem_dao.addUser(mem_usr_dto, univ_dto);
+		 
+		if (is_added.equals("-4")) { // db에 추가 실패한 경우 return "/join/join.jsp?ck=-4";
+			return "/join/join.jsp?ck=-4";
+		}
+		else { // 회원가입 정보 db에 추가 성공 return "/join/joinPro.jsp?user_id=" + user_id;
 			return "/join/joinPro.jsp?user_id=" + user_id;
 		}
 	}
