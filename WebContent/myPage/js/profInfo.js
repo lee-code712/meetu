@@ -15,18 +15,17 @@ function majorMfBtn() {
 		},
 		closeOnClickOutside: false
 	}).then(function(click) {
+		if($("#editText").val() == "" && click != null) {
+			swal({
+				text: "수정할 항목이 비어있습니다.",
+				button: "확인"
+			});
+		}
+		
 		if(click) {
-			if($("#editText").val() == "") {
-				swal({
-					text: "수정할 항목이 비어있습니다.",
-					button: "확인"
-				});
-			}
-			else {
-				var param = "item=major";
-				param += "&value=" + $("#editText").val();
-				location.href="editProfInfo.do?" + param;
-			}
+			var param = "item=major";
+			param += "&value=" + $("#editText").val();
+			location.href="editProfInfo.do?" + param;
 		}
 	});
 }
@@ -48,18 +47,17 @@ function emailMfBtn() {
 		},
 		closeOnClickOutside: false
 	}).then(function(click) {
+		if($("#editText").val() == "" && click != null) {
+			swal({
+				text: "수정할 항목이 비어있습니다.",
+				button: "확인"
+			});
+		}
+		
 		if(click) {
-			if($("#editText").val() == "") {
-				swal({
-					text: "수정할 항목이 비어있습니다.",
-					button: "확인"
-				});
-			}
-			else {
-				var param = "item=email";
-				param += "&value=" + $("#editText").val();
-				location.href="editProfInfo.do?" + param;
-			}
+			var param = "item=email";
+			param += "&value=" + $("#editText").val();
+			location.href="editProfInfo.do?" + param;
 		}
 	});
 }
@@ -81,18 +79,16 @@ function profLocationMfBtn() {
 		},
 		closeOnClickOutside: false
 	}).then(function(click) {
+		if($("#editText").val() == "" && click != null) {
+			swal({
+				text: "수정할 항목이 비어있습니다.",
+				button: "확인"
+			});
+		}
 		if(click) {
-			if($("#editText").val() == " ") {	
-				swal({
-					text: "수정할 항목이 비어있습니다.",
-					button: "확인"
-				});
-			}
-			else {
-				var param = "item=office";
-				param += "&value=" + $("#editText").val();
-				location.href="editProfInfo.do?" + param;
-			}
+			var param = "item=office";
+			param += "&value=" + $("#editText").val();
+			location.href="editProfInfo.do?" + param;
 		}
 	});
 }
