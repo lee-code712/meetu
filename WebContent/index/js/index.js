@@ -16,7 +16,7 @@ $(document).ready(function () {
     drawCalendar();
     initDate();
     drawDays();
-    // drawSche();
+
     $("#movePrevMonth").on("click", function () {
         movePrevMonth();
     });
@@ -87,13 +87,19 @@ function drawDays() {
     $("#cal_top_month").text(month);
     $("#cal_top_date").text(date);
     $("#cal_top_dayName").text(dayName);
+
     for (var i = firstDay.getDay(); i < firstDay.getDay() + lastDay.getDate(); i++) {
         $tdDay.eq(i).text(++dayCount);
+		$tdDay.eq(i).attr("id", $tdDay.eq(i).text());
     }
+
+	for (var i = 0; i < firstDay.getDay(); i++) {
+		$tdDay.eq(i).attr("id", "");
+	}
+
     for (var i = 0; i < 42; i += 7) {
         $tdDay.eq(i).css("color", "#FB7E7E");
     }
-
 
     for (var i = 6; i < 42; i += 7) {
         $tdDay.eq(i).css("color", "#7E99FB");
@@ -136,7 +142,6 @@ function getNewInfo() {
     firstDay = new Date(year, month - 1, 1);
     lastDay = new Date(year, month, 0);
     drawDays();
-    // drawSche();
 	setData(reservations);
 }
 
@@ -181,45 +186,34 @@ function setData(reservations) {
 	jsonData[year] = yearList;
 	// alert(JSON.stringify(jsonData)); // {"2021":[[{"08":[{"20":"박창섭 교수님 10:00"}]}],[{"08":[{"19":"이은영 교수님 13:00"}]}]]}
 	
-   	/* jsonData =
-        {
-            "2021": {
-                "08": {
-                    "7": "000 교수님 9:00"
-                    , "15": "000 교수님 10:00"
-                    , "23": "000 교수님 12:00"
-                }
-                , "09": {
-                    "4": "000 교수님 13:00"
-                    , "23": "000 교수님 14:00"
-                }
-            }
-        } // "2021":{"08":{"7":"000 교수님 09:00", "15":"000 교수님 10:00"}, "09":{"4": "000 교수님 13:00"}} */
-
 	drawSche(jsonData);
 }
 
 //스케줄 그리기
 function drawSche(jsonData) {
     var dateMatch = null;
-
-    for (var i = firstDay.getDay(); i < firstDay.getDay() + lastDay.getDate(); i++) {
+	
+    for (var i = 0; i < firstDay.getDay() + lastDay.getDate(); i++) { // i를 0부터 시작하게 고쳐 봄 (기존: firstDay.getDay())
         var txt = "";
-        // txt = jsonData[year]; // {"08":{"7":"000 교수님 9:00","15":"000 교수님 10:00","23":"000 교수님 12:00"},"09":{"4":"000 교수님 13:00","23":"000 교수님 14:00"}}
         txt = jsonData[year]; // [[{"08":[{"20":"박창섭 교수님 10:00"}]}],[{"08":[{"19":"이은영 교수님 13:00"}]}]]
+
 		if (txt) {
-            // txt = jsonData[year][month]; // {"7":"000 교수님 9:00","15":"000 교수님 10:00","23":"000 교수님 12:00"}
 			Array.from(txt).forEach(function(monthData, j) {
 				t = monthData[0][month]; // [{"20":"박창섭 교수님 10:00"}] || [{"19":"이은영 교수님 13:00"}]
 				if (t) {
 					Array.from(t).forEach(function(dateData, k){
-						// txt = jsonData[year][month][i]; // undefined || 000 교수님 9:00
-						// var first_key = Object.keys(obj)[0];
-						content = dateData[i]; // {"20":"박창섭 교수님 10:00"}
-						// alert(JSON.stringify(content));
-		                dateMatch = firstDay.getDay() + i - 1;
-
-						if (content != "undefined" && content != null) {
+						var key = "";
+						
+						if (!Array.isArray(dateData)) { // 예약이 한 개 존재하는 경우 (즉, 객체 형태)
+							key = Object.keys(dateData);
+							content = dateData[key];
+						}
+						else { // 예약이 여러 개인 경우 (즉, 배열 형태)
+							key = Object.keys(dateData[i]);
+							content = dateData[i]; // {"20":"박창섭 교수님 10:00"}
+						}
+		                
+						if (content != "undefined" && content != null) {	
 							var newDivElement = document.createElement("div");
 							$(newDivElement).attr("class", "cal-schedule");
 							
@@ -231,17 +225,13 @@ function drawSche(jsonData) {
 			                $(newDivElement).css("font-size", "14px");
 							
 							newDivElement.innerHTML = content;
-								
-							$tdSche.eq(dateMatch).append(newDivElement);
+							
+							key *= 1;
+							
+							if (key == i && $("#" + i).text() == key) {
+								$("#" + i).next().append(newDivElement);
+							}
 						}
-					
-						/*$tdSche.eq(dateMatch).text(content);
-		                $tdSche.eq(dateMatch).css("background", "#1abc9c");
-		                $tdSche.eq(dateMatch).css("color", "white");
-		                $tdSche.eq(dateMatch).css("padding-left", "10px");
-		                $tdSche.eq(dateMatch).css("border-radius", "3px");
-		                $tdSche.eq(dateMatch).css("width", "110px");
-		                $tdSche.eq(dateMatch).css("font-size", "14px");*/
 					});
             	}
 			});
