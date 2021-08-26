@@ -1,44 +1,44 @@
 @charset "UTF-8";
 
-        #findPwWrap {
-            width: 500px;
-            margin: 340px auto;
-        }
+#findPwWrap {
+    width: 500px;
+    margin: 340px auto;
+}
 
-        #loginTitle {
-            margin-bottom: 60px;
-            font-size: 24px;
-            font-weight: bold;
-        }
+#loginTitle {
+    margin-bottom: 60px;
+    font-size: 24px;
+    font-weight: bold;
+}
 
-        #loginTitle:hover {
-            cursor: pointer;
-        }
+#loginTitle:hover {
+    cursor: pointer;
+}
 
-        #bodyBg {
-            background: #FAFAFA;
-        }
+#bodyBg {
+    background: #FAFAFA;
+}
 
-        #id,
-        #email {
-            background: white;
-        }
+#id,
+#email {
+    background: white;
+}
 
-        #findPwBtn {
-            margin: 60px auto;
-            display: block;
-            width: 500px;
-            height: 40px;
-            background: #1abc9c;;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
+#findPwBtn {
+    margin: 60px auto;
+    display: block;
+    width: 500px;
+    height: 40px;
+    background: #1abc9c;;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
 
-        #findPwBtn:hover {
-            cursor: pointer;
-        }
+#findPwBtn:hover {
+    cursor: pointer;
+}
 
-        #position {
-            margin-bottom: 30px;
-        }
+#position {
+    margin-bottom: 30px;
+}

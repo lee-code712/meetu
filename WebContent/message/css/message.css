@@ -1,369 +1,369 @@
 @charset "UTF-8";
 
 #noticeImg {
-            width: 14px;
-            height: 14px;
-        }
+    width: 14px;
+    height: 14px;
+}
 
-        #noticeImg:hover {
-            cursor: pointer;
-        }
+#noticeImg:hover {
+    cursor: pointer;
+}
 
-        #noticeIcon:hover,
-        #reserveIcon:hover,
-        #messageIcon:hover {
-            cursor: pointer;
-        }
+#noticeIcon:hover,
+#reserveIcon:hover,
+#messageIcon:hover {
+    cursor: pointer;
+}
 
-        #noticeIcon,
-        #reserveIcon,
-        #messageIcon {
-            color: black;
-        }
+#noticeIcon,
+#reserveIcon,
+#messageIcon {
+    color: black;
+}
 
-        a:link {
-            color: black;
-            text-decoration: none;
-        }
+a:link {
+    color: black;
+    text-decoration: none;
+}
 
-        a:visited {
-            color: black;
-            text-decoration: none;
-        }
+a:visited {
+    color: black;
+    text-decoration: none;
+}
 
-        a:hover {
-            color: black;
-            text-decoration: none;
-        }
+a:hover {
+    color: black;
+    text-decoration: none;
+}
 
-        #title,
-        #title a:link,
-        #title a:visited,
-        #title a:hover {
-            color: #1abc9c;
+#title,
+#title a:link,
+#title a:visited,
+#title a:hover {
+    color: #1abc9c;
 
-        }
+}
 
-        #header {
-            width: 100%;
-            height: 80px;
-            background: white;
-            border-bottom: 1px solid #EAEAEA;
-        }
+#header {
+    width: 100%;
+    height: 80px;
+    background: white;
+    border-bottom: 1px solid #EAEAEA;
+}
 
-        #headerInner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 0 auto;
-            width: 1194px;
-            height: 100%;
-        }
+#headerInner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 1194px;
+    height: 100%;
+}
 
-        #headerInnerL {
-            display: flex;
-            align-items: center;
-        }
+#headerInnerL {
+    display: flex;
+    align-items: center;
+}
 
-        #title {
-            font-family: 'Yellowtail', cursive;
-            font-size: 18px;
-            font-weight: bold;
-        }
+#title {
+    font-family: 'Yellowtail', cursive;
+    font-size: 18px;
+    font-weight: bold;
+}
 
-        #gnb {
-            margin-left: 140px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 300px;
-            font-size: 14px;
-        }
+#gnb {
+    margin-left: 140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    font-size: 14px;
+}
 
-        #headerInnerR {
-            display: flex;
-            align-items: center;
-        }
+#headerInnerR {
+    display: flex;
+    align-items: center;
+}
 
-        #dropdown {
-            position: relative;
-            display: inline-block;
-            font-size: 14px;
-            padding: 14px;
-        }
+#dropdown {
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    padding: 14px;
+}
 
-        #dropdown-button:hover {
-            cursor: pointer;
-        }
+#dropdown-button:hover {
+    cursor: pointer;
+}
 
-        #dropdown-button div {
-            justify-content: flex-end;
-        }
+#dropdown-button div {
+    justify-content: flex-end;
+}
 
-        #dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            margin-top: 14px;
-            min-width: 130px;
-            padding: 4px;
-            border-radius: 5px;
-            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
-        }
+#dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    margin-top: 14px;
+    min-width: 130px;
+    padding: 4px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+}
 
-        #dropdown-content a {
-            color: black;
-            padding: 8px;
-            text-decoration: none;
-            display: block;
-        }
+#dropdown-content a {
+    color: black;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+}
 
-        #dropdown-content a:hover {
-            background-color: #FAFAFA;
-            border-radius: 5px;
-        }
+#dropdown-content a:hover {
+    background-color: #FAFAFA;
+    border-radius: 5px;
+}
 
-        #dropdown:hover #dropdown-content {
-            display: block;
-        }
+#dropdown:hover #dropdown-content {
+    display: block;
+}
 
-        #headerInnerR img {
-            margin-left: 60px;
-        }
+#headerInnerR img {
+    margin-left: 60px;
+}
 
-        #receiveMsg {
-            padding-left: 25px;
-            color: #3296B6;
-            font-size: 14px;
-            margin-bottom: 4px;
-        }
+#receiveMsg {
+    padding-left: 25px;
+    color: #3296B6;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
 
-        a {
-            text-decoration: none;
-            list-style: none;
-        }
+a {
+    text-decoration: none;
+    list-style: none;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            text-decoration: none;
-            list-style: none;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
 
-        #reservationWrap {
-            display: flex;
-            justify-content: space-between;
-            padding-top: 80px;
-            margin: 0 auto;
-            width: 1194px;
-        }
+#reservationWrap {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 80px;
+    margin: 0 auto;
+    width: 1194px;
+}
 
-        #mylist {
-            width: 318px;
-            border: 1px solid #EAEAEA;
-            border-radius: 5px;
-        }
+#mylist {
+    width: 318px;
+    border: 1px solid #EAEAEA;
+    border-radius: 5px;
+}
 
-        #selectProf {
-            display: flex;
-            width: 100%;
-            height: 40px;
-            font-size: 24px;
-            margin-bottom: 40px;
-        }
-		
-		
-        .list {
-            display: flex;
-            align-items: center;
-            padding-left: 20px;
-            width: 298px;
-            line-height: 40px;
-            font-size: 14px;
-            cursor: pointer;
-            background: white;
-        	border-radius: 5px;
-        }
+#selectProf {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    font-size: 24px;
+    margin-bottom: 40px;
+}
 
-        .list:hover {
-            background: #1abc9c;
-            color: white;
-            cursor: pointer;
-        }
 
-        .clicked {
-            background: #1abc9c;
-            color: white;
-        }
+.list {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    width: 298px;
+    line-height: 40px;
+    font-size: 14px;
+    cursor: pointer;
+    background: white;
+    border-radius: 5px;
+}
 
-        .profList th,
-        .profList td {
-            padding: 10px;
-            font-size: 14px;
-        }
+.list:hover {
+    background: #1abc9c;
+    color: white;
+    cursor: pointer;
+}
 
-        .profList td {
-            text-align: center;
-        }
+.clicked {
+    background: #1abc9c;
+    color: white;
+}
 
-        #profInfo a {
-            color: #2575AF;
-        }
+.profList th,
+.profList td {
+    padding: 10px;
+    font-size: 14px;
+}
 
-        #selectProf a {
-            color: #CE2E2E;
-        }
+.profList td {
+    text-align: center;
+}
 
-        #profInfo a:hover {
-            cursor: pointer;
-        }
+#profInfo a {
+    color: #2575AF;
+}
 
-        #selectProf a:hover {
-            cursor: pointer;
-        }
+#selectProf a {
+    color: #CE2E2E;
+}
 
-        #messageBodyBg {
-            background: #FAFAFA;
-        }
+#profInfo a:hover {
+    cursor: pointer;
+}
 
-        #sender {
-            margin-left: 80px;
-            padding-bottom: 10px;
-            padding-top: 14px;
-            padding-left: 20px;
-            width: 776px;
-            font-size: 16px;
-            color: #3E454D;
-            background: white;
-            border-radius: 10px 10px 0 0;
-            border-top: 1px solid #eee;
-            border-left: 1px solid #eee;
-            border-right: 1px solid #eee;
-        }
+#selectProf a:hover {
+    cursor: pointer;
+}
 
-        .profList th {
-            font-size: 14px;
-            border-bottom: 1px solid #C4C4C4;
-            text-align: center;
-        }
+#messageBodyBg {
+    background: #FAFAFA;
+}
 
-        .profList td {
-            font-size: 14px;
-            text-align: center;
-        }
+#sender {
+    margin-left: 80px;
+    padding-bottom: 10px;
+    padding-top: 14px;
+    padding-left: 20px;
+    width: 776px;
+    font-size: 16px;
+    color: #3E454D;
+    background: white;
+    border-radius: 10px 10px 0 0;
+    border-top: 1px solid #eee;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
 
-        #messageInner {
-            display: block;
-            width: 908px;
-            height: 840px;
-        }
+.profList th {
+    font-size: 14px;
+    border-bottom: 1px solid #C4C4C4;
+    text-align: center;
+}
 
-        #messageInnerWrap {
-            width: 100%;
-            height: 550px;
-        }
+.profList td {
+    font-size: 14px;
+    text-align: center;
+}
 
-        #messageResult {
-            display: block;
-            margin-left: 80px;
-            width: 796px;
-            height: 500px;
-            overflow-y: scroll;
-            border-left: 5px solid white;
-            border-right: 5px solid white;
-            background: white;
-            border-bottom: 1px solid #eee;
-            border-left: 1px solid #eee;
-            border-right: 1px solid #eee;
-        }
+#messageInner {
+    display: block;
+    width: 908px;
+    height: 840px;
+}
 
-        #messageTextWrap {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0px 20px;
-            margin-left: 80px;
-            width: 756px;
-            height: 50px;
-            background: white;
-            border-radius: 0 0 10px 10px;
-            border-bottom: 1px solid #eee;
-            border-left: 1px solid #eee;
-            border-right: 1px solid #eee;
-        }
+#messageInnerWrap {
+    width: 100%;
+    height: 550px;
+}
 
-        #messageTextInnerWrap {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0px 10px;
-            width: 100%;
-            height: 34px;
-            border-radius: 50px;
-            border: 1px solid #EAEAEA;
-        }
+#messageResult {
+    display: block;
+    margin-left: 80px;
+    width: 796px;
+    height: 500px;
+    overflow-y: scroll;
+    border-left: 5px solid white;
+    border-right: 5px solid white;
+    background: white;
+    border-bottom: 1px solid #eee;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
 
-        #messageText {
-            width: 700px;
-            height: 30px;
-            border: none;
-            border-radius: 0 0 10px 10px;
-        }
+#messageTextWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+    margin-left: 80px;
+    width: 756px;
+    height: 50px;
+    background: white;
+    border-radius: 0 0 10px 10px;
+    border-bottom: 1px solid #eee;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
 
-        #messageText:focus {
-            outline: none;
-        }
+#messageTextInnerWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+    width: 100%;
+    height: 34px;
+    border-radius: 50px;
+    border: 1px solid #EAEAEA;
+}
 
-        #receiveMessageText {
-            width: 400px;
-            margin-left: 20px;
-            padding: 10px;
-            border-radius: 10px 10px 10px 0px;
-            background: #cdeae2;
-            font-size: 14px;
-        }
+#messageText {
+    width: 700px;
+    height: 30px;
+    border: none;
+    border-radius: 0 0 10px 10px;
+}
 
-        #receiveDate {
-            margin-top: 4px;
-            padding-left: 25px;
-            font-size: 12px;
-            color: #848484;
-        }
+#messageText:focus {
+    outline: none;
+}
 
-        #sendMessage {
-            float: right;
-            margin-top: 20px;
-        }
+#receiveMessageText {
+    width: 400px;
+    margin-left: 20px;
+    padding: 10px;
+    border-radius: 10px 10px 10px 0px;
+    background: #cdeae2;
+    font-size: 14px;
+}
 
-        #sendMessageText {
-            width: 400px;
-            margin-left: 10px;
-            padding: 10px;
-            border-radius: 10px 10px 0px 10px;
-            background: #f1f1f1;
-            font-size: 14px;
-        }
+#receiveDate {
+    margin-top: 4px;
+    padding-left: 25px;
+    font-size: 12px;
+    color: #848484;
+}
 
-        #sendDate {
-            margin-top: 4px;
-            padding-left: 15px;
-            font-size: 12px;
-            color: #848484;
-        }
+#sendMessage {
+    float: right;
+    margin-top: 20px;
+}
 
-        #receiveMessage {
-            display: inline-block;
-            margin-top: 10px;
-        }
+#sendMessageText {
+    width: 400px;
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 10px 10px 0px 10px;
+    background: #f1f1f1;
+    font-size: 14px;
+}
 
-        #sendMessageText {
-            margin-right: 20px;
-        }
+#sendDate {
+    margin-top: 4px;
+    padding-left: 15px;
+    font-size: 12px;
+    color: #848484;
+}
 
-        #textBtn:hover {
-            cursor: pointer;
-        }
-        
-        #blankDiv {
-        	width: 60px;
-        }
+#receiveMessage {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+#sendMessageText {
+    margin-right: 20px;
+}
+
+#textBtn:hover {
+    cursor: pointer;
+}
+
+#blankDiv {
+    width: 60px;
+}

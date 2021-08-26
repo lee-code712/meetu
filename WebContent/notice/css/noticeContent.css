@@ -1,4 +1,4 @@
-    	* {
+* {
     padding: 0px;
     margin: 0px;
 }
@@ -241,7 +241,7 @@ a:hover {
 }
 
 #blankDiv {
-	width: 100px;
+    width: 100px;
 }
 
 #moreDropdownContent a {
@@ -266,5 +266,5 @@ a:hover {
 }
 
 #blankDiv {
-        	width: 60px;
-        }
+    width: 60px;
+}

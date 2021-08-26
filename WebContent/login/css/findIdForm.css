@@ -1,44 +1,44 @@
- @charset "UTF-8";
+@charset "UTF-8";
 
-        #findIdWrap {
-            width: 500px;
-            margin: 240px auto;
-        }
+#findIdWrap {
+    width: 500px;
+    margin: 240px auto;
+}
 
-        #loginTitle {
-            margin-bottom: 60px;
-            font-size: 24px;
-            font-weight: bold;
-        }
+#loginTitle {
+    margin-bottom: 60px;
+    font-size: 24px;
+    font-weight: bold;
+}
 
-        #loginTitle:hover {
-            cursor: pointer;
-        }
+#loginTitle:hover {
+    cursor: pointer;
+}
 
-        #bodyBg {
-            background: #FAFAFA;
-        }
+#bodyBg {
+    background: #FAFAFA;
+}
 
-        #univId,
-        #userId {
-            background: white;
-        }
+#univId,
+#userId {
+    background: white;
+}
 
-        #findIdBtn {
-            margin: 60px auto;
-            display: block;
-            width: 500px;
-            height: 40px;
-            background: #1abc9c;;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
+#findIdBtn {
+    margin: 60px auto;
+    display: block;
+    width: 500px;
+    height: 40px;
+    background: #1abc9c;;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
 
-        #findIdBtn:hover {
-            cursor: pointer;
-        }
+#findIdBtn:hover {
+    cursor: pointer;
+}
 
-        #position {
-            margin-bottom: 30px;
-        }
+#position {
+    margin-bottom: 30px;
+}
