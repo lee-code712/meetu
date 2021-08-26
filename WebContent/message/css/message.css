@@ -1,212 +1,369 @@
 @charset "UTF-8";
 
-a { 
-	text-decoration: none;
-    list-style: none;
-}
+#noticeImg {
+            width: 14px;
+            height: 14px;
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
-}
+        #noticeImg:hover {
+            cursor: pointer;
+        }
 
-#reservationWrap {
-    margin: 0 auto;
-    width: 1194px;
-    height: 840px;
-}
+        #noticeIcon:hover,
+        #reserveIcon:hover,
+        #messageIcon:hover {
+            cursor: pointer;
+        }
 
-#mylist {
-    margin-top: 80px;
-    width: 18rem;
-    height: 840px;
-    border: none;
-    border-radius: 10px;
-}
+        #noticeIcon,
+        #reserveIcon,
+        #messageIcon {
+            color: black;
+        }
 
-#selectProf {
-    display: flex;
-    align-items: flex-start;
-    width: 100%;
-    height: 40px;
-    font-size: 18px;
-    font-weight: bold;
-    border-bottom: 1px dotted #363B40;
-}
+        a:link {
+            color: black;
+            text-decoration: none;
+        }
 
-.list {
-    line-height: 40px;
-    font-size: 14px;
-    cursor: pointer;
-    border-bottom: 1px dotted #C4C4C4;
-}
+        a:visited {
+            color: black;
+            text-decoration: none;
+        }
 
-.clicked {
-    background: #1abc9c;
-    color: white;
-}
+        a:hover {
+            color: black;
+            text-decoration: none;
+        }
 
-.profList th,
-.profList td {
-    padding: 10px;
-    font-size: 14px;
-}
+        #title,
+        #title a:link,
+        #title a:visited,
+        #title a:hover {
+            color: #1abc9c;
 
-.profList td {
-    text-align: center;
-}
+        }
 
-#profInfo a {
-    color: #2575AF;
-}
+        #header {
+            width: 100%;
+            height: 80px;
+            background: white;
+            border-bottom: 1px solid #EAEAEA;
+        }
 
-#selectProf a {
-    color: #CE2E2E;
-}
+        #headerInner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+            width: 1194px;
+            height: 100%;
+        }
 
-#profInfo a:hover {
-    cursor: pointer;
-}
+        #headerInnerL {
+            display: flex;
+            align-items: center;
+        }
 
-#selectProf a:hover {
-    cursor: pointer;
-}
+        #title {
+            font-family: 'Yellowtail', cursive;
+            font-size: 18px;
+            font-weight: bold;
+        }
 
-#messageBodyBg {
-    background: #FAFAFA;
-}
+        #gnb {
+            margin-left: 140px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 300px;
+            font-size: 14px;
+        }
 
-#sender {
-    margin-left: 80px;
-    margin-top: 80px;
-    padding-bottom: 10px;
-    padding-top: 14px;
-    padding-left: 20px;
-    width: 810px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #3E454D;
-    background: white;
-    border-radius: 10px 10px 0 0;
-    border-top: 1px solid #eee;
-    border-left: 1px solid #eee;
-    border-right: 1px solid #eee;
-}
+        #headerInnerR {
+            display: flex;
+            align-items: center;
+        }
 
-.profList th {
-    font-size: 14px;
-    border-bottom: 1px solid #C4C4C4;
-    text-align: center;
-}
+        #dropdown {
+            position: relative;
+            display: inline-block;
+            font-size: 14px;
+            padding: 14px;
+        }
 
-.profList td {
-    font-size: 14px;
-    text-align: center;
-}
+        #dropdown-button:hover {
+            cursor: pointer;
+        }
 
-#messageInner {
-    display: block;
-    width: 894px;
-    height: 840px;
-}
+        #dropdown-button div {
+            justify-content: flex-end;
+        }
 
-#messageInnerWrap {
-    width: 900px;
-    height: 550px;
-}
+        #dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            margin-top: 14px;
+            min-width: 130px;
+            padding: 4px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+        }
 
-#messageResult {
-    display: block;
-    margin-left: 80px;
-    width: 830px;
-    height: 500px;
-    overflow-y: scroll;
-    border-left: 5px solid white;
-    border-right: 5px solid white;
-    background: white;
-    border-bottom: 1px solid #eee;
-    border-left: 1px solid #eee;
-    border-right: 1px solid #eee;
-}
+        #dropdown-content a {
+            color: black;
+            padding: 8px;
+            text-decoration: none;
+            display: block;
+        }
 
-#messageTextWrap {
-    margin-left: 80px;
-    width: 830px;
-    height: 50px;
-    background: white;
-    border-radius: 0 0 10px 10px;
-    border-bottom: 1px solid #eee;
-    border-left: 1px solid #eee;
-    border-right: 1px solid #eee;
-}
+        #dropdown-content a:hover {
+            background-color: #FAFAFA;
+            border-radius: 5px;
+        }
 
-#messageText {
-    padding-left: 20px;
-    width: 700px;
-    height: 50px;
-    background: white;
-    border: none;
-    border-radius: 0 0 10px 10px;
-}
+        #dropdown:hover #dropdown-content {
+            display: block;
+        }
 
-#receiveMessageText {
-    width: 500px;
-    margin-left: 20px;
-    padding: 10px;
-    border-radius: 10px 10px 10px 0px;
-    background: white;
-    border: 1px solid #535353;
-    font-size: 14px;
-}
+        #headerInnerR img {
+            margin-left: 60px;
+        }
 
-#receiveDate {
-    margin-top: 4px;
-    padding-left: 25px;
-    font-size: 12px;
-    color: #848484;
-}
+        #receiveMsg {
+            padding-left: 25px;
+            color: #3296B6;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
 
-#sendMessage {
-    float: right;
-}
+        a {
+            text-decoration: none;
+            list-style: none;
+        }
 
-#sendMessageText {
-    width: 500px;
-    margin-left: 10px;
-    padding: 10px;
-    border-radius: 10px 10px 0px 10px;
-    background: #f1f1f1;
-    font-size: 14px;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+        }
 
-#sendDate {
-    margin-top: 4px;
-    padding-left: 15px;
-    font-size: 12px;
-    color: #848484;
-}
+        #reservationWrap {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 80px;
+            margin: 0 auto;
+            width: 1194px;
+        }
 
-#receiveMessage {
-    display: inline-block;
-    margin-top: 10px;
-}
+        #mylist {
+            width: 318px;
+            border: 1px solid #EAEAEA;
+            border-radius: 5px;
+        }
 
+        #selectProf {
+            display: flex;
+            width: 100%;
+            height: 40px;
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+		
+		
+        .list {
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+            width: 298px;
+            line-height: 40px;
+            font-size: 14px;
+            cursor: pointer;
+            background: white;
+        	border-radius: 5px;
+        }
 
-#textBtn {
-    text-align: center;
-    padding: 14px 28px;
-    background: #1abc9c;
-    color: white;
-    border-bottom: 4px solid #1abc9c;
-    border-radius: 0 0 10px 0;
-}
+        .list:hover {
+            background: #1abc9c;
+            color: white;
+            cursor: pointer;
+        }
 
-#textBtn:hover {
-    cursor: pointer;
-}
+        .clicked {
+            background: #1abc9c;
+            color: white;
+        }
 
-#sendMessageText {
-    margin-right: 20px;
-}
+        .profList th,
+        .profList td {
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .profList td {
+            text-align: center;
+        }
+
+        #profInfo a {
+            color: #2575AF;
+        }
+
+        #selectProf a {
+            color: #CE2E2E;
+        }
+
+        #profInfo a:hover {
+            cursor: pointer;
+        }
+
+        #selectProf a:hover {
+            cursor: pointer;
+        }
+
+        #messageBodyBg {
+            background: #FAFAFA;
+        }
+
+        #sender {
+            margin-left: 80px;
+            padding-bottom: 10px;
+            padding-top: 14px;
+            padding-left: 20px;
+            width: 776px;
+            font-size: 16px;
+            color: #3E454D;
+            background: white;
+            border-radius: 10px 10px 0 0;
+            border-top: 1px solid #eee;
+            border-left: 1px solid #eee;
+            border-right: 1px solid #eee;
+        }
+
+        .profList th {
+            font-size: 14px;
+            border-bottom: 1px solid #C4C4C4;
+            text-align: center;
+        }
+
+        .profList td {
+            font-size: 14px;
+            text-align: center;
+        }
+
+        #messageInner {
+            display: block;
+            width: 908px;
+            height: 840px;
+        }
+
+        #messageInnerWrap {
+            width: 100%;
+            height: 550px;
+        }
+
+        #messageResult {
+            display: block;
+            margin-left: 80px;
+            width: 796px;
+            height: 500px;
+            overflow-y: scroll;
+            border-left: 5px solid white;
+            border-right: 5px solid white;
+            background: white;
+            border-bottom: 1px solid #eee;
+            border-left: 1px solid #eee;
+            border-right: 1px solid #eee;
+        }
+
+        #messageTextWrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 20px;
+            margin-left: 80px;
+            width: 756px;
+            height: 50px;
+            background: white;
+            border-radius: 0 0 10px 10px;
+            border-bottom: 1px solid #eee;
+            border-left: 1px solid #eee;
+            border-right: 1px solid #eee;
+        }
+
+        #messageTextInnerWrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 10px;
+            width: 100%;
+            height: 34px;
+            border-radius: 50px;
+            border: 1px solid #EAEAEA;
+        }
+
+        #messageText {
+            width: 700px;
+            height: 30px;
+            border: none;
+            border-radius: 0 0 10px 10px;
+        }
+
+        #messageText:focus {
+            outline: none;
+        }
+
+        #receiveMessageText {
+            width: 400px;
+            margin-left: 20px;
+            padding: 10px;
+            border-radius: 10px 10px 10px 0px;
+            background: #cdeae2;
+            font-size: 14px;
+        }
+
+        #receiveDate {
+            margin-top: 4px;
+            padding-left: 25px;
+            font-size: 12px;
+            color: #848484;
+        }
+
+        #sendMessage {
+            float: right;
+            margin-top: 20px;
+        }
+
+        #sendMessageText {
+            width: 400px;
+            margin-left: 10px;
+            padding: 10px;
+            border-radius: 10px 10px 0px 10px;
+            background: #f1f1f1;
+            font-size: 14px;
+        }
+
+        #sendDate {
+            margin-top: 4px;
+            padding-left: 15px;
+            font-size: 12px;
+            color: #848484;
+        }
+
+        #receiveMessage {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        #sendMessageText {
+            margin-right: 20px;
+        }
+
+        #textBtn:hover {
+            cursor: pointer;
+        }
+        
+        #blankDiv {
+        	width: 60px;
+        }
