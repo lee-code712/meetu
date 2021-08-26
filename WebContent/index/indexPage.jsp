@@ -58,7 +58,7 @@ pageEncoding="UTF-8"%>
         <ul class="banner_slide">
             <li class="banner_01">
                 <div id="banner1Title">간편한 상담 일정 관리 시스템 &nbsp; <span id="logo">MEETU</span></div>
-                <div id="banner1Text">MEETU를 사용하여 간편하게 상담 일정을 관리해보세요!</div>
+                <div id="banner1Text">MEETU를 사용하여 상담 일정을 관리해보세요!</div>
                 <button id="reservationBtn" onclick="location.href='reservation.do'">예약하러 가기</button>
             </li>
             <li class="banner_02">
