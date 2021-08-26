@@ -3,11 +3,20 @@
             text-decoration: none;
             list-style: none;
         }
+        
+        * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
         #navWrap {
             width: 1194px;
             margin: 0 auto;
             margin-top: 80px;
         }
+        
+        a { text-decoration: none; }
         #navInnerWrap {
             display: block;
         }
