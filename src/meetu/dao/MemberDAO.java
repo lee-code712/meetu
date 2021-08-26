@@ -737,6 +737,53 @@ public class MemberDAO {
 		return courses;
 	}
 	
+	// 학과별 course dto 반환
+	public ArrayList<CourseDTO> getCourseByDept(DepartmentDTO dept_dto, String univ) throws NamingException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<CourseDTO> courses = new ArrayList<CourseDTO>();
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from course where dept_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dept_dto.getDeptId());
+
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				CourseDTO course_dto = new CourseDTO();
+				course_dto.setCourseId(rs.getString("course_id"));
+				course_dto.setTitle(rs.getString("title"));
+				course_dto.setDeptId(rs.getString("dept_id"));
+				courses.add(course_dto);
+					
+				while (rs.next()) {
+					course_dto = new CourseDTO();
+					course_dto.setCourseId(rs.getString("course_id"));
+					course_dto.setTitle(rs.getString("title"));
+					course_dto.setDeptId(rs.getString("dept_id"));
+					courses.add(course_dto);
+				}
+			}
+			else {
+				return null;
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return courses;
+	}	
+	
 	public ArrayList<CollegeDTO> getCollege(UniversityDTO univ) throws NamingException {
 		ArrayList<CollegeDTO> colleges = new ArrayList<CollegeDTO>();
 		
@@ -849,5 +896,67 @@ public class MemberDAO {
 		}
 
 		return is_changed;
+	}
+	
+	public boolean addClass(CourseDTO course_dto, String member_id, String univ) throws NamingException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_added = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "insert into class (prof_id, course_id) values (?, ?)";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_id);
+			pstmt.setString(2, course_dto.getCourseId());
+
+			rs = pstmt.executeQuery();
+						
+			is_added = true;
+						
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_added;
+	}
+	
+	public boolean deleteClass(CourseDTO course_dto, String member_id, String univ) throws NamingException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_deleted = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "delete from class where prof_id=? and course_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_id);
+			pstmt.setString(2, course_dto.getCourseId());
+
+			rs = pstmt.executeQuery();
+						
+			is_deleted = true;
+						
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_deleted;
 	}
 }

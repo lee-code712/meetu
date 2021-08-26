@@ -3,6 +3,7 @@ package meetu.dto;
 public class CourseDTO {
 	private String course_id;
 	private String title;
+	private String dept_id;
 	
 	public String getCourseId() {
 		return course_id;
@@ -18,5 +19,13 @@ public class CourseDTO {
 	
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getDeptId() {
+		return dept_id;
+	}
+
+	public void setDeptId(String dept_id) {
+		this.dept_id = dept_id;
 	}
 }

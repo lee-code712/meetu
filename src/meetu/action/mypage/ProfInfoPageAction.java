@@ -29,23 +29,46 @@ public class ProfInfoPageAction implements CommandAction {
 		MemberDAO mem_dao = MemberDAO.getInstance();
 		DepartmentDTO dept_dto = mem_dao.getDepartmentInfo(mem_dto, univ);
 		ProfessorDTO prof_dto = mem_dao.getProfessorInfo(univ, user_id);
-		ArrayList<CourseDTO> courses = mem_dao.getCourseInfo(prof_dto, univ);
-		
-		JSONObject courseJson = new JSONObject();
+		ArrayList<CourseDTO> courses_by_dept = mem_dao.getCourseByDept(dept_dto, univ);
+		ArrayList<CourseDTO> courses_by_prof = mem_dao.getCourseInfo(prof_dto, univ);
 		JSONArray courseJsonArray = new JSONArray();
 		
-		if(courses != null) {
-			Iterator<CourseDTO> iterator = courses.iterator();
+		if(courses_by_prof != null) {
+			Iterator<CourseDTO> iterator = courses_by_prof.iterator();
 			
 			while(iterator.hasNext()) {
 				JSONObject c = null;
 				CourseDTO course = iterator.next();
+				String course_id = course.getCourseId();
 				String title = course.getTitle();
 
 				c = new JSONObject();
 
+				if (course_id != null)
+					c.put("course_id", course_id);
 				if (title != null)
-					c.put("title", title);
+					c.put("course_by_prof", title);
+				
+				if (c != null)
+					courseJsonArray.add(c);
+			}
+		}
+		
+		if(courses_by_dept != null) {
+			Iterator<CourseDTO> iterator = courses_by_dept.iterator();
+			
+			while(iterator.hasNext()) {
+				JSONObject c = null;
+				CourseDTO course = iterator.next();
+				String course_id = course.getCourseId();
+				String title = course.getTitle();
+
+				c = new JSONObject();
+
+				if (course_id != null)
+					c.put("course_id", course_id);
+				if (title != null)
+					c.put("course_by_dept", title);
 				
 				if (c != null)
 					courseJsonArray.add(c);
@@ -53,6 +76,7 @@ public class ProfInfoPageAction implements CommandAction {
 		}
 		
 		req.setAttribute("courses", courseJsonArray);
+		// System.out.println(courseJsonArray);
 		
 		String param = "&name=" + mem_dto.getName();
 		param += "&dept=" + dept_dto.getDeptName();
@@ -63,8 +87,6 @@ public class ProfInfoPageAction implements CommandAction {
 		// 교수정보 페이지에서 보일 상담가능시간 반환
 		ReservationDAO reservation_dao = ReservationDAO.getInstance();
 		ArrayList<ConsultableTimeDTO> consultable_times = reservation_dao.getConsultableTimes(univ, user_id);
-										
-		JSONObject timeJson = new JSONObject();
 		JSONArray timeJsonArray = new JSONArray();
 		
 		if(consultable_times != null) {

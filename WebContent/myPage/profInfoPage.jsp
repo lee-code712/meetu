@@ -12,6 +12,9 @@ pageEncoding="UTF-8"%>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/myPage/js/profInfo.js"></script>
+    <script>
+    	var courses = ${courses};
+    </script>
 </head>
 <body>
 <div id="header">
@@ -60,67 +63,69 @@ pageEncoding="UTF-8"%>
         <div id="navRTit">교수 정보 수정</div>
         <div id="navRContentWrap">
             <div id="profNameMfWrap">
-                <div id="profNameMfTit">[교수명]</div>
+                <div id="profNameMfTit">교수명</div>
                 <div id="profNameMfText">${param.name}</div>
-            </div>
+			</div>
             <div id="profDeptMfWrap">
-                <div id="profDeptMfTit">[학과]</div>
+                <div id="profDeptMfTit">학과</div>
                 <div id="profDeptMfText">${param.dept}</div>
             </div>
             <div id="profMajorMfWrap">
-                <div id="profMajorContentWrap">
-                    <div id="profMajorMfTit">[전공]</div>
-                    <button id="modifyBtn" onClick="majorMfBtn()">수정</button>
+                <div>
+                    <div id="profMajorMfTit">전공</div>
+                    <div id="profMajorMfText">${param.major}</div>
                 </div>
-                <div id="profMajorMfText">${param.major}</div>
+                <button id="modifyBtn" onClick="majorMfBtn()">수정</button>
             </div>
             <div id="profSubjectMfWrap">
-                <div id="profSubjectContentWrap">
-                    <div id="profSubjectMfTit">[담당과목]</div>
-                    <button id="modifyBtn" onClick="subjectMfBtn()">추가</button>
+                <div>
+                    <div id="profSubjectMfTit">담당과목</div>
+                    <div id="profSubjectMfText">
+                    	<c:forEach items="${courses}" var="list">
+                    		<c:if test="${list.course_by_prof != null}">
+							 	${list.course_by_prof} &nbsp;<a id="${list.course_id}" style="color:red; cursor:pointer;" onClick="classRemoveBtn()">x</a><br/>
+							 </c:if>
+						</c:forEach>
+					</div>
                 </div>
-                <div id="profSubjectMfText">
-                    <c:forEach items="${courses}" var="list">
-                        ${list.title} &nbsp;<a style="color:red; cursor:pointer;" onClick="alert('클릭');">x</a><br/>
-                    </c:forEach>
-                </div>
+                <button id="modifyBtn" onClick="subjectMfBtn()">추가</button>
             </div>
             <div id="profEmailMfWrap">
-                <div id="profEmailContentWrap">
-                    <div id="profEmailMfTit">[이메일]</div>
-                    <button id="modifyBtn" onClick="emailMfBtn()">수정</button>
+                <div>
+                    <div id="profEmailMfTit">이메일</div>
+                    <div id="profEmailMfText">${param.email}</div>
                 </div>
-                <div id="profEmailMfText">${param.email}</div>
+                <button id="modifyBtn" onClick="emailMfBtn()">수정</button>
             </div>
             <div id="profLocationMfWrap">
-                <div id="profLocationContentWrap">
-                    <div id="profLocationMfTit">[연구실 위치]</div>
-                    <button id="modifyBtn" onClick="profLocationMfBtn()">수정</button>
+                <div>
+                    <div id="profLocationMfTit">연구실 위치</div>
+                    <div id="profLocationMfText">${param.office}</div>
                 </div>
-                <div id="profLocationMfText">${param.office}</div>
+                <button id="modifyBtn" onClick="profLocationMfBtn()">수정</button>
             </div>
             <div id="profAbleTimeMfWrap">
-                <div id="profAbleTimeContentWrap">
-                    <div id="profAbleTimeMfTit">[상담 가능 시간]</div>
-                    <button id="modifyBtn" onClick="profAbleTimeMfBtn()">추가</button>
+                <div>
+                    <div id="profAbleTimeMfTit">상담 가능 시간</div>
+                    <div id="profAbleTimeMfText">
+						<c:forEach items="${consultable_times}" var="list">
+							<c:choose>
+								<c:when test="${list.able_date == 0}">일</c:when>
+								<c:when test="${list.able_date == 1}">월</c:when>
+								<c:when test="${list.able_date == 2}">화</c:when>
+								<c:when test="${list.able_date == 3}">수</c:when>
+								<c:when test="${list.able_date == 4}">목</c:when>
+								<c:when test="${list.able_date == 5}">금</c:when>
+								<c:otherwise>토</c:otherwise>
+							</c:choose>
+							 ${list.able_time} &nbsp;<a style="color:red; cursor:pointer;" onClick="alert('클릭');">x</a><br/>
+						</c:forEach>
+					</div>
                 </div>
-                <div id="profAbleTimeMfText">
-                    <c:forEach items="${consultable_times}" var="list">
-                        <c:choose>
-                            <c:when test="${list.able_date == 0}">일</c:when>
-                            <c:when test="${list.able_date == 1}">월</c:when>
-                            <c:when test="${list.able_date == 2}">화</c:when>
-                            <c:when test="${list.able_date == 3}">수</c:when>
-                            <c:when test="${list.able_date == 4}">목</c:when>
-                            <c:when test="${list.able_date == 5}">금</c:when>
-                            <c:otherwise>토</c:otherwise>
-                        </c:choose>
-                        ${list.able_time} &nbsp;<a style="color:red; cursor:pointer;"
-                                                   onClick="alert('클릭');">x</a><br/>
-                    </c:forEach>
-                </div>
+                <button id="modifyBtn" onClick="profAbleTimeMfBtn()">추가</button>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>

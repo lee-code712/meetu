@@ -8,36 +8,26 @@ import meetu.action.CommandAction;
 import meetu.dao.MemberDAO;
 import meetu.dto.*;
 
-public class EditProfInfoAction implements CommandAction {
+public class AddClassAction implements CommandAction {
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
 		HttpSession session = req.getSession();
 		UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
 		String univ = univ_dto.getUnivId();
 		MemberDTO mem_dto = (MemberDTO) session.getAttribute("mem_dto");
-		String column = (String) req.getParameter("item");
-		String value = (String) req.getParameter("value");
+		String course_id = (String) req.getParameter("course_id");
 		
 		// 인스턴스 가져오기
 		MemberDAO mem_dao = MemberDAO.getInstance();
 
-		// prof_info 변경
-		ProfessorDTO prof_dto = new ProfessorDTO();
-		prof_dto.setProfId(mem_dto.getMemberId());
-		if(column.equals("major")) {
-			prof_dto.setMajor(value);
-		}
-		else if(column.equals("email")) {
-			prof_dto.setEmail(value);
-		}
-		else if(column.equals("office")) {
-			prof_dto.setOffice(value);
-		}
+		// class 추가
+		CourseDTO course_dto = new CourseDTO();
+		course_dto.setCourseId(course_id);
 		
-		boolean change_success = mem_dao.changeProfInfo(prof_dto, column, univ);
-		if(!change_success) {
+		boolean add_success = mem_dao.addClass(course_dto, mem_dto.getMemberId(), univ);
+		if(!add_success) {
 			res.setStatus(400);		// bad request
-			res.addHeader("Status", "change profInfo failed");
+			res.addHeader("Status", "change state failed");
 		}
 		
 		return "profInfoPage.do";
