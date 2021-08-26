@@ -410,7 +410,7 @@ pageEncoding="UTF-8"%>
             <div id="profNameMfWrap">
                 <div id="profNameMfTit">교수명</div>
                 <div id="profNameMfText">${param.name}</div>
-            </div>
+			</div>
             <div id="profDeptMfWrap">
                 <div id="profDeptMfTit">학과</div>
                 <div id="profDeptMfText">${param.dept}</div>
@@ -425,9 +425,13 @@ pageEncoding="UTF-8"%>
             <div id="profSubjectMfWrap">
                 <div>
                     <div id="profSubjectMfTit">담당과목</div>
-                    <div id="profSubjectMfText">(담당과목)</div>
+                    <div id="profSubjectMfText">
+                    	<c:forEach items="${courses}" var="list">
+							 ${list.title} &nbsp;<a style="color:red; cursor:pointer;" onClick="alert('클릭');">x</a><br/>
+						</c:forEach>
+					</div>
                 </div>
-                <button id="modifyBtn" onClick="subjectMfBtn()">수정</button>
+                <button id="modifyBtn" onClick="subjectMfBtn()">추가</button>
             </div>
             <div id="profEmailMfWrap">
                 <div>
@@ -457,11 +461,11 @@ pageEncoding="UTF-8"%>
 								<c:when test="${list.able_date == 5}">금</c:when>
 								<c:otherwise>토</c:otherwise>
 							</c:choose>
-							 ${list.able_time}<br/>
+							 ${list.able_time} &nbsp;<a style="color:red; cursor:pointer;" onClick="alert('클릭');">x</a><br/>
 						</c:forEach>
 					</div>
                 </div>
-                <button id="modifyBtn" onClick="profAbleTimeMfBtn()">수정</button>
+                <button id="modifyBtn" onClick="profAbleTimeMfBtn()">추가</button>
             </div>
         </div>
     </div>

@@ -30,20 +30,35 @@ public class ProfInfoPageAction implements CommandAction {
 		DepartmentDTO dept_dto = mem_dao.getDepartmentInfo(mem_dto, univ);
 		ProfessorDTO prof_dto = mem_dao.getProfessorInfo(univ, user_id);
 		ArrayList<CourseDTO> courses = mem_dao.getCourseInfo(prof_dto, univ);
-		String course = "";		
-		for (int j = 0; j < courses.size(); j++) {
-			if (j == courses.size() - 1)
-				course += courses.get(j).getTitle();
-			else
-				course += courses.get(j).getTitle() + ", ";
+		
+		JSONObject courseJson = new JSONObject();
+		JSONArray courseJsonArray = new JSONArray();
+		
+		if(courses != null) {
+			Iterator<CourseDTO> iterator = courses.iterator();
+			
+			while(iterator.hasNext()) {
+				JSONObject c = null;
+				CourseDTO course = iterator.next();
+				String title = course.getTitle();
+
+				c = new JSONObject();
+
+				if (title != null)
+					c.put("title", title);
+				
+				if (c != null)
+					courseJsonArray.add(c);
+			}
 		}
+		
+		req.setAttribute("courses", courseJsonArray);
 		
 		String param = "&name=" + mem_dto.getName();
 		param += "&dept=" + dept_dto.getDeptName();
 		param += "&major=" + prof_dto.getMajor();
 		param += "&email=" + prof_dto.getEmail();
 		param += "&office=" + prof_dto.getOffice();
-		param += "&course=" + course;
 		
 		// 교수정보 페이지에서 보일 상담가능시간 반환
 		ReservationDAO reservation_dao = ReservationDAO.getInstance();
@@ -53,27 +68,26 @@ public class ProfInfoPageAction implements CommandAction {
 		JSONArray timeJsonArray = new JSONArray();
 		
 		if(consultable_times != null) {
-		Iterator<ConsultableTimeDTO> iterator = consultable_times.iterator();
-		
-		while(iterator.hasNext()) {
+			Iterator<ConsultableTimeDTO> iterator = consultable_times.iterator();
+			
+			while(iterator.hasNext()) {
 				JSONObject c = null; // JSONArray 내에 들어갈 json
 				ConsultableTimeDTO consultable_time = iterator.next();
 				String able_date = consultable_time.getAbleDate(); // 0-6
 				String able_time = consultable_time.getAbleTime(); // 15:00~17:00
-										
+											
 				c = new JSONObject();
-						
+							
 				if (able_date != null)
 					c.put("able_date", able_date);
 				if (able_time != null)
 					c.put("able_time", able_time);
-									
+										
 				if (c != null)
 					timeJsonArray.add(c);
 			}
 		}
-		
-		timeJson.put("time", timeJsonArray); // json 배열을 저장
+
 		req.setAttribute("consultable_times", timeJsonArray);
 		
 		return "/myPage/profInfoPage.jsp?" + param;

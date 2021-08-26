@@ -811,4 +811,43 @@ public class MemberDAO {
 		
 		return depts;
 	}
+	
+	public boolean changeProfInfo(ProfessorDTO prof_dto, String column, String univ) throws NamingException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_changed = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "update professor set " + column + "=? where prof_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			if(column.equals("major")) {
+				pstmt.setString(1, prof_dto.getMajor());
+			}
+			else if(column.equals("email")) {
+				pstmt.setString(1, prof_dto.getEmail());
+			}
+			else if(column.equals("office")) {
+				pstmt.setString(1, prof_dto.getOffice());
+			}
+			pstmt.setString(2, prof_dto.getProfId());
+
+			rs = pstmt.executeQuery();
+						
+			is_changed = true;
+						
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_changed;
+	}
 }
