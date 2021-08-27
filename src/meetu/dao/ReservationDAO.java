@@ -342,6 +342,72 @@ public class ReservationDAO {
 		
 		return consultableTimes;
 	}
+	
+	// 교수 상담 가능 시간 추가
+	public boolean addConsultableTime(ConsultableTimeDTO consultable_time_dto, String univ) throws NamingException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_added = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "insert into consultable_time (able_date, able_time, p_user_id) values (?, ?, ?)";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, consultable_time_dto.getAbleDate());
+			pstmt.setString(2, consultable_time_dto.getAbleTime());
+			pstmt.setString(3, consultable_time_dto.getPUserId());
+
+			rs = pstmt.executeQuery();
+						
+			is_added = true;
+						
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_added;
+	}
+	
+	// 교수 상담 가능 시간 삭제
+	public boolean deleteConsultableTime(ConsultableTimeDTO consultable_time_dto, String univ) throws NamingException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_deleted = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "delete from consultable_time where able_date=? and able_time=? and p_user_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, consultable_time_dto.getAbleDate());
+			pstmt.setString(2, consultable_time_dto.getAbleTime());
+			pstmt.setString(3, consultable_time_dto.getPUserId());
+
+			rs = pstmt.executeQuery();
+						
+			is_deleted = true;
+						
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_deleted;
+	}
 
 	// 같은 교수 예약 신청 대기/승인 레코드 존재 여부 반환
 	public boolean isReservatedProfessor(String univ, String s_user_id, String p_user_id) throws NamingException {

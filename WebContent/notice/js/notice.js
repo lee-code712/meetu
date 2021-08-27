@@ -1,4 +1,4 @@
-var rpp = 2; // 한 화면에 나타낼 데이터 수
+var rpp = 5; // 한 화면에 나타낼 데이터 수
 var page_cnt = 5; // 한 화면에 나타낼 페이지 수
 var total_data;
 

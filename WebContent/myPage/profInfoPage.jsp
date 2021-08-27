@@ -80,7 +80,7 @@ pageEncoding="UTF-8"%>
             <div id="profSubjectMfWrap">
                 <div id="profSubjectContentWrap">
                     <div id="profSubjectMfTit">담당과목</div>
-                    <button id="modifyBtn" onClick="subjectMfBtn()">추가</button>
+                    <button id="modifyBtn" onClick="subjectAddBtn()">추가</button>
                 </div>
                     <div id="profSubjectMfText">
                     	<c:forEach items="${courses}" var="list">
@@ -107,20 +107,20 @@ pageEncoding="UTF-8"%>
             <div id="profAbleTimeMfWrap">
                 <div id="profAbleTimeContentWrap">
                     <div id="profAbleTimeMfTit">상담 가능 시간</div>
-                    <button id="modifyBtn" onClick="profAbleTimeMfBtn()">추가</button>
+                    <button id="modifyBtn" onClick="profAbleTimeAddBtn()">추가</button>
                 </div>
                    <div id="profAbleTimeMfText">
 					<c:forEach items="${consultable_times}" var="list">
 						<c:choose>
-							<c:when test="${list.able_date == 0}">일</c:when>
-							<c:when test="${list.able_date == 1}">월</c:when>
-							<c:when test="${list.able_date == 2}">화</c:when>
-							<c:when test="${list.able_date == 3}">수</c:when>
-							<c:when test="${list.able_date == 4}">목</c:when>
-							<c:when test="${list.able_date == 5}">금</c:when>
-							<c:otherwise>토</c:otherwise>
+							<c:when test="${list.able_date == 0}">일 ${list.able_time}</c:when>
+							<c:when test="${list.able_date == 1}">월 ${list.able_time}</c:when>
+							<c:when test="${list.able_date == 2}">화 ${list.able_time}</c:when>
+							<c:when test="${list.able_date == 3}">수 ${list.able_time}</c:when>
+							<c:when test="${list.able_date == 4}">목 ${list.able_time}</c:when>
+							<c:when test="${list.able_date == 5}">금 ${list.able_time}</c:when>
+							<c:otherwise>토 ${list.able_time}</c:otherwise>
 						</c:choose>
-						 ${list.able_time} &nbsp;<a style="color:red; cursor:pointer;" onClick="alert('클릭');">x</a><br/>
+						&nbsp;<a id="${list.able_date} ${list.able_time}" style="color:red; cursor:pointer;" onClick="profAbleTimeRemoveBtn()">x</a><br/>
 					</c:forEach>
 				</div>
             </div>

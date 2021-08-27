@@ -305,7 +305,7 @@ function updatePage (responseText) {
 				
 				var newDivElement = document.createElement("div");
 				$(newDivElement).attr("id", "cal_msg");
-				var content = res_time + ", " + name + " 님과 " + reason;
+				var content = res_time + ", " + name + "님과 " + reason;
 				newDivElement.innerHTML = content;
 				
 				$("#calendar_wrap").append(newDivElement);

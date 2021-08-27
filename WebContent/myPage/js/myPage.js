@@ -52,7 +52,7 @@ function updatePage(responseText) {
 			var temp_html = '';
 	
 			temp_html += "<tr id=" + res_id + ">";
-			temp_html += "<td><img src=\"/images/more.svg\" id=\"moreImg\" onclick=\"readReservationInfo();\"/></td><td>" + name + "</td>";
+			temp_html += "<td><img src=\"/images/moreVert.svg\" id=\"moreImg\" onclick=\"readReservationInfo();\"/></td><td>" + name + "</td>";
 			temp_html += "<td>" + start_time.substring(0, 16) + "~" + end_time.substring(11, 16) + "</td>";
 			if(type == "오프라인" && office != null) {
 				temp_html += "<td>" + office + "</td>";
@@ -248,5 +248,5 @@ function readReservationInfo() {
 	res_id = event.currentTarget.closest("tr").id;
 	var url = "reservationInfoPage.do?res_id=" + res_id;
 	
-	window.open(url, "childform", "width=700; height=400; left=300; top=130; resizable = no;");
+	window.open(url, "childform", "width=600; height=500; left=300; top=130; resizable = no;");
 }
