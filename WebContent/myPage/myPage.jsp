@@ -42,6 +42,14 @@ pageEncoding="UTF-8"%>
     	.nav-pills > .nav-item > .active {
             background: #1abc9c;
         }
+		
+		a,
+		a:link,
+		a:visited,
+		a:hover {
+		    color: black;
+		    text-decoration: none;
+		}
     </style>
 </head>
 
