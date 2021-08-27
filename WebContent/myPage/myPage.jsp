@@ -85,7 +85,7 @@ pageEncoding="UTF-8"%>
                     </div>
                     <div id="navListWrap">
                     	<div id="navListSub"></div>
-                        <div id="userImgWrap"><img src="../images/user.svg" id="userImg"/></div>
+                        <div id="userImgWrap"><img src="/images/user.svg" id="userImg"/></div>
                         <div id="navListName">${mem_dto.getName()}</div>
                         <div id="navList">${univ_dto.getUnivName()}</div>
                         <c:if test="${mem_dto.getRole()=='1'}">
@@ -112,7 +112,7 @@ pageEncoding="UTF-8"%>
                             <input type="text" placeholder="학생명으로 검색" id="searchText"/>
                         </c:otherwise>
                     </c:choose>
-                    <img src="/myPage/images/search.svg" id="searchBtn" onclick="search()"/>
+                    <img src="/images/search.svg" id="searchBtn" onclick="search()"/>
                 </div>
                 <ul class="nav nav-pills" id="navBox">
                     <li class="nav-item">
