@@ -62,7 +62,7 @@ pageEncoding="UTF-8"%>
 
                     <span id="searchWrap">
                         <input id='searchText' placeholder="내용을 입력하세요."/>
-                        <img src="../images/search.svg" id="searchBtn" onclick="searchNotices()"/>
+                        <img src="/images/search.svg" id="searchBtn" onclick="searchNotices()"/>
                     </span>
                 </div>
             </div>

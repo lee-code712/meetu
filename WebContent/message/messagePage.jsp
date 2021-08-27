@@ -12,6 +12,7 @@ pageEncoding="UTF-8" %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/message/js/message.js"></script>
     <script>
+    
         var user_id = '${user_id}';
     </script>
 
@@ -86,7 +87,7 @@ pageEncoding="UTF-8" %>
             <div id="messageTextWrap">
                 <div id="messageTextInnerWrap">
                     <input type="text" placeholder="메시지를 입력하세요." id="messageText"/>
-                    <img src="../images/send.svg" id="textBtn" onclick="sendMessage()"/>
+                    <img src="/images/send.svg" id="textBtn" onclick="sendMessage()"/>
                 </div>
             </div>
         </div>

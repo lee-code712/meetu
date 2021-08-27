@@ -77,7 +77,7 @@ pageEncoding="UTF-8"%>
         <div id="sender">
             <div id="search">
                 <input type="text" placeholder="검색어를 입력하세요." id="searchText">
-                <img src="/reservation/images/search.svg" id="searchBtn"/>
+                <img src="/images/search.svg" id="searchBtn"/>
             </div>
         </div>
         <div id="messageInnerWrap">

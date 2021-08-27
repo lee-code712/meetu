@@ -86,7 +86,7 @@ function updatePage(responseText) {
 		// info div의 자식 img infoBtn
 		var newInfoImgElement = document.createElement("img");
 		$(newInfoImgElement).attr("id", "infoBtn");
-		$(newInfoImgElement).attr("src", "/reservation/images/infoImg.svg");
+		$(newInfoImgElement).attr("src", "/images/info.svg");
 		
 		// info div의 자식 infoBox div
 		var newInfoBoxDivElement = document.createElement("div");
