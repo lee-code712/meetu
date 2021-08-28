@@ -95,7 +95,7 @@
 #moreBtn {
     border-radius: 5px;
     color: white;
-    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+    background: #1ABC9C;
     border: none;
     width: 500px;
     height: 50px;
@@ -116,7 +116,7 @@
 }
 
 #alertType {
-    color: #FBAB7E;
+    color: #1ABC9C;
     font-size: 16px;
     font-weight: bold;
 }
@@ -134,7 +134,7 @@
     height: 80px;
     width: 100%;
     border-radius: 5px;
-    background: #FBAB7E;
+    background: #1ABC9C;
 }
 
 #alertBoxOnHeader {
