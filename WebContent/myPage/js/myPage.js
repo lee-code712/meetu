@@ -38,18 +38,19 @@ function updatePage(responseText) {
 	var keyword = $("#searchText").val();
 	
 	for(var key in reservations) {
-		var name = reservations[key][0];
-		var role = reservations[key][1];
-		var res_id = reservations[key][2];
-		var state = reservations[key][3];
-		var start_time = reservations[key][4];
-		var end_time = reservations[key][5];
-		var type = reservations[key][6];
-		var office = reservations[key][7];
+		var name = reservations[key].name;
+		var role = reservations[key].role;
+		var res_id = reservations[key].res_id;
+		var state = reservations[key].state;
+		var start_time = reservations[key].start_time;
+		var end_time = reservations[key].end_time;
+		var type = reservations[key].type;
+		var reject_msg = reservations[key].reject_msg;
+		var office = reservations[key].office;
 		
 		// 검색창이 비어있으면 모든 예약내역 출력, 키워드가 있으면 키워드와 성명이 동일한 예약내역을 출력
 		if(keyword == '' || keyword == name) {
-			// 오늘날짜와 상담일시를 비교하기 위한 변수 정의
+			// 현재일시와 상담일시를 비교하기 위한 변수
 			var today = new Date();
 			var arr = end_time.split(" ");
 			var date_arr = arr[0].split("-");
@@ -68,20 +69,21 @@ function updatePage(responseText) {
 				temp_html += "<td>" + type + "</td>";
 			}
 			
-			if(role == "1") {
+			if(role == "1") { // 학생인 경우
 				if(clicked_item == "bookedList") {
-					temp_html += "<td><button id=\"cancelBtn\" onclick=\"buttonEvent();\">취소하기</button></td></tr>";
+					temp_html += "<td><button id=\"cancelBtn\" onclick=\"buttonEvent();\">취소하기</button></td>";
 					if(today < res_day) {
 						temp_html += "<td><button id=\"editBtn\" onclick=\"buttonEvent();\">수정하기</button></td>"
 					}
+					temp_html += "</tr>";
 					$('#qwe tbody').append(temp_html);
 				}
 				else if(clicked_item == "canceledList") {
 					if(state == "2") {
-						temp_html += "<td><button id=\"rejectMsgBtn\" onclick=\"readRejectMessage();\">반려사유</button></td></tr>";
+						temp_html += "<td><button id=\"rejectMsgBtn\" onclick=\"readRejectMessage('"+ reject_msg +"');\">반려사유</button></td></tr>";
 					}
 					else {
-						temp_html += "<td><button id=\"rejectMsgBtn\" onclick=\"readRejectMessage();\">취소사유</button></td></tr>";
+						temp_html += "<td><button id=\"rejectMsgBtn\" onclick=\"readRejectMessage('"+ reject_msg +"');\">취소사유</button></td></tr>";
 					}
 					$('#asd tbody').append(temp_html);
 				}
@@ -94,7 +96,7 @@ function updatePage(responseText) {
 					$('#aaa tbody').append(temp_html);
 				}
 			}
-			else {
+			else { // 교수인 경우
 				if(clicked_item == "bookedList") {
 					if(today < res_day) {
 						temp_html += "<td><button id=\"approvalBtn\" onclick=\"buttonEvent();\">승인하기</button></td>";
@@ -116,9 +118,10 @@ function updatePage(responseText) {
 					if(today < res_day) {
 						temp_html += "<td><button id=\"editBtn\" onclick=\"buttonEvent();\">수정하기</button></td>"
 					}
-					else {
-						temp_html += "<td><button id=\"consultedBtn\" onclick=\"buttonEvent();\">완료하기</button></td></tr>"
+					if(today > res_day) {
+						temp_html += "<td><button id=\"consultedBtn\" onclick=\"buttonEvent();\">완료하기</button></td>"
 					}
+					temp_html += "</tr>";
 					$('#zxc tbody').append(temp_html);
 				}
 				else {
@@ -156,7 +159,7 @@ function buttonEvent() {
 	}
 	else if(selected_button == "cancelBtn") {
 		if (confirm("선택한 예약을 취소하시겠습니까?") == true)
-			window.open("writeRejectMessagePage.do", "childform", "width=500; height=280; left=400; top=150; resizable = no;");
+			addRejectMessage();
 		else 
 			return;
 	}
@@ -168,7 +171,7 @@ function buttonEvent() {
 	}
 	else if(selected_button == "rejectBtn") {
 		if (confirm("선택한 예약을 반려하시겠습니까?") == true) {
-			window.open("writeRejectMessagePage.do", "childform", "width=500; height=280; left=400; top=150; resizable = no;");
+			addRejectMessage();
 		}
 		else 
 			return;
@@ -230,32 +233,69 @@ function changeReservationState() {
 }
 
 // 거절메시지(반려/취소사유) 저장
-window.addRejectMessage = function(reject_msg) {
-	var data = {"res_id":res_id, "reject_msg":reject_msg};
-	$.ajax({
-		 type: "POST",
-		url: "addRejectMessage.do",
-		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-		data: data,
-		dataType: "text",
-		success: changeReservationState,
-		error: function(jqXHR, textStatus, errorThrown) {
-			var message = jqXHR.getResponseHeader("Status");
-			if ((message == null) || (message.length <= 0)) {
-				alert("Error! Request status is " + jqXHR.status);
-			} else {
-				alert(message);	
-			}
+function addRejectMessage() {
+	res_id = event.currentTarget.closest("tr").id;
+	
+	swal({
+		buttons: {
+			cancel: "닫기",
+		    confirm: "확인"
+		},
+		content: {
+			element: "textarea",
+			attributes: {
+				id: "rejectMsg",
+				placeholder: "사유를 입력하세요."
+			},
+		},
+		closeOnClickOutside: false
+	}).then(function(click) {
+		if($("#rejectMsg").val() == "" && click != null) {
+			swal({
+				text: "사유를 입력하세요.",
+				button: "확인"
+			}).then(function() {
+				addRejectMessage();
+				changeReservationState();
+			});
+		}
+		
+		if(click) {
+			var sender = $("#dropdown-button").text();
+			sender = sender.substring(0, 4) + "의 메시지";
+			var reject_msg = $("#rejectMsg").val();
+			var data = {"res_id":res_id, "sender":sender, "reject_msg":reject_msg};
+			$.ajax({
+				 type: "POST",
+				url: "addRejectMessage.do",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				data: data,
+				dataType: "text",
+				success: changeReservationState,
+				error: function(jqXHR, textStatus, errorThrown) {
+					var message = jqXHR.getResponseHeader("Status");
+					if ((message == null) || (message.length <= 0)) {
+						alert("Error! Request status is " + jqXHR.status);
+					} else {
+						alert(message);	
+					}
+				}
+			});
 		}
 	});
 }
 
 // 거절메시지(반려/취소사유) 확인
-function readRejectMessage() {
-	res_id = event.currentTarget.closest("tr").id;
-	var url = "rejectMessagePage.do?res_id=" + res_id;
-	
-	window.open(url, "childform", "width=500; height=280; left=400; top=150; resizable = no;");
+function readRejectMessage(reject_msg) {
+	var msg_arr = reject_msg.split("/");
+	swal({
+		title: msg_arr[0],
+		text: msg_arr[1],
+		buttons: {
+			cancel: "닫기"
+		},
+		closeOnClickOutside: false
+	});
 }
 
 // 각 항목별 예약정보 확인

@@ -14,7 +14,8 @@ public class AddRejectMessageAction implements CommandAction {
 		HttpSession session = req.getSession();
 		UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
 		String univ = univ_dto.getUnivId();		
-		String res_id = (String) req.getParameter("res_id");
+		String res_id = req.getParameter("res_id");
+		String sender = req.getParameter("sender");
 		String reject_msg = req.getParameter("reject_msg");
 		
 		// 인스턴스 가져오기
@@ -23,7 +24,7 @@ public class AddRejectMessageAction implements CommandAction {
 		// reject_msg 추가
 		ReservationDTO reservation_dto = new ReservationDTO();
 		reservation_dto.setResId(res_id);
-		reservation_dto.setRejectMsg(reject_msg);
+		reservation_dto.setRejectMsg(sender + "/" + reject_msg);
 			
 		boolean change_success = false;
 		change_success = reservation_dao.addRejectMessage(reservation_dto, univ);

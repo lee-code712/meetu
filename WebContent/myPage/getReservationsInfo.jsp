@@ -4,7 +4,17 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="meetu.dao.*"%>
 <%@ page import="meetu.dto.*"%>
-<%@ page import="com.fasterxml.jackson.databind.*"%> 
+<%@ page import="org.json.simple.*"%> 
+
+<%!
+	public static Comparator<ReservationDTO> ReservationsComparator = new Comparator<ReservationDTO>() 
+	{
+	    @Override
+	    public int compare(ReservationDTO r1, ReservationDTO r2) {
+	        return ((r1.getStartTime()).compareTo(r2.getStartTime()));
+	    }
+	};
+%>
 
 <%
 	UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
@@ -18,9 +28,10 @@
 
 	// reseved list json 만들어 반환
 	ArrayList<ReservationDTO> reservations = (ArrayList<ReservationDTO>) reservation_dao.getReservationInfo(univ, user_id);
+	
 	if(reservations != null) {
-		TreeMap<Date, ArrayList<String>> reservation_map = new TreeMap<Date, ArrayList<String>>(); // 예약정보를 시간 순으로 정렬하기 위해 treemap 사용, 근데 보낸 시간이 정확히 같으면 하나만 저장됨..
-		Iterator<ReservationDTO> iterator = reservations.iterator();
+		reservations.sort(ReservationsComparator);
+		JSONArray resJsonArray = new JSONArray();
 		
 		int state = -1;
 		if(clicked_item.equals("bookedList")) {
@@ -33,13 +44,12 @@
 			state = 3;
 		}
 		
+		Iterator<ReservationDTO> iterator = reservations.iterator();
+
 		while(iterator.hasNext()) {
+			HashMap<String, String> mem_map = new HashMap<>();
 			ReservationDTO reservation_dto = iterator.next();
-			
-			String start_time = reservation_dto.getStartTime();
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-			Date date = sdf.parse(start_time);
-			
+						
 			MemberDTO member = null;
 			if(reservation_dto.getSUserId().equals(user_id)) {
 				member = (MemberDTO) mem_dao.getMemberInfo(univ, reservation_dto.getPUserId());
@@ -51,47 +61,53 @@
 		
 			if(clicked_item.equals("canceledList")) {
 				if(reservation_dto.getState() == 2 || reservation_dto.getState() == 4) {
-					ArrayList<String> mem_list = new ArrayList<>();
-					mem_list.add(member.getName());
-					mem_list.add(member.getRole());
-					mem_list.add(reservation_dto.getResId());
-					mem_list.add(Integer.toString(reservation_dto.getState()));
-					mem_list.add(reservation_dto.getStartTime());
-					mem_list.add(reservation_dto.getEndTime());
+					JSONObject r = null;
+					
+					mem_map.put("name", member.getName());
+					mem_map.put("role", member.getRole());
+					mem_map.put("res_id", reservation_dto.getResId());
+					mem_map.put("state", Integer.toString(reservation_dto.getState()));
+					mem_map.put("start_time", reservation_dto.getStartTime());
+					mem_map.put("end_time", reservation_dto.getEndTime());
 					if(reservation_dto.getType() == 0) {
-						mem_list.add("오프라인");
+						mem_map.put("type", "오프라인");
 					}
 					else {
-						mem_list.add("온라인");
+						mem_map.put("type", "온라인");
 					}
-					mem_list.add(prof_dto.getOffice());
-					reservation_map.put(date, mem_list);
+					mem_map.put("reject_msg", reservation_dto.getRejectMsg());
+					mem_map.put("office", prof_dto.getOffice());
+
+					r = new JSONObject(mem_map);
+					resJsonArray.add(r);
 				}
 			}
 			else {
 				if(reservation_dto.getState() == state) {
-					ArrayList<String> mem_list = new ArrayList<>();
-					mem_list.add(member.getName());
-					mem_list.add(member.getRole());
-					mem_list.add(reservation_dto.getResId());
-					mem_list.add(Integer.toString(reservation_dto.getState()));
-					mem_list.add(reservation_dto.getStartTime());
-					mem_list.add(reservation_dto.getEndTime());
+					JSONObject r = null;
+					
+					mem_map.put("name", member.getName());
+					mem_map.put("role", member.getRole());
+					mem_map.put("res_id", reservation_dto.getResId());
+					mem_map.put("state", Integer.toString(reservation_dto.getState()));
+					mem_map.put("start_time", reservation_dto.getStartTime());
+					mem_map.put("end_time", reservation_dto.getEndTime());
 					if(reservation_dto.getType() == 0) {
-						mem_list.add("오프라인");
+						mem_map.put("type", "오프라인");
 					}
 					else {
-						mem_list.add("온라인");
+						mem_map.put("type", "온라인");
 					}
-					mem_list.add(prof_dto.getOffice());
-					reservation_map.put(date, mem_list);
+					mem_map.put("reject_msg", reservation_dto.getRejectMsg());
+					mem_map.put("office", prof_dto.getOffice());
+
+					r = new JSONObject(mem_map);
+					resJsonArray.add(r);
 				}	
 			}
 		}
 		
-		ObjectMapper mapper = new ObjectMapper();
-		String result = mapper.writeValueAsString(reservation_map);
-		// System.out.println(result);
-		out.print(result);
+		System.out.println(resJsonArray);
+		out.print(resJsonArray);
 	}
 %>
