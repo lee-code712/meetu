@@ -48,19 +48,19 @@ pageEncoding="UTF-8"%>
 
 <div id="navWrap">
     <div id="navL">
-        <div id="navLTit">교수 정보</div>
+        <div id="navLTit"></div>
         <div id="navListWrap">
             <div id="userImgWrap"></div>
             <div id="profMfName">${mem_dto.getName()}</div>
             <div id="navList">${univ_dto.getUnivName()}</div>
             <div id="profDataMfBtnWrap">
-                <button id="profDataMfBtn">저장</button>
+                <button id="backBtn" onClick="location.href='myPage.do'">닫기</button>
             </div>
         </div>
     </div>
 
     <div id="navR">
-        <div id="navRTit">교수 정보 수정</div>
+        <div id="navRTit">내 정보</div>
         <div id="navRContentWrap">
             <div id="profNameMfWrap">
                 <div id="profNameMfTit">교수명</div>
