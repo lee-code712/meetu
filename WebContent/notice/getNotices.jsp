@@ -4,7 +4,19 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="meetu.dao.*"%>
 <%@ page import="meetu.dto.*"%>
-<%@ page import="com.fasterxml.jackson.databind.*"%> 
+<%@ page import="org.json.simple.*"%> 
+
+<%!
+	public static Comparator<NoticeDTO> NoticesComparator = new Comparator<NoticeDTO>() 
+	{
+	    @Override
+	    public int compare(NoticeDTO n1, NoticeDTO n2) {
+	    	Integer n1_id = new Integer(n1.getNoticeId());
+	    	Integer n2_id = new Integer(n2.getNoticeId());
+	        return ((n2_id).compareTo(n1_id));
+	    }
+	};
+%>
 
 <%
 	UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
@@ -25,18 +37,29 @@
 	}
 	
 	if(notices != null) {
-		int cnt = 1;
-		TreeMap<Integer, NoticeDTO> notice_map = new TreeMap<Integer, NoticeDTO>(); // 공지를 번호 순으로 정렬하기 위해 treemap 사용
+		notices.sort(NoticesComparator);
+		JSONArray noticeJsonArray = new JSONArray();
+		
 		Iterator<NoticeDTO> iterator = notices.iterator();
-			
+		
+		int cnt = notices.size();
 		while(iterator.hasNext()) {
+			HashMap<String, Object> no_map = new HashMap<>();
 			NoticeDTO notice_dto = iterator.next();
-			notice_map.put(cnt++, notice_dto);
+			JSONObject n = null;
+			
+			no_map.put("no", cnt--);
+			no_map.put("notice_id", notice_dto.getNoticeId());
+			no_map.put("title", notice_dto.getTitle());
+			no_map.put("write_date", notice_dto.getWriteDate());
+			no_map.put("views", notice_dto.getViews());
+			no_map.put("content", notice_dto.getContent());
+			
+			n = new JSONObject(no_map);
+			noticeJsonArray.add(n);
 		}
 		
-		ObjectMapper mapper = new ObjectMapper();
-		String result = mapper.writeValueAsString(notice_map);
-		// System.out.println(result);
-		out.print(result);
+		// System.out.println(noticeJsonArray);
+		out.print(noticeJsonArray);
 	}
 %>

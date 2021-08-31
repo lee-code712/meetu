@@ -107,7 +107,7 @@
 			}
 		}
 		
-		System.out.println(resJsonArray);
+		// System.out.println(resJsonArray);
 		out.print(resJsonArray);
 	}
 %>

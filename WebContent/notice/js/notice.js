@@ -87,6 +87,7 @@ function getNotices() {
 
 function updateNotices(responseText) {
 	var notices = JSON.parse(responseText);
+	
 	var current_page = parseInt($('.num').text());
 
 	var start_no = 0; // 현재 페이지에 나타낼 데이터의 시작 인덱스
@@ -104,21 +105,28 @@ function updateNotices(responseText) {
 	else {
 		last_no = start_no + rpp;
 	}
-			
-	for(var key = start_no + 1; key <= last_no; key++) {
-		var notice_id = notices[key].noticeId;
+	
+	for(var key in notices) {
+		var idx = Number(key) + 1;
+		var no = notices[key].no;
+		var notice_id = notices[key].notice_id;
 		var title = notices[key].title;
-		var write_date = notices[key].writeDate.substring(0, 10);
+		var write_date = notices[key].write_date;
+		write_date = write_date.substring(0, 10);
 		var views = notices[key].views;
-		var temp_html = '';
 		
-		temp_html += "<tr id=\"boardList\" onclick=\"location.href='noticeContentPage.do?no=" + notice_id + "'\">";
-		temp_html += "<td>" + key + "</td> <td>" + title + "</td> <td>MEETU 관리자</td>";
-		temp_html += "<td>" + write_date + "</td> <td>" + views + "</td>";
-		temp_html += "</tr>";
+		if(idx >= start_no + 1 && idx <= last_no) {
+			var temp_html = '';
+			
+			temp_html += "<tr id=\"boardList\" onclick=\"location.href='noticeContentPage.do?no=" + notice_id + "'\">";
+			temp_html += "<td>" + no + "</td> <td>" + title + "</td> <td>MEETU 관리자</td>";
+			temp_html += "<td>" + write_date + "</td> <td>" + views + "</td>";
+			temp_html += "</tr>";
 
-		$('#noticeList').append(temp_html);
-	}	
+			$('#noticeList').append(temp_html);
+		}
+		
+	}
 }
 
 function searchNotices() {
