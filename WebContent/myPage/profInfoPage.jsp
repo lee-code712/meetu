@@ -85,7 +85,7 @@ pageEncoding="UTF-8"%>
                     <div id="profSubjectMfText">
                     	<c:forEach items="${courses}" var="list">
                     		<c:if test="${list.course_by_prof != null}">
-							 	${list.course_by_prof} &nbsp;<a id="${list.course_id}" style="color:red; cursor:pointer;" onClick="classRemoveBtn()">x</a><br/>
+							 	<div id="${list.course_id}">${list.course_by_prof} &nbsp;<a id="rejectBtn" onClick="classRemoveBtn()">x</a></div>
 							 </c:if>
 						</c:forEach>
 					</div>
@@ -111,17 +111,31 @@ pageEncoding="UTF-8"%>
                 </div>
                    <div id="profAbleTimeMfText">
 					<c:forEach items="${consultable_times}" var="list">
-						<c:choose>
-							<c:when test="${list.able_date == 0}">일 ${list.able_time}</c:when>
-							<c:when test="${list.able_date == 1}">월 ${list.able_time}</c:when>
-							<c:when test="${list.able_date == 2}">화 ${list.able_time}</c:when>
-							<c:when test="${list.able_date == 3}">수 ${list.able_time}</c:when>
-							<c:when test="${list.able_date == 4}">목 ${list.able_time}</c:when>
-							<c:when test="${list.able_date == 5}">금 ${list.able_time}</c:when>
-							<c:otherwise>토 ${list.able_time}</c:otherwise>
-						</c:choose>
-						&nbsp;<a id="${list.able_date} ${list.able_time}" style="color:red; cursor:pointer;" onClick="profAbleTimeRemoveBtn()">x</a><br/>
+							<c:choose>
+								<c:when test="${list.able_date == 0}">
+									<div id="0">일 ${list.able_time} &nbsp;<a id="rejectBtn" onClick="profAbleTimeRemoveBtn()">x</a></div>
+								</c:when>
+								<c:when test="${list.able_date == 1}">
+									<div id="1">월 ${list.able_time} &nbsp;<a id="rejectBtn" onClick="profAbleTimeRemoveBtn()">x</a></div>
+								</c:when>
+								<c:when test="${list.able_date == 2}">
+									<div id="2">화 ${list.able_time} &nbsp;<a id="rejectBtn" onClick="profAbleTimeRemoveBtn()">x</a></div>
+								</c:when>
+								<c:when test="${list.able_date == 3}">
+									<div id="3">수 ${list.able_time} &nbsp;<a id="rejectBtn" onClick="profAbleTimeRemoveBtn()">x</a></div>
+								</c:when>
+								<c:when test="${list.able_date == 4}">
+									<div id="4">목 ${list.able_time} &nbsp;<a id="rejectBtn" onClick="profAbleTimeRemoveBtn()">x</a></div>
+								</c:when>
+								<c:when test="${list.able_date == 5}">
+									<div id="5">금 ${list.able_time} &nbsp;<a id="rejectBtn" onClick="profAbleTimeRemoveBtn()">x</a></div>
+								</c:when>
+								<c:otherwise>
+									<div id="6">토 ${list.able_time} &nbsp;<a id="rejectBtn" onClick="profAbleTimeRemoveBtn()">x</a></div>
+								</c:otherwise>
+							</c:choose>
 					</c:forEach>
+					</div>
 				</div>
             </div>
         </div>

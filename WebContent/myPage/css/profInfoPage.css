@@ -335,3 +335,8 @@ a:hover {
 #profAbleTimeMfText:last-child {
     margin-bottom: 0px;
 }
+
+#rejectBtn {
+	color: red;
+	cursor: pointer;
+}

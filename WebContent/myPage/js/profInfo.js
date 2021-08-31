@@ -113,7 +113,7 @@ function subjectAddBtn() {
 		var course_id = course.course_id;
 		var title = course.course_by_dept;
 
-		if(title != null && $("#profSubjectMfText:contains("+ title + ")").attr('id') == undefined) { // 현재 추가되어있는 항목이 아닌 경우
+		if(title != null && $("#profSubjectMfText:contains("+ title + ")").attr("id") == undefined) { // 현재 추가되어있는 항목이 아닌 경우
 			option = document.createElement('option');
 			option.innerHTML = title;
 			option.value = course_id;
@@ -148,7 +148,7 @@ function subjectAddBtn() {
 
 // 담당과목 삭제 버튼 이벤트
 function classRemoveBtn() {
-	var course_id = event.currentTarget.id;
+	var course_id = event.currentTarget.closest("div").id;
 	
 	swal({
 		text: "선택한 과목을 삭제하시겠습니까?",
@@ -237,34 +237,56 @@ function profAbleTimeAddBtn() {
 		closeOnClickOutside: false
 	}).then(function(click) {
 		if(click) {
-			var day = $("#daysOfTheWeek").val();
-			var start = $("#startTimes").val();
-			var end = $("#endTimes").val();
-			var able_time = days[day] + " " + start + "~" + end;
+			var able_times = $("#profAbleTimeMfText").children("div");
+			var new_day = $("#daysOfTheWeek").val();
+			var new_start = $("#startTimes").val();
+			var new_end = $("#endTimes").val();
+			var check = true;
 			
-			if(start.substring(0,2) > end.substring(0,2)) {
+			if(new_end == "종료 시간을 선택하세요." || new_start == "시작 시간을 선택하세요." || new_day == "요일을 선택하세요.") {
 				swal({
-					text: "형식에 맞지 않는 시간대 입니다.",
+					text: "선택되지 않은 항목이 있습니다.",
 					button: "확인"
-				});
-			}
-			else if($("#profAbleTimeMfText:contains("+ able_time + ")").attr('id') != undefined) { // 이미 추가된 시간대인 경우
-				swal({
-					text: "이미 존재하는 시간대 입니다.",
-					button: "확인"
+				}).then(function() {
+					profAbleTimeAddBtn();
 				});
 			}
 			else {
-				if(end == "종료 시간을 선택하세요." || start == "시작 시간을 선택하세요." || day == "요일을 선택하세요.") {
+				for(var key in able_times) { 
+					var able_time = $(able_times[key]).text();
+					var old_day = able_time.substring(0, 1);
+					var old_start = able_time.substring(2, 4);
+					var old_end = able_time.substring(8, 10);
+					
+					if(days[new_day] == old_day) { // 요일이 같을 때 
+						if(new_end.substring(0, 2) <= old_start || new_start.substring(0, 2) >= old_end) { // 시간이 겹치치 않으면 넘어감
+							continue;
+						}
+						else { // 시간이 겹치면 check를 false로 설정하고 for문을 벗어남
+							check = false;
+							break;
+						}
+					}
+				};
+				
+				if(new_start.substring(0, 2) > new_end.substring(0, 2)) {
 					swal({
-						text: "선택되지 않은 항목이 있습니다.",
+						text: "형식에 맞지 않는 시간대입니다.",
+						button: "확인"
+					}).then(function() {
+						profAbleTimeAddBtn();
+					});
+				}
+				else if(!check) { // 겹치는 시간대가 존재하는 경우
+					swal({
+						text: "겹치는 시간대가 존재합니다.",
 						button: "확인"
 					}).then(function() {
 						profAbleTimeAddBtn();
 					});
 				}
 				else {
-					var param = "able_time=" + day + " " + start + "~" + end;
+					var param = "able_time=" + new_day + " " + new_start + "~" + new_end;
 					location.href="addConsultableTime.do?" + param;
 				}
 			}
@@ -274,7 +296,9 @@ function profAbleTimeAddBtn() {
 
 // 상담가능시간 삭제 버튼 이벤트
 function profAbleTimeRemoveBtn() {
-	var able_time = event.currentTarget.id;
+	var choose_day = event.currentTarget.closest("div").id;
+	var choose_time = event.currentTarget.closest("div").textContent;
+	var able_time = choose_day + " " + choose_time.substring(2, 13);
 	
 	swal({
 		text: "선택한 시간대를 삭제하시겠습니까?",
