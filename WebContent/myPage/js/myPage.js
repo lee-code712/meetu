@@ -49,8 +49,15 @@ function updatePage(responseText) {
 		
 		// 검색창이 비어있으면 모든 예약내역 출력, 키워드가 있으면 키워드와 성명이 동일한 예약내역을 출력
 		if(keyword == '' || keyword == name) {
+			// 오늘날짜와 상담일시를 비교하기 위한 변수 정의
+			var today = new Date();
+			var arr = end_time.split(" ");
+			var date_arr = arr[0].split("-");
+			var res_day = new Date(date_arr[0], date_arr[1] - 1, date_arr[2], arr[1].substring(0, 2));
+
+			// html을 담을 변수
 			var temp_html = '';
-	
+			
 			temp_html += "<tr id=" + res_id + ">";
 			temp_html += "<td><img src=\"/images/moreImage.svg\" id=\"moreImg\" onclick=\"readReservationInfo();\"/></td><td>" + name + "</td>";
 			temp_html += "<td>" + start_time.substring(0, 16) + "~" + end_time.substring(11, 16) + "</td>";
@@ -63,8 +70,10 @@ function updatePage(responseText) {
 			
 			if(role == "1") {
 				if(clicked_item == "bookedList") {
-					temp_html += "<td><button id=\"editBtn\" onclick=\"buttonEvent();\">수정하기</button></td>"
 					temp_html += "<td><button id=\"cancelBtn\" onclick=\"buttonEvent();\">취소하기</button></td></tr>";
+					if(today < res_day) {
+						temp_html += "<td><button id=\"editBtn\" onclick=\"buttonEvent();\">수정하기</button></td>"
+					}
 					$('#qwe tbody').append(temp_html);
 				}
 				else if(clicked_item == "canceledList") {
@@ -87,7 +96,9 @@ function updatePage(responseText) {
 			}
 			else {
 				if(clicked_item == "bookedList") {
-					temp_html += "<td><button id=\"approvalBtn\" onclick=\"buttonEvent();\">승인하기</button></td>";
+					if(today < res_day) {
+						temp_html += "<td><button id=\"approvalBtn\" onclick=\"buttonEvent();\">승인하기</button></td>";
+					}
 					temp_html += "<td><button id=\"rejectBtn\" onclick=\"buttonEvent();\">반려하기</button></td></tr>";
 					$('#qwe tbody').append(temp_html);
 				}
@@ -101,9 +112,13 @@ function updatePage(responseText) {
 					$('#asd tbody').append(temp_html);
 				}
 				else if(clicked_item == "approvedList") {
-					temp_html += "<td><button id=\"editBtn\" onclick=\"buttonEvent();\">수정하기</button></td>"
 					temp_html += "<td><button id=\"cancelBtn\" onclick=\"buttonEvent();\">취소하기</button></td>";
-					temp_html += "<td><button id=\"consultedBtn\" onclick=\"buttonEvent();\">완료하기</button></td></tr>"
+					if(today < res_day) {
+						temp_html += "<td><button id=\"editBtn\" onclick=\"buttonEvent();\">수정하기</button></td>"
+					}
+					else {
+						temp_html += "<td><button id=\"consultedBtn\" onclick=\"buttonEvent();\">완료하기</button></td></tr>"
+					}
 					$('#zxc tbody').append(temp_html);
 				}
 				else {
@@ -140,7 +155,7 @@ function buttonEvent() {
 		location.href="reservationUpdateForm.do?res_id=" + res_id;
 	}
 	else if(selected_button == "cancelBtn") {
-		if (confirm("선택한 예약을 취소하시겠습니까?") == true) 
+		if (confirm("선택한 예약을 취소하시겠습니까?") == true)
 			window.open("writeRejectMessagePage.do", "childform", "width=500; height=280; left=400; top=150; resizable = no;");
 		else 
 			return;

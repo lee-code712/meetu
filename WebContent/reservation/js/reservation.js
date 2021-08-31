@@ -224,7 +224,7 @@ function getDept(responseText) {
 		
 		// college li 내부 이미지
 		var newCollegeImgElement = document.createElement("img");
-		$(newCollegeImgElement).attr("src", "/reservation/images/label_important_black_24dp.svg");
+		//$(newCollegeImgElement).attr("src", "/reservation/images/label_important_black_24dp.svg");
 		
 		// college 내부 ul deptList
 		var newDeptUlElement = document.createElement("ul");

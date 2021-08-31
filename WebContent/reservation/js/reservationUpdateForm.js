@@ -6,6 +6,7 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 	$(".timeBox").click(ck_timeBox);
 	$(".typeBtn").click(typeBtnClick);
 	$(".updateBtn").click(reservationBtnClick);
+	console.log(today);
 	
 	buildCalendar(); // 캘린더 호출
 });
@@ -21,10 +22,12 @@ function buildCalendar() {
 	if(event != null) {
 		var click_month = event.currentTarget.closest("td").id;
 		if(click_month == "prevMonth") {
-			this.today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate()); // 전달
+			this.today = new Date(today.getFullYear(), today.getMonth() - 1, 1); // 전달
+			console.log(today);
 		}
 		else if(click_month == "nextMonth") {
-			this.today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate()); // 다음달
+			this.today = new Date(today.getFullYear(), today.getMonth() + 1, 1); // 다음달
+			console.log(today);
 		}
 	}
 

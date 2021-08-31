@@ -19,10 +19,10 @@ function buildCalendar() {
 	if(event != null) {
 		var click_month = event.currentTarget.closest("td").id;
 		if(click_month == "prevMonth") {
-			this.today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate()); // 전달
+			this.today = new Date(today.getFullYear(), today.getMonth() - 1, 1); // 전달
 		}
 		else if(click_month == "nextMonth") {
-			this.today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate()); // 다음달
+			this.today = new Date(today.getFullYear(), today.getMonth() + 1, 1); // 다음달
 		}
 	}
 
