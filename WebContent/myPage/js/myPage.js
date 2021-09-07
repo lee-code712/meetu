@@ -106,10 +106,10 @@ function updatePage(responseText) {
 				}
 				else if(clicked_item == "canceledList") {
 					if(state == "2") {
-						temp_html += "<td><button id=\"rejectMsgBtn\" onclick=\"readRejectMessage();\">반려사유</button></td></tr>";
+						temp_html += "<td><button id=\"rejectMsgBtn\" onclick=\"readRejectMessage('"+ reject_msg +"');\">반려사유</button></td></tr>";
 					}
 					else {
-						temp_html += "<td><button id=\"rejectMsgBtn\" onclick=\"readRejectMessage();\">취소사유</button></td></tr>";
+						temp_html += "<td><button id=\"rejectMsgBtn\" onclick=\"readRejectMessage('"+ reject_msg +"');\">취소사유</button></td></tr>";
 					}
 					$('#asd tbody').append(temp_html);
 				}
