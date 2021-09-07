@@ -11,6 +11,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import meetu.action.CommandAction;
+import meetu.dao.AlertDAO;
 import meetu.dao.MemberDAO;
 import meetu.dao.ReservationDAO;
 import meetu.dto.*;
@@ -111,6 +112,17 @@ public class ProfInfoPageAction implements CommandAction {
 		}
 
 		req.setAttribute("consultable_times", timeJsonArray);
+		
+		// 새로운 알림개수 검색 후 반환
+		AlertDAO alert_dao = AlertDAO.getInstance();
+		String count_alert = (String) session.getAttribute("count_alert");
+		String now_count_alert = Integer.toString(alert_dao.getNewAlert(user_id, univ));
+		if(count_alert == null) {
+			session.setAttribute("count_alert", now_count_alert);
+		}
+		else if(!count_alert.equals(now_count_alert)) {
+			session.setAttribute("count_alert", now_count_alert);
+		}
 		
 		return "/myPage/profInfoPage.jsp?" + param;
 	}

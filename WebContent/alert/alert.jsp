@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,28 +18,18 @@
     <div class="popup">
         <a href="#none" class="close">&times;</a>
         <div id="alertTitle">알림</div>
-        <div id="alertBoxOn">
-            <div id="alertBoxOnHeader">
-                <div id="alertTypeOn">[상담예약]</div>
-                <div id="alertDateOn">2021-07-23</div>
-            </div>
-            <div id="alertContentOn">000교수님 예약이 확정되었습니다.</div>
-        </div>
-        <div id="alertBox">
-            <div id="alertBoxHeader">
-                <div id="alertType">[상담예약]</div>
-                <div id="alertDate">2021-07-23</div>
-            </div>
-            <div id="alertContent">000교수님 예약이 확정되었습니다.</div>
-        </div>
-        <div id="alertBox">
-            <div id="alertBoxHeader">
-                <div id="alertType">[상담예약]</div>
-                <div id="alertDate">2021-07-23</div>
-            </div>
-            <div id="alertContent">000교수님 예약이 확정되었습니다.</div>
-        </div>
-        <button id="moreBtn">더 보기</button>
+        <c:if test="${requestScope.alerts == null}">
+        	새로운 알림이 없습니다.
+        </c:if>
+        <c:forEach items="${requestScope.alerts}" var="alert">
+                    <div id="alertBox">
+            			<div id="alertBoxHeader">
+                			<div id="alertType">${alert.alert_type}</div>
+                			<div id="alertDate">${alert.alert_date}</div>
+            			</div>
+            			<div id="alertContent">${alert.alert_msg}</div>
+        			</div>
+        </c:forEach>
     </div>
 </div>
 </body>

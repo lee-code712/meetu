@@ -16,6 +16,7 @@ public class MakeReservationAction implements CommandAction {
 		HttpSession session = req.getSession();
 		UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
 		String univ = univ_dto.getUnivId();
+		MemberDTO mem_dto = (MemberDTO) session.getAttribute("mem_dto");
 		String choiceMonth = req.getParameter("choiceMonth");
 		String choiceDay = req.getParameter("choiceDay");
 		String startTime = req.getParameter("startTime");
@@ -89,6 +90,20 @@ public class MakeReservationAction implements CommandAction {
 			res.setStatus(400); // bad request
 			res.addHeader("Status", "add reservation failed");
 			return "reservation.do?add_ck=0";
+		}
+		
+		// 예약신청에 대한 새 알림 저장
+		AlertDAO alert_dao = AlertDAO.getInstance();
+				
+		AlertDTO alert_dto = new AlertDTO();
+		alert_dto.setAlertType(0);
+		alert_dto.setAlertMsg(mem_dto.getName() + "님이 예약을 신청했습니다.");
+		alert_dto.setUserId(p_user_id);
+				
+		boolean alert_is_added = alert_dao.addAlert(alert_dto, univ);
+		if(!alert_is_added) {
+			res.setStatus(400); // bad request
+			res.addHeader("Status", "add alert failed");
 		}
 		
 		return "reservation.do?add_ck=1";

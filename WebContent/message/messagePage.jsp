@@ -48,7 +48,7 @@ pageEncoding="UTF-8" %>
                     <a href="logout.do">로그아웃</a>
                 </div>
             </div>
-            <img src="/images/bell.svg" id="noticeImg"/>
+            <img src="/images/bell.svg" id="noticeImg" onclick="readNewAlerts();"/>&nbsp; 새로운 알림: ${count_alert}개
         </div>
     </div>
 </div>

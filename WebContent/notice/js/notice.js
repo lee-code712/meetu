@@ -162,3 +162,10 @@ function getTotalData() {
 	
 	return size;
 } 
+
+//알림 내역 확인
+function readNewAlerts() {
+	var url = "alert.do";
+	
+	window.open(url, "childform", "width=600; height=500; left=300; top=130; resizable = no;");
+}

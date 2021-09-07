@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import meetu.dao.ReservationDAO;
 import meetu.action.CommandAction;
+import meetu.dao.AlertDAO;
 import meetu.dao.MemberDAO;
 import meetu.dto.UniversityDTO;
 import meetu.dto.ReservationDTO;
@@ -23,6 +24,7 @@ public class ConsultationRecordPageAction implements CommandAction {
 		HttpSession session = req.getSession();
 		UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
 		String univ = univ_dto.getUnivId();		
+		String user_id = (String) session.getAttribute("user_id");
 		String res_id = req.getParameter("res_id");
 		
 		// 예약정보 및 상담기록정보 반환
@@ -71,6 +73,17 @@ public class ConsultationRecordPageAction implements CommandAction {
 		req.setAttribute("consult_dto", consult_dto);
 		req.setAttribute("stu_info", stu_info);
 		req.setAttribute("prof_info", prof_info);
+		
+		// 새로운 알림개수 검색 후 반환
+		AlertDAO alert_dao = AlertDAO.getInstance();
+		String count_alert = (String) session.getAttribute("count_alert");
+		String now_count_alert = Integer.toString(alert_dao.getNewAlert(user_id, univ));
+		if(count_alert == null) {
+			session.setAttribute("count_alert", now_count_alert);
+		}
+		else if(!count_alert.equals(now_count_alert)) {
+			session.setAttribute("count_alert", now_count_alert);
+		}
 		
 		return "/myPage/consultationRecordPage.jsp";
 	}

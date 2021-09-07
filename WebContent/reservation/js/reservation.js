@@ -294,3 +294,10 @@ function selectProf() {
 	var p_user_id = event.currentTarget.closest("tr").id;
 	location.href = "reservationForm.do?p_user_id=" + p_user_id;
 }
+
+//알림 내역 확인
+function readNewAlerts() {
+	var url = "alert.do";
+	
+	window.open(url, "childform", "width=600; height=500; left=300; top=130; resizable = no;");
+}

@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import org.json.simple.*;
 
 import meetu.action.CommandAction;
+import meetu.dao.AlertDAO;
 import meetu.dao.MemberDAO;
 import meetu.dao.ReservationDAO;
 import meetu.dto.*;
@@ -157,6 +158,17 @@ public class ReservationFormAction implements CommandAction {
 			timeJson.put("time", timeJsonArray); // json 배열을 저장
 			// System.out.println(timeJsonArray);
 			req.setAttribute("consultable_times", timeJsonArray);	
+			
+			// 새로운 알림개수 검색 후 반환
+			AlertDAO alert_dao = AlertDAO.getInstance();
+			String count_alert = (String) session.getAttribute("count_alert");
+			String now_count_alert = Integer.toString(alert_dao.getNewAlert(s_user_id, univ));
+			if(count_alert == null) {
+				session.setAttribute("count_alert", now_count_alert);
+			}
+			else if(!count_alert.equals(now_count_alert)) {
+				session.setAttribute("count_alert", now_count_alert);
+			}
 			
 			if(reservation != null) {
 				return "/reservation/reservationUpdateForm.jsp?" + param; // 전달받은 예약 내역이 존재하면 예약 수정 페이지로 이동

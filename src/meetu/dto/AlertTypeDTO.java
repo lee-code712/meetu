@@ -1,14 +1,14 @@
 package meetu.dto;
 
 public class AlertTypeDTO {
-	private String type;
+	private int type;
 	private String title;
 	
-	public String getType() {
+	public int getType() {
 		return type;
 	}
 	
-	public void setType(String type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 	
