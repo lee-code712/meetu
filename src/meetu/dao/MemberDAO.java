@@ -26,8 +26,7 @@ public class MemberDAO {
 	}
 
 	// login정보 확인-성공 시 회원정보 반환
-	public MemberDTO loginOk(MemberUserDTO mem_usr_dto, String univ, String role)
-			throws NamingException/* , SQLException */ {
+	public MemberDTO loginOk(MemberUserDTO mem_usr_dto, String univ, String role) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		MemberDTO mem_dto = null;

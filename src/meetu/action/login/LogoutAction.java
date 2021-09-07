@@ -10,10 +10,11 @@ public class LogoutAction implements CommandAction {
 	
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
-		
+		// 세션 강제종료
 		HttpSession session = req.getSession();
 		session.invalidate();
 		
+		// 로그인 페이지 반환
 		return "loginForm.do";
 	}
 

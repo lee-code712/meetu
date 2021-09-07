@@ -31,17 +31,16 @@ pageEncoding="UTF-8"%>
 </head>
 
 <body id="bodyBg">
+ <%
+	String ck = request.getParameter("ck");
+            
+	if(ck != null) {
+		out.println("<script>alert('로그인에 실패했습니다.');</script>");
+	}
+%>
+
     <div id="joinWrap">
         <div id="loginTitle"><a>MEETU</a></div>
-        
-        <%
-            String ck = request.getParameter("ck");
-            
-            if(ck != null) {
-                out.println("<script>alert('로그인에 실패했습니다.');</script>");
-            }
-        %>
-        
         <form method="post" action="login.do">
             <div id="position">
                 <div class="form-check form-check-inline">

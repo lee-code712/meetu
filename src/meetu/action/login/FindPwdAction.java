@@ -32,22 +32,27 @@ public class FindPwdAction implements CommandAction {
         	c = user_id.charAt(i);
         }
 		
+        // 필요한 인스턴스 가져오기
         MemberDAO mem_dao = MemberDAO.getInstance();
         UniversityDAO univ_dao = UniversityDAO.getInstance();
 		
+        // 입력한 정보에 맞는 패스워드 탐색
 		UniversityDTO univ_dto = univ_dao.getUnivInfo(univ_id);
 		ArrayList<String> find_info = null;
 		if(univ_dto != null) {
 			find_info = mem_dao.findPassword(univ_id, user_id, role);
 		}
         
+		// 패스워드를 못찾은 경우 페이지 반환
         if(find_info == null) {
         	return "findPwdForm.do?ck=" + -1;
-        }      
+        }
+        // 이메일이 다른 경우 페이지 반환
         if(!find_info.get(0).equals(email)) {
         	return "findPwdForm.do?ck=" + -2;
         }
         
+        // 패스워드를 찾은 경우 해당 이메일로 발송
         String mail_title = "패스워드 찾기";
 		String sender = "swddwu@gmail.com";
 		String sender_name = "meetU 관리자";
@@ -83,6 +88,7 @@ public class FindPwdAction implements CommandAction {
 			ex.printStackTrace();
         }
 		
+		// 이메일 발송 후 페이지 반환
 		return "findPwdForm.do?ck=" + 1;
 	}
 }

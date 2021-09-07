@@ -15,14 +15,11 @@ public class LoginAction implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
-		MemberUserDTO mem_usr_dto = new MemberUserDTO();
-		mem_usr_dto.setUserId(req.getParameter("user_id"));
-		mem_usr_dto.setPassword(req.getParameter("password"));
-		
-		
-		String user_id = mem_usr_dto.getUserId();
+		String user_id = req.getParameter("user_id");
+		String password = req.getParameter("password");
 		String role = req.getParameter("role");
 		String univ_id = "";
+		
 		int i = 0;
         char c = user_id.charAt(i);
         while(c >= 'a' && c <= 'z') {
@@ -32,16 +29,24 @@ public class LoginAction implements CommandAction {
         		break;
         	c = user_id.charAt(i);
         }
-        
-		MemberDAO mem_dao = MemberDAO.getInstance();
+		
+        // 필요한 인스턴스 가져오기
+        MemberDAO mem_dao = MemberDAO.getInstance();
 		UniversityDAO univ_dao = UniversityDAO.getInstance();
 		
+		// login 성공 여부 check
+		MemberUserDTO mem_usr_dto = new MemberUserDTO();
+		mem_usr_dto.setUserId(user_id);
+		mem_usr_dto.setPassword(password);
+		
 		UniversityDTO univ_dto = univ_dao.getUnivInfo(univ_id);
+		
 		MemberDTO mem_dto = null;
 		if(univ_dto != null) {
 			mem_dto = mem_dao.loginOk(mem_usr_dto, univ_id, role);
 		}
 		
+		// login 성공 여부에 따른 페이지 반환
 		if (mem_dto != null) { // 로그인 성공
 			HttpSession session = req.getSession();
 			session.setAttribute("user_id", user_id); // 회원 id 저장
