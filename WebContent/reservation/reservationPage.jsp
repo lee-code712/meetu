@@ -10,10 +10,59 @@ pageEncoding="UTF-8"%>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/reservation/js/reservation.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".resultArea > div").last().hide();
+            var radioContent = $(".resultArea > div");
+            $("input[type='radio']").click(function () {
+                radioContent.hide();
+                radioContent.eq($("input[type='radio']").index(this)).show();
+            });
+        });
+    </script>
+
+    <style>
+        #search {
+            margin-left: 3px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: 340px;
+            padding: 0px 8px;
+            width: 260px;
+            height: 34px;
+            border-bottom: 1px solid #EAEAEA;
+            border-radius: 50px;
+            background: #ffffff;
+        }
+
+        #searchText {
+            font-size: 12px;
+            width: 120px;
+            padding-left: 4px;
+            border: 0px;
+            outline: none;
+            float: left;
+            border-radius: 30px;
+        }
+
+        #searchBtn {
+            width: 20px;
+            height: 20px;
+            border: none;
+            outline: none;
+            float: right;
+        }
+        
+        #tab2 {
+        	margin-left: 20px;
+        }
+
+    </style>
 </head>
 
 <body id="reservationBodyBg">
-    <%
+<%
 	    String is_reservated = request.getParameter("is_reservated");
 		if(is_reservated != null) {
 			out.println("<script>alert('이미 상담 예약이 신청된 교수님입니다.');</script>");
@@ -34,7 +83,6 @@ pageEncoding="UTF-8"%>
 			}
 		}
 	%>
-
 <div id="header">
     <div id="headerInner">
         <div id="headerInnerL">
@@ -45,9 +93,9 @@ pageEncoding="UTF-8"%>
                     <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
                     <div><a id="messageIcon" href="message.do">쪽지함</a></div>
                 </c:if>
-               	<c:if test="${mem_dto.getRole()=='1'}">             
-                	<div><a id="messageIcon" href="message.do">쪽지함</a></div>
-                	<div id="blankDiv"></div>
+                <c:if test="${mem_dto.getRole()=='1'}">
+                    <div><a id="messageIcon" href="message.do">쪽지함</a></div>
+                    <div id="blankDiv"></div>
                 </c:if>
             </div>
         </div>
@@ -66,19 +114,32 @@ pageEncoding="UTF-8"%>
 
 <div id="reservationWrap">
     <div>
-    	<div id="selectDept">상담예약</div>
+        <div id="selectDept">상담예약</div>
         <ul id="deptWrap">
-           
+
 
         </ul>
     </div>
 
     <div id="messageInner">
         <div id="sender">
-            <div id="search">
-                <input type="text" placeholder="검색어를 입력하세요." id="searchText">
-                <img src="/images/search.svg" id="searchBtn"/>
+            <p>
+                <input type="radio" name="tab" id="tab1" checked="checked"/>
+                <label for="tab1" class="contentType">교수명</label>
+                <input type="radio" name="tab" id="tab2"/>
+                <label for="tab2" class="contentType">키워드</label>
+            </p>
+            <div class="resultArea">
+                <div id="search">
+                    <input type="text" placeholder="검색어를 입력하세요." id="searchText">
+                    <img src="/images/search.svg" id="searchBtn"/>
+                </div>
+                <div id="search">
+                    <input type="text" placeholder="키워드를 입력하세요." id="searchText">
+                    <img src="/images/search.svg" id="searchBtn"/>
+                </div>
             </div>
+
         </div>
         <div id="messageInnerWrap">
             <div id="profListWrap">
