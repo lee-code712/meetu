@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+#alertBg {
+	background: rgba(0, 0, 0, 0.3);
+}
 .popup_btn a {
     display: inline-block;
     padding: 20px;

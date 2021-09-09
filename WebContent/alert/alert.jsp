@@ -9,12 +9,8 @@
     
     <link rel="stylesheet" href="/alert/css/alert.css"/>
 </head>
-<body>
-<div class="popup_btn">
-    <a href="#pop01"><img src="/alert/images/notifications_black_24dp.svg"></a>
-</div>
-
-<div id="pop01" class="overlay">
+<body id="alertBg">
+<div id="pop01">
     <div class="popup">
         <a href="#none" class="close">&times;</a>
         <div id="alertTitle">알림</div>
