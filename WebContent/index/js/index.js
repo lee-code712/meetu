@@ -87,16 +87,7 @@ function drawDays() {
     $("#cal_top_month").text(month);
     $("#cal_top_date").text(date);
     $("#cal_top_dayName").text(dayName);
-
-    for (var i = firstDay.getDay(); i < firstDay.getDay() + lastDay.getDate(); i++) {
-        $tdDay.eq(i).text(++dayCount);
-		$tdDay.eq(i).attr("id", $tdDay.eq(i).text());
-    }
-
-	for (var i = 0; i < firstDay.getDay(); i++) {
-		$tdDay.eq(i).attr("id", "");
-	}
-
+    
     for (var i = 0; i < 42; i += 7) {
         $tdDay.eq(i).css("color", "#FB7E7E");
     }
@@ -104,6 +95,26 @@ function drawDays() {
     for (var i = 6; i < 42; i += 7) {
         $tdDay.eq(i).css("color", "#7E99FB");
     }
+    
+    var cal_year = $("#cal_top_year").text();
+    var cal_month = $("#cal_top_month").text();
+
+    for (var i = firstDay.getDay(); i < firstDay.getDay() + lastDay.getDate(); i++) {
+        $tdDay.eq(i).text(++dayCount);
+		$tdDay.eq(i).attr("id", $tdDay.eq(i).text());
+		
+		// 오늘 날짜 표시
+		if(today.getFullYear() == cal_year && today.getMonth() == (cal_month - 1) && today.getDate() == dayCount) {
+			$tdDay.eq(i).css("color", "orange");
+		}
+		else {
+			$tdDay.eq(i).css("color", "");
+		}
+    }
+
+	for (var i = 0; i < firstDay.getDay(); i++) {
+		$tdDay.eq(i).attr("id", "");
+	}
 
 }
 
