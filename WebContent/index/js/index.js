@@ -105,10 +105,11 @@ function drawDays() {
 		
 		// 오늘 날짜 표시
 		if(today.getFullYear() == cal_year && today.getMonth() == (cal_month - 1) && today.getDate() == dayCount) {
-			$tdDay.eq(i).css("color", "orange");
+			$tdDay.eq(i).css("background", "#EFF3FF");
+			$tdDay.eq(i).css("height", "78px");
 		}
 		else {
-			$tdDay.eq(i).css("color", "");
+			$tdDay.eq(i).css("background", "");
 		}
     }
 
