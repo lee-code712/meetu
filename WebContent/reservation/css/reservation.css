@@ -245,13 +245,6 @@ a:hover {
     background: #FAFAFA;
 }
 
-#sender {
-    margin-top: 80px;
-    margin-bottom: 40px;
-    height: 40px;
-    width: 816px;
-}
-
 #profListWrap {
     width: 816px;
     height: 700px;
@@ -261,41 +254,6 @@ a:hover {
 
 #messageInnerWrap {
     height: 648px;
-}
-
-#search {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    float: right;
-    padding: 0px 8px;
-    width: 260px;
-    height: 34px;
-    border-bottom: 1px solid #EAEAEA;
-    border-radius: 50px;
-    background: #ffffff;
-}
-
-#searchText {
-    font-size: 12px;
-    width: 120px;
-    padding-left: 4px;
-    border: 0px;
-    outline: none;
-    float: left;
-    border-radius: 30px;
-}
-
-#searchBtn {
-    width: 20px;
-    height: 20px;
-    border: none;
-    outline: none;
-    float: right;
-}
-
-#searchBtn:hover {
-    cursor: pointer;
 }
 
 .profList th {

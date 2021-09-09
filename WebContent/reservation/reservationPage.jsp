@@ -22,12 +22,19 @@ pageEncoding="UTF-8"%>
     </script>
 
     <style>
+    	#sender {
+    		display: flex;
+    		justify-content: space-between;
+		    margin-top: 80px;
+		    margin-bottom: 40px;
+		    height: 40px;
+		    width: 816px;
+		}
+    	
         #search {
-            margin-left: 3px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-left: 340px;
             padding: 0px 8px;
             width: 260px;
             height: 34px;
@@ -57,7 +64,31 @@ pageEncoding="UTF-8"%>
         #tab2 {
         	margin-left: 20px;
         }
-
+       		
+		input[type=checkbox]:not(old),
+		input[type=radio   ]:not(old) {
+		    width: 28px;
+		    margin: 0;
+		    padding: 0;
+		    opacity: 0;
+		}
+		
+		input[type=checkbox]:not(old) + label,
+		input[type=radio   ]:not(old) + label {
+		    display: inline-block;
+		    margin-left: -28px;
+		    padding-left: 28px;
+		    background: url('/images/checkImg.svg') no-repeat 0 0;
+		    line-height: 24px;
+		}
+		
+		input[type=checkbox]:not(old):checked + label {
+		    background-position: 0 -24px;
+		}
+		
+		input[type=radio]:not(old):checked + label {
+		    background-position: 0 -48px;
+		}
     </style>
 </head>
 
