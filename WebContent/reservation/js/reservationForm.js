@@ -6,7 +6,25 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 	$(".reservationBtn").click(reservationBtnClick);
 	
 	buildCalendar(); // 캘린더 호출
+	
+	buildMap(); // 구글 맵 불러오기
 });
+
+function buildMap() {
+	var LatLng = new google.maps.LatLng(37.60754276916173, 127.04257856238695);
+	var mapProp = {
+		center: LatLng, // 지도 중심
+		zoom: 18, // 확대 배율
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	
+	var map = new google.maps.Map(document.getElementById("office_map"), mapProp);
+	
+	var marker = new google.maps.Marker({
+		position: LatLng,
+		map: map
+	});
+}
 
 var today = new Date(); // @param 전역 변수, 오늘 날짜 / 내 컴퓨터 로컬을 기준으로 today에 Date 객체를 넣어줌
 var date = new Date();  // @param 전역 변수, today의 Date를 세어주는 역할

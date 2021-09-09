@@ -175,6 +175,17 @@ a:hover {
     white-space: nowrap;
 }
 
+#office_map {
+    display: flex;
+    width: 298px;
+    height: 500px;
+    padding-left: 20px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .navListOn {
     display: flex;
     align-items: center;

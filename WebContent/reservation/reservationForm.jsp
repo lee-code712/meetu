@@ -10,6 +10,7 @@ pageEncoding="UTF-8"%>
     <title>예약</title>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBO59kYyP7M8RIYNDEcF6_ftc1rZDQfT-A&callback=buildMap&region=kr"></script>
     <script src="/reservation/js/reservationForm.js"></script>
     <link rel="stylesheet" href="../reservation/css/reservationForm.css"/>
 
@@ -65,6 +66,7 @@ pageEncoding="UTF-8"%>
                 <div class="navList" id="email">이메일: ${param.email}</div>
                 <div class="navListName">연구소 위치</div>
                 <div class="navList" id="office">${param.office}</div>
+                <div id="office_map"></div>
             </div>
         </div>
 
