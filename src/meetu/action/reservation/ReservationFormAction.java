@@ -40,6 +40,7 @@ public class ReservationFormAction implements CommandAction {
 		}
 				
 		String param = "p_user_id=" + p_user_id;
+		param += "&prof_id=" + prof_dto.getProfId();
 		param += "&name=" + mem_dto.getName();
 		param += "&dept=" + dept_dto.getDeptName();
 		param += "&major=" + prof_dto.getMajor();

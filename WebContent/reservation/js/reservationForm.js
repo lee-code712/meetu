@@ -11,19 +11,50 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 });
 
 function buildMap() {
-	var LatLng = new google.maps.LatLng(37.60754276916173, 127.04257856238695);
-	var mapProp = {
-		center: LatLng, // 지도 중심
-		zoom: 18, // 확대 배율
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
-	
-	var map = new google.maps.Map(document.getElementById("office_map"), mapProp);
-	
-	var marker = new google.maps.Marker({
-		position: LatLng,
-		map: map
+	$.ajax({
+	 	type: "GET",
+		url: "/reservation/getMapInfo.jsp?prof_id=" + prof_id,
+		dataType: "text",
+		success: drawMap,
+		error: function(jqXHR, textStatus, errorThrown) {
+			var message = jqXHR.getResponseHeader("Status");
+			if ((message == null) || (message.length <= 0)) {
+				alert("Error! Request status is " + jqXHR.status);
+			} else {
+				alert(message);	
+			}
+		}
 	});
+}
+
+function drawMap(responseText) {
+	var coordinates = JSON.parse(responseText);
+
+	if (!jQuery.isEmptyObject(coordinates)) {
+		var lat;
+		var lng;
+		
+		Array.from(coordinates).forEach(function(c, idx) {
+			lat = c.latitude;
+			lng = c.longitude;
+		});
+		
+		console.log(lat, lng);
+		
+		var LatLng = new google.maps.LatLng(lat, lng);
+		var mapProp = {
+			center: LatLng, // 지도 중심
+			zoom: 17, // 확대 배율
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+	
+		var map = new google.maps.Map(document.getElementById("office_map"), mapProp);
+	
+		var marker = new google.maps.Marker({
+			position: LatLng,
+			map: map
+		});
+	}
 }
 
 var today = new Date(); // @param 전역 변수, 오늘 날짜 / 내 컴퓨터 로컬을 기준으로 today에 Date 객체를 넣어줌
