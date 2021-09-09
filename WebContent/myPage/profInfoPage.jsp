@@ -15,6 +15,27 @@ pageEncoding="UTF-8"%>
     <script>
     	var courses = ${courses};
     </script>
+    
+    <style>
+		#noticeCount {
+    		position: relative;
+    		right: 10px;
+    		top: -4px;
+    		font-size: 4px;
+    		color: white;
+    	}
+    	
+    	#noticeImg {
+    		width: 20px;
+    		height: 20px;
+    		
+		}
+		
+		#noticeOnImg {
+			width: 24px;
+    		height: 20px;
+		}
+	</style>
 </head>
 <body>
 <div id="header">
@@ -41,7 +62,7 @@ pageEncoding="UTF-8"%>
                     <a href="logout.do">로그아웃</a>
                 </div>
             </div>
-            <img src="/images/bell.svg" id="noticeImg" onclick="readNewAlerts();"/>&nbsp; 새로운 알림: ${count_alert}개
+            <img src="/images/bellOn.svg" id="noticeOnImg" onclick="readNewAlerts();"/><div id="noticeCount">${count_alert}</div>
         </div>
     </div>
 </div>

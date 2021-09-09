@@ -16,6 +16,26 @@ pageEncoding="UTF-8" %>
         var user_id = '${user_id}';
     </script>
 
+	<style>
+		#noticeCount {
+    		position: relative;
+    		right: 10px;
+    		top: -4px;
+    		font-size: 4px;
+    		color: white;
+    	}
+    	
+    	#noticeImg {
+    		width: 20px;
+    		height: 20px;
+    		
+		}
+		
+		#noticeOnImg {
+			width: 24px;
+    		height: 20px;
+		}
+	</style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +68,7 @@ pageEncoding="UTF-8" %>
                     <a href="logout.do">로그아웃</a>
                 </div>
             </div>
-            <img src="/images/bell.svg" id="noticeImg" onclick="readNewAlerts();"/>&nbsp; 새로운 알림: ${count_alert}개
+            <img src="/images/bellOn.svg" id="noticeOnImg" onclick="readNewAlerts();"/><div id="noticeCount">${count_alert}</div>
         </div>
     </div>
 </div>
