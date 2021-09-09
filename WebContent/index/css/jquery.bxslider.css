@@ -37,15 +37,15 @@
 .bx-wrapper .bx-pager .bx-pager-item,
 .bx-wrapper .bx-controls-auto .bx-controls-auto-item {display: inline-block;*zoom: 1;*display: inline;}
 
-.bx-wrapper .bx-pager.bx-default-pager a {background: #ccc;text-indent: -9999px;display: block;	width: 10px;height: 10px;margin: 0 5px;	outline: 0;	-moz-border-radius: 5px;-webkit-border-radius: 5px;	border-radius: 5px;}
+.bx-wrapper .bx-pager.bx-default-pager a {background: #1abc9c;text-indent: -9999px;display: block;	width: 10px;height: 10px;margin: 0 5px;	outline: 0;	-moz-border-radius: 5px;-webkit-border-radius: 5px;	border-radius: 5px;}
 
 .bx-wrapper .bx-pager.bx-default-pager a:hover,
-.bx-wrapper .bx-pager.bx-default-pager a.active {background: #000;}
+.bx-wrapper .bx-pager.bx-default-pager a.active {background: white;}
 
 /* DIRECTION CONTROLS (NEXT / PREV) */
 
-.bx-wrapper .bx-prev {left: 10px;	background: url("../images/co.png") no-repeat 0 -32px;}
-.bx-wrapper .bx-next {right: 10px;	background: url("../images/co.png") no-repeat -43px -32px;}
+.bx-wrapper .bx-prev {left: 10px;	background: url("/images/co.svg") no-repeat 0 -32px;}
+.bx-wrapper .bx-next {right: 10px;	background: url("/images/co.svg") no-repeat -43px -32px;}
 .bx-wrapper .bx-prev:hover {background-position: 0 0;}
 .bx-wrapper .bx-next:hover {background-position: -43p 0;}
 .bx-wrapper .bx-controls-direction a {position: absolute;top: 50%;	margin-top: -16px;outline: 0;width: 32px;height: 32px;text-indent: -9999px;z-index: 9999;}
