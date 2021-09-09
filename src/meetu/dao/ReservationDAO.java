@@ -549,27 +549,26 @@ public class ReservationDAO {
 	}
 
 	// 
-	public OfficeMapInfoDTO getMapInfo(String univ, String prof_id) throws NamingException/* , SQLException */ {
+	public OfficeInfoDTO getMapInfo(String univ, String office) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		OfficeMapInfoDTO officeMapInfo_dto = null;
+		OfficeInfoDTO officeInfo_dto = null;
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "select * from office_map_info where prof_id=?";
+			String sql = "select * from office_info where office=?";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, prof_id);
+			pstmt.setString(1, office);
 
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				officeMapInfo_dto = new OfficeMapInfoDTO();
-				officeMapInfo_dto.setProf_id(prof_id);
-				officeMapInfo_dto.setOffice(rs.getString("office"));
-				officeMapInfo_dto.setLatitude(rs.getDouble("latitude"));
-				officeMapInfo_dto.setLongitude(rs.getDouble("longitude"));
+				officeInfo_dto = new OfficeInfoDTO();
+				officeInfo_dto.setOffice(rs.getString("office"));
+				officeInfo_dto.setLatitude(rs.getDouble("latitude"));
+				officeInfo_dto.setLongitude(rs.getDouble("longitude"));
 			} else {
 				return null;
 			}
@@ -584,6 +583,6 @@ public class ReservationDAO {
 			e.printStackTrace();
 		}
 
-		return officeMapInfo_dto;
+		return officeInfo_dto;
 	}
 }

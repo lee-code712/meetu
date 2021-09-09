@@ -13,7 +13,7 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 function buildMap() {
 	$.ajax({
 	 	type: "GET",
-		url: "/reservation/getMapInfo.jsp?prof_id=" + prof_id,
+		url: "/reservation/getMapInfo.jsp?office=" + office,
 		dataType: "text",
 		success: drawMap,
 		error: function(jqXHR, textStatus, errorThrown) {

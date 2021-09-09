@@ -16,7 +16,7 @@ pageEncoding="UTF-8"%>
 
     <script>
     	var p_user_id = "${param.p_user_id}";
-    	var prof_id = "${param.prof_id}";
+    	var office = "${param.office}";
     	var schedules = ${consultable_times};
     </script>
 </head>
