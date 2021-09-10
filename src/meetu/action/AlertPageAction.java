@@ -18,9 +18,17 @@ public class AlertPageAction implements CommandAction {
 		String univ = univ_dto.getUnivId();
 		String user_id = (String) session.getAttribute("user_id");
 		
-		// new alert list json 만들어 반환
+		// 인스턴스 가져오기
 		AlertDAO alert_dao = AlertDAO.getInstance();
-			
+		
+		// is_read가 1인 알림내역 삭제
+		boolean delete_success = alert_dao.deleteAlert(user_id, univ);
+		if(!delete_success) {
+			res.setStatus(400);		// bad request
+			res.addHeader("Status", "delete alert failed");
+		}
+		
+		// new alert list json 만들어 반환
 		ArrayList<AlertDTO> alerts = alert_dao.getNewAlerts(user_id, univ);
 		
 		if(alerts != null) {
@@ -45,9 +53,17 @@ public class AlertPageAction implements CommandAction {
 				alertJsonArray.add(a);
 			}
 			
-			System.out.println(alertJsonArray);
+			// System.out.println(alertJsonArray);
 			req.setAttribute("alerts", alertJsonArray);
 		}
+		
+		// read가 0인 알림내역 1로 변경
+		boolean change_success = alert_dao.changeRead(user_id, univ);
+		if(!change_success) {
+			res.setStatus(400);		// bad request
+			res.addHeader("Status", "change alert failed");
+		}
+		
 		return "/alert/alert.jsp";
 	}
 	

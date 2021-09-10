@@ -170,17 +170,17 @@ public class AlertDAO {
 	}
 	
 	// 확인한 알림 db에서 삭제
-	public boolean deleteAlert(int id, String univ) throws NamingException/* , SQLException */ {
+	public boolean deleteAlert(String id, String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		boolean is_deleted = false;
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "delete from alert where id=? and is_read=1";
+			String sql = "delete from alert where user_id=? and is_read=1";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, id);
+			pstmt.setString(1, id);
 
 			rs = pstmt.executeQuery();
 								

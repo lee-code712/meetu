@@ -11,8 +11,7 @@
 </head>
 <body id="alertBg">
 <div id="pop01">
-    <div class="popup">
-        <a href="#none" class="close">&times;</a>
+    <div id="alertWrap">
         <div id="alertTitle">알림</div>
         <c:if test="${requestScope.alerts == null}">
         	새로운 알림이 없습니다.
