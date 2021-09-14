@@ -20,9 +20,12 @@ public class JoinAuthAction implements CommandAction {
 		UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
 		
 		String input_code = req.getParameter("input_code");
-		String code = (String) session.getAttribute("code");
+		String code = (String) session.getAttribute("authNum");
 		
 		if (input_code.equals(code)) {
+			String email = (String) session.getAttribute("email");
+			mem_usr_dto.setEmail(email);
+			
 			String is_added = mem_dao.addUser(mem_usr_dto, univ_dto);
 			 
 			if (is_added.equals("-4")) { // db에 추가 실패한 경우 return "/join/join.jsp?ck=-4";
@@ -34,7 +37,7 @@ public class JoinAuthAction implements CommandAction {
 			}
 		}
 		else {
-			return "/join/join.jsp?ck=-5"; // 메일 인증에 실패한 경우
+			return "joinAuthForm.do?ck=-1"; // 메일 인증에 실패한 경우
 		}
 	}
 }

@@ -45,17 +45,15 @@ public class JoinAction implements CommandAction {
 			session.setAttribute("mem_usr_dto", mem_usr_dto); // 메일 인증
 		}
 		
-		// 메일 인증 페이지
-		// return "joinAuthForm.do";
+		return "joinAuthForm.do";
 
-		
-		String is_added = mem_dao.addUser(mem_usr_dto, univ_dto);
-		 
-		if (is_added.equals("-4")) { // db에 추가 실패한 경우 return "/join/join.jsp?ck=-4";
-			return "/join/join.jsp?ck=-4";
-		}
-		else { // 회원가입 정보 db에 추가 성공 return "/join/joinPro.jsp?user_id=" + user_id;
-			return "/join/joinPro.jsp?user_id=" + user_id;
-		}
+		/*
+		 * String is_added = mem_dao.addUser(mem_usr_dto, univ_dto);
+		 * 
+		 * if (is_added.equals("-4")) { // db에 추가 실패한 경우 return "/join/join.jsp?ck=-4";
+		 * return "/join/join.jsp?ck=-4"; } else { // 회원가입 정보 db에 추가 성공 return
+		 * "/join/joinPro.jsp?user_id=" + user_id; return "/join/joinPro.jsp?user_id=" +
+		 * user_id; }
+		 */
 	}
 }
