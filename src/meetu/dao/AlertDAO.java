@@ -59,7 +59,7 @@ public class AlertDAO {
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "select * from alert where user_id=? and is_read=0";
+			String sql = "select * from alert where user_id=? and is_read=0 order by alert_date desc";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
