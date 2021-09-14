@@ -16,6 +16,7 @@ public class UpdateReservationAction  implements CommandAction {
 		HttpSession session = req.getSession();
 		UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
 		String univ = univ_dto.getUnivId();
+		String user_id = (String) session.getAttribute("user_id");
 		String res_id = req.getParameter("res_id");
 		String choiceMonth = req.getParameter("choiceMonth");
 		String choiceDay = req.getParameter("choiceDay");
@@ -80,6 +81,8 @@ public class UpdateReservationAction  implements CommandAction {
 		else {
 			reservation_dto.setType(1);
 		}
+		
+		reservation_dto.setSUserId(user_id);
 		
 		// 선택한 시간대에 예약 내역이 존재하는지 확인
 		boolean date_check = reservation_dao.checkSameResDate(reservation_dto, univ);
