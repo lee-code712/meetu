@@ -29,6 +29,7 @@
 		}
 		
 		#noticeOnImg {
+			cursor: pointer;
 			width: 24px;
     		height: 20px;
 		}

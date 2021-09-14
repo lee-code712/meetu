@@ -104,7 +104,7 @@ public class ChangeReservationStateAction implements CommandAction {
 		}
 		else if(selected_button.equals("consultedBtn")) {
 			alert_dto.setAlertType(3);
-			alert_dto.setAlertMsg(mem_dto.getName() + "님이 상담을 완료 처리했습니다.");
+			alert_dto.setAlertMsg(mem_dto.getName() + "님이 상담을 완료처리 했습니다.");
 		}
 		else if(selected_button.equals("cancelBtn")) {
 			alert_dto.setAlertType(4);

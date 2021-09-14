@@ -4,12 +4,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import meetu.dto.MemberUserDTO;
-import meetu.dto.MemberDTO;
-import meetu.dto.UniversityDTO;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Calendar;
+
 import meetu.action.CommandAction;
+import meetu.dao.AlertDAO;
 import meetu.dao.MemberDAO;
+import meetu.dao.ReservationDAO;
 import meetu.dao.UniversityDAO;
+import meetu.dto.*;
 
 public class LoginAction implements CommandAction {
 
@@ -53,10 +57,76 @@ public class LoginAction implements CommandAction {
 			session.setAttribute("mem_dto", mem_dto); // 회원정보(학번,이름,역할) 저장
 			session.setAttribute("univ_dto", univ_dto); // 대학정보(id,이름) 저장
 			
+			// 예정된 상담에 대한 새 알림 저장
+			AlertDAO alert_dao = AlertDAO.getInstance();
+			String univ = univ_dto.getUnivId();
+			
+			ReservationDAO reservation_dao = ReservationDAO.getInstance();
+				
+			ArrayList<ReservationDTO> reservations = (ArrayList<ReservationDTO>) reservation_dao.getReservationInfo(univ, user_id);				
+			
+			if(reservations != null) {
+				Iterator<ReservationDTO> iterator = reservations.iterator();
+				
+				while(iterator.hasNext()) {
+					ReservationDTO reservation_dto = iterator.next();
+					
+					if(reservation_dto.getState() == 1) { // 예약이 승인된 경우에만
+						String res_date = reservation_dto.getStartTime().substring(0, 10);
+						String[] res_date_arr = res_date.split("-");
+						int d_day = getDDay(res_date_arr[0], res_date_arr[1], res_date_arr[2]);
+						String mem_usr_id;
+						if(mem_dto.getRole().equals("0")) {
+							mem_usr_id = reservation_dto.getPUserId();
+						}
+						else {
+							mem_usr_id = reservation_dto.getSUserId();
+						}
+						
+						MemberDTO member = mem_dao.getMemberInfo(univ, mem_usr_id);
+						AlertDTO alert_dto = new AlertDTO();
+						alert_dto.setAlertType(6);
+						if(d_day < 0) {
+							alert_dto.setAlertMsg(member.getName() + "님과의 상담 예정일이 지났습니다. 상담취소 혹은 완료처리 바랍니다.");
+						}
+						else if(d_day == 0) {
+							alert_dto.setAlertMsg("오늘은 " + member.getName() + "님과의 상담 예정일입니다. 상담을 진행하시기 바랍니다.");
+						}
+						else {
+							alert_dto.setAlertMsg(member.getName() + "님과의 상담이 " + d_day + "일 남았습니다.");
+						}
+						alert_dto.setUserId(user_id);
+											
+						boolean alert_is_added = alert_dao.addAlert(alert_dto, univ);
+						if(!alert_is_added) {
+							res.setStatus(400); // bad request
+							res.addHeader("Status", "add alert failed");
+						}
+					}
+				}
+			}
+			
 			return "index.do";
 		}
 		else { // 로그인 실패
 			return "loginForm.do?ck=0";
+		}
+	}
+	
+	// d-day를 구하는 함수
+	public int getDDay(String year, String month, String day) {
+		try {
+			Calendar today = Calendar.getInstance();
+			Calendar d_day = Calendar.getInstance();
+			d_day.set(Integer.parseInt(year), Integer.parseInt(month) - 1, Integer.parseInt(day));
+				
+			long l_today = today.getTimeInMillis() / (24*60*60*1000);
+			long l_d_day = d_day.getTimeInMillis() / (24*60*60*1000);
+				
+			long substract = l_d_day - l_today;
+			return (int)substract;
+		} catch (Exception e) {
+			return -1;
 		}
 	}
 	
