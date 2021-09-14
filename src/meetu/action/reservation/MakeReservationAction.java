@@ -85,6 +85,12 @@ public class MakeReservationAction implements CommandAction {
 		reservation_dto.setPUserId(p_user_id);
 		reservation_dto.setSUserId(s_user_id);
 		
+		// 선택한 시간대에 예약 내역이 존재하는지 확인
+		boolean date_check = reservation_dao.checkSameResDate(reservation_dto, univ);
+		if(date_check) {
+			return "reservationForm.do?date_ck=1";
+		}	
+		
 		boolean is_added = reservation_dao.makeReservation(reservation_dto, univ);
 		if(!is_added) {
 			res.setStatus(400); // bad request

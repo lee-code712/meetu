@@ -43,6 +43,12 @@ pageEncoding="UTF-8"%>
 	</style>
 </head>
 <body>
+<%
+	String date_check = request.getParameter("date_ck");
+	if(date_check != null) {
+		out.println("<script>alert('동일한 시간대에 예약 내역이 존재합니다.');</script>");
+	}
+%>
 <div id="header">
     <div id="headerInner">
         <div id="headerInnerL">

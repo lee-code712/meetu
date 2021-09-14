@@ -256,11 +256,9 @@ function addRejectMessage() {
 				button: "확인"
 			}).then(function() {
 				addRejectMessage();
-				changeReservationState();
 			});
 		}
-		
-		if(click) {
+		else {
 			var sender = $("#dropdown-button").text();
 			sender = sender.substring(0, 4) + "의 메시지";
 			var reject_msg = $("#rejectMsg").val();

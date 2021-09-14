@@ -224,6 +224,45 @@ public class ReservationDAO {
 
 		return is_added;
 	}
+	
+	// 같은 시간대에 예약 레코드가 존재하는지 확인
+	public boolean checkSameResDate(ReservationDTO reservation_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean check = false;
+		
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from reservation where s_user_id=? and (state=0 or state=1) and ";
+			sql += "((start_time >= TO_DATE(?,'YY/MM/DD HH24:MI:SS') and start_time < TO_DATE(?,'YY/MM/DD HH24:MI:SS')) "; 
+			sql += "or (end_time > TO_DATE(?,'YY/MM/DD HH24:MI:SS') and end_time <= TO_DATE(?,'YY/MM/DD HH24:MI:SS')))";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, reservation_dto.getSUserId());
+			pstmt.setString(2, reservation_dto.getStartTime());
+			pstmt.setString(3, reservation_dto.getEndTime());
+			pstmt.setString(4, reservation_dto.getStartTime());
+			pstmt.setString(5, reservation_dto.getEndTime());
+
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				check = true;
+			}
+
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return check;
+	}
 
 	// 예약 레코드 추가
 	public boolean makeReservation(ReservationDTO reservation_dto, String univ)

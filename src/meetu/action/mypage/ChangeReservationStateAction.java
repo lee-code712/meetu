@@ -52,7 +52,7 @@ public class ChangeReservationStateAction implements CommandAction {
 		
 		reservation_dto = reservation_dao.getReservation(reservation_dto, univ);
 		String mem_usr_id;
-		if(user_id.equals("0")) {
+		if(mem_dto.getRole().equals("0")) {
 			mem_usr_id = reservation_dto.getPUserId();
 		}
 		else {
@@ -110,7 +110,6 @@ public class ChangeReservationStateAction implements CommandAction {
 			alert_dto.setAlertType(4);
 			alert_dto.setAlertMsg(mem_dto.getName() + "님이 예약을 취소했습니다.");
 		}
-
 		alert_dto.setUserId(mem_usr_id);
 						
 		boolean alert_is_added = alert_dao.addAlert(alert_dto, univ);

@@ -81,6 +81,12 @@ public class UpdateReservationAction  implements CommandAction {
 			reservation_dto.setType(1);
 		}
 		
+		// 선택한 시간대에 예약 내역이 존재하는지 확인
+		boolean date_check = reservation_dao.checkSameResDate(reservation_dto, univ);
+		if(date_check) {
+			return "reservationUpdateForm.do?date_ck=1";
+		}
+		
 		boolean change_success = reservation_dao.updateReservation(reservation_dto, univ);	
 		if(!change_success) {
 			res.setStatus(400);		// bad request
