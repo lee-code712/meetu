@@ -23,8 +23,8 @@
 		</div>
 		
 		<div id="secessionBtnWrap">
-			<button id="secessionBtn">비밀번호 변경하기</button>
-			<button id="cancelSecessionBtn">다음에 변경하기</button>
+			<button id="secessionBtn">탈퇴하기</button>
+			<button id="cancelSecessionBtn">취소</button>
 		</div>
 	</div>
 </body>
