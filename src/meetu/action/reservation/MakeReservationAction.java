@@ -91,6 +91,7 @@ public class MakeReservationAction implements CommandAction {
 			return "reservationForm.do?date_ck=1";
 		}	
 		
+		// 예약 추가
 		boolean is_added = reservation_dao.makeReservation(reservation_dto, univ);
 		if(!is_added) {
 			res.setStatus(400); // bad request

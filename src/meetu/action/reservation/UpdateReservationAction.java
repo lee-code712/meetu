@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import meetu.action.CommandAction;
+import meetu.dao.AlertDAO;
 import meetu.dao.ReservationDAO;
 import meetu.dto.*;
 
@@ -18,6 +19,7 @@ public class UpdateReservationAction  implements CommandAction {
 		String univ = univ_dto.getUnivId();
 		String user_id = (String) session.getAttribute("user_id");
 		MemberDTO mem_dto = (MemberDTO) session.getAttribute("mem_dto");
+		String role = mem_dto.getRole();
 		String res_id = req.getParameter("res_id");
 		String choiceMonth = req.getParameter("choiceMonth");
 		String choiceDay = req.getParameter("choiceDay");
@@ -57,6 +59,8 @@ public class UpdateReservationAction  implements CommandAction {
 		// 예약 dto 생성
 		ReservationDTO reservation_dto = new ReservationDTO();
 		reservation_dto.setResId(res_id);
+		reservation_dto = reservation_dao.getReservation(reservation_dto, univ);
+		
 		reservation_dto.setStartTime(start_time);
 		reservation_dto.setEndTime(end_time);
 		
@@ -83,9 +87,7 @@ public class UpdateReservationAction  implements CommandAction {
 			reservation_dto.setType(1);
 		}
 		
-		if(mem_dto.getRole().equals("0")) {
-			reservation_dto.setSUserId(user_id);
-			
+		if(role.equals("0")) {
 			// 선택한 시간대에 예약 내역이 존재하는지 확인
 			boolean date_check = reservation_dao.checkSameResDate(reservation_dto, univ);
 			if(date_check) {
@@ -93,11 +95,31 @@ public class UpdateReservationAction  implements CommandAction {
 			}
 		}
 
+		// 예약 수정
 		boolean change_success = reservation_dao.updateReservation(reservation_dto, univ);	
 		if(!change_success) {
 			res.setStatus(400);		// bad request
 			res.addHeader("Status", "update reservation failed");
 			return "reservationUpdateForm.do?update_ck=0";
+		}
+		
+		// 예약수정에 대한 새 알림 저장
+		AlertDAO alert_dao = AlertDAO.getInstance();
+				
+		AlertDTO alert_dto = new AlertDTO();
+		alert_dto.setAlertType(0);
+		alert_dto.setAlertMsg(mem_dto.getName() + "님이 예약을 수정했습니다.");
+		if(role.equals("0")) {
+			alert_dto.setUserId(reservation_dto.getPUserId());
+		}
+		else {
+			alert_dto.setUserId(reservation_dto.getSUserId());
+		}
+				
+		boolean alert_is_added = alert_dao.addAlert(alert_dto, univ);
+		if(!alert_is_added) {
+			res.setStatus(400); // bad request
+			res.addHeader("Status", "add alert failed");
 		}
 		
 		return "reservationUpdateForm.do?update_ck=1";
