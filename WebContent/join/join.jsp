@@ -52,7 +52,7 @@ pageEncoding="UTF-8"%>
             if (ck.equals("-4"))
                 out.println("<script>alert('회원가입에 실패했습니다.');</script>");
             if (ck.equals("-5"))
-                out.println("<script>alert('메일 인증에 실패했습니다.');</script>");
+                out.println("<script>alert('학사 정보에 메일 주소가 존재하지 않습니다. 관리자에게 문의하세요.');</script>");
         }
     %>
     

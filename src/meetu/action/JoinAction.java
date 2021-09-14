@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 
 import meetu.dao.MemberDAO;
 import meetu.dao.UniversityDAO;
+import meetu.dto.StudentDTO;
+import meetu.dto.ProfessorDTO;
 import meetu.dto.MemberUserDTO;
 import meetu.dto.UniversityDTO;
 
@@ -29,7 +31,8 @@ public class JoinAction implements CommandAction {
 		}
 		
 		MemberUserDTO mem_usr_dto = new MemberUserDTO(); // 학번, id, pw 저장
-		mem_usr_dto.setMemberId(req.getParameter("member_id")); // 학번 저장
+		String member_id = req.getParameter("member_id");
+		mem_usr_dto.setMemberId(member_id); // 학번 저장
 		String user_id = mem_dao.userIdCreate(mem_usr_dto, univ_dto);	 
 		
 		if (user_id.equals("-2")) { // 존재하지 않는 학번인 경우
@@ -42,10 +45,30 @@ public class JoinAction implements CommandAction {
 			mem_usr_dto.setUserId(user_id);
 			mem_usr_dto.setPassword(req.getParameter("password")); // 아이디가 생성된 경우 dto에 pw 추가	
 			
-			session.setAttribute("mem_usr_dto", mem_usr_dto); // 메일 인증
+			// 이메일 검색
+			String role = req.getParameter("role");
+			String email = "";
+			if (role.equals("student")) {
+				StudentDTO stu_dto = mem_dao.getStudentMemberInfo(univ_id, member_id);
+				if (stu_dto != null) {
+					email = stu_dto.getEmail();
+				}
+			}
+			else {
+				ProfessorDTO prof_dto = mem_dao.getProfessorMemberInfo(univ_id, member_id);
+				if (prof_dto != null) {
+					email = prof_dto.getEmail();
+				}
+			}
+			
+			if (email != null) {
+				mem_usr_dto.setEmail(email);
+			}
+			
+			session.setAttribute("mem_usr_dto", mem_usr_dto);
 		}
 		
-		return "joinAuthForm.do";
+		return "joinSendMail.do";
 
 		/*
 		 * String is_added = mem_dao.addUser(mem_usr_dto, univ_dto);

@@ -26,7 +26,8 @@ public class MemberDAO {
 	}
 
 	// login정보 확인-성공 시 회원정보 반환
-	public MemberDTO loginOk(MemberUserDTO mem_usr_dto, String univ, String role) throws NamingException/* , SQLException */ {
+	public MemberDTO loginOk(MemberUserDTO mem_usr_dto, String univ, String role)
+			throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		MemberDTO mem_dto = null;
@@ -61,9 +62,10 @@ public class MemberDAO {
 
 		return mem_dto;
 	}
-	
+
 	// 비밀번호 찾기 - 아이디가 존재하는지 확인 후, 비밀번호와 이메일 반환
-	public ArrayList<String> findPassword(String univ, String id, String role) throws NamingException/* , SQLException */ {
+	public ArrayList<String> findPassword(String univ, String id, String role)
+			throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<String> find_info = null;
@@ -71,10 +73,9 @@ public class MemberDAO {
 		try {
 			Connection conn = DBConnection.getConnection(univ);
 			String sql = "select * from member_user mu, ";
-			if(role.equals("1")) {
+			if (role.equals("1")) {
 				sql += "professor p where mu.member_id=p.prof_id and user_id=?";
-			}
-			else {
+			} else {
 				sql += "student s where mu.member_id=s.stu_id and user_id=?";
 			}
 
@@ -175,6 +176,79 @@ public class MemberDAO {
 		return prof_dto;
 	}
 
+	// 특정 학생 정보 dto 반환
+	public StudentDTO getStudentMemberInfo(String univ, String id) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StudentDTO stu_dto = null;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from student where stu_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				stu_dto = new StudentDTO();
+				stu_dto.setStuId(rs.getString("stu_id"));
+				stu_dto.setYear(Integer.parseInt(rs.getString("year")));
+				stu_dto.setEmail(rs.getString("email"));
+				stu_dto.setDeptId(rs.getString("dept_id"));
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return stu_dto;
+	}
+	
+	// 특정 교수 회원 정보 dto 반환
+		public ProfessorDTO getProfessorMemberInfo(String univ, String id) throws NamingException/* , SQLException */ {
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			ProfessorDTO prof_dto = null;
+
+			try {
+				Connection conn = DBConnection.getConnection(univ);
+				String sql = "select * from professor where prof_id=?";
+
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					prof_dto = new ProfessorDTO();
+					prof_dto.setProfId(rs.getString("prof_id"));
+					prof_dto.setMajor(rs.getString("major"));
+					prof_dto.setEmail(rs.getString("email"));
+					prof_dto.setOffice(rs.getString("office"));
+					prof_dto.setDeptId(rs.getString("dept_id"));
+				}
+				// if close
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			return prof_dto;
+		}
+
 	// 모든 회원 정보 dto 반환
 	public ArrayList<MemberUserDTO> getAllMemberUsers(String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
@@ -264,9 +338,9 @@ public class MemberDAO {
 
 		return members;
 	}
-	
+
 	// 모든 교수 정보 반환
-	public ArrayList<ProfessorDTO> getAllProfessors (String univ) throws NamingException/* , SQLException */ {
+	public ArrayList<ProfessorDTO> getAllProfessors(String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<ProfessorDTO> professors = new ArrayList<ProfessorDTO>();
@@ -626,7 +700,8 @@ public class MemberDAO {
 	}
 
 	// 특정 학과에 해당하는 professorDTO 반환
-	public ArrayList<ProfessorDTO> professorSearchByDept(UniversityDTO univ_dto, String dept_name) throws NamingException {
+	public ArrayList<ProfessorDTO> professorSearchByDept(UniversityDTO univ_dto, String dept_name)
+			throws NamingException {
 		ArrayList<ProfessorDTO> profs = new ArrayList<ProfessorDTO>();
 
 		PreparedStatement pstmtDept_id = null;
@@ -687,7 +762,8 @@ public class MemberDAO {
 	}
 
 	// 특정 교수가 가르치는 course dto 반환
-	public ArrayList<CourseDTO> getCourseInfo(ProfessorDTO prof_dto, String univ) throws NamingException/* , SQLException */ {
+	public ArrayList<CourseDTO> getCourseInfo(ProfessorDTO prof_dto, String univ)
+			throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
@@ -735,7 +811,7 @@ public class MemberDAO {
 
 		return courses;
 	}
-	
+
 	// 학과별 course dto 반환
 	public ArrayList<CourseDTO> getCourseByDept(DepartmentDTO dept_dto, String univ) throws NamingException {
 		PreparedStatement pstmt = null;
@@ -751,13 +827,13 @@ public class MemberDAO {
 
 			rs = pstmt.executeQuery();
 
-			if(rs.next()) {
+			if (rs.next()) {
 				CourseDTO course_dto = new CourseDTO();
 				course_dto.setCourseId(rs.getString("course_id"));
 				course_dto.setTitle(rs.getString("title"));
 				course_dto.setDeptId(rs.getString("dept_id"));
 				courses.add(course_dto);
-					
+
 				while (rs.next()) {
 					course_dto = new CourseDTO();
 					course_dto.setCourseId(rs.getString("course_id"));
@@ -765,8 +841,7 @@ public class MemberDAO {
 					course_dto.setDeptId(rs.getString("dept_id"));
 					courses.add(course_dto);
 				}
-			}
-			else {
+			} else {
 				return null;
 			}
 			// if close
@@ -781,11 +856,11 @@ public class MemberDAO {
 		}
 
 		return courses;
-	}	
-	
+	}
+
 	public ArrayList<CollegeDTO> getCollege(UniversityDTO univ) throws NamingException {
 		ArrayList<CollegeDTO> colleges = new ArrayList<CollegeDTO>();
-		
+
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
@@ -816,13 +891,13 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return colleges;
 	}
-	
-	public ArrayList<DepartmentDTO> getDeptByCollege (UniversityDTO univ, String college_id) throws NamingException {
+
+	public ArrayList<DepartmentDTO> getDeptByCollege(UniversityDTO univ, String college_id) throws NamingException {
 		ArrayList<DepartmentDTO> depts = new ArrayList<DepartmentDTO>();
-		
+
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
@@ -854,10 +929,10 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return depts;
 	}
-	
+
 	public boolean changeProfInfo(ProfessorDTO prof_dto, String column, String univ) throws NamingException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -868,21 +943,19 @@ public class MemberDAO {
 			String sql = "update professor set " + column + "=? where prof_id=?";
 
 			pstmt = conn.prepareStatement(sql);
-			if(column.equals("major")) {
+			if (column.equals("major")) {
 				pstmt.setString(1, prof_dto.getMajor());
-			}
-			else if(column.equals("email")) {
+			} else if (column.equals("email")) {
 				pstmt.setString(1, prof_dto.getEmail());
-			}
-			else if(column.equals("office")) {
+			} else if (column.equals("office")) {
 				pstmt.setString(1, prof_dto.getOffice());
 			}
 			pstmt.setString(2, prof_dto.getProfId());
 
 			rs = pstmt.executeQuery();
-						
+
 			is_changed = true;
-						
+
 			// if close
 			if (rs != null)
 				rs.close();
@@ -896,7 +969,7 @@ public class MemberDAO {
 
 		return is_changed;
 	}
-	
+
 	public boolean addClass(CourseDTO course_dto, String member_id, String univ) throws NamingException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -911,9 +984,9 @@ public class MemberDAO {
 			pstmt.setString(2, course_dto.getCourseId());
 
 			rs = pstmt.executeQuery();
-						
+
 			is_added = true;
-						
+
 			// if close
 			if (rs != null)
 				rs.close();
@@ -927,7 +1000,7 @@ public class MemberDAO {
 
 		return is_added;
 	}
-	
+
 	public boolean deleteClass(CourseDTO course_dto, String member_id, String univ) throws NamingException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -942,9 +1015,9 @@ public class MemberDAO {
 			pstmt.setString(2, course_dto.getCourseId());
 
 			rs = pstmt.executeQuery();
-						
+
 			is_deleted = true;
-						
+
 			// if close
 			if (rs != null)
 				rs.close();
