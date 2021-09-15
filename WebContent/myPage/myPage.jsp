@@ -144,6 +144,12 @@ pageEncoding="UTF-8"%>
 </head>
 
 <body id="myPageBodyBg">
+<%
+	String change_pwd_ck = request.getParameter("change_pwd");
+	if(change_pwd_ck != null && change_pwd_ck.equals("1")) {
+		out.println("<script>alert('비밀번호가 정상적으로 변경되었습니다.');</script>");
+	}
+%>
 <div id="header">
     <div id="headerInner">
         <div id="headerInnerL">
@@ -196,8 +202,8 @@ pageEncoding="UTF-8"%>
                     </div>
                    	<div id="accountWrap">
                        	<div id="accountTit">계정</div>
-                       	<div id="resetPwdDiv">비밀번호 변경</div>
-                       	<div id="secessionDiv">회원탈퇴</div>
+                       	<div id="resetPwdDiv" onclick="location.href='changePwdForm.do'">비밀번호 변경</div>
+                       	<div id="secessionDiv" onclick="location.href='secessionForm.do'">회원탈퇴</div>
                     </div>
                 </div>
             </td>

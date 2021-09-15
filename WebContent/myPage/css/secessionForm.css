@@ -83,7 +83,7 @@
 	border: none;
 }
 
-#cancelSecessionBtn {
+#cancelBtn {
 	width: 220px;
 	height: 40px;
 	background: #DFDFDF;
@@ -93,11 +93,11 @@
 }
 
 #secessionBtn:hover,
-#cancelSecessionBtn:hover {
+#cancelBtn:hover {
 	cursor: pointer;
 }
 
 #secessionBtn:focus,
-#cancelSecessionBtn:focus {
+#cancelBtn:focus {
 	outline: none;
 }

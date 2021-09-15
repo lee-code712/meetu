@@ -60,9 +60,17 @@
 	border-radius: 5px;
 }
 
+#resetPwdBtnWrap {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 80px;
+	width: 500px;
+}
+
+
 #resetPwdBtn {
-	margin-top: 60px;
-	width: 100%;
+	width: 220px;
 	height: 40px;
 	background: #1ABC9C;
 	color: white;
@@ -70,10 +78,21 @@
 	border: none;
 }
 
-#resetPwdBtn:hover {
+#cancelBtn {
+	width: 220px;
+	height: 40px;
+	background: #DFDFDF;
+	color: white;
+	border-radius: 5px;
+	border: none;
+}
+
+#resetPwdBtn:hover,
+#cancelBtn:hover {
 	cursor: pointer;
 }
 
-#resetPwdBtn:focus {
+#resetPwdBtn:focus,
+#cancelBtn:focus {
 	outline: none;
 }

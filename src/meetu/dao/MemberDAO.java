@@ -933,6 +933,7 @@ public class MemberDAO {
 		return depts;
 	}
 
+	// 교수 정보 dto 내용 변경
 	public boolean changeProfInfo(ProfessorDTO prof_dto, String column, String univ) throws NamingException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -970,6 +971,7 @@ public class MemberDAO {
 		return is_changed;
 	}
 
+	// 개설과목 추가
 	public boolean addClass(CourseDTO course_dto, String member_id, String univ) throws NamingException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -1001,6 +1003,7 @@ public class MemberDAO {
 		return is_added;
 	}
 
+	// 개설과목 삭제
 	public boolean deleteClass(CourseDTO course_dto, String member_id, String univ) throws NamingException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -1030,5 +1033,75 @@ public class MemberDAO {
 		}
 
 		return is_deleted;
+	}
+	
+	// 비밀번호 확인
+	public boolean checkPwd(MemberUserDTO mem_usr_dto, String univ) throws NamingException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean check = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from member_user where user_id=? and password=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mem_usr_dto.getUserId());
+			pstmt.setString(2, mem_usr_dto.getPassword());
+
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				check = true;
+			}
+			
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return check;
+	}
+	
+	// 비밀번호 변경
+	public boolean changePwd(MemberUserDTO mem_usr_dto, String univ) throws NamingException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_changed = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "update member_user set password=? where user_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mem_usr_dto.getPassword());
+			pstmt.setString(2, mem_usr_dto.getUserId());
+
+			rs = pstmt.executeQuery();
+			
+			int change_row_cnt = pstmt.executeUpdate();
+			System.out.print(change_row_cnt);
+			if(change_row_cnt > 0) {
+				is_changed = true;
+			}
+			
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_changed;
 	}
 }
