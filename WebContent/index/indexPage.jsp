@@ -620,8 +620,8 @@ pageEncoding="UTF-8"%>
 </div>
 
 <div id="infoWrap">
-    <div id="infoTit">MEETU 서비스</div>
-    <div id="infoSubTit">MEETU 서비스에는 어떤 기능이 있나요?</div>
+    <div id="infoTit">MEETU 상담일정</div>
+    <div id="infoSubTit">캘린더를 통해 상담일정을 관리해보세요.</div>
     <div id="greenLine"></div>
 
     <div id="infoIconWrap">
