@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>회원탈퇴</title>
-	<link rel="stylesheet" href="/login/css/secessionForm.css"/>
+	<link rel="stylesheet" href="/myPage/css/secessionForm.css"/>
 </head>
 
 <body id="secessionBg">

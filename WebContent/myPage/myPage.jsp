@@ -70,7 +70,77 @@ pageEncoding="UTF-8"%>
 			width: 24px;
     		height: 20px;
 		}
+		
+		#accountWrap {
+			display: none;
+			margin-top: 40px;
+			width: 316px;
+			height: 120px;
+			background: white;
+			border-radius: 5px;
+			border: 1px solid #EAEAEA;
+		}
+		
+		#accountTit {
+			display:flex;
+			align-items: center;
+			padding-left: 20px;
+			width: 296px;
+			height: 40px;
+			font-size: 18px;
+		}
+		
+		#resetPwdDiv {
+			display:flex;
+			align-items: center;
+			padding-left: 20px;
+			width: 316px;
+			height: 40px;
+			font-size: 14px;
+		}
+		
+		#secessionDiv {
+			display:flex;
+			align-items: center;
+			padding-left: 20px;
+			width: 316px;
+			height: 40px;
+			font-size: 14px;
+			color: red;
+		}
+		
+		#resetPwdDiv,
+		#secessionDiv {
+			cursor: pointer;
+		}
+		
+		#toggle {
+			width: 100%;
+			border-top: 1px solid #EAEAEA;
+		}
+		
+		#toggle:hover {
+			cursor: pointer;
+		}
+		
+		#toggleImg {
+			display: block; 
+			margin: 0px auto;
+			width: 20px;
+			heihgt: 20px;
+		}
     </style>
+    
+    <script>
+	    function toggleText() {
+	    	  var text = document.getElementById("accountWrap");
+	    	  if (text.style.display === "none") {
+	    	    text.style.display = "block";
+	    	  } else {
+	    	    text.style.display = "none";
+	    	  }
+	    	}
+    </script>
 </head>
 
 <body id="myPageBodyBg">
@@ -122,6 +192,12 @@ pageEncoding="UTF-8"%>
                         <div id="logoutBtnWrap">
                             <button id="logoutBtn" onclick="location.href='logout.do'">로그아웃</button>
                         </div>
+                        <div id="toggle" onclick="toggleText()"><img src="/images/toggle.svg" id="toggleImg" /></div>
+                    </div>
+                   	<div id="accountWrap">
+                       	<div id="accountTit">계정</div>
+                       	<div id="resetPwdDiv">비밀번호 변경</div>
+                       	<div id="secessionDiv">회원탈퇴</div>
                     </div>
                 </div>
             </td>

@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>비밀번호 재설정</title>
-	<link rel="stylesheet" href="/login/css/resetPwdForm.css"/>
+	<link rel="stylesheet" href="/myPage/css/resetPwdForm.css"/>
 </head>
 
 <body id="resetPwdBg">
@@ -22,11 +22,8 @@
 		
 		<div id="newPwdCheckTit">새 비밀번호 확인</div>
 		<input type="text" id="newPwdCheckText" placeholder="새 비밀번호 확인">
-		
-		<div id="resetBtnWrap">
-			<button id="resetPwdBtn">비밀번호 변경하기</button>
-			<button id="cancelPwdBtn">다음에 변경하기</button>
-		</div>
+
+		<button id="resetPwdBtn">비밀번호 변경하기</button>
 	</div>
 </body>
 </html>
