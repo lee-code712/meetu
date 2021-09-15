@@ -23,8 +23,8 @@
 		</div>
 		
 		<div id="secessionBtnWrap">
-			<button id="secessionBtn">회원탈퇴</button>
-			<button id="cancelBtn" onclick="location.href='myPage.do'">취소</button>
+			<input class="secessionBtn" id="secessionBtn" type="submit" value="회원탈퇴" />
+			<input class="cancelBtn" id="cancelBtn" type="button" onclick="location.href='myPage.do'" value="취소" />
 		</div>
 	</div>
 </body>

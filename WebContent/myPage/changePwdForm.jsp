@@ -37,8 +37,8 @@
 		<input type="password" id="newPwdCheckText" name="new_pwd_ck" placeholder="새 비밀번호 확인">
 
 		<div id="resetPwdBtnWrap">
-			<button id="resetPwdBtn">비밀번호 변경</button>
-			<button id="cancelBtn" onclick="location.href='myPage.do'">취소</button>
+			<input class="resetPwdBtn" id="resetPwdBtn" type="submit" value="비밀번호 변경" />
+			<input class="cancelBtn" id="cancelBtn" type="button" onclick="location.href='myPage.do'" value="취소" />
 		</div>
 	</div>
 	</form>
