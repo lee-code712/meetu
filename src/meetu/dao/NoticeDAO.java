@@ -26,7 +26,7 @@ public class NoticeDAO {
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "select * from notice order by write_date";
+			String sql = "select * from notice order by write_date desc";
 
 			pstmt = conn.prepareStatement(sql);
 			

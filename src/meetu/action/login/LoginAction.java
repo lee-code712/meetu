@@ -90,10 +90,10 @@ public class LoginAction implements CommandAction {
 							alert_dto.setAlertMsg(member.getName() + "님과의 상담 예정일이 지났습니다. 상담취소 혹은 완료처리 바랍니다.");
 						}
 						else if(d_day == 0) {
-							alert_dto.setAlertMsg("오늘은 " + member.getName() + "님과의 상담 예정일입니다. 상담을 진행하시기 바랍니다.");
+							alert_dto.setAlertMsg(member.getName() + "님과의 상담 D-Day");
 						}
 						else {
-							alert_dto.setAlertMsg(member.getName() + "님과의 상담이 " + d_day + "일 남았습니다.");
+							alert_dto.setAlertMsg(member.getName() + "님과의 상담까지 D-" + d_day);
 						}
 						alert_dto.setUserId(user_id);
 											

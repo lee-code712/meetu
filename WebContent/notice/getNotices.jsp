@@ -6,18 +6,6 @@
 <%@ page import="meetu.dto.*"%>
 <%@ page import="org.json.simple.*"%> 
 
-<%!
-	public static Comparator<NoticeDTO> NoticesComparator = new Comparator<NoticeDTO>() 
-	{
-	    @Override
-	    public int compare(NoticeDTO n1, NoticeDTO n2) {
-	    	Integer n1_id = new Integer(n1.getNoticeId());
-	    	Integer n2_id = new Integer(n2.getNoticeId());
-	        return ((n2_id).compareTo(n1_id));
-	    }
-	};
-%>
-
 <%
 	UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
 	String univ = univ_dto.getUnivId();
@@ -37,7 +25,6 @@
 	}
 	
 	if(notices != null) {
-		notices.sort(NoticesComparator);
 		JSONArray noticeJsonArray = new JSONArray();
 		
 		Iterator<NoticeDTO> iterator = notices.iterator();
