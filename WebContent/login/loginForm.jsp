@@ -32,10 +32,14 @@ pageEncoding="UTF-8"%>
 
 <body id="bodyBg">
  <%
-	String ck = request.getParameter("ck");
-            
+	String ck = request.getParameter("ck");     
 	if(ck != null) {
 		out.println("<script>alert('로그인에 실패했습니다.');</script>");
+	}
+	
+	String sc = request.getParameter("sc");
+	if(sc != null) {
+		out.println("<script>alert('탈퇴되셨습니다.');</script>");
 	}
 %>
 

@@ -13,7 +13,7 @@ import meetu.dao.MemberDAO;
 import meetu.dto.UniversityDTO;
 import meetu.dto.ReservationDTO;
 import meetu.dto.StudentDTO;
-import meetu.dto.ConsultDTO;
+import meetu.dto.ConsultContentDTO;
 import meetu.dto.MemberDTO;
 import meetu.dto.DepartmentDTO;
 
@@ -35,14 +35,14 @@ public class ConsultationRecordPageAction implements CommandAction {
 		reservation_dto.setResId(res_id);
 		reservation_dto = reservation_dao.getReservation(reservation_dto, univ);
 		
-		// 해당하는 예약의 상담기록이 있는지 확인
-		ConsultDTO consult_dto = reservation_dao.getConsult(reservation_dto, univ); 
+		// 해당하는 예약의 상담내용이 있는지 확인
+		ConsultContentDTO consult_content_dto = reservation_dao.getConsultContent(reservation_dto, univ); 
 		
-		if(consult_dto == null) { // 상담기록이 없으면
-			consult_dto = new ConsultDTO();
-			consult_dto.setResId(res_id);
-			consult_dto.setContent(" ");
-			boolean add_success = reservation_dao.addConsult(consult_dto, univ);
+		if(consult_content_dto == null) { // 상담기록이 없으면
+			consult_content_dto = new ConsultContentDTO();
+			consult_content_dto.setResId(res_id);
+			consult_content_dto.setContent(" ");
+			boolean add_success = reservation_dao.addConsultContent(consult_content_dto, univ);
 			if(!add_success) {
 				res.setStatus(400);		// bad request
 				res.addHeader("Status", "add consult failed");
@@ -70,7 +70,7 @@ public class ConsultationRecordPageAction implements CommandAction {
 
 		// 필요한 정보들 request로 전달
 		req.setAttribute("reservation_dto", reservation_dto);
-		req.setAttribute("consult_dto", consult_dto);
+		req.setAttribute("consult_dto", consult_content_dto);
 		req.setAttribute("stu_info", stu_info);
 		req.setAttribute("prof_info", prof_info);
 		

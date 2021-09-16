@@ -1,6 +1,6 @@
 package meetu.dto;
 
-public class ConsultDTO {
+public class ConsultContentDTO {
 	private String res_id;
 	private String content;
 	private String status;

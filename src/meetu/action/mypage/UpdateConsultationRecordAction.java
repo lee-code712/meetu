@@ -21,7 +21,7 @@ public class UpdateConsultationRecordAction implements CommandAction {
 		ReservationDAO reservation_dao = ReservationDAO.getInstance();
 
 		// reseved list json 만들어 반환
-		ConsultDTO consult_dto = new ConsultDTO();
+		ConsultContentDTO consult_dto = new ConsultContentDTO();
 		consult_dto.setResId(res_id);
 		consult_dto.setContent(content);
 		

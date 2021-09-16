@@ -1104,4 +1104,36 @@ public class MemberDAO {
 
 		return is_changed;
 	}
+	
+	// 회원정보 dto 삭제(회원탈퇴)
+	public boolean deleteMemberUser(MemberUserDTO mem_usr_dto, String univ) throws NamingException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_deleted = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "delete from member_user where user_id=? and password=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mem_usr_dto.getUserId());
+			pstmt.setString(2, mem_usr_dto.getPassword());
+
+			rs = pstmt.executeQuery();
+
+			is_deleted = true;
+
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_deleted;
+	}
 }

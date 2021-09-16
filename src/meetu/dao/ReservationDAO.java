@@ -484,16 +484,16 @@ public class ReservationDAO {
 		return false;
 	}
 
-	// res_id에 해당하는 상담기록이 존재하는지 확인하여 상담기록 dto 반환
-	public ConsultDTO getConsult(ReservationDTO reservation_dto, String univ)
+	// res_id에 해당하는 상담기록이 존재하는지 확인하여 상담내용 dto 반환
+	public ConsultContentDTO getConsultContent(ReservationDTO reservation_dto, String univ)
 			throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		ConsultDTO consult_dto = null;
+		ConsultContentDTO consult_content_dto = null;
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "select * from consult where res_id=?";
+			String sql = "select * from consult_content where res_id=?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, reservation_dto.getResId());
@@ -501,9 +501,9 @@ public class ReservationDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				consult_dto = new ConsultDTO();
-				consult_dto.setResId(rs.getString("res_id"));
-				consult_dto.setContent(rs.getString("content"));
+				consult_content_dto = new ConsultContentDTO();
+				consult_content_dto.setResId(rs.getString("res_id"));
+				consult_content_dto.setContent(rs.getString("content"));
 			} else {
 				return null;
 			}
@@ -518,23 +518,23 @@ public class ReservationDAO {
 			e.printStackTrace();
 		}
 
-		return consult_dto;
+		return consult_content_dto;
 	}
 
-	// 상담기록 dto db에 추가
-	public boolean addConsult(ConsultDTO consult_dto, String univ) throws NamingException/* , SQLException */ {
+	// 상담내용 dto db에 추가
+	public boolean addConsultContent(ConsultContentDTO consult_content_dto, String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		boolean is_added = false;
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "insert into consult (res_id, content) ";
+			String sql = "insert into consult_content (res_id, content) ";
 			sql += "values (?, ?)";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, consult_dto.getResId());
-			pstmt.setString(2, consult_dto.getContent());
+			pstmt.setString(1, consult_content_dto.getResId());
+			pstmt.setString(2, consult_content_dto.getContent());
 
 			rs = pstmt.executeQuery();
 
@@ -554,24 +554,72 @@ public class ReservationDAO {
 		return is_added;
 	}
 
-	// 상담기록 dto content 수정
-	public boolean updateConsultContent(ConsultDTO consult_dto, String univ)
+	// 상담내용 dto content 수정
+	public boolean updateConsultContent(ConsultContentDTO consult_content_dto, String univ)
 			throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		ResultSet rs1 = null;
+		ResultSet rs2 = null;
 		boolean is_changed = false;
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "update consult set content=? where res_id=?";
+			String sql1 = "update consult_content set content=? where res_id=?";
+			String sql2 = "update consult_record set content=? where res_id=?";
 
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, consult_dto.getContent());
-			pstmt.setString(2, consult_dto.getResId());
-
-			rs = pstmt.executeQuery();
+			pstmt = conn.prepareStatement(sql1);
+			pstmt.setString(1, consult_content_dto.getContent());
+			pstmt.setString(2, consult_content_dto.getResId());
+			
+			rs1 = pstmt.executeQuery();
+			
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setString(1, consult_content_dto.getContent());
+			pstmt.setString(2, consult_content_dto.getResId());
+			
+			rs2 = pstmt.executeQuery();
 
 			is_changed = true;
+
+			// if close
+			if (rs1 != null && rs2 != null)
+				rs1.close();
+				rs2.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_changed;
+	}
+	
+	// 상담기록 dto 추가
+	public boolean recordConsultInfo(ConsultRecordDTO consult_record_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_added = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "insert into consult_record (consult_id, start_time, end_time, reason, type, stu_id, prof_id, res_id) ";
+			sql += "values (?, TO_DATE(?,'YY/MM/DD HH24:MI:SS'), TO_DATE(?,'YY/MM/DD HH24:MI:SS'), ?, ?, ?, ?, ?)";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, consult_record_dto.getConsultId());
+			pstmt.setString(2, consult_record_dto.getStartTime());
+			pstmt.setString(3, consult_record_dto.getEndTime());
+			pstmt.setString(4, consult_record_dto.getReason());
+			pstmt.setString(5, consult_record_dto.getType());
+			pstmt.setString(6, consult_record_dto.getStuId());
+			pstmt.setString(7, consult_record_dto.getProfId());
+			pstmt.setString(8, consult_record_dto.getResId());
+			
+			rs = pstmt.executeQuery();
+
+			is_added = true;
 
 			// if close
 			if (rs != null)
@@ -584,7 +632,7 @@ public class ReservationDAO {
 			e.printStackTrace();
 		}
 
-		return is_changed;
+		return is_added;
 	}
 
 	// 
