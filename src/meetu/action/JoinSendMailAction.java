@@ -10,15 +10,13 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 import meetu.authentication.MyAuthentication;
-import meetu.dto.MemberUserDTO;
 
 public class JoinSendMailAction implements CommandAction {
 	@Override
 	public String requestPro(HttpServletRequest req, HttpServletResponse res) throws Throwable {
 		HttpSession session = req.getSession();
 		
-		MemberUserDTO mem_usr_dto = (MemberUserDTO) session.getAttribute("mem_usr_dto");
-		String email = mem_usr_dto.getEmail();
+		String email = (String) session.getAttribute("email");
 		
 		if (email != null && !email.equals("")) {
 			String mail_title = "meetU 이메일 인증";

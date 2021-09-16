@@ -5,7 +5,6 @@ public class MemberUserDTO {
 	private String password;
 	private String phone;
 	private String member_id;
-	private String email;
 	
 	public String getUserId() {
 		return user_id;
@@ -37,14 +36,6 @@ public class MemberUserDTO {
 	
 	public void setMemberId(String member_id) {
 		this.member_id = member_id;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	
 }

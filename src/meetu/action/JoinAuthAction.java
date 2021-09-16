@@ -1,6 +1,5 @@
 package meetu.action;
 
-import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,9 +22,6 @@ public class JoinAuthAction implements CommandAction {
 		String code = (String) session.getAttribute("authNum");
 		
 		if (input_code.equals(code)) {
-			String email = (String) session.getAttribute("email");
-			mem_usr_dto.setEmail(email);
-			
 			String is_added = mem_dao.addUser(mem_usr_dto, univ_dto);
 			 
 			if (is_added.equals("-4")) { // db에 추가 실패한 경우 return "/join/join.jsp?ck=-4";

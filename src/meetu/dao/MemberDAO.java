@@ -574,10 +574,10 @@ public class MemberDAO {
 
 		try {
 			Connection conn = DBConnection.getConnection(univ_dto.getUnivId());
-			String query = "insert into member_user (user_id, password, member_id, email) values ";
+			String query = "insert into member_user (user_id, password, member_id) values ";
 
 			query += "('" + mem_usr_dto.getUserId() + "', '" + mem_usr_dto.getPassword() + "', '"
-					+ mem_usr_dto.getMemberId() + "', '" + mem_usr_dto.getEmail() + "')";
+					+ mem_usr_dto.getMemberId() + "')";
 
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();

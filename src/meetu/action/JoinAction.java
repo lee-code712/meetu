@@ -62,7 +62,7 @@ public class JoinAction implements CommandAction {
 			}
 			
 			if (email != null) {
-				mem_usr_dto.setEmail(email);
+				session.setAttribute("email", email);
 			}
 			
 			session.setAttribute("mem_usr_dto", mem_usr_dto);
