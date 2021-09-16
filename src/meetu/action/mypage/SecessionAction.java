@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import meetu.action.CommandAction;
 import meetu.dao.MemberDAO;
+import meetu.dao.ReservationDAO;
 import meetu.dto.*;
 
 public class SecessionAction implements CommandAction {
@@ -15,11 +16,13 @@ public class SecessionAction implements CommandAction {
 		HttpSession session = req.getSession();
 		UniversityDTO univ_dto = (UniversityDTO) session.getAttribute("univ_dto");
 		String univ = univ_dto.getUnivId();
+		MemberDTO mem_dto = (MemberDTO) session.getAttribute("mem_dto");
 		String user_id = (String) session.getAttribute("user_id");
 		String pwd = req.getParameter("pwd");
 		
 		// 인스턴스 가져오기
 		MemberDAO mem_dao = MemberDAO.getInstance();
+		ReservationDAO reservation_dao = ReservationDAO.getInstance();
 		
 		MemberUserDTO mem_usr_dto = new MemberUserDTO();
 		mem_usr_dto.setUserId(user_id);
@@ -35,6 +38,13 @@ public class SecessionAction implements CommandAction {
 				res.setStatus(400);		// bad request
 				res.addHeader("Status", "delete member user failed");
 			}
+			
+			boolean change_success = reservation_dao.updateResId(mem_dto, univ);
+			if(!change_success) {
+				res.setStatus(400);		// bad request
+				res.addHeader("Status", "change res_id failed");
+			}
+			
 			return "loginForm.do?sc=1";
 		}
 		else { // 현재 비밀번호가 맞지 않는 경우

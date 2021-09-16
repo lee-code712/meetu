@@ -203,53 +203,23 @@ public class MessageDAO {
 		return is_changed;
 	}
 	
-	// 특정 메시지 id에 대한 내용 dto를 삭제
-	public boolean deleteMessage(int msg_id, String univ) throws NamingException/* , SQLException */ {
+	// msg_id를 가진 메시지 정보 dto 삭제
+	public boolean deleteMessagesInfo(MessageInformationDTO msg_info_dto, String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		boolean is_deleted = false;
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "delete from message_content where msg_id=?";
+			String sql = "delete from message_info where msg_id=?";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, msg_id);
+			pstmt.setInt(1, msg_info_dto.getMsgId());
 
 			rs = pstmt.executeQuery();
-								
+									
 			is_deleted = true;
-								
-			// if close
-			if (rs != null)
-				rs.close();
-			if (pstmt != null)
-				pstmt.close();
-			if (conn != null)
-				conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return is_deleted;
-	}
-	
-	// msg_content 레코드가 삭제된 msg_id를 가진 메시지 정보 dto 삭제
-	public boolean deleteMessagesInfo(String univ) throws NamingException/* , SQLException */ {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		boolean is_deleted = false;
-
-		try {
-			Connection conn = DBConnection.getConnection(univ);
-			String sql = "delete from message_info mi where not exists(select * from message_content mc where mi.msg_id = mc.msg_id)";
-
-			pstmt = conn.prepareStatement(sql);
-
-			rs = pstmt.executeQuery();
-								
-			is_deleted = true;
-								
+									
 			// if close
 			if (rs != null)
 				rs.close();

@@ -634,6 +634,44 @@ public class ReservationDAO {
 
 		return is_added;
 	}
+	
+	// 회원탈퇴 시 res_id를 null로 변경
+	public boolean updateResId(MemberDTO mem_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean is_changed = false;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "update consult_record set res_id=? where ";	
+			if(mem_dto.getRole().equals("0")) {
+				sql += "stu_id=?";
+			}
+			else {
+				sql += "prof_id=?";
+			}
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, null);	
+			pstmt.setString(2, mem_dto.getMemberId());
+
+			rs = pstmt.executeQuery();
+
+			is_changed = true;
+
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return is_changed;
+	}
 
 	// 
 	public OfficeInfoDTO getMapInfo(String univ, String office) throws NamingException/* , SQLException */ {

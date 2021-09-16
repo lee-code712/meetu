@@ -94,20 +94,13 @@ public class ChangeReservationStateAction implements CommandAction {
 				
 				while(iterator.hasNext()) {
 					MessageInformationDTO msg_info_dto = iterator.next();
-					int msg_id = msg_info_dto.getMsgId();
-			
-					boolean delete_msg_success = msg_dao.deleteMessage(msg_id, univ);		
-					if(!delete_msg_success) {
+					
+					boolean delete_msg_info_success = msg_dao.deleteMessagesInfo(msg_info_dto, univ);
+					if(!delete_msg_info_success) {
 						res.setStatus(400);		// bad request
-						res.addHeader("Status", "delete message content failed");
+						res.addHeader("Status", "delete message information failed");
 					}
 				}
-				
-				boolean delete_msg_info_success = msg_dao.deleteMessagesInfo(univ);
-				if(!delete_msg_info_success) {
-					res.setStatus(400);		// bad request
-					res.addHeader("Status", "delete message information failed");
-				}	
 			}
 		}
 		
