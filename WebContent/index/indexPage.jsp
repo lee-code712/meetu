@@ -606,7 +606,7 @@ pageEncoding="UTF-8"%>
             <div id="banner02Wrap">
                 <div id="banner02Title">간편한 상담 일정 관리 시스템 &nbsp; <span id="logo">MEETU</span></div>
                 <div id="banner02Text">상담 예약일을 알고 싶다면 캘린더를 통해 상담일정을 확인해보세요!</div>
-                <button id="banner02Btn">캘린더 보러가기</button>
+                <button id="banner02Btn" onclick="location.href='#target_cal'">캘린더 보러가기</button>
             </div>
         </li>
         <li class="banner_03">
@@ -651,6 +651,7 @@ pageEncoding="UTF-8"%>
     </div>
 </div>
 
+<a name="target_cal"></a>
 <div id="manageWrap">
     <div id="manage">
         <div id="manageHeader">
@@ -674,9 +675,9 @@ pageEncoding="UTF-8"%>
                     <div id="cal_top_left">
                         <span id="cal_top_year"></span>.
                         <span id="cal_top_month"></span>
-                        <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit"><img
+                        <a href="#target_cal" id="movePrevMonth"><span id="prevMonth" class="cal_tit"><img
                                 src="/images/prevImg.svg"/></span></a>
-                        <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit"><img
+                        <a href="#target_cal" id="moveNextMonth"><span id="nextMonth" class="cal_tit"><img
                                 src="/images/nextImg.svg"/></span></a>
                     </div>
                 </div>

@@ -9,6 +9,13 @@
     
     <link rel="stylesheet" href="/alert/css/alert.css"/>
 </head>
+<script>
+	function returnUrl() {
+		var url = event.currentTarget.closest("span").id;
+		opener.movePage(url);
+	}
+</script>
+
 <body id="alertBg">
 <div id="pop01">
     <div id="alertWrap">
@@ -22,7 +29,7 @@
                 			<div id="alertType">${alert.alert_type}</div>
                 			<div id="alertDate">${alert.alert_date}</div>
             			</div>
-            			<div id="alertContent">${alert.alert_msg}</div>
+            			<div id="alertContent">${alert.alert_msg} &nbsp;<span id="${alert.url}" class="link" onclick="returnUrl()">바로가기</span></div>
         			</div>
         </c:forEach>
     </div>

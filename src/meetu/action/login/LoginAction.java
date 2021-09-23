@@ -85,7 +85,7 @@ public class LoginAction implements CommandAction {
 						
 						MemberDTO member = mem_dao.getMemberInfo(univ, mem_usr_id);
 						AlertDTO alert_dto = new AlertDTO();
-						alert_dto.setAlertType(6);
+						alert_dto.setAlertType(7);
 						if(d_day < 0) {
 							alert_dto.setAlertMsg(member.getName() + "님과의 상담 예정일이 지났습니다. 상담취소 혹은 완료처리 바랍니다.");
 						}

@@ -121,3 +121,9 @@
 #alertContentOn {
     padding-left: 10px;
 }
+
+.link {
+	font-weight: bold;
+	text-decoration:underline;
+	cursor: pointer;
+}
