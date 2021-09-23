@@ -234,16 +234,15 @@ public class AlertDAO {
 		return alert_type_dto;
 	}
 	
-	// 사용X
-	// 알림내역에 해당하는 alertType의 alert내역이 존재하는지 확인 - 로그인 시 상담예정일 알림이 추가되므로 확인을 안했을 때 중복으로 추가되는 것을 막기 위함
-	public boolean isExist(int type, String id, String univ) throws NamingException/* , SQLException */ {
+	// 알림내역에 해당하는 alertType의 alert내역이 존재하는지 확인해서 날짜 반환 - 로그인 시 상담예정일 알림이 추가되므로 확인을 안했을 때 중복으로 추가되는 것을 막기 위함
+	public String isExist(int type, String id, String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		boolean is_exist = false;
+		String exist_date = null;
 
 		try {
 			Connection conn = DBConnection.getConnection(univ);
-			String sql = "select * from alert where alert_type=? and user_id=?";
+			String sql = "select * from alert where alert_type=? and user_id=? and is_read=0";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, type);
@@ -252,7 +251,7 @@ public class AlertDAO {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				is_exist = true;
+				exist_date = rs.getString("alert_date");
 			}
 								
 			// if close
@@ -266,6 +265,6 @@ public class AlertDAO {
 			e.printStackTrace();
 		}
 
-		return is_exist;
+		return exist_date;
 	}
 }

@@ -61,6 +61,17 @@ public class LoginAction implements CommandAction {
 			AlertDAO alert_dao = AlertDAO.getInstance();
 			String univ = univ_dto.getUnivId();
 			
+			// 당일에 생성한 상담 예정일 알림이 존재하는 지 확인 
+			String alert_date = alert_dao.isExist(7, user_id, univ);
+			if(alert_date != null) {
+				alert_date = alert_date.substring(0, 10);
+				String[] alert_date_arr = alert_date.split("-");
+				int d_day = getDDay(alert_date_arr[0], alert_date_arr[1], alert_date_arr[2]);
+				if(d_day == 0) {
+					return "index.do";
+				}
+			}
+			
 			ReservationDAO reservation_dao = ReservationDAO.getInstance();
 				
 			ArrayList<ReservationDTO> reservations = (ArrayList<ReservationDTO>) reservation_dao.getReservationInfo(univ, user_id);				

@@ -57,7 +57,12 @@ public class AlertPageAction implements CommandAction {
 					al_map.put("url", "message.do");
 				}
 				else if(type == 7) {
-					al_map.put("url", "index.do#target_cal");
+					if(alert_dto.getAlertMsg().length() == 40) {
+						al_map.put("url", "myPage.do");
+					}
+					else {
+						al_map.put("url", "index.do#target_cal");
+					}
 				}
 				
 				a = new JSONObject(al_map);
