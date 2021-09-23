@@ -1,15 +1,14 @@
 $(document).ready(function(){ // html이 로드되면 실행됨  
-  	$("#searchBtn").click(searchProfessorByName); // : - 모든 <button> 선택
 	getDept(); // 사이드바 학과들 출력
 });
 
-function searchProfessorByName() {
+function searchProfessor() {
 	var searchText = $("#searchText").val();
 	$("#searchResult").children().remove();
 	
 	$.ajax({
 	 	type: "GET",
-		url: "/reservation/searchProfessorByName.jsp?searchText=" + searchText,
+		url: "/reservation/searchProfessor.jsp?searchText=" + searchText,
 		dataType: "text",
 		success: updatePage,
 		error: function(jqXHR, textStatus, errorThrown) {

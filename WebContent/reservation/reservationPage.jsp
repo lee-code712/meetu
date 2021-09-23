@@ -10,16 +10,6 @@ pageEncoding="UTF-8"%>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/reservation/js/reservation.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".resultArea > div").last().hide();
-            var radioContent = $(".resultArea > div");
-            $("input[type='radio']").click(function () {
-                radioContent.hide();
-                radioContent.eq($("input[type='radio']").index(this)).show();
-            });
-        });
-    </script>
 
     <style>
     	#sender {
@@ -174,20 +164,10 @@ pageEncoding="UTF-8"%>
 
     <div id="messageInner">
         <div id="sender">
-            <p>
-                <input type="radio" name="tab" id="tab1" checked="checked"/>
-                <label for="tab1" class="contentType">교수명</label>
-                <input type="radio" name="tab" id="tab2"/>
-                <label for="tab2" class="contentType">키워드</label>
-            </p>
             <div class="resultArea">
                 <div id="search">
                     <input type="text" placeholder="검색어를 입력하세요." id="searchText">
-                    <img src="/images/search.svg" id="searchBtn"/>
-                </div>
-                <div id="search">
-                    <input type="text" placeholder="키워드를 입력하세요." id="searchText">
-                    <img src="/images/search.svg" id="searchBtn"/>
+                    <img src="/images/search.svg" id="searchBtn" onclick="searchProfessor()"/>
                 </div>
             </div>
 
