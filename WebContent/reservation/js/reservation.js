@@ -2,13 +2,13 @@ $(document).ready(function(){ // html이 로드되면 실행됨
 	getDept(); // 사이드바 학과들 출력
 });
 
-function searchProfessor() {
+function searchProfessorByKeyword() {
 	var searchText = $("#searchText").val();
 	$("#searchResult").children().remove();
 	
 	$.ajax({
 	 	type: "GET",
-		url: "/reservation/searchProfessor.jsp?searchText=" + searchText,
+		url: "/reservation/searchProfessorByKeyword.jsp?searchText=" + searchText,
 		dataType: "text",
 		success: updatePage,
 		error: function(jqXHR, textStatus, errorThrown) {

@@ -167,7 +167,7 @@ pageEncoding="UTF-8"%>
             <div class="resultArea">
                 <div id="search">
                     <input type="text" placeholder="검색어를 입력하세요." id="searchText">
-                    <img src="/images/search.svg" id="searchBtn" onclick="searchProfessor()"/>
+                    <img src="/images/search.svg" id="searchBtn" onclick="searchProfessorByKeyword()"/>
                 </div>
             </div>
 
