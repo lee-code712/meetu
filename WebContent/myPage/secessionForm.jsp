@@ -6,6 +6,17 @@
 	<meta charset="UTF-8">
 	<title>회원탈퇴</title>
 	<link rel="stylesheet" href="/myPage/css/secessionForm.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+	function ck_form() {
+		var form = document.change_pwd_form;
+	        
+		if(!$("#secessionPwdText").val()) {
+			alert("현재 비밀번호를 입력해 주세요.");
+			return false;
+		}
+	}
+	</script>
 </head>
 
 <body id="secessionBg">

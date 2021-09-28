@@ -6,6 +6,27 @@
 	<meta charset="UTF-8">
 	<title>비밀번호 재설정</title>
 	<link rel="stylesheet" href="/myPage/css/resetPwdForm.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+	function ck_form() {
+		var form = document.change_pwd_form;
+	        
+		if(!$("#currentPwdText").val()) {
+			alert("현재 비밀번호를 입력해 주세요.");
+			return false;
+		}
+	    	
+		if(!$("#newPwdText").val()) {
+			alert("새 비밀번호를 입력해주세요.");
+			return false;
+		}
+	    
+		if(!$("#newPwdCheckText").val()) {
+			alert("새 비밀번호 확인을 입력해주세요.");
+			return false;
+		}
+	}
+	</script>
 </head>
 
 <body id="resetPwdBg">
