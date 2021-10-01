@@ -170,9 +170,6 @@ a:hover {
     height: 30px;
     padding-left: 20px;
     font-size: 14px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 #office_map {

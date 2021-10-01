@@ -1,21 +1,21 @@
 .popup_btn a {
-    display: inline-block;
-    padding: 20px;
-    background: darkred;
-    color: #fff;
-}
+            display: inline-block;
+            padding: 20px;
+            background: darkred;
+            color: #fff;
+        }
 
-.popup {
-    position: fixed;
-    width: 60%;
-    padding: 10px;
-    max-width: 500px;
-    border-radius: 10px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, .9);
-    /* "delay" the visibility transition */
+        .popup {
+            position: fixed;
+            width: 60%;
+            padding: 10px;
+            max-width: 500px;
+            border-radius: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, .9);
+            /* "delay" the visibility transition */
     -webkit-transition: opacity .5s, visibility 0s linear .5s;
     transition: opacity .5s, visibility 0s linear .5s;
     z-index: 1;
@@ -59,12 +59,16 @@
 #alertBox {
     height: 80px;
     width: 100%;
-    background: #EFF3FF;
+    border-top: 1px solid #EAEAEA;
+    border-bottom: 1px solid #EAEAEA;
 }
 
 #alertTitle {
     display: flex;
     justify-content: center;
+    padding: 10px 0px;
+    background: #1ABC9C;
+    color: white;
     margin-bottom: 12px;
     width: 100%;
     font-size: 18px;
@@ -123,7 +127,16 @@
 }
 
 .link {
-	font-weight: bold;
-	text-decoration:underline;
-	cursor: pointer;
+    margin-right: 10px;
+    padding: 4px 10px;
+    border: 1px solid #7AAFFF;
+    border-radius: 50px;
+    font-size: 12px;
+    color: #7AAFFF;
+    cursor: pointer;
+}
+
+#contentBox {
+    display: flex;
+    justify-content: space-between;
 }
