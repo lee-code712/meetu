@@ -46,8 +46,9 @@ public class MessagePageAction implements CommandAction {
 					ArrayList<String> mem_list = new ArrayList<>();
 					mem_list.add(dept_dto.getDeptName());
 					mem_list.add(member.getName());
+					mem_list.add(reservation_dto.getResId());
 					
-					mem_map.put(user_id, mem_list); // key-상대방의 id, value-상대방의 학과 및 이름 
+					mem_map.put(user_id, mem_list); // key-상대방의 id, value-상대방의 학과 및 이름 및 예약 id
 				}
 			}
 			

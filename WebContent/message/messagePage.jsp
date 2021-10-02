@@ -12,7 +12,7 @@ pageEncoding="UTF-8" %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/message/js/message.js"></script>
     <script>
-    
+    	var role = '${mem_dto.getRole()}';
         var user_id = '${user_id}';
     </script>
 
@@ -85,6 +85,7 @@ pageEncoding="UTF-8" %>
                         ${member.value.get(0)} ${member.value.get(1)} 교수
                     </li>
                     <input type='hidden' class='mem_usr_name' value='${member.value.get(1)}'/>
+                    <input type='hidden' id='mem_usr_res_id' value='${member.value.get(2)}'/>
                 </c:forEach>
             </c:when>
             <c:otherwise>
@@ -93,6 +94,7 @@ pageEncoding="UTF-8" %>
                         ${member.value.get(0)} ${member.value.get(1)} 학생
                     </li>
                     <input type='hidden' class='mem_usr_name' value='${member.value.get(1)}'/>
+                    <input type='hidden' id='mem_usr_res_id' value='${member.value.get(2)}'/>
                 </c:forEach>
             </c:otherwise>
         </c:choose>

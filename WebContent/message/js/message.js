@@ -33,7 +33,131 @@ function updatePage(responseText) {
 		var sent_time = messages[key].sentTime;
 		var msg_content = messages[key].msgContentDto.msg;
 		var temp_html = '';
-	
+		
+		if(role == "1") {
+			// 시간대 하이퍼링크
+			if (msg_content.indexOf("9시") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("10시") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("11시") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("12시") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("1시") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("2시") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("3시") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("4시") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("5시") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("1일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("2일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("3일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("4일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("5일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("6일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("7일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("8일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("9일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("10일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("11일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("12일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("13일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("14일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("15일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("16일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("17일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("18일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("19일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("20일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("21일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("22일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("23일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("24일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("25일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("26일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("27일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("28일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("29일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("30일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+			else if (msg_content.indexOf("31일") > -1) {
+				msg_content = "<a href=\"/reservationUpdateForm.do?res_id=" + $("#mem_usr_res_id").val() + "\" style=\"color: blue\; text-decoration: underline;\">" + msg_content + "</a>";
+			}
+		}
+		
 		if(messages[key].recvId == user_id) {
 			temp_html += "<div id=\"receiveMessage\"> <div id=\"receiveMsg\">" + mem_usr_name + "</div>";
 			temp_html += "<div id=\"receiveMessageText\"> <div id=\"messageContent\">" + msg_content + "</div></div>";
