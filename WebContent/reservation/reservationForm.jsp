@@ -190,21 +190,6 @@ pageEncoding="UTF-8"%>
             <div>
                 <input class="reservationBtn" type="submit" value="예약하기" />
             </div>
-            <div id="recommendWrap">
-                <div id="recommendTit">교수님 추천</div>
-                <div id="recommendInfoBox">
-                    <div id="recProfNDWrap">
-                        <div id="recProfName">###교수님
-                            <div id="recProfDept">컴퓨터학과</div>
-                        </div>
-                        <div id="recReservationBtn">예약하기</div>
-                    </div>
-                    <div id="recProfMajor">전공: <span>(전공)</span></div>
-                    <div id="recProfSubject">담당과목: <span>(전공)</span></div>
-                    <div id="recProfEmail">이메일: <span>(전공)</span></div>
-                    <div id="recProfLocation">연구실 위치: <span>(전공)</span></div>
-                </div>
-            </div>
         </div>
     </div>
 	</form>
