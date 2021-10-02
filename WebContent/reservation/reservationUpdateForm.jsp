@@ -62,6 +62,16 @@ pageEncoding="UTF-8"%>
 			out.println("<script>alert('예약 수정에 실패했습니다.')</script>");
 		}
 	}
+	
+	String time = request.getParameter("time");
+	if (time != null) {
+		out.println("<input type=\"hidden\" id=\"time\" value=\"" + time + "\"/>");
+	}
+	
+	String date = request.getParameter("date");
+	if (date != null) {
+		out.println("<input type=\"hidden\" id=\"date\" value=\"" + date + "\"/>");
+	}
 %>
 <div id="header">
     <div id="headerInner">

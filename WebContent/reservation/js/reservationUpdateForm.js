@@ -188,8 +188,19 @@ function buildCalendar() {
     
     // 불러온 예약정보에 맞춰 버튼 자동 클릭
     if($("#calMonth").text() == consult_month) {
-	    $("td:contains("+ consult_day + ")").trigger("click");
-	    $("div.startTimeBox:contains(" + start + ")").trigger("click");
+		if ($("#date").val() != null) {
+			$("td:contains("+ $("#date").val() + ")").trigger("click");
+	    	$("div.startTimeBox:contains(" + start + ")").trigger("click");
+		}
+		else if ($("#time").val() != null) {
+			$("td:contains("+ consult_day + ")").trigger("click");
+	    	$("div.startTimeBox:contains(" + $("#time").val() + ")").trigger("click");
+		}
+		else {
+			$("td:contains("+ consult_day + ")").trigger("click");
+	    	$("div.startTimeBox:contains(" + start + ")").trigger("click");
+		}	
+
 	    var time = end.substring(0,2) - start.substring(0,2);
 	    $("div.timeBox:contains(" + time + ")").trigger("click");
 	    var radio_ck = $("label:contains(" + reason + ")").prop('tagName');
