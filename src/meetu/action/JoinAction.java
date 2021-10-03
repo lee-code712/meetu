@@ -49,13 +49,13 @@ public class JoinAction implements CommandAction {
 			String role = req.getParameter("role");
 			String email = "";
 			if (role.equals("student")) {
-				StudentDTO stu_dto = mem_dao.getStudentMemberInfo(univ_id, member_id);
+				StudentDTO stu_dto = mem_dao.getStudentInfo(univ_id, member_id);
 				if (stu_dto != null) {
 					email = stu_dto.getEmail();
 				}
 			}
 			else {
-				ProfessorDTO prof_dto = mem_dao.getProfessorMemberInfo(univ_id, member_id);
+				ProfessorDTO prof_dto = mem_dao.getProfessorInfo(univ_id, member_id);
 				if (prof_dto != null) {
 					email = prof_dto.getEmail();
 				}

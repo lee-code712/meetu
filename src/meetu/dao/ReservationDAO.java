@@ -596,6 +596,71 @@ public class ReservationDAO {
 		return is_changed;
 	}
 	
+	// 회원의 모든 상담기록 dto 반환
+	public ArrayList<ConsultRecordDTO> getConsultRecords(MemberDTO mem_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<ConsultRecordDTO> records = new ArrayList<ConsultRecordDTO>();
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from consult_record where ";
+
+			String role = (String) mem_dto.getRole();
+			if (role.equals("0")) {
+				sql += "stu_id=?";
+			} else {
+				sql += "prof_id=?";
+			}
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mem_dto.getMemberId());
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				ConsultRecordDTO consult_record_dto = new ConsultRecordDTO();
+				consult_record_dto.setConsultId(rs.getString("consult_id"));
+				consult_record_dto.setStartTime(rs.getString("start_time"));
+				consult_record_dto.setEndTime(rs.getString("end_time"));
+				consult_record_dto.setReason(rs.getString("reason"));
+				consult_record_dto.setType(rs.getString("type"));
+				consult_record_dto.setProfId(rs.getString("prof_id"));
+				consult_record_dto.setStuId(rs.getString("stu_id"));
+				consult_record_dto.setContent(rs.getString("content"));
+				consult_record_dto.setResId(rs.getString("res_id"));
+				records.add(consult_record_dto);
+
+				while (rs.next()) {
+					consult_record_dto = new ConsultRecordDTO();
+					consult_record_dto.setConsultId(rs.getString("consult_id"));
+					consult_record_dto.setStartTime(rs.getString("start_time"));
+					consult_record_dto.setEndTime(rs.getString("end_time"));
+					consult_record_dto.setReason(rs.getString("reason"));
+					consult_record_dto.setType(rs.getString("type"));
+					consult_record_dto.setProfId(rs.getString("prof_id"));
+					consult_record_dto.setStuId(rs.getString("stu_id"));
+					consult_record_dto.setContent(rs.getString("content"));
+					consult_record_dto.setResId(rs.getString("res_id"));
+					records.add(consult_record_dto);
+				}
+			} else {
+				return null;
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return records;
+	}
+	
 	// 상담기록 dto 추가
 	public boolean recordConsultInfo(ConsultRecordDTO consult_record_dto, String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;

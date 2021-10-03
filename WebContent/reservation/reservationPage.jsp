@@ -159,6 +159,11 @@ pageEncoding="UTF-8"%>
     font-weight: bold;
 }
 
+#recTag {
+    font-size: 14px;
+    color: #535353;
+}
+
 #recProfDept {
     margin-left: 20px;
     padding: 2px 6px;
@@ -634,18 +639,22 @@ table {
     </div>
 </div>
 <div id="recommendWrap">
-    <div id="recommendTit">교수님 추천</div>
+    <div id="recommendTit">추천 교수님</div>
     <div id="recommendInfoBox">
         <div id="recProfNDWrap">
-            <div id="recProfName">###교수님
-                <div id="recProfDept">컴퓨터학과</div>
+            <div id="recProfName">${recommend_prof.name} 교수님
+                <div id="recProfDept">${recommend_prof.dept}</div>
+                &nbsp;
+                <div id="recTag"><c:if test="${recommend_prof.tag != null}">${recommend_prof.tag}</c:if></div>
             </div>
-            <div id="recReservationBtn">예약하기</div>
+            <c:if test="${recommend_prof.is_member == true}">
+            	<div id="recReservationBtn" onclick="location.href='reservationForm.do?p_user_id=${recommend_prof.p_user_id}'">예약하기</div>
+            </c:if>
         </div>
-        <div id="recProfMajor">전공: <span>(전공)</span></div>
-        <div id="recProfSubject">담당과목: <span>(전공)</span></div>
-        <div id="recProfEmail">이메일: <span>(전공)</span></div>
-        <div id="recProfLocation">연구실 위치: <span>(전공)</span></div>
+        <div id="recProfMajor">전공: <span>${recommend_prof.major}</span></div>
+        <div id="recProfSubject">담당과목: <span>${recommend_prof.course}</span></div>
+        <div id="recProfEmail">이메일: <span>${recommend_prof.email}</span></div>
+        <div id="recProfLocation">연구실 위치: <span>${recommend_prof.office}</span></div>
     </div>
 </div>
 </body>

@@ -176,79 +176,6 @@ public class MemberDAO {
 		return prof_dto;
 	}
 
-	// 특정 학생 정보 dto 반환
-	public StudentDTO getStudentMemberInfo(String univ, String id) throws NamingException/* , SQLException */ {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		StudentDTO stu_dto = null;
-
-		try {
-			Connection conn = DBConnection.getConnection(univ);
-			String sql = "select * from student where stu_id=?";
-
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				stu_dto = new StudentDTO();
-				stu_dto.setStuId(rs.getString("stu_id"));
-				stu_dto.setYear(Integer.parseInt(rs.getString("year")));
-				stu_dto.setEmail(rs.getString("email"));
-				stu_dto.setDeptId(rs.getString("dept_id"));
-			}
-			// if close
-			if (rs != null)
-				rs.close();
-			if (pstmt != null)
-				pstmt.close();
-			if (conn != null)
-				conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return stu_dto;
-	}
-	
-	// 특정 교수 회원 정보 dto 반환
-		public ProfessorDTO getProfessorMemberInfo(String univ, String id) throws NamingException/* , SQLException */ {
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			ProfessorDTO prof_dto = null;
-
-			try {
-				Connection conn = DBConnection.getConnection(univ);
-				String sql = "select * from professor where prof_id=?";
-
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, id);
-
-				rs = pstmt.executeQuery();
-
-				if (rs.next()) {
-					prof_dto = new ProfessorDTO();
-					prof_dto.setProfId(rs.getString("prof_id"));
-					prof_dto.setMajor(rs.getString("major"));
-					prof_dto.setEmail(rs.getString("email"));
-					prof_dto.setOffice(rs.getString("office"));
-					prof_dto.setDeptId(rs.getString("dept_id"));
-				}
-				// if close
-				if (rs != null)
-					rs.close();
-				if (pstmt != null)
-					pstmt.close();
-				if (conn != null)
-					conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-			return prof_dto;
-		}
-
 	// 모든 회원 정보 dto 반환
 	public ArrayList<MemberUserDTO> getAllMemberUsers(String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
@@ -388,7 +315,7 @@ public class MemberDAO {
 		return professors;
 	}
 
-	// 특정 회원 정보 dto 반환
+	// 특정 회원 정보 dto user_id로 검색해 반환
 	public MemberDTO getMemberInfo(String univ, String id) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -397,6 +324,43 @@ public class MemberDAO {
 		try {
 			Connection conn = DBConnection.getConnection(univ);
 			String sql = "select * from member JOIN member_user USING (member_id) where user_id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				mem_dto = new MemberDTO();
+				mem_dto.setMemberId(rs.getString("member_id"));
+				mem_dto.setName(rs.getString("name"));
+				mem_dto.setRole(rs.getString("role"));
+			} else {
+				return null;
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return mem_dto;
+	}
+	
+	// 특정 회원 정보 dto member_id로 검색해 반환
+	public MemberDTO getMemberInfoByMemberID(String univ, String id) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberDTO mem_dto = null;
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select * from member where member_id=?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -664,6 +628,7 @@ public class MemberDAO {
 				prof_dto.setMajor(rs.getString("major"));
 				prof_dto.setEmail(rs.getString("email"));
 				prof_dto.setOffice(rs.getString("office"));
+				prof_dto.setDeptId(rs.getString("dept_id"));
 				profs.add(prof_dto);
 
 				while (rs.next()) {
@@ -672,6 +637,7 @@ public class MemberDAO {
 					prof_dto.setMajor(rs.getString("major"));
 					prof_dto.setEmail(rs.getString("email"));
 					prof_dto.setOffice(rs.getString("office"));
+					prof_dto.setDeptId(rs.getString("dept_id"));
 					profs.add(prof_dto);
 				}
 			} else {
@@ -700,7 +666,7 @@ public class MemberDAO {
 
 		try {
 			Connection conn = DBConnection.getConnection(univ_dto.getUnivId());
-			String sql = "select DISTINCT p.prof_id, p.major, p.email, p.office, count(p.prof_id) OVER(PARTITION BY p.prof_id) as cnt ";
+			String sql = "select DISTINCT p.prof_id, p.major, p.email, p.office, p.dept_id, count(p.prof_id) OVER(PARTITION BY p.prof_id) as cnt ";
 			sql += "from consult_record cr join professor p on (cr.prof_id = p.prof_id) ";
 			sql += "where replace(cr.reason, ' ', '') like ? ";
 			sql += "order by cnt DESC";
@@ -717,6 +683,7 @@ public class MemberDAO {
 				prof_dto.setMajor(rs.getString("major"));
 				prof_dto.setEmail(rs.getString("email"));
 				prof_dto.setOffice(rs.getString("office"));
+				prof_dto.setDeptId(rs.getString("dept_id"));
 				profs.add(prof_dto);
 
 				while (rs.next()) {
@@ -725,6 +692,7 @@ public class MemberDAO {
 					prof_dto.setMajor(rs.getString("major"));
 					prof_dto.setEmail(rs.getString("email"));
 					prof_dto.setOffice(rs.getString("office"));
+					prof_dto.setDeptId(rs.getString("dept_id"));
 					profs.add(prof_dto);
 				}
 			} else {
@@ -805,7 +773,7 @@ public class MemberDAO {
 
 		return profs;
 	}
-
+	
 	// 특정 교수가 가르치는 course dto 반환
 	public ArrayList<CourseDTO> getCourseInfo(ProfessorDTO prof_dto, String univ)
 			throws NamingException/* , SQLException */ {
