@@ -189,12 +189,25 @@ function buildCalendar() {
     // 불러온 예약정보에 맞춰 버튼 자동 클릭
     if($("#calMonth").text() == consult_month) {
 		if ($("#date").val() != null) {
-			$("td:contains("+ $("#date").val() + ")").trigger("click");
-	    	$("div.startTimeBox:contains(" + start + ")").trigger("click");
+			if($("td:contains("+ $("#date").val() + ")").css("cursor") == "pointer") {
+				$("td:contains("+ $("#date").val() + ")").trigger("click");
+	    		$("div.startTimeBox:contains(" + start + ")").trigger("click");
+			}
+			else {
+				alert("상담 불가능한 일자입니다.");
+				history.back();
+			}
 		}
 		else if ($("#time").val() != null) {
 			$("td:contains("+ consult_day + ")").trigger("click");
-	    	$("div.startTimeBox:contains(" + $("#time").val() + ")").trigger("click");
+			
+			if($("div.startTimeBox:contains(" + $("#time").val() + ")").css("cursor") == "pointer") {
+	    		$("div.startTimeBox:contains(" + $("#time").val() + ")").trigger("click");
+			}
+			else {
+				alert("상담 불가능한 시간입니다.");
+				history.back();
+			}
 		}
 		else {
 			$("td:contains("+ consult_day + ")").trigger("click");
