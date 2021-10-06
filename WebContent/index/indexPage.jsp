@@ -24,9 +24,9 @@ pageEncoding="UTF-8"%>
     <style>
         #noticeCount {
             position: relative;
-            right: 10px;
-            top: -4px;
-            font-size: 4px;
+            right: 12px;
+            top: -3px;
+            font-size: 12px;
             color: white;
         }
 

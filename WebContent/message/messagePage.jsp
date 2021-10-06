@@ -18,12 +18,12 @@ pageEncoding="UTF-8" %>
 
 	<style>
 		#noticeCount {
-    		position: relative;
-    		right: 10px;
-    		top: -4px;
-    		font-size: 4px;
-    		color: white;
-    	}
+            position: relative;
+            right: 12px;
+            top: -3px;
+            font-size: 12px;
+            color: white;
+        }
     	
     	#noticeImg {
     		width: 20px;
@@ -36,6 +36,14 @@ pageEncoding="UTF-8" %>
 			width: 24px;
     		height: 20px;
 		}
+		
+		#infoImg {
+            margin-right: 30px;
+            margin-top: -10px;
+            display: inline-block;
+            float: right;
+            cursor: pointer;
+        }
 	</style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

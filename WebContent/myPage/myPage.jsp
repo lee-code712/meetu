@@ -52,12 +52,12 @@ pageEncoding="UTF-8"%>
 		}
 		
 		#noticeCount {
-    		position: relative;
-    		right: 10px;
-    		top: -4px;
-    		font-size: 4px;
-    		color: white;
-    	}
+            position: relative;
+            right: 12px;
+            top: -3px;
+            font-size: 12px;
+            color: white;
+        }
     	
     	#noticeImg {
     		width: 20px;

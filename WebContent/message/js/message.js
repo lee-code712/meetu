@@ -8,6 +8,7 @@ function getMessages() {
 	mem_usr = $(this).text();
 	mem_usr_name = $(this).next().val();
 	$('#sender').text(mem_usr);
+	$('#sender').append('<img src="' + /images/blueInfo.svg + '" />');
 	$('#messageResult').children().remove();
 		
 	$.ajax({

@@ -11,40 +11,25 @@
     min-height: 100vh;
 }
 
-#rejectMsgInnerWrap {
-    background: white;
-    border-radius: 10px;
-    box-shadow: -60px 0px 100px -90px #000000,
-    60px 0px 100px -90px #000000;
-}
-
-#rejectMsg {
-    padding: 20px 40px;
-    width: 440px;
-    background: white;
-    border-radius: 5px;
-    color: #535353;
-}
 
 #closeBtnWrap {
-    padding: 40px 40px 40px 0px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background: white;
-    border-radius: 0px 0px 10px 10px;
 }
 
 #reservationInfoCloseBtn {
     display: flex;
     justify-content: center;
+    margin-top: 40px;
+    margin-right: 20px;
     align-items: center;
-    width: 100px;
-    height: 40px;
-    border-radius: 5px;
-    color: white;
-    background: #1abc9c;
-    border: none;
+    padding: 6px 24px;
+    font-size: 14px;
+    border-radius: 50px;
+    border: 1px solid #1abc9c;
+    color: #1abc9c;
+    background: white;
 }
 
 #reservationInfoCloseBtn:hover {
@@ -77,15 +62,55 @@
 }
 
 #infoWrap {
-    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    height: 40px;
 }
 
 #infoTitle {
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    width: 130px;
+    height: 40px;
+    background: #f1f1f1;
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+#InfoTable {
+    margin: 0px 20px;
+    collapse: none;
 }
 
 #infoText {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #535353;
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+    height: 40px;
+    width: 370px;
+    background: white;
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+#infoWrap {
+     border: 1px solid #d9d9d9;
+}
+
+#rejectMsgInnerWrap {
+    padding-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+#reservationTit {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-left: 20px;
+    height: 40px;
+    background: #1abc9c;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
 }
