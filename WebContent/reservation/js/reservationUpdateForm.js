@@ -188,49 +188,85 @@ function buildCalendar() {
     
     // 불러온 예약정보에 맞춰 버튼 자동 클릭
     if($("#calMonth").text() == consult_month) {
+		$("td:contains("+ consult_day + ")").trigger("click");
+
 		if ($("#date").val() != null) {
 			if($("td:contains("+ $("#date").val() + ")").css("cursor") == "pointer") {
 				$("td:contains("+ $("#date").val() + ")").trigger("click");
 	    		$("div.startTimeBox:contains(" + start + ")").trigger("click");
+
+				var time = end.substring(0,2) - start.substring(0,2);
+			    $("div.timeBox:contains(" + time + ")").trigger("click");
+			    var radio_ck = $("label:contains(" + reason + ")").prop('tagName');
+			    if(radio_ck == null) {
+			    	 $("label[for='radio5']").trigger("click");
+			    	 $("#anotherReason").val(reason);
+			    }
+			    else {
+			    	$("label:contains(" + reason + ")").trigger("click");
+			    }
+			    
+			    if(type == 0) {
+			    	$("div#typeBtnOff > a").trigger("click");
+			    }
+			    else {
+			    	$("div#typeBtnOn > a").trigger("click");
+			    }
 			}
 			else {
 				alert("상담 불가능한 일자입니다.");
-				history.back();
+				history.go(-1);
 			}
 		}
-		else if ($("#time").val() != null) {
-			$("td:contains("+ consult_day + ")").trigger("click");
-			
+		else if ($("#time").val() != null) {			
 			if($("div.startTimeBox:contains(" + $("#time").val() + ")").css("cursor") == "pointer") {
 	    		$("div.startTimeBox:contains(" + $("#time").val() + ")").trigger("click");
+
+				var time = end.substring(0,2) - start.substring(0,2);
+			    $("div.timeBox:contains(" + time + ")").trigger("click");
+			    var radio_ck = $("label:contains(" + reason + ")").prop('tagName');
+			    if(radio_ck == null) {
+			    	 $("label[for='radio5']").trigger("click");
+			    	 $("#anotherReason").val(reason);
+			    }
+			    else {
+			    	$("label:contains(" + reason + ")").trigger("click");
+			    }
+			    
+			    if(type == 0) {
+			    	$("div#typeBtnOff > a").trigger("click");
+			    }
+			    else {
+			    	$("div#typeBtnOn > a").trigger("click");
+			    }
 			}
 			else {
 				alert("상담 불가능한 시간입니다.");
-				history.back();
+				history.go(-1);
 			}
 		}
 		else {
-			$("td:contains("+ consult_day + ")").trigger("click");
+			// $("td:contains("+ consult_day + ")").trigger("click");
 	    	$("div.startTimeBox:contains(" + start + ")").trigger("click");
-		}	
 
-	    var time = end.substring(0,2) - start.substring(0,2);
-	    $("div.timeBox:contains(" + time + ")").trigger("click");
-	    var radio_ck = $("label:contains(" + reason + ")").prop('tagName');
-	    if(radio_ck == null) {
-	    	 $("label[for='radio5']").trigger("click");
-	    	 $("#anotherReason").val(reason);
-	    }
-	    else {
-	    	$("label:contains(" + reason + ")").trigger("click");
-	    }
-	    
-	    if(type == 0) {
-	    	$("div#typeBtnOff > a").trigger("click");
-	    }
-	    else {
-	    	$("div#typeBtnOn > a").trigger("click");
-	    }
+			var time = end.substring(0,2) - start.substring(0,2);
+		    $("div.timeBox:contains(" + time + ")").trigger("click");
+		    var radio_ck = $("label:contains(" + reason + ")").prop('tagName');
+		    if(radio_ck == null) {
+		    	 $("label[for='radio5']").trigger("click");
+		    	 $("#anotherReason").val(reason);
+		    }
+		    else {
+		    	$("label:contains(" + reason + ")").trigger("click");
+		    }
+		    
+		    if(type == 0) {
+		    	$("div#typeBtnOff > a").trigger("click");
+		    }
+		    else {
+		    	$("div#typeBtnOn > a").trigger("click");
+	    	}
+		}
     }
     // console.log(consult_month, consult_day, start, end, time, reason, type);
     
