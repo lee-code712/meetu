@@ -700,6 +700,49 @@ public class ReservationDAO {
 		return is_added;
 	}
 	
+	public ArrayList<String> getConsultReason(MemberDTO mem_dto, String univ) throws NamingException/* , SQLException */ {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<String> reasons = new ArrayList<>();
+
+		try {
+			Connection conn = DBConnection.getConnection(univ);
+			String sql = "select DISTINCT reason from consult_record where ";
+
+			String role = (String) mem_dto.getRole();
+			if (role.equals("0")) {
+				sql += "stu_id=?";
+			} else {
+				sql += "prof_id=?";
+			}
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mem_dto.getMemberId());
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				reasons.add(rs.getString("reason"));
+				while (rs.next()) {
+					reasons.add(rs.getString("reason"));
+				}
+			} else {
+				return null;
+			}
+			// if close
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return reasons;
+	}
+	
 	// 회원탈퇴 시 res_id를 null로 변경
 	public boolean updateResId(MemberDTO mem_dto, String univ) throws NamingException/* , SQLException */ {
 		PreparedStatement pstmt = null;
