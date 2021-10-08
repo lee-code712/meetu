@@ -170,7 +170,7 @@
 </head>
 <script>
 	function returnUrl() {
-		var url = event.currentTarget.closest("span").id;
+		var url = event.currentTarget.closest("div").id;
 		opener.movePage(url);
 	}
 </script>
