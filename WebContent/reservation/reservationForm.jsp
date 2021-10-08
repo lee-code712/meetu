@@ -91,7 +91,7 @@ pageEncoding="UTF-8"%>
                 <div class="navListName">담당과목</div>
                 <div class="navList" id="course">${param.course}</div>
                 <div class="navListName">이메일</div>
-                <div class="navList" id="email">이메일: ${param.email}</div>
+                <div class="navList" id="email">${param.email}</div>
                 <div class="navListName">연구소 위치</div>
                 <div class="navList" id="office">${param.office}</div>
                 <div id="office_map"></div>
