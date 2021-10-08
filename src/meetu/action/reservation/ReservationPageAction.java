@@ -27,42 +27,29 @@ public class ReservationPageAction implements CommandAction {
 		boolean is_member = false;
 		String tag = "";
 		HashMap<String, Object> p_map = null; // 교수 정보 중 랜덤으로 하나를 맵으로 저장하는 변수
-		
-		// 이전 상담 기록 확인
-		ReservationDAO reservation_dao = ReservationDAO.getInstance();
-		ArrayList<ConsultRecordDTO> records = (ArrayList<ConsultRecordDTO>) reservation_dao.getConsultRecords(mem_dto, univ);
-		
-		if(records == null) { // 이전에 상담 기록이 없다면
-			// 단순히 학생 회원의 학과에 속하는 교수님 중 한 분의 정보를 추천
-			StudentDTO stu_dto = mem_dao.getStudentInfo(univ, user_id);
-			DepartmentDTO dept_dto = mem_dao.getDepartmentDTO(univ_dto, stu_dto.getDeptId());
-			profs = mem_dao.professorSearchByDept(univ_dto, dept_dto.getDeptName());
-		}
-		else { // 상담 기록이 있다면
-			// 내가 상담했던 상담 목적을 기준으로 상담을 진행한 교수님 중 한 분의 정보를 추천
-			double random = Math.random();
-			int index = (int)(random * records.size());
-			ConsultRecordDTO consult_record_dto = records.get(index);
-			String keyword = consult_record_dto.getReason().replaceAll(" ", "");
-			
-			profs = mem_dao.professorSearchByConsultRecord(univ_dto, keyword);
-		}
+				
+		// 학생 회원의 학과에 속하는 교수님 중 한 분의 정보를 추천
+		StudentDTO stu_dto = mem_dao.getStudentInfo(univ, user_id);
+		DepartmentDTO dept_dto = mem_dao.getDepartmentDTO(univ_dto, stu_dto.getDeptId());
+		profs = mem_dao.professorSearchByDept(univ_dto, dept_dto.getDeptName());
 		
 		// 교수 정보가 null이 아니면 랜덤으로 교수 정보 반환
 		if(profs != null) {
+			ReservationDAO reservation_dao = ReservationDAO.getInstance();
 			double random = Math.random();
 			int index = (int)(random * profs.size());
 			ProfessorDTO prof = profs.get(index);
 			MemberDTO p_mem_dto = mem_dao.getMemberInfoByMemberID(univ, prof.getProfId());
 			MemberUserDTO mem_usr_dto = mem_dao.getMemberUserInfo(p_mem_dto, univ);
-			DepartmentDTO dept_dto = mem_dao.getDepartmentDTO(univ_dto, prof.getDeptId());
+			DepartmentDTO p_dept_dto = mem_dao.getDepartmentDTO(univ_dto, prof.getDeptId());
 			ArrayList<String> consult_reasons = (ArrayList<String>) reservation_dao.getConsultReason(p_mem_dto, univ);
 
-			Iterator<String> iterator = consult_reasons.iterator();
-
-			while(iterator.hasNext()) {
-				String reason = iterator.next();
-				tag += "#" + reason + "&nbsp;";
+			if(consult_reasons != null) {
+				Iterator<String> iterator = consult_reasons.iterator();
+				while(iterator.hasNext()) {
+					String reason = iterator.next();
+					tag += "#" + reason + "&nbsp;";
+				}
 			}
 			
 			if(mem_usr_dto != null) {
@@ -84,7 +71,7 @@ public class ReservationPageAction implements CommandAction {
 			if(mem_usr_dto != null)
 				p_map.put("p_user_id", mem_usr_dto.getUserId());
 			p_map.put("name", p_mem_dto.getName());
-			p_map.put("dept", dept_dto.getDeptName());
+			p_map.put("dept", p_dept_dto.getDeptName());
 			p_map.put("major", prof.getMajor());
 			p_map.put("email", prof.getEmail());
 			p_map.put("office", prof.getOffice());
