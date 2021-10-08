@@ -646,7 +646,7 @@ pageEncoding="UTF-8"%>
             <div id="recProfName">${recommend_prof.name} 교수님
                 <div id="recProfDept">${recommend_prof.dept}</div>
                 &nbsp;
-                <div id="recTag"><c:if test="${recommend_prof.tag != null}">${recommend_prof.tag}</c:if></div>
+                <div id="recTag">&nbsp; ${recommend_prof.tag}</div>
             </div>
             <c:if test="${recommend_prof.is_member == true}">
             	<div id="recReservationBtn" onclick="location.href='reservationForm.do?p_user_id=${recommend_prof.p_user_id}'">예약하기</div>

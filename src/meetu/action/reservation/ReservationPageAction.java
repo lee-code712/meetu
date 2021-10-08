@@ -25,7 +25,7 @@ public class ReservationPageAction implements CommandAction {
 		MemberDAO mem_dao = MemberDAO.getInstance();
 		ArrayList<ProfessorDTO> profs = null; // 조건에 해당하는 교수 정보들을 저장하는 변수
 		boolean is_member = false;
-		String tag = null;
+		String tag = "";
 		HashMap<String, Object> p_map = null; // 교수 정보 중 랜덤으로 하나를 맵으로 저장하는 변수
 		
 		// 이전 상담 기록 확인
@@ -43,7 +43,6 @@ public class ReservationPageAction implements CommandAction {
 			double random = Math.random();
 			int index = (int)(random * records.size());
 			ConsultRecordDTO consult_record_dto = records.get(index);
-			tag = "#" + consult_record_dto.getReason();
 			String keyword = consult_record_dto.getReason().replaceAll(" ", "");
 			
 			profs = mem_dao.professorSearchByConsultRecord(univ_dto, keyword);
@@ -57,6 +56,14 @@ public class ReservationPageAction implements CommandAction {
 			MemberDTO p_mem_dto = mem_dao.getMemberInfoByMemberID(univ, prof.getProfId());
 			MemberUserDTO mem_usr_dto = mem_dao.getMemberUserInfo(p_mem_dto, univ);
 			DepartmentDTO dept_dto = mem_dao.getDepartmentDTO(univ_dto, prof.getDeptId());
+			ArrayList<String> consult_reasons = (ArrayList<String>) reservation_dao.getConsultReason(p_mem_dto, univ);
+
+			Iterator<String> iterator = consult_reasons.iterator();
+
+			while(iterator.hasNext()) {
+				String reason = iterator.next();
+				tag += "#" + reason + "&nbsp;";
+			}
 			
 			if(mem_usr_dto != null) {
 				is_member = true;
