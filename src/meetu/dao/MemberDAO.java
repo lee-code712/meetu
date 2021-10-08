@@ -42,7 +42,7 @@ public class MemberDAO {
 			pstmt.setString(3, role);
 
 			rs = pstmt.executeQuery();
-
+			
 			if (rs.next()) {
 				mem_dto = new MemberDTO();
 				mem_dto.setMemberId(rs.getString("member_id"));
@@ -102,6 +102,79 @@ public class MemberDAO {
 
 		return find_info;
 	}
+	
+	// 특정 학생 학사 정보 dto 반환
+		public StudentDTO getStudent(String univ, String id) throws NamingException/* , SQLException */ {
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			StudentDTO stu_dto = null;
+
+			try {
+				Connection conn = DBConnection.getConnection(univ);
+				String sql = "select * from student where stu_id=?";
+
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					stu_dto = new StudentDTO();
+					stu_dto.setStuId(rs.getString("stu_id"));
+					stu_dto.setYear(Integer.parseInt(rs.getString("year")));
+					stu_dto.setEmail(rs.getString("email"));
+					stu_dto.setDeptId(rs.getString("dept_id"));
+				}
+				// if close
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			return stu_dto;
+		}
+
+		// 특정 교수 학사 정보 dto 반환
+		public ProfessorDTO getProfessor(String univ, String id) throws NamingException/* , SQLException */ {
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			ProfessorDTO prof_dto = null;
+
+			try {
+				Connection conn = DBConnection.getConnection(univ);
+				String sql = "select * from professor where stu_id=?";
+
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					prof_dto = new ProfessorDTO();
+					prof_dto.setProfId(rs.getString("prof_id"));
+					prof_dto.setMajor(rs.getString("major"));
+					prof_dto.setEmail(rs.getString("email"));
+					prof_dto.setOffice(rs.getString("office"));
+					prof_dto.setDeptId(rs.getString("dept_id"));
+				}
+				// if close
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			return prof_dto;
+		}
 
 	// 특정 학생 회원 정보 dto 반환
 	public StudentDTO getStudentInfo(String univ, String id) throws NamingException/* , SQLException */ {
