@@ -62,7 +62,7 @@
     <div id="welcome">환영합니다!</div>
     <div id="successMsg">회원가입에 성공했습니다.</div>
     <div id="successMsg">회원님의 아이디는 <%= user_id %> 입니다.</div>
-    <button onclick="loginForm.do" id="loginBtn">로그인</button>
+    <button onclick="location.href='loginForm.do'" id="loginBtn">로그인</button>
 </div>
 </body>
 </html>
