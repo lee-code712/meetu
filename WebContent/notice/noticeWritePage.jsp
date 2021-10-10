@@ -32,6 +32,18 @@ pageEncoding="UTF-8"%>
 			width: 24px;
     		height: 20px;
 		}
+		
+		#footer {
+		    display: flex;
+		    margin-top: 400px;
+		    margin: 0 auto;
+		    width: 100%;
+		    height: 200px;
+		    background: #EDEDED;
+		    justify-content: center;
+		    align-items: center;
+		    color: #535353;
+		}
 	</style>
 </head>
 <body id="ntContentPgBg">

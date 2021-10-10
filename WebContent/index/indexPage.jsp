@@ -162,24 +162,19 @@ pageEncoding="UTF-8"%>
             margin: 0 auto;
             width: 200px;
             padding: 8px 0;
-            border: 1px solid #1abc9c;
-            color: #1abc9c;
+            border: 1px solid #F2B9B2;
+            color: #F2B9B2;
             border-radius: 500px;
             background: white;
         }
 
         #reservationBtn:hover {
-            display: block;
-            margin: 0 auto;
-            width: 200px;
-            padding: 8px 0;
-            border: 1px solid #1abc9c;
-            color: white;
-            border-radius: 500px;
-            background: #1abc9c;
             cursor: pointer;
         }
 
+		#reservationBtn:focus {
+			outline: none;
+		}
 
         .cal_top {
             font-size: 24px;
@@ -446,15 +441,25 @@ pageEncoding="UTF-8"%>
             display: block;
             width: 200px;
             padding: 8px 0;
-            border: 1px solid #1abc9c;
-            color: #1abc9c;
+            background: #ADCDFF;
+            color: white;
             border-radius: 500px;
-            background: white;
+            border: none;
+        }
+        
+         #banner03Btn:hover {
+            cursor: pointer;
+            background: #ADCDFF;
+            color: white;
+        }
+        
+        #banner03Btn:focus {
+        	outline: none;
         }
 
         #banner02Wrap {
             margin: 0 auto;
-            padding-top: 90px;
+            padding-top: 110px;
             width: 1194px;
         }
 
@@ -475,17 +480,20 @@ pageEncoding="UTF-8"%>
             display: block;
             width: 200px;
             padding: 8px 0;
-            border: 1px solid #1abc9c;
-            color: #1abc9c;
+            color: white;
+            border: none;
             border-radius: 500px;
-            background: #eaf0ff;
+            background: #A3BCFA;
         }
 
-        #banner02Btn:hover,
-        #banner03Btn:hover {
+        #banner02Btn:hover {
             cursor: pointer;
-            background: #1abc9c;
+            background: #A3BCFA;
             color: white;
+        }
+        
+        #banner02Btn:focus {
+        	outline: none;
         }
 
         #blank {
@@ -560,6 +568,24 @@ pageEncoding="UTF-8"%>
             color: #C4C4C4;
             text-align: center;
         }
+        
+        #logo1 {
+        	color: #F2B9B2;
+        	font-family: 'Yellowtail', cursive;
+        	font-size: 18px;
+        }
+        
+        #logo2 {
+        	color: #A3BCFA;
+        	font-family: 'Yellowtail', cursive;
+        	font-size: 18px;
+        }
+        
+        #logo3 {
+        	color: #ADCDFF;
+        	font-family: 'Yellowtail', cursive;
+        	font-size: 18px;
+        }
     </style>
 </head>
 
@@ -598,20 +624,20 @@ pageEncoding="UTF-8"%>
 <div id="banner_wrap">
     <ul class="banner_slide">
         <li class="banner_01">
-            <div id="banner1Title">간편한 상담 일정 관리 시스템 &nbsp; <span id="logo">MEETU</span></div>
+            <div id="banner1Title">간편한 상담 일정 관리 시스템 &nbsp; <span id="logo1">MEETU</span></div>
             <div id="banner1Text">MEETU를 사용하여 상담 일정을 관리해보세요!</div>
             <button id="reservationBtn" onclick="location.href='reservation.do'">예약하러 가기</button>
         </li>
         <li class="banner_02">
             <div id="banner02Wrap">
-                <div id="banner02Title">간편한 상담 일정 관리 시스템 &nbsp; <span id="logo">MEETU</span></div>
+                <div id="banner02Title">간편한 상담 일정 관리 시스템 &nbsp; <span id="logo2">MEETU</span></div>
                 <div id="banner02Text">상담 예약일을 알고 싶다면 캘린더를 통해 상담일정을 확인해보세요!</div>
                 <button id="banner02Btn" onclick="location.href='#target_cal'">캘린더 보러가기</button>
             </div>
         </li>
         <li class="banner_03">
             <div id="banner03Wrap">
-                <div id="banner03Title">간편한 상담 일정 관리 시스템 &nbsp; <span id="logo">MEETU</span></div>
+                <div id="banner03Title">간편한 상담 일정 관리 시스템 &nbsp; <span id="logo3">MEETU</span></div>
                 <div id="banner03Text">소통을 하고 싶다면 상담 승인 후 쪽지 기능을 통해 대화를 주고받아보세요!</div>
                 <button id="banner03Btn" onclick="location.href='message.do'">쪽지함 가기</button>
             </div>

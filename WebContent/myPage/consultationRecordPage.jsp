@@ -33,6 +33,41 @@
 			width: 24px;
     		height: 20px;
 		}
+		
+		.consultSubTit {
+			color: #1abc9c;
+			font-size: 14px;
+		}
+		
+		#backBtn:hover,
+		#saveBtn:hover {
+			cursor: pointer;
+		}
+		
+		#backBtn:focus,
+		#saveBtn:focus {
+			outline: none;
+		}
+		
+		#navLTit {
+			font-size: 18px;
+		}
+		
+		textarea {
+			resize:none;
+		}
+		
+		#footer {
+		    display: flex;
+		    margin-top: 300px;
+		    margin: 0 auto;
+		    width: 100%;
+		    height: 200px;
+		    background: #EDEDED;
+		    justify-content: center;
+		    align-items: center;
+		    color: #535353;
+		}
 	</style>
 </head>
 
@@ -70,19 +105,19 @@
     <div id="navL">
         <div id="navLTit">상담정보</div>
         <div id="navListWrap">
-        	<div id="navList">[교수정보]</div>
+        	<div id="navList" class="consultSubTit">교수정보</div>
         	<div id="navList">${prof_info.get(1)} ${prof_info.get(0)} ( ${prof_info.get(2)} )</div>
-            <div id="navList">[학생정보]</div>
+            <div id="navList" class="consultSubTit">학생정보</div>
             <div id="navList">${stu_info.get(1)} ${stu_info.get(0)} ( ${stu_info.get(2)}학년, ${stu_info.get(3)} )</div>
-            <div id="navList">[상담일시]</div>
+            <div id="navList" class="consultSubTit">상담일시</div>
             <div id="navList">
             	<c:set var="startTime" value="${reservation_dto.getStartTime()}"/>${fn:substring(startTime, 0, 16)}
             	 ~ 
             	<c:set var="endTime" value="${reservation_dto.getEndTime()}"/>${fn:substring(endTime, 11, 16)}
             </div>
-            <div id="navList">[상담신청사유]</div>
+            <div id="navList" class="consultSubTit">상담신청사유</div>
             <div id="navList">${reservation_dto.getReason()}</div>
-            <div id="navList">[상담유형]</div>
+            <div id="navList" class="consultSubTit">상담유형</div>
             <div id="navList">
                 <c:choose>
                     <c:when test="${reservation_dto.getType() == 0}">오프라인</c:when>

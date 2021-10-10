@@ -44,6 +44,18 @@ pageEncoding="UTF-8" %>
             float: right;
             cursor: pointer;
         }
+        
+        #footer {
+    display: flex;
+    margin-top: -40px;
+    margin: 0 auto;
+    width: 100%;
+    height: 200px;
+    background: #EDEDED;
+    justify-content: center;
+    align-items: center;
+    color: #535353;
+}
 	</style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

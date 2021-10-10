@@ -39,6 +39,26 @@ pageEncoding="UTF-8"%>
 			width: 24px;
     		height: 20px;
 		}
+		
+		#searchBtn:hover {
+			cursor: pointer;
+		}
+		
+		#footer {
+		    display: flex;
+		    margin-top: 400px;
+		    margin: 0 auto;
+		    width: 100%;
+		    height: 200px;
+		    background: #EDEDED;
+		    justify-content: center;
+		    align-items: center;
+		    color: #535353;
+		}
+		
+		#thTable {
+    background: #F4F4F4;
+}
 	</style>
 </head>
 

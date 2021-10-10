@@ -32,6 +32,18 @@ pageEncoding="UTF-8"%>
 			width: 24px;
     		height: 20px;
 		}
+		
+		#footer {
+		    display: flex;
+		    margin-top: -40px;
+		    margin: 0 auto;
+		    width: 100%;
+		    height: 200px;
+		    background: #EDEDED;
+		    justify-content: center;
+		    align-items: center;
+		    color: #535353;
+		}
 	</style>
 	
     <script>
@@ -218,5 +230,6 @@ pageEncoding="UTF-8"%>
         </div>
     </div>
 	</form>
+
 </body>
 </html>

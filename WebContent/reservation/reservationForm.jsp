@@ -39,6 +39,22 @@ pageEncoding="UTF-8"%>
 			width: 24px;
     		height: 20px;
 		}
+		
+		#footer {
+		    display: flex;
+		    margin-top: -40px;
+		    margin: 0 auto;
+		    width: 100%;
+		    height: 200px;
+		    background: #EDEDED;
+		    justify-content: center;
+		    align-items: center;
+		    color: #535353;
+		}
+		
+		#blank {
+			height: 200px;
+		}
 	</style>
 </head>
 <body>
@@ -190,6 +206,7 @@ pageEncoding="UTF-8"%>
             <div>
                 <input class="reservationBtn" type="submit" value="예약하기" />
             </div>
+            <div id="blank"></div>
         </div>
     </div>
 	</form>

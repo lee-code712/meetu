@@ -166,6 +166,10 @@
             display: flex;
             justify-content: space-between;
         }
+        
+        #alertTitle {
+        	margin-bottom: 10px;
+        }
     </style>
 </head>
 <script>

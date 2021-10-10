@@ -160,8 +160,12 @@ pageEncoding="UTF-8"%>
 		}
 		
 		#recTag {
-		    font-size: 14px;
-		    color: #535353;
+			display: flex;
+			align-items: center;
+			height: 40px;
+		   	padding-left: 20px;
+		    color: #A3BCFA;
+		    font-size: 12px;
 		}
 		
 		#recProfDept {
@@ -177,14 +181,17 @@ pageEncoding="UTF-8"%>
 		#recReservationBtn {
 		    display: flex;
 		    align-items: center;
-		    height: 28px;
-		    width: 90px;
+		    padding: 6px 10px;
 		    justify-content: center;
 		    color: white;
 		    background: #1ABC9C;
 		    font-size: 14px;
 		    border-radius: 30px;
 		    cursor: pointer;
+		}
+		
+		#infoBtn:hover {
+			cursor: pointer;
 		}
 		
 		#recProfMajor,
@@ -327,7 +334,7 @@ pageEncoding="UTF-8"%>
 		    justify-content: space-between;
 		    margin: 0 auto;
 		    width: 1194px;
-		    height: 840px;
+		    height: 540px;
 		}
 		
 		#deptWrap {
@@ -466,7 +473,8 @@ pageEncoding="UTF-8"%>
 		}
 		
 		#infoBox-content {
-		    padding: 20px 40px;
+		    padding: 20px 10px;
+		    width: 274px;
 		    display: none;
 		    position: absolute;
 		    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
@@ -544,6 +552,29 @@ pageEncoding="UTF-8"%>
 		#blankDiv {
 		    width: 60px;
 		}
+		
+		#searchBtn:hover {
+			cursor: pointer;
+		}
+		
+		#recReservationBtn:hover {
+			border: 1px solid #1abc9c;
+			background: white;
+			color: #1abc9c;
+		}
+		
+		#footer {
+		    display: flex;
+		    margin-top: 80px;
+		    margin: 0 auto;
+		    width: 100%;
+		    height: 200px;
+		    background: #EDEDED;
+		    justify-content: center;
+		    align-items: center;
+		    color: #535353;
+		}
+		
     </style>
 </head>
 
@@ -645,17 +676,16 @@ pageEncoding="UTF-8"%>
         <div id="recProfNDWrap">
             <div id="recProfName">${recommend_prof.name} 교수님
                 <div id="recProfDept">${recommend_prof.dept}</div>
-                &nbsp;
-                <div id="recTag">&nbsp; ${recommend_prof.tag}</div>
             </div>
             <c:if test="${recommend_prof.is_member == true}">
-            	<div id="recReservationBtn" onclick="location.href='reservationForm.do?p_user_id=${recommend_prof.p_user_id}'">예약하기</div>
+            	<div id="recReservationBtn" onclick="location.href='reservationForm.do?p_user_id=${recommend_prof.p_user_id}'">선택하기</div>
             </c:if>
         </div>
         <div id="recProfMajor">전공: <span>${recommend_prof.major}</span></div>
         <div id="recProfSubject">담당과목: <span>${recommend_prof.course}</span></div>
         <div id="recProfEmail">이메일: <span>${recommend_prof.email}</span></div>
         <div id="recProfLocation">연구실 위치: <span>${recommend_prof.office}</span></div>
+        <div id="recTag">${recommend_prof.tag}</div>
     </div>
 </div>
 </body>

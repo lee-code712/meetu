@@ -83,3 +83,7 @@ input[type=radio]:not(old):checked + label {
 #position {
     margin-bottom: 30px;
 }
+
+#login_btn:focus {
+	outline: none;
+}

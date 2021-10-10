@@ -69,8 +69,7 @@
 #recReservationBtn {
     display: flex;
     align-items: center;
-    height: 28px;
-    width: 90px;
+    padding: 4px 8px;
     justify-content: center;
     color: white;
     background: #1ABC9C;
@@ -356,8 +355,12 @@ a:hover {
     background: none;
 }
 
+#infoBtn:hover {
+	cursor: pointer;
+}
+
 #infoBox-content {
-    padding: 20px 40px;
+    padding: 20px 80px;
     display: none;
     position: absolute;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);

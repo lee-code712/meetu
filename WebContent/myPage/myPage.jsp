@@ -129,6 +129,37 @@ pageEncoding="UTF-8"%>
 			width: 20px;
 			heihgt: 20px;
 		}
+		
+		#profInfoBtn:focus {
+			outline: none;
+		}
+		
+		#moreImg:hover {
+			cursor: pointer;
+		}
+		#footer {
+		    display: flex;
+		    margin-top: 600px;
+		    margin: 0 auto;
+		    width: 100%;
+		    height: 200px;
+		    background: #EDEDED;
+		    justify-content: center;
+		    align-items: center;
+		    color: #535353;
+		}
+		
+		#cancelBtn:focus,
+		#editBtn:focus,
+		#rejectMsgBtn:focus,
+		#msgBtn:focus,
+		#approvalBtn:focus,
+		#rejectBtn:focus,
+		#consultedBtn:focus,
+		#consultationRecordBtn:focus {
+			outline: none;
+		}
+				
     </style>
     
     <script>
