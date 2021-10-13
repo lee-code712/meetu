@@ -187,8 +187,8 @@ function buildCalendar() {
     }
     
     // 불러온 예약정보에 맞춰 버튼 자동 클릭
-    if($("#calMonth").text() == consult_month) {
-		$("td:contains("+ consult_day + ")").trigger("click");
+    if($("#calMonth").text() == consult_month) { // 월 자동 클릭
+		$("td:contains("+ consult_day + ")").trigger("click"); // 미리 클릭해 두어야 오류 X
 
 		if ($("#date").val() != null) {
 			if($("td:contains("+ $("#date").val() + ")").css("cursor") == "pointer") {
@@ -218,7 +218,7 @@ function buildCalendar() {
 				history.go(-1);
 			}
 		}
-		else if ($("#time").val() != null) {			
+		else if ($("#time").val() != null) { // 시간 자동 클릭			
 			if($("div.startTimeBox:contains(" + $("#time").val() + ")").css("cursor") == "pointer") {
 	    		$("div.startTimeBox:contains(" + $("#time").val() + ")").trigger("click");
 
@@ -245,8 +245,7 @@ function buildCalendar() {
 				history.go(-1);
 			}
 		}
-		else {
-			// $("td:contains("+ consult_day + ")").trigger("click");
+		else { // 파라미터가 없는 경우, 즉 쪽지가 아닌 예약 수정을 클릭해서 넘어온 경우
 	    	$("div.startTimeBox:contains(" + start + ")").trigger("click");
 
 			var time = end.substring(0,2) - start.substring(0,2);
