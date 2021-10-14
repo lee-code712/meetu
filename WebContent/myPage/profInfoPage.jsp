@@ -16,49 +16,50 @@ pageEncoding="UTF-8"%>
     	var courses = ${courses};
     </script>
 </head>
+
 <body>
-<div id="header">
-    <div id="headerInner">
-        <div id="headerInnerL">
-            <div id="title"><a href="index.do">MEETU</a></div>
-            <div id="gnb">
-                <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
-                <c:if test="${mem_dto.getRole()=='0'}">
-                    <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
-                    <div><a id="messageIcon" href="message.do">쪽지함</a></div>
-                </c:if>
-                <c:if test="${mem_dto.getRole()=='1'}">
-                    <div><a id="messageIcon" href="message.do">쪽지함</a></div>
-                    <div id="blankDiv"></div>
-                </c:if>
-            </div>
-        </div>
-        <div id="headerInnerR">
-            <div id="dropdown">
-                <div id="dropdown-button">${mem_dto.getName()}님 😊</div>
-                <div id="dropdown-content">
-                    <a href="myPage.do">마이페이지</a>
-                    <a href="logout.do">로그아웃</a>
-                </div>
-            </div>
-            <img src="/images/bellOn.svg" id="noticeOnImg" onclick="readNewAlerts();"/><div id="noticeCount">${count_alert}</div>
-        </div>
-    </div>
-</div>
-
-<div id="navWrap">
-    <div id="navL">
-        <div id="navLTit"></div>
-        <div id="navListWrap">
-            <div id="userImgWrap"></div>
-            <div id="profMfName">${mem_dto.getName()}</div>
-            <div id="navList">${univ_dto.getUnivName()}</div>
-            <div id="profDataMfBtnWrap">
-                <button id="backBtn" onClick="location.href='myPage.do'">닫기</button>
-            </div>
-        </div>
-    </div>
-
+	<div id="header">
+	    <div id="headerInner">
+	        <div id="headerInnerL">
+	            <div id="title"><a href="index.do">MEETU</a></div>
+	            <div id="gnb">
+	                <div><a id="noticeIcon" href="notice.do">공지사항</a></div>
+	                <c:if test="${mem_dto.getRole()=='0'}">
+	                    <div><a id="reserveIcon" href="reservation.do">상담예약</a></div>
+	                    <div><a id="messageIcon" href="message.do">쪽지함</a></div>
+	                </c:if>
+	                <c:if test="${mem_dto.getRole()=='1'}">
+	                    <div><a id="messageIcon" href="message.do">쪽지함</a></div>
+	                    <div id="blankDiv"></div>
+	                </c:if>
+	            </div>
+	        </div>
+	        <div id="headerInnerR">
+	            <div id="dropdown">
+	                <div id="dropdown-button">${mem_dto.getName()}님 😊</div>
+	                <div id="dropdown-content">
+	                    <a href="myPage.do">마이페이지</a>
+	                    <a href="logout.do">로그아웃</a>
+	                </div>
+	            </div>
+	            <img src="/images/bellOn.svg" id="noticeOnImg" onclick="readNewAlerts();"/><div id="noticeCount">${count_alert}</div>
+	        </div>
+	    </div>
+	</div>
+	
+	<div id="navWrap">
+	    <div id="navL">
+	        <div id="navLTit"></div>
+	        <div id="navListWrap">
+	            <div id="userImgWrap"></div>
+	            <div id="profMfName">${mem_dto.getName()}</div>
+	            <div id="navList">${univ_dto.getUnivName()}</div>
+	            <div id="profDataMfBtnWrap">
+	                <button id="backBtn" onClick="location.href='myPage.do'">닫기</button>
+	            </div>
+	        </div>
+	    </div>
+	
     <div id="navR">
         <div id="navRTit">내 정보</div>
         <div id="navRContentWrap">
@@ -140,7 +141,6 @@ pageEncoding="UTF-8"%>
             </div>
             <div id="blank"></div>
         </div>
-    </div>
-</div>
+	</div>
 </body>
 </html>

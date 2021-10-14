@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<!doctype html>
-<html>
 
+<!DOCTYPE html>
+<html>
 <head>
+	<title>로그인</title>
+	
     <link rel="stylesheet" href="/login/css/login.css"/>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -22,8 +24,6 @@ pageEncoding="UTF-8"%>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-    <title>로그인</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,15 +60,18 @@ pageEncoding="UTF-8"%>
                     <label class="form-check-label">관리자</label>
                 </div>
             </div>
+            
             <div class="form-group">
                 <label>아이디</label>
                 <input type="text" class="form-control" name="user_id" id="id" aria-describedby="emailHelp"
                        placeholder="아이디" required>
             </div>
+            
             <div class="form-group">
                 <label>비밀번호</label>
                 <input type="password" class="form-control" name="password" id="pwd" placeholder="비밀번호" required>
             </div>
+            
             <small id="account" class="form-text text-muted">계정을 잊으셨나요? <a id="link">아이디 찾기</a> 또는 <a href="findPwdForm.do" id="link">비밀번호 찾기</a></small>
             <small class="form-text text-muted">아직 회원이 아니신가요? <a href="joinForm.do">회원가입</a></small>
             <button type="submit" id="login_btn">로그인</button>

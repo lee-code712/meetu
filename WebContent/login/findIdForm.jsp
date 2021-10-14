@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<!doctype html>
-<html>
 
+<!DOCTYPE html>
+<html>
 <head>
+	<title>아이디 찾기</title>
+	
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,8 +23,6 @@ pageEncoding="UTF-8"%>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-    <title>아이디 찾기</title>
     
     <link rel="stylesheet" href="/login/css/findIdForm.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,30 +31,33 @@ pageEncoding="UTF-8"%>
 </head>
 
 <body id="bodyBg">
-<div id="findIdWrap">
-    <div id="loginTitle"><a>아이디 찾기</a></div>
-    <form method="post" action="login.do">
-        <div id="position">
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="role" id="student_ck" value="0" checked>
-                <label class="form-check-label">학부생</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="role" id="professor_ck" value="1">
-                <label class="form-check-label">교직원</label>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>대학 번호</label>
-            <input type="text" class="form-control" name="user_id" id="univId" aria-describedby="emailHelp"
-                   placeholder="대학 번호" required>
-        </div>
-        <div class="form-group">
-            <label>학번</label>
-            <input type="text" class="form-control" name="password" id="userId" placeholder="학번" required>
-        </div>
-        <button type="submit" id="findIdBtn">아이디 찾기</button>
-    </form>
-</div>
+	<div id="findIdWrap">
+	    <div id="loginTitle"><a>아이디 찾기</a></div>
+	    <form method="post" action="login.do">
+	        <div id="position">
+	            <div class="form-check form-check-inline">
+	                <input class="form-check-input" type="radio" name="role" id="student_ck" value="0" checked>
+	                <label class="form-check-label">학부생</label>
+	            </div>
+	            <div class="form-check form-check-inline">
+	                <input class="form-check-input" type="radio" name="role" id="professor_ck" value="1">
+	                <label class="form-check-label">교직원</label>
+	            </div>
+	        </div>
+	        
+	        <div class="form-group">
+	            <label>대학 번호</label>
+	            <input type="text" class="form-control" name="user_id" id="univId" aria-describedby="emailHelp"
+	                   placeholder="대학 번호" required>
+	        </div>
+	        
+	        <div class="form-group">
+	            <label>학번</label>
+	            <input type="text" class="form-control" name="password" id="userId" placeholder="학번" required>
+	        </div>
+	        
+	        <button type="submit" id="findIdBtn">아이디 찾기</button>
+	    </form>
+	</div>
 </body>
 </html>

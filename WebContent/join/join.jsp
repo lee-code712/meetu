@@ -4,6 +4,7 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+	<title>회원가입</title>
     <link rel="stylesheet" href="/join/css/join.css"/>
 
     <!-- Required meta tags -->
@@ -23,8 +24,6 @@ pageEncoding="UTF-8"%>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-    <title>회원가입</title>
 
     <script src="/join/js/join.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -73,10 +72,12 @@ pageEncoding="UTF-8"%>
                 <div class="dropdown-content" id="search_result">
                 </div>
             </div>
+            
             <div class="form-group">
                 <label>학번</label>
                 <input type="text" class="form-control" id="inputAddress2" name="member_id" placeholder="학번">
             </div>
+            
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>비밀번호</label>
@@ -88,6 +89,7 @@ pageEncoding="UTF-8"%>
                            placeholder="비밀번호 확인">
                 </div>
             </div>
+            
             <fieldset class="form-group">
                 <div class="row">
                     <legend class="col-form-label col-sm-2 pt-0">소속</legend>

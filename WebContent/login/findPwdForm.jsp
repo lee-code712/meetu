@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<!doctype html>
-<html>
 
+<!DOCTYPE html>
+<html>
 <head>
+	<title>비밀번호 찾기</title>
+    
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,8 +23,6 @@ pageEncoding="UTF-8"%>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-    <title>비밀번호 찾기</title>
 
 	<link rel="stylesheet" href="/login/css/findPwdForm.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,15 +55,18 @@ pageEncoding="UTF-8"%>
                     <label class="form-check-label">교직원</label>
                 </div>
             </div>
+            
             <div class="form-group">
                 <label>아이디</label>
                 <input type="text" class="form-control" name="user_id" id="id" aria-describedby="emailHelp"
                        placeholder="아이디" required>
             </div>
+            
             <div class="form-group">
                 <label>학교 이메일</label>
                 <input type="text" class="form-control" name="email" id="email" placeholder="학교 이메일" required>
             </div>
+            
             <button type="submit" id="findPwBtn">확인</button>
         </form>
     </div>

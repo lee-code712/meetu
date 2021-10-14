@@ -3,12 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>메일 인증</title>
-<link rel="stylesheet" href="/join/css/joinAuthForm.css"/>
-<script src="/join/js/joinAuth.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<meta charset="UTF-8">
+	<title>메일 인증</title>
+	<link rel="stylesheet" href="/join/css/joinAuthForm.css"/>
+	<script src="/join/js/joinAuth.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body>
 <%
 	String ck = request.getParameter("ck");

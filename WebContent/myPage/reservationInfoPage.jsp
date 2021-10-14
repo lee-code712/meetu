@@ -12,9 +12,10 @@ pageEncoding="UTF-8"%>
 </head>
 
 <body id="reservationInfoBg">
-<div id="rejectMsgWrap">
-    <div id="rejectMsgInnerWrap">
-        <div id="reservationTit">예약정보</div>
+	<div id="rejectMsgWrap">
+	    <div id="rejectMsgInnerWrap">
+	        <div id="reservationTit">예약정보</div>
+	        
             <table id="InfoTable">
                 <tr id="infoWrap">
                     <td id="infoTitle">교수정보</td>
@@ -46,10 +47,11 @@ pageEncoding="UTF-8"%>
                     </td>
                 </tr>
             </table>
-        <div id="closeBtnWrap">
-            <button onclick="window.close()" id="reservationInfoCloseBtn">확인</button>
-        </div>
-    </div>
-</div>
+            
+	        <div id="closeBtnWrap">
+	            <button onclick="window.close()" id="reservationInfoCloseBtn">확인</button>
+	        </div>
+	    </div>
+	</div>
 </body>
 </html>
