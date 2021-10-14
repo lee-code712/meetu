@@ -1,198 +1,156 @@
 @charset "UTF-8";
 
-/* 배너사이즈와 위치 */
-#banner_wrap {
-    margin-top: 100px;
-    margin: 0 auto;
-    width: 1920px;
-    height: 720px;
-    z-index: 0;
+#noticeCount {
+    position: relative;
+    right: 12px;
+    top: -3px;
+    font-size: 12px;
+    color: white;
 }
 
-.banner_01 {
-    width: 1920px;
-    height: 720px;
-    background-image: url('/images/banner1.svg');
-    background-position: center;
-    background-size: cover;
-}
-
-.banner_02 {
-    width: 1920px;
-    height: 720px;
-    background-image: url('/images/banner2.jpg');
-    background-position: center;
-    background-size: cover;
-}
-
-.banner_03 {
-    width: 1920px;
-    height: 720px;
-    background-image: url('/images/banner3.jpg');
-    background-position: center;
-    background-size: cover;
-}
-
-#bx-pager1 a {
-    float: left;
-    margin: 0 5px;
-    display: block;
+#noticeImg {
     width: 20px;
     height: 20px;
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-    background: pink;
-    color: #333
-}
-
-* {
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-}
-
-a:link {
-    color: white;
-    text-decoration: none;
-}
-
-a:visited {
-    color: white;
-    text-decoration: none;
-}
-
-a:hover {
-    color: white;
-    text-decoration: underline;
-}
-
-#footer {
-    display: flex;
-    margin-top: -40px;
-    margin: 0 auto;
-    width: 100%;
-    height: 200px;
-    background: #EDEDED;
-    justify-content: center;
-    align-items: center;
-    color: #535353;
-}
-
-
-ul, li {
-    text-decoration: none;
-    list-style: none;
-}
-
-
-#introBody {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    width: 1194px;
 
 }
 
-#introBox img {
-    display: block;
-    margin: 0px auto;
-}
-
-#introBox div {
-    text-align: center;
-}
-
-#introWrap {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    top: 690px;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    margin: 0 auto;
-    width: 1194px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 2px 4px 0px rgb(0, 0, 0, 0.2);
-}
-
-#intro {
-    margin: 0 auto;
-    width: 1194px;
-}
-
-#introTitle {
-    margin-top: 30px;
-    margin-bottom: 14px;
-}
-
-#introText {
-    font-size: 10px;
-    color: #535353;
-}
-
-#siteName {
-    font-size: 24px;
-    font-family: 'Yellowtail', cursive;
-}
-
-
-#introBox {
-    width: 386px;
-    padding: 40px 0;
-}
-
-#introBox:hover {
-    box-shadow: 0px 2px 4px 0px rgb(0, 0, 0, 0.2);
+#noticeOnImg {
     cursor: pointer;
+    width: 24px;
+    height: 20px;
 }
 
-#logo {
-    color: #1abc9c;
-    font-family: 'Yellowtail', cursive;
-}
+/* 배너사이즈와 위치 */
+ #banner_wrap {
+     margin-top: 100px;
+     margin: 0 auto;
+     width: 1920px;
+     height: 720px;
+     z-index: 0;
+ }
 
-#banner1Title {
-    margin-top: 100px;
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 18px;
-}
+ .banner_01 {
+     width: 1920px;
+     height: 720px;
+     background-image: url('/images/banner1.svg');
+     background-position: center;
+     background-size: cover;
+ }
 
-#banner1Text {
-    padding: 20px 0 60px 0;
-    margin: 0 auto;
-    text-align: center;
-    width: 300px;
-    font-size: 12px;
-    color: #535353;
-}
+ .banner_02 {
+     width: 1920px;
+     height: 720px;
+     background-image: url('/images/banner2.jpg');
+     background-position: center;
+     background-size: cover;
+ }
 
-#reservationBtn {
-    display: block;
-    margin: 0 auto;
-    width: 200px;
-    padding: 8px 0;
-    border: 1px solid #1abc9c;
-    color: #1abc9c;
-    border-radius: 500px;
-    background: white;
-}
+ .banner_03 {
+     width: 1920px;
+     height: 720px;
+     background-image: url('/images/banner3.jpg');
+     background-position: center;
+     background-size: cover;
+ }
 
-#reservationBtn:hover {
-    display: block;
-    margin: 0 auto;
-    width: 200px;
-    padding: 8px 0;
-    border: 1px solid #1abc9c;
-    color: white;
-    border-radius: 500px;
-    background: #1abc9c;
-    cursor: pointer;
-}
+ #bx-pager1 a {
+     float: left;
+     margin: 0 5px;
+     display: block;
+     width: 20px;
+     height: 20px;
+     font-size: 12px;
+     line-height: 18px;
+     text-align: center;
+     background: pink;
+     color: #333
+ }
 
+ * {
+     padding: 0;
+     margin: 0;
+     text-decoration: none;
+ }
+
+ a:link {
+     color: white;
+     text-decoration: none;
+ }
+
+ a:visited {
+     color: white;
+     text-decoration: none;
+ }
+
+ a:hover {
+     color: white;
+     text-decoration: underline;
+ }
+
+ #footer {
+     display: flex;
+     margin-top: -40px;
+     margin: 0 auto;
+     width: 100%;
+     height: 200px;
+     background: #EDEDED;
+     justify-content: center;
+     align-items: center;
+     color: #535353;
+ }
+
+
+ ul, li {
+     text-decoration: none;
+     list-style: none;
+ }
+
+
+ #siteName {
+     font-size: 24px;
+     font-family: 'Yellowtail', cursive;
+ }
+
+ #logo {
+     color: #1abc9c;
+     font-family: 'Yellowtail', cursive;
+ }
+
+ #banner1Title {
+     margin-top: 100px;
+     display: flex;
+     justify-content: center;
+     font-weight: bold;
+     font-size: 18px;
+ }
+
+ #banner1Text {
+     padding: 20px 0 60px 0;
+     margin: 0 auto;
+     text-align: center;
+     width: 300px;
+     font-size: 12px;
+     color: #535353;
+ }
+
+ #reservationBtn {
+     display: block;
+     margin: 0 auto;
+     width: 200px;
+     padding: 8px 0;
+     border: 1px solid #F2B9B2;
+     color: #F2B9B2;
+     border-radius: 500px;
+     background: white;
+ }
+
+ #reservationBtn:hover {
+     cursor: pointer;
+ }
+
+#reservationBtn:focus {
+	outline: none;
+}
 
 .cal_top {
     font-size: 24px;
@@ -254,14 +212,15 @@ table.calendar td {
 #subTitle {
     display: flex;
     justify-content: center;
-    color: #535353;
-    font-size: 10px;
-    margin-bottom: 10px;
+    margin: 6px 0px 0px 14px;
+    color: #C4C4C4;
+    font-size: 12px;
 }
 
 #originTitleWrap {
     display: flex;
     justify-content: center;
+    font-size: 24px;
 }
 
 #originTitle {
@@ -458,15 +417,25 @@ a:hover {
     display: block;
     width: 200px;
     padding: 8px 0;
-    border: 1px solid #1abc9c;
-    color: #1abc9c;
+    background: #ADCDFF;
+    color: white;
     border-radius: 500px;
-    background: white;
+    border: none;
+}
+
+ #banner03Btn:hover {
+    cursor: pointer;
+    background: #ADCDFF;
+    color: white;
+}
+
+#banner03Btn:focus {
+	outline: none;
 }
 
 #banner02Wrap {
     margin: 0 auto;
-    padding-top: 90px;
+    padding-top: 110px;
     width: 1194px;
 }
 
@@ -487,17 +456,20 @@ a:hover {
     display: block;
     width: 200px;
     padding: 8px 0;
-    border: 1px solid #1abc9c;
-    color: #1abc9c;
+    color: white;
+    border: none;
     border-radius: 500px;
-    background: #eaf0ff;
+    background: #A3BCFA;
 }
 
-#banner02Btn:hover,
-#banner03Btn:hover {
+#banner02Btn:hover {
     cursor: pointer;
-    background: #1abc9c;
+    background: #A3BCFA;
     color: white;
+}
+
+#banner02Btn:focus {
+	outline: none;
 }
 
 #blank {
@@ -506,4 +478,87 @@ a:hover {
 
 #blankDiv {
     width: 60px;
+}
+
+#infoWrap {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 530px;
+    background: white;
+}
+
+#infoTit {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 24px;
+}
+
+#infoSubTit {
+    display: flex;
+    justify-content: center;
+    margin: 6px auto;
+    font-size: 12px;
+    color: #C4C4C4;
+}
+
+#greenLine {
+    margin: 10px auto;
+    width: 50px;
+    height: 6px;
+    border-radius: 30px;
+    background: #CAE8E1;
+}
+
+#infoIconWrap {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-top: 80px;
+    width: 920px;
+}
+
+#infoIcon {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 160px;
+    height: 180px;
+}
+
+#iconTit {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#iconSubTit {
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    color: #C4C4C4;
+    text-align: center;
+}
+
+#logo1 {
+	color: #F2B9B2;
+	font-family: 'Yellowtail', cursive;
+	font-size: 18px;
+}
+
+#logo2 {
+	color: #A3BCFA;
+	font-family: 'Yellowtail', cursive;
+	font-size: 18px;
+}
+      
+#logo3 {
+	color: #ADCDFF;
+	font-family: 'Yellowtail', cursive;
+	font-size: 18px;
 }

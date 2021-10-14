@@ -21,15 +21,15 @@
 #reservationInfoCloseBtn {
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-right: 20px;
     align-items: center;
     padding: 6px 24px;
     font-size: 14px;
-    border-radius: 50px;
-    border: 1px solid #1abc9c;
-    color: #1abc9c;
-    background: white;
+    border-radius: 5px;
+    border: none;
+    background: #1abc9c;
+    color: white;
 }
 
 #reservationInfoCloseBtn:hover {
@@ -65,17 +65,15 @@
     display: flex;
     align-items: center;
     height: 40px;
+    margin-bottom: 10px;
 }
 
 #infoTitle {
     display: flex;
     align-items: center;
-    padding-left: 30px;
-    width: 130px;
+    width: 140px;
     height: 40px;
-    background: #f1f1f1;
-    border-top: 1px solid #d9d9d9;
-    border-bottom: 1px solid #d9d9d9;
+    color: #1abc9c;
 }
 
 #InfoTable {
@@ -90,13 +88,9 @@
     height: 40px;
     width: 370px;
     background: white;
-    border-top: 1px solid #d9d9d9;
-    border-bottom: 1px solid #d9d9d9;
+    color: #535353;
 }
 
-#infoWrap {
-     border: 1px solid #d9d9d9;
-}
 
 #rejectMsgInnerWrap {
     padding-bottom: 20px;

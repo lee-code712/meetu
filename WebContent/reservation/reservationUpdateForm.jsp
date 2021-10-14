@@ -11,40 +11,6 @@ pageEncoding="UTF-8"%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/reservation/js/reservationUpdateForm.js"></script>
     <link rel="stylesheet" href="../reservation/css/reservationForm.css"/>
-
-	<style>
-		#noticeCount {
-            position: relative;
-            right: 12px;
-            top: -3px;
-            font-size: 12px;
-            color: white;
-        }
-    	
-    	#noticeImg {
-    		width: 20px;
-    		height: 20px;
-    		
-		}
-		
-		#noticeOnImg {
-			cursor: pointer;
-			width: 24px;
-    		height: 20px;
-		}
-		
-		#footer {
-		    display: flex;
-		    margin-top: -40px;
-		    margin: 0 auto;
-		    width: 100%;
-		    height: 200px;
-		    background: #EDEDED;
-		    justify-content: center;
-		    align-items: center;
-		    color: #535353;
-		}
-	</style>
 	
     <script>
     	var p_user_id =  "${param.p_user_id}"; 	
@@ -230,6 +196,5 @@ pageEncoding="UTF-8"%>
         </div>
     </div>
 	</form>
-
 </body>
 </html>

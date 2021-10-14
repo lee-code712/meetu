@@ -7,51 +7,7 @@
 <meta charset="UTF-8">
 <title>회원가입 성공</title>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-    <style>
-        #logo {
-            margin-bottom: 50px;
-            color: #1abc9c;
-            font-family: 'Yellowtail', cursive;
-            font-size: 48px;
-            font-weight: bold;
-        }
-
-        #joinProWrap {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        #successMsg {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 400px;
-            font-size: 18px;
-            color: #535353;
-        }
-
-        #welcome {
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-
-        #loginBtn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 60px;
-            width: 400px;
-            height: 40px;
-            background: #1abc9c;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            border: none;
-        }
-    </style>
+    <link rel="stylesheet" href="/join/css/joinPro.css"/>
 </head>
 <body>
 <%

@@ -1,21 +1,21 @@
 .popup_btn a {
-            display: inline-block;
-            padding: 20px;
-            background: darkred;
-            color: #fff;
-        }
+    display: inline-block;
+    padding: 20px;
+    background: darkred;
+    color: #fff;
+}
 
-        .popup {
-            position: fixed;
-            width: 60%;
-            padding: 10px;
-            max-width: 500px;
-            border-radius: 10px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(255, 255, 255, .9);
-            /* "delay" the visibility transition */
+.popup {
+    position: fixed;
+    width: 60%;
+    padding: 10px;
+    max-width: 500px;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, .9);
+    /* "delay" the visibility transition */
     -webkit-transition: opacity .5s, visibility 0s linear .5s;
     transition: opacity .5s, visibility 0s linear .5s;
     z-index: 1;
@@ -70,7 +70,6 @@
 #alertTitle {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
     padding: 10px 0px;
     background: #1ABC9C;
     color: white;
@@ -155,4 +154,8 @@
 #contentBox {
     display: flex;
     justify-content: space-between;
+}
+
+#alertTitle {
+	margin-bottom: 10px;
 }

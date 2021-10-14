@@ -314,3 +314,13 @@ function readNewAlerts() {
 window.movePage = function(url) {
 	location.href = url;
 }
+
+function toggleText() {
+	var text = document.getElementById("accountWrap");
+  
+  	if (text.style.display === "none") {
+    	text.style.display = "block";
+  	} else {
+    	text.style.display = "none";
+  	}
+}

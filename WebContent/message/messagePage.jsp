@@ -16,48 +16,6 @@ pageEncoding="UTF-8" %>
         var user_id = '${user_id}';
     </script>
 
-	<style>
-		#noticeCount {
-            position: relative;
-            right: 12px;
-            top: -3px;
-            font-size: 12px;
-            color: white;
-        }
-    	
-    	#noticeImg {
-    		width: 20px;
-    		height: 20px;
-    		
-		}
-		
-		#noticeOnImg {
-			cursor: pointer;
-			width: 24px;
-    		height: 20px;
-		}
-		
-		#infoImg {
-            margin-right: 30px;
-            margin-top: -10px;
-            display: inline-block;
-            float: right;
-            cursor: pointer;
-        }
-        
-        #footer {
-    display: flex;
-    margin-top: -40px;
-    margin: 0 auto;
-    width: 100%;
-    height: 200px;
-    background: #EDEDED;
-    justify-content: center;
-    align-items: center;
-    color: #535353;
-}
-	</style>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">

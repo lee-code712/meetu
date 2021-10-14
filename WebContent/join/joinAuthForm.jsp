@@ -21,13 +21,13 @@
 	}
 %>
 
-<form method="post" action="joinAuth.do" name="joinAuth_form">
-<div id="AuthWrap">
-<label id="AuthTit">인증 코드 입력</label>
-<input type="text" id="input_code" name="input_code" placeholder="발송된 인증 코드를 입력해 주세요." />
-<div id="AuthWarning">*인증번호가 오지 않으면 입력하신 정보가 정확한지 확인해주세요.</div>
-<div id="submitBtnWrap"><button type="submit" id="submit_btn">확인</button></div>
-</div>
-</form>
+	<form method="post" action="joinAuth.do" name="joinAuth_form">
+		<div id="AuthWrap">
+			<label id="AuthTit">인증 코드 입력</label>
+			<input type="text" id="input_code" name="input_code" placeholder="발송된 인증 코드를 입력해 주세요." />
+			<div id="AuthWarning">*인증번호가 오지 않으면 입력하신 정보가 정확한지 확인해주세요.</div>
+			<div id="submitBtnWrap"><button type="submit" id="submit_btn">확인</button></div>
+		</div>
+	</form>
 </body>
 </html>

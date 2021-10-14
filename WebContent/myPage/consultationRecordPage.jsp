@@ -12,63 +12,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/myPage/js/consultationRecord.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-
-	<style>
-		#noticeCount {
-            position: relative;
-            right: 12px;
-            top: -3px;
-            font-size: 12px;
-            color: white;
-        }
-    	
-    	#noticeImg {
-    		width: 20px;
-    		height: 20px;
-    		
-		}
-		
-		#noticeOnImg {
-			cursor: pointer;
-			width: 24px;
-    		height: 20px;
-		}
-		
-		.consultSubTit {
-			color: #1abc9c;
-			font-size: 14px;
-		}
-		
-		#backBtn:hover,
-		#saveBtn:hover {
-			cursor: pointer;
-		}
-		
-		#backBtn:focus,
-		#saveBtn:focus {
-			outline: none;
-		}
-		
-		#navLTit {
-			font-size: 18px;
-		}
-		
-		textarea {
-			resize:none;
-		}
-		
-		#footer {
-		    display: flex;
-		    margin-top: 300px;
-		    margin: 0 auto;
-		    width: 100%;
-		    height: 200px;
-		    background: #EDEDED;
-		    justify-content: center;
-		    align-items: center;
-		    color: #535353;
-		}
-	</style>
 </head>
 
 <body id="cltRecordBg">
