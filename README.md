@@ -1,0 +1,2 @@
+- DB : Oracle / API: JDBC / 개발언어 : JSP, Java, JavaScript / 프론트엔드 : HTML5
+- 서버 : Apache Tomcat
