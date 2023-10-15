@@ -16,9 +16,14 @@
 
 ### 개발 환경
 - IDE : Eclipse(Java EE IDE)
-- Programming Language : Java 8, JSP, JavaScript
+- Programming Language : Java 8, JavaScript
+- Template engine : JSP
+- Database Access Technology : JDBC
 - Database : Oracle Database 11g
 - WAS : Apache Tomcat 8.5
+- Version Control: Git
 </br></br>
+
+## ✔ 프로젝트 소개
 
 ## ✔ 주요 기능
