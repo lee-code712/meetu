@@ -16,7 +16,7 @@
 
 ### 개발 환경
 - IDE : Eclipse(Java EE IDE)
-- Programming Language : Java 8, JSP, JavaScript, HTML5
+- Programming Language : Java 8, JSP, JavaScript
 - Database : Oracle Database 11g
 - WAS : Apache Tomcat 8.5
 </br></br>
